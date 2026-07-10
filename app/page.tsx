@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { Wrap, Stat, Callout, Eyebrow, SectionHead } from "@/components/ui";
@@ -13,6 +14,40 @@ function WhoCard({ icon, title, body }: { icon: string; title: string; body: str
         <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
       </div>
     </div>
+  );
+}
+
+/** Mission-band media: looping public-domain TAP-class footage; still photo when the user prefers reduced motion. */
+function MissionMedia() {
+  const [reduced, setReduced] = useState<boolean | null>(null);
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+  if (reduced === null || reduced) {
+    return (
+      <img
+        className="photo"
+        src="/img/transition-summit-mentors.jpg"
+        alt="A soldier takes notes as volunteer mentors walk her through her resume at a veterans transition summit"
+        width={1600}
+        height={1064}
+        loading="lazy"
+      />
+    );
+  }
+  return (
+    <video
+      ref={(el) => { el?.play().catch(() => {}); }}
+      className="photo"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      poster="/video/hero-poster.jpg"
+      src="/video/hero-loop.mp4"
+      aria-label="A transitioning soldier works through a Transition Assistance Program workbook in a classroom"
+    />
   );
 }
 
@@ -156,16 +191,10 @@ export default function Landing() {
         </div>
       </Wrap>
 
-      {/* Mission band — real transition-assistance moment (public-domain photo, see /img/CREDITS.md) */}
+      {/* Mission band — real transition-assistance footage (public domain; see /video/CREDITS.md).
+          Video for most users; the still photo for reduced-motion users. */}
       <section className="mission-band">
-        <img
-          className="photo"
-          src="/img/transition-summit-mentors.jpg"
-          alt="A soldier takes notes as volunteer mentors walk her through her resume at a veterans transition summit"
-          width={1600}
-          height={1064}
-          loading="lazy"
-        />
+        <MissionMedia />
         <div className="scrim" aria-hidden="true" />
         <div className="band-inner" data-reveal="true">
           <Eyebrow onDark>On the ground</Eyebrow>
@@ -174,7 +203,7 @@ export default function Landing() {
             Across the country, mentors sit down with transitioning service members — one resume, one plan at a time. {BRAND.name} brings that same one-on-one clarity to your kitchen table.
           </p>
         </div>
-        <span className="credit">U.S. government photo · public domain</span>
+        <span className="credit">U.S. Army footage, Fort Bliss SFL-TAP · public domain</span>
       </section>
 
       <Wrap>
