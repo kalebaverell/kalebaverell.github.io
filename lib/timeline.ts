@@ -6,7 +6,7 @@
 import { realStateInfo } from "@/lib/data";
 
 /** Date the deadline/source details below were last checked against the linked official pages. */
-export const TIMELINE_VERIFIED = "2026-07-08";
+export const TIMELINE_VERIFIED = "2026-07-10";
 
 export type FocusArea = "benefits" | "employment" | "education" | "financial" | "family" | "wellbeing";
 
@@ -229,8 +229,8 @@ function narrative(phase: TimelinePhase, a: TimelineAnswers): string {
     case "p6": parts.push("Stabilization means honest checkpoints — on the job, the location, and how you're actually doing."); break;
     case "p7": parts.push("Now you're building, not transitioning — compound the career, finish the education, keep the benefits current."); break;
   }
-  if (dl.length) parts.push(`Time-sensitive here: ${dl.map((t) => t.title.toLowerCase()).join("; ")}.`);
-  else if (ess.length) parts.push(`Don't skip: ${ess[0].title.toLowerCase()}.`);
+  if (dl.length) parts.push(`Time-sensitive here: ${dl.map((t) => t.title).join("; ")}.`);
+  else if (ess.length) parts.push(`Don't skip: ${ess[0].title}.`);
   if (phase.status === "current") parts.push("You're in this window right now — start at the top.");
   return parts.join(" ");
 }
@@ -269,6 +269,6 @@ export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
   if (a.goals.length && !a.goals.includes("undecided")) bits.push(`Aimed at ${a.goals.map((g) => g === "employment" ? "civilian employment" : g === "education" ? "education" : "starting a business").join(" + ")}.`);
   if (a.goals.includes("undecided")) bits.push("Destination still open — the Pathfinder can close that gap.");
   if (a.targetState) bits.push(`Headed to ${stateEntry(a.targetState)?.name || a.targetState}.`);
-  if (a.priorities.length) bits.push(`Weighted toward: ${a.priorities.map((x) => FOCUS_META[x].label.toLowerCase()).join(", ")}.`);
+  if (a.priorities.length) bits.push(`Weighted toward: ${a.priorities.map((x) => FOCUS_META[x].label).join(", ")}.`);
   return { phases, catchUp, deadlines, summary: bits.join(" ") };
 }

@@ -87,8 +87,30 @@ export default function TimelinePage() {
   const set = <K extends keyof TimelineAnswers>(k: K, v: TimelineAnswers[K]) => {
     setA((p) => { const next = { ...p, [k]: v }; save(next, false); return next; });
   };
-  const toggle = <T,>(list: T[], v: T, max?: number): T[] =>
-    list.includes(v) ? list.filter((x) => x !== v) : max && list.length >= max ? list : [...list, v];
+  // Multi-selects toggle inside the functional updater — computing the new list
+  // from render-time state drops selections when clicks land in the same batch.
+  const toggleIn = (k: "goals" | "family" | "priorities", v: string, max?: number) => {
+    setA((p) => {
+      const list = p[k] as string[];
+      const nextList = list.includes(v)
+        ? list.filter((x) => x !== v)
+        : max && list.length >= max ? list : [...list, v];
+      const next = { ...p, [k]: nextList };
+      save(next, false);
+      return next;
+    });
+  };
+  const toggleFamily = (v: FamilyFlag) => {
+    setA((p) => {
+      const cur = p.family;
+      const nextList: FamilyFlag[] = v === "none"
+        ? (cur.includes("none") ? [] : ["none"])
+        : (() => { const base = cur.filter((x) => x !== "none"); return base.includes(v) ? base.filter((x) => x !== v) : [...base, v]; })();
+      const next = { ...p, family: nextList };
+      save(next, false);
+      return next;
+    });
+  };
 
   const finish = () => {
     setPlan(buildTimeline(a));
@@ -164,7 +186,7 @@ export default function TimelinePage() {
               <fieldset style={{ border: "none", padding: 0, margin: "0 0 16px" }}>
                 <legend className="lbl" style={{ padding: 0 }}>After service, you&apos;re aiming for… (pick all that apply)</legend>
                 {GOAL_OPTIONS.map((g) => (
-                  <button key={g.v} type="button" aria-pressed={a.goals.includes(g.v)} className={`opt ${a.goals.includes(g.v) ? "sel" : ""}`} onClick={() => set("goals", toggle(a.goals, g.v))}>
+                  <button key={g.v} type="button" aria-pressed={a.goals.includes(g.v)} className={`opt ${a.goals.includes(g.v) ? "sel" : ""}`} onClick={() => toggleIn("goals", g.v)}>
                     <i className={`ti ${g.icon}`} aria-hidden="true" /> {g.label}
                   </button>
                 ))}
@@ -178,7 +200,7 @@ export default function TimelinePage() {
                 <legend className="lbl" style={{ padding: 0 }}>Who&apos;s transitioning with you? (pick all that apply)</legend>
                 {FAMILY_OPTIONS.map((f) => (
                   <button key={f.v} type="button" aria-pressed={a.family.includes(f.v)} className={`opt ${a.family.includes(f.v) ? "sel" : ""}`}
-                    onClick={() => set("family", f.v === "none" ? ["none"] : toggle(a.family.filter((x) => x !== "none"), f.v))}>
+                    onClick={() => toggleFamily(f.v)}>
                     {f.label}
                   </button>
                 ))}
@@ -223,7 +245,7 @@ export default function TimelinePage() {
                 <legend className="lbl" style={{ padding: 0 }}>Pick up to three areas to weight the plan toward</legend>
                 {(Object.keys(FOCUS_META) as FocusArea[]).map((k) => (
                   <button key={k} type="button" aria-pressed={a.priorities.includes(k)} className={`opt ${a.priorities.includes(k) ? "sel" : ""}`}
-                    onClick={() => set("priorities", toggle(a.priorities, k, 3))}>
+                    onClick={() => toggleIn("priorities", k, 3)}>
                     <i className={`ti ${FOCUS_META[k].icon}`} aria-hidden="true" /> {FOCUS_META[k].label}
                   </button>
                 ))}
