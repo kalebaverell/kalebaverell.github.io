@@ -29,7 +29,13 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
 4. /updates → New disability rating → Preview diff renders → Apply → success
 5. /family → renders (empty state or checkpoints depending on familyNeeds)
 6. /pathfinder → "10 quick questions"; results show attribution + My Next Move link
-7. Mobile 390×844: bottom tab bar visible with profile, scrollWidth ≤ 390 on /, /relocate, /benefits
+7. /timeline → 4-step interview (multi-selects hold ALL clicked options — regression watch) →
+   plan with 7 phases, "You are here" status pill, deadline pills w/ official source links,
+   catch-up card when inside T-12, closing disclaimer; "Under 3 months" persona excludes BDD
+   from catch-up
+8. Mobile 390×844: bottom tab bar visible with profile, scrollWidth ≤ 390 on /, /relocate, /benefits, /timeline
+9. Homepage: hero video + mission-band video BOTH playing (SW must bypass media/range requests —
+   a broken second video means the service worker regressed)
 
 ## 5. Deliverable freshness
 If demo/vetpath-demo.html is newer than share/VetPath-Interactive-App.zip → flag stale share package.

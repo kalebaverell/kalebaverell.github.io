@@ -21,6 +21,32 @@
 
 ---
 
+## Entry — 2026-07-10 (Transition Timeline tool + hero video + demo mirror complete)
+
+- **Transition Timeline** (`/timeline`, `lib/timeline.ts`, per user spec): 4-step grouped discovery
+  interview (service snapshot, destination/family, health/money, priority weighting + free-text
+  notes) → deterministic plan across 7 phases (T-12→T-9 … +1yr→+2yr) × 6 focus areas; ~45
+  conditional tasks; essentials-first + priority-weighted ordering; phase past/current/ahead from
+  separation window; catch-up list for members inside T-12 with honest exclusions (BDD after T-90;
+  TAP/SBP once out); "dates that don't forgive" register — BDD 180–90d, VGLI 240d/1yr+120d, TAP
+  365-day start each re-verified against VA.gov / Military OneSource on 2026-07-10 and linked;
+  upload-personalization note; closing VSO/financial/legal/medical disclaimer; print button;
+  localStorage persistence with hydrate-once gate. Engine unit-tested via esbuild bundle across
+  three personas (10-months-out E-7 w/ family→TX; <3-months undecided needs-income; already-out
+  20-yr retiree→business). Bug found & fixed in verification: multi-select toggles computed from
+  render-time state dropped same-batch clicks — now functional updates.
+- **Hero video backdrop** (homepage): ambient SFL-TAP loop under an alpha navy scrim (heavier over
+  the headline, lighter right), fade-in, reduced-motion/no-JS fallback to the opaque gradient.
+  Found & fixed: service worker broke the second <video> on the page (Cache.put rejects 206 range
+  responses) — media/range requests now bypass the SW; cache bumped to v2.
+- **Demo mirror complete** (chunks 2–4 by background agents under the hardened protocol):
+  relocate scoring + /updates life-event diff + 7-card tools grid + dashboard entry points
+  (chunk 2); decisions[]/familyCheckpoints[] in the demo engine + Decisions card + strategy
+  differentiator block + copy sweep + embedded TAP photo (chunk 3); Transition Timeline (chunk 4).
+  Fresh-boot gauntlets clean; electrician parity 91% held throughout.
+
+---
+
 ## Entry — 2026-07-10 (Trust surface + business-builder ops + PWA/app view)
 
 Directive: think like an experienced business developer — make the site read as trusted and
