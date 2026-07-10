@@ -1,0 +1,170 @@
+{
+  "batch": "gap3",
+  "lastVerified": "2026-07-09",
+  "states": [
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "agency": {
+        "name": "Rhode Island Office of Veterans Services",
+        "url": "https://vets.ri.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veterans' Property Tax Exemptions (RIGL 44-3-4)",
+          "category": "tax",
+          "blurb": "Rhode Island General Law 44-3-4 provides municipal property tax exemptions for veterans and their widow(er)s, with amounts varying by city or town.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/property-tax-exemptions"
+        },
+        {
+          "name": "Disabled Veterans Tuition Waiver",
+          "category": "education",
+          "blurb": "Eligible disabled veterans can have tuition waived at Rhode Island's public institutions: CCRI, Rhode Island College, and the University of Rhode Island.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/disabled-veterans-tuition-waiver"
+        },
+        {
+          "name": "State of RI Veterans' Hiring Preference",
+          "category": "employment",
+          "blurb": "Veterans receive a 5-point credit and service-connected disabled war veterans a 10-point credit on competitive state civil service entrance exams.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/state-ri-veterans-hiring-preference"
+        },
+        {
+          "name": "Rhode Island Veterans Home",
+          "category": "health",
+          "blurb": "The state-run Rhode Island Veterans Home in Bristol provides long-term care and residential services to eligible Rhode Island wartime veterans.",
+          "source": "https://vets.ri.gov/find-your-benefits/ri-veterans-home"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for 100% Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Veterans with a 100% disability rating are issued permanent no-cost freshwater fishing, hunting, or combo licenses by RI DEM and are exempt from saltwater fishing license requirements.",
+          "source": "https://dem.ri.gov/natural-resources-bureau/natural-resources-divisions/fish-wildlife/freshwater-fishing/licenses-0"
+        }
+      ],
+      "notes": "Military retired pay is exempt from Rhode Island personal income tax per the Office of Veterans Services benefits pages; RIGL 44-3-5 additionally provides property tax exemptions for Gold Star parents. A 2023 law extended the veterans property tax exemption to Cold War-era veterans."
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "agency": {
+        "name": "Utah Department of Veterans and Military Affairs",
+        "url": "https://veterans.utah.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veteran with a Disability Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability of at least 10% qualify for a primary-residence property tax exemption proportional to their disability percentage, also available to unmarried surviving spouses and minor orphans.",
+          "source": "https://tax.utah.gov/forms-pubs/pub-36/"
+        },
+        {
+          "name": "Purple Heart Tuition Waiver",
+          "category": "education",
+          "blurb": "Purple Heart recipients receive a waiver of tuition and fees at Utah System of Higher Education institutions, usable toward degrees up to and including a master's degree.",
+          "source": "https://veterans.utah.gov/education/"
+        },
+        {
+          "name": "Veterans' Preference in State Hiring",
+          "category": "employment",
+          "blurb": "Veterans receive preference points on state job applications, with veterans with a disability and Purple Heart recipients receiving ten points or ten percent of the total possible score, whichever is greater.",
+          "source": "https://dhrm.utah.gov/hiring-pathways/veterans/"
+        },
+        {
+          "name": "Utah State Veterans Homes",
+          "category": "health",
+          "blurb": "Utah operates four state veterans homes, including the George E. Wahlen Ogden Veterans Home, providing long-term skilled nursing care for Utah veterans and eligible family members.",
+          "source": "https://veterans.utah.gov/wp-content/uploads/2026/04/benefitBook_2026.pdf"
+        },
+        {
+          "name": "Utah State Parks Honor Pass",
+          "category": "recreation",
+          "blurb": "Honorably discharged resident veterans with a VA disability rating of 50% or more receive free day-use access to all Utah state parks for themselves and up to seven guests in the same vehicle.",
+          "source": "https://stateparks.utah.gov/resources/military/veterans-with-disabilities-honor-pass/"
+        }
+      ],
+      "notes": "Utah also offers a Veterans First-Time Homebuyer Grant (https://veterans.utah.gov/first-time-homebuyer-grant/) and the Utah Tuition/GI Bill Gap Program for those who have exhausted federal education benefits. Veterans homes direct program page not individually linked from the agency's benefits index; sourced to the agency's official 2026 benefits book."
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "agency": {
+        "name": "Vermont Office of Veterans Affairs",
+        "url": "https://veterans.vermont.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Disabled Veterans and their Survivors",
+          "category": "tax",
+          "blurb": "Veterans rated 50% or more disabled (and certain survivors) receive a state-mandated minimum property tax exemption on their primary residence, which towns may vote to increase.",
+          "source": "https://veterans.vermont.gov/office-veterans-affairs/programs-administered-office-veterans-affairs/property-tax-exemption"
+        },
+        {
+          "name": "Military Retirement Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Vermont exempts military retirement and survivor benefit income from state income tax for taxpayers under the statutory adjusted-gross-income threshold.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits/tax-exemptions-veterans"
+        },
+        {
+          "name": "Vermont Veterans' Home",
+          "category": "health",
+          "blurb": "The state-operated Vermont Veterans' Home in Bennington provides skilled nursing, assisted living, memory care, rehabilitation, and respite care for eligible veterans, spouses, and Gold Star parents.",
+          "source": "https://vvh.vermont.gov/"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Vermont veterans with a service-connected disability rating of 60% or higher qualify for a free permanent hunting or fishing license.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits"
+        },
+        {
+          "name": "Free Lifetime Vermont State Parks Pass for Veterans",
+          "category": "recreation",
+          "blurb": "Vermont resident veterans honorably discharged from active duty are eligible for a free lifetime day-entry pass to Vermont State Parks.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits"
+        }
+      ],
+      "notes": "veterans.vermont.gov blocked automated access (HTTP 403); program URLs are from official state search results. Vermont education benefits are primarily federally administered (GI Bill) per the agency's education page; no broad state veteran tuition waiver verified. State-employment veterans preference not verified from an official page and is omitted. Disabled veterans meeting statutory criteria are also exempt from vehicle sales tax and registration fees."
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "agency": {
+        "name": "Wyoming Veterans Commission (Wyoming Military Department)",
+        "url": "https://www.wyomilitary.wyo.gov/resources/veteran/veterans-commission/"
+      },
+      "programs": [
+        {
+          "name": "Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Qualifying Wyoming resident veterans receive an annual exemption that lowers the assessed value of their primary residence, applicable instead to vehicle licensing fees if not used on property.",
+          "source": "https://wyo-prop-div.wyo.gov/tax-relief"
+        },
+        {
+          "name": "Wyoming Veterans Tuition Benefit (W.S. 19-14-106)",
+          "category": "education",
+          "blurb": "Wyoming Statute 19-14-106 provides free tuition at the University of Wyoming and Wyoming community colleges for eligible overseas combat veterans, surviving spouses, and dependents.",
+          "source": "https://veteranseducation.wyo.gov/"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Eligible Wyoming resident veterans and surviving spouses receive a 5% scoring advantage (10% for disabled veterans) when a numerical scoring system is used for state hiring.",
+          "source": "https://dws.wyo.gov/dws-division/workforce-centers-and-program-operations/job-seekers/veteran-employment-services/"
+        },
+        {
+          "name": "Veterans' Home of Wyoming",
+          "category": "health",
+          "blurb": "The Veterans' Home of Wyoming in Buffalo, operated under the Wyoming Department of Health, provides assisted-living (domiciliary) and skilled nursing care for honorably discharged veterans.",
+          "source": "https://health.wyo.gov/aging/veteranshome/"
+        },
+        {
+          "name": "Free Game and Fish Licenses for Disabled Veterans and Purple Heart Recipients",
+          "category": "recreation",
+          "blurb": "Wyoming Game & Fish issues free lifetime game bird, small game, and fish licenses to Purple Heart recipients, and free fishing licenses to resident veterans with a 50% or higher service-connected disability.",
+          "source": "https://wgfd.wyo.gov/licenses-applications/licensing-veterans"
+        }
+      ],
+      "notes": "Wyoming has no state income tax, so military retirement pay is untaxed by default. The Wyoming Veterans Commission also operates the Oregon Trail State Veterans Cemetery in Evansville. Property tax exemption requires three or more years of Wyoming residency; exemption dollar amount omitted as it has been subject to recent legislative change."
+    }
+  ]
+}

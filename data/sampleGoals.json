@@ -1,0 +1,157 @@
+{
+  "_note": "SAMPLE / DEMO DATA — for prototype only. Life goals a veteran can choose; each maps to sample benefit categories and suggested steps. Not official VA guidance.",
+  "goals": [
+    {
+      "id": "transition-out",
+      "label": "Transition out of service",
+      "icon": "ti-plane-departure",
+      "blurb": "Leave the military with benefits enrolled, a job pipeline, and nothing falling through the cracks.",
+      "benefits": ["va-healthcare", "employment", "gi-bill", "va-disability"],
+      "steps": [
+        "Complete the DoD Transition Assistance Program (TAP) if you haven't.",
+        "Request and safeguard your DD-214 and full medical records.",
+        "File a VA disability claim (consider the Benefits Delivery at Discharge program) before separation.",
+        "Enroll in VA health care within your eligibility window.",
+        "Build a civilian resume that translates your MOS/rating into plain language.",
+        "Line up 3–5 employment leads or an education plan before your last day."
+      ],
+      "documents": ["DD-214", "Service medical records", "Awards & training certificates", "SGLI/VGLI paperwork"]
+    },
+    {
+      "id": "get-better-job",
+      "label": "Get a better job",
+      "icon": "ti-briefcase",
+      "blurb": "Find employment that pays well, values your service, and fits your life.",
+      "benefits": ["employment", "vre", "gi-bill"],
+      "steps": [
+        "Translate your military experience into a civilian resume and LinkedIn profile.",
+        "Register with your state American Job Center / DOL VETS employment rep.",
+        "Target veteran-friendly employers and apprenticeship programs.",
+        "Ask about VR&E (VA Readiness & Employment) if a service-connected condition affects your work.",
+        "Prepare for interviews; practice translating acronyms into results."
+      ],
+      "documents": ["DD-214", "Resume", "Certifications / licenses", "References"]
+    },
+    {
+      "id": "use-education-benefits",
+      "label": "Use my education benefits",
+      "icon": "ti-school",
+      "blurb": "Turn your GI Bill or VR&E into a degree, credential, or trade.",
+      "benefits": ["gi-bill", "vre", "employment"],
+      "steps": [
+        "Confirm which education benefit you qualify for (Post-9/11 GI Bill, Montgomery, VR&E).",
+        "Request a Certificate of Eligibility through VA.gov.",
+        "Compare schools/programs and check Yellow Ribbon participation.",
+        "Meet with the School Certifying Official at your chosen school.",
+        "Map your program to a career outcome before you enroll."
+      ],
+      "documents": ["DD-214", "Certificate of Eligibility", "Transcripts", "Program cost estimate"]
+    },
+    {
+      "id": "buy-a-home",
+      "label": "Buy a home",
+      "icon": "ti-home",
+      "blurb": "Use your VA home loan benefit the smart way — no down payment, no PMI.",
+      "benefits": ["va-home-loan", "state-benefits"],
+      "steps": [
+        "Request your VA home loan Certificate of Eligibility.",
+        "Check your credit and get pre-approved with a VA-experienced lender.",
+        "Understand the VA funding fee and any disability-based exemption.",
+        "Work with a real-estate agent familiar with VA appraisals.",
+        "Compare with state veteran home-buying programs where you live."
+      ],
+      "documents": ["Certificate of Eligibility", "DD-214", "Proof of income", "Bank statements"]
+    },
+    {
+      "id": "start-a-business",
+      "label": "Start a business",
+      "icon": "ti-rocket",
+      "blurb": "Launch or grow a veteran-owned business with the right resources behind you.",
+      "benefits": ["veteran-business", "employment", "state-benefits"],
+      "steps": [
+        "Take the SBA Boots to Business course (free for the military community).",
+        "Connect with your local Veterans Business Outreach Center (VBOC).",
+        "Write a simple one-page business plan and validate demand.",
+        "Explore veteran-owned business certification (SDVOSB/VOSB) for contracting.",
+        "Set up business banking, licensing, and basic bookkeeping."
+      ],
+      "documents": ["DD-214", "Business plan", "EIN / licenses", "Financial projections"]
+    },
+    {
+      "id": "understand-disability",
+      "label": "Understand the disability process",
+      "icon": "ti-clipboard-heart",
+      "blurb": "Learn how VA disability compensation works and where to get accredited help — no guarantees, just clarity.",
+      "benefits": ["va-disability", "va-healthcare", "mental-health-crisis"],
+      "steps": [
+        "Learn the basics of how VA rates service-connected conditions (education only).",
+        "Gather your service and medical records and a symptom timeline.",
+        "Work with an accredited VSO or county veteran service officer — usually free.",
+        "Understand the claim, evidence, and appeals process at a high level.",
+        "Never pay for basic claims help you can get free from an accredited VSO."
+      ],
+      "documents": ["Service medical records", "Current treatment records", "Buddy/lay statements", "DD-214"],
+      "sensitive": true
+    },
+    {
+      "id": "prepare-retirement",
+      "label": "Prepare for retirement",
+      "icon": "ti-beach",
+      "blurb": "Line up retirement pay, survivor protection, healthcare, and a plan for your time.",
+      "benefits": ["retirement-survivor", "va-healthcare", "state-benefits"],
+      "steps": [
+        "Review your military/retirement pay and any Survivor Benefit Plan (SBP) elections.",
+        "Coordinate VA health care with Medicare/TRICARE for Life as applicable.",
+        "Check VA and state property-tax or benefit programs for older veterans.",
+        "Update beneficiaries and estate documents.",
+        "Plan purpose and community for the next chapter, not just finances."
+      ],
+      "documents": ["Retirement orders", "SBP election forms", "Beneficiary forms", "Estate documents"]
+    },
+    {
+      "id": "move-new-state",
+      "label": "Move to a new state",
+      "icon": "ti-map-pin",
+      "blurb": "Understand how your benefits travel — and what's specific to your new home.",
+      "benefits": ["state-benefits", "va-healthcare", "employment"],
+      "steps": [
+        "Find your new state's Department of Veterans Affairs and county service officer.",
+        "Transfer VA health care to a facility near your new home.",
+        "Check state-specific tax, education, and license benefits for veterans.",
+        "Update your address across VA.gov, VSOs, and benefit programs.",
+        "Reconnect with a local veteran community or VSO chapter."
+      ],
+      "documents": ["DD-214", "VA award letters", "Proof of new residency"]
+    },
+    {
+      "id": "organize-documents",
+      "label": "Get my documents organized",
+      "icon": "ti-folders",
+      "blurb": "Build one secure folder so you can act fast whenever an opportunity or claim comes up.",
+      "benefits": ["va-disability", "va-healthcare", "employment"],
+      "steps": [
+        "Locate and back up your DD-214 in a safe, secure place.",
+        "Gather medical records, award letters, and benefit statements.",
+        "Create a secure digital folder plus one physical copy.",
+        "List your key account logins (VA.gov, benefits portals) securely.",
+        "Share access with a trusted family member or caregiver."
+      ],
+      "documents": ["DD-214", "Medical records", "VA award letters", "Marriage/birth certificates"]
+    },
+    {
+      "id": "find-local-support",
+      "label": "Find local veteran support",
+      "icon": "ti-users-group",
+      "blurb": "Connect with people and services near you — from VSOs to peer groups.",
+      "benefits": ["mental-health-crisis", "state-benefits", "employment"],
+      "steps": [
+        "Find your county veteran service officer (free benefits help).",
+        "Locate nearby VSO chapters (VFW, American Legion, DAV).",
+        "Connect with a peer support or veteran community group.",
+        "Save the Veterans Crisis Line: dial 988, then press 1.",
+        "Ask about local transportation, food, and emergency assistance if needed."
+      ],
+      "documents": ["DD-214 (for VSO enrollment)"]
+    }
+  ]
+}

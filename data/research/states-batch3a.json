@@ -1,0 +1,132 @@
+{
+  "batch": "3a",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "agency": {
+        "name": "Maryland Department of Veterans and Military Families",
+        "url": "https://veterans.maryland.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Full exemption from real property taxes on the dwelling house of veterans with a 100% permanent and total service-connected disability, with no home-value cap and eligibility extended to unremarried surviving spouses.",
+          "source": "https://veterans.maryland.gov/benefits-services/tax-exemptions/state-property-tax-exemptions"
+        },
+        {
+          "name": "Edward T. and Mary A. Conroy Memorial Scholarship",
+          "category": "education",
+          "blurb": "State scholarship for eligible Maryland veterans with a service-connected disability of 25% or greater (and certain family members) attending Maryland institutions after exhausting federal education benefits.",
+          "source": "https://mhec.maryland.gov/preparing/pages/financialaid/programdescriptions/prog_conroy.aspx"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Subtraction",
+          "category": "tax",
+          "blurb": "Maryland allows retirees to subtract a portion of military retirement income from state taxable income, with a larger subtraction for taxpayers age 55 and older.",
+          "source": "https://veterans.maryland.gov/benefits-services/tax-exemptions/retirement-pay-and-pension-tax-deductions-and-exclusion"
+        },
+        {
+          "name": "Charlotte Hall Veterans Home",
+          "category": "health",
+          "blurb": "State-run assisted living, skilled nursing, and memory care home in St. Mary's County for honorably discharged Maryland veterans and certain eligible spouses.",
+          "source": "https://veterans.maryland.gov/benefits-services/healthcare/charlotte-hall-veterans-home"
+        },
+        {
+          "name": "Complimentary and Discounted Hunting & Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Maryland DNR offers a complimentary lifetime hunting/fishing license to 100% service-connected disabled veteran residents and former POWs, plus discounted licenses for Purple Heart recipients.",
+          "source": "https://dnr.maryland.gov/pages/military-one-stop-shop.aspx"
+        }
+      ]
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "agency": {
+        "name": "Massachusetts Executive Office of Veterans Services",
+        "url": "https://www.mass.gov/orgs/executive-office-of-veterans-services"
+      },
+      "programs": [
+        {
+          "name": "Chapter 115 Veterans' Financial Benefits",
+          "category": "other",
+          "blurb": "Means-tested financial safety net under M.G.L. Chapter 115 providing eligible low-income veterans and dependents assistance with living expenses and medical care through local Veterans Service Officers.",
+          "source": "https://www.mass.gov/info-details/massvets-veteran-financial-benefits"
+        },
+        {
+          "name": "Local Property Tax Exemptions for Veterans",
+          "category": "tax",
+          "blurb": "Clause 22 local property tax exemptions for veterans with VA disability ratings of at least 10%, Purple Heart recipients, certain surviving spouses, and fully exempt categories for the most severely disabled.",
+          "source": "https://www.mass.gov/info-details/local-property-tax-exemptions-for-veterans"
+        },
+        {
+          "name": "Welcome Home Veterans' Bonus",
+          "category": "other",
+          "blurb": "One-time state bonus payment for Massachusetts residents who served on active duty after September 11, 2001, administered by the Veterans' Bonus Division.",
+          "source": "https://www.mass.gov/how-to/apply-for-a-welcome-home-veterans-bonus"
+        },
+        {
+          "name": "Veterans Tuition Waiver",
+          "category": "education",
+          "blurb": "Full or partial tuition waiver for eligible Massachusetts veterans at state public colleges and universities on a space-available basis.",
+          "source": "https://www.mass.edu/forstufam/veterans/financialaid.asp"
+        },
+        {
+          "name": "Veterans Homes at Chelsea and Holyoke",
+          "category": "health",
+          "blurb": "Two state-run veterans homes providing long-term care and residential services to eligible Massachusetts veterans, including a new state-of-the-art facility in Chelsea.",
+          "source": "https://www.mass.gov/long-term-care-veterans-homes"
+        }
+      ]
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "agency": {
+        "name": "Michigan Veterans Affairs Agency",
+        "url": "https://www.michigan.gov/mvaa"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Full property tax exemption on the homestead of Michigan veterans rated 100% permanently and totally disabled, rated individually unemployable, or who received VA specially adapted housing assistance, including unremarried surviving spouses.",
+          "source": "https://www.michigan.gov/taxes/property/exemptions/veterans/disabled-veterans-exemption"
+        },
+        {
+          "name": "Michigan Veterans Trust Fund Emergency Assistance",
+          "category": "other",
+          "blurb": "Emergency grants for Michigan veterans and their families facing short-term financial crises, administered through county committees.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/emergency-assistance/panel-content"
+        },
+        {
+          "name": "Children of Veterans Tuition Grant",
+          "category": "education",
+          "blurb": "Undergraduate tuition assistance for children of Michigan veterans who died or became totally and permanently disabled from a service-connected condition or are missing in action.",
+          "source": "https://www.michigan.gov/mistudentaid/programs/children-of-veterans-tuition-grant"
+        },
+        {
+          "name": "Michigan Veteran Homes",
+          "category": "health",
+          "blurb": "Three state-run long-term care homes (Grand Rapids, Chesterfield Township, and D.J. Jacobetti in Marquette) providing skilled nursing, rehabilitation, and memory care for eligible veterans.",
+          "source": "https://www.michigan.gov/mvh"
+        },
+        {
+          "name": "Free Hunting & Fishing Licenses and State Park Access for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Michigan resident veterans rated 100% disabled or individually unemployable receive free non-lottery hunting and fishing licenses and free entry to state parks.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/quality-of-life/recreation-a"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement pay and active-duty military pay are exempt from Michigan individual income tax.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/quality-of-life/state-of-michigan-veteran-benefits"
+        }
+      ]
+    }
+  ]
+}

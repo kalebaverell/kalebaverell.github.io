@@ -1,0 +1,129 @@
+{
+  "batch": "4b",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "agency": {
+        "name": "Ohio Department of Veterans Services",
+        "url": "https://dvs.ohio.gov"
+      },
+      "programs": [
+        {
+          "name": "Enhanced Homestead Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Provides an enhanced property-tax homestead exemption on the principal residence of honorably discharged veterans with a 100% service-connected total disability rating (or individual unemployability) and their surviving spouses.",
+          "source": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/real_property/dte_105i_fi.pdf"
+        },
+        {
+          "name": "Ohio GI Promise",
+          "category": "education",
+          "blurb": "Ohio GI Promise makes veterans, their spouses, and dependents eligible for in-state tuition rates at Ohio public colleges and universities, aiming to make Ohio the most veteran-friendly state for higher education.",
+          "source": "https://dvs.ohio.gov/resources-for-veterans/more-resources/ohio-gi-promise"
+        },
+        {
+          "name": "Ohio Veterans Bonus",
+          "category": "other",
+          "blurb": "A state-funded cash bonus paid to eligible Ohio veterans who served during designated conflict periods, administered by the Ohio Department of Veterans Services.",
+          "source": "https://dvs.ohio.gov/resources-for-veterans/veterans-bonus"
+        },
+        {
+          "name": "Ohio Veterans Homes (Sandusky and Georgetown)",
+          "category": "health",
+          "blurb": "State-operated veterans homes in Sandusky and Georgetown provide long-term nursing care, memory care, rehabilitation, and domiciliary living for honorably discharged veterans who have been Ohio residents for at least one year.",
+          "source": "https://dvs.ohio.gov/veterans-homes/facilities-and-amenities"
+        },
+        {
+          "name": "Disabled Veterans and Former POWs Free Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "The Ohio Division of Wildlife issues free multi-year hunting and fishing licenses to Ohio resident disabled veterans and former prisoners of war, and ODNR also offers free state-park camping for permanently and totally disabled veterans.",
+          "source": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-licenses"
+        }
+      ],
+      "notes": "dvs.ohio.gov blocks automated access; per resilience rules it was not fetched, and all URLs were taken from official state .gov search results."
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "agency": {
+        "name": "Oklahoma Department of Veterans Affairs",
+        "url": "https://oklahoma.gov/veterans.html"
+      },
+      "programs": [
+        {
+          "name": "100% Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a 100% permanent service-connected disability (and their unremarried surviving spouses) are exempt from property tax on the full fair cash value of their homestead, claimed via Form 998 with the county assessor.",
+          "source": "https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/ad-valorem/current/998.pdf"
+        },
+        {
+          "name": "Sales Tax Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Oklahoma residents receiving VA compensation at the 100% rate can obtain a sales-tax exemption card for qualifying annual purchases, with a smaller exemption extended to unremarried surviving spouses; registration in the ODVA Veterans Registry is required.",
+          "source": "https://oklahoma.gov/tax/individuals/exemptions.html"
+        },
+        {
+          "name": "Oklahoma Veterans Centers (State Veterans Homes)",
+          "category": "health",
+          "blurb": "Oklahoma operates seven state veterans centers (Ardmore, Claremore, Clinton, Lawton, Norman, Sallisaw, and Sulphur) providing skilled and intermediate long-term nursing care, with full cost of care covered for veterans rated 70% or greater service-connected.",
+          "source": "https://oklahoma.gov/veterans/veterans-homes/eligibility.html"
+        },
+        {
+          "name": "Free Admission to State Parks and Museums",
+          "category": "recreation",
+          "blurb": "All honorably discharged veterans who are Oklahoma residents receive free admission to state-owned or state-operated parks and museums.",
+          "source": "https://oklahoma.gov/veterans/benefits.html"
+        },
+        {
+          "name": "GI Bill State Approving Agency (Education Services)",
+          "category": "education",
+          "blurb": "ODVA serves as Oklahoma's State Approving Agency, approving education and training programs so eligible veterans and family members can use GI Bill benefits at Oklahoma schools.",
+          "source": "https://oklahoma.gov/veterans/education/state-approving-agency.html"
+        }
+      ],
+      "notes": "Secondary sources report a tuition waiver for 100% disabled veterans and dependents at Oklahoma public colleges, but no official oklahoma.gov page was confirmed in search results, so it is omitted. State benefits such as the sales-tax exemption require registration via https://oklahoma.gov/veterans/benefits/state-benefit-request.html."
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "agency": {
+        "name": "Oregon Department of Veterans' Affairs",
+        "url": "https://www.oregon.gov/odva/pages/default.aspx"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran or Surviving Spouse Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans certified as 40% or more disabled (and qualifying surviving spouses) may exempt a portion of their homestead's assessed value from Oregon property taxes.",
+          "source": "https://www.oregon.gov/odva/benefits/pages/taxes.aspx"
+        },
+        {
+          "name": "Oregon Veteran Home Loan Program",
+          "category": "housing",
+          "blurb": "Oregon is one of only five states with its own state veteran home loan program, separate from the federal VA loan guaranty, offering eligible veterans competitive fixed-rate mortgages through ODVA.",
+          "source": "https://www.oregon.gov/odva/home-loans/pages/default.aspx"
+        },
+        {
+          "name": "Oregon Veterans' Homes (The Dalles and Lebanon)",
+          "category": "health",
+          "blurb": "Two state-owned veterans' homes in The Dalles and the Edward C. Allworth Veterans' Home in Lebanon provide skilled nursing, memory care, and rehabilitative care to honorably discharged veterans, their spouses, and gold-star parents.",
+          "source": "https://www.oregon.gov/odva/vets-homes/pages/default.aspx"
+        },
+        {
+          "name": "Veterans Educational Bridge Grant and Education Benefits",
+          "category": "education",
+          "blurb": "ODVA administers education benefits including the Veterans Educational Bridge Grant, which supports veterans facing gaps that prevent them from completing academic or vocational programs on time.",
+          "source": "https://www.oregon.gov/odva/benefits/pages/education.aspx"
+        },
+        {
+          "name": "Veterans' Employment Preference",
+          "category": "employment",
+          "blurb": "Veterans and disabled veterans receive hiring preference when applying for federal, state, county, and local government jobs in Oregon.",
+          "source": "https://www.oregon.gov/odva/Benefits/Pages/Employment.aspx"
+        }
+      ],
+      "notes": "ODVA also maintains a recreation benefits page (reduced-fee hunting/fishing licenses and state park access) at https://www.oregon.gov/odva/benefits/pages/recreation.aspx."
+    }
+  ]
+}

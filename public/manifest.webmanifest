@@ -1,0 +1,17 @@
+{
+  "name": "VetPath — A clear gameplan for life after service",
+  "short_name": "VetPath",
+  "description": "The veteran life-planning engine: benefits optimized to you, a recommended path, and a 30/60/90-day gameplan that adapts as life changes. Planning & education tool — not the VA.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0B1B2B",
+  "theme_color": "#16324D",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

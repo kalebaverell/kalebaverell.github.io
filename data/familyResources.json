@@ -1,0 +1,138 @@
+{
+  "_note": "SAMPLE DATA — educational planning content, not VA guidance. Family program rules with a 'verified' date were checked against official sources on 2026-07-08/09; program rules change, so always confirm at the official source before making any decision. VetPath never confirms eligibility.",
+  "groups": [
+    {
+      "id": "spouseCareer",
+      "label": "Spouse career & work",
+      "icon": "ti-briefcase",
+      "entries": [
+        {
+          "name": "SECO — Spouse Education and Career Opportunities",
+          "what": "Free DoD career coaching, education planning, scholarships, and resume help for military spouses.",
+          "url": "https://myseco.militaryonesource.mil/",
+          "audience": ["spouse"],
+          "scopeNote": "SECO serves military spouses — strongest while the service member is still serving, so use it before separation if you can."
+        },
+        {
+          "name": "MSEP — Military Spouse Employment Partnership",
+          "what": "A DoD partnership of hundreds of employers that commit to recruiting, hiring, and promoting military spouses.",
+          "url": "https://msepjobs.militaryonesource.mil/",
+          "audience": ["spouse"],
+          "scopeNote": "MSEP serves military spouses — strongest while still serving; check each employer's current spouse commitments directly."
+        },
+        {
+          "name": "Federal hiring paths for military spouses (USAJOBS)",
+          "what": "Federal jobs offer a noncompetitive hiring path for eligible military spouses. Who qualifies is specific — check the current rules on USAJOBS before counting on it.",
+          "url": "https://www.usajobs.gov/help/working-in-government/unique-hiring-paths/military-spouses/",
+          "audience": ["spouse"]
+        },
+        {
+          "name": "Occupational license portability (interstate compacts)",
+          "what": "Nursing, teaching, EMS, counseling, and other licensed fields have interstate compacts that can speed up working in a new state. Plain pointer only: look up your profession's licensing rules and confirm with the new state's licensing board.",
+          "url": "https://www.careeronestop.org/Toolkit/Training/find-licenses.aspx",
+          "audience": ["spouse", "household"]
+        }
+      ]
+    },
+    {
+      "id": "dependentEducation",
+      "label": "Dependent education",
+      "icon": "ti-school",
+      "entries": [
+        {
+          "name": "Transfer your Post-9/11 GI Bill to a spouse or child",
+          "what": "You can transfer unused GI Bill months to a spouse or child — but the election must be requested and approved through DoD WHILE STILL SERVING (generally 6+ years in, with a 4-year additional service commitment). It cannot be started after separation.",
+          "url": "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+          "audience": ["spouse", "kids"],
+          "verified": "2026-07-09"
+        },
+        {
+          "name": "DEA / Chapter 35 — Dependents' Education Assistance",
+          "what": "Education benefit for the child or spouse of a veteran or service member who died, is captured or missing, or is permanently and totally disabled from a service-connected condition — up to 36 months of benefits for programs started on or after August 1, 2018.",
+          "url": "https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/",
+          "audience": ["spouse", "kids", "survivor"],
+          "verified": "2026-07-09"
+        },
+        {
+          "name": "State tuition programs for dependents",
+          "what": "Many states run their own tuition waivers and scholarships for spouses and children of veterans — rules vary widely by state and change often. See the state benefits category on the Benefits page, then verify with your state veterans agency.",
+          "internal": "/benefits",
+          "audience": ["spouse", "kids", "survivor", "household"]
+        }
+      ]
+    },
+    {
+      "id": "childcare",
+      "label": "Childcare",
+      "icon": "ti-baby-carriage",
+      "entries": [
+        {
+          "name": "MilitaryChildCare.com",
+          "what": "DoD's official portal for requesting military-operated childcare and fee assistance.",
+          "url": "https://militarychildcare.com/",
+          "audience": ["kids", "household"],
+          "scopeNote": "Honest scope: military childcare and fee assistance mainly serve currently serving families — most access ends after separation, so plan the hand-off before you leave."
+        },
+        {
+          "name": "Childcare.gov — find care and assistance in your community",
+          "what": "Federal directory for finding licensed childcare and state financial-assistance programs where you live — the community option that keeps working after service.",
+          "url": "https://childcare.gov/",
+          "audience": ["kids", "household"]
+        }
+      ]
+    },
+    {
+      "id": "caregiver",
+      "label": "Caregiver support",
+      "icon": "ti-heart-handshake",
+      "entries": [
+        {
+          "name": "PCAFC — Program of Comprehensive Assistance for Family Caregivers",
+          "what": "VA's most substantial caregiver program. It requires the veteran to have a VA disability rating (individual or combined) of 70% or higher, and the veteran and caregiver apply together with VA Form 10-10CG.",
+          "url": "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/comprehensive-assistance-for-family-caregivers/",
+          "audience": ["caregiver"],
+          "verified": "2026-07-09"
+        },
+        {
+          "name": "PGCSS — Program of General Caregiver Support Services",
+          "what": "Broader access than PCAFC — training, peer support, and resources for family caregivers of veterans. If PCAFC's requirements don't fit your situation, start here.",
+          "url": "https://www.caregiver.va.gov/support/support_benefits.asp",
+          "audience": ["caregiver"],
+          "verified": "2026-07-09"
+        },
+        {
+          "name": "VA Caregiver Support (caregiver.va.gov)",
+          "what": "VA's caregiver hub — the Caregiver Support Line, local caregiver support teams, and current program details in one place.",
+          "url": "https://www.caregiver.va.gov/",
+          "audience": ["caregiver", "household"]
+        }
+      ]
+    },
+    {
+      "id": "survivorProtection",
+      "label": "Survivor & family protection",
+      "icon": "ti-shield-heart",
+      "entries": [
+        {
+          "name": "SBP — Survivor Benefit Plan (election pointer)",
+          "what": "Lets retiring members elect continued income for a survivor out of retired pay. The election is made at retirement and is hard to change later — educational pointer only; talk it through with a retirement/DFAS counselor before deciding.",
+          "url": "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Program/",
+          "audience": ["spouse", "survivor", "household"]
+        },
+        {
+          "name": "DIC — Dependency and Indemnity Compensation (awareness)",
+          "what": "A VA payment for eligible survivors of veterans who died from a service-connected condition. Awareness only — eligibility rules are specific, and no one should assume they do or don't qualify without checking.",
+          "url": "https://www.va.gov/disability/dependency-indemnity-compensation/",
+          "audience": ["survivor"]
+        },
+        {
+          "name": "CHAMPVA health coverage",
+          "what": "Health coverage for the spouse or child of a veteran rated permanently and totally (P&T) disabled from a service-connected condition. The P&T determination is required — a high percentage alone is not enough — and a spouse who qualifies for TRICARE can't get CHAMPVA.",
+          "url": "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/champva/",
+          "audience": ["spouse", "kids", "survivor", "household"],
+          "verified": "2026-07-09"
+        }
+      ]
+    }
+  ]
+}

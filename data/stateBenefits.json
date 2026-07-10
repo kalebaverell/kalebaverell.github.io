@@ -1,0 +1,2119 @@
+{
+  "_note": "REAL, CITED state benefit data researched from official state sources. Every program links to its official source. Rules change — the product must always show lastVerified and direct users to the agency to confirm.",
+  "lastVerified": "2026-07-08",
+  "coverage": {
+    "total": 51,
+    "missing": []
+  },
+  "states": [
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "agency": {
+        "name": "Alaska Department of Military and Veterans Affairs, Office of Veterans Affairs",
+        "url": "https://veterans.alaska.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Exempts the first $150,000 of assessed value of the primary residence from property tax for veterans with a service-connected disability rated 50% or more, with transfer to surviving spouses age 60+.",
+          "source": "https://veterans.alaska.gov/benefits/additional-benefits/taxes-and-land/"
+        },
+        {
+          "name": "Veterans Land Sale Discount",
+          "category": "other",
+          "blurb": "Gives eligible veterans a once-per-lifetime purchase-price discount on state residential or recreational land sold by the Alaska Department of Natural Resources.",
+          "source": "https://dnr.alaska.gov/mlw/landsales/info/vet-discount/"
+        },
+        {
+          "name": "Alaska Veterans and Pioneers Home (Palmer)",
+          "category": "health",
+          "blurb": "State-run home in Palmer providing assisted living and long-term care, with 75% of its beds designated for Alaska veterans.",
+          "source": "https://dfcs.alaska.gov/daph/pages/palmer/default.aspx"
+        },
+        {
+          "name": "Disabled Veteran Hunting, Fishing, and Trapping License",
+          "category": "recreation",
+          "blurb": "Provides resident veterans certified 50% or more disabled a complimentary permanent identification card to hunt, sport fish, and trap, including king salmon and waterfowl stamp waivers.",
+          "source": "https://www.adfg.alaska.gov/index.cfm?adfg=license.veterans"
+        },
+        {
+          "name": "Veterans' Employment Preference",
+          "category": "employment",
+          "blurb": "Provides hiring preference for eligible veterans in Alaska public employment based on qualifying active-duty service, campaign medals, Purple Heart award, or service-connected disability.",
+          "source": "https://veterans.alaska.gov/employment/veteran-preference/"
+        }
+      ],
+      "notes": "Alaska has no state income tax, so there is no retirement-income tax program to list."
+    },
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "agency": {
+        "name": "Alabama Department of Veterans Affairs",
+        "url": "https://va.alabama.gov/"
+      },
+      "programs": [
+        {
+          "name": "Alabama G.I. Dependent Scholarship Program",
+          "category": "education",
+          "blurb": "Provides college tuition, book, and fee benefits to dependents (children and spouses) of qualifying disabled Alabama veterans.",
+          "source": "https://va.alabama.gov/education-training/alabama-g-i-dependent-scholarship-program/"
+        },
+        {
+          "name": "Alabama State Veterans Homes Program",
+          "category": "health",
+          "blurb": "Operates state veterans homes providing skilled nursing and long-term care for honorably discharged Alabama veterans.",
+          "source": "https://va.alabama.gov/veterans-services/veterans-home-program/"
+        },
+        {
+          "name": "Homestead Property Tax Exemption for Permanently and Totally Disabled Persons",
+          "category": "tax",
+          "blurb": "Exempts the principal residence and up to 160 adjacent acres from all state, county, and municipal property taxes for homeowners who are permanently and totally disabled, regardless of age or income.",
+          "source": "https://www.revenue.alabama.gov/property-tax/homestead-exemptions/"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retired pay is fully exempt from Alabama state income tax under Ala. Code section 40-18-20.",
+          "source": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/"
+        }
+      ],
+      "notes": "Disabled-veteran hunting/fishing license discounts exist via the AL Dept. of Conservation (outdooralabama.com, official state site but not a .gov domain), so omitted per source rules."
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "agency": {
+        "name": "Arkansas Department of Veterans Affairs",
+        "url": "https://www.veterans.arkansas.gov/"
+      },
+      "programs": [
+        {
+          "name": "Arkansas State Veterans Homes",
+          "category": "health",
+          "blurb": "Operates skilled nursing facilities in Fayetteville and North Little Rock providing long-term care for veterans, veterans' spouses, and Gold Star parents.",
+          "source": "https://www.veterans.arkansas.gov/veteran-homes-1"
+        },
+        {
+          "name": "Disabled Veteran Homestead and Personal Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected 100% total and permanent disability (and qualifying surviving spouses and minor children) are exempt from state property taxes on their homestead and personal property under Ark. Code Ann. 26-3-306.",
+          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+        },
+        {
+          "name": "Military Retired Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement and survivor benefits are exempt from Arkansas state income tax.",
+          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "State agencies add preference points to qualified veterans', disabled veterans', and eligible spouses' ratings in hiring, promotion, and retention, with dedicated veteran employment specialists at Arkansas Workforce Centers.",
+          "source": "https://dws.arkansas.gov/workforce-services/job-seekers/veterans-services/"
+        }
+      ],
+      "notes": "Lifetime discounted hunting/fishing licenses for 100% disabled veterans exist via the Arkansas Game & Fish Commission (agfc.com, official state agency but not a .gov domain) and the MIA/KIA Dependents' Scholarship is administered by the AR Division of Higher Education (adhe.edu, not .gov); both omitted per source rules."
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "agency": {
+        "name": "Arizona Department of Veterans' Services",
+        "url": "https://dvs.az.gov/"
+      },
+      "programs": [
+        {
+          "name": "Arizona Tuition Waiver Scholarship",
+          "category": "education",
+          "blurb": "Waives undergraduate tuition at Arizona public universities and community colleges for eligible post-9/11 veterans wounded or injured in the line of duty and for dependents of service members killed in the line of duty, under A.R.S. 15-1808.",
+          "source": "https://dvs.az.gov/services/education/tuition-waiver-and-verification-form"
+        },
+        {
+          "name": "Arizona State Veteran Homes",
+          "category": "health",
+          "blurb": "State-run, Medicare-certified skilled nursing facilities providing long-term and rehabilitative care for eligible Arizona veterans and their spouses.",
+          "source": "https://dvs.az.gov/services/arizona-state-veteran-homes"
+        },
+        {
+          "name": "Veterans' Hiring Preference (State Employment)",
+          "category": "employment",
+          "blurb": "Gives qualified veterans and disabled veterans preference when seeking employment with the State of Arizona.",
+          "source": "https://hr.az.gov/veterans-hiring-preference"
+        },
+        {
+          "name": "Property Tax Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Provides an assessed-value property tax exemption for Arizona veterans with a VA disability rating, prorated to the percentage of disability, with surviving-spouse eligibility.",
+          "source": "https://azdor.gov/sites/default/files/2023-03/PROPERTY_AZPropertyTaxExemptions.pdf"
+        },
+        {
+          "name": "Military Retired Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "All U.S. uniformed-services retired pay is fully exempt from Arizona individual income tax.",
+          "source": "https://dvs.az.gov/sites/default/files/2025-07/Arizona%20State%20Veteran%20Benefits%20Guide%20(2025%20Edit).pdf"
+        }
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "agency": {
+        "name": "California Department of Veterans Affairs (CalVet)",
+        "url": "https://www.calvet.ca.gov"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans' Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of the primary residence of a veteran rated 100% service-connected disabled (or unemployable), with a larger exemption for lower-income households; surviving spouses may also qualify.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        },
+        {
+          "name": "College Tuition Fee Waiver for Veteran Dependents",
+          "category": "education",
+          "blurb": "Waives mandatory system-wide tuition and fees at California Community Colleges, CSU, and UC campuses for eligible children, spouses, and surviving spouses of disabled or deceased service-connected veterans (Plans A-D).",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/College-Fee-Waiver.aspx"
+        },
+        {
+          "name": "CalVet Home Loans",
+          "category": "housing",
+          "blurb": "State-run home loan program offering veterans up to 100% financing with no private mortgage insurance and flexible manual underwriting for purchasing or refinancing a home in California.",
+          "source": "https://www.calvet.ca.gov/HomeLoans"
+        },
+        {
+          "name": "Veterans Homes of California",
+          "category": "health",
+          "blurb": "Network of state veterans homes across California providing affordable long-term care and multiple levels of care to aged and disabled veterans and their eligible spouses or domestic partners.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        },
+        {
+          "name": "Recreation Benefits: Reduced-Fee Hunting/Fishing Licenses and State Parks Pass",
+          "category": "recreation",
+          "blurb": "Eligible disabled veterans can obtain reduced-fee California hunting and fishing licenses and a Distinguished Veteran state parks pass for free day-use and camping at participating state parks.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        }
+      ],
+      "notes": "CalVet State Benefits page blocked automated access (connection reset); program URLs taken from official calvet.ca.gov search results. California also offers veterans' preference in state civil service hiring and a Disabled Veteran Business Enterprise (DVBE) contracting program."
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "agency": {
+        "name": "Colorado Division of Veterans Affairs",
+        "url": "https://vets.colorado.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Veterans with a Disability and Gold Star Spouses",
+          "category": "tax",
+          "blurb": "Exempts 50% of the first $200,000 of actual value of the primary residence for veterans rated 100% permanent and total (or with individual unemployability status) and for Gold Star spouses.",
+          "source": "https://vets.colorado.gov/property-tax-exemption"
+        },
+        {
+          "name": "Colorado National Guard Tuition Waiver Program",
+          "category": "education",
+          "blurb": "Waives up to 100% of in-state tuition for eligible Colorado Air and Army National Guard members pursuing undergraduate or graduate coursework at approved Colorado institutions.",
+          "source": "https://dmva.colorado.gov/tuition-waiver"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Awards five preference points to eligible veterans (ten points for veterans with a service-connected disability) in Colorado state classified hiring.",
+          "source": "https://careers.colorado.gov/veterans-preference"
+        },
+        {
+          "name": "Colorado Veterans Community Living Centers",
+          "category": "health",
+          "blurb": "Five state-operated long-term care homes providing skilled nursing, therapy, and memory care to honorably discharged veterans, their spouses, and Gold Star parents.",
+          "source": "https://cdhs.colorado.gov/VCLCs"
+        },
+        {
+          "name": "Free Lifetime Fishing and Small Game Combination License (VA Combo License)",
+          "category": "recreation",
+          "blurb": "Provides a free lifetime fishing and small-game hunting combination license to resident veterans with a service-connected disability of 50% or more and to Purple Heart recipients.",
+          "source": "https://cpw.state.co.us/hunting/hunters-military"
+        }
+      ],
+      "notes": "vets.colorado.gov/services-and-benefits blocked automated access (HTTP 403); program details verified via official search results from vets.colorado.gov, dmva.colorado.gov, careers.colorado.gov, cdhs.colorado.gov, and cpw.state.co.us."
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "agency": {
+        "name": "Connecticut Department of Veterans Affairs",
+        "url": "https://portal.ct.gov/dva"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Veterans with Service-Connected Permanent and Total Disability",
+          "category": "tax",
+          "blurb": "Fully exempts the primary dwelling (or a motor vehicle if the veteran owns no home) from property tax for Connecticut veterans with a VA permanent and total service-connected disability rating, in addition to the longstanding wartime-service exemption.",
+          "source": "https://portal.ct.gov/governor/news/press-releases/2024/05-2024/governor-lamont-signs-law-establishing-property-tax-exemption-for-veterans"
+        },
+        {
+          "name": "Veterans Tuition Waiver at Connecticut Public Colleges",
+          "category": "education",
+          "blurb": "Waives 100% of tuition for General Fund courses at UConn, the Connecticut State Universities, and Connecticut community colleges for eligible wartime veterans, National Guard members, and certain dependents.",
+          "source": "https://portal.ct.gov/ohe/knowledge-base/articles/for-students/veteran-education-benefits"
+        },
+        {
+          "name": "Veterans' Preference for State Employment Examinations",
+          "category": "employment",
+          "blurb": "Adds ten points to passing open-competitive state examination scores for wartime veterans receiving VA compensation, and five points for other qualifying wartime veterans.",
+          "source": "https://portal.ct.gov/DOT/Recruitment-Unit/Veterans-Preferences"
+        },
+        {
+          "name": "Veterans' Home at Rocky Hill",
+          "category": "health",
+          "blurb": "State-operated campus offering a 125-bed long-term care facility plus residential and supportive programs including dementia care, respite care, assisted living, and hospice.",
+          "source": "https://portal.ct.gov/DVA/Services/Benefits?showall=true"
+        },
+        {
+          "name": "Free Fishing License for Veterans with Disabilities",
+          "category": "recreation",
+          "blurb": "Provides a free recreational fishing license through CT DEEP to veterans with a service-related or other qualifying disability.",
+          "source": "https://portal.ct.gov/DEEP/Fishing/General-Information/Fisheries-Licenses-and-Permits"
+        }
+      ],
+      "notes": "All sources are official portal.ct.gov pages verified via search results; pages not fetched directly to stay within fetch budget."
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "agency": {
+        "name": "Mayor's Office of Veterans Affairs (MOVA)",
+        "url": "https://ova.dc.gov"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Homestead Deduction",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of the principal residence of a DC-domiciled veteran with a VA total-and-permanent (or 100% unemployability) rating, subject to a household income cap; surviving spouses may retain the benefit.",
+          "source": "https://communityaffairs.dc.gov/page/disabled-veterans-homestead-deduction"
+        },
+        {
+          "name": "Veterans Preference in DC Government Hiring",
+          "category": "employment",
+          "blurb": "Eligible veterans, disabled veterans, and certain spouses and survivors receive preference points in the competitive hiring process for District government positions through the DC Department of Human Resources.",
+          "source": "https://ova.dc.gov/page/employment-0"
+        },
+        {
+          "name": "DOES Veteran Services and Priority of Service",
+          "category": "employment",
+          "blurb": "The DC Department of Employment Services gives veterans and eligible spouses priority of service at American Job Centers, including a 24-hour veterans-only hold on new job orders.",
+          "source": "https://does.dc.gov/service/veterans"
+        },
+        {
+          "name": "Veterans Specialty License Plates",
+          "category": "other",
+          "blurb": "Veterans can purchase DC specialty tags whose fees fund the Office of Veterans Affairs Fund, and veterans with a service-connected permanent and total disability pay no application, registration, or renewal fee for one set of tags.",
+          "source": "https://dmv.dc.gov/release/veterans-specialty-license-plates"
+        },
+        {
+          "name": "Veteran Designation on DC Driver License",
+          "category": "other",
+          "blurb": "Honorably discharged veterans can add a veteran designation to their DC driver license or ID card by presenting a DD 214, WD AGO, or DD 256 form to DC DMV.",
+          "source": "https://dmv.dc.gov/page/veteran-designation-0"
+        }
+      ],
+      "notes": "DC has no District-run state veterans home (the Armed Forces Retirement Home in DC is federal) and no District-level veteran tuition waiver program; education support runs through federal GI Bill benefits with claims assistance from MOVA."
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "agency": {
+        "name": "Delaware Office of Veterans Services",
+        "url": "https://vets.delaware.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans School Property Tax Credit",
+          "category": "tax",
+          "blurb": "Provides a credit against 100% of non-vocational school district property taxes on the primary residence for veterans rated 100% permanently and totally disabled (including individual unemployability) with three years of Delaware domicile.",
+          "source": "https://finance.delaware.gov/disabled-veterans/"
+        },
+        {
+          "name": "Educational Benefits for Children of Deceased Veterans and Others",
+          "category": "education",
+          "blurb": "Provides tuition assistance at Delaware public institutions for children of service members who died in service or from service-connected causes, alongside tuition programs for Delaware National Guard members.",
+          "source": "https://vets.delaware.gov/veterans-benefits/"
+        },
+        {
+          "name": "Veterans' Preference in State Merit Employment",
+          "category": "employment",
+          "blurb": "Awards five additional points to veterans and ten to veterans with a disability in screening and ranking for initial appointment to Delaware state merit employment.",
+          "source": "https://statejobs.delaware.gov/explore/veterans-preference.shtml"
+        },
+        {
+          "name": "Delaware Veterans Home",
+          "category": "health",
+          "blurb": "State-operated long-term skilled nursing facility in Milford providing 24-hour clinical care, memory support, and therapeutic programming for Delaware veterans.",
+          "source": "https://vethome.delaware.gov/"
+        },
+        {
+          "name": "Hunting, Trapping, and Fishing License Exemption for Veterans with Disabilities",
+          "category": "recreation",
+          "blurb": "Allows honorably discharged veterans with a VA service-connected disability of at least 60% to hunt, trap, and fish in Delaware without charge via a DNREC license exemption.",
+          "source": "https://dnrec.delaware.gov/fish-wildlife/licenses/exemptions/"
+        }
+      ],
+      "notes": "Delaware's veterans agency operates as the Office of Veterans Services under the Department of State, advised by the Delaware Commission of Veterans Affairs. All source URLs are official delaware.gov pages from search results."
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "agency": {
+        "name": "Florida Department of Veterans' Affairs (FDVA)",
+        "url": "https://www.floridavets.org"
+      },
+      "programs": [
+        {
+          "name": "Veteran Homestead Property Tax Exemptions",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability of 10% or more receive a homestead assessment reduction, and veterans with a total and permanent service-connected disability are fully exempt from property taxes on their primary residence.",
+          "source": "https://floridarevenue.com/property/Documents/pt109.pdf"
+        },
+        {
+          "name": "Congressman C.W. Bill Young Veteran Tuition Waiver Program",
+          "category": "education",
+          "blurb": "Waives out-of-state tuition and fees at Florida public postsecondary institutions for honorably discharged veterans residing in Florida, extended to spouses and dependent children using GI Bill benefits.",
+          "source": "https://floridavets.org/benefits-services/education/"
+        },
+        {
+          "name": "Veterans' Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Honorably discharged veterans (and certain spouses and family members) who meet position requirements are guaranteed hiring preference at every step of the process for state and local government jobs in Florida.",
+          "source": "https://floridavets.org/benefits-services/veterans-preference/"
+        },
+        {
+          "name": "Florida State Veterans' Homes",
+          "category": "health",
+          "blurb": "FDVA operates one of the nation's largest state veterans' home systems, with skilled nursing facilities and assisted living providing long-term care to eligible veterans and, under recent law, qualifying spouses.",
+          "source": "https://floridavets.org/wp-content/uploads/2012/08/FDVA-Benefits-Guide.pdf?v=2026"
+        },
+        {
+          "name": "Hunting and Fishing License Fee Exemptions for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Florida exempts honorably discharged veterans with qualifying service-connected disabilities from hunting and fishing license fees, alongside discounted Military Gold Sportsman's licenses for service members and retirees.",
+          "source": "https://floridavets.org/wp-content/uploads/2012/08/FDVA-Benefits-Guide.pdf?v=2026"
+        }
+      ],
+      "notes": "Florida has no state income tax, so military retirement pay is untaxed. Veterans homes and recreation licenses cited to the official FDVA Florida Veterans' Benefits Guide PDF hosted on floridavets.org (the state agency's official domain)."
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "agency": {
+        "name": "Georgia Department of Veterans Service",
+        "url": "https://veterans.georgia.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Homestead Tax Exemption",
+          "category": "tax",
+          "blurb": "Qualifying disabled veterans (and un-remarried surviving spouses or minor children) receive a homestead property tax exemption on their primary residence, indexed annually by the U.S. Secretary of Veterans Affairs.",
+          "source": "https://veterans.georgia.gov/disabled-veteran-homestead-tax-exemption"
+        },
+        {
+          "name": "Business Certificate of Exemption",
+          "category": "business",
+          "blurb": "Eligible Georgia veterans can obtain a certificate exempting them from local occupation taxes, administrative fees, and regulatory fees for conducting business or practicing a profession for ten years.",
+          "source": "https://veterans.georgia.gov/business-certificate-exemption"
+        },
+        {
+          "name": "Georgia State War Veterans Homes",
+          "category": "health",
+          "blurb": "Georgia operates two skilled nursing care homes for eligible war veterans, in Augusta (130 beds) and Milledgeville (248 beds, including Alzheimer's specialty care).",
+          "source": "https://veterans.georgia.gov/state-war-veterans-homes"
+        },
+        {
+          "name": "One-Time Veterans Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "A free one-year, full-privilege sportsman's license for Georgia resident veterans who served 90+ days on active federal duty and were honorably discharged on or after July 1, 2005.",
+          "source": "https://veterans.georgia.gov/hunting-and-fishing-licenses"
+        },
+        {
+          "name": "Veterans Education & Training (State Approving Agency)",
+          "category": "education",
+          "blurb": "GDVS serves as Georgia's State Approving Agency, approving and supervising all institutions and training establishments offering education under the Veterans Educational Assistance Program.",
+          "source": "https://veterans.georgia.gov/education-training"
+        }
+      ],
+      "notes": "GDVS also publishes a comprehensive State Benefits for Georgia Veterans book covering additional tax exemptions, driver's license, and vehicle tag benefits."
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "agency": {
+        "name": "Hawaii Office of Veterans' Services (State Department of Defense)",
+        "url": "https://dod.hawaii.gov/ovs/"
+      },
+      "programs": [
+        {
+          "name": "Real Property Tax Exemption for Totally Disabled Veterans",
+          "category": "tax",
+          "blurb": "Tax exemptions on real property owned and occupied as a home by a totally disabled veteran or their widow(er); administered by each county with its own rates and forms, and once granted it does not need annual refiling.",
+          "source": "https://dod.hawaii.gov/ovs/benefits-and-services/"
+        },
+        {
+          "name": "Motor Vehicle Registration Fee Exemption",
+          "category": "tax",
+          "blurb": "100% disabled veterans meeting residency and discharge requirements are exempt from the state motor vehicle registration fee, and specialized veteran license plates are available at standard cost.",
+          "source": "https://dod.hawaii.gov/ovs/benefits-and-services/"
+        },
+        {
+          "name": "Hawaii State Veterans Homes",
+          "category": "health",
+          "blurb": "The state oversees the Yukio Okutsu State Veterans Home in Hilo (post-acute and skilled nursing care for veterans) and the Daniel K. Akaka State Veterans Home.",
+          "source": "https://dod.hawaii.gov/ovs/advisory-board/state-veteran-homes/hilo-veterans-homes/"
+        },
+        {
+          "name": "State Veterans Cemeteries and Burial Services",
+          "category": "other",
+          "blurb": "Qualified veterans and eligible dependents may be interred in Hawaii state veterans cemeteries located across the islands.",
+          "source": "https://dod.hawaii.gov/ovs/benefits-and-services/"
+        },
+        {
+          "name": "Veterans Employment and Re-employment Support",
+          "category": "employment",
+          "blurb": "The Office of Veterans' Services provides job placement assistance and career services support for Hawaii veterans.",
+          "source": "https://dod.hawaii.gov/ovs/benefits-and-services/"
+        }
+      ],
+      "notes": "OVS also assists with VA claims/appeals and provides free certified DD-214 copies on file. Property tax exemption specifics vary by county (e.g., City & County of Honolulu administers its own totally disabled veteran exemption)."
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "agency": {
+        "name": "Iowa Department of Veterans Affairs",
+        "url": "https://dva.iowa.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Homestead Property Tax Credit",
+          "category": "tax",
+          "blurb": "Provides a full property tax exemption on the homestead for veterans with a 100% service-connected disability rating and for DIC recipients.",
+          "source": "https://revenue.iowa.gov/taxes/tax-guidance/tax-credits-deductions-exemption/disabled-veteran-homestead-property-tax-credit"
+        },
+        {
+          "name": "Military Service Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of a qualifying veteran's home for property tax purposes based on active-duty service.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Injured Veterans Grant",
+          "category": "other",
+          "blurb": "Grant of up to $10,000 for service members seriously injured in the line of duty in a combat or hazardous-duty zone after September 11, 2001, so family can be present during recovery.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits/injured-veterans-grant"
+        },
+        {
+          "name": "Iowa Veterans Home",
+          "category": "health",
+          "blurb": "State long-term care facility in Marshalltown providing professionally managed health care for honorably discharged veterans and their spouses or widows.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Lifetime Hunting and Fishing License for Veterans",
+          "category": "recreation",
+          "blurb": "Qualifying Iowa resident veterans who served on active federal service can obtain a lifetime hunting or fishing license for a nominal $7 fee.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Home Base Iowa",
+          "category": "employment",
+          "blurb": "Statewide initiative linking Iowa businesses with qualified veterans and their spouses for career, education, and community-transition opportunities.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        }
+      ],
+      "notes": "Injured Veterans Grant dollar cap is statutory. Iowa Veterans Home and Home Base Iowa cited via IDVA state-benefits page."
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "agency": {
+        "name": "Idaho Division of Veterans Services",
+        "url": "https://veterans.idaho.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Benefit for 100% Service-Connected Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans with a 100% service-connected disability may apply annually to reduce the property taxes on their Idaho home and up to one acre of land, with no income limit.",
+          "source": "https://tax.idaho.gov/taxes/property/homeowners/veteran-benefit/"
+        },
+        {
+          "name": "Public Employee Veterans Hiring Preference",
+          "category": "employment",
+          "blurb": "Eligible veterans receive additional preference points on initial hiring for Idaho public employment based on service history and disability status, under Idaho Code Title 65, Chapter 5.",
+          "source": "https://veterans.idaho.gov/benefits-services/state/"
+        },
+        {
+          "name": "Idaho State Veterans Homes",
+          "category": "health",
+          "blurb": "Idaho operates four skilled nursing facilities for honorably discharged veterans and eligible spouses, located in Boise, Lewiston, Pocatello, and Post Falls.",
+          "source": "https://veterans.idaho.gov/benefits-services/state/"
+        },
+        {
+          "name": "Disabled American Veteran (DAV) Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Resident disabled veterans qualify for reduced-fee hunting and fishing licenses and discounted tags through Idaho Fish and Game, with reduced-fee options for nonresident disabled veterans as well.",
+          "source": "https://idfg.idaho.gov/licenses/dav-programs"
+        },
+        {
+          "name": "Emergency Financial Relief for Veterans",
+          "category": "other",
+          "blurb": "The Idaho Division of Veterans Services offers one-time emergency relief grants to honorably discharged Idaho resident veterans facing extreme financial emergencies.",
+          "source": "https://veterans.idaho.gov/benefits-services/state/"
+        }
+      ],
+      "notes": "Idaho also offers a retired military pay income tax deduction for qualifying older or disabled veterans, a Circuit Breaker property tax reduction for veterans with 10%+ disability, free state park access for 100% disabled veterans, and veteran designation on driver's licenses."
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "agency": {
+        "name": "Illinois Department of Veterans' Affairs",
+        "url": "https://veterans.illinois.gov/"
+      },
+      "programs": [
+        {
+          "name": "Standard Homestead Exemption for Veterans with Disabilities",
+          "category": "tax",
+          "blurb": "Tiered homestead property tax exemption for veterans with a service-connected disability of 30% or more, with veterans rated 70% or higher exempt from property taxes on their primary residence.",
+          "source": "https://tax.illinois.gov/localgovernments/property/disabledveteraninfo.html"
+        },
+        {
+          "name": "Illinois Veterans' Grant (IVG)",
+          "category": "education",
+          "blurb": "Pays tuition and mandatory fees at all Illinois state-supported colleges, universities, and community colleges for eligible Illinois veterans with at least one year of active duty.",
+          "source": "https://veterans.illinois.gov/services-benefits/education/illinois-veterans-grant.html"
+        },
+        {
+          "name": "Illinois Veterans' Homes",
+          "category": "health",
+          "blurb": "Five state veterans' homes in Anna, Chicago, LaSalle, Manteno, and Quincy offer care ranging from independent domiciliary living to 24/7 skilled nursing for veterans and eligible spouses.",
+          "source": "https://veterans.illinois.gov/services-benefits/homes/homes.html"
+        },
+        {
+          "name": "Specially Adapted Housing Tax Exemption",
+          "category": "housing",
+          "blurb": "Reduces the assessed value of homes purchased or modified with a federal Specially Adapted Housing grant for as long as the veteran, spouse, or unmarried surviving spouse lives there.",
+          "source": "https://veterans.illinois.gov/services-benefits/real-estate.html"
+        },
+        {
+          "name": "Veterans Employment Assistance",
+          "category": "employment",
+          "blurb": "Dedicated veterans employment specialists at the Illinois Department of Employment Security and Department of Central Management Services assist veterans with job placement and state hiring.",
+          "source": "https://veterans.illinois.gov/services-benefits.html"
+        }
+      ],
+      "notes": "IDVA also administers the Deceased, Disabled, and MIA/POW Veterans' Dependents Educational Opportunity Grant and publishes a combined state/federal benefits guide."
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "agency": {
+        "name": "Indiana Department of Veterans Affairs",
+        "url": "https://www.in.gov/dva/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Deductions",
+          "category": "tax",
+          "blurb": "Property tax deductions on the primary residence for Indiana veterans with a service-connected disability rating of 10% or more, with amounts varying by wartime service, disability level, and age; surviving spouses may also qualify.",
+          "source": "https://www.in.gov/dva/divisions/training-and-services/disabled-veteran-property-tax-deduction/"
+        },
+        {
+          "name": "Tuition and Fee Exemption for Children of Disabled Veterans (Remission of Fees)",
+          "category": "education",
+          "blurb": "Free or reduced tuition at Indiana state-supported colleges for children of veterans who served during wartime or equally hazardous duty and have a VA service-connected disability rating.",
+          "source": "https://www.in.gov/dva/divisions/training-and-services/tuition-and-fee-exemption/"
+        },
+        {
+          "name": "Military Family Relief Fund (MFRF)",
+          "category": "other",
+          "blurb": "Emergency grant assistance covering basic needs such as housing, utilities, food, and medical bills for Indiana veterans, service members, and their families facing financial hardship.",
+          "source": "https://www.in.gov/dva/divisions/military-family-relief-fund/"
+        },
+        {
+          "name": "Disabled Veteran Discounted Hunting and Fishing License & Golden Hoosier Passport",
+          "category": "recreation",
+          "blurb": "Indiana resident veterans with a service-connected disability can buy a reduced-fee DAV hunting/fishing license (annual or 10-year) and access the Golden Hoosier Passport for state park entry.",
+          "source": "https://www.in.gov/dva/divisions/training-and-services/disabled-veteran-discounted-hunting-and-fishing-license,-and-golden-hoosier-passport/"
+        },
+        {
+          "name": "Indiana Veterans' Home",
+          "category": "health",
+          "blurb": "The state-operated Indiana Veterans' Home in West Lafayette provides skilled nursing and residential care for eligible Hoosier veterans and spouses.",
+          "source": "https://secure.in.gov/dva/about-idva/facilities/"
+        }
+      ],
+      "notes": "IDVA also publishes fact sheets for veteran license plates and other benefits at its Indiana Benefits at a Glance pages; DNR administers the DAV license (State Form 50833)."
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "agency": {
+        "name": "Kansas Office of Veterans Services",
+        "url": "https://www.kovs.ks.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Relief Claim for Seniors and Disabled Veterans (K-40SVR)",
+          "category": "tax",
+          "blurb": "Homestead property tax refund for Kansas resident veterans with a service-connected disability rating of 50% or greater and their surviving spouses, subject to income and home-value limits.",
+          "source": "https://www.ksrevenue.gov/faqs-SVR.html"
+        },
+        {
+          "name": "Military Retirement Pay State Income Tax Exemption",
+          "category": "tax",
+          "blurb": "U.S. military retirement pay and VA disability payments are not subject to Kansas state income tax.",
+          "source": "https://www.kovs.ks.gov/veteran-services/state-veterans-benefits-guide"
+        },
+        {
+          "name": "Kansas Military Service Scholarship",
+          "category": "education",
+          "blurb": "Pays undergraduate tuition and required fees for up to eight semesters at public Kansas institutions for qualifying veterans who served in recognized hostile-fire areas.",
+          "source": "https://www.kovs.ks.gov/veteran-services/state-veterans-benefits-guide"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Qualified veterans receive hiring preference for Kansas state government positions designated as Veterans Preference Eligible (VPE).",
+          "source": "https://admin.ks.gov/offices/personnel-services/jobs/veterans-preference"
+        },
+        {
+          "name": "Kansas State Veterans Homes",
+          "category": "health",
+          "blurb": "State-run long-term nursing and assisted-living care at the Kansas Soldiers' Home (Fort Dodge), the Kansas Veterans' Home (Winfield), and the Northeast Kansas Veterans' Home (Topeka).",
+          "source": "https://www.kovs.ks.gov/veteran-homes"
+        },
+        {
+          "name": "Disabled Veterans Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "Free permanent hunting and fishing licenses for honorably discharged Kansas resident veterans with a service-connected disability of at least 30%.",
+          "source": "https://www.ksoutdoors.gov/licenses-permits-fees/special-licenses-permits"
+        }
+      ],
+      "notes": "Agency recently rebranded from Kansas Commission on Veterans Affairs Office (kcva.ks.gov) to Kansas Office of Veterans Services (kovs.ks.gov)."
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "agency": {
+        "name": "Kentucky Department of Veterans Affairs",
+        "url": "https://veterans.ky.gov/"
+      },
+      "programs": [
+        {
+          "name": "Homestead Exemption for Totally Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans rated totally disabled from a service-connected condition receive a homestead exemption that reduces the taxable value of their home, with the amount recalculated every two years for inflation.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/default.aspx"
+        },
+        {
+          "name": "Kentucky Tuition Waiver (KRS 164.507/164.515)",
+          "category": "education",
+          "blurb": "Waives tuition at Kentucky state-supported colleges, universities, and vocational-technical schools for dependents, spouses, and unremarried widows of veterans who are 100% disabled, permanently and totally disabled, deceased, or POW/MIA.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/Education-for-Veterans-in-Kentucky.aspx"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exclusion",
+          "category": "tax",
+          "blurb": "Military retired pay for those who retired before January 1, 1998 is fully exempt from Kentucky income tax, and later retirees may exclude retirement income up to a statutory cap.",
+          "source": "https://revenue.ky.gov/Individual/Pages/Military-Exemptions.aspx"
+        },
+        {
+          "name": "Kentucky State Veterans Centers",
+          "category": "health",
+          "blurb": "Four state-operated long-term nursing facilities provide skilled care for Kentucky veterans, with online admission applications.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/default.aspx"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Kentucky state hiring managers must offer interviews to qualified veterans under the state's veterans preference rules.",
+          "source": "https://veterans.ky.gov/Benefits/Documents/KY%20STATE%20BENEFITS%20updated%2022%20March%202023.pdf"
+        },
+        {
+          "name": "Disabled Veteran Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "Kentucky veterans with a service-connected disability rating above 50% qualify for a special reduced-cost hunting and fishing license.",
+          "source": "https://veterans.ky.gov/Benefits/Documents/KY%20STATE%20BENEFITS%20updated%2022%20March%202023.pdf"
+        }
+      ],
+      "notes": "Homestead exemption dollar amount is inflation-adjusted biennially, so the figure is omitted. State benefits summary PDF (March 2023) used as source for preference and license details."
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "agency": {
+        "name": "Louisiana Department of Veterans Affairs",
+        "url": "https://vetaffairs.la.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Additional Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability rating of 50% or higher receive additional assessed-value exemptions beyond the standard homestead exemption, and 100% disabled veterans are exempt from all ad valorem property tax on their primary residence.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "Title 29 Dependents' Educational Assistance",
+          "category": "education",
+          "blurb": "In-state tuition exemption at Louisiana public colleges for children, spouses, and surviving spouses of veterans rated at least 90% service-connected disabled (including Individual Unemployability), deceased, or POW/MIA.",
+          "source": "https://vetaffairs.la.gov/education/title-29"
+        },
+        {
+          "name": "Louisiana Veterans Homes",
+          "category": "health",
+          "blurb": "LDVA operates five state veterans homes offering long-term care to honorably discharged veterans with 90 days of active duty, their spouses, and Gold Star parents.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "State and City Civil Service Veterans' Preference",
+          "category": "employment",
+          "blurb": "Louisiana state and city civil service award a five- to ten-point preference in original appointment to veterans who served honorably in the U.S. Armed Forces.",
+          "source": "https://www.vetaffairs.la.gov/benefit/louisiana-state-and-federal-civil-service/"
+        },
+        {
+          "name": "Military Retirement Pay State Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement benefits are fully exempt from Louisiana state income tax.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Veterans with a permanent service-connected disability rating of 50% or greater qualify for free Louisiana hunting and fishing licenses.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "LaVetCorps Student Veteran Navigators",
+          "category": "education",
+          "blurb": "AmeriCorps-partnered navigators staff student veteran centers at Louisiana public colleges and universities to help veterans complete academic goals and transition home.",
+          "source": "https://www.vetaffairs.la.gov/lavetcorps-louisiana-student-veterans-getting-support-they-need/lavetcorps/"
+        }
+      ],
+      "notes": "LDVA also staffs roughly 74 veteran service offices statewide for claims assistance."
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "agency": {
+        "name": "Massachusetts Executive Office of Veterans Services",
+        "url": "https://www.mass.gov/orgs/executive-office-of-veterans-services"
+      },
+      "programs": [
+        {
+          "name": "Chapter 115 Veterans' Financial Benefits",
+          "category": "other",
+          "blurb": "Means-tested financial safety net under M.G.L. Chapter 115 providing eligible low-income veterans and dependents assistance with living expenses and medical care through local Veterans Service Officers.",
+          "source": "https://www.mass.gov/info-details/massvets-veteran-financial-benefits"
+        },
+        {
+          "name": "Local Property Tax Exemptions for Veterans",
+          "category": "tax",
+          "blurb": "Clause 22 local property tax exemptions for veterans with VA disability ratings of at least 10%, Purple Heart recipients, certain surviving spouses, and fully exempt categories for the most severely disabled.",
+          "source": "https://www.mass.gov/info-details/local-property-tax-exemptions-for-veterans"
+        },
+        {
+          "name": "Welcome Home Veterans' Bonus",
+          "category": "other",
+          "blurb": "One-time state bonus payment for Massachusetts residents who served on active duty after September 11, 2001, administered by the Veterans' Bonus Division.",
+          "source": "https://www.mass.gov/how-to/apply-for-a-welcome-home-veterans-bonus"
+        },
+        {
+          "name": "Veterans Tuition Waiver",
+          "category": "education",
+          "blurb": "Full or partial tuition waiver for eligible Massachusetts veterans at state public colleges and universities on a space-available basis.",
+          "source": "https://www.mass.edu/forstufam/veterans/financialaid.asp"
+        },
+        {
+          "name": "Veterans Homes at Chelsea and Holyoke",
+          "category": "health",
+          "blurb": "Two state-run veterans homes providing long-term care and residential services to eligible Massachusetts veterans, including a new state-of-the-art facility in Chelsea.",
+          "source": "https://www.mass.gov/long-term-care-veterans-homes"
+        }
+      ]
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "agency": {
+        "name": "Maryland Department of Veterans and Military Families",
+        "url": "https://veterans.maryland.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Full exemption from real property taxes on the dwelling house of veterans with a 100% permanent and total service-connected disability, with no home-value cap and eligibility extended to unremarried surviving spouses.",
+          "source": "https://veterans.maryland.gov/benefits-services/tax-exemptions/state-property-tax-exemptions"
+        },
+        {
+          "name": "Edward T. and Mary A. Conroy Memorial Scholarship",
+          "category": "education",
+          "blurb": "State scholarship for eligible Maryland veterans with a service-connected disability of 25% or greater (and certain family members) attending Maryland institutions after exhausting federal education benefits.",
+          "source": "https://mhec.maryland.gov/preparing/pages/financialaid/programdescriptions/prog_conroy.aspx"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Subtraction",
+          "category": "tax",
+          "blurb": "Maryland allows retirees to subtract a portion of military retirement income from state taxable income, with a larger subtraction for taxpayers age 55 and older.",
+          "source": "https://veterans.maryland.gov/benefits-services/tax-exemptions/retirement-pay-and-pension-tax-deductions-and-exclusion"
+        },
+        {
+          "name": "Charlotte Hall Veterans Home",
+          "category": "health",
+          "blurb": "State-run assisted living, skilled nursing, and memory care home in St. Mary's County for honorably discharged Maryland veterans and certain eligible spouses.",
+          "source": "https://veterans.maryland.gov/benefits-services/healthcare/charlotte-hall-veterans-home"
+        },
+        {
+          "name": "Complimentary and Discounted Hunting & Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Maryland DNR offers a complimentary lifetime hunting/fishing license to 100% service-connected disabled veteran residents and former POWs, plus discounted licenses for Purple Heart recipients.",
+          "source": "https://dnr.maryland.gov/pages/military-one-stop-shop.aspx"
+        }
+      ]
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "agency": {
+        "name": "Bureau of Maine Veterans' Services",
+        "url": "https://www.maine.gov/veterans"
+      },
+      "programs": [
+        {
+          "name": "Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of an eligible veteran's Maine residence, with a substantially larger exemption for veterans with service-connected paraplegia, plus a motor vehicle excise exemption for veterans receiving federal compensation for total service-connected disability.",
+          "source": "https://www.maine.gov/veterans/benefits/tax-finance-benefits"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Maine exempts military retirement pay from state income tax.",
+          "source": "https://www.maine.gov/veterans/benefits/tax-finance-benefits"
+        },
+        {
+          "name": "Veterans Dependents Educational Benefits (Tuition Waiver)",
+          "category": "education",
+          "blurb": "Provides a 100% waiver of tuition and mandatory fees at University of Maine System campuses, Maine Community Colleges, and Maine Maritime Academy for spouses and dependents of veterans rated 100% permanently and totally disabled (or who died of service-connected causes).",
+          "source": "https://www.maine.gov/veterans/benefits/education/veterans-dependents-educational-benefits"
+        },
+        {
+          "name": "Disabled Veteran Complimentary Hunting, Fishing & Trapping License",
+          "category": "recreation",
+          "blurb": "Veterans with a service-connected disability rated 50% or more receive a complimentary Maine hunting, fishing, and trapping license package (including several permits), alongside lifetime state park passes for eligible veterans.",
+          "source": "https://www.maine.gov/veterans/benefits/recreational-licenses"
+        },
+        {
+          "name": "Maine Veterans' Homes",
+          "category": "health",
+          "blurb": "Six veterans homes across Maine provide long-term nursing and assisted-living care for eligible veterans and family members, as described in the Bureau's official benefits and resource guide.",
+          "source": "https://www.maine.gov/veterans/sites/maine.gov.veterans/files/Resourceguide.pdf"
+        }
+      ],
+      "notes": "Maine Veterans' Homes is a state-chartered independent nonprofit (mainevets.org); cited here via the Bureau of Maine Veterans' Services official resource guide. Maine also offers veterans hiring preference in state employment (not detailed here — gap)."
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "agency": {
+        "name": "Michigan Veterans Affairs Agency",
+        "url": "https://www.michigan.gov/mvaa"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Full property tax exemption on the homestead of Michigan veterans rated 100% permanently and totally disabled, rated individually unemployable, or who received VA specially adapted housing assistance, including unremarried surviving spouses.",
+          "source": "https://www.michigan.gov/taxes/property/exemptions/veterans/disabled-veterans-exemption"
+        },
+        {
+          "name": "Michigan Veterans Trust Fund Emergency Assistance",
+          "category": "other",
+          "blurb": "Emergency grants for Michigan veterans and their families facing short-term financial crises, administered through county committees.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/emergency-assistance/panel-content"
+        },
+        {
+          "name": "Children of Veterans Tuition Grant",
+          "category": "education",
+          "blurb": "Undergraduate tuition assistance for children of Michigan veterans who died or became totally and permanently disabled from a service-connected condition or are missing in action.",
+          "source": "https://www.michigan.gov/mistudentaid/programs/children-of-veterans-tuition-grant"
+        },
+        {
+          "name": "Michigan Veteran Homes",
+          "category": "health",
+          "blurb": "Three state-run long-term care homes (Grand Rapids, Chesterfield Township, and D.J. Jacobetti in Marquette) providing skilled nursing, rehabilitation, and memory care for eligible veterans.",
+          "source": "https://www.michigan.gov/mvh"
+        },
+        {
+          "name": "Free Hunting & Fishing Licenses and State Park Access for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Michigan resident veterans rated 100% disabled or individually unemployable receive free non-lottery hunting and fishing licenses and free entry to state parks.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/quality-of-life/recreation-a"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement pay and active-duty military pay are exempt from Michigan individual income tax.",
+          "source": "https://www.michigan.gov/mvaa/quality-of-life/quality-of-life/state-of-michigan-veteran-benefits"
+        }
+      ]
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "agency": {
+        "name": "Minnesota Department of Veterans Affairs (MDVA)",
+        "url": "https://mn.gov/mdva/"
+      },
+      "programs": [
+        {
+          "name": "Market Value Exclusion for Veterans with a Disability",
+          "category": "tax",
+          "blurb": "Excludes a portion of the homestead's market value from property taxation for veterans with a VA disability rating of 70% or higher, with a larger exclusion for those rated totally and permanently disabled; surviving spouses and certain caregivers may also qualify.",
+          "source": "https://www.revenue.state.mn.us/market-value-exclusion-veterans-disability"
+        },
+        {
+          "name": "Minnesota GI Bill",
+          "category": "education",
+          "blurb": "State-funded postsecondary financial assistance (usable for higher education, on-the-job training/apprenticeship, or licensure and certification) for eligible Minnesota veterans, service members, and eligible spouses and children of deceased or severely disabled veterans.",
+          "source": "https://mn.gov/mdva/resources/education/minnesotagibill/"
+        },
+        {
+          "name": "Minnesota Veterans Homes",
+          "category": "health",
+          "blurb": "MDVA operates a network of state veterans homes across Minnesota providing skilled nursing and domiciliary care for eligible veterans and spouses.",
+          "source": "https://mn.gov/mdva/resources/"
+        },
+        {
+          "name": "State Soldiers Assistance Program (SSAP)",
+          "category": "other",
+          "blurb": "Provides short-term financial assistance from MDVA, such as subsistence and dental or optical help, to Minnesota veterans facing disability-related or financial hardship.",
+          "source": "https://mn.gov/mdva/resources/"
+        },
+        {
+          "name": "Veterans Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Under Minnesota's Veterans Preference Act, eligible veterans and disabled veterans receive hiring preference for Minnesota state and local government positions.",
+          "source": "https://mn.gov/mdva/resources/"
+        }
+      ],
+      "notes": "Minnesota also fully exempts military retirement pay from state income tax. Direct MDVA sub-page URLs for Veterans Homes, SSAP, and veterans preference were not individually verified in search results, so those programs cite the official MDVA Benefits & Resources hub (mn.gov/mdva/resources/)."
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "agency": {
+        "name": "Missouri Veterans Commission",
+        "url": "https://mvc.dps.mo.gov/"
+      },
+      "programs": [
+        {
+          "name": "Missouri Property Tax Credit (100% Service-Connected Disabled Veterans)",
+          "category": "tax",
+          "blurb": "Veterans who are 100% disabled as a result of military service may claim Missouri's Property Tax Credit for real estate taxes or rent paid on their home.",
+          "source": "https://dor.mo.gov/pdf/proptax.pdf"
+        },
+        {
+          "name": "Missouri Returning Heroes Education Act",
+          "category": "education",
+          "blurb": "Limits tuition charged by Missouri public institutions of higher education for eligible combat veterans.",
+          "source": "https://veteranbenefits.mo.gov/state-benefits/"
+        },
+        {
+          "name": "Veterans Preference in Missouri State Employment",
+          "category": "employment",
+          "blurb": "Veterans, certain family members, and survivors receive preference in the state hiring selection process when similarly qualified to other applicants.",
+          "source": "https://veteranbenefits.mo.gov/employment/"
+        },
+        {
+          "name": "Missouri State Veterans Homes",
+          "category": "health",
+          "blurb": "The Missouri Veterans Commission operates seven long-term skilled-care nursing homes for veterans in Cameron, Cape Girardeau, Mexico, Mount Vernon, St. James, St. Louis, and Warrensburg.",
+          "source": "https://veteranbenefits.mo.gov/state-benefits/"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Deduction",
+          "category": "tax",
+          "blurb": "Military retirement benefits are fully deductible from Missouri state income tax.",
+          "source": "https://dor.mo.gov/forms/Military%20Reference%20Guide.pdf"
+        }
+      ],
+      "notes": "Missouri's official benefits portal is veteranbenefits.mo.gov. The Missouri Department of Conservation also offers hunting/fishing permit exemptions for certain veterans, and MVC operates state veterans cemeteries."
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "agency": {
+        "name": "Mississippi Veterans Affairs (State Veterans Affairs Board)",
+        "url": "https://www.msva.ms.gov/"
+      },
+      "programs": [
+        {
+          "name": "Ad Valorem (Property) Tax Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected total disability are exempt from all ad valorem taxes on the assessed value of homestead property under Miss. Code Ann. 27-33-75 and 27-33-67, with the exemption extending to un-remarried surviving spouses.",
+          "source": "https://www.msva.ms.gov/state-benefits/"
+        },
+        {
+          "name": "In-State Tuition for Veterans",
+          "category": "education",
+          "blurb": "Any veteran as defined by Title 38 of the U.S. Code, or a person entitled to Title 38 education benefits, is authorized in-state tuition at Mississippi public institutions under Miss. Code Ann. 37-103-25.",
+          "source": "https://www.msva.ms.gov/state-benefits/"
+        },
+        {
+          "name": "Mississippi National Guard Tuition Assistance",
+          "category": "education",
+          "blurb": "The Adjutant General may pay tuition for active Mississippi National Guard members attending accredited institutions of higher learning in the state under Miss. Code Ann. 33-7-405 and 33-7-407.",
+          "source": "https://www.msva.ms.gov/state-benefits/"
+        },
+        {
+          "name": "Mississippi State Veterans Homes",
+          "category": "health",
+          "blurb": "The Veterans Affairs Board operates a system of state veterans homes providing skilled nursing care to eligible Mississippi veterans, with locations including Collins, Jackson, Kosciusko, Oxford, and a new Gulf Coast home.",
+          "source": "https://www.msva.ms.gov/homes"
+        },
+        {
+          "name": "Hunting and Fishing License Exemption for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Veterans with a total service-connected disability are not required to purchase Mississippi hunting or fishing licenses but must carry proof of age, residency, and disability status under Miss. Code Ann. 49-7-5.",
+          "source": "https://www.msva.ms.gov/state-benefits/"
+        },
+        {
+          "name": "Disabled Veteran License Plates",
+          "category": "other",
+          "blurb": "Veterans rated 100 percent permanently disabled may purchase annual Mississippi disabled-veteran license plates for a nominal statutory fee under Miss. Code Ann. 27-19-53.",
+          "source": "https://www.msva.ms.gov/state-benefits/"
+        }
+      ],
+      "notes": "Program details verified from the MSVA State Benefits page; statutory citations are as listed there. Employment preference for state hire was not detailed on the fetched page and is omitted rather than invented."
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "agency": {
+        "name": "Montana Veterans Affairs Division (Department of Military Affairs)",
+        "url": "https://veterans.mt.gov/"
+      },
+      "programs": [
+        {
+          "name": "Montana Disabled Veterans (MDV) Assistance Program",
+          "category": "tax",
+          "blurb": "Reduces the property tax rate on the primary residence of veterans rated 100% disabled from service-connected causes, and of their unmarried surviving spouses.",
+          "source": "https://revenue.mt.gov/property/property-tax-help/mdv"
+        },
+        {
+          "name": "Montana University System Tuition Waivers for Veterans",
+          "category": "education",
+          "blurb": "The Montana University System offers multiple tuition waivers for eligible veterans, and MVAD provides a scholarship for recipients of the Purple Heart or a higher decoration.",
+          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+        },
+        {
+          "name": "Veterans' Employment Preference",
+          "category": "employment",
+          "blurb": "Veterans, disabled veterans, and certain eligible relatives receive hiring preference for Montana state government positions under the state's Veterans' Employment Preference statute.",
+          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+        },
+        {
+          "name": "Montana Veterans Homes",
+          "category": "health",
+          "blurb": "Montana operates skilled-nursing veterans homes in Butte, Columbia Falls, and Glendive.",
+          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+        },
+        {
+          "name": "Hunting and Fishing License Benefits for Veterans",
+          "category": "recreation",
+          "blurb": "Montana offers discounted hunting and fishing licenses for combat-injured and disabled veterans and special licenses for Purple Heart and Legion of Valor members.",
+          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+        }
+      ],
+      "notes": "Montana also runs the Montana Military Family Relief Fund (grants for activated Guard/Reserve families) and three state veterans cemeteries (Fort Harrison, Miles City, Missoula)."
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "agency": {
+        "name": "North Carolina Department of Military and Veterans Affairs",
+        "url": "https://www.milvets.nc.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exclusion",
+          "category": "tax",
+          "blurb": "Honorably discharged veterans with a 100% permanent and total service-connected disability (and qualifying surviving spouses) exclude a statutory portion of their home's value from property tax, with the exclusion expanding in phases under recent legislation.",
+          "source": "https://www.milvets.nc.gov/benefits-services/veterans-property-tax-relief"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "North Carolina exempts military retirement pay from state income tax for retirees with at least 20 years of service or medical retirement, including qualifying survivor benefits.",
+          "source": "https://ourncmilitary.nc.gov/blog/2022/02/25/military-pension-tax-exemption"
+        },
+        {
+          "name": "North Carolina Scholarship for Children of Wartime Veterans",
+          "category": "education",
+          "blurb": "Provides up to eight academic semesters of scholarship support to North Carolina children (under 25) of deceased, disabled, combat, or POW/MIA wartime veterans.",
+          "source": "https://www.milvets.nc.gov/benefits-services/scholarships"
+        },
+        {
+          "name": "NC State Veterans Homes",
+          "category": "health",
+          "blurb": "DMVA operates full-service skilled-nursing state veterans homes, including facilities in Fayetteville, Salisbury, Black Mountain, Kinston, and the newer Kernersville home.",
+          "source": "https://www.milvets.nc.gov/benefits-services/nc-state-veterans-homes-skilled-nursing-care"
+        },
+        {
+          "name": "Lifetime Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans rated 50% or more disabled by the VA qualify for reduced-fee lifetime hunting and fishing licenses through the NC Wildlife Resources Commission.",
+          "source": "https://www.milvets.nc.gov/hunting-and-fishing-license-application"
+        }
+      ],
+      "notes": "Property tax exclusion requires Form NCDVA-9 certified by a Veterans Service Officer plus county Form AV-9 by June 1. Scholarship program also has a dedicated portal at https://scholarships.milvets.nc.gov/."
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "agency": {
+        "name": "North Dakota Department of Veterans Affairs",
+        "url": "https://www.veterans.nd.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran's Property Tax Credit",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability of 50 percent or greater (or paid at the 100 percent rate via extra-schedular rating) may receive a credit against property tax on their homestead, applied for through the local assessor.",
+          "source": "https://www.tax.nd.gov/property-tax-exemptions-credits/property-tax-credits/disabled-veterans-property-tax-credit"
+        },
+        {
+          "name": "ND Dependent Tuition Waiver",
+          "category": "education",
+          "blurb": "Dependents of qualifying veterans accepted into an undergraduate degree or certificate program at a North Dakota state institution of higher education may complete it free of tuition and fee charges, for up to 45 months or 10 semesters.",
+          "source": "https://www.veterans.nd.gov/nd-dependent-tuition-waiver"
+        },
+        {
+          "name": "Veteran's Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Qualifying veterans are entitled to preference over other applicants in recruitment and selection by North Dakota governmental agencies.",
+          "source": "https://www.veterans.nd.gov/benefits-and-services/veterans-preference-nd"
+        },
+        {
+          "name": "North Dakota Veterans Home (Lisbon)",
+          "category": "health",
+          "blurb": "Operating since 1893 in Lisbon, the North Dakota Veterans Home provides basic care and skilled nursing beds for honorably discharged veterans and their spouses.",
+          "source": "https://www.ndvh.nd.gov/"
+        },
+        {
+          "name": "Veterans Aid Loan Program",
+          "category": "other",
+          "blurb": "The state offers a low-interest Veterans Aid Loan to veterans and current or former National Guard and reserve members, with a partial interest refund for on-time repayment.",
+          "source": "https://www.veterans.nd.gov/veterans-aid-loan"
+        }
+      ],
+      "notes": "NDDVA also administers a Hardship Assistance (Grant) Program for low-income veterans covering hearing aids, eyeglasses, and dental care. All program pages verified via official nd.gov search results; no fetches required."
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "agency": {
+        "name": "Nebraska Department of Veterans' Affairs",
+        "url": "https://veterans.nebraska.gov/"
+      },
+      "programs": [
+        {
+          "name": "Nebraska Homestead Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Provides property tax relief on the homestead of qualifying veterans totally disabled by service-connected causes and certain surviving spouses.",
+          "source": "https://veterans.nebraska.gov/homestead-exemption"
+        },
+        {
+          "name": "Waiver of Tuition Program",
+          "category": "education",
+          "blurb": "Waives tuition at Nebraska public community colleges, state colleges, and the University of Nebraska for eligible dependents of qualifying veterans, covering one degree, diploma, or certificate per level.",
+          "source": "https://veterans.nebraska.gov/waiver-tuition-program"
+        },
+        {
+          "name": "Veterans' Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Honorably discharged veterans receive additional points on passing scores in examinations for state, county, and municipal jobs, with extra preference for disabled veterans.",
+          "source": "https://veterans.nebraska.gov/sites/default/files/NDVA%20Guide%20to%20Veterans%20Benefits.pdf"
+        },
+        {
+          "name": "Nebraska Veterans' Homes",
+          "category": "health",
+          "blurb": "NDVA operates four state veterans' homes, located in Bellevue, Kearney, Norfolk, and Scottsbluff.",
+          "source": "https://veterans.nebraska.gov/benefits/housing"
+        },
+        {
+          "name": "Military Retirement Benefits Exclusion",
+          "category": "tax",
+          "blurb": "For tax years beginning on or after January 1, 2022, military retirees may exclude 100% of military retirement benefits from Nebraska taxable income.",
+          "source": "https://revenue.nebraska.gov/about/frequently-asked-questions/military-retirement-benefits-exclusion"
+        }
+      ],
+      "notes": "Nebraska Game & Parks also offers a no-fee lifetime small-game/fish permit for qualifying disabled veterans and a reduced-fee annual permit for veterans 64+ (outdoornebraska.gov/permits/veterans-and-military-permits/). Starting January 1, 2026, disabled and/or blind veterans can receive a motor vehicle tax and fee exemption for one personal vehicle."
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "agency": {
+        "name": "New Hampshire Department of Military Affairs and Veterans Services (Division of Veterans Services)",
+        "url": "https://www.nhveterans.nh.gov/veterans-services"
+      },
+      "programs": [
+        {
+          "name": "Veterans' Tax Credit and Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Municipalities offer town-adopted veterans' property tax credits, and permanently and totally disabled veterans who are blind, paraplegic, or double amputees owning a VA-assisted specially adapted homestead are exempt from all taxation on that homestead.",
+          "source": "https://www.revenue.nh.gov/taxes-glance/tax-credit-programs/exemptions-and-veterans-tax-credits"
+        },
+        {
+          "name": "Tuition Waiver for Children of 100% Disabled New Hampshire Veterans",
+          "category": "education",
+          "blurb": "Children of veterans who are totally and permanently disabled from a service-connected disability may receive free tuition at institutions in the University System of New Hampshire, subject to NH domicile requirements.",
+          "source": "https://www.nhveterans.nh.gov/sites/g/files/ehbemt401/files/inline-documents/sonh/tuition-waiver-child-of-disabled-vet.pdf"
+        },
+        {
+          "name": "Veterans' Preference in Employment",
+          "category": "employment",
+          "blurb": "New Hampshire provides employment preferences for qualifying veterans in public hiring, alongside workplace protections summarized in the state's official notice of veterans' benefits and services.",
+          "source": "https://www.nhveterans.nh.gov/veterans-services/nh-state-benefits-veterans"
+        },
+        {
+          "name": "New Hampshire Veterans Home (Tilton)",
+          "category": "health",
+          "blurb": "The state-run New Hampshire Veterans Home in Tilton is a 250-bed long-term care facility for honorably discharged wartime veterans meeting New Hampshire residency requirements.",
+          "source": "https://www.nh.gov/nhveterans/benefits/v_home.htm"
+        },
+        {
+          "name": "Disabled Veterans Perpetual Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "New Hampshire resident veterans who are totally and permanently disabled from a service-connected disability can receive a perpetual special veteran's hunting and fishing license from NH Fish and Game for a one-time administrative fee.",
+          "source": "https://www.wildlife.nh.gov/sites/g/files/ehbemt746/files/documents/disabled-veterans-license.pdf"
+        }
+      ],
+      "notes": "The NH State Benefits for Veterans page (nhveterans.nh.gov) blocked automated access (HTTP 403); its URL comes from official search results and the employment-preference blurb is based on search snippets of that page. New Hampshire has no broad personal income tax, so military retirement pay is not taxed. Property tax credits vary by town/city."
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "agency": {
+        "name": "New Jersey Department of Veterans Affairs",
+        "url": "https://www.nj.gov/dva/"
+      },
+      "programs": [
+        {
+          "name": "$250 Veterans Property Tax Deduction",
+          "category": "tax",
+          "blurb": "Honorably discharged veterans with active-duty service (and qualifying surviving spouses) receive an annual $250 deduction on local property taxes.",
+          "source": "https://www.nj.gov/treasury/taxation/lpt/lpt-veterans.shtml"
+        },
+        {
+          "name": "100% Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans rated 100% permanently and totally disabled from active-duty service (and qualifying surviving spouses) are fully exempt from property tax on their principal residence.",
+          "source": "https://www.nj.gov/treasury/taxation/lpt/lpt-disabledvet.shtml"
+        },
+        {
+          "name": "Civil Service Veterans Preference",
+          "category": "employment",
+          "blurb": "New Jersey's merit system grants absolute veterans preference, placing qualified veterans at the top of open-competitive employment lists ahead of non-veterans regardless of score.",
+          "source": "https://www.nj.gov/military/veterans/services/civil-service-preference/"
+        },
+        {
+          "name": "New Jersey Veterans Memorial Homes",
+          "category": "health",
+          "blurb": "The state operates three long-term care veterans homes in Paramus, Menlo Park, and Vineland, with admission preference for longtime New Jersey residents.",
+          "source": "https://www.nj.gov/dva/veterans/memorial-homes/"
+        },
+        {
+          "name": "Disabled Veterans Free Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Honorably discharged resident veterans with any degree of VA service-connected disability qualify for free hunting and fishing licenses, permits, and stamps after one-time certification by NJ Fish & Wildlife.",
+          "source": "https://dep.nj.gov/njfw/licenses-and-permits/disabled-veteran-license-information/"
+        }
+      ],
+      "notes": "Veterans services recently moved from the Department of Military and Veterans Affairs (DMAVA, nj.gov/military) to a standalone NJ Department of Veterans Affairs. New Jersey also offers a Veteran Income Tax Exemption (https://www.nj.gov/treasury/taxation/military/vetexemption.shtml) and a Veterans Tuition Credit Program limited to Vietnam-era veterans."
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "agency": {
+        "name": "New Mexico Department of Veterans Services",
+        "url": "https://www.dvs.nm.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Resident veterans and unmarried surviving spouses receive a statutory exemption from a portion of their property's taxable value, expanded by a 2024 constitutional amendment and adjusted annually for inflation.",
+          "source": "https://www.dvs.nm.gov/benefits/"
+        },
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Resident veterans with a VA service-connected disability receive a primary-residence property tax exemption proportional to their disability rating, with 100% disabled veterans fully exempt.",
+          "source": "https://www.dvs.nm.gov/benefits/"
+        },
+        {
+          "name": "Wartime Veterans Scholarship",
+          "category": "education",
+          "blurb": "Covers tuition, fees, and book allowances for resident wartime veterans (certified by DVS) pursuing undergraduate or graduate degrees at New Mexico public or Tribal colleges.",
+          "source": "https://hed.nm.gov/financial-aid/scholarships/vietnam-veterans"
+        },
+        {
+          "name": "Disabled Veteran Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Veterans rated 100% service-connected disabled qualify for a free lifetime small-game hunting and fishing license, and any service-connected disabled veteran can get a reduced-fee license through NM Game & Fish.",
+          "source": "https://www.wildlife.state.nm.us/fishing/licenses-permits/discounts-exceptions/"
+        },
+        {
+          "name": "New Mexico State Veterans' Home",
+          "category": "health",
+          "blurb": "The state's veterans home in Truth or Consequences, operated by the NM Department of Health, provides long-term care and short-term rehabilitation for eligible veterans.",
+          "source": "https://www.nmhealth.org/about/ofm/ltcf/nmsvh/"
+        }
+      ],
+      "notes": "New Mexico also offers veterans preference in state hiring, but no official state URL was confirmed in this pass, so it is omitted. Property tax exemption applications go through DVS, which issues a Certificate of Eligibility."
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "agency": {
+        "name": "Nevada Department of Veterans Services",
+        "url": "https://veterans.nv.gov/"
+      },
+      "programs": [
+        {
+          "name": "Nevada Veterans Tax Exemption",
+          "category": "tax",
+          "blurb": "Eligible wartime veterans and surviving spouses receive an annual exemption (NRS 361.090 and 361.091) that can be applied to reduce property taxes or the vehicle registration Governmental Services Tax, enrolled through the county assessor.",
+          "source": "https://veterans.nv.gov/veteran-tax-exemptions/"
+        },
+        {
+          "name": "Education Benefits and NSHE Fee Waivers",
+          "category": "education",
+          "blurb": "Nevada offers education support for veterans and military families, including registration-fee waivers for active Nevada National Guard members at Nevada System of Higher Education institutions.",
+          "source": "https://veterans.nv.gov/education-2/"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Honorably discharged veterans receive preference points on Nevada state government hiring examinations, with a larger preference for disabled veterans and eligibility extending to certain Guard members and surviving spouses.",
+          "source": "https://veterans.nv.gov/wp-content/uploads/2023/04/State_Benefits_Veterans_Brochure_2023_14x8p5.pdf"
+        },
+        {
+          "name": "Nevada State Veterans Homes",
+          "category": "health",
+          "blurb": "The state operates veterans homes in Boulder City and Sparks providing skilled nursing, memory care, and rehabilitative services to eligible veterans and family members.",
+          "source": "https://veterans.nv.gov/wp-content/uploads/2023/04/State_Benefits_Veterans_Brochure_2023_14x8p5.pdf"
+        },
+        {
+          "name": "Resident Disabled Veteran Combination Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "Honorably discharged Nevada resident veterans with a service-connected disability rated 50 percent or more qualify for a reduced-fee specialty combination hunting and fishing license through the Nevada Department of Wildlife.",
+          "source": "https://veterans.nv.gov/wp-content/uploads/2023/04/State_Benefits_Veterans_Brochure_2023_14x8p5.pdf"
+        }
+      ],
+      "notes": "Nevada has no state personal income tax, so military retirement pay is untaxed at the state level. Disabled veterans may also qualify for a Nevada State Parks Disabled Veteran Permit with free entry and fee exemptions. Sources verified via WebSearch results on veterans.nv.gov; no page fetches were needed."
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "agency": {
+        "name": "New York State Department of Veterans' Services",
+        "url": "https://veterans.ny.gov/"
+      },
+      "programs": [
+        {
+          "name": "Alternative Veterans' Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Wartime and expeditionary-medal veterans can receive a partial property tax exemption on their residence, adopted in over 95% of local taxing jurisdictions, alongside separate Cold War and Eligible Funds exemptions.",
+          "source": "https://veterans.ny.gov/property-tax-exemptions-veterans"
+        },
+        {
+          "name": "Veterans Tuition Award",
+          "category": "education",
+          "blurb": "Provides tuition awards for eligible combat and long-serving veterans enrolled full- or part-time in undergraduate, graduate, or approved vocational programs at New York institutions.",
+          "source": "https://www.hesc.ny.gov/pay-for-college/financial-aid/types-of-financial-aid/nys-grants-scholarships-awards/veterans-tuition-awards.html"
+        },
+        {
+          "name": "Additional Civil Service Credits for Veterans",
+          "category": "employment",
+          "blurb": "Wartime and disabled veterans who pass New York State civil service exams receive additional credits added to their scores, plus retention preference when positions are abolished.",
+          "source": "https://veterans.ny.gov/additional-civil-service-credits"
+        },
+        {
+          "name": "New York State Veterans Homes",
+          "category": "health",
+          "blurb": "The NYS Department of Health owns and operates four skilled-nursing veterans homes in Batavia, Oxford, Montrose, and St. Albans (Queens) for eligible veterans and dependents.",
+          "source": "https://apps.health.ny.gov/nysvets/web/"
+        },
+        {
+          "name": "Reduced Fee Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans with a service-connected disability of 40% or more qualify for reduced-fee hunting and fishing licenses through the Department of Environmental Conservation.",
+          "source": "https://veterans.ny.gov/reduced-fee-new-york-state-hunting-and-fishing-licenses-disabled-veterans"
+        }
+      ],
+      "notes": "Property tax exemptions require application to the local assessor (typically by March 1). Disabled veteran civil service credit details are also published at https://www.cs.ny.gov/vetcredits/."
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "agency": {
+        "name": "Ohio Department of Veterans Services",
+        "url": "https://dvs.ohio.gov"
+      },
+      "programs": [
+        {
+          "name": "Enhanced Homestead Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Provides an enhanced property-tax homestead exemption on the principal residence of honorably discharged veterans with a 100% service-connected total disability rating (or individual unemployability) and their surviving spouses.",
+          "source": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/real_property/dte_105i_fi.pdf"
+        },
+        {
+          "name": "Ohio GI Promise",
+          "category": "education",
+          "blurb": "Ohio GI Promise makes veterans, their spouses, and dependents eligible for in-state tuition rates at Ohio public colleges and universities, aiming to make Ohio the most veteran-friendly state for higher education.",
+          "source": "https://dvs.ohio.gov/resources-for-veterans/more-resources/ohio-gi-promise"
+        },
+        {
+          "name": "Ohio Veterans Bonus",
+          "category": "other",
+          "blurb": "A state-funded cash bonus paid to eligible Ohio veterans who served during designated conflict periods, administered by the Ohio Department of Veterans Services.",
+          "source": "https://dvs.ohio.gov/resources-for-veterans/veterans-bonus"
+        },
+        {
+          "name": "Ohio Veterans Homes (Sandusky and Georgetown)",
+          "category": "health",
+          "blurb": "State-operated veterans homes in Sandusky and Georgetown provide long-term nursing care, memory care, rehabilitation, and domiciliary living for honorably discharged veterans who have been Ohio residents for at least one year.",
+          "source": "https://dvs.ohio.gov/veterans-homes/facilities-and-amenities"
+        },
+        {
+          "name": "Disabled Veterans and Former POWs Free Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "The Ohio Division of Wildlife issues free multi-year hunting and fishing licenses to Ohio resident disabled veterans and former prisoners of war, and ODNR also offers free state-park camping for permanently and totally disabled veterans.",
+          "source": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-licenses"
+        }
+      ],
+      "notes": "dvs.ohio.gov blocks automated access; per resilience rules it was not fetched, and all URLs were taken from official state .gov search results."
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "agency": {
+        "name": "Oklahoma Department of Veterans Affairs",
+        "url": "https://oklahoma.gov/veterans.html"
+      },
+      "programs": [
+        {
+          "name": "100% Disabled Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a 100% permanent service-connected disability (and their unremarried surviving spouses) are exempt from property tax on the full fair cash value of their homestead, claimed via Form 998 with the county assessor.",
+          "source": "https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/ad-valorem/current/998.pdf"
+        },
+        {
+          "name": "Sales Tax Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Oklahoma residents receiving VA compensation at the 100% rate can obtain a sales-tax exemption card for qualifying annual purchases, with a smaller exemption extended to unremarried surviving spouses; registration in the ODVA Veterans Registry is required.",
+          "source": "https://oklahoma.gov/tax/individuals/exemptions.html"
+        },
+        {
+          "name": "Oklahoma Veterans Centers (State Veterans Homes)",
+          "category": "health",
+          "blurb": "Oklahoma operates seven state veterans centers (Ardmore, Claremore, Clinton, Lawton, Norman, Sallisaw, and Sulphur) providing skilled and intermediate long-term nursing care, with full cost of care covered for veterans rated 70% or greater service-connected.",
+          "source": "https://oklahoma.gov/veterans/veterans-homes/eligibility.html"
+        },
+        {
+          "name": "Free Admission to State Parks and Museums",
+          "category": "recreation",
+          "blurb": "All honorably discharged veterans who are Oklahoma residents receive free admission to state-owned or state-operated parks and museums.",
+          "source": "https://oklahoma.gov/veterans/benefits.html"
+        },
+        {
+          "name": "GI Bill State Approving Agency (Education Services)",
+          "category": "education",
+          "blurb": "ODVA serves as Oklahoma's State Approving Agency, approving education and training programs so eligible veterans and family members can use GI Bill benefits at Oklahoma schools.",
+          "source": "https://oklahoma.gov/veterans/education/state-approving-agency.html"
+        }
+      ],
+      "notes": "Secondary sources report a tuition waiver for 100% disabled veterans and dependents at Oklahoma public colleges, but no official oklahoma.gov page was confirmed in search results, so it is omitted. State benefits such as the sales-tax exemption require registration via https://oklahoma.gov/veterans/benefits/state-benefit-request.html."
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "agency": {
+        "name": "Oregon Department of Veterans' Affairs",
+        "url": "https://www.oregon.gov/odva/pages/default.aspx"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran or Surviving Spouse Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans certified as 40% or more disabled (and qualifying surviving spouses) may exempt a portion of their homestead's assessed value from Oregon property taxes.",
+          "source": "https://www.oregon.gov/odva/benefits/pages/taxes.aspx"
+        },
+        {
+          "name": "Oregon Veteran Home Loan Program",
+          "category": "housing",
+          "blurb": "Oregon is one of only five states with its own state veteran home loan program, separate from the federal VA loan guaranty, offering eligible veterans competitive fixed-rate mortgages through ODVA.",
+          "source": "https://www.oregon.gov/odva/home-loans/pages/default.aspx"
+        },
+        {
+          "name": "Oregon Veterans' Homes (The Dalles and Lebanon)",
+          "category": "health",
+          "blurb": "Two state-owned veterans' homes in The Dalles and the Edward C. Allworth Veterans' Home in Lebanon provide skilled nursing, memory care, and rehabilitative care to honorably discharged veterans, their spouses, and gold-star parents.",
+          "source": "https://www.oregon.gov/odva/vets-homes/pages/default.aspx"
+        },
+        {
+          "name": "Veterans Educational Bridge Grant and Education Benefits",
+          "category": "education",
+          "blurb": "ODVA administers education benefits including the Veterans Educational Bridge Grant, which supports veterans facing gaps that prevent them from completing academic or vocational programs on time.",
+          "source": "https://www.oregon.gov/odva/benefits/pages/education.aspx"
+        },
+        {
+          "name": "Veterans' Employment Preference",
+          "category": "employment",
+          "blurb": "Veterans and disabled veterans receive hiring preference when applying for federal, state, county, and local government jobs in Oregon.",
+          "source": "https://www.oregon.gov/odva/Benefits/Pages/Employment.aspx"
+        }
+      ],
+      "notes": "ODVA also maintains a recreation benefits page (reduced-fee hunting/fishing licenses and state park access) at https://www.oregon.gov/odva/benefits/pages/recreation.aspx."
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "agency": {
+        "name": "Pennsylvania Department of Military and Veterans Affairs (DMVA)",
+        "url": "https://www.pa.gov/agencies/dmva"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans' Real Estate Tax Exemption",
+          "category": "tax",
+          "blurb": "Honorably discharged wartime veterans rated 100 percent disabled who reside in the Commonwealth and demonstrate financial need may be exempted from real estate taxes on their primary residence, applied for through the County Director of Veterans Affairs.",
+          "source": "https://www.dmva.pa.gov/veteransaffairs/Pages/Programs%20and%20Services/Real-Estate-Tax-Exemption.aspx"
+        },
+        {
+          "name": "Educational Gratuity Program",
+          "category": "education",
+          "blurb": "Provides financial assistance for education to children of honorably discharged wartime veterans who have service-connected disabilities or who died in service during a period of war or armed conflict.",
+          "source": "https://www.dmva.pa.gov/veteransaffairs/Pages/Programs%20and%20Services/Educational-Gratuity-Program.aspx"
+        },
+        {
+          "name": "Veterans' Preference in Commonwealth Employment",
+          "category": "employment",
+          "blurb": "Qualifying veterans are entitled by Pennsylvania law to hiring preference for Commonwealth jobs, including examination-point and appointment preferences for civil service positions and a mandatory conditional offer for qualified veterans in non-civil-service hiring.",
+          "source": "https://www.pa.gov/agencies/employment/veterans/veterans--preference"
+        },
+        {
+          "name": "Pennsylvania State Veterans Homes",
+          "category": "health",
+          "blurb": "DMVA operates six state veterans homes across the Commonwealth — Delaware Valley Veterans' Home, Gino J. Merli Veterans' Center, Hollidaysburg Veterans' Home, Pennsylvania Soldiers' and Sailors' Home, Southeastern Veterans' Center, and Southwestern Veterans' Center — providing long-term care to eligible veterans.",
+          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/programs-and-services"
+        },
+        {
+          "name": "Veterans Temporary Assistance",
+          "category": "other",
+          "blurb": "Provides eligible Pennsylvania veterans and their surviving dependents with temporary financial relief for necessities such as food, shelter, fuel, and clothing.",
+          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/programs-and-services"
+        }
+      ],
+      "notes": "DMVA also administers the Military Family Relief Assistance Program and the PA Veterans Registry. As of August 2024, veterans' benefits are excluded from need assessments for the Real Estate Tax Exemption, Educational Gratuity, and Veterans Temporary Assistance programs. Recreation-license benefits exist via the PA Game Commission but were not verified against an official page in this pass and are omitted."
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "agency": {
+        "name": "Rhode Island Office of Veterans Services",
+        "url": "https://vets.ri.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veterans' Property Tax Exemptions (RIGL 44-3-4)",
+          "category": "tax",
+          "blurb": "Rhode Island General Law 44-3-4 provides municipal property tax exemptions for veterans and their widow(er)s, with amounts varying by city or town.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/property-tax-exemptions"
+        },
+        {
+          "name": "Disabled Veterans Tuition Waiver",
+          "category": "education",
+          "blurb": "Eligible disabled veterans can have tuition waived at Rhode Island's public institutions: CCRI, Rhode Island College, and the University of Rhode Island.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/disabled-veterans-tuition-waiver"
+        },
+        {
+          "name": "State of RI Veterans' Hiring Preference",
+          "category": "employment",
+          "blurb": "Veterans receive a 5-point credit and service-connected disabled war veterans a 10-point credit on competitive state civil service entrance exams.",
+          "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/state-ri-veterans-hiring-preference"
+        },
+        {
+          "name": "Rhode Island Veterans Home",
+          "category": "health",
+          "blurb": "The state-run Rhode Island Veterans Home in Bristol provides long-term care and residential services to eligible Rhode Island wartime veterans.",
+          "source": "https://vets.ri.gov/find-your-benefits/ri-veterans-home"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for 100% Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Veterans with a 100% disability rating are issued permanent no-cost freshwater fishing, hunting, or combo licenses by RI DEM and are exempt from saltwater fishing license requirements.",
+          "source": "https://dem.ri.gov/natural-resources-bureau/natural-resources-divisions/fish-wildlife/freshwater-fishing/licenses-0"
+        }
+      ],
+      "notes": "Military retired pay is exempt from Rhode Island personal income tax per the Office of Veterans Services benefits pages; RIGL 44-3-5 additionally provides property tax exemptions for Gold Star parents. A 2023 law extended the veterans property tax exemption to Cold War-era veterans."
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "agency": {
+        "name": "South Carolina Department of Veterans' Affairs",
+        "url": "https://scdva.sc.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans with a total, permanent, service-connected disability receive a property tax exemption on their home and up to five acres plus up to two private passenger vehicles, claimable retroactively via the SCDOR.",
+          "source": "https://dor.sc.gov/tax-tips/veterans-learn-more-about-sc-property-tax-exemptions"
+        },
+        {
+          "name": "Free Tuition for Children of Certain Veterans",
+          "category": "education",
+          "blurb": "Qualified children of certain South Carolina veterans receive a tuition waiver at state-supported colleges, universities, and technical schools, including dual-enrollment programs.",
+          "source": "https://scdva.sc.gov/education"
+        },
+        {
+          "name": "Military Retirement Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement pay is 100 percent exempt from South Carolina state income tax with no earned-income cap, effective for tax years after 2021.",
+          "source": "https://scdva.sc.gov/news/claiming-military-retiree-state-income-tax-exemption-sc"
+        },
+        {
+          "name": "SCDVA Veteran Employment Services",
+          "category": "employment",
+          "blurb": "The SCDVA connects veterans to employment resources, hiring initiatives, and job-seeking support across the state.",
+          "source": "https://scdva.sc.gov/employment"
+        },
+        {
+          "name": "Veteran Consumer Resources (State Park Discounts and More)",
+          "category": "recreation",
+          "blurb": "SCDVA's consumer resources page consolidates disabled-veteran perks including state park admission discounts alongside property and income tax exemption guidance.",
+          "source": "https://scdva.sc.gov/veteran-consumer-resources"
+        }
+      ],
+      "notes": "SCDVA also operates state veterans homes; homes program page URL not captured in search results, see agency homepage."
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "agency": {
+        "name": "South Dakota Department of Veterans Affairs",
+        "url": "https://vetaffairs.sd.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Exempts the first portion of assessed valuation on the home of a veteran rated permanently and totally disabled from service-connected causes (or their unremarried surviving spouse), with a full exemption available for paraplegic veterans in wheelchair-adapted homes.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/Property%20Taxes.aspx"
+        },
+        {
+          "name": "State Education Programs (Free Tuition for Veterans)",
+          "category": "education",
+          "blurb": "Eligible veterans receive one month of free tuition at state-supported schools for each month of qualifying wartime service, from a minimum of one up to four academic years.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/State%20Education%20Programs.aspx"
+        },
+        {
+          "name": "South Dakota Veterans Bonus",
+          "category": "other",
+          "blurb": "A one-time cash bonus for veterans with qualifying active-duty service during designated periods since January 1, 1993.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/Veterans%20Bonus.aspx"
+        },
+        {
+          "name": "Michael J. Fitzmaurice South Dakota Veterans Home",
+          "category": "housing",
+          "blurb": "The state veterans home in Hot Springs provides nursing and domiciliary care for honorably discharged veterans of any era and eligible spouses.",
+          "source": "https://vetaffairs.sd.gov/veteranshome/default.aspx"
+        }
+      ],
+      "notes": "South Dakota has no state personal income tax, so military retirement pay is untaxed by default. Employment preference exists but an official URL was not captured in search results."
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "agency": {
+        "name": "Tennessee Department of Veterans Services",
+        "url": "https://www.tn.gov/veteran.html"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Relief for Disabled Veterans",
+          "category": "tax",
+          "blurb": "State-funded property tax relief on the primary residence of eligible disabled veteran homeowners and their surviving spouses, administered through the Tennessee Comptroller of the Treasury.",
+          "source": "https://www.tn.gov/veteran/veteran-benefits/tn-state-benefits/homeowners/property-tax-relief-for-disabled-veterans.html"
+        },
+        {
+          "name": "Helping Heroes Grant",
+          "category": "education",
+          "blurb": "A per-semester higher-education grant for eligible Tennessee veterans, awarded first-come first-served to students who complete their coursework.",
+          "source": "https://www.tn.gov/veteran/veteran-education/scholarships/veterans/helping-heroes-grant.html"
+        },
+        {
+          "name": "Veterans Education Transition Support (VETS) Act In-State Tuition",
+          "category": "education",
+          "blurb": "Guarantees in-state tuition rates at Tennessee public colleges for eligible veterans and their dependents regardless of official residency status.",
+          "source": "https://www.tn.gov/thec/for-institutions/veteran-initiatives.html"
+        },
+        {
+          "name": "Tennessee State Veterans Homes",
+          "category": "housing",
+          "blurb": "TDVS serves as liaison for four Tennessee State Veterans Homes providing long-term skilled nursing care for eligible veterans.",
+          "source": "https://www.tn.gov/veteran/veteran-benefits/tn-state-benefits.html"
+        },
+        {
+          "name": "Disabled Veteran (DAV) Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Tennessee offers deeply discounted lifetime-style hunting and fishing licenses to disabled American veterans for a one-time fee.",
+          "source": "https://comptroller.tn.gov/office-functions/research-and-education-accountability/publications/other-topics/state-benefits-for-veterans-in-tennessee.html"
+        }
+      ],
+      "notes": "Tennessee has no state tax on wage or retirement income, so military retirement pay is untaxed by default."
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "agency": {
+        "name": "Texas Veterans Commission",
+        "url": "https://tvc.texas.gov/"
+      },
+      "programs": [
+        {
+          "name": "Hazlewood Act",
+          "category": "education",
+          "blurb": "Exempts qualified Texas veterans, spouses, and dependent children from tuition and most fees for up to 150 semester credit hours at Texas public colleges and universities, with unused hours transferable to a child through the Legacy program.",
+          "source": "https://tvc.texas.gov/education/hazlewood/"
+        },
+        {
+          "name": "Disabled Veteran Property Tax Exemptions (Tiered)",
+          "category": "tax",
+          "blurb": "Graduated statutory property tax exemptions rise with VA disability rating (10-29%, 30-49%, 50-69%, 70-99%), and veterans rated 100 percent disabled or individually unemployable receive a total exemption on their residence homestead under Tax Code Section 11.131.",
+          "source": "https://comptroller.texas.gov/taxes/property-tax/exemptions/disabledvet-faq.php"
+        },
+        {
+          "name": "Texas Veterans Land Board Land, Home, and Home Improvement Loans",
+          "category": "housing",
+          "blurb": "The VLB's nation-unique loan programs let Texas veterans and military members finance land purchases, homes, and home improvements at competitive rates, with discounted interest for veterans rated 30 percent or more service-connected disabled.",
+          "source": "https://vlb.texas.gov/loans/home-loans/index.html"
+        },
+        {
+          "name": "TVC Veteran Employment Services",
+          "category": "employment",
+          "blurb": "The Texas Veterans Commission delivers veteran employment services through Jobs for Veterans State Grant and state-level programs in more than 75 cities across Texas.",
+          "source": "https://tvc.texas.gov/wp-content/uploads/2023/07/2023-TVC-State-Benefits.pdf"
+        },
+        {
+          "name": "Disabled Veteran Super Combo Hunting and All-Water Fishing Package",
+          "category": "recreation",
+          "blurb": "Qualifying disabled veterans (50 percent or greater rating or loss of use of a foot or leg) receive a free Super Combo hunting and all-water fishing license package with five state endorsements from Texas Parks and Wildlife.",
+          "source": "https://tpwd.texas.gov/regulations/outdoor-annual/licenses/combination-hunting-fishing/disabled-veteran-super-combo-hunting-and-all-water-fishing-package"
+        }
+      ],
+      "notes": "Flagship state. Texas has no state personal income tax. The Veterans Land Board (part of the General Land Office) also operates Texas State Veterans Homes and free-burial Texas State Veterans Cemeteries (https://www.glo.texas.gov/veterans). TVC employment page (tvc.texas.gov/employment/) blocked automated access; employment details cited from TVC's official state-benefits publication."
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "agency": {
+        "name": "Utah Department of Veterans and Military Affairs",
+        "url": "https://veterans.utah.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veteran with a Disability Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability of at least 10% qualify for a primary-residence property tax exemption proportional to their disability percentage, also available to unmarried surviving spouses and minor orphans.",
+          "source": "https://tax.utah.gov/forms-pubs/pub-36/"
+        },
+        {
+          "name": "Purple Heart Tuition Waiver",
+          "category": "education",
+          "blurb": "Purple Heart recipients receive a waiver of tuition and fees at Utah System of Higher Education institutions, usable toward degrees up to and including a master's degree.",
+          "source": "https://veterans.utah.gov/education/"
+        },
+        {
+          "name": "Veterans' Preference in State Hiring",
+          "category": "employment",
+          "blurb": "Veterans receive preference points on state job applications, with veterans with a disability and Purple Heart recipients receiving ten points or ten percent of the total possible score, whichever is greater.",
+          "source": "https://dhrm.utah.gov/hiring-pathways/veterans/"
+        },
+        {
+          "name": "Utah State Veterans Homes",
+          "category": "health",
+          "blurb": "Utah operates four state veterans homes, including the George E. Wahlen Ogden Veterans Home, providing long-term skilled nursing care for Utah veterans and eligible family members.",
+          "source": "https://veterans.utah.gov/wp-content/uploads/2026/04/benefitBook_2026.pdf"
+        },
+        {
+          "name": "Utah State Parks Honor Pass",
+          "category": "recreation",
+          "blurb": "Honorably discharged resident veterans with a VA disability rating of 50% or more receive free day-use access to all Utah state parks for themselves and up to seven guests in the same vehicle.",
+          "source": "https://stateparks.utah.gov/resources/military/veterans-with-disabilities-honor-pass/"
+        }
+      ],
+      "notes": "Utah also offers a Veterans First-Time Homebuyer Grant (https://veterans.utah.gov/first-time-homebuyer-grant/) and the Utah Tuition/GI Bill Gap Program for those who have exhausted federal education benefits. Veterans homes direct program page not individually linked from the agency's benefits index; sourced to the agency's official 2026 benefits book."
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "agency": {
+        "name": "Virginia Department of Veterans Services",
+        "url": "https://www.dvs.virginia.gov/"
+      },
+      "programs": [
+        {
+          "name": "Real Property Tax Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Exempts the principal residence (and up to one acre) of veterans with a 100% permanent and total service-connected disability, plus a local property tax exemption for one vehicle, with surviving-spouse continuation.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/tax-exemptions"
+        },
+        {
+          "name": "Virginia Military Survivors & Dependents Education Program (VMSDEP)",
+          "category": "education",
+          "blurb": "Provides education benefits at Virginia public colleges and universities to spouses and children of military members killed, missing in action, taken prisoner, or at least 90% permanently disabled from service.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/education/virginia-military-survivors-dependents-education-program-vmsdep"
+        },
+        {
+          "name": "Virginia Values Veterans (V3) Program",
+          "category": "employment",
+          "blurb": "Free state training and certification program that helps employers recruit, hire, and retain veterans, and connects veteran job seekers with V3-certified employers.",
+          "source": "https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program/"
+        },
+        {
+          "name": "Disabled Veterans' Lifetime Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Virginia Department of Wildlife Resources offers free and reduced-fee lifetime hunting, freshwater fishing, and trapping licenses to resident veterans with a service-connected disability rating of 30% or greater.",
+          "source": "https://dwr.virginia.gov/veterans/"
+        },
+        {
+          "name": "Virginia Veteran & Family Support (VVFS)",
+          "category": "health",
+          "blurb": "Statewide program providing care coordination, peer support, and community resource connections for veterans and families addressing transition challenges, PTSD, and traumatic brain injury.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/veteran-and-family-support"
+        }
+      ]
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "agency": {
+        "name": "Vermont Office of Veterans Affairs",
+        "url": "https://veterans.vermont.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Disabled Veterans and their Survivors",
+          "category": "tax",
+          "blurb": "Veterans rated 50% or more disabled (and certain survivors) receive a state-mandated minimum property tax exemption on their primary residence, which towns may vote to increase.",
+          "source": "https://veterans.vermont.gov/office-veterans-affairs/programs-administered-office-veterans-affairs/property-tax-exemption"
+        },
+        {
+          "name": "Military Retirement Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Vermont exempts military retirement and survivor benefit income from state income tax for taxpayers under the statutory adjusted-gross-income threshold.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits/tax-exemptions-veterans"
+        },
+        {
+          "name": "Vermont Veterans' Home",
+          "category": "health",
+          "blurb": "The state-operated Vermont Veterans' Home in Bennington provides skilled nursing, assisted living, memory care, rehabilitation, and respite care for eligible veterans, spouses, and Gold Star parents.",
+          "source": "https://vvh.vermont.gov/"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Vermont veterans with a service-connected disability rating of 60% or higher qualify for a free permanent hunting or fishing license.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits"
+        },
+        {
+          "name": "Free Lifetime Vermont State Parks Pass for Veterans",
+          "category": "recreation",
+          "blurb": "Vermont resident veterans honorably discharged from active duty are eligible for a free lifetime day-entry pass to Vermont State Parks.",
+          "source": "https://veterans.vermont.gov/benefits-and-services/veteran-benefits"
+        }
+      ],
+      "notes": "veterans.vermont.gov blocked automated access (HTTP 403); program URLs are from official state search results. Vermont education benefits are primarily federally administered (GI Bill) per the agency's education page; no broad state veteran tuition waiver verified. State-employment veterans preference not verified from an official page and is omitted. Disabled veterans meeting statutory criteria are also exempt from vehicle sales tax and registration fees."
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "agency": {
+        "name": "Washington State Department of Veterans Affairs (WDVA)",
+        "url": "https://dva.wa.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of a primary residence for veterans with at least an 80% service-connected disability rating (or paid at the 100% rate), on a tiered schedule with county income requirements.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits/housing-resources/property-tax-relief"
+        },
+        {
+          "name": "Washington Tuition Waiver",
+          "category": "education",
+          "blurb": "Requires state community colleges, colleges, and universities to waive undergraduate tuition and fees for eligible veterans, National Guard members, and qualifying dependents and survivors (RCW 28B.15.621).",
+          "source": "https://dva.wa.gov/veterans-their-families/veterans-benefits/education-and-training/washington-tuition-waiver"
+        },
+        {
+          "name": "Washington State Veterans Homes",
+          "category": "health",
+          "blurb": "WDVA operates four Medicare/Medicaid-certified long-term care homes — Orting, Port Orchard, Spokane, and Walla Walla — serving veterans, spouses, surviving spouses, and Gold Star parents.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-homes"
+        },
+        {
+          "name": "Reduced-Fee Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Washington Department of Fish & Wildlife offers half-price hunting and fishing licenses to veterans with a service-connected disability rating of 30% or more.",
+          "source": "https://wdfw.wa.gov/accessibility/eligibility-requirements-veterans-reduced-fees"
+        },
+        {
+          "name": "Free or Reduced Rate Passes (State Parks Disabled Veteran Lifetime Pass)",
+          "category": "recreation",
+          "blurb": "Veterans with a 30% or greater service-connected disability qualify for a state parks pass providing free day-use parking, camping or moorage, boat launch, and trailer dump.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits/free-or-reduced-rate-passes-and-tax-exemptions"
+        }
+      ]
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "agency": {
+        "name": "Wisconsin Department of Veterans Affairs",
+        "url": "https://dva.wi.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veterans and Surviving Spouses Property Tax Credit",
+          "category": "tax",
+          "blurb": "Refundable state income tax credit equal to the property taxes paid on the principal residence (up to one acre) of veterans with a 100% service-connected disability rating or individual unemployability, and their unremarried surviving spouses.",
+          "source": "https://dva.wi.gov/services/housing-and-financial-services/property-tax-credit/"
+        },
+        {
+          "name": "Wisconsin GI Bill",
+          "category": "education",
+          "blurb": "Full tuition and segregated fee remission for eligible veterans and qualifying spouses and children for up to eight semesters or 128 credits at University of Wisconsin System and Wisconsin Technical College System schools.",
+          "source": "https://dva.wi.gov/benefits/education/wi-gi-bill/"
+        },
+        {
+          "name": "Wisconsin Veterans Homes",
+          "category": "health",
+          "blurb": "State-run homes at Chippewa Falls, King, and Union Grove providing 24-hour skilled nursing care to veterans, spouses, and Gold Star parents.",
+          "source": "https://dva.wi.gov/services/wisconsin-veterans-homes/"
+        },
+        {
+          "name": "Veterans Hunting and Fishing License Benefits",
+          "category": "recreation",
+          "blurb": "Wisconsin offers hunting and fishing license benefits for veterans, including a one-time free license for recently separated resident veterans and reduced-fee licenses for disabled veterans through the DNR.",
+          "source": "https://dva.wi.gov/benefits/outdoor-rec-and-sports/hunting-fishing-license/"
+        },
+        {
+          "name": "Veterans Housing and Recovery Program",
+          "category": "housing",
+          "blurb": "Provides homeless and at-risk veterans with transitional housing plus job training, education, and counseling support to help them return to independent living.",
+          "source": "https://dva.wi.gov/services/housing-and-financial-services/veterans-housing-and-recovery/"
+        }
+      ],
+      "notes": "WDVA also offers the Vet Ed Reimbursement Grant for part-time study (https://dva.wi.gov/benefits/education/vet-ed-reimbursement-grant/)."
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "agency": {
+        "name": "West Virginia Department of Veterans Assistance",
+        "url": "https://veterans.wv.gov/"
+      },
+      "programs": [
+        {
+          "name": "Homestead Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Exempts a portion of the assessed value of the primary residence from property taxes for veterans with a 100% permanent and total service-connected disability.",
+          "source": "https://veterans.wv.gov/benefits/Pages/StateBenefits.aspx"
+        },
+        {
+          "name": "Disabled Veteran Real Property Tax Credit",
+          "category": "tax",
+          "blurb": "Refundable state income tax credit (effective 2024) for real property taxes paid on the homestead of honorably discharged veterans with a 90-100% combined VA disability rating.",
+          "source": "https://tax.wv.gov/Individuals/Pages/IncomeTaxCreditsForPropertyTaxesPaid.aspx"
+        },
+        {
+          "name": "War Orphan Education Program",
+          "category": "education",
+          "blurb": "Provides education assistance at West Virginia post-secondary institutions to children (and certain spouses) of service members who died in service or from service-connected causes.",
+          "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx"
+        },
+        {
+          "name": "Veterans Re-education Assistance Program",
+          "category": "education",
+          "blurb": "State stipend per semester for eligible veterans enrolled in certified post-secondary education or vocational training in West Virginia.",
+          "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx"
+        },
+        {
+          "name": "Free Hunting, Fishing, and Trapping Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans certified by the VA as totally and permanently service-connected disabled (and former POWs) may hunt, trap, and fish without purchasing a license (W.Va. Code 20-2-28).",
+          "source": "https://wvdnr.gov/programs-publications/disability-services/"
+        }
+      ],
+      "notes": "Military retirement income is fully exempt from WV personal income tax for tax years 2019 and later (see https://tax.wv.gov/Documents/TSD/tsd443.pdf). WVDVA also operates the WV Veterans Nursing Facility in Clarksburg and the WV Veterans Home in Barboursville; direct facility page URLs were not verified in this pass."
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "agency": {
+        "name": "Wyoming Veterans Commission (Wyoming Military Department)",
+        "url": "https://www.wyomilitary.wyo.gov/resources/veteran/veterans-commission/"
+      },
+      "programs": [
+        {
+          "name": "Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Qualifying Wyoming resident veterans receive an annual exemption that lowers the assessed value of their primary residence, applicable instead to vehicle licensing fees if not used on property.",
+          "source": "https://wyo-prop-div.wyo.gov/tax-relief"
+        },
+        {
+          "name": "Wyoming Veterans Tuition Benefit (W.S. 19-14-106)",
+          "category": "education",
+          "blurb": "Wyoming Statute 19-14-106 provides free tuition at the University of Wyoming and Wyoming community colleges for eligible overseas combat veterans, surviving spouses, and dependents.",
+          "source": "https://veteranseducation.wyo.gov/"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Eligible Wyoming resident veterans and surviving spouses receive a 5% scoring advantage (10% for disabled veterans) when a numerical scoring system is used for state hiring.",
+          "source": "https://dws.wyo.gov/dws-division/workforce-centers-and-program-operations/job-seekers/veteran-employment-services/"
+        },
+        {
+          "name": "Veterans' Home of Wyoming",
+          "category": "health",
+          "blurb": "The Veterans' Home of Wyoming in Buffalo, operated under the Wyoming Department of Health, provides assisted-living (domiciliary) and skilled nursing care for honorably discharged veterans.",
+          "source": "https://health.wyo.gov/aging/veteranshome/"
+        },
+        {
+          "name": "Free Game and Fish Licenses for Disabled Veterans and Purple Heart Recipients",
+          "category": "recreation",
+          "blurb": "Wyoming Game & Fish issues free lifetime game bird, small game, and fish licenses to Purple Heart recipients, and free fishing licenses to resident veterans with a 50% or higher service-connected disability.",
+          "source": "https://wgfd.wyo.gov/licenses-applications/licensing-veterans"
+        }
+      ],
+      "notes": "Wyoming has no state income tax, so military retirement pay is untaxed by default. The Wyoming Veterans Commission also operates the Oregon Trail State Veterans Cemetery in Evansville. Property tax exemption requires three or more years of Wyoming residency; exemption dollar amount omitted as it has been subject to recent legislative change."
+    }
+  ]
+}

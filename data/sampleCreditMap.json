@@ -1,0 +1,76 @@
+{
+  "_note": "SAMPLE / DEMO DATA — illustrative military-to-college-credit examples in the style of ACE recommendations. Real credit is determined by your Joint Services Transcript (JST) / CCAF transcript and each school's registrar. Numbers here are examples only.",
+  "howItWorks": [
+    "Request your free Joint Services Transcript (Army, Navy, Marines, Coast Guard) at jst.doded.mil — it lists ACE credit recommendations for your training.",
+    "Air Force & Space Force: request your Community College of the Air Force (CCAF) transcript — CCAF is an accredited degree-granting college.",
+    "Send the transcript to your target school; the registrar decides what transfers.",
+    "ACE recommendations are advisory — schools vary widely, so compare a few before enrolling."
+  ],
+  "roles": [
+    { "branch": "Army", "code": "68W", "title": "Combat Medic Specialist", "credits": [
+      { "area": "Emergency medical technician", "hours": 6, "level": "Lower" },
+      { "area": "Health science / anatomy", "hours": 3, "level": "Lower" },
+      { "area": "First aid & safety", "hours": 2, "level": "Lower" }
+    ], "note": "Many states offer military-to-EMT license bridges; nursing programs may grant advanced placement." },
+    { "branch": "Army", "code": "25B", "title": "Information Technology Specialist", "credits": [
+      { "area": "Computer networking", "hours": 6, "level": "Lower" },
+      { "area": "Information systems", "hours": 3, "level": "Lower" },
+      { "area": "Cybersecurity fundamentals", "hours": 3, "level": "Lower" }
+    ], "note": "Pairs well with CompTIA certs many schools also award credit for." },
+    { "branch": "Army", "code": "88M", "title": "Motor Transport Operator", "credits": [
+      { "area": "Transportation & logistics", "hours": 4, "level": "Lower" },
+      { "area": "Vehicle operations & safety", "hours": 3, "level": "Lower" }
+    ], "note": "FMCSA Military Skills Test Waiver may also skip the CDL road test." },
+    { "branch": "Army", "code": "92Y", "title": "Unit Supply Specialist", "credits": [
+      { "area": "Supply chain management", "hours": 6, "level": "Lower" },
+      { "area": "Inventory management", "hours": 3, "level": "Lower" }
+    ] },
+    { "branch": "Army", "code": "11B", "title": "Infantryman", "credits": [
+      { "area": "Leadership & management (NCO)", "hours": 6, "level": "Lower/Upper by rank" },
+      { "area": "Physical education / kinesiology", "hours": 3, "level": "Lower" },
+      { "area": "Security operations", "hours": 3, "level": "Lower" }
+    ], "note": "Leadership schools (BLC/ALC/SLC) carry management credit recommendations." },
+    { "branch": "Army", "code": "15T", "title": "UH-60 Helicopter Repairer", "credits": [
+      { "area": "Aviation maintenance technology", "hours": 9, "level": "Lower" },
+      { "area": "Hydraulics & powertrain", "hours": 4, "level": "Lower" }
+    ], "note": "Documented experience may qualify you to test for the FAA A&P." },
+    { "branch": "Navy", "code": "HM", "title": "Hospital Corpsman", "credits": [
+      { "area": "Emergency medical care", "hours": 6, "level": "Lower" },
+      { "area": "Pharmacology basics", "hours": 3, "level": "Lower" },
+      { "area": "Health science", "hours": 3, "level": "Lower" }
+    ], "note": "Strong advanced-placement candidate for nursing/allied-health bridges." },
+    { "branch": "Navy", "code": "IT", "title": "Information Systems Technician", "credits": [
+      { "area": "Network administration", "hours": 6, "level": "Lower" },
+      { "area": "Information security", "hours": 3, "level": "Lower" }
+    ] },
+    { "branch": "Navy", "code": "LS", "title": "Logistics Specialist", "credits": [
+      { "area": "Logistics management", "hours": 6, "level": "Lower" },
+      { "area": "Business math / records", "hours": 3, "level": "Lower" }
+    ] },
+    { "branch": "Marine Corps", "code": "0311", "title": "Rifleman", "credits": [
+      { "area": "Leadership (NCO academies)", "hours": 6, "level": "Lower/Upper by rank" },
+      { "area": "Security & tactical operations", "hours": 3, "level": "Lower" },
+      { "area": "Physical education", "hours": 2, "level": "Lower" }
+    ] },
+    { "branch": "Marine Corps", "code": "3521", "title": "Automotive Maintenance Technician", "credits": [
+      { "area": "Automotive technology", "hours": 8, "level": "Lower" },
+      { "area": "Diesel systems", "hours": 4, "level": "Lower" }
+    ] },
+    { "branch": "Air Force", "code": "3P0X1", "title": "Security Forces", "credits": [
+      { "area": "Criminal justice", "hours": 6, "level": "Lower" },
+      { "area": "Security management", "hours": 3, "level": "Lower" }
+    ], "note": "CCAF may already bank these toward an associate degree." },
+    { "branch": "Air Force", "code": "2A3X3", "title": "Tactical Aircraft Maintenance", "credits": [
+      { "area": "Aviation maintenance technology", "hours": 9, "level": "Lower" },
+      { "area": "Aircraft systems", "hours": 4, "level": "Lower" }
+    ], "note": "CCAF + documented experience can accelerate the FAA A&P." },
+    { "branch": "Air Force", "code": "3D0X2", "title": "Cyber Systems Operations", "credits": [
+      { "area": "Systems administration", "hours": 6, "level": "Lower" },
+      { "area": "Cyber operations", "hours": 3, "level": "Lower" }
+    ] },
+    { "branch": "Coast Guard", "code": "BM", "title": "Boatswain's Mate", "credits": [
+      { "area": "Seamanship & navigation", "hours": 6, "level": "Lower" },
+      { "area": "Leadership & supervision", "hours": 3, "level": "Lower" }
+    ] }
+  ]
+}

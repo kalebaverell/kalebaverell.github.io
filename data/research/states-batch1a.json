@@ -1,0 +1,157 @@
+{
+  "batch": "1a",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "agency": {
+        "name": "Alabama Department of Veterans Affairs",
+        "url": "https://va.alabama.gov/"
+      },
+      "programs": [
+        {
+          "name": "Alabama G.I. Dependent Scholarship Program",
+          "category": "education",
+          "blurb": "Provides college tuition, book, and fee benefits to dependents (children and spouses) of qualifying disabled Alabama veterans.",
+          "source": "https://va.alabama.gov/education-training/alabama-g-i-dependent-scholarship-program/"
+        },
+        {
+          "name": "Alabama State Veterans Homes Program",
+          "category": "health",
+          "blurb": "Operates state veterans homes providing skilled nursing and long-term care for honorably discharged Alabama veterans.",
+          "source": "https://va.alabama.gov/veterans-services/veterans-home-program/"
+        },
+        {
+          "name": "Homestead Property Tax Exemption for Permanently and Totally Disabled Persons",
+          "category": "tax",
+          "blurb": "Exempts the principal residence and up to 160 adjacent acres from all state, county, and municipal property taxes for homeowners who are permanently and totally disabled, regardless of age or income.",
+          "source": "https://www.revenue.alabama.gov/property-tax/homestead-exemptions/"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retired pay is fully exempt from Alabama state income tax under Ala. Code section 40-18-20.",
+          "source": "https://www.revenue.alabama.gov/individual-corporate/income-exempt-from-alabama-income-taxation/"
+        }
+      ],
+      "notes": "Disabled-veteran hunting/fishing license discounts exist via the AL Dept. of Conservation (outdooralabama.com, official state site but not a .gov domain), so omitted per source rules."
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "agency": {
+        "name": "Alaska Department of Military and Veterans Affairs, Office of Veterans Affairs",
+        "url": "https://veterans.alaska.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Exempts the first $150,000 of assessed value of the primary residence from property tax for veterans with a service-connected disability rated 50% or more, with transfer to surviving spouses age 60+.",
+          "source": "https://veterans.alaska.gov/benefits/additional-benefits/taxes-and-land/"
+        },
+        {
+          "name": "Veterans Land Sale Discount",
+          "category": "other",
+          "blurb": "Gives eligible veterans a once-per-lifetime purchase-price discount on state residential or recreational land sold by the Alaska Department of Natural Resources.",
+          "source": "https://dnr.alaska.gov/mlw/landsales/info/vet-discount/"
+        },
+        {
+          "name": "Alaska Veterans and Pioneers Home (Palmer)",
+          "category": "health",
+          "blurb": "State-run home in Palmer providing assisted living and long-term care, with 75% of its beds designated for Alaska veterans.",
+          "source": "https://dfcs.alaska.gov/daph/pages/palmer/default.aspx"
+        },
+        {
+          "name": "Disabled Veteran Hunting, Fishing, and Trapping License",
+          "category": "recreation",
+          "blurb": "Provides resident veterans certified 50% or more disabled a complimentary permanent identification card to hunt, sport fish, and trap, including king salmon and waterfowl stamp waivers.",
+          "source": "https://www.adfg.alaska.gov/index.cfm?adfg=license.veterans"
+        },
+        {
+          "name": "Veterans' Employment Preference",
+          "category": "employment",
+          "blurb": "Provides hiring preference for eligible veterans in Alaska public employment based on qualifying active-duty service, campaign medals, Purple Heart award, or service-connected disability.",
+          "source": "https://veterans.alaska.gov/employment/veteran-preference/"
+        }
+      ],
+      "notes": "Alaska has no state income tax, so there is no retirement-income tax program to list."
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "agency": {
+        "name": "Arizona Department of Veterans' Services",
+        "url": "https://dvs.az.gov/"
+      },
+      "programs": [
+        {
+          "name": "Arizona Tuition Waiver Scholarship",
+          "category": "education",
+          "blurb": "Waives undergraduate tuition at Arizona public universities and community colleges for eligible post-9/11 veterans wounded or injured in the line of duty and for dependents of service members killed in the line of duty, under A.R.S. 15-1808.",
+          "source": "https://dvs.az.gov/services/education/tuition-waiver-and-verification-form"
+        },
+        {
+          "name": "Arizona State Veteran Homes",
+          "category": "health",
+          "blurb": "State-run, Medicare-certified skilled nursing facilities providing long-term and rehabilitative care for eligible Arizona veterans and their spouses.",
+          "source": "https://dvs.az.gov/services/arizona-state-veteran-homes"
+        },
+        {
+          "name": "Veterans' Hiring Preference (State Employment)",
+          "category": "employment",
+          "blurb": "Gives qualified veterans and disabled veterans preference when seeking employment with the State of Arizona.",
+          "source": "https://hr.az.gov/veterans-hiring-preference"
+        },
+        {
+          "name": "Property Tax Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Provides an assessed-value property tax exemption for Arizona veterans with a VA disability rating, prorated to the percentage of disability, with surviving-spouse eligibility.",
+          "source": "https://azdor.gov/sites/default/files/2023-03/PROPERTY_AZPropertyTaxExemptions.pdf"
+        },
+        {
+          "name": "Military Retired Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "All U.S. uniformed-services retired pay is fully exempt from Arizona individual income tax.",
+          "source": "https://dvs.az.gov/sites/default/files/2025-07/Arizona%20State%20Veteran%20Benefits%20Guide%20(2025%20Edit).pdf"
+        }
+      ]
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "agency": {
+        "name": "Arkansas Department of Veterans Affairs",
+        "url": "https://www.veterans.arkansas.gov/"
+      },
+      "programs": [
+        {
+          "name": "Arkansas State Veterans Homes",
+          "category": "health",
+          "blurb": "Operates skilled nursing facilities in Fayetteville and North Little Rock providing long-term care for veterans, veterans' spouses, and Gold Star parents.",
+          "source": "https://www.veterans.arkansas.gov/veteran-homes-1"
+        },
+        {
+          "name": "Disabled Veteran Homestead and Personal Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected 100% total and permanent disability (and qualifying surviving spouses and minor children) are exempt from state property taxes on their homestead and personal property under Ark. Code Ann. 26-3-306.",
+          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+        },
+        {
+          "name": "Military Retired Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement and survivor benefits are exempt from Arkansas state income tax.",
+          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "State agencies add preference points to qualified veterans', disabled veterans', and eligible spouses' ratings in hiring, promotion, and retention, with dedicated veteran employment specialists at Arkansas Workforce Centers.",
+          "source": "https://dws.arkansas.gov/workforce-services/job-seekers/veterans-services/"
+        }
+      ],
+      "notes": "Lifetime discounted hunting/fishing licenses for 100% disabled veterans exist via the Arkansas Game & Fish Commission (agfc.com, official state agency but not a .gov domain) and the MIA/KIA Dependents' Scholarship is administered by the AR Division of Higher Education (adhe.edu, not .gov); both omitted per source rules."
+    }
+  ]
+}

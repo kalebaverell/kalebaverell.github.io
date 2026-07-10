@@ -1,0 +1,162 @@
+{
+  "_note": "SAMPLE / DEMO DATA — for prototype only. Intake questions used to generate a personalized VetPath gameplan. Not official VA guidance. allowCustom on a question lets the veteran type their own answer; every step also offers a free-response notes box.",
+  "stepNotesPrompt": "Anything else about your situation we should know? (optional, your words)",
+  "steps": [
+    {
+      "id": "basics",
+      "title": "The basics",
+      "subtitle": "Helps us tailor timing and state resources.",
+      "questions": [
+        {
+          "id": "ageRange",
+          "label": "What is your age range?",
+          "type": "single",
+          "options": ["Under 25", "25–34", "35–44", "45–54", "55–64", "65+"]
+        },
+        {
+          "id": "state",
+          "label": "What state do you live in?",
+          "type": "state",
+          "helper": "State benefits vary. We'll flag anything that must be verified locally."
+        },
+        {
+          "id": "city",
+          "label": "What city or town? (optional)",
+          "type": "text",
+          "optional": true,
+          "placeholder": "e.g. San Antonio",
+          "helper": "Helps us think about VA facility access and local resources."
+        },
+        {
+          "id": "sex",
+          "label": "What is your sex?",
+          "type": "single",
+          "optional": true,
+          "allowCustom": true,
+          "options": ["Male", "Female", "Prefer not to say"],
+          "helper": "Why we ask: some programs specifically serve women veterans (health services, V-WISE entrepreneurship). Sharing is optional and only personalizes suggestions."
+        },
+        {
+          "id": "raceEthnicity",
+          "label": "Race / ethnicity? (optional — select any)",
+          "type": "multi",
+          "optional": true,
+          "allowCustom": true,
+          "options": ["American Indian / Alaska Native", "Asian", "Black / African American", "Hispanic / Latino", "Native Hawaiian / Pacific Islander", "White", "Prefer not to say"],
+          "helper": "Why we ask: some business and support programs specifically serve minority veterans (e.g., MBDA centers). Optional, never required, never shared."
+        },
+        {
+          "id": "branch",
+          "label": "Which branch did you serve in?",
+          "type": "single",
+          "options": ["Army", "Navy", "Air Force", "Marine Corps", "Coast Guard", "Space Force", "National Guard / Reserve"]
+        },
+        {
+          "id": "serviceEra",
+          "label": "When did you serve?",
+          "type": "single",
+          "options": ["Currently serving", "Post-9/11 (2001–present)", "Gulf War (1990–2001)", "Cold War / peacetime", "Vietnam era", "Other / not sure"]
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "title": "Where you are right now",
+      "subtitle": "This shapes what we prioritize first.",
+      "questions": [
+        {
+          "id": "status",
+          "label": "What best describes your current status?",
+          "type": "single",
+          "options": ["Active duty", "Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"]
+        },
+        {
+          "id": "disabilityRating",
+          "label": "Do you have a VA disability rating? (optional)",
+          "type": "single",
+          "optional": true,
+          "options": ["None / not rated", "Claim pending or filing", "0–20%", "30–50%", "60–90%", "100%", "Prefer not to say"]
+        },
+        {
+          "id": "employment",
+          "label": "What is your employment situation?",
+          "type": "single",
+          "options": ["Employed full-time", "Employed part-time", "Unemployed / job seeking", "Self-employed / business owner", "Student", "Retired", "Unable to work right now"]
+        },
+        {
+          "id": "housing",
+          "label": "What is your housing situation?",
+          "type": "single",
+          "options": ["Rent", "Own a home", "Living with family", "Unstable / at risk", "Currently homeless"]
+        }
+      ]
+    },
+    {
+      "id": "priorities",
+      "title": "What matters to you",
+      "subtitle": "Pick everything that applies — we'll turn it into a plan.",
+      "questions": [
+        {
+          "id": "educationGoals",
+          "label": "Any education goals?",
+          "type": "multi",
+          "allowCustom": true,
+          "options": ["Finish a degree", "Start a degree", "Trade or certification", "Help a dependent with school", "No education plans"]
+        },
+        {
+          "id": "careerGoals",
+          "label": "Any career goals?",
+          "type": "multi",
+          "allowCustom": true,
+          "options": ["Get a better job", "Change careers", "Advance / get promoted", "Start a business", "Wind down toward retirement", "Not sure yet"]
+        },
+        {
+          "id": "businessInterest",
+          "label": "Interested in owning a business?",
+          "type": "single",
+          "options": ["Yes — actively working on it", "Yes — someday", "No"]
+        },
+        {
+          "id": "wellnessPriorities",
+          "label": "Health & wellness priorities?",
+          "type": "multi",
+          "allowCustom": true,
+          "options": ["Mental health support", "VA healthcare / physical health", "Fitness", "Community & connection", "None right now"]
+        },
+        {
+          "id": "financialPriorities",
+          "label": "Financial priorities?",
+          "type": "multi",
+          "allowCustom": true,
+          "options": ["Budgeting / debt", "Buy a home", "Save & invest", "Understand VA disability compensation", "Retirement planning", "Protect my family (survivor benefits)"]
+        },
+        {
+          "id": "familyNeeds",
+          "label": "Family or dependent needs?",
+          "type": "multi",
+          "allowCustom": true,
+          "options": ["Spouse benefits", "Dependent education", "Childcare", "Caregiver support", "None"]
+        }
+      ]
+    },
+    {
+      "id": "goals",
+      "title": "Your top goals",
+      "subtitle": "Choose up to 3. These drive your gameplan.",
+      "questions": [
+        {
+          "id": "topGoals",
+          "label": "What are your top 3 goals right now?",
+          "type": "goals",
+          "max": 3
+        },
+        {
+          "id": "urgency",
+          "label": "How urgent does this feel?",
+          "type": "single",
+          "options": ["Right now — I need help urgently", "Next 1–3 months", "Next 6–12 months", "Just exploring"]
+        }
+      ]
+    }
+  ]
+}

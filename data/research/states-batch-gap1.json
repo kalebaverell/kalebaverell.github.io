@@ -1,0 +1,211 @@
+{
+  "batch": "gap1",
+  "lastVerified": "2026-07-09",
+  "states": [
+    {
+      "code": "CA",
+      "name": "California",
+      "agency": {
+        "name": "California Department of Veterans Affairs (CalVet)",
+        "url": "https://www.calvet.ca.gov"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans' Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of the primary residence of a veteran rated 100% service-connected disabled (or unemployable), with a larger exemption for lower-income households; surviving spouses may also qualify.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        },
+        {
+          "name": "College Tuition Fee Waiver for Veteran Dependents",
+          "category": "education",
+          "blurb": "Waives mandatory system-wide tuition and fees at California Community Colleges, CSU, and UC campuses for eligible children, spouses, and surviving spouses of disabled or deceased service-connected veterans (Plans A-D).",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/College-Fee-Waiver.aspx"
+        },
+        {
+          "name": "CalVet Home Loans",
+          "category": "housing",
+          "blurb": "State-run home loan program offering veterans up to 100% financing with no private mortgage insurance and flexible manual underwriting for purchasing or refinancing a home in California.",
+          "source": "https://www.calvet.ca.gov/HomeLoans"
+        },
+        {
+          "name": "Veterans Homes of California",
+          "category": "health",
+          "blurb": "Network of state veterans homes across California providing affordable long-term care and multiple levels of care to aged and disabled veterans and their eligible spouses or domestic partners.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        },
+        {
+          "name": "Recreation Benefits: Reduced-Fee Hunting/Fishing Licenses and State Parks Pass",
+          "category": "recreation",
+          "blurb": "Eligible disabled veterans can obtain reduced-fee California hunting and fishing licenses and a Distinguished Veteran state parks pass for free day-use and camping at participating state parks.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Benefits.aspx"
+        }
+      ],
+      "notes": "CalVet State Benefits page blocked automated access (connection reset); program URLs taken from official calvet.ca.gov search results. California also offers veterans' preference in state civil service hiring and a Disabled Veteran Business Enterprise (DVBE) contracting program."
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "agency": {
+        "name": "Mayor's Office of Veterans Affairs (MOVA)",
+        "url": "https://ova.dc.gov"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Homestead Deduction",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of the principal residence of a DC-domiciled veteran with a VA total-and-permanent (or 100% unemployability) rating, subject to a household income cap; surviving spouses may retain the benefit.",
+          "source": "https://communityaffairs.dc.gov/page/disabled-veterans-homestead-deduction"
+        },
+        {
+          "name": "Veterans Preference in DC Government Hiring",
+          "category": "employment",
+          "blurb": "Eligible veterans, disabled veterans, and certain spouses and survivors receive preference points in the competitive hiring process for District government positions through the DC Department of Human Resources.",
+          "source": "https://ova.dc.gov/page/employment-0"
+        },
+        {
+          "name": "DOES Veteran Services and Priority of Service",
+          "category": "employment",
+          "blurb": "The DC Department of Employment Services gives veterans and eligible spouses priority of service at American Job Centers, including a 24-hour veterans-only hold on new job orders.",
+          "source": "https://does.dc.gov/service/veterans"
+        },
+        {
+          "name": "Veterans Specialty License Plates",
+          "category": "other",
+          "blurb": "Veterans can purchase DC specialty tags whose fees fund the Office of Veterans Affairs Fund, and veterans with a service-connected permanent and total disability pay no application, registration, or renewal fee for one set of tags.",
+          "source": "https://dmv.dc.gov/release/veterans-specialty-license-plates"
+        },
+        {
+          "name": "Veteran Designation on DC Driver License",
+          "category": "other",
+          "blurb": "Honorably discharged veterans can add a veteran designation to their DC driver license or ID card by presenting a DD 214, WD AGO, or DD 256 form to DC DMV.",
+          "source": "https://dmv.dc.gov/page/veteran-designation-0"
+        }
+      ],
+      "notes": "DC has no District-run state veterans home (the Armed Forces Retirement Home in DC is federal) and no District-level veteran tuition waiver program; education support runs through federal GI Bill benefits with claims assistance from MOVA."
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "agency": {
+        "name": "Florida Department of Veterans' Affairs (FDVA)",
+        "url": "https://www.floridavets.org"
+      },
+      "programs": [
+        {
+          "name": "Veteran Homestead Property Tax Exemptions",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability of 10% or more receive a homestead assessment reduction, and veterans with a total and permanent service-connected disability are fully exempt from property taxes on their primary residence.",
+          "source": "https://floridarevenue.com/property/Documents/pt109.pdf"
+        },
+        {
+          "name": "Congressman C.W. Bill Young Veteran Tuition Waiver Program",
+          "category": "education",
+          "blurb": "Waives out-of-state tuition and fees at Florida public postsecondary institutions for honorably discharged veterans residing in Florida, extended to spouses and dependent children using GI Bill benefits.",
+          "source": "https://floridavets.org/benefits-services/education/"
+        },
+        {
+          "name": "Veterans' Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Honorably discharged veterans (and certain spouses and family members) who meet position requirements are guaranteed hiring preference at every step of the process for state and local government jobs in Florida.",
+          "source": "https://floridavets.org/benefits-services/veterans-preference/"
+        },
+        {
+          "name": "Florida State Veterans' Homes",
+          "category": "health",
+          "blurb": "FDVA operates one of the nation's largest state veterans' home systems, with skilled nursing facilities and assisted living providing long-term care to eligible veterans and, under recent law, qualifying spouses.",
+          "source": "https://floridavets.org/wp-content/uploads/2012/08/FDVA-Benefits-Guide.pdf?v=2026"
+        },
+        {
+          "name": "Hunting and Fishing License Fee Exemptions for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Florida exempts honorably discharged veterans with qualifying service-connected disabilities from hunting and fishing license fees, alongside discounted Military Gold Sportsman's licenses for service members and retirees.",
+          "source": "https://floridavets.org/wp-content/uploads/2012/08/FDVA-Benefits-Guide.pdf?v=2026"
+        }
+      ],
+      "notes": "Florida has no state income tax, so military retirement pay is untaxed. Veterans homes and recreation licenses cited to the official FDVA Florida Veterans' Benefits Guide PDF hosted on floridavets.org (the state agency's official domain)."
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "agency": {
+        "name": "Bureau of Maine Veterans' Services",
+        "url": "https://www.maine.gov/veterans"
+      },
+      "programs": [
+        {
+          "name": "Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of an eligible veteran's Maine residence, with a substantially larger exemption for veterans with service-connected paraplegia, plus a motor vehicle excise exemption for veterans receiving federal compensation for total service-connected disability.",
+          "source": "https://www.maine.gov/veterans/benefits/tax-finance-benefits"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Maine exempts military retirement pay from state income tax.",
+          "source": "https://www.maine.gov/veterans/benefits/tax-finance-benefits"
+        },
+        {
+          "name": "Veterans Dependents Educational Benefits (Tuition Waiver)",
+          "category": "education",
+          "blurb": "Provides a 100% waiver of tuition and mandatory fees at University of Maine System campuses, Maine Community Colleges, and Maine Maritime Academy for spouses and dependents of veterans rated 100% permanently and totally disabled (or who died of service-connected causes).",
+          "source": "https://www.maine.gov/veterans/benefits/education/veterans-dependents-educational-benefits"
+        },
+        {
+          "name": "Disabled Veteran Complimentary Hunting, Fishing & Trapping License",
+          "category": "recreation",
+          "blurb": "Veterans with a service-connected disability rated 50% or more receive a complimentary Maine hunting, fishing, and trapping license package (including several permits), alongside lifetime state park passes for eligible veterans.",
+          "source": "https://www.maine.gov/veterans/benefits/recreational-licenses"
+        },
+        {
+          "name": "Maine Veterans' Homes",
+          "category": "health",
+          "blurb": "Six veterans homes across Maine provide long-term nursing and assisted-living care for eligible veterans and family members, as described in the Bureau's official benefits and resource guide.",
+          "source": "https://www.maine.gov/veterans/sites/maine.gov.veterans/files/Resourceguide.pdf"
+        }
+      ],
+      "notes": "Maine Veterans' Homes is a state-chartered independent nonprofit (mainevets.org); cited here via the Bureau of Maine Veterans' Services official resource guide. Maine also offers veterans hiring preference in state employment (not detailed here — gap)."
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "agency": {
+        "name": "Minnesota Department of Veterans Affairs (MDVA)",
+        "url": "https://mn.gov/mdva/"
+      },
+      "programs": [
+        {
+          "name": "Market Value Exclusion for Veterans with a Disability",
+          "category": "tax",
+          "blurb": "Excludes a portion of the homestead's market value from property taxation for veterans with a VA disability rating of 70% or higher, with a larger exclusion for those rated totally and permanently disabled; surviving spouses and certain caregivers may also qualify.",
+          "source": "https://www.revenue.state.mn.us/market-value-exclusion-veterans-disability"
+        },
+        {
+          "name": "Minnesota GI Bill",
+          "category": "education",
+          "blurb": "State-funded postsecondary financial assistance (usable for higher education, on-the-job training/apprenticeship, or licensure and certification) for eligible Minnesota veterans, service members, and eligible spouses and children of deceased or severely disabled veterans.",
+          "source": "https://mn.gov/mdva/resources/education/minnesotagibill/"
+        },
+        {
+          "name": "Minnesota Veterans Homes",
+          "category": "health",
+          "blurb": "MDVA operates a network of state veterans homes across Minnesota providing skilled nursing and domiciliary care for eligible veterans and spouses.",
+          "source": "https://mn.gov/mdva/resources/"
+        },
+        {
+          "name": "State Soldiers Assistance Program (SSAP)",
+          "category": "other",
+          "blurb": "Provides short-term financial assistance from MDVA, such as subsistence and dental or optical help, to Minnesota veterans facing disability-related or financial hardship.",
+          "source": "https://mn.gov/mdva/resources/"
+        },
+        {
+          "name": "Veterans Preference in Public Employment",
+          "category": "employment",
+          "blurb": "Under Minnesota's Veterans Preference Act, eligible veterans and disabled veterans receive hiring preference for Minnesota state and local government positions.",
+          "source": "https://mn.gov/mdva/resources/"
+        }
+      ],
+      "notes": "Minnesota also fully exempts military retirement pay from state income tax. Direct MDVA sub-page URLs for Veterans Homes, SSAP, and veterans preference were not individually verified in search results, so those programs cite the official MDVA Benefits & Resources hub (mn.gov/mdva/resources/)."
+    }
+  ]
+}

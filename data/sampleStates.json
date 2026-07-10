@@ -1,0 +1,77 @@
+{
+  "_note": "SAMPLE / DEMO DATA — for prototype only. State benefit examples are illustrative placeholders and MUST be verified with each state's Department of Veterans Affairs. VetPath does not guarantee state eligibility.",
+  "genericPlaceholder": "Sample placeholder: Most states offer some mix of property-tax relief, tuition or education support, license/park discounts, and employment preference for veterans. Contact your state Department of Veterans Affairs and county veteran service officer to confirm what applies to you.",
+  "states": [
+    { "code": "AL", "name": "Alabama", "hasSampleData": false },
+    { "code": "AK", "name": "Alaska", "hasSampleData": false },
+    { "code": "AZ", "name": "Arizona", "hasSampleData": false },
+    { "code": "AR", "name": "Arkansas", "hasSampleData": false },
+    { "code": "CA", "name": "California", "hasSampleData": true, "samplePrograms": [
+      "Sample: CalVet Home Loan program for eligible veterans.",
+      "Sample: property-tax exemptions for qualifying disabled veterans.",
+      "Sample: college fee waivers for eligible dependents."
+    ], "agency": "California Department of Veterans Affairs (CalVet)" },
+    { "code": "CO", "name": "Colorado", "hasSampleData": false },
+    { "code": "CT", "name": "Connecticut", "hasSampleData": false },
+    { "code": "DE", "name": "Delaware", "hasSampleData": false },
+    { "code": "DC", "name": "District of Columbia", "hasSampleData": false },
+    { "code": "FL", "name": "Florida", "hasSampleData": true, "samplePrograms": [
+      "Sample: homestead property-tax exemptions for disabled veterans.",
+      "Sample: no state income tax (applies to retirement pay).",
+      "Sample: education and tuition programs for veterans and dependents."
+    ], "agency": "Florida Department of Veterans' Affairs" },
+    { "code": "GA", "name": "Georgia", "hasSampleData": false },
+    { "code": "HI", "name": "Hawaii", "hasSampleData": false },
+    { "code": "ID", "name": "Idaho", "hasSampleData": false },
+    { "code": "IL", "name": "Illinois", "hasSampleData": false },
+    { "code": "IN", "name": "Indiana", "hasSampleData": false },
+    { "code": "IA", "name": "Iowa", "hasSampleData": false },
+    { "code": "KS", "name": "Kansas", "hasSampleData": false },
+    { "code": "KY", "name": "Kentucky", "hasSampleData": false },
+    { "code": "LA", "name": "Louisiana", "hasSampleData": false },
+    { "code": "ME", "name": "Maine", "hasSampleData": false },
+    { "code": "MD", "name": "Maryland", "hasSampleData": false },
+    { "code": "MA", "name": "Massachusetts", "hasSampleData": false },
+    { "code": "MI", "name": "Michigan", "hasSampleData": false },
+    { "code": "MN", "name": "Minnesota", "hasSampleData": false },
+    { "code": "MS", "name": "Mississippi", "hasSampleData": false },
+    { "code": "MO", "name": "Missouri", "hasSampleData": false },
+    { "code": "MT", "name": "Montana", "hasSampleData": false },
+    { "code": "NE", "name": "Nebraska", "hasSampleData": false },
+    { "code": "NV", "name": "Nevada", "hasSampleData": false },
+    { "code": "NH", "name": "New Hampshire", "hasSampleData": false },
+    { "code": "NJ", "name": "New Jersey", "hasSampleData": false },
+    { "code": "NM", "name": "New Mexico", "hasSampleData": false },
+    { "code": "NY", "name": "New York", "hasSampleData": true, "samplePrograms": [
+      "Sample: property-tax exemptions for veterans (alternative/eligible funds).",
+      "Sample: state education awards for veterans and dependents.",
+      "Sample: civil-service veteran hiring preference points."
+    ], "agency": "New York State Department of Veterans' Services" },
+    { "code": "NC", "name": "North Carolina", "hasSampleData": false },
+    { "code": "ND", "name": "North Dakota", "hasSampleData": false },
+    { "code": "OH", "name": "Ohio", "hasSampleData": false },
+    { "code": "OK", "name": "Oklahoma", "hasSampleData": false },
+    { "code": "OR", "name": "Oregon", "hasSampleData": false },
+    { "code": "PA", "name": "Pennsylvania", "hasSampleData": false },
+    { "code": "RI", "name": "Rhode Island", "hasSampleData": false },
+    { "code": "SC", "name": "South Carolina", "hasSampleData": false },
+    { "code": "SD", "name": "South Dakota", "hasSampleData": false },
+    { "code": "TN", "name": "Tennessee", "hasSampleData": false },
+    { "code": "TX", "name": "Texas", "hasSampleData": true, "samplePrograms": [
+      "Sample: Hazlewood Act tuition benefit for veterans and eligible dependents.",
+      "Sample: property-tax exemptions scaled to disability rating.",
+      "Sample: Texas Veterans Land Board home and land loan programs."
+    ], "agency": "Texas Veterans Commission" },
+    { "code": "UT", "name": "Utah", "hasSampleData": false },
+    { "code": "VT", "name": "Vermont", "hasSampleData": false },
+    { "code": "VA", "name": "Virginia", "hasSampleData": true, "samplePrograms": [
+      "Sample: Virginia Military Survivors and Dependents Education Program.",
+      "Sample: property-tax exemption for 100% service-connected disabled veterans.",
+      "Sample: Virginia Values Veterans (V3) employer hiring program."
+    ], "agency": "Virginia Department of Veterans Services" },
+    { "code": "WA", "name": "Washington", "hasSampleData": false },
+    { "code": "WV", "name": "West Virginia", "hasSampleData": false },
+    { "code": "WI", "name": "Wisconsin", "hasSampleData": false },
+    { "code": "WY", "name": "Wyoming", "hasSampleData": false }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "batch": "5b",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "agency": {
+        "name": "Virginia Department of Veterans Services",
+        "url": "https://www.dvs.virginia.gov/"
+      },
+      "programs": [
+        {
+          "name": "Real Property Tax Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Exempts the principal residence (and up to one acre) of veterans with a 100% permanent and total service-connected disability, plus a local property tax exemption for one vehicle, with surviving-spouse continuation.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/tax-exemptions"
+        },
+        {
+          "name": "Virginia Military Survivors & Dependents Education Program (VMSDEP)",
+          "category": "education",
+          "blurb": "Provides education benefits at Virginia public colleges and universities to spouses and children of military members killed, missing in action, taken prisoner, or at least 90% permanently disabled from service.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/education/virginia-military-survivors-dependents-education-program-vmsdep"
+        },
+        {
+          "name": "Virginia Values Veterans (V3) Program",
+          "category": "employment",
+          "blurb": "Free state training and certification program that helps employers recruit, hire, and retain veterans, and connects veteran job seekers with V3-certified employers.",
+          "source": "https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program/"
+        },
+        {
+          "name": "Disabled Veterans' Lifetime Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Virginia Department of Wildlife Resources offers free and reduced-fee lifetime hunting, freshwater fishing, and trapping licenses to resident veterans with a service-connected disability rating of 30% or greater.",
+          "source": "https://dwr.virginia.gov/veterans/"
+        },
+        {
+          "name": "Virginia Veteran & Family Support (VVFS)",
+          "category": "health",
+          "blurb": "Statewide program providing care coordination, peer support, and community resource connections for veterans and families addressing transition challenges, PTSD, and traumatic brain injury.",
+          "source": "https://www.dvs.virginia.gov/benefits-services/veteran-and-family-support"
+        }
+      ]
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "agency": {
+        "name": "Washington State Department of Veterans Affairs (WDVA)",
+        "url": "https://dva.wa.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of a primary residence for veterans with at least an 80% service-connected disability rating (or paid at the 100% rate), on a tiered schedule with county income requirements.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits/housing-resources/property-tax-relief"
+        },
+        {
+          "name": "Washington Tuition Waiver",
+          "category": "education",
+          "blurb": "Requires state community colleges, colleges, and universities to waive undergraduate tuition and fees for eligible veterans, National Guard members, and qualifying dependents and survivors (RCW 28B.15.621).",
+          "source": "https://dva.wa.gov/veterans-their-families/veterans-benefits/education-and-training/washington-tuition-waiver"
+        },
+        {
+          "name": "Washington State Veterans Homes",
+          "category": "health",
+          "blurb": "WDVA operates four Medicare/Medicaid-certified long-term care homes — Orting, Port Orchard, Spokane, and Walla Walla — serving veterans, spouses, surviving spouses, and Gold Star parents.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-homes"
+        },
+        {
+          "name": "Reduced-Fee Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Washington Department of Fish & Wildlife offers half-price hunting and fishing licenses to veterans with a service-connected disability rating of 30% or more.",
+          "source": "https://wdfw.wa.gov/accessibility/eligibility-requirements-veterans-reduced-fees"
+        },
+        {
+          "name": "Free or Reduced Rate Passes (State Parks Disabled Veteran Lifetime Pass)",
+          "category": "recreation",
+          "blurb": "Veterans with a 30% or greater service-connected disability qualify for a state parks pass providing free day-use parking, camping or moorage, boat launch, and trailer dump.",
+          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits/free-or-reduced-rate-passes-and-tax-exemptions"
+        }
+      ]
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "agency": {
+        "name": "West Virginia Department of Veterans Assistance",
+        "url": "https://veterans.wv.gov/"
+      },
+      "programs": [
+        {
+          "name": "Homestead Exemption for 100% Disabled Veterans",
+          "category": "tax",
+          "blurb": "Exempts a portion of the assessed value of the primary residence from property taxes for veterans with a 100% permanent and total service-connected disability.",
+          "source": "https://veterans.wv.gov/benefits/Pages/StateBenefits.aspx"
+        },
+        {
+          "name": "Disabled Veteran Real Property Tax Credit",
+          "category": "tax",
+          "blurb": "Refundable state income tax credit (effective 2024) for real property taxes paid on the homestead of honorably discharged veterans with a 90-100% combined VA disability rating.",
+          "source": "https://tax.wv.gov/Individuals/Pages/IncomeTaxCreditsForPropertyTaxesPaid.aspx"
+        },
+        {
+          "name": "War Orphan Education Program",
+          "category": "education",
+          "blurb": "Provides education assistance at West Virginia post-secondary institutions to children (and certain spouses) of service members who died in service or from service-connected causes.",
+          "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx"
+        },
+        {
+          "name": "Veterans Re-education Assistance Program",
+          "category": "education",
+          "blurb": "State stipend per semester for eligible veterans enrolled in certified post-secondary education or vocational training in West Virginia.",
+          "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx"
+        },
+        {
+          "name": "Free Hunting, Fishing, and Trapping Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans certified by the VA as totally and permanently service-connected disabled (and former POWs) may hunt, trap, and fish without purchasing a license (W.Va. Code 20-2-28).",
+          "source": "https://wvdnr.gov/programs-publications/disability-services/"
+        }
+      ],
+      "notes": "Military retirement income is fully exempt from WV personal income tax for tax years 2019 and later (see https://tax.wv.gov/Documents/TSD/tsd443.pdf). WVDVA also operates the WV Veterans Nursing Facility in Clarksburg and the WV Veterans Home in Barboursville; direct facility page URLs were not verified in this pass."
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "agency": {
+        "name": "Wisconsin Department of Veterans Affairs",
+        "url": "https://dva.wi.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veterans and Surviving Spouses Property Tax Credit",
+          "category": "tax",
+          "blurb": "Refundable state income tax credit equal to the property taxes paid on the principal residence (up to one acre) of veterans with a 100% service-connected disability rating or individual unemployability, and their unremarried surviving spouses.",
+          "source": "https://dva.wi.gov/services/housing-and-financial-services/property-tax-credit/"
+        },
+        {
+          "name": "Wisconsin GI Bill",
+          "category": "education",
+          "blurb": "Full tuition and segregated fee remission for eligible veterans and qualifying spouses and children for up to eight semesters or 128 credits at University of Wisconsin System and Wisconsin Technical College System schools.",
+          "source": "https://dva.wi.gov/benefits/education/wi-gi-bill/"
+        },
+        {
+          "name": "Wisconsin Veterans Homes",
+          "category": "health",
+          "blurb": "State-run homes at Chippewa Falls, King, and Union Grove providing 24-hour skilled nursing care to veterans, spouses, and Gold Star parents.",
+          "source": "https://dva.wi.gov/services/wisconsin-veterans-homes/"
+        },
+        {
+          "name": "Veterans Hunting and Fishing License Benefits",
+          "category": "recreation",
+          "blurb": "Wisconsin offers hunting and fishing license benefits for veterans, including a one-time free license for recently separated resident veterans and reduced-fee licenses for disabled veterans through the DNR.",
+          "source": "https://dva.wi.gov/benefits/outdoor-rec-and-sports/hunting-fishing-license/"
+        },
+        {
+          "name": "Veterans Housing and Recovery Program",
+          "category": "housing",
+          "blurb": "Provides homeless and at-risk veterans with transitional housing plus job training, education, and counseling support to help them return to independent living.",
+          "source": "https://dva.wi.gov/services/housing-and-financial-services/veterans-housing-and-recovery/"
+        }
+      ],
+      "notes": "WDVA also offers the Vet Ed Reimbursement Grant for part-time study (https://dva.wi.gov/benefits/education/vet-ed-reimbursement-grant/)."
+    }
+  ]
+}

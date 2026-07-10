@@ -1,0 +1,87 @@
+{
+  "batch": "A",
+  "gathered": "2026-07-10",
+  "sources_method": "RPP: BEA official MARPP download (MARPP_MSA_2008_2024.csv inside apps.bea.gov zip), all-items index, US=100. FMR: HUD FY2026 revised FMR file (huduser.gov), 2-bedroom, effective Oct 1 2025. Unemployment: BLS LAUS via public API, metro NSA rate, May 2026. VAMC: va.gov facility pages.",
+  "metros": [
+    {
+      "id": "san-antonio-tx",
+      "rpp": { "value": 94.716, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1426, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.1, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT484170000000003" },
+      "vamc": { "name": "Audie L. Murphy Memorial Veterans' Hospital (VA South Texas Health Care System)", "source": "https://www.va.gov/south-texas-health-care/locations/audie-l-murphy-memorial-veterans-hospital/" },
+      "notes": "San Antonio-New Braunfels, TX MSA / HUD Metro FMR Area. Unemployment cross-checked against BLS Southwest regional release (4.1% May 2026)."
+    },
+    {
+      "id": "dallas-fort-worth-tx",
+      "rpp": { "value": 103.09, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1931, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.0, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT481910000000003" },
+      "vamc": { "name": "Dallas VA Medical Center (VA North Texas Health Care System)", "source": "https://www.va.gov/north-texas-health-care/locations/dallas-va-medical-center/" },
+      "notes": "RPP and unemployment are for the full Dallas-Fort Worth-Arlington, TX MSA. HUD splits the metroplex: Dallas HMFA 2BR = $1,931 (shown); Fort Worth-Arlington HMFA 2BR = $1,723 (same HUD file). System also includes Garland VA Medical Center and Fort Worth outpatient clinics."
+    },
+    {
+      "id": "tampa-fl",
+      "rpp": { "value": 100.89, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1977, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.5, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT124530000000003" },
+      "vamc": { "name": "James A. Haley Veterans' Hospital (VA Tampa Health Care System)", "source": "https://www.va.gov/tampa-health-care/locations/james-a-haley-veterans-hospital/" },
+      "notes": "Tampa-St. Petersburg-Clearwater, FL MSA."
+    },
+    {
+      "id": "jacksonville-fl",
+      "rpp": { "value": 99.484, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1658, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT122726000000003" },
+      "vamc": { "name": "No VAMC in the metro — outpatient clinics only (Jacksonville 1, Jacksonville 2, Jacksonville North VA Clinics). Nearest full VA medical center: Malcom Randall VAMC, Gainesville (VA North Florida/South Georgia Health Care System)", "source": "https://www.va.gov/north-florida-health-care/locations/jacksonville-1-va-clinic/" },
+      "notes": "Jacksonville, FL MSA / HUD Metro FMR Area. Confirms the dataset's CBOC-only characterization: Jacksonville hosts multi-specialty VA outpatient clinics; inpatient VAMCs for the system are in Gainesville and Lake City, FL."
+    },
+    {
+      "id": "phoenix-az",
+      "rpp": { "value": 103.316, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1839, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.1, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT043806000000003" },
+      "vamc": { "name": "Carl T. Hayden Veterans' Administration Medical Center (VA Phoenix Health Care System)", "source": "https://www.va.gov/phoenix-health-care/locations/carl-t-hayden-veterans-administration-medical-center/" },
+      "notes": "Phoenix-Mesa-Chandler, AZ MSA."
+    },
+    {
+      "id": "atlanta-ga",
+      "rpp": { "value": 100.058, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1820, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.2, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT131206000000003" },
+      "vamc": { "name": "Joseph Maxwell Cleland Atlanta VA Medical Center (Decatur, GA — VA Atlanta Health Care System)", "source": "https://www.va.gov/atlanta-health-care/locations/joseph-maxwell-cleland-atlanta-va-medical-center/" },
+      "notes": "Atlanta-Sandy Springs-Roswell, GA MSA / HMFA."
+    },
+    {
+      "id": "nashville-tn",
+      "rpp": { "value": 96.338, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1730, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 2.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT473498000000003" },
+      "vamc": { "name": "Nashville VA Medical Center (VA Tennessee Valley Healthcare System)", "source": "https://www.va.gov/tennessee-valley-health-care/locations/nashville-va-medical-center/" },
+      "notes": "Nashville-Davidson--Murfreesboro--Franklin, TN MSA / HMFA. System also includes Alvin C. York VA Medical Center in Murfreesboro, inside the same metro."
+    },
+    {
+      "id": "san-diego-ca",
+      "rpp": { "value": 111.887, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 3001, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT064174000000003" },
+      "vamc": { "name": "Jennifer Moreno Department of Veterans Affairs Medical Center (La Jolla — VA San Diego Healthcare System)", "source": "https://www.va.gov/san-diego-health-care/locations/jennifer-moreno-department-of-veterans-affairs-medical-center/" },
+      "notes": "San Diego-Chula Vista-Carlsbad, CA MSA."
+    },
+    {
+      "id": "denver-co",
+      "rpp": { "value": 105.782, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 2089, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.6, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT081974000000003" },
+      "vamc": { "name": "Rocky Mountain Regional VA Medical Center (Aurora, CO — VA Eastern Colorado Health Care System)", "source": "https://www.va.gov/eastern-colorado-health-care/locations/rocky-mountain-regional-va-medical-center/" },
+      "notes": "Denver-Aurora-Centennial, CO MSA."
+    },
+    {
+      "id": "seattle-tacoma-wa",
+      "rpp": { "value": 111.133, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 2501, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT534266000000003" },
+      "vamc": { "name": "Seattle VA Medical Center (VA Puget Sound Health Care System; second campus: American Lake VA Medical Center, Tacoma)", "source": "https://www.va.gov/puget-sound-health-care/locations/seattle-va-medical-center/" },
+      "notes": "RPP and unemployment are for the Seattle-Tacoma-Bellevue, WA MSA. HUD splits the metro: Seattle-Bellevue HMFA 2BR = $2,501 (shown); Tacoma HMFA 2BR = $1,971 (same HUD file). American Lake VAMC page: https://www.va.gov/puget-sound-health-care/locations/american-lake-va-medical-center/"
+    }
+  ]
+}

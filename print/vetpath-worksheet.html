@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VetPath — Gameplan Worksheet &amp; Discussion Guide</title>
+<style>
+  :root{ --primary:#16324D; --accent:#C8863C; --accent-soft:#F6EDDF; --ink:#1B2A3A; --muted:#5A6B7B; --border:#CBD3DA; --chip:#EAF0F6; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#EEF1F4;line-height:1.5;font-size:15px}
+  .sheet{max-width:800px;margin:24px auto;background:#fff;padding:40px 44px;box-shadow:0 2px 14px rgba(16,36,56,.12)}
+  .bar{display:flex;align-items:center;gap:12px;border-bottom:3px solid var(--primary);padding-bottom:14px;margin-bottom:14px}
+  .mark{width:34px;height:34px;border-radius:8px;background:var(--accent);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .brand{font-size:20px;font-weight:700;color:var(--primary)}
+  .tag{margin-left:auto;color:var(--muted);font-size:13px}
+  h1{font-size:24px;margin:0 0 4px;color:var(--primary)}
+  h3{font-size:15px;margin:0 0 10px;background:var(--primary);color:#fff;padding:6px 12px;border-radius:6px}
+  p{margin:0 0 10px}
+  .muted{color:var(--muted)}
+  section{margin:20px 0}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:600;font-size:13px;margin-bottom:3px}
+  .line{border-bottom:1.5px solid var(--border);height:26px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+  .goals{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+  .goal{display:flex;gap:9px;align-items:center;font-size:14px;padding:5px 0}
+  .circle{width:16px;height:16px;border:1.7px solid #6B7680;border-radius:50%;flex-shrink:0}
+  .phase{font-weight:600;color:var(--primary);margin:12px 0 6px}
+  .writeline{border-bottom:1.5px solid var(--border);height:28px;margin-bottom:6px}
+  .chk{width:15px;height:15px;border:1.6px solid #7A8794;border-radius:3px;display:inline-block;vertical-align:-2px;margin-right:8px}
+  .doc{padding:5px 0;font-size:14px}
+  .res{border:1px solid var(--border);border-radius:8px;padding:10px 13px;margin-bottom:8px;font-size:14px}
+  .res b{color:var(--primary)} .res a{color:#185FA5}
+  .note{background:var(--accent-soft);border-radius:8px;padding:12px 16px;font-size:14px}
+  .toolbar{max-width:800px;margin:16px auto 0;text-align:right}
+  .btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:11px 20px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+  .guide h3{background:var(--accent);color:var(--primary)}
+  .agenda{border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:14px}
+  .agenda .r{display:flex;gap:12px;padding:9px 13px;border-bottom:1px solid var(--border)}
+  .agenda .r:last-child{border-bottom:none}
+  .agenda .t{font-weight:600;color:var(--primary);min-width:64px}
+  ol.prompts{margin:8px 0 0;padding-left:20px} ol.prompts li{margin-bottom:7px}
+  .foot{font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;margin-top:24px}
+  @media print{
+    body{background:#fff}
+    .sheet{box-shadow:none;margin:0;max-width:none;padding:0}
+    .toolbar{display:none}
+    section,.res,.agenda,.note{break-inside:avoid;page-break-inside:avoid}
+    .guide{page-break-before:always}
+    @page{size:letter;margin:0.6in}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button class="btn" onclick="window.print()">Print / Save as PDF</button></div>
+<div class="sheet">
+  <div class="bar"><span class="mark">V</span><span class="brand">VetPath</span><span class="tag">Gameplan worksheet — build your plan</span></div>
+  <h1>Build your veteran gameplan</h1>
+  <p class="muted">Fill this out together, then use it to look up and verify each item with official sources. This is a planning &amp; education worksheet — not the VA, and not legal, medical, or financial advice.</p>
+
+  <section>
+    <h3>Part 1 · About you</h3>
+    <div class="grid2">
+      <div class="field"><label>Name</label><div class="line"></div></div>
+      <div class="field"><label>Age range</label><div class="line"></div></div>
+      <div class="field"><label>State of residence</label><div class="line"></div></div>
+      <div class="field"><label>Branch of service</label><div class="line"></div></div>
+      <div class="field"><label>Service era / years</label><div class="line"></div></div>
+      <div class="field"><label>Current status (active / transitioning / veteran / retired / family)</label><div class="line"></div></div>
+      <div class="field"><label>VA disability rating (optional)</label><div class="line"></div></div>
+      <div class="field"><label>Employment situation</label><div class="line"></div></div>
+      <div class="field"><label>Housing situation</label><div class="line"></div></div>
+      <div class="field"><label>How urgent does this feel?</label><div class="line"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Part 2 · Your top 3 goals (circle up to three)</h3>
+    <div class="goals">
+      <div class="goal"><span class="circle"></span>Transition out of service</div>
+      <div class="goal"><span class="circle"></span>Get a better job</div>
+      <div class="goal"><span class="circle"></span>Use my education benefits</div>
+      <div class="goal"><span class="circle"></span>Buy a home</div>
+      <div class="goal"><span class="circle"></span>Start a business</div>
+      <div class="goal"><span class="circle"></span>Understand the disability process</div>
+      <div class="goal"><span class="circle"></span>Prepare for retirement</div>
+      <div class="goal"><span class="circle"></span>Move to a new state</div>
+      <div class="goal"><span class="circle"></span>Get my documents organized</div>
+      <div class="goal"><span class="circle"></span>Find local veteran support</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Part 3 · Your 30 / 60 / 90-day action plan</h3>
+    <div class="phase">Next 30 days — the most urgent, time-sensitive steps</div>
+    <div class="writeline"></div><div class="writeline"></div><div class="writeline"></div>
+    <div class="phase">Days 31–60</div>
+    <div class="writeline"></div><div class="writeline"></div><div class="writeline"></div>
+    <div class="phase">Days 61–90</div>
+    <div class="writeline"></div><div class="writeline"></div><div class="writeline"></div>
+  </section>
+
+  <section>
+    <h3>Part 4 · Documents to gather</h3>
+    <div class="grid2">
+      <div>
+        <div class="doc"><span class="chk"></span>DD-214</div>
+        <div class="doc"><span class="chk"></span>Service medical records</div>
+        <div class="doc"><span class="chk"></span>Current treatment records</div>
+        <div class="doc"><span class="chk"></span>Resume</div>
+      </div>
+      <div>
+        <div class="doc"><span class="chk"></span>Certificate of Eligibility (education / home loan)</div>
+        <div class="doc"><span class="chk"></span>VA award / rating letters</div>
+        <div class="doc"><span class="chk"></span>Awards, certificates, licenses</div>
+        <div class="doc"><span class="chk"></span>Other: __________________________</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Part 5 · Official sources to verify (write notes as you check each)</h3>
+    <div class="res"><b>VA benefits (health, disability, education, home loan):</b> VA.gov &nbsp;·&nbsp; <a href="https://www.va.gov">www.va.gov</a><br><span class="muted">Notes:</span> ________________________________________________</div>
+    <div class="res"><b>Free accredited claims help:</b> your county veteran service officer, or a VSO (VFW / American Legion / DAV)<br><span class="muted">Local contact:</span> ______________________________________</div>
+    <div class="res"><b>Employment:</b> DOL VETS &amp; your state American Job Center &nbsp;·&nbsp; <a href="https://www.dol.gov/agencies/vets">dol.gov/agencies/vets</a><br><span class="muted">Notes:</span> ________________________________________________</div>
+    <div class="res"><b>Business:</b> SBA veteran resources / Boots to Business &nbsp;·&nbsp; <a href="https://www.sba.gov">sba.gov</a><br><span class="muted">Notes:</span> ________________________________________________</div>
+    <div class="res"><b>State benefits:</b> your state Department of Veterans Affairs (find via <a href="https://www.nasdva.us">nasdva.us</a>)<br><span class="muted">Notes:</span> ________________________________________________</div>
+    <div class="note"><b>In crisis?</b> The Veterans Crisis Line is free, confidential, and 24/7 — dial <b>988</b> then press <b>1</b>, or text <b>838255</b>.</div>
+  </section>
+
+  <!-- ===== Facilitator guide (separate page) ===== -->
+  <div class="guide">
+    <h1 style="margin-top:0">Facilitator guide — running the session</h1>
+    <p class="muted">For the person walking a veteran (or a group) through this worksheet. Goal: everyone leaves with 3 goals chosen and at least three concrete next steps written down.</p>
+
+    <section>
+      <h3>Suggested 30-minute flow</h3>
+      <div class="agenda">
+        <div class="r"><span class="t">0–5 min</span><span>Welcome &amp; frame it: “This isn’t the VA telling you what you qualify for — it’s a way to leave today with a written plan you can act on.”</span></div>
+        <div class="r"><span class="t">5–12 min</span><span>Part 1 &amp; 2: fill in the basics and circle up to 3 goals. Encourage picking what feels most urgent, not everything.</span></div>
+        <div class="r"><span class="t">12–22 min</span><span>Part 3: for each goal, write 1–2 things to do in the next 30 days. Keep steps small and specific.</span></div>
+        <div class="r"><span class="t">22–28 min</span><span>Parts 4 &amp; 5: note which documents to find and which official source to verify each item with.</span></div>
+        <div class="r"><span class="t">28–30 min</span><span>Close: name the single first step for this week, and who to contact for free accredited help.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Discussion prompts</h3>
+      <ol class="prompts">
+        <li>What’s the one thing you wish someone had handed you when you left service?</li>
+        <li>Of your three goals, which one, if solved, makes the others easier?</li>
+        <li>What’s stopped you from acting on this before — time, trust, or not knowing where to start?</li>
+        <li>Who in your life should have a copy of this plan and your key documents?</li>
+        <li>Would a tool like VetPath help — and what would make you trust it (or not)?</li>
+      </ol>
+    </section>
+
+    <section>
+      <h3>Ground rules to say out loud</h3>
+      <p style="margin:0">• We don’t confirm eligibility — official sources do. • Accredited VSO help is <b>free</b>; never pay for basic claims assistance. • This is education and planning, not legal, medical, or financial advice.</p>
+    </section>
+
+    <div class="foot">
+      <b>VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</b> All benefit information referenced is sample/demo data for this prototype and must be verified through official sources. VetPath does not guarantee any benefit or eligibility.
+    </div>
+  </div>
+</div>
+</body>
+</html>

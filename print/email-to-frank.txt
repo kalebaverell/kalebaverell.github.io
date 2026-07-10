@@ -1,0 +1,43 @@
+Subject: VetPath update — your ideas are built. 5 minutes to try it + 3 things I need from you
+
+Frank,
+
+Great coffee last week. Everything we talked about is now built into the working prototype — I think you'll be surprised how far it's come.
+
+WHAT'S NEW (all from your notes):
+- The 4 tracks are the front door now: Employment, Education, Trades, Entrepreneur.
+- A "Pathfinder" that recommends a career path with a % fit — it works for a vet who has no idea what's next AND one who already knows. It shows its reasoning, not a black box.
+- The action plan finally has an endpoint: pick a destination and the whole 30/60/90 plan re-routes around it.
+- Resume scanner that translates military language for civilian recruiters and grades the resume against the target job.
+- Smart transcript: plug in a MOS, see what it may be worth in college credit and how to claim it.
+- Location suggestions that account for VA disability % — hospital proximity, city vs. country.
+- An honest "get the full disability benefit you've earned" guide (Intent to File, document everything, free accredited VSO — never the claim-shark route).
+- Networking/mentorship picks per path, SkillBridge for anyone still in service, and every question now lets you type your own answer.
+
+HOW TO TRY IT (5 minutes, nothing to install):
+1. Double-click the attached vetpath-demo.html — it opens in your browser.
+2. Click "Strategy" in the top menu, then "Load a sample veteran & plan."
+3. Then click "Pathfinder" → "Help me decide" and answer the 9 questions as yourself.
+4. Gut-check: does the recommended path feel right? What would make a veteran trust this — or not?
+(There's also an "Aa" button in the top bar that makes all the text bigger.)
+
+THREE THINGS I NEED FROM YOU:
+1. Your reactions after 5 minutes in the demo — especially anything that feels off to a veteran's eye.
+2. Two dates: one for a working session on the business decisions (name, structure, who pays, which 2 states we build real data for first), and one to pilot it live at your meeting.
+3. 5–10 veterans from your group willing to try it and give honest feedback — I have a printed worksheet that makes that a 30-minute session.
+
+The attached one-pager (vetpath-next-steps.pdf) has the full picture: what's done, the decisions on the table, and who's doing what over the next 30 days. The big one: getting this in front of real vets at your meeting. Everything else gets easier after we watch ten of them use it.
+
+Talk soon,
+Kaleb
+
+P.S. Reminder on the guardrails we agreed on: it's a planning and education tool, not the VA — all the benefit info in the prototype is clearly-labeled sample data, and it always points vets to VA.gov and free accredited VSOs to verify.
+
+---
+Suggested attachments (all in the vetpath\print folder unless noted):
+1. vetpath-demo.html        (in vetpath\demo — the interactive app, double-click to open)
+2. vetpath-next-steps.pdf   (the one-page update & next steps)
+3. vetpath-founder-playbook.pdf   (optional — the full working-session doc for the decisions meeting)
+4. vetpath-competitive-landscape.pdf   (optional — who else is out there, one page)
+
+Note: if your email provider blocks the .html attachment, right-click it → Send to → Compressed (zipped) folder, and attach the .zip instead.

@@ -1,0 +1,96 @@
+{
+  "batch": "B",
+  "gathered": "2026-07-09",
+  "_sources": {
+    "rpp": "BEA Regional Price Parities by MSA (MARPP dataset, all items, index US=100), 2024 vintage. Downloaded from official BEA file: https://apps.bea.gov/regional/zip/MARPP.zip (landing page: https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area)",
+    "fmr2br": "HUD FY2026 Fair Market Rents, 2-bedroom, from official HUD USER file: https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx (landing page: https://www.huduser.gov/portal/datasets/fmr.html)",
+    "unemployment": "BLS LAUS metro data. bls.gov blocks automated fetch (HTTP 403), so rates are taken from search snippets of BLS pages or official state/local workforce releases citing BLS; noted per metro.",
+    "vamc": "va.gov facility pages via web search."
+  },
+  "metros": [
+    {
+      "id": "washington-dc",
+      "rpp": {
+        "value": 108.884,
+        "year": 2024,
+        "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV (MSA)",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+      },
+      "fmr2br": {
+        "value": 2246,
+        "year": "FY2026",
+        "areaName": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+      },
+      "unemployment": {
+        "value": 3.9,
+        "period": "May 2026",
+        "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV MSA",
+        "source": "https://www.bls.gov/regions/mid-atlantic/data/xg-tables/ro3fx9512.htm",
+        "note": "From BLS Mid-Atlantic MSA table snippet (labor force 3,436,200 / unemployed 133,600, not seasonally adjusted). DC-MD Metropolitan Division alone was 5.2% in May 2026 per DC DOES release citing BLS (https://does.dc.gov/release/washington-metro%E2%80%99s-unemployment-rate-52-percent-0). bls.gov resisted direct fetch."
+      },
+      "vamc": {
+        "name": "Washington VA Medical Center (VA Washington DC health care)",
+        "level": "VAMC",
+        "url": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/"
+      },
+      "notes": "Full-service VAMC at 50 Irving St NW. Federal workforce contraction in 2025-26 pushed the DC-MD division unemployment rate up (~5.2%); the wider MSA rate remains lower (3.9%)."
+    },
+    {
+      "id": "virginia-beach-norfolk-va",
+      "rpp": {
+        "value": 97.941,
+        "year": 2024,
+        "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC (MSA)",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+      },
+      "fmr2br": {
+        "value": 1713,
+        "year": "FY2026",
+        "areaName": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+      },
+      "unemployment": {
+        "value": 3.5,
+        "period": "April 2026",
+        "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC MSA",
+        "source": "https://www.bls.gov/eag/eag.va_virginiabeach_msa.htm",
+        "note": "Value via USAFacts snippet of BLS LAUS data (https://usafacts.org/answers/what-is-the-unemployment-rate/metro-area/virginia-beach-va/), April 2026; bls.gov resisted automated fetch. Regional context: rate rose to ~4.1% in Nov 2025 on federal job cuts before easing."
+      },
+      "vamc": {
+        "name": "Hampton VA Medical Center (VA Hampton health care)",
+        "level": "VAMC",
+        "url": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/"
+      },
+      "notes": "Hampton VAMC (100 Emancipation Dr, Hampton) is a 432-bed teaching facility serving eastern VA and northeastern NC — full VAMC access for the metro."
+    },
+    {
+      "id": "minneapolis-st-paul-mn",
+      "rpp": {
+        "value": 104.822,
+        "year": 2024,
+        "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI (MSA)",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+      },
+      "fmr2br": {
+        "value": 1709,
+        "year": "FY2026",
+        "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI HUD Metro FMR Area",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+      },
+      "unemployment": {
+        "value": 4.2,
+        "period": "April 2026",
+        "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI MSA",
+        "source": "https://www.bls.gov/eag/eag.mn_minneapolis_msa.htm",
+        "note": "Value via search snippet of BLS LAUS data as republished by FRED series MINN427URN (https://fred.stlouisfed.org/series/MINN427URN); bls.gov and FRED resisted automated fetch."
+      },
+      "vamc": {
+        "name": "Minneapolis VA Medical Center (Minneapolis VA Health Care System)",
+        "level": "VAMC",
+        "url": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/"
+      },
+      "notes": "Full VAMC (1 Veterans Dr, Minneapolis) with 24/7 emergency department; VISN 23 flagship affiliated with the University of Minnesota."
+    }
+  ]
+}

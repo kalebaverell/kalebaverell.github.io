@@ -1,0 +1,1669 @@
+{
+  "_note": "Relocation decision-support data. The `official` block per metro carries CITED datapoints — BEA Regional Price Parities (cost), HUD 2BR Fair Market Rents (housing), BLS metro unemployment (jobs), and the principal VA Medical Center — each with source URL and vintage. The 1–5 tiers remain illustrative comparison aids derived for the prototype; verify all factors independently and check facilities at va.gov/find-locations.",
+  "tierGuide": {
+    "colTier": "Cost of living: 1 = lowest cost, 5 = highest (illustrative).",
+    "community": "Veteran presence: 1–5, higher = larger/denser veteran community (illustrative).",
+    "safetyTier": "Sample comfort tier: 1–5, higher = more favorable overall picture — always varies street by street; visit in person.",
+    "businessTier": "Small-business climate: 1–5, higher = friendlier taxes/regulatory feel (illustrative)."
+  },
+  "metros": [
+    {
+      "id": "san-antonio-tx",
+      "name": "San Antonio",
+      "state": "TX",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Major VA medical center presence plus a large military medical community."
+      },
+      "colTier": 2,
+      "colNote": "Below-average costs for a big metro.",
+      "housingSample": "Sample scan: many starter homes listed in the $200k–$300k range.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "healthcare-nursing",
+          "cybersecurity-analyst",
+          "it-support-network",
+          "federal-civil-service"
+        ],
+        "note": "Military-adjacent employers actively recruit veterans across healthcare, cyber, IT, and federal work."
+      },
+      "schoolsNote": "Many districts across the metro; quality varies by suburb — tour schools the way you'd tour houses.",
+      "community": 5,
+      "communityNote": "Known as 'Military City USA' — one of the largest veteran communities in the country.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 5,
+      "businessNote": "No state income tax; active small-business and franchise scene.",
+      "notes": "A frequent default pick for transitioning veterans — for good reason.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 94.716,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1426,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.1,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT484170000000003"
+        },
+        "vamc": {
+          "name": "Audie L. Murphy Memorial Veterans' Hospital (VA South Texas Health Care System)",
+          "source": "https://www.va.gov/south-texas-health-care/locations/audie-l-murphy-memorial-veterans-hospital/"
+        },
+        "notes": "San Antonio-New Braunfels, TX MSA / HUD Metro FMR Area. Unemployment cross-checked against BLS Southwest regional release (4.1% May 2026)."
+      }
+    },
+    {
+      "id": "dallas-fort-worth-tx",
+      "name": "Dallas–Fort Worth",
+      "state": "TX",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center plus a broad clinic network across the metroplex."
+      },
+      "colTier": 3,
+      "colNote": "Moderate overall; costs vary widely by suburb.",
+      "housingSample": "Sample scan: roughly $250k–$400k for many family homes depending on the suburb.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "project-manager",
+          "it-support-network",
+          "cdl-driver",
+          "business-analyst",
+          "franchise-owner"
+        ],
+        "note": "One of the largest, most diverse job markets in the country — nearly every track has depth here."
+      },
+      "schoolsNote": "Suburb-by-suburb differences are large; many families pick the suburb by the school district first.",
+      "community": 4,
+      "communityNote": "Big veteran population spread across a very large metro — find your pocket.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 5,
+      "businessNote": "No state income tax; steady corporate relocations keep hiring strong.",
+      "notes": "Scale is the superpower; commute time is the tradeoff.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 103.09,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1931,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT481910000000003"
+        },
+        "vamc": {
+          "name": "Dallas VA Medical Center (VA North Texas Health Care System)",
+          "source": "https://www.va.gov/north-texas-health-care/locations/dallas-va-medical-center/"
+        },
+        "notes": "RPP and unemployment are for the full Dallas-Fort Worth-Arlington, TX MSA. HUD splits the metroplex: Dallas HMFA 2BR = $1,931 (shown); Fort Worth-Arlington HMFA 2BR = $1,723 (same HUD file). System also includes Garland VA Medical Center and Fort Worth outpatient clinics."
+      }
+    },
+    {
+      "id": "tampa-fl",
+      "name": "Tampa",
+      "state": "FL",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Major VA medical center presence."
+      },
+      "colTier": 3,
+      "colNote": "Costs have climbed but remain mid-pack for a coastal big metro.",
+      "housingSample": "Sample scan: many homes in the $300k–$400k range; flood insurance can add real cost near water.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "project-manager",
+          "service-business-owner"
+        ],
+        "note": "Defense-adjacent employers and a strong veteran-hiring base."
+      },
+      "schoolsNote": "Mix of district and choice options; families often shortlist two or three zones before renting.",
+      "community": 5,
+      "communityNote": "Large veteran and military-retiree community anchored by nearby commands.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 5,
+      "businessNote": "No state income tax; busy service-business market.",
+      "notes": "Hurricane preparedness and insurance costs are part of the deal — budget for both.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 100.89,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1977,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.5,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT124530000000003"
+        },
+        "vamc": {
+          "name": "James A. Haley Veterans' Hospital (VA Tampa Health Care System)",
+          "source": "https://www.va.gov/tampa-health-care/locations/james-a-haley-veterans-hospital/"
+        },
+        "notes": "Tampa-St. Petersburg-Clearwater, FL MSA."
+      }
+    },
+    {
+      "id": "jacksonville-fl",
+      "name": "Jacksonville",
+      "state": "FL",
+      "vibe": "big",
+      "va": {
+        "level": "CBOC",
+        "note": "Large VA outpatient clinic presence in town; the region's full VA medical center is a drive away."
+      },
+      "colTier": 2,
+      "colNote": "One of the more affordable big coastal metros.",
+      "housingSample": "Sample scan: $250k–$350k common for family homes.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "welder",
+          "it-support-network",
+          "cdl-driver",
+          "healthcare-nursing"
+        ],
+        "note": "Port, logistics, and ship-repair work plus a big Navy footprint."
+      },
+      "schoolsNote": "Very large county district plus charter/magnet options — research zones early.",
+      "community": 5,
+      "communityNote": "Major Navy town — active-duty and veteran families are everywhere.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "No state income tax; logistics and trades stay busy.",
+      "notes": "A budget-friendlier Florida option if beach access matters more than nightlife.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 99.484,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1658,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.7,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT122726000000003"
+        },
+        "vamc": {
+          "name": "No VAMC in the metro — outpatient clinics only (Jacksonville 1, Jacksonville 2, Jacksonville North VA Clinics). Nearest full VA medical center: Malcom Randall VAMC, Gainesville (VA North Florida/South Georgia Health Care System)",
+          "source": "https://www.va.gov/north-florida-health-care/locations/jacksonville-1-va-clinic/"
+        },
+        "notes": "Jacksonville, FL MSA / HUD Metro FMR Area. Confirms the dataset's CBOC-only characterization: Jacksonville hosts multi-specialty VA outpatient clinics; inpatient VAMCs for the system are in Gainesville and Lake City, FL."
+      }
+    },
+    {
+      "id": "phoenix-az",
+      "name": "Phoenix",
+      "state": "AZ",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center plus a growing clinic network across the Valley."
+      },
+      "colTier": 3,
+      "colNote": "Moderate; newer outer suburbs stretch dollars further.",
+      "housingSample": "Sample scan: $300k–$400k common; new-build suburbs run cheaper.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "hvac-tech",
+          "electrician",
+          "cdl-driver",
+          "it-support-network"
+        ],
+        "note": "Trades demand runs hot year-round — construction and HVAC rarely slow down."
+      },
+      "schoolsNote": "Many districts and open-enrollment options; quality varies widely across the Valley.",
+      "community": 4,
+      "communityNote": "Large veteran population spread across a sprawling metro.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "Growth-friendly climate for trades and service businesses.",
+      "notes": "Summer heat is a lifestyle decision — visit in July before you commit.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 103.316,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1839,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.1,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT043806000000003"
+        },
+        "vamc": {
+          "name": "Carl T. Hayden Veterans' Administration Medical Center (VA Phoenix Health Care System)",
+          "source": "https://www.va.gov/phoenix-health-care/locations/carl-t-hayden-veterans-administration-medical-center/"
+        },
+        "notes": "Phoenix-Mesa-Chandler, AZ MSA."
+      }
+    },
+    {
+      "id": "atlanta-ga",
+      "name": "Atlanta",
+      "state": "GA",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center presence plus metro clinics."
+      },
+      "colTier": 3,
+      "colNote": "Moderate for a big metro; intown vs. suburb changes the math a lot.",
+      "housingSample": "Sample scan: wide range — roughly $275k–$425k for many family homes by area.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "project-manager",
+          "business-analyst",
+          "it-support-network",
+          "franchise-owner"
+        ],
+        "note": "Corporate headquarters depth plus one of the busiest logistics hubs anywhere."
+      },
+      "schoolsNote": "District quality varies sharply by county — school-first house hunting is the local norm.",
+      "community": 3,
+      "communityNote": "Solid veteran presence with several installations within day-trip range.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "Big customer base for service businesses and franchises.",
+      "notes": "Traffic shapes daily life here — pick your side of town before you pick the job.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 100.058,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1820,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.2,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT131206000000003"
+        },
+        "vamc": {
+          "name": "Joseph Maxwell Cleland Atlanta VA Medical Center (Decatur, GA — VA Atlanta Health Care System)",
+          "source": "https://www.va.gov/atlanta-health-care/locations/joseph-maxwell-cleland-atlanta-va-medical-center/"
+        },
+        "notes": "Atlanta-Sandy Springs-Roswell, GA MSA / HMFA."
+      }
+    },
+    {
+      "id": "nashville-tn",
+      "name": "Nashville",
+      "state": "TN",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center in the metro."
+      },
+      "colTier": 3,
+      "colNote": "Moderate but rising; outlying counties are cheaper.",
+      "housingSample": "Sample scan: $325k–$450k common near the core; less further out.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "healthcare-nursing",
+          "welder",
+          "service-business-owner",
+          "franchise-owner"
+        ],
+        "note": "A healthcare-industry capital with a booming trades and small-business scene."
+      },
+      "schoolsNote": "Metro and surrounding-county districts differ a lot; many families settle one county out.",
+      "community": 3,
+      "communityNote": "Growing veteran community; a major Army post is about an hour northwest.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 5,
+      "businessNote": "No state income tax; strong small-business energy.",
+      "notes": "Growth cuts both ways — opportunity is up, and so are prices.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 96.338,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1730,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 2.7,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT473498000000003"
+        },
+        "vamc": {
+          "name": "Nashville VA Medical Center (VA Tennessee Valley Healthcare System)",
+          "source": "https://www.va.gov/tennessee-valley-health-care/locations/nashville-va-medical-center/"
+        },
+        "notes": "Nashville-Davidson--Murfreesboro--Franklin, TN MSA / HMFA. System also includes Alvin C. York VA Medical Center in Murfreesboro, inside the same metro."
+      }
+    },
+    {
+      "id": "san-diego-ca",
+      "name": "San Diego",
+      "state": "CA",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Major VA medical center presence plus a dense military medical network."
+      },
+      "colTier": 5,
+      "colNote": "One of the most expensive metros on this list.",
+      "housingSample": "Sample scan: many family homes well above $700k; renting first is common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "aviation-maintenance",
+          "it-support-network",
+          "healthcare-nursing"
+        ],
+        "note": "Defense, biotech, and aviation employers prize clearances and military maintenance experience."
+      },
+      "schoolsNote": "Generally solid options across the county, but housing cost decides which zones are realistic.",
+      "community": 5,
+      "communityNote": "Huge Navy and Marine Corps presence — the veteran network is deep and active.",
+      "airport": "international",
+      "safetyTier": 4,
+      "businessTier": 2,
+      "businessNote": "Higher taxes and regulatory load — build both into any business plan.",
+      "notes": "Weather and community are elite; cost is the tradeoff to price honestly.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 111.887,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 3001,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.9,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT064174000000003"
+        },
+        "vamc": {
+          "name": "Jennifer Moreno Department of Veterans Affairs Medical Center (La Jolla — VA San Diego Healthcare System)",
+          "source": "https://www.va.gov/san-diego-health-care/locations/jennifer-moreno-department-of-veterans-affairs-medical-center/"
+        },
+        "notes": "San Diego-Chula Vista-Carlsbad, CA MSA."
+      }
+    },
+    {
+      "id": "denver-co",
+      "name": "Denver",
+      "state": "CO",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in the metro."
+      },
+      "colTier": 4,
+      "colNote": "Above-average costs, driven mostly by housing.",
+      "housingSample": "Sample scan: $450k+ is common for family homes.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "project-manager",
+          "business-analyst"
+        ],
+        "note": "Tech, aerospace-adjacent, and corporate work with an outdoor-lifestyle draw."
+      },
+      "schoolsNote": "Strong variation between districts; many families target specific suburbs.",
+      "community": 3,
+      "communityNote": "Solid veteran presence with military communities along the Front Range.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "Healthy market, moderate costs and regulation.",
+      "notes": "The mountains are the point — housing cost is the toll booth.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 105.782,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 2089,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.6,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT081974000000003"
+        },
+        "vamc": {
+          "name": "Rocky Mountain Regional VA Medical Center (Aurora, CO — VA Eastern Colorado Health Care System)",
+          "source": "https://www.va.gov/eastern-colorado-health-care/locations/rocky-mountain-regional-va-medical-center/"
+        },
+        "notes": "Denver-Aurora-Centennial, CO MSA."
+      }
+    },
+    {
+      "id": "seattle-tacoma-wa",
+      "name": "Seattle–Tacoma",
+      "state": "WA",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center presence at multiple sites around the Sound."
+      },
+      "colTier": 4,
+      "colNote": "High near Seattle; the Tacoma side runs meaningfully cheaper.",
+      "housingSample": "Sample scan: $500k+ common closer in; south-Sound suburbs run lower.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "it-support-network",
+          "aviation-maintenance",
+          "welder"
+        ],
+        "note": "Tech, aerospace, and the port keep both office and trades work strong."
+      },
+      "schoolsNote": "District quality varies around the Sound; south-end value zones are popular with military families.",
+      "community": 4,
+      "communityNote": "A large joint base south of Tacoma keeps the veteran network strong.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "No state income tax, but business taxes and costs are real — model both.",
+      "notes": "Gray winters are real; the summers make the case.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 111.133,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 2501,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.8,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT534266000000003"
+        },
+        "vamc": {
+          "name": "Seattle VA Medical Center (VA Puget Sound Health Care System; second campus: American Lake VA Medical Center, Tacoma)",
+          "source": "https://www.va.gov/puget-sound-health-care/locations/seattle-va-medical-center/"
+        },
+        "notes": "RPP and unemployment are for the Seattle-Tacoma-Bellevue, WA MSA. HUD splits the metro: Seattle-Bellevue HMFA 2BR = $2,501 (shown); Tacoma HMFA 2BR = $1,971 (same HUD file). American Lake VAMC page: https://www.va.gov/puget-sound-health-care/locations/american-lake-va-medical-center/"
+      }
+    },
+    {
+      "id": "washington-dc",
+      "name": "Washington, DC metro",
+      "state": "DC",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "VA medical center plus dense clinic coverage across the region."
+      },
+      "colTier": 5,
+      "colNote": "Expensive across DC, Maryland, and Northern Virginia; distance buys affordability plus a commute.",
+      "housingSample": "Sample scan: close-in family homes commonly $600k+; far suburbs less.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "federal-civil-service",
+          "govcon-sdvosb",
+          "cybersecurity-analyst",
+          "project-manager",
+          "business-analyst"
+        ],
+        "note": "The center of gravity for federal hiring, cleared work, and government contracting."
+      },
+      "schoolsNote": "Ranges from excellent to struggling within short distances — zone research is essential.",
+      "community": 4,
+      "communityNote": "Dense veteran and military population across the whole region.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "Unmatched GovCon opportunity; general operating costs are high.",
+      "notes": "If federal work or SDVOSB contracting is the plan, this is the deep end of the pool.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 108.884,
+          "year": 2024,
+          "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV (MSA)",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 2246,
+          "year": "FY2026",
+          "areaName": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.9,
+          "period": "May 2026",
+          "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV MSA",
+          "source": "https://www.bls.gov/regions/mid-atlantic/data/xg-tables/ro3fx9512.htm",
+          "note": "From BLS Mid-Atlantic MSA table snippet (labor force 3,436,200 / unemployed 133,600, not seasonally adjusted). DC-MD Metropolitan Division alone was 5.2% in May 2026 per DC DOES release citing BLS (https://does.dc.gov/release/washington-metro%E2%80%99s-unemployment-rate-52-percent-0). bls.gov resisted direct fetch."
+        },
+        "vamc": {
+          "name": "Washington VA Medical Center (VA Washington DC health care)",
+          "level": "VAMC",
+          "url": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/"
+        },
+        "notes": "Full-service VAMC at 50 Irving St NW. Federal workforce contraction in 2025-26 pushed the DC-MD division unemployment rate up (~5.2%); the wider MSA rate remains lower (3.9%)."
+      }
+    },
+    {
+      "id": "virginia-beach-norfolk-va",
+      "name": "Virginia Beach–Norfolk",
+      "state": "VA",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in the region plus clinics."
+      },
+      "colTier": 3,
+      "colNote": "Moderate for a coastal metro.",
+      "housingSample": "Sample scan: $300k–$400k common for family homes.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "welder",
+          "aviation-maintenance",
+          "it-support-network",
+          "cybersecurity-analyst"
+        ],
+        "note": "Shipyards, naval aviation, and defense IT anchor the market."
+      },
+      "schoolsNote": "Several city districts side by side; military families trade notes constantly — use that network.",
+      "community": 5,
+      "communityNote": "One of the densest military and veteran regions in the country.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "Steady defense-adjacent demand for service businesses.",
+      "notes": "If you want to stay close to the fleet and the culture, this is it.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 97.941,
+          "year": 2024,
+          "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC (MSA)",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1713,
+          "year": "FY2026",
+          "areaName": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.5,
+          "period": "April 2026",
+          "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC MSA",
+          "source": "https://www.bls.gov/eag/eag.va_virginiabeach_msa.htm",
+          "note": "Value via USAFacts snippet of BLS LAUS data (https://usafacts.org/answers/what-is-the-unemployment-rate/metro-area/virginia-beach-va/), April 2026; bls.gov resisted automated fetch. Regional context: rate rose to ~4.1% in Nov 2025 on federal job cuts before easing."
+        },
+        "vamc": {
+          "name": "Hampton VA Medical Center (VA Hampton health care)",
+          "level": "VAMC",
+          "url": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/"
+        },
+        "notes": "Hampton VAMC (100 Emancipation Dr, Hampton) is a 432-bed teaching facility serving eastern VA and northeastern NC — full VAMC access for the metro."
+      }
+    },
+    {
+      "id": "minneapolis-st-paul-mn",
+      "name": "Minneapolis–St. Paul",
+      "state": "MN",
+      "vibe": "big",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in the metro."
+      },
+      "colTier": 3,
+      "colNote": "Moderate; strong wages help the math.",
+      "housingSample": "Sample scan: $300k–$375k common for family homes.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education"
+        ],
+        "strongCareers": [
+          "business-analyst",
+          "project-manager",
+          "healthcare-nursing",
+          "it-support-network"
+        ],
+        "note": "Fortune 500 density plus a major health sector — steady corporate and clinical hiring."
+      },
+      "schoolsNote": "Generally well-regarded metro districts with real variation — compare a few suburbs.",
+      "community": 3,
+      "communityNote": "Moderate veteran presence with active service organizations.",
+      "airport": "international",
+      "safetyTier": 4,
+      "businessTier": 3,
+      "businessNote": "Strong corporate base; taxes run higher.",
+      "notes": "Winter is a commitment — pay and quality of life balance it for many.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 104.822,
+          "year": 2024,
+          "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI (MSA)",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1709,
+          "year": "FY2026",
+          "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI HUD Metro FMR Area",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.2,
+          "period": "April 2026",
+          "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI MSA",
+          "source": "https://www.bls.gov/eag/eag.mn_minneapolis_msa.htm",
+          "note": "Value via search snippet of BLS LAUS data as republished by FRED series MINN427URN (https://fred.stlouisfed.org/series/MINN427URN); bls.gov and FRED resisted automated fetch."
+        },
+        "vamc": {
+          "name": "Minneapolis VA Medical Center (Minneapolis VA Health Care System)",
+          "level": "VAMC",
+          "url": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/"
+        },
+        "notes": "Full VAMC (1 Veterans Dr, Minneapolis) with 24/7 emergency department; VISN 23 flagship affiliated with the University of Minnesota."
+      }
+    },
+    {
+      "id": "colorado-springs-co",
+      "name": "Colorado Springs",
+      "state": "CO",
+      "vibe": "mid",
+      "va": {
+        "level": "nearby",
+        "note": "VA clinics in town plus military treatment facilities; the full VA medical center is about an hour north."
+      },
+      "colTier": 3,
+      "colNote": "Moderate-high for a mid-size metro; cheaper than Denver.",
+      "housingSample": "Sample scan: $350k–$450k common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "federal-civil-service",
+          "teacher-trainer"
+        ],
+        "note": "Defense and space-adjacent employers hire cleared talent constantly."
+      },
+      "schoolsNote": "Multiple districts with distinct personalities; military families cluster around the well-known ones.",
+      "community": 5,
+      "communityNote": "Multiple installations make this one of the most veteran-dense mid-size metros anywhere.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 3,
+      "businessNote": "Defense-heavy economy supports service businesses.",
+      "notes": "Outdoors lifestyle plus a huge military community — the classic post-service landing zone.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 100.707,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1735,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.8,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT081782000000003"
+        },
+        "vamc": {
+          "name": "No VAMC in the metro — outpatient clinic only: PFC Floyd K. Lindstrom Department of Veterans Affairs Clinic (VA Eastern Colorado Health Care System). Nearest full VA medical center: Rocky Mountain Regional VAMC, Aurora (Denver metro), roughly an hour north",
+          "source": "https://www.va.gov/eastern-colorado-health-care/locations/pfc-floyd-k-lindstrom-department-of-veterans-affairs-clinic/"
+        },
+        "notes": "Colorado Springs, CO MSA / HUD Metro FMR Area. Confirms the dataset's 'nearby' VA characterization: large multi-specialty clinic in town (3141 Centennial Blvd) with same-day Veterans Express Care; inpatient care is at Rocky Mountain Regional VAMC in Aurora."
+      }
+    },
+    {
+      "id": "raleigh-durham-nc",
+      "name": "Raleigh–Durham",
+      "state": "NC",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in the metro (Durham side)."
+      },
+      "colTier": 3,
+      "colNote": "Moderate and rising with the region's growth.",
+      "housingSample": "Sample scan: $325k–$425k common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education"
+        ],
+        "strongCareers": [
+          "business-analyst",
+          "it-support-network",
+          "project-manager",
+          "teacher-trainer"
+        ],
+        "note": "Universities and the tech corridor create steady analyst, IT, and education pipelines."
+      },
+      "schoolsNote": "Well-regarded overall with fast-growing suburbs — capacity and zoning shift; check the current map.",
+      "community": 3,
+      "communityNote": "Moderate veteran presence with strong veteran pipelines at area employers.",
+      "airport": "international",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "Growth market with a reputation for being easy to do business in.",
+      "notes": "Education-and-tech corridor energy at mid-size-metro scale.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 98.157,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1750,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT373958000000003"
+        },
+        "vamc": {
+          "name": "Durham VA Medical Center (VA Durham Health Care System) — 508 Fulton St, Durham; 251-bed tertiary care and teaching hospital. Raleigh side is served by CBOCs (Raleigh VA Clinic and others) under the same system",
+          "source": "https://www.va.gov/durham-health-care/locations/durham-va-medical-center/"
+        },
+        "notes": "BEA/BLS/HUD all treat Raleigh-Cary, NC and Durham-Chapel Hill, NC as separate metros. Values shown are Raleigh-Cary MSA. Durham-Chapel Hill from same sources: RPP 97.572 (2024); 2BR FMR $1,711 (FY2026, Durham-Chapel Hill HMFA); unemployment 3.2% May 2026 (LAUMT372050000000003)."
+      }
+    },
+    {
+      "id": "pittsburgh-pa",
+      "name": "Pittsburgh",
+      "state": "PA",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Multiple VA medical facilities in the metro — strong VA presence."
+      },
+      "colTier": 2,
+      "colNote": "Genuinely affordable for a metro with this much infrastructure.",
+      "housingSample": "Sample scan: plenty of solid homes under $250k.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades",
+          "education"
+        ],
+        "strongCareers": [
+          "welder",
+          "electrician",
+          "healthcare-nursing",
+          "aviation-maintenance"
+        ],
+        "note": "A real trades-and-hospitals economy — steady work without coastal costs."
+      },
+      "schoolsNote": "City and suburban districts differ widely; many neighborhoods punch above their price.",
+      "community": 3,
+      "communityNote": "Established veteran community with deep service-organization roots.",
+      "airport": "international",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "Low overhead for service businesses and trades shops.",
+      "notes": "One of the strongest affordability-plus-VA-access combos on this list.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 94.671,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1299,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.8,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT423830000000003"
+        },
+        "vamc": {
+          "name": "Pittsburgh VA Medical Center-University Drive (VA Pittsburgh Healthcare System; second medical center campus: H. John Heinz III, O'Hara Township)",
+          "source": "https://www.va.gov/pittsburgh-health-care/locations/pittsburgh-va-medical-center-university-drive/"
+        },
+        "notes": "Pittsburgh, PA MSA / HUD Metro FMR Area. VA Pittsburgh operates two medical centers plus six CBOCs in the region — matches the dataset's 'multiple VA medical facilities' note."
+      }
+    },
+    {
+      "id": "huntsville-al",
+      "name": "Huntsville",
+      "state": "AL",
+      "vibe": "mid",
+      "va": {
+        "level": "CBOC",
+        "note": "VA clinic coverage in town; the region's full VA medical center is a significant drive away."
+      },
+      "colTier": 2,
+      "colNote": "Low costs relative to the salaries the defense sector pays here.",
+      "housingSample": "Sample scan: $250k–$325k common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cybersecurity-analyst",
+          "govcon-sdvosb",
+          "aviation-maintenance",
+          "federal-civil-service"
+        ],
+        "note": "Defense and aerospace contracting hub — one of the best SDVOSB launch pads anywhere."
+      },
+      "schoolsNote": "Several well-regarded suburban districts; growth is testing capacity — verify current zoning.",
+      "community": 4,
+      "communityNote": "Dense veteran and defense-civilian community around the arsenal.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "GovCon opportunity per capita is hard to beat.",
+      "notes": "Small city, outsized federal-contracting economy.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 93.072,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1310,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 2.9,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT012662000000003"
+        },
+        "vamc": {
+          "name": "No VAMC in the metro — outpatient clinics only (Huntsville VA Clinic, Huntsville West VA Clinic, Huntsville South VA specialty clinic; VA Birmingham Health Care System). Nearest full VA medical center: Birmingham VA Medical Center, roughly 100 miles south",
+          "source": "https://www.va.gov/birmingham-health-care/locations/huntsville-va-clinic/"
+        },
+        "notes": "Huntsville, AL MSA. Confirms the dataset's CBOC characterization; Huntsville South VA specialty clinic (cardiology, chemo infusion, podiatry, neurology) opened Feb 2026, expanding local coverage."
+      }
+    },
+    {
+      "id": "boise-id",
+      "name": "Boise",
+      "state": "ID",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town."
+      },
+      "colTier": 3,
+      "colNote": "Moderate after a fast run-up; still cheaper than the coasts.",
+      "housingSample": "Sample scan: $375k–$450k common.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "entrepreneur",
+          "education"
+        ],
+        "strongCareers": [
+          "electrician",
+          "hvac-tech",
+          "service-business-owner",
+          "teacher-trainer"
+        ],
+        "note": "Population growth keeps trades and service businesses booked out."
+      },
+      "schoolsNote": "Generally solid districts; fast-growing suburbs are adding schools — check what's actually open.",
+      "community": 3,
+      "communityNote": "Moderate but tight-knit veteran community.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "Growth-friendly, low-friction environment for small business.",
+      "notes": "Outdoors life plus a real VAMC — a rare mid-size combination.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 98.391,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1655,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.3,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT161426000000003"
+        },
+        "vamc": {
+          "name": "Boise VA Medical Center (VA Boise Health Care System) — 500 W Fort St, Boise",
+          "source": "https://www.va.gov/boise-health-care/locations/boise-va-medical-center/"
+        },
+        "notes": "Boise City, ID MSA / HUD Metro FMR Area."
+      }
+    },
+    {
+      "id": "oklahoma-city-ok",
+      "name": "Oklahoma City",
+      "state": "OK",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in the metro."
+      },
+      "colTier": 1,
+      "colNote": "Among the lowest big-city costs in the country.",
+      "housingSample": "Sample scan: many family homes $180k–$275k.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "aviation-maintenance",
+          "cdl-driver",
+          "federal-civil-service",
+          "hvac-tech"
+        ],
+        "note": "A major aviation-maintenance workforce plus logistics, energy, and federal work."
+      },
+      "schoolsNote": "Suburban districts are the usual family pick; the metro core varies more.",
+      "community": 4,
+      "communityNote": "A large installation keeps the veteran and federal-civilian network active.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "Low overhead makes first businesses easier to launch.",
+      "notes": "Your dollar goes far here — and aviation maintenance is a hometown industry.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 90.408,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1244,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.2,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT403642000000003"
+        },
+        "vamc": {
+          "name": "Oklahoma City VA Medical Center (VA Oklahoma City Health Care System) — 921 NE 13th St, Oklahoma City",
+          "source": "https://www.va.gov/oklahoma-city-health-care/locations/oklahoma-city-va-medical-center/"
+        },
+        "notes": "Oklahoma City, OK MSA / HUD Metro FMR Area. System also runs 15 outpatient clinics including several within the metro (North OKC, South OKC, Norman, Yukon, Tinker AFB)."
+      }
+    },
+    {
+      "id": "tucson-az",
+      "name": "Tucson",
+      "state": "AZ",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town."
+      },
+      "colTier": 2,
+      "colNote": "Noticeably cheaper than Phoenix.",
+      "housingSample": "Sample scan: $250k–$325k common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades"
+        ],
+        "strongCareers": [
+          "aviation-maintenance",
+          "it-support-network",
+          "hvac-tech"
+        ],
+        "note": "Aerospace and defense presence with a lower cost base than the bigger desert metros."
+      },
+      "schoolsNote": "District and charter options vary across the valley; families compare a handful of zones.",
+      "community": 4,
+      "communityNote": "Air Force presence and retiree community keep veteran networks strong.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "Modest costs; steady demand for trades and services.",
+      "notes": "Desert living at a calmer pace and price than Phoenix.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 96.896,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1402,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.7,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT044606000000003"
+        },
+        "vamc": {
+          "name": "Tucson VA Medical Center (VA Southern Arizona Health Care System) — 3601 S 6th Ave, Tucson",
+          "source": "https://www.va.gov/southern-arizona-health-care/locations/tucson-va-medical-center/"
+        },
+        "notes": "Tucson, AZ MSA. System includes 7 CBOCs across southern Arizona plus Northwest and Southeast Tucson VA clinics inside the metro."
+      }
+    },
+    {
+      "id": "columbus-oh",
+      "name": "Columbus",
+      "state": "OH",
+      "vibe": "mid",
+      "va": {
+        "level": "CBOC",
+        "note": "Major VA outpatient/ambulatory-care center in town; the nearest full inpatient VA medical center is a drive away."
+      },
+      "colTier": 2,
+      "colNote": "Affordable for the size and job base.",
+      "housingSample": "Sample scan: $250k–$325k common.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "education",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "it-support-network",
+          "business-analyst",
+          "project-manager",
+          "franchise-owner"
+        ],
+        "note": "Diverse Midwest economy — logistics, insurance, tech, and a huge university."
+      },
+      "schoolsNote": "Ring suburbs carry strong district reputations; the city core varies more.",
+      "community": 3,
+      "communityNote": "Moderate veteran presence with active student-veteran and employer programs.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "Frequent test market for franchises — a telling sign for small business.",
+      "notes": "Quietly one of the most balanced value picks in the Midwest.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 95.469,
+          "year": 2024,
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+          "note": "Columbus, OH MSA, RPPs: All items (2023 = 94.630). Official BEA MARPP dataset."
+        },
+        "fmr2br": {
+          "value": 1430,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs.xlsx",
+          "note": "Columbus, OH HUD Metro FMR Area, 2BR. Official HUD FY26 file (FY2025 was $1,445)."
+        },
+        "unemployment": {
+          "value": 2.7,
+          "period": "May 2026",
+          "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT391814000000003)",
+          "note": "BLS LAUS, Columbus OH MSA, not seasonally adjusted. April 2026 = 2.8, March 2026 = 3.4. BLS reported Columbus had the largest YoY metro rate decline in spring 2026."
+        },
+        "vamc": {
+          "name": "Chalmers P. Wylie Veterans Outpatient Clinic (VA Central Ohio health care)",
+          "source": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+          "note": "CBOC/ambulatory-care center only — Columbus has no full inpatient VA medical center in-metro; nearest full VAMCs (e.g., Dayton, Chillicothe) are a drive away. Matches the 'CBOC' level in relocationMetros.json."
+        }
+      }
+    },
+    {
+      "id": "fayetteville-nc",
+      "name": "Fayetteville",
+      "state": "NC",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town serving a large military region."
+      },
+      "colTier": 1,
+      "colNote": "Very affordable — the installation economy keeps prices grounded.",
+      "housingSample": "Sample scan: many homes under $250k.",
+      "jobs": {
+        "tracks": [
+          "employment",
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "federal-civil-service",
+          "service-business-owner",
+          "it-support-network"
+        ],
+        "note": "The installation economy hires steadily; service businesses serve a constant military population."
+      },
+      "schoolsNote": "County district plus on-post options; military families share current intel freely — ask.",
+      "community": 5,
+      "communityNote": "Life revolves around one of the largest Army posts — veteran networks are everywhere.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "A reliable customer base for veteran-owned service businesses.",
+      "notes": "If you want to stay inside the military ecosystem, this is home turf.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 91.978,
+          "year": 2024,
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+          "note": "Fayetteville, NC MSA, RPPs: All items (2023 = 91.854). Official BEA MARPP dataset."
+        },
+        "fmr2br": {
+          "value": 1251,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs.xlsx",
+          "note": "Fayetteville, NC HUD Metro FMR Area, 2BR. Official HUD FY26 file (FY2025 was $1,240)."
+        },
+        "unemployment": {
+          "value": 4.3,
+          "period": "May 2026",
+          "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT372218000000003)",
+          "note": "BLS LAUS, Fayetteville NC MSA, not seasonally adjusted. April 2026 = 4.3, March 2026 = 4.4."
+        },
+        "vamc": {
+          "name": "Fayetteville VA Medical Center (VA Fayetteville Coastal health care)",
+          "source": "https://www.va.gov/fayetteville-coastal-health-care/locations/fayetteville-va-medical-center/",
+          "note": "Full VA medical center (Complexity Level 1c, 2300 Ramsey St), ~10 miles from Fort Bragg/Fort Liberty; system serves ~90,000 veterans across 19 counties."
+        }
+      }
+    },
+    {
+      "id": "spokane-wa",
+      "name": "Spokane",
+      "state": "WA",
+      "vibe": "mid",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town."
+      },
+      "colTier": 2,
+      "colNote": "A far lower cost base than the coastal side of the state.",
+      "housingSample": "Sample scan: $300k–$375k common.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "employment"
+        ],
+        "strongCareers": [
+          "welder",
+          "electrician",
+          "healthcare-nursing",
+          "cdl-driver"
+        ],
+        "note": "Regional health hub with steady trades demand."
+      },
+      "schoolsNote": "City and valley districts each have loyal fans; tour both sides before choosing.",
+      "community": 3,
+      "communityNote": "Air Force base nearby and an established veteran community.",
+      "airport": "regional",
+      "safetyTier": 3,
+      "businessTier": 3,
+      "businessNote": "No state income tax; small-city overhead.",
+      "notes": "Four seasons, real VA access, and coastal-Washington escape pricing.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 100.346,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1531,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 4.3,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT534406000000003"
+        },
+        "vamc": {
+          "name": "Mann-Grandstaff Department of Veterans Affairs Medical Center (VA Spokane Health Care System) — 4815 N Assembly St, Spokane",
+          "source": "https://www.va.gov/spokane-health-care/locations/mann-grandstaff-department-of-veterans-affairs-medical-center/"
+        },
+        "notes": "Spokane-Spokane Valley, WA MSA; HUD Spokane, WA HUD Metro FMR Area."
+      }
+    },
+    {
+      "id": "knoxville-tn",
+      "name": "Knoxville",
+      "state": "TN",
+      "vibe": "mid",
+      "va": {
+        "level": "CBOC",
+        "note": "VA clinic coverage in town; the regional VA medical center is roughly a 1.5-hour drive."
+      },
+      "colTier": 2,
+      "colNote": "Low costs at the foot of the Smokies.",
+      "housingSample": "Sample scan: $275k–$350k common.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "welder",
+          "hvac-tech",
+          "service-business-owner",
+          "cdl-driver"
+        ],
+        "note": "Steady trades market, growing population, low overhead for a first business."
+      },
+      "schoolsNote": "County districts vary by zone; several suburbs are known family magnets.",
+      "community": 3,
+      "communityNote": "Moderate veteran presence with strong community feel.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "No state income tax; friendly costs for trades shops.",
+      "notes": "Mountains on the weekend, workshop on the weekdays.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 92.569,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1471,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 2.7,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT472894000000003"
+        },
+        "vamc": {
+          "name": "No VAMC in the metro — outpatient care only: William C. Tallent Department of Veterans Affairs Outpatient Clinic, Knoxville (VA Mountain Home Health Care System), plus Knox County VA Clinic. Nearest full VA medical center: James H. Quillen VAMC, Mountain Home/Johnson City, roughly 100 miles northeast",
+          "source": "https://www.va.gov/mountain-home-health-care/locations/william-c-tallent-department-of-veterans-affairs-outpatient-clinic/"
+        },
+        "notes": "Knoxville, TN MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization: multi-specialty outpatient clinic at 8033 Ray Mears Blvd; inpatient care is at Mountain Home VAMC (~1.5 hr drive)."
+      }
+    },
+    {
+      "id": "sioux-falls-sd",
+      "name": "Sioux Falls",
+      "state": "SD",
+      "vibe": "small",
+      "va": {
+        "level": "VAMC",
+        "note": "A full VA medical center in a small city — a rare combination."
+      },
+      "colTier": 2,
+      "colNote": "Low costs with surprisingly strong local wages.",
+      "housingSample": "Sample scan: $250k–$325k common.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "welder",
+          "hvac-tech",
+          "service-business-owner",
+          "healthcare-nursing"
+        ],
+        "note": "Health systems and logistics anchor a steady small-city market."
+      },
+      "schoolsNote": "A manageable set of districts; class sizes and access are small-city advantages.",
+      "community": 3,
+      "communityNote": "Modest veteran population but a tight one — the VAMC is a natural hub.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 5,
+      "businessNote": "No state income tax; consistently low-friction for small business.",
+      "notes": "Small-city pace WITH full VA access — few places offer both.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 90.631,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1156,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 1.8,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT464362000000003"
+        },
+        "vamc": {
+          "name": "Royal C. Johnson Veterans' Memorial Hospital / Sioux Falls VA Medical Center (VA Sioux Falls Health Care System) — 2501 W 22nd St, Sioux Falls",
+          "source": "https://www.va.gov/sioux-falls-health-care/locations/royal-c-johnson-veterans-memorial-hospital/"
+        },
+        "notes": "Sioux Falls, SD-MN MSA (BEA); HUD Sioux Falls, SD HUD Metro FMR Area. Full VAMC in a small metro, matching the dataset's note."
+      }
+    },
+    {
+      "id": "fargo-nd",
+      "name": "Fargo",
+      "state": "ND",
+      "vibe": "small",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town."
+      },
+      "colTier": 1,
+      "colNote": "Very low costs; employers compete for reliable people.",
+      "housingSample": "Sample scan: many homes under $275k.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "employment"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "welder",
+          "it-support-network"
+        ],
+        "note": "Chronically low unemployment — showing up dependable is a superpower here."
+      },
+      "schoolsNote": "Well-regarded small-city districts with easy access.",
+      "community": 3,
+      "communityNote": "Smaller veteran community, anchored by the VAMC and Guard presence.",
+      "airport": "regional",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "Low overhead and loyal local customer bases.",
+      "notes": "The winter is the entrance exam. Pass it and the math works.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 90.871,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1112,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 2.3,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT382202000000003"
+        },
+        "vamc": {
+          "name": "Fargo VA Medical Center (VA Fargo Health Care System) — 2101 Elm St N, Fargo",
+          "source": "https://www.va.gov/fargo-health-care/locations/fargo-va-medical-center/"
+        },
+        "notes": "Fargo, ND-MN MSA. Despite small-metro size, Fargo hosts a full VAMC (primary care, cancer care, emergency services, surgery, mental health) — dataset's VAMC characterization confirmed."
+      }
+    },
+    {
+      "id": "cheyenne-wy",
+      "name": "Cheyenne",
+      "state": "WY",
+      "vibe": "small",
+      "va": {
+        "level": "VAMC",
+        "note": "Full VA medical center in town."
+      },
+      "colTier": 2,
+      "colNote": "Low costs; a bigger metro (and its prices) is about 1.5 hours south.",
+      "housingSample": "Sample scan: $275k–$350k common.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "employment"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "electrician",
+          "federal-civil-service"
+        ],
+        "note": "An Air Force base, state government, and rail/logistics anchor a small, steady market."
+      },
+      "schoolsNote": "One county district — simple to evaluate; small class sizes.",
+      "community": 4,
+      "communityNote": "The base plus a small population means veterans are a visible part of town life.",
+      "airport": "limited",
+      "safetyTier": 4,
+      "businessTier": 5,
+      "businessNote": "No state income tax and famously light regulatory load.",
+      "notes": "High plains, low costs, full VA access — wind included at no extra charge.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 96.491,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1174,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 2.8,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT561694000000003"
+        },
+        "vamc": {
+          "name": "Cheyenne VA Medical Center (VA Cheyenne Health Care System) — 2360 E Pershing Blvd, Cheyenne",
+          "source": "https://www.va.gov/cheyenne-health-care/locations/cheyenne-va-medical-center/"
+        },
+        "notes": "Cheyenne, WY MSA. Contrary to the 'CBOC-only likely' expectation, Cheyenne hosts a full VA medical center (VA facility 442) — dataset's VAMC characterization confirmed."
+      }
+    },
+    {
+      "id": "clarksville-tn",
+      "name": "Clarksville",
+      "state": "TN",
+      "vibe": "small",
+      "va": {
+        "level": "CBOC",
+        "note": "VA clinic in town; the full VA medical center is about an hour away in Nashville."
+      },
+      "colTier": 1,
+      "colNote": "Very affordable, with Nashville's market an hour away.",
+      "housingSample": "Sample scan: many homes $225k–$300k.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "employment",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "hvac-tech",
+          "service-business-owner"
+        ],
+        "note": "Post-adjacent economy with steady demand for trades and services."
+      },
+      "schoolsNote": "Growing county district adding capacity — verify zoning for new neighborhoods.",
+      "community": 5,
+      "communityNote": "A true military town next to a major Army post — instant network.",
+      "airport": "limited",
+      "safetyTier": 3,
+      "businessTier": 4,
+      "businessNote": "No state income tax; a constant military customer base.",
+      "notes": "Military-town familiarity at small-town prices, with a big city within reach.",
+      "official": {
+        "gathered": "2026-07-10",
+        "rpp": {
+          "value": 90.947,
+          "year": "2024",
+          "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        },
+        "fmr2br": {
+          "value": 1346,
+          "year": "FY2026",
+          "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        },
+        "unemployment": {
+          "value": 3.9,
+          "asOf": "May 2026",
+          "source": "https://data.bls.gov/timeseries/LAUMT471730000000003"
+        },
+        "vamc": {
+          "name": "No VAMC in the metro — outpatient clinics only: Clarksville VA Clinic, Montgomery County VA Clinic, Dalton Drive VA Dental Clinic, and Fort Campbell VA Clinic (VA Tennessee Valley Healthcare System). Nearest full VA medical center: Nashville VA Medical Center, roughly an hour southeast",
+          "source": "https://www.va.gov/tennessee-valley-health-care/locations/clarksville-va-clinic/"
+        },
+        "notes": "Clarksville, TN-KY MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization; VA has five clinic sites serving Clarksville veterans, and a new multi-specialty Clarksville VA clinic is slated to open by 2030."
+      }
+    },
+    {
+      "id": "rural-telehealth",
+      "name": "Rural + telehealth pattern",
+      "state": "—",
+      "vibe": "small",
+      "va": {
+        "level": "CBOC",
+        "note": "Anchor to a VA community clinic (CBOC), lean on VA telehealth, and confirm Community Care coverage before committing."
+      },
+      "colTier": 1,
+      "colNote": "The lowest-cost pattern of all — land and housing prices most metros can't touch.",
+      "housingSample": "Sample pattern: acreage plus a modest home for what a metro starter house costs.",
+      "jobs": {
+        "tracks": [
+          "trades",
+          "entrepreneur"
+        ],
+        "strongCareers": [
+          "cdl-driver",
+          "welder",
+          "service-business-owner",
+          "franchise-owner"
+        ],
+        "note": "Work that travels well: driving, trades, and service businesses — and remote work changes the math entirely."
+      },
+      "schoolsNote": "Small districts vary widely — visit the actual school; small class sizes are the common upside.",
+      "community": 2,
+      "communityNote": "Fewer veterans nearby by definition — plan deliberate connection: VSO posts, online groups, regular trips to town.",
+      "airport": "limited",
+      "safetyTier": 4,
+      "businessTier": 4,
+      "businessNote": "Low overhead and little competition — but a smaller customer base; validate demand first.",
+      "notes": "Not a place — a pattern. It works when you anchor healthcare and community on purpose, before the move."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+HOW TO GET A PUBLIC LINK FOR FRANK  (about 60 seconds, no account needed)
+
+Why a link needs this step: a website has to be hosted somewhere public for Frank
+to open it. Your work network blocks the "instant tunnel" shortcut (that's normal for
+company networks), so we publish the finished site instead. This also gives Frank a
+PERMANENT link that works even when your computer is off.
+
+=========================================================================
+OPTION A — Netlify Drop  (easiest, no login, instant link)
+=========================================================================
+1. Open this page in your browser:   https://app.netlify.com/drop
+2. Drag the file  VetPath-Website.zip  (in this folder) onto that page.
+   (You can also drag the whole  vetpath\out  folder instead of the zip.)
+3. Wait ~15 seconds. Netlify shows a link like:
+      https://something-random-1234.netlify.app
+4. That link is live immediately — copy it and send it to Frank. Done.
+
+   Tip: if you make a free Netlify account (optional), you can rename the link
+   to something like  vetpath-demo.netlify.app  and keep/manage it.
+
+=========================================================================
+OPTION B — Vercel  (best if you want a permanent link you control)
+=========================================================================
+In a terminal (PowerShell) in the vetpath folder:
+   1. npm i -g vercel
+   2. vercel login        (opens your browser once to sign in — I can't do this part)
+   3. vercel --prod       (answer the prompts; it deploys and prints your link)
+
+Kaleb: once you've done "vercel login" once, tell me and I can handle the deploys
+for you from then on.
+
+=========================================================================
+WHAT THE LINK CONTAINS
+=========================================================================
+The full interactive VetPath site: the redesigned homepage with real photos, the
+Pathfinder recommendation engine, a sample gameplan, real verified benefit data for
+all 50 states + DC, and the resume / transcript / networking tools.
+
+Reminder for Frank: this is a planning & education prototype — not the VA. It always
+points to VA.gov and accredited VSOs to verify. In crisis: dial 988, then press 1.

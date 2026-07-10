@@ -1,0 +1,157 @@
+{
+  "_note": "Research grounding for the VetPath Pathfinder assessment (data/assessmentQuestions.json, lib/pathfinder.ts). Official U.S. Department of Labor / O*NET sources only. VetPath's assessment is an independent adaptation informed by these frameworks; it is NOT a licensed copy of the O*NET Interest Profiler and must never claim DOL endorsement.",
+  "lastVerified": "2026-07-08",
+  "frameworks": [
+    {
+      "name": "O*NET Interest Profiler (Mini-IP, RIASEC / Holland Codes)",
+      "what": "USDOL-sponsored self-assessment measuring six Holland occupational interest types — Realistic, Investigative, Artistic, Social, Enterprising, Conventional (RIASEC). Web Mini-IP is 30 items, links results to 900+ occupations in O*NET OnLine and My Next Move. Developed by the National Center for O*NET Development for career exploration, ~10-20 minutes.",
+      "license": "Free of charge under the O*NET Career Exploration Tools Content License: CC BY-ND 4.0 for verbatim copies; the O*NET Tools Developer License is required to modify, edit, or extend. Both require crediting 'O*NET Career Exploration Tools' and 'U.S. Department of Labor, Employment and Training Administration.' Modified/derived products must state that USDOL/ETA has not approved, endorsed, or tested the modifications. The O*NET trademark must be used as an adjective, never possessive or plural. Not public domain, but freely usable with attribution.",
+      "officialUrl": "https://www.onetcenter.org/IP.html"
+    },
+    {
+      "name": "My Next Move for Veterans",
+      "what": "Official USDOL/ETA site (developed by the National Center for O*NET Development) that wraps the O*NET Interest Profiler for transitioning service members, including MOS/military-code-to-civilian-career crosswalk. This is the tool VetPath should deep-link veterans to for the validated version of the interest assessment.",
+      "license": "Free public government website; sponsored by the U.S. Department of Labor, Employment & Training Administration.",
+      "officialUrl": "https://www.mynextmove.org/vets/"
+    },
+    {
+      "name": "O*NET Work Values (Work Importance Locator)",
+      "what": "Six work values from the theory of work adjustment: Achievement, Independence, Recognition, Relationships, Support, Working Conditions. The Independence value ('workers plan their work with little supervision'; autonomy, creativity) directly grounds VetPath's autonomy and structure questions. Every O*NET occupation is rated on these values.",
+      "license": "Work Importance Locator is part of the O*NET Career Exploration Tools — same Content License / Developer License terms as the Interest Profiler. Occupation-level Work Values data is browsable free on O*NET OnLine.",
+      "officialUrl": "https://www.onetonline.org/explore/workvalues/"
+    },
+    {
+      "name": "O*NET Work Styles (Content Model domain 1.D)",
+      "what": "Sixteen personal-characteristic descriptors rated for every occupation, including Leadership, Independence, Initiative, Achievement/Effort, Social Orientation, Concern for Others, Stress Tolerance, Adaptability/Flexibility, Attention to Detail, Analytical Thinking. These ground VetPath's lead, people, care, and risk-adjacent questions in occupation-level data.",
+      "license": "O*NET database content (including Work Styles ratings) is published under CC BY 4.0 with attribution to the U.S. Department of Labor via the O*NET Resource Center; browsable free on O*NET OnLine.",
+      "officialUrl": "https://www.onetcenter.org/content.html"
+    }
+  ],
+  "questionMapping": [
+    {
+      "questionId": "pull",
+      "riasec": ["R", "I", "S", "E"],
+      "onetConstructs": ["Interests (Holland RIASEC)", "Work Styles: Leadership (lead option)", "Work Values: Independence (business option)"],
+      "rationale": "Core interest item. Options map cleanly: 'building/fixing with hands' = Realistic; 'technology and systems' = Realistic+Investigative; 'analyzing information / puzzles' = Investigative; 'helping/taking care of people' = Social; 'leading teams / running operations' and 'building a business or selling' = Enterprising. GAP: no Artistic option (creating, designing, communicating) and no Conventional option (organizing, records, procedures) — two of Holland's six types are currently unreachable from this anchor question."
+    },
+    {
+      "questionId": "setting",
+      "riasec": ["R"],
+      "onetConstructs": ["Work Context: Outdoors / Indoors Environmentally Controlled", "Work Context: physical work conditions"],
+      "rationale": "Not an interest item — it is a Work Context preference (O*NET Content Model domain 4.C). 'Outdoors or on the move' and 'shop, site, or hangar' align with Realistic occupations' typical contexts; office/remote options are context, not interest, signals. Keeping this as context (rather than interest) weighting is consistent with how O*NET separates the two."
+    },
+    {
+      "questionId": "structure",
+      "riasec": ["C"],
+      "onetConstructs": ["Work Values: Independence ('workers plan their work with little supervision')", "Work Styles: Independence", "Work Values: Support (preference for clear standards/supervision)"],
+      "rationale": "Maps almost verbatim to the O*NET Independence work value at the high end and the Support work value ('supportive management that stands behind employees', standards-driven) at the low end. 'Clear mission, clear SOPs' also correlates with Conventional interest (preference for established procedures). Well-grounded question; the autonomy 0/3/5 gradient mirrors the value's low-to-high anchors."
+    },
+    {
+      "questionId": "risk",
+      "riasec": ["E"],
+      "onetConstructs": ["Interests: Enterprising (starting up and carrying out projects, business ventures)", "Work Styles: Initiative, Achievement/Effort", "Work Values: Working Conditions (job security at the low-risk end)"],
+      "rationale": "Risk tolerance per se is NOT an O*NET construct — no O*NET scale measures financial risk appetite. The entrepreneurial pole is grounded in Enterprising interest and the Initiative work style; the 'steady paycheck and benefits' pole is grounded in the Working Conditions work value (security). Treat 'risk' as a VetPath-specific composite and describe it in-app as a preference, not a measured trait."
+    },
+    {
+      "questionId": "physical",
+      "riasec": ["R"],
+      "onetConstructs": ["Work Context: General Physical Activities, Spend Time Standing", "Abilities domain (physical) — preference proxy only"],
+      "rationale": "Physical activity level is a Work Context / job demand descriptor in O*NET, not an interest. High-physical preference co-occurs with Realistic occupations. Important: this measures what the veteran WANTS, not what they can do — never frame it as an ability measure, especially given VetPath's disability-rating principle that ratings never downgrade careers."
+    },
+    {
+      "questionId": "people",
+      "riasec": ["S"],
+      "onetConstructs": ["Interests: Social", "Work Styles: Social Orientation", "Work Values: Relationships ('co-workers in a friendly non-competitive environment')", "Work Context: Contact With Others"],
+      "rationale": "'Front-of-people — customers, students, patients' is a clean Social-interest + Contact-With-Others signal. Caution on the 'Mostly solo focus' option: it currently adds autonomy 2, conflating low social contact with the Independence work value. In O*NET these are separate constructs — a person can prefer solo work AND clear supervision."
+    },
+    {
+      "questionId": "speed",
+      "riasec": [],
+      "onetConstructs": ["Job Zones (occupation preparation levels 1-5: education, training, experience needed)"],
+      "rationale": "Not an interest or value — it maps to O*NET Job Zones, which the Interest Profiler itself pairs with RIASEC results ('Job Zone' filter on My Next Move) to constrain suggestions by preparation time. VetPath's weeks/months/2yr/4yr ladder is a reasonable plain-language proxy for Job Zones 1-2 / 2 / 3 / 4-5, and pathfinder.ts already uses it as a filter/boost rather than an interest weight, which matches O*NET practice."
+    },
+    {
+      "questionId": "lead",
+      "riasec": ["E"],
+      "onetConstructs": ["Work Styles: Leadership ('willingness to lead, take charge, offer opinions and direction')", "Interests: Enterprising"],
+      "rationale": "Maps directly to the Leadership work style and Enterprising interest. The 'master the craft than manage' option correctly signals low Leadership without penalizing the veteran — consistent with O*NET treating Leadership as one style among sixteen, not a ranking of worth."
+    },
+    {
+      "questionId": "place",
+      "riasec": [],
+      "onetConstructs": [],
+      "rationale": "Geographic preference is not an O*NET construct; it is VetPath-specific logistics used only in locationGuidance(). No framework grounding needed or claimed. Do not present it as part of the interest assessment."
+    }
+  ],
+  "recommendations": {
+    "weightAdjustments": [
+      {
+        "questionId": "people",
+        "change": "In the 'Mostly solo focus' option, drop autonomy from 2 to 0-1 (keep people: 0).",
+        "why": "O*NET separates Social Orientation (work style) from Independence (work value). Preferring solo work does not imply wanting self-direction — a solo-focused veteran may still want clear SOPs. The current weight double-counts autonomy for introverts and skews them toward entrepreneur-track careers. Let the 'structure' question own the autonomy dim."
+      },
+      {
+        "questionId": "pull",
+        "change": "Add lead: 2 to the 'Building a business or selling' option (currently risk: 4, autonomy: 4, people: 3).",
+        "why": "O*NET defines Enterprising interest as 'starting up and carrying out projects... leading people and making many decisions.' An entrepreneurial pull is an Enterprising signal that includes leadership; without it, a veteran whose only E signals come via this option under-scores on lead-heavy career paths."
+      },
+      {
+        "questionId": "pull",
+        "change": "Add data: 1 to the 'Leading teams and running operations' option (currently lead: 5, people: 3).",
+        "why": "Operations management in O*NET loads on Enterprising + Conventional (planning, monitoring, administering). A small data weight keeps ops-leadership veterans from missing logistics/program-management careers that VetPath encodes as data-moderate."
+      }
+    ],
+    "addedQuestions": [
+      {
+        "label": "How much creating — designing, writing, teaching materials, building something new from scratch — do you want in the work?",
+        "options": [
+          { "label": "A lot — I want to make new things, not just run existing ones", "w": { "autonomy": 3, "tech": 2, "hands": 2 } },
+          { "label": "Some — creative problem-solving inside a solid structure", "w": { "data": 2, "autonomy": 1 } },
+          { "label": "Not much — give me proven work that matters", "w": { "hands": 1 } }
+        ],
+        "basis": "Holland Artistic interest (the one RIASEC type with zero coverage in the current 9 questions) — O*NET Interest Profiler, https://www.onetcenter.org/IP.html. Note: existing 10 dims cannot cleanly express Artistic; if creative careers (design, media, instruction development) are added to CAREERS, consider a new 'create' dim instead of these proxy weights."
+      },
+      {
+        "label": "How do you feel about details, records, and keeping things squared away?",
+        "options": [
+          { "label": "I like it — logs, checklists, standards done right", "w": { "data": 4 } },
+          { "label": "I can do it, but I'd rather own the bigger picture", "w": { "lead": 2, "data": 1 } },
+          { "label": "Paperwork drains me — keep me off the forms", "w": { "data": 0, "hands": 2 } }
+        ],
+        "basis": "Holland Conventional interest ('following set procedures and routines, working with data and detail') + O*NET Work Style 'Attention to Detail' — O*NET Content Model, https://www.onetcenter.org/content.html. Closes the second RIASEC coverage gap; many strong veteran-fit careers (supply, compliance, medical records, quality assurance) are Conventional-coded."
+      },
+      {
+        "label": "When a plan changes at the last minute, what's your honest reaction?",
+        "options": [
+          { "label": "Love it — improvising is where I'm best", "w": { "risk": 3, "autonomy": 2 } },
+          { "label": "Fine — adapt and overcome, then re-plan", "w": { "lead": 2, "people": 1 } },
+          { "label": "I'd rather work where the plan holds", "w": { "risk": 0, "data": 2 } }
+        ],
+        "basis": "O*NET Work Style 'Adaptability/Flexibility' (openness to variety and change in the workplace) — O*NET Content Model domain 1.D, https://www.onetcenter.org/content.html. Differentiates fast-changing environments (emergency services, startups, field service) from stable ones without asking another abstract risk question."
+      }
+    ],
+    "uiAttribution": "Question design informed by the U.S. Department of Labor's O*NET® Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool — USDOL/ETA has not approved, endorsed, or tested this adaptation.",
+    "claimsToAvoid": [
+      "Never claim the assessment predicts job success, performance, satisfaction, or earnings — the O*NET Interest Profiler manual itself states the relationship between profiler results and success in particular jobs or training programs has not been determined.",
+      "Never use or market the assessment for employment selection, screening, or hiring decisions — O*NET Career Exploration Tools are for career exploration and counseling only, and VetPath's screener inherits that boundary.",
+      "Never claim it measures abilities, aptitude, skills, personality, or readiness — it is a self-reported interest and preference screener; interests are not abilities.",
+      "Never present it as a clinical, diagnostic, or validated psychometric instrument — 9 unvalidated questions are a conversation-starter, not a test; avoid words like 'scientifically proven,' 'validated,' or 'assessment results show you should.'",
+      "Never imply endorsement by, affiliation with, or approval from the U.S. Department of Labor, O*NET, My Next Move, or the VA — attribution must credit the framework while explicitly disclaiming endorsement (required by the O*NET Tools Developer License for any modified use).",
+      "Never use 'O*NET' in possessive or plural form or inside the product name (trademark rule: adjective use only, e.g., 'the O*NET Interest Profiler framework').",
+      "Do not present fit percentages as measurements — they are heuristic rankings; pathfinder.ts clamps to 35-99, which should be disclosed as illustrative, not statistical.",
+      "Do not let results narrow options prescriptively — best practice for short screeners is to expand exploration ('careers to look into') and point users to the full, validated instrument at mynextmove.org/vets for a real RIASEC profile."
+    ]
+  },
+  "sources": [
+    "https://www.onetcenter.org/IP.html",
+    "https://www.onetcenter.org/license_tools.html",
+    "https://www.onetcenter.org/reports/IP_Manual.html",
+    "https://www.onetcenter.org/reports/IP_RVS.html",
+    "https://www.onetcenter.org/content.html",
+    "https://www.onetonline.org/explore/workvalues/",
+    "https://www.onetonline.org/find/descriptor/result/1.D.1.e",
+    "https://www.mynextmove.org/vets/",
+    "https://www.mynextmove.org/",
+    "https://www.dol.gov/agencies/eta/onet"
+  ]
+}

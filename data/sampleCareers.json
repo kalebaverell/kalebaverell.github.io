@@ -1,0 +1,295 @@
+{
+  "_note": "SAMPLE / DEMO DATA — career paths for the Pathfinder decision engine. Pay and outlook are sourced from the BLS Occupational Outlook Handbook (May 2024 medians and 2024–34 projections, as labeled per figure) and O*NET OnLine; figures change over time — verify current numbers at bls.gov/ooh. Entrepreneur-track figures use the closest proxy occupation (no SOC code exists for business ownership). attrs are 0–5 on: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. speed = time to first real paycheck on this path.",
+  "careers": [
+    {
+      "id": "cybersecurity-analyst", "label": "Cybersecurity analyst", "track": "employment", "icon": "ti-shield-lock",
+      "blurb": "Defend networks and hunt threats — clearances and military discipline are prized here.",
+      "paySample": "$124,910 (May 2024 median, BLS)", "outlookSample": "Much faster than average (29% growth projected 2024–34)", "speed": "months",
+      "attrs": { "hands": 1, "tech": 5, "people": 2, "data": 5, "lead": 2, "risk": 2, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 3 },
+      "whyVets": "Security clearances, OPSEC mindset, and 24/7 ops experience translate directly.",
+      "entryPath": [
+        "Earn CompTIA Security+ (weeks of study; GI Bill can reimburse cert exams).",
+        "Use a SkillBridge internship at a security operations center if still in service.",
+        "Leverage your clearance for defense-sector SOC analyst roles.",
+        "Build toward CySA+/CISSP as you gain experience."
+      ],
+      "keywords": ["security+", "incident response", "SIEM", "vulnerability", "network security", "SOC", "threat", "clearance", "firewall", "monitoring"],
+      "mosBridges": ["Army 25B/17C", "Navy IT/CTN", "USAF 1D7/3D0", "USMC 0651/1721"],
+      "skillbridge": true, "remote": true, "cityBias": "either",
+      "onetCode": "15-1212.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/15-1212.00",
+      "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+      "sources": ["https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm", "https://www.onetonline.org/link/summary/15-1212.00"]
+    },
+    {
+      "id": "it-support-network", "label": "IT support & networking", "track": "employment", "icon": "ti-device-desktop",
+      "blurb": "Keep organizations running — the fastest on-ramp into tech careers.",
+      "paySample": "$60,340 (May 2024 median, BLS — computer user support specialists)", "outlookSample": "Projected to decline 3% 2024–34; still ~50,500 openings/yr from replacement needs", "speed": "weeks",
+      "attrs": { "hands": 2, "tech": 4, "people": 3, "data": 3, "lead": 1, "risk": 1, "physical": 1, "outdoor": 0, "care": 2, "autonomy": 2 },
+      "whyVets": "Comms and sig support experience maps directly; employers value calm troubleshooting under pressure.",
+      "entryPath": [
+        "Earn CompTIA A+ and Network+ (self-study or a short VA-approved course).",
+        "Apply for help-desk / field-tech roles at veteran-friendly employers.",
+        "Stack Azure/Cisco certs on the job to level up fast."
+      ],
+      "keywords": ["help desk", "troubleshooting", "network", "active directory", "hardware", "ticketing", "A+", "windows", "customer support"],
+      "mosBridges": ["Army 25 series", "Navy IT", "USAF 3D1", "USMC 06xx"],
+      "skillbridge": true, "remote": true, "cityBias": "either",
+      "onetCode": "15-1232.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/15-1232.00",
+      "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm",
+      "sources": ["https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm", "https://www.onetonline.org/link/summary/15-1232.00"]
+    },
+    {
+      "id": "project-manager", "label": "Project / operations manager", "track": "employment", "icon": "ti-clipboard-check",
+      "blurb": "Run schedules, budgets, and teams — what NCOs and officers already do, in civilian clothes.",
+      "paySample": "$100,750 (May 2024 median, BLS)", "outlookSample": "Faster than average (6% growth projected 2024–34)", "speed": "months",
+      "attrs": { "hands": 1, "tech": 2, "people": 4, "data": 3, "lead": 5, "risk": 2, "physical": 0, "outdoor": 0, "care": 2, "autonomy": 3 },
+      "whyVets": "Leading people, logistics, and missions IS project management — add the civilian vocabulary and certification.",
+      "entryPath": [
+        "Translate your leadership into PM language (scope, schedule, budget, stakeholders).",
+        "Earn CAPM or PMP (PMI offers military discounts; GI Bill reimburses exams).",
+        "Target ops/PM roles via SkillBridge fellowships (e.g., Hiring Our Heroes)."
+      ],
+      "keywords": ["project management", "stakeholders", "budget", "schedule", "scope", "agile", "risk management", "operations", "PMP", "cross-functional"],
+      "mosBridges": ["Any NCO/SNCO leadership role", "Officer branches", "Logistics/ops MOS"],
+      "skillbridge": true, "remote": true, "cityBias": "city",
+      "onetCode": "13-1082.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1082.00",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm",
+      "sources": ["https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm", "https://www.onetonline.org/link/summary/13-1082.00"]
+    },
+    {
+      "id": "federal-civil-service", "label": "Federal civil service", "track": "employment", "icon": "ti-building-bank",
+      "blurb": "Stable GS career with veterans' preference, pension, and mission continuity.",
+      "paySample": "$101,190 (May 2024 median, BLS — management analysts, used as proxy; GS pay varies by grade/locality)", "outlookSample": "Much faster than average (9% growth projected 2024–34 — proxy occupation)", "speed": "months",
+      "attrs": { "hands": 1, "tech": 2, "people": 3, "data": 3, "lead": 3, "risk": 0, "physical": 0, "outdoor": 0, "care": 2, "autonomy": 1 },
+      "whyVets": "Veterans' preference points, buy-back of military time toward retirement, and familiar structure.",
+      "entryPath": [
+        "Build a FEDERAL-format resume (much longer and more detailed than civilian).",
+        "Set up USAJOBS with saved searches; claim veterans' preference.",
+        "Ask about your military service buy-back for federal retirement."
+      ],
+      "keywords": ["USAJOBS", "federal resume", "GS", "veterans preference", "clearance", "compliance", "regulations", "program analyst"],
+      "mosBridges": ["All branches/MOS — admin, logistics, security, and analyst roles especially"],
+      "skillbridge": false, "remote": false, "cityBias": "either",
+      "onetCode": "13-1111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+      "sources": ["https://www.bls.gov/ooh/business-and-financial/management-analysts.htm", "https://www.onetonline.org/link/summary/13-1111.00"]
+    },
+    {
+      "id": "healthcare-nursing", "label": "Healthcare (EMT → RN paths)", "track": "education", "icon": "ti-stethoscope",
+      "blurb": "Turn medic/corpsman experience into licensed healthcare careers with real credit for your training.",
+      "paySample": "$93,600 (May 2024 median, BLS — registered nurses; EMT entry rungs pay less)", "outlookSample": "Faster than average (5% growth projected 2024–34); ~189,100 openings/yr", "speed": "2yr",
+      "attrs": { "hands": 3, "tech": 2, "people": 5, "data": 2, "lead": 2, "risk": 1, "physical": 3, "outdoor": 1, "care": 5, "autonomy": 2 },
+      "whyVets": "68W/HM training often converts to EMT credit and advanced placement in nursing bridge programs.",
+      "entryPath": [
+        "Pull your Joint Services Transcript — medic training often equals real credit.",
+        "Test out of EMT where your state allows military-to-EMT bridges.",
+        "Use the GI Bill for an LPN/RN bridge program with housing allowance.",
+        "Ask VA facilities about veteran hiring for clinical roles."
+      ],
+      "keywords": ["patient care", "EMT", "triage", "clinical", "vitals", "nursing", "BLS", "emergency", "medication", "charting"],
+      "mosBridges": ["Army 68W", "Navy HM", "USAF 4N0"],
+      "skillbridge": false, "remote": false, "cityBias": "either",
+      "onetCode": "29-1141.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/29-1141.00",
+      "blsUrl": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
+      "sources": ["https://www.bls.gov/ooh/healthcare/registered-nurses.htm", "https://www.onetonline.org/link/summary/29-1141.00"]
+    },
+    {
+      "id": "teacher-trainer", "label": "Teaching & training", "track": "education", "icon": "ti-chalkboard",
+      "blurb": "Bring discipline and mentorship to classrooms or corporate training rooms.",
+      "paySample": "$64,580 (May 2024 median, BLS — high school teachers)", "outlookSample": "Projected to decline 2% 2024–34; still ~66,200 openings/yr from replacement needs", "speed": "2yr",
+      "attrs": { "hands": 1, "tech": 1, "people": 5, "data": 2, "lead": 3, "risk": 1, "physical": 1, "outdoor": 1, "care": 4, "autonomy": 2 },
+      "whyVets": "Military instructors already teach for a living; many states run alternative certification routes for veterans.",
+      "entryPath": [
+        "Check your state's alternative teacher certification for veterans.",
+        "Use the GI Bill to finish the required degree/credential.",
+        "Consider corporate training / instructional design if you prefer industry — openings there aren't tied to school-district hiring cycles."
+      ],
+      "keywords": ["curriculum", "instruction", "training", "classroom management", "lesson", "mentoring", "evaluation", "development"],
+      "mosBridges": ["Drill/instructor billets", "Any training NCO role"],
+      "skillbridge": false, "remote": false, "cityBias": "either",
+      "onetCode": "25-2031.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/25-2031.00",
+      "blsUrl": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+      "sources": ["https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm", "https://www.onetonline.org/link/summary/25-2031.00"]
+    },
+    {
+      "id": "business-analyst", "label": "Business analyst (degree path)", "track": "education", "icon": "ti-chart-dots",
+      "blurb": "A GI Bill business/analytics degree into corporate strategy, finance, or consulting.",
+      "paySample": "$101,190 (May 2024 median, BLS)", "outlookSample": "Much faster than average (9% growth projected 2024–34); ~98,100 openings/yr", "speed": "4yr",
+      "attrs": { "hands": 0, "tech": 3, "people": 3, "data": 5, "lead": 2, "risk": 1, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 3 },
+      "whyVets": "Vets bring ops context analysts usually lack; Yellow Ribbon schools + SVA chapters smooth the path.",
+      "entryPath": [
+        "Use Smart transcript credit to shorten the degree.",
+        "Pick a VA-approved program; compare Yellow Ribbon participation.",
+        "Intern via veteran fellowship programs junior year."
+      ],
+      "keywords": ["analysis", "excel", "SQL", "dashboards", "requirements", "process improvement", "reporting", "metrics"],
+      "mosBridges": ["Intel/analyst MOS", "Supply/logistics", "Admin"],
+      "skillbridge": false, "remote": true, "cityBias": "city",
+      "onetCode": "13-1111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+      "sources": ["https://www.bls.gov/ooh/business-and-financial/management-analysts.htm", "https://www.onetonline.org/link/summary/13-1111.00"]
+    },
+    {
+      "id": "electrician", "label": "Electrician", "track": "trades", "icon": "ti-bolt",
+      "blurb": "Earn-while-you-learn apprenticeship into a licensed, always-in-demand trade.",
+      "paySample": "$62,350 (May 2024 median, BLS)", "outlookSample": "Much faster than average (9% growth projected 2024–34); ~81,000 openings/yr", "speed": "months",
+      "attrs": { "hands": 5, "tech": 3, "people": 2, "data": 2, "lead": 2, "risk": 2, "physical": 4, "outdoor": 2, "care": 1, "autonomy": 3 },
+      "whyVets": "Helmets to Hardhats places veterans into union apprenticeships; the GI Bill pays a housing stipend on top of apprentice wages.",
+      "entryPath": [
+        "Apply through Helmets to Hardhats or a local IBEW apprenticeship.",
+        "Register the apprenticeship with the VA to draw the GI Bill housing stipend while you earn.",
+        "License as journeyman (~4 yrs) — then master/contractor if you want your own shop."
+      ],
+      "keywords": ["electrical", "conduit", "wiring", "NEC", "troubleshooting", "blueprints", "safety", "voltage", "installation"],
+      "mosBridges": ["Army 12R", "Navy CE", "USAF 3E0"],
+      "skillbridge": true, "remote": false, "cityBias": "either",
+      "onetCode": "47-2111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/47-2111.00",
+      "blsUrl": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+      "sources": ["https://www.bls.gov/ooh/construction-and-extraction/electricians.htm", "https://www.onetonline.org/link/summary/47-2111.00"]
+    },
+    {
+      "id": "hvac-tech", "label": "HVAC technician", "track": "trades", "icon": "ti-temperature",
+      "blurb": "Heating and cooling never goes out of demand — fast certification, steady work, path to your own business.",
+      "paySample": "$59,810 (May 2024 median, BLS)", "outlookSample": "Much faster than average (8% growth projected 2024–34); ~40,100 openings/yr", "speed": "months",
+      "attrs": { "hands": 5, "tech": 3, "people": 3, "data": 1, "lead": 1, "risk": 2, "physical": 4, "outdoor": 2, "care": 1, "autonomy": 4 },
+      "whyVets": "Mechanical MOS experience shortens training; many vets later launch their own HVAC companies.",
+      "entryPath": [
+        "Complete a short VA-approved HVAC program or apprenticeship.",
+        "Earn EPA 608 certification (required for refrigerants).",
+        "Join a shop; consider your own truck after 3–5 years (see Entrepreneur track)."
+      ],
+      "keywords": ["HVAC", "refrigeration", "EPA 608", "preventive maintenance", "diagnostics", "installation", "repair", "customer service"],
+      "mosBridges": ["Army 91C", "Navy UT", "USAF 3E1"],
+      "skillbridge": true, "remote": false, "cityBias": "either",
+      "onetCode": "49-9021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/49-9021.00",
+      "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm",
+      "sources": ["https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm", "https://www.onetonline.org/link/summary/49-9021.00"]
+    },
+    {
+      "id": "welder", "label": "Welder / fabricator", "track": "trades", "icon": "ti-flame",
+      "blurb": "Certified welders stay booked — shipyards, pipelines, and fab shops actively recruit veterans.",
+      "paySample": "$51,000 (May 2024 median, BLS)", "outlookSample": "Slower than average (2% growth projected 2024–34); ~45,600 openings/yr, mostly replacement-driven", "speed": "months",
+      "attrs": { "hands": 5, "tech": 2, "people": 1, "data": 1, "lead": 1, "risk": 2, "physical": 5, "outdoor": 3, "care": 0, "autonomy": 2 },
+      "whyVets": "Short cert path, clear skill tests, and shift discipline vets already have.",
+      "entryPath": [
+        "Enroll in a VA-approved welding program (AWS certs).",
+        "Certify in MIG/TIG/stick; add pipe welding for the top pay tiers.",
+        "Choose shop stability or high-pay travel contracts."
+      ],
+      "keywords": ["MIG", "TIG", "stick", "AWS", "fabrication", "blueprint", "fitment", "inspection", "safety"],
+      "mosBridges": ["Army 91E", "Navy HT", "USMC 1316"],
+      "skillbridge": true, "remote": false, "cityBias": "either",
+      "onetCode": "51-4121.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/51-4121.00",
+      "blsUrl": "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm",
+      "sources": ["https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm", "https://www.onetonline.org/link/summary/51-4121.00"]
+    },
+    {
+      "id": "aviation-maintenance", "label": "Aviation maintenance (A&P)", "track": "trades", "icon": "ti-plane",
+      "blurb": "Military aircraft experience can count toward the FAA A&P license — airlines are hiring hard.",
+      "paySample": "$78,680 (May 2024 median, BLS — aircraft mechanics and service technicians; avionics technicians $81,390)", "outlookSample": "Faster than average (5% growth projected 2024–34); ~13,100 openings/yr", "speed": "2yr",
+      "attrs": { "hands": 5, "tech": 4, "people": 2, "data": 2, "lead": 2, "risk": 1, "physical": 3, "outdoor": 2, "care": 1, "autonomy": 2 },
+      "whyVets": "Documented military maintenance time can authorize you to test for the FAA A&P — sometimes without further school.",
+      "entryPath": [
+        "Ask the FAA about crediting your documented military maintenance experience toward A&P testing.",
+        "Fill any gaps with a VA-approved A&P program.",
+        "Target airline/MRO veteran hiring programs."
+      ],
+      "keywords": ["airframe", "powerplant", "A&P", "inspection", "hydraulics", "avionics", "maintenance records", "FAA", "troubleshooting"],
+      "mosBridges": ["Army 15 series", "Navy AD/AM/AE", "USAF 2A"],
+      "skillbridge": true, "remote": false, "cityBias": "city",
+      "onetCode": "49-3011.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/49-3011.00",
+      "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm",
+      "sources": ["https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm", "https://www.onetonline.org/link/summary/49-3011.00"]
+    },
+    {
+      "id": "cdl-driver", "label": "CDL / logistics driver", "track": "employment", "icon": "ti-truck",
+      "blurb": "The fastest paycheck on this list — military driving experience can even waive the road test.",
+      "paySample": "$57,440 (May 2024 median, BLS)", "outlookSample": "As fast as average (4% growth projected 2024–34); ~237,600 openings/yr", "speed": "weeks",
+      "attrs": { "hands": 3, "tech": 1, "people": 1, "data": 1, "lead": 1, "risk": 1, "physical": 3, "outdoor": 3, "care": 0, "autonomy": 4 },
+      "whyVets": "FMCSA's Military Skills Test Waiver can skip the CDL road test for qualified military drivers; GI Bill covers CDL school.",
+      "entryPath": [
+        "Check the FMCSA Military Skills Test Waiver if you drove heavy vehicles in service.",
+        "Otherwise use a GI Bill-approved CDL school (weeks, not months).",
+        "Choose local/regional/OTR based on the home life you want."
+      ],
+      "keywords": ["CDL", "DOT", "logistics", "routes", "safety record", "hazmat", "delivery", "hours of service"],
+      "mosBridges": ["Army 88M", "USMC 3531", "Navy EO"],
+      "skillbridge": false, "remote": false, "cityBias": "rural",
+      "onetCode": "53-3032.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/53-3032.00",
+      "blsUrl": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+      "sources": ["https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm", "https://www.onetonline.org/link/summary/53-3032.00"]
+    },
+    {
+      "id": "franchise-owner", "label": "Franchise owner", "track": "entrepreneur", "icon": "ti-building-store",
+      "blurb": "Run your own operation with a proven playbook — franchising rewards people who execute systems.",
+      "paySample": "$102,950 (May 2024 median, BLS — general and operations managers; owner income varies with the business)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)", "speed": "months",
+      "attrs": { "hands": 2, "tech": 1, "people": 4, "data": 3, "lead": 4, "risk": 4, "physical": 2, "outdoor": 1, "care": 2, "autonomy": 5 },
+      "whyVets": "Many franchisors offer veteran fee discounts (VetFran); vets thrive on documented systems.",
+      "entryPath": [
+        "Take SBA Boots to Business (free) to pressure-test the idea.",
+        "Browse VetFran-listed brands with veteran incentives.",
+        "Build the funding plan with a VBOC advisor + SBA veteran loan options.",
+        "Validate the local market before signing anything."
+      ],
+      "keywords": ["operations", "P&L", "staffing", "customer experience", "franchise", "local marketing", "inventory"],
+      "mosBridges": ["Any — ops and logistics backgrounds shine"],
+      "skillbridge": false, "remote": false, "cityBias": "either",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "sources": ["https://www.bls.gov/ooh/management/top-executives.htm", "https://www.onetonline.org/link/summary/11-1021.00"]
+    },
+    {
+      "id": "service-business-owner", "label": "Service business owner", "track": "entrepreneur", "icon": "ti-tool",
+      "blurb": "Start lean — landscaping, hauling, inspections, consulting, trades services — and grow on your terms.",
+      "paySample": "$102,950 (May 2024 median, BLS — general and operations managers; owner income varies widely)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)", "speed": "months",
+      "attrs": { "hands": 3, "tech": 1, "people": 4, "data": 2, "lead": 4, "risk": 5, "physical": 3, "outdoor": 2, "care": 1, "autonomy": 5 },
+      "whyVets": "Low startup cost, immediate revenue, and total autonomy — the classic first veteran business.",
+      "entryPath": [
+        "Write a one-page plan with a VBOC advisor (free).",
+        "Take Boots to Business; validate demand with 10 real customer conversations.",
+        "Set up LLC, insurance, and simple bookkeeping.",
+        "Land the first 3 customers before buying anything expensive."
+      ],
+      "keywords": ["customers", "quotes", "scheduling", "invoicing", "referrals", "service quality", "licensing", "insurance"],
+      "mosBridges": ["Any — trade + people skills combos are strongest"],
+      "skillbridge": false, "remote": false, "cityBias": "either",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "sources": ["https://www.bls.gov/ooh/management/top-executives.htm", "https://www.onetonline.org/link/summary/11-1021.00"]
+    },
+    {
+      "id": "govcon-sdvosb", "label": "Federal contracting (SDVOSB)", "track": "entrepreneur", "icon": "ti-file-certificate",
+      "blurb": "Service-disabled veteran-owned businesses can win set-aside federal contracts — a real structural edge.",
+      "paySample": "$102,950 (May 2024 median, BLS — general and operations managers; contract revenue varies)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)", "speed": "2yr",
+      "attrs": { "hands": 1, "tech": 2, "people": 3, "data": 4, "lead": 4, "risk": 4, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 4 },
+      "whyVets": "SDVOSB set-asides + your niche expertise = a defensible lane most founders can't enter.",
+      "entryPath": [
+        "Confirm SDVOSB eligibility and register the entity (SBA VetCert).",
+        "Register in SAM.gov; pick target NAICS codes from your expertise.",
+        "Start as a subcontractor / mentor-protégé to learn the game.",
+        "Bid small set-asides; build past performance."
+      ],
+      "keywords": ["SDVOSB", "SAM.gov", "NAICS", "proposal", "capability statement", "past performance", "compliance", "subcontract"],
+      "mosBridges": ["Any — pairs best with your technical specialty"],
+      "skillbridge": false, "remote": true, "cityBias": "city",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "sources": ["https://www.bls.gov/ooh/management/top-executives.htm", "https://www.onetonline.org/link/summary/11-1021.00"]
+    }
+  ]
+}

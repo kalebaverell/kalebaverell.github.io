@@ -1,0 +1,47 @@
+{
+  "_note": "SAMPLE / DEMO DATA — networking and mentorship resources. Verify each program directly; availability changes.",
+  "general": [
+    { "name": "American Corporate Partners (ACP)", "what": "Free year-long 1-on-1 mentorship with a corporate mentor.", "url": "https://www.acp-usa.org" },
+    { "name": "Veterati", "what": "Free on-demand phone mentorship — book vets and hiring managers by industry.", "url": "https://www.veterati.com" },
+    { "name": "LinkedIn for Veterans", "what": "Free LinkedIn Premium Career year + veteran community programs.", "url": "https://socialimpact.linkedin.com/programs/veterans" },
+    { "name": "RallyPoint", "what": "Military & veteran professional network for peer connections.", "url": "https://www.rallypoint.com" },
+    { "name": "Local VSO posts (VFW / American Legion / DAV)", "what": "In-person community, job leads, and benefits help near you.", "url": "https://www.va.gov/vso/" }
+  ],
+  "vaSpecific": [
+    { "name": "VA benefits & facility events", "what": "Claims clinics, town halls, and benefits fairs at VA facilities.", "url": "https://www.va.gov/outreach-and-events/events/" },
+    { "name": "Vet Centers", "what": "Community counseling + peer connection, separate from VA hospitals.", "url": "https://www.vetcenter.va.gov" },
+    { "name": "County veteran service officers", "what": "Your free local benefits navigator — and a networking node.", "url": "https://www.nacvso.org" }
+  ],
+  "byTrack": {
+    "employment": [
+      { "name": "Hiring Our Heroes events", "what": "Hiring fairs + corporate fellowship (SkillBridge) placements.", "url": "https://www.hiringourheroes.org" },
+      { "name": "FourBlock", "what": "Free career-readiness course inside partner companies.", "url": "https://fourblock.org" },
+      { "name": "DOL VETS / American Job Centers", "what": "Your assigned veteran employment rep — use them.", "url": "https://www.dol.gov/agencies/vets" }
+    ],
+    "education": [
+      { "name": "Student Veterans of America (SVA)", "what": "Campus chapters — instant community + advocacy at school.", "url": "https://studentveterans.org" },
+      { "name": "School veteran services office", "what": "Certifying officials + vet-specific aid and priority registration." },
+      { "name": "Warrior-Scholar Project", "what": "Academic boot camps easing the jump to college rigor.", "url": "https://www.warrior-scholar.org" }
+    ],
+    "trades": [
+      { "name": "Helmets to Hardhats", "what": "Direct placement into registered building-trade apprenticeships.", "url": "https://helmetstohardhats.org" },
+      { "name": "Union locals (IBEW, UA, Ironworkers)", "what": "Apprenticeship intake + brotherhood that mirrors unit culture." },
+      { "name": "VFW/Legion halls in trade towns", "what": "Where the local hiring actually happens — show up." }
+    ],
+    "entrepreneur": [
+      { "name": "Veterans Business Outreach Center (VBOC)", "what": "Free SBA-funded business coaching for veterans.", "url": "https://www.sba.gov/local-assistance/resource-partners/veterans-business-outreach-center-vboc" },
+      { "name": "Bunker Labs", "what": "Veteran founder community, cohorts, and city chapters.", "url": "https://bunkerlabs.org" },
+      { "name": "SCORE mentors", "what": "Free experienced business mentors, many veteran-friendly.", "url": "https://www.score.org" }
+    ]
+  },
+  "targeted": {
+    "women": [
+      { "name": "Women Veterans Call Center", "what": "1-855-829-6636 — navigators for women-specific VA services.", "url": "https://www.va.gov/womenvet/" },
+      { "name": "V-WISE (IVMF)", "what": "Entrepreneurship training for women veterans & spouses.", "url": "https://ivmf.syracuse.edu" }
+    ],
+    "minority": [
+      { "name": "MBDA Business Centers", "what": "Growth help for minority-owned businesses — stacks with veteran status.", "url": "https://www.mbda.gov" },
+      { "name": "National Veteran-Owned Business Association (NaVOBA)", "what": "Certification & corporate supplier connections.", "url": "https://www.navoba.org" }
+    ]
+  }
+}

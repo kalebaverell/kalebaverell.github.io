@@ -1,0 +1,57 @@
+{
+  "lastVerified": "2026-07-09",
+  "categories": [
+    {
+      "id": "family-dependent",
+      "officialUrl": "https://www.va.gov/family-and-caregiver-benefits/",
+      "urlChanged": false,
+      "verifiedEligibility": "Spouses, dependent children, survivors, and caregivers of veterans may qualify for distinct programs — transferred GI Bill (DoD approval while still serving), DEA/Chapter 35 (veteran permanently and totally disabled or died from a service-connected condition), CHAMPVA (not TRICARE-eligible), and VA caregiver support — each with its own rules.",
+      "verifiedSteps": [
+        "Check whether GI Bill benefits can transfer to a dependent — the service member must request the transfer through DoD while still serving; it cannot be initiated after separation.",
+        "Explore DEA (Chapter 35) education benefits if the veteran is permanently and totally disabled from a service-connected condition, or died, is captured, or is missing — up to 36 months of benefits for those starting on or after August 1, 2018.",
+        "Check CHAMPVA health coverage for spouses and children of veterans rated permanently and totally disabled from a service-connected disability (not available if you qualify for TRICARE).",
+        "Look into VA caregiver support: the Program of Comprehensive Assistance for Family Caregivers (veteran rated 70% or higher; apply jointly with VA Form 10-10CG) or the Program of General Caregiver Support Services."
+      ],
+      "corrections": [
+        "No errors found in existing content; the URL https://www.va.gov/family-and-caregiver-benefits/ is the current official VA family and caregiver benefits page. The named programs (transferred GI Bill, DEA/Chapter 35, CHAMPVA, caregiver support, survivor programs) all exist and are correctly grouped.",
+        "Precision addition for the GI Bill transfer step: transfer must be requested and approved through DoD while the member is still serving (generally 6+ years in with a 4-year additional commitment) — veterans cannot initiate a transfer after separation. Source: https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+        "Verified DEA/Chapter 35: eligible if you're the child or spouse of a veteran or service member who died, is captured or missing, or is permanently and totally disabled due to a service-connected disability. Benefit duration is up to 36 months for programs started on or after August 1, 2018 (45 months if started earlier), and there is no time limit to use benefits if the qualifying event occurred on or after August 1, 2023. Source: https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/",
+        "Verified CHAMPVA: covers the spouse or dependent child of a veteran rated permanently and totally disabled from a service-connected disability (or the survivor of a veteran who was so rated at death or died from a service-connected condition); a spouse who qualifies for TRICARE cannot get CHAMPVA. Source: https://www.va.gov/family-and-caregiver-benefits/health-and-disability/champva/",
+        "Verified caregiver support: the Program of Comprehensive Assistance for Family Caregivers requires the veteran to have a VA disability rating (individual or combined) of 70% or higher, with a joint veteran-caregiver application (VA Form 10-10CG); the separate Program of General Caregiver Support Services has broader access. Sources: https://www.va.gov/family-and-caregiver-benefits/health-and-disability/comprehensive-assistance-for-family-caregivers/ and https://www.caregiver.va.gov/support/support_benefits.asp"
+      ],
+      "sources": [
+        "https://www.va.gov/family-and-caregiver-benefits/",
+        "https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/champva/",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/comprehensive-assistance-for-family-caregivers/",
+        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+        "https://www.caregiver.va.gov/support/support_benefits.asp"
+      ]
+    },
+    {
+      "id": "state-benefits",
+      "officialUrl": "https://www.nasdva.us/",
+      "urlChanged": false,
+      "verifiedEligibility": "Every state and territory runs its own veterans agency with its own benefits — property tax relief, tuition programs, licenses, and recreation perks vary widely by state and change often, so eligibility must be confirmed directly with your state Department of Veterans Affairs.",
+      "verifiedSteps": [
+        "Find your state Department of Veterans Affairs using the NASDVA state-by-state directory at nasdva.us/resources/ or VA's list of state veterans affairs offices on discover.va.gov.",
+        "Contact your state veterans agency or a county veteran service officer (county-level officers exist in many, but not all, states).",
+        "Ask specifically about property tax exemptions, state tuition programs, and license/registration benefits, and confirm current rules — state benefits change frequently."
+      ],
+      "corrections": [
+        "URL verified working: https://www.nasdva.us/ loads the official National Association of State Directors of Veterans Affairs site (the site presents its canonical address as https://nasdva.us/ without the www; both resolve). The actual state-by-state directory of links lives at https://nasdva.us/resources/ — consider linking there directly.",
+        "Domain note (parallel to the veteranscrisisline.net note): nasdva.us is a .us association domain, not a .gov site. NASDVA is the association of state veterans affairs directors, not a government agency, but it is referenced as a resource by VA (https://news.va.gov/press-room/the-national-association-of-state-directors-of-veterans-affairs-nasdva/) and by the National Resource Directory (nrd.gov). A .gov alternative exists: VA's DiscoverVA external-resources listing of state veterans affairs offices at https://discover.va.gov/external-resources/?_resource_type=state-veterans-affairs-office — confirmed current via a 301 redirect from https://department.va.gov/about/state-departments-of-veterans-affairs-office-locations/. VA's legacy state directory page (va.gov/statedva.htm) is retired/in maintenance and should not be used.",
+        "The core claim is accurate: state benefits vary widely, change often, and are administered separately by each state and territory's own veterans agency (all 50 states plus DC, American Samoa, Northern Mariana Islands, Puerto Rico, and the Virgin Islands have one), so local verification is required. Source: https://nasdva.us/about/",
+        "Minor precision on the action step 'Contact your county veteran service officer': county veteran service officers are not available in every state — some states deliver services through state or regional offices instead. Broadened to 'state veterans agency or county veteran service officer.'"
+      ],
+      "sources": [
+        "https://www.nasdva.us/",
+        "https://nasdva.us/resources/",
+        "https://nasdva.us/about/",
+        "https://discover.va.gov/external-resources/?_resource_type=state-veterans-affairs-office",
+        "https://news.va.gov/press-room/the-national-association-of-state-directors-of-veterans-affairs-nasdva/"
+      ]
+    }
+  ],
+  "globalCorrections": []
+}

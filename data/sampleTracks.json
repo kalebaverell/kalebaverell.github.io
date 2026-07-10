@@ -1,0 +1,53 @@
+{
+  "_note": "SAMPLE / DEMO DATA — the four post-service tracks taught in transition programs. Not official DoD/VA guidance.",
+  "tracks": [
+    {
+      "id": "employment",
+      "label": "Employment",
+      "icon": "ti-briefcase",
+      "blurb": "Go straight into a civilian career — leverage your experience, clearance, and veteran hiring programs.",
+      "benefits": ["employment", "vre", "state-benefits"],
+      "fastFacts": [
+        "DOL VETS reps and American Job Centers offer free one-on-one help.",
+        "DoD SkillBridge lets you intern with a civilian employer during your last 180 days — on military pay.",
+        "Federal jobs add veterans' preference points to your application."
+      ]
+    },
+    {
+      "id": "education",
+      "label": "Further education",
+      "icon": "ti-school",
+      "blurb": "Use the GI Bill or VR&E for a degree that opens the next career — with housing allowance while you study.",
+      "benefits": ["gi-bill", "vre", "family-dependent"],
+      "fastFacts": [
+        "Post-9/11 GI Bill can cover tuition plus a monthly housing allowance.",
+        "Your military training may already count as college credit (see Smart transcript).",
+        "Student Veterans of America chapters make campuses easier to land on."
+      ]
+    },
+    {
+      "id": "trades",
+      "label": "Skilled trades",
+      "icon": "ti-tools",
+      "blurb": "Earn while you learn — apprenticeships and certifications into high-demand hands-on careers.",
+      "benefits": ["gi-bill", "employment", "vre"],
+      "fastFacts": [
+        "The GI Bill pays a housing stipend DURING registered apprenticeships — you earn a wage and the stipend.",
+        "Helmets to Hardhats connects veterans straight into building-trade apprenticeships.",
+        "Many military maintenance ratings shortcut FAA and trade certifications."
+      ]
+    },
+    {
+      "id": "entrepreneur",
+      "label": "Entrepreneurship",
+      "icon": "ti-rocket",
+      "blurb": "Build your own mission — from a service business to federal contracting as a veteran-owned company.",
+      "benefits": ["veteran-business", "state-benefits", "employment"],
+      "fastFacts": [
+        "SBA Boots to Business is a free two-day starter course for the military community.",
+        "Veterans Business Outreach Centers (VBOC) coach you through the plan for free.",
+        "SDVOSB certification opens set-aside federal contracts for service-disabled veteran owners."
+      ]
+    }
+  ]
+}

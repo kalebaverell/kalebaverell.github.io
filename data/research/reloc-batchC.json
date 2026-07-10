@@ -1,0 +1,65 @@
+{
+  "batch": "C",
+  "gathered": "2026-07-10",
+  "_sources": {
+    "rpp": "BEA Regional Price Parities by MSA, all items, 2024 vintage. Official dataset MARPP_MSA_2008_2024.csv downloaded directly from https://apps.bea.gov/regional/zip/MARPP.zip (landing page: https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area). Note: BEA announced discontinuation of metro-level RPP publication after this vintage.",
+    "fmr2br": "HUD FY2026 Fair Market Rents, 2-bedroom, official file FY26_FMRs.xlsx downloaded directly from https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs.xlsx (landing page: https://www.huduser.gov/portal/datasets/fmr.html).",
+    "unemployment": "BLS Local Area Unemployment Statistics (LAUS), metro area, not seasonally adjusted, retrieved 2026-07-09 from the official BLS public API (https://api.bls.gov/publicAPI/v2/timeseries/data/)."
+  },
+  "metros": [
+    {
+      "id": "columbus-oh",
+      "rpp": {
+        "value": 95.469,
+        "year": 2024,
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Columbus, OH MSA, RPPs: All items (2023 = 94.630). Official BEA MARPP dataset."
+      },
+      "fmr2br": {
+        "value": 1430,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs.xlsx",
+        "note": "Columbus, OH HUD Metro FMR Area, 2BR. Official HUD FY26 file (FY2025 was $1,445)."
+      },
+      "unemployment": {
+        "value": 2.7,
+        "period": "May 2026",
+        "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT391814000000003)",
+        "note": "BLS LAUS, Columbus OH MSA, not seasonally adjusted. April 2026 = 2.8, March 2026 = 3.4. BLS reported Columbus had the largest YoY metro rate decline in spring 2026."
+      },
+      "vamc": {
+        "name": "Chalmers P. Wylie Veterans Outpatient Clinic (VA Central Ohio health care)",
+        "source": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
+        "note": "CBOC/ambulatory-care center only — Columbus has no full inpatient VA medical center in-metro; nearest full VAMCs (e.g., Dayton, Chillicothe) are a drive away. Matches the 'CBOC' level in relocationMetros.json."
+      },
+      "notes": ""
+    },
+    {
+      "id": "fayetteville-nc",
+      "rpp": {
+        "value": 91.978,
+        "year": 2024,
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Fayetteville, NC MSA, RPPs: All items (2023 = 91.854). Official BEA MARPP dataset."
+      },
+      "fmr2br": {
+        "value": 1251,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs.xlsx",
+        "note": "Fayetteville, NC HUD Metro FMR Area, 2BR. Official HUD FY26 file (FY2025 was $1,240)."
+      },
+      "unemployment": {
+        "value": 4.3,
+        "period": "May 2026",
+        "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT372218000000003)",
+        "note": "BLS LAUS, Fayetteville NC MSA, not seasonally adjusted. April 2026 = 4.3, March 2026 = 4.4."
+      },
+      "vamc": {
+        "name": "Fayetteville VA Medical Center (VA Fayetteville Coastal health care)",
+        "source": "https://www.va.gov/fayetteville-coastal-health-care/locations/fayetteville-va-medical-center/",
+        "note": "Full VA medical center (Complexity Level 1c, 2300 Ramsey St), ~10 miles from Fort Bragg/Fort Liberty; system serves ~90,000 veterans across 19 counties."
+      },
+      "notes": ""
+    }
+  ]
+}

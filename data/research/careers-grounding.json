@@ -1,0 +1,269 @@
+{
+  "_note": "Grounding data for sampleCareers.json — official BLS OOH + O*NET references. Pay figures are May 2024 medians from BLS Occupational Outlook Handbook Quick Facts; outlook phrases use BLS 2024–34 projection language. INCREMENTAL DRAFT: claimChecks pending verification.",
+  "lastVerified": "2026-07-08",
+  "careers": [
+    {
+      "id": "cybersecurity-analyst",
+      "onetTitle": "Information Security Analysts",
+      "onetCode": "15-1212.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/15-1212.00",
+      "blsTitle": "Information Security Analysts",
+      "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+      "medianPay": "$124,910 (May 2024 median, BLS)",
+      "outlook": "Much faster than average (29% growth projected 2024–34)",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'High demand'",
+          "verdict": "verified",
+          "note": "BLS projects 29% growth 2024–34, much faster than average.",
+          "source": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm"
+        }
+      ]
+    },
+    {
+      "id": "it-support-network",
+      "onetTitle": "Computer User Support Specialists",
+      "onetCode": "15-1232.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/15-1232.00",
+      "blsTitle": "Computer Support Specialists",
+      "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm",
+      "medianPay": "$60,340 (May 2024 median, BLS — computer user support specialists)",
+      "outlook": "Projected to decline 3% 2024–34; still ~50,500 openings/yr from replacement needs",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'Steady demand'",
+          "verdict": "corrected",
+          "note": "BLS projects a 3% employment DECLINE 2024–34; openings (~50,500/yr) come from replacement needs, not growth. Suggest softening to 'Openings from turnover, not growth'.",
+          "source": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm"
+        }
+      ]
+    },
+    {
+      "id": "project-manager",
+      "onetTitle": "Project Management Specialists",
+      "onetCode": "13-1082.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1082.00",
+      "blsTitle": "Project Management Specialists",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm",
+      "medianPay": "$100,750 (May 2024 median, BLS)",
+      "outlook": "Faster than average (6% growth projected 2024–34)",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'Strong demand'",
+          "verdict": "verified",
+          "note": "6% growth 2024–34, faster than average; ~78,200 openings/yr.",
+          "source": "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm"
+        }
+      ]
+    },
+    {
+      "id": "federal-civil-service",
+      "onetTitle": "Management Analysts (closest proxy — federal civil service is an employer sector, not a single SOC occupation)",
+      "onetCode": "13-1111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
+      "blsTitle": "Management Analysts",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+      "medianPay": "$101,190 (May 2024 median, BLS — management analysts, used as proxy; GS pay varies by grade/locality)",
+      "outlook": "Much faster than average (9% growth projected 2024–34 — proxy occupation)",
+      "socMatchNote": "No clean SOC match: 'federal civil service' spans many occupations. Management Analysts (program-analyst roles, per the career's keywords) used as the closest proxy.",
+      "claimChecks": []
+    },
+    {
+      "id": "healthcare-nursing",
+      "onetTitle": "Registered Nurses",
+      "onetCode": "29-1141.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/29-1141.00",
+      "blsTitle": "Registered Nurses",
+      "blsUrl": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
+      "medianPay": "$93,600 (May 2024 median, BLS — registered nurses; EMT entry rungs pay less)",
+      "outlook": "Faster than average (5% growth projected 2024–34); ~189,100 openings/yr",
+      "socMatchNote": "Career spans EMT (29-2042.00) → RN (29-1141.00); RN is the destination occupation and primary match.",
+      "claimChecks": []
+    },
+    {
+      "id": "teacher-trainer",
+      "onetTitle": "Secondary School Teachers, Except Special and Career/Technical Education",
+      "onetCode": "25-2031.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/25-2031.00",
+      "blsTitle": "High School Teachers",
+      "blsUrl": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+      "medianPay": "$64,580 (May 2024 median, BLS — high school teachers)",
+      "outlook": "Projected to decline 2% 2024–34; still ~66,200 openings/yr from replacement needs",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'Steady demand'",
+          "verdict": "corrected",
+          "note": "BLS projects a 2% employment DECLINE for high school teachers 2024–34; openings (~66,200/yr) are replacement-driven. Corporate training (13-1151.00) is an alternate lane.",
+          "source": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm"
+        }
+      ]
+    },
+    {
+      "id": "business-analyst",
+      "onetTitle": "Management Analysts",
+      "onetCode": "13-1111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
+      "blsTitle": "Management Analysts",
+      "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+      "medianPay": "$101,190 (May 2024 median, BLS)",
+      "outlook": "Much faster than average (9% growth projected 2024–34); ~98,100 openings/yr",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'Strong demand'",
+          "verdict": "verified",
+          "note": "9% growth 2024–34, much faster than average.",
+          "source": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm"
+        }
+      ]
+    },
+    {
+      "id": "electrician",
+      "onetTitle": "Electricians",
+      "onetCode": "47-2111.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/47-2111.00",
+      "blsTitle": "Electricians",
+      "blsUrl": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+      "medianPay": "$62,350 (May 2024 median, BLS)",
+      "outlook": "Much faster than average (9% growth projected 2024–34); ~81,000 openings/yr",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'High demand'",
+          "verdict": "verified",
+          "note": "9% growth 2024–34, much faster than average.",
+          "source": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm"
+        },
+        {
+          "claim": "Helmets to Hardhats places veterans into union apprenticeships",
+          "verdict": "pending",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "id": "hvac-tech",
+      "onetTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+      "onetCode": "49-9021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/49-9021.00",
+      "blsTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+      "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm",
+      "medianPay": "$59,810 (May 2024 median, BLS)",
+      "outlook": "Much faster than average (8% growth projected 2024–34); ~40,100 openings/yr",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'High demand'",
+          "verdict": "verified",
+          "note": "8% growth 2024–34, much faster than average.",
+          "source": "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm"
+        }
+      ]
+    },
+    {
+      "id": "welder",
+      "onetTitle": "Welders, Cutters, Solderers, and Brazers",
+      "onetCode": "51-4121.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/51-4121.00",
+      "blsTitle": "Welders, Cutters, Solderers, and Brazers",
+      "blsUrl": "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm",
+      "medianPay": "$51,000 (May 2024 median, BLS)",
+      "outlook": "Slower than average (2% growth projected 2024–34); ~45,600 openings/yr, mostly replacement-driven",
+      "claimChecks": [
+        {
+          "claim": "outlookSample 'Strong demand'",
+          "verdict": "corrected",
+          "note": "BLS projects only 2% growth 2024–34 (slower than average). Steady openings (~45,600/yr) exist but are replacement-driven. Suggest 'Steady openings' instead of 'Strong demand'.",
+          "source": "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm"
+        }
+      ]
+    },
+    {
+      "id": "aviation-maintenance",
+      "onetTitle": "Aircraft Mechanics and Service Technicians",
+      "onetCode": "49-3011.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/49-3011.00",
+      "blsTitle": "Aircraft and Avionics Equipment Mechanics and Technicians",
+      "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm",
+      "medianPay": "$78,680 (May 2024 median, BLS — aircraft mechanics and service technicians; avionics technicians $81,390)",
+      "outlook": "Faster than average (5% growth projected 2024–34); ~13,100 openings/yr",
+      "claimChecks": [
+        {
+          "claim": "Documented military maintenance experience can authorize testing for the FAA A&P certificate",
+          "verdict": "pending",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "id": "cdl-driver",
+      "onetTitle": "Heavy and Tractor-Trailer Truck Drivers",
+      "onetCode": "53-3032.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/53-3032.00",
+      "blsTitle": "Heavy and Tractor-trailer Truck Drivers",
+      "blsUrl": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+      "medianPay": "$57,440 (May 2024 median, BLS)",
+      "outlook": "As fast as average (4% growth projected 2024–34); ~237,600 openings/yr",
+      "claimChecks": [
+        {
+          "claim": "FMCSA Military Skills Test Waiver can waive the CDL road/skills test for qualified military drivers",
+          "verdict": "pending",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "id": "franchise-owner",
+      "onetTitle": "General and Operations Managers (closest proxy — business ownership has no dedicated SOC code)",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsTitle": "Top Executives (includes general and operations managers)",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "medianPay": "$102,950 (May 2024 median, BLS — general and operations managers; owner income varies with the business)",
+      "outlook": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)",
+      "socMatchNote": "No clean SOC match for franchise/business owners; General and Operations Managers (11-1021.00) is the closest proxy per task guidance.",
+      "claimChecks": []
+    },
+    {
+      "id": "service-business-owner",
+      "onetTitle": "General and Operations Managers (closest proxy — self-employment has no dedicated SOC code)",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsTitle": "Top Executives (includes general and operations managers)",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "medianPay": "$102,950 (May 2024 median, BLS — general and operations managers; owner income varies widely)",
+      "outlook": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)",
+      "socMatchNote": "No clean SOC match; General and Operations Managers (11-1021.00) used as the closest proxy.",
+      "claimChecks": []
+    },
+    {
+      "id": "govcon-sdvosb",
+      "onetTitle": "General and Operations Managers (closest proxy — SDVOSB ownership has no dedicated SOC code)",
+      "onetCode": "11-1021.00",
+      "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
+      "blsTitle": "Top Executives (includes general and operations managers)",
+      "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+      "medianPay": "$102,950 (May 2024 median, BLS — general and operations managers; contract revenue varies)",
+      "outlook": "As fast as average (4% growth for top executives projected 2024–34 — proxy occupation)",
+      "socMatchNote": "No clean SOC match; General and Operations Managers (11-1021.00) used as the closest proxy.",
+      "claimChecks": [
+        {
+          "claim": "SDVOSB set-aside contracts exist; SBA VetCert is the certification path",
+          "verdict": "pending",
+          "source": ""
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+    "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm",
+    "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm",
+    "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+    "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
+    "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+    "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+    "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm",
+    "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm",
+    "https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm",
+    "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+    "https://www.bls.gov/ooh/management/top-executives.htm"
+  ]
+}

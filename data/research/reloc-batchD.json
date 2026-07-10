@@ -1,0 +1,111 @@
+{
+  "batch": "D",
+  "gathered": "2026-07-10",
+  "sources_method": "RPP: BEA official MARPP download (MARPP_MSA_2008_2024.csv inside apps.bea.gov zip), all-items index, US=100. FMR: HUD FY2026 revised FMR file (huduser.gov), 2-bedroom, effective Oct 1 2025. Unemployment: BLS LAUS via public API v2, metro NSA rate, May 2026 (preliminary). VAMC: va.gov facility pages.",
+  "metros": [
+    {
+      "id": "colorado-springs-co",
+      "rpp": { "value": 100.707, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1735, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT081782000000003" },
+      "vamc": { "name": "No VAMC in the metro — outpatient clinic only: PFC Floyd K. Lindstrom Department of Veterans Affairs Clinic (VA Eastern Colorado Health Care System). Nearest full VA medical center: Rocky Mountain Regional VAMC, Aurora (Denver metro), roughly an hour north", "source": "https://www.va.gov/eastern-colorado-health-care/locations/pfc-floyd-k-lindstrom-department-of-veterans-affairs-clinic/" },
+      "notes": "Colorado Springs, CO MSA / HUD Metro FMR Area. Confirms the dataset's 'nearby' VA characterization: large multi-specialty clinic in town (3141 Centennial Blvd) with same-day Veterans Express Care; inpatient care is at Rocky Mountain Regional VAMC in Aurora."
+    },
+    {
+      "id": "raleigh-durham-nc",
+      "rpp": { "value": 98.157, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1750, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.0, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT373958000000003" },
+      "vamc": { "name": "Durham VA Medical Center (VA Durham Health Care System) — 508 Fulton St, Durham; 251-bed tertiary care and teaching hospital. Raleigh side is served by CBOCs (Raleigh VA Clinic and others) under the same system", "source": "https://www.va.gov/durham-health-care/locations/durham-va-medical-center/" },
+      "notes": "BEA/BLS/HUD all treat Raleigh-Cary, NC and Durham-Chapel Hill, NC as separate metros. Values shown are Raleigh-Cary MSA. Durham-Chapel Hill from same sources: RPP 97.572 (2024); 2BR FMR $1,711 (FY2026, Durham-Chapel Hill HMFA); unemployment 3.2% May 2026 (LAUMT372050000000003)."
+    },
+    {
+      "id": "pittsburgh-pa",
+      "rpp": { "value": 94.671, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1299, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT423830000000003" },
+      "vamc": { "name": "Pittsburgh VA Medical Center-University Drive (VA Pittsburgh Healthcare System; second medical center campus: H. John Heinz III, O'Hara Township)", "source": "https://www.va.gov/pittsburgh-health-care/locations/pittsburgh-va-medical-center-university-drive/" },
+      "notes": "Pittsburgh, PA MSA / HUD Metro FMR Area. VA Pittsburgh operates two medical centers plus six CBOCs in the region — matches the dataset's 'multiple VA medical facilities' note."
+    },
+    {
+      "id": "huntsville-al",
+      "rpp": { "value": 93.072, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1310, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 2.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT012662000000003" },
+      "vamc": { "name": "No VAMC in the metro — outpatient clinics only (Huntsville VA Clinic, Huntsville West VA Clinic, Huntsville South VA specialty clinic; VA Birmingham Health Care System). Nearest full VA medical center: Birmingham VA Medical Center, roughly 100 miles south", "source": "https://www.va.gov/birmingham-health-care/locations/huntsville-va-clinic/" },
+      "notes": "Huntsville, AL MSA. Confirms the dataset's CBOC characterization; Huntsville South VA specialty clinic (cardiology, chemo infusion, podiatry, neurology) opened Feb 2026, expanding local coverage."
+    },
+    {
+      "id": "boise-id",
+      "rpp": { "value": 98.391, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1655, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT161426000000003" },
+      "vamc": { "name": "Boise VA Medical Center (VA Boise Health Care System) — 500 W Fort St, Boise", "source": "https://www.va.gov/boise-health-care/locations/boise-va-medical-center/" },
+      "notes": "Boise City, ID MSA / HUD Metro FMR Area."
+    },
+    {
+      "id": "oklahoma-city-ok",
+      "rpp": { "value": 90.408, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1244, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.2, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT403642000000003" },
+      "vamc": { "name": "Oklahoma City VA Medical Center (VA Oklahoma City Health Care System) — 921 NE 13th St, Oklahoma City", "source": "https://www.va.gov/oklahoma-city-health-care/locations/oklahoma-city-va-medical-center/" },
+      "notes": "Oklahoma City, OK MSA / HUD Metro FMR Area. System also runs 15 outpatient clinics including several within the metro (North OKC, South OKC, Norman, Yukon, Tinker AFB)."
+    },
+    {
+      "id": "tucson-az",
+      "rpp": { "value": 96.896, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1402, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT044606000000003" },
+      "vamc": { "name": "Tucson VA Medical Center (VA Southern Arizona Health Care System) — 3601 S 6th Ave, Tucson", "source": "https://www.va.gov/southern-arizona-health-care/locations/tucson-va-medical-center/" },
+      "notes": "Tucson, AZ MSA. System includes 7 CBOCs across southern Arizona plus Northwest and Southeast Tucson VA clinics inside the metro."
+    },
+    {
+      "id": "spokane-wa",
+      "rpp": { "value": 100.346, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1531, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 4.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT534406000000003" },
+      "vamc": { "name": "Mann-Grandstaff Department of Veterans Affairs Medical Center (VA Spokane Health Care System) — 4815 N Assembly St, Spokane", "source": "https://www.va.gov/spokane-health-care/locations/mann-grandstaff-department-of-veterans-affairs-medical-center/" },
+      "notes": "Spokane-Spokane Valley, WA MSA; HUD Spokane, WA HUD Metro FMR Area."
+    },
+    {
+      "id": "knoxville-tn",
+      "rpp": { "value": 92.569, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1471, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 2.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT472894000000003" },
+      "vamc": { "name": "No VAMC in the metro — outpatient care only: William C. Tallent Department of Veterans Affairs Outpatient Clinic, Knoxville (VA Mountain Home Health Care System), plus Knox County VA Clinic. Nearest full VA medical center: James H. Quillen VAMC, Mountain Home/Johnson City, roughly 100 miles northeast", "source": "https://www.va.gov/mountain-home-health-care/locations/william-c-tallent-department-of-veterans-affairs-outpatient-clinic/" },
+      "notes": "Knoxville, TN MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization: multi-specialty outpatient clinic at 8033 Ray Mears Blvd; inpatient care is at Mountain Home VAMC (~1.5 hr drive)."
+    },
+    {
+      "id": "sioux-falls-sd",
+      "rpp": { "value": 90.631, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1156, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 1.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT464362000000003" },
+      "vamc": { "name": "Royal C. Johnson Veterans' Memorial Hospital / Sioux Falls VA Medical Center (VA Sioux Falls Health Care System) — 2501 W 22nd St, Sioux Falls", "source": "https://www.va.gov/sioux-falls-health-care/locations/royal-c-johnson-veterans-memorial-hospital/" },
+      "notes": "Sioux Falls, SD-MN MSA (BEA); HUD Sioux Falls, SD HUD Metro FMR Area. Full VAMC in a small metro, matching the dataset's note."
+    },
+    {
+      "id": "fargo-nd",
+      "rpp": { "value": 90.871, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1112, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 2.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT382202000000003" },
+      "vamc": { "name": "Fargo VA Medical Center (VA Fargo Health Care System) — 2101 Elm St N, Fargo", "source": "https://www.va.gov/fargo-health-care/locations/fargo-va-medical-center/" },
+      "notes": "Fargo, ND-MN MSA. Despite small-metro size, Fargo hosts a full VAMC (primary care, cancer care, emergency services, surgery, mental health) — dataset's VAMC characterization confirmed."
+    },
+    {
+      "id": "cheyenne-wy",
+      "rpp": { "value": 96.491, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1174, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 2.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT561694000000003" },
+      "vamc": { "name": "Cheyenne VA Medical Center (VA Cheyenne Health Care System) — 2360 E Pershing Blvd, Cheyenne", "source": "https://www.va.gov/cheyenne-health-care/locations/cheyenne-va-medical-center/" },
+      "notes": "Cheyenne, WY MSA. Contrary to the 'CBOC-only likely' expectation, Cheyenne hosts a full VA medical center (VA facility 442) — dataset's VAMC characterization confirmed."
+    },
+    {
+      "id": "clarksville-tn",
+      "rpp": { "value": 90.947, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
+      "fmr2br": { "value": 1346, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
+      "unemployment": { "value": 3.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT471730000000003" },
+      "vamc": { "name": "No VAMC in the metro — outpatient clinics only: Clarksville VA Clinic, Montgomery County VA Clinic, Dalton Drive VA Dental Clinic, and Fort Campbell VA Clinic (VA Tennessee Valley Healthcare System). Nearest full VA medical center: Nashville VA Medical Center, roughly an hour southeast", "source": "https://www.va.gov/tennessee-valley-health-care/locations/clarksville-va-clinic/" },
+      "notes": "Clarksville, TN-KY MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization; VA has five clinic sites serving Clarksville veterans, and a new multi-specialty Clarksville VA clinic is slated to open by 2030."
+    }
+  ]
+}

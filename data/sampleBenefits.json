@@ -1,0 +1,270 @@
+{
+  "_note": "PROTOTYPE DATA. Federal benefit content in this file was verified against official sources (VA.gov, DOL, SBA, veteranscrisisline.net, NASDVA) on the lastVerified date shown for each category (2026-07-08 / 2026-07-09). Rules change — always confirm current details at the official source linked on each card. VetPath is not the VA and does not determine eligibility.",
+  "categories": [
+    {
+      "id": "va-disability",
+      "name": "VA disability compensation",
+      "icon": "ti-clipboard-heart",
+      "summary": "Tax-free monthly compensation for conditions connected to your service.",
+      "whoFor": "Veterans with a current condition linked to an injury, illness, or event during service.",
+      "sampleEligibility": "Verified: you may qualify if you have a current diagnosed condition, an in-service injury, illness, or event, and a medical link between them — and you were discharged under other than dishonorable conditions.",
+      "official": { "name": "VA.gov — Disability", "url": "https://www.va.gov/disability/" },
+      "actionSteps": [
+        "Gather service records, medical records, and a symptom timeline.",
+        "If you're still serving with 180 to 90 days left before separation, ask about a Benefits Delivery at Discharge (BDD) pre-discharge claim.",
+        "Work with a free accredited VSO or county veteran service officer.",
+        "File your claim online at VA.gov or with VSO help."
+      ],
+      "documents": ["DD-214", "Service medical records", "Current treatment records", "Buddy/lay statements"],
+      "goalTags": ["understand-disability", "organize-documents", "transition-out"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
+      "sensitive": true,
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/disability/",
+        "https://www.va.gov/disability/eligibility/",
+        "https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/"
+      ]
+    },
+    {
+      "id": "va-healthcare",
+      "name": "VA health care",
+      "icon": "ti-stethoscope",
+      "summary": "Medical care, mental health, and prescriptions through the VA health system.",
+      "whoFor": "Most veterans who served in active duty and meet basic discharge and service requirements.",
+      "sampleEligibility": "Verified: most veterans who served on active duty and were discharged under other than dishonorable conditions can apply; your priority group depends on service history, disability rating, income, and toxic-exposure status (PACT Act).",
+      "official": { "name": "VA.gov — Health care", "url": "https://www.va.gov/health-care/" },
+      "actionSteps": [
+        "Apply for VA health care online at VA.gov, by phone at 877-222-8387, or with a VSO.",
+        "Check PACT Act toxic-exposure eligibility — many veterans can now enroll directly without first applying for other VA benefits.",
+        "Choose a VA facility and schedule an intake appointment.",
+        "Ask about mental health and telehealth options."
+      ],
+      "documents": ["DD-214", "Financial/income info (if required)", "Insurance cards"],
+      "goalTags": ["transition-out", "understand-disability", "prepare-retirement", "move-new-state"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/health-care/",
+        "https://www.va.gov/health-care/eligibility/priority-groups/",
+        "https://www.va.gov/resources/the-pact-act-and-your-va-benefits/"
+      ]
+    },
+    {
+      "id": "gi-bill",
+      "name": "GI Bill & education",
+      "icon": "ti-school",
+      "summary": "Tuition, housing allowance, and support for degrees, trades, and certifications.",
+      "whoFor": "Veterans and eligible dependents pursuing education or training.",
+      "sampleEligibility": "Verified: Post-9/11 GI Bill benefits scale with qualifying active-duty time — from 50% at 90 days up to 100% at 36 months. Transfers to a spouse or child must be requested and approved through DoD while you're still serving; they cannot be started after separation.",
+      "official": { "name": "VA.gov — Education", "url": "https://www.va.gov/education/" },
+      "actionSteps": [
+        "Apply for benefits and request a Certificate of Eligibility on VA.gov.",
+        "If transferring to dependents, request the transfer through DoD while still serving (generally 6 years in with a 4-year additional commitment).",
+        "Pick a program and confirm it's VA-approved using the GI Bill Comparison Tool.",
+        "Meet the School Certifying Official to enroll."
+      ],
+      "documents": ["DD-214", "Certificate of Eligibility", "Transcripts"],
+      "goalTags": ["use-education-benefits", "get-better-job", "transition-out"],
+      "statusTags": ["Active duty", "Transitioning (separating within 12 months)", "Veteran", "Spouse / family member"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/education/",
+        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+        "https://www.va.gov/resources/how-we-determine-your-percentage-of-post-911-gi-bill-benefits/"
+      ]
+    },
+    {
+      "id": "va-home-loan",
+      "name": "VA home loan",
+      "icon": "ti-home",
+      "summary": "A home loan guaranty with no down payment and no private mortgage insurance.",
+      "whoFor": "Veterans, service members, and some surviving spouses buying or refinancing a home.",
+      "sampleEligibility": "Verified: you'll need a Certificate of Eligibility based on your service history plus a lender's credit and income approval; a funding fee usually applies unless you're exempt, such as veterans receiving VA disability compensation.",
+      "official": { "name": "VA.gov — Home loans", "url": "https://www.va.gov/housing-assistance/home-loans/" },
+      "actionSteps": [
+        "Request your Certificate of Eligibility online at VA.gov, through your lender, or by mail (VA Form 26-1880).",
+        "Get pre-approved with a VA-experienced lender.",
+        "Shop with a real estate agent who knows VA appraisals and the VA loan process."
+      ],
+      "documents": ["Certificate of Eligibility", "DD-214", "Proof of income", "Bank statements"],
+      "goalTags": ["buy-a-home", "move-new-state"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/housing-assistance/home-loans/",
+        "https://www.va.gov/housing-assistance/home-loans/eligibility/",
+        "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/"
+      ]
+    },
+    {
+      "id": "vre",
+      "name": "VR&E (Chapter 31)",
+      "icon": "ti-tools",
+      "summary": "Veteran Readiness and Employment — training, education, and job support tied to a service-connected condition.",
+      "whoFor": "Veterans with a service-connected disability that affects their ability to work.",
+      "sampleEligibility": "Verified: you may qualify with a VA service-connected disability rating of at least 10%, a discharge that wasn't dishonorable, and an employment handicap; a Vocational Rehabilitation Counselor confirms entitlement. No time limit applies if you were discharged on or after January 1, 2013.",
+      "official": { "name": "VA.gov — VR&E", "url": "https://www.va.gov/careers-employment/vocational-rehabilitation/" },
+      "actionSteps": [
+        "Apply for VR&E online at VA.gov (VA Form 28-1900).",
+        "Meet with a Vocational Rehabilitation Counselor for an initial evaluation.",
+        "Build an approved rehabilitation and employment plan."
+      ],
+      "documents": ["DD-214", "VA disability rating letter", "Career goals summary"],
+      "goalTags": ["get-better-job", "use-education-benefits", "understand-disability"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/",
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/",
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/how-to-apply/"
+      ]
+    },
+    {
+      "id": "employment",
+      "name": "Employment & apprenticeships",
+      "icon": "ti-briefcase",
+      "summary": "Job placement, apprenticeships, and hiring programs for veterans.",
+      "whoFor": "Veterans and transitioning service members seeking work or a career change.",
+      "sampleEligibility": "Verified: veterans and eligible spouses receive priority of service for DOL-funded job training and placement programs at American Job Centers nationwide, with specialized help for those with significant barriers to employment.",
+      "official": { "name": "DOL VETS — Employment", "url": "https://www.dol.gov/agencies/vets" },
+      "actionSteps": [
+        "Visit or register with your local American Job Center.",
+        "Ask about priority of service and JVSG-funded veteran employment specialists (DVOP/LVER staff).",
+        "Target veteran-friendly employers, apprenticeships, and registered apprenticeship programs."
+      ],
+      "documents": ["Resume", "DD-214", "Certifications / licenses"],
+      "goalTags": ["get-better-job", "transition-out", "start-a-business", "move-new-state"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Spouse / family member"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.dol.gov/agencies/vets",
+        "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
+        "https://www.dol.gov/agencies/eta/jobs-for-veterans-act"
+      ]
+    },
+    {
+      "id": "veteran-business",
+      "name": "Veteran-owned business",
+      "icon": "ti-rocket",
+      "summary": "SBA resources, training, and certifications for veteran entrepreneurs.",
+      "whoFor": "Veterans and military spouses starting or growing a business.",
+      "sampleEligibility": "Verified: SBA programs like Boots to Business and Veterans Business Outreach Centers serve the military community broadly; SDVOSB/VOSB certification requires a business at least 51% owned and controlled by veterans (service-disabled veterans for SDVOSB), certified through SBA.",
+      "official": { "name": "SBA — Veteran business", "url": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses" },
+      "actionSteps": [
+        "Take the SBA Boots to Business course (offered through the DoD Transition Assistance Program).",
+        "Connect with your local Veterans Business Outreach Center (VBOC).",
+        "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at veterans.certify.sba.gov."
+      ],
+      "documents": ["Business plan", "DD-214", "EIN / licenses"],
+      "goalTags": ["start-a-business"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
+        "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs",
+        "https://veterans.certify.sba.gov/"
+      ]
+    },
+    {
+      "id": "mental-health-crisis",
+      "name": "Mental health & crisis support",
+      "icon": "ti-heart-handshake",
+      "summary": "Confidential mental health care and 24/7 crisis support for veterans and families.",
+      "whoFor": "Any veteran, service member, or family member — you do not need to be enrolled in VA health care to use the Veterans Crisis Line.",
+      "sampleEligibility": "Verified: the Veterans Crisis Line is free, confidential, and available 24/7 to veterans, service members, and their families — no VA enrollment required. Dial 988 then press 1, text 838255, or chat online.",
+      "official": { "name": "Veterans Crisis Line — dial 988 then press 1", "url": "https://www.veteranscrisisline.net/" },
+      "actionSteps": [
+        "Save the Veterans Crisis Line: dial 988, then press 1 — or text 838255, or chat online at veteranscrisisline.net.",
+        "Ask your VA facility about same-day mental health support.",
+        "Connect with a peer support group or Vet Center."
+      ],
+      "documents": [],
+      "goalTags": ["understand-disability", "find-local-support", "transition-out"],
+      "statusTags": ["Active duty", "Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
+      "crisis": true,
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.veteranscrisisline.net/",
+        "https://www.veteranscrisisline.net/about/what-is-988/",
+        "https://www.mentalhealth.va.gov/gethelp.asp"
+      ]
+    },
+    {
+      "id": "retirement-survivor",
+      "name": "Retirement & survivor benefits",
+      "icon": "ti-shield-check",
+      "summary": "Retirement pay coordination, pension, survivor protection, and family security.",
+      "whoFor": "Retiring veterans and their families planning for the long term.",
+      "sampleEligibility": "Verified: military retired pay (DFAS), VA Veterans Pension, and the Survivor Benefit Plan are separate programs with distinct rules — VA pension is needs-based for wartime veterans who meet age or disability plus income and net-worth limits.",
+      "official": { "name": "VA.gov — Pension & survivors", "url": "https://www.va.gov/pension/" },
+      "actionSteps": [
+        "Review retirement pay and Survivor Benefit Plan (SBP) elections with DFAS.",
+        "Check VA Veterans Pension and Aid & Attendance / Housebound eligibility at VA.gov.",
+        "Update beneficiaries and estate documents."
+      ],
+      "documents": ["Retirement orders", "SBP forms", "Beneficiary designations"],
+      "goalTags": ["prepare-retirement", "organize-documents"],
+      "statusTags": ["Veteran", "Retired (20+ years of service)", "Spouse / family member"],
+      "lastVerified": "2026-07-08",
+      "sources": [
+        "https://www.va.gov/pension/",
+        "https://www.va.gov/pension/eligibility/",
+        "https://www.va.gov/pension/aid-attendance-housebound/",
+        "https://www.dfas.mil/retiredmilitary/"
+      ]
+    },
+    {
+      "id": "family-dependent",
+      "name": "Family & dependent benefits",
+      "icon": "ti-users",
+      "summary": "Education, health, and support benefits for spouses and dependents.",
+      "whoFor": "Spouses, children, and dependents of veterans.",
+      "sampleEligibility": "Verified: spouses, dependent children, survivors, and caregivers may qualify for distinct programs — transferred GI Bill (DoD approval while still serving), DEA/Chapter 35 (veteran permanently and totally disabled or died from a service-connected condition), CHAMPVA (veteran rated permanently and totally disabled; not for TRICARE-eligible spouses), and VA caregiver support — each with its own rules.",
+      "official": { "name": "VA.gov — Family benefits", "url": "https://www.va.gov/family-and-caregiver-benefits/" },
+      "actionSteps": [
+        "Check whether GI Bill benefits can transfer to a dependent — the service member must request the transfer through DoD while still serving; it cannot be initiated after separation.",
+        "Explore DEA (Chapter 35) education benefits if the veteran is permanently and totally disabled from a service-connected condition, or died, is captured, or is missing — up to 36 months of benefits for those starting on or after August 1, 2018.",
+        "Check CHAMPVA health coverage for spouses and children of veterans rated permanently and totally disabled from a service-connected disability (not available if you qualify for TRICARE).",
+        "Look into VA caregiver support: the Program of Comprehensive Assistance for Family Caregivers (veteran rated 70% or higher; apply jointly with VA Form 10-10CG) or the Program of General Caregiver Support Services."
+      ],
+      "documents": ["Marriage/birth certificates", "Dependent SSNs", "DD-214"],
+      "goalTags": ["use-education-benefits", "prepare-retirement", "find-local-support"],
+      "statusTags": ["Veteran", "Retired (20+ years of service)", "Spouse / family member"],
+      "lastVerified": "2026-07-09",
+      "sources": [
+        "https://www.va.gov/family-and-caregiver-benefits/",
+        "https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/champva/",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/comprehensive-assistance-for-family-caregivers/",
+        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+        "https://www.caregiver.va.gov/support/support_benefits.asp"
+      ]
+    },
+    {
+      "id": "state-benefits",
+      "name": "State veteran benefits",
+      "icon": "ti-map-pin",
+      "summary": "State-specific benefits: property tax relief, tuition, licenses, parks, and more.",
+      "whoFor": "Veterans, varying by state of residence.",
+      "sampleEligibility": "Verified: every state and territory runs its own veterans agency with its own benefits — property tax relief, tuition programs, licenses, and recreation perks vary widely by state and change often, so eligibility must be confirmed directly with your state Department of Veterans Affairs.",
+      "official": { "name": "Find your state veterans agency (NASDVA)", "url": "https://www.nasdva.us/" },
+      "actionSteps": [
+        "Find your state Department of Veterans Affairs using the NASDVA state-by-state directory at nasdva.us/resources/ or VA's list of state veterans affairs offices on discover.va.gov.",
+        "Contact your state veterans agency or a county veteran service officer (county-level officers exist in many, but not all, states).",
+        "Ask specifically about property tax exemptions, state tuition programs, and license/registration benefits, and confirm current rules — state benefits change frequently."
+      ],
+      "documents": ["DD-214", "Proof of residency", "VA award letters"],
+      "goalTags": ["move-new-state", "buy-a-home", "prepare-retirement", "find-local-support"],
+      "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
+      "lastVerified": "2026-07-09",
+      "sources": [
+        "https://www.nasdva.us/",
+        "https://nasdva.us/resources/",
+        "https://nasdva.us/about/",
+        "https://discover.va.gov/external-resources/?_resource_type=state-veterans-affairs-office",
+        "https://news.va.gov/press-room/the-national-association-of-state-directors-of-veterans-affairs-nasdva/"
+      ]
+    }
+  ]
+}

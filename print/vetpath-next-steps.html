@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VetPath — Where We Are &amp; What's Next</title>
+<style>
+  :root{ --primary:#16324D; --primary-900:#0B1B2B; --accent:#C8863C; --accent-soft:#F6EDDF; --accent-ink:#7A5019;
+    --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --border:#CBD3DA; --chip:#EAF0F6; --success:#0F6E56; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#EEF1F4;line-height:1.5;font-size:13.5px}
+  .sheet{max-width:820px;margin:22px auto;background:#fff;padding:40px 44px;box-shadow:0 2px 14px rgba(16,36,56,.12)}
+  .bar{display:flex;align-items:center;gap:12px;border-bottom:3px solid var(--primary);padding-bottom:12px;margin-bottom:14px}
+  .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--primary-900);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .brand{font-size:20px;font-weight:700;color:var(--primary);font-family:Georgia,serif}
+  .tag{margin-left:auto;color:var(--muted);font-size:12px;text-align:right}
+  h1{font-family:Georgia,serif;font-size:25px;margin:0 0 4px;color:var(--ink-strong);font-weight:600}
+  h2{font-size:14px;margin:20px 0 8px;background:var(--primary);color:#fff;padding:7px 12px;border-radius:6px;font-weight:600}
+  p{margin:0 0 8px}
+  .muted{color:var(--muted)} .small{font-size:12px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin:4px 0 8px}
+  th,td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:var(--chip);color:var(--primary);font-weight:600}
+  ul{margin:4px 0 8px;padding-left:19px} li{margin-bottom:4px}
+  .row{padding:4px 0;display:flex;gap:9px;align-items:flex-start;font-size:13px}
+  .box{width:14px;height:14px;border:1.6px solid #7A8794;border-radius:3px;flex-shrink:0;margin-top:3px}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:#E1F0EA;color:var(--success);text-transform:uppercase;letter-spacing:.4px}
+  .pill.you{background:var(--accent-soft);color:var(--accent-ink)}
+  .note{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:12.5px;margin:8px 0}
+  .foot{font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px;margin-top:18px}
+  .toolbar{max-width:820px;margin:14px auto 0;text-align:right}
+  .btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  @media print{
+    body{background:#fff} .sheet{box-shadow:none;margin:0;max-width:none;padding:0} .toolbar{display:none}
+    h2,table,.note{break-inside:avoid;page-break-inside:avoid}
+    @page{size:letter;margin:0.5in}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button class="btn" onclick="window.print()">Print / Save as PDF</button></div>
+<div class="sheet">
+  <div class="bar">
+    <span class="mark">V</span><span class="brand">VetPath</span>
+    <span class="tag">Progress update &amp; next steps<br>July 8, 2026 · prepared for Frank</span>
+  </div>
+  <h1>Where we are — and the next 30 days</h1>
+  <p class="muted">Everything from our coffee chat is now built into the working prototype. Here's the short version and the decisions we need to make together.</p>
+
+  <h2>1 · Your ideas are in the app</h2>
+  <div class="grid2">
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>The 4 tracks (Employment / Education / Trades / Entrepreneur)</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>"Pathfinder" decision engine → recommended path with a % fit</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Resume scanner with military-to-civilian translation</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Smart transcript (military training → college credit examples)</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Location guidance driven by VA disability % (hospital proximity)</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Honest "get your full disability benefit" prep (free VSO route)</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Networking &amp; mentorship hub, tailored to the chosen path</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>SkillBridge surfaced for anyone still in service</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Type-your-own answers on every question + open notes</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>The action plan now has an endpoint — a destination, not chores</div></div>
+  </div>
+  <p class="small muted" style="margin-top:6px">Plus: a professional redesign, adjustable text size for older eyes, works on phones, and a print-your-gameplan button. All benefit data is still clearly-labeled sample data.</p>
+
+  <h2>2 · How to look at it (5 minutes)</h2>
+  <ul>
+    <li>Open the attached <strong>vetpath-demo.html</strong> file — just double-click it; it runs in your browser, nothing to install.</li>
+    <li>Go to <strong>Strategy</strong> → click <strong>"Load a sample veteran &amp; plan."</strong></li>
+    <li>Then try <strong>Pathfinder → "Help me decide"</strong> and answer the 9 questions as yourself.</li>
+    <li>Gut-check: does the recommended path feel right? Does anything feel off to a veteran's eye?</li>
+  </ul>
+
+  <h2>3 · Decisions we need to make together</h2>
+  <table>
+    <tr><th style="width:30%">Decision</th><th>Recommendation on the table</th></tr>
+    <tr><td>Name</td><td>Keep "VetPath" (check domain/trademark) — or pick another before we go public.</td></tr>
+    <tr><td>Structure</td><td>LLC / benefit corp now for speed; nonprofit arm later if grants become the core.</td></tr>
+    <tr><td>How it makes money</td><td>Free for veterans. Organizations pay (VSOs, universities, employers) + grants/sponsors.</td></tr>
+    <tr><td>First real data</td><td>Build accurate, cited benefits for 2 states first — which two?</td></tr>
+    <tr><td>First pilot</td><td>Your recurring meeting. Which date works?</td></tr>
+  </table>
+
+  <h2>4 · Next 30 days</h2>
+  <div class="row"><span class="pill you">Frank</span><div><strong>This week:</strong> click through the demo (5 min) and send reactions — especially anything that would make a veteran distrust it.</div></div>
+  <div class="row"><span class="pill you">Frank</span><div><strong>Pick two dates:</strong> one for a working session on the decisions above, one to pilot it live at your meeting.</div></div>
+  <div class="row"><span class="pill you">Frank</span><div><strong>Line up 5–10 veterans</strong> willing to try it and give honest feedback (we have a printed worksheet for this).</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div><strong>Start the real data</strong> for our first two states — cited, dated, verified benefit info (the credibility engine).</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div><strong>Draft the partner one-pager</strong> (what a VSO/university/employer gets and pays) + a list of 5 veteran-focused grants.</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div><strong>Name check:</strong> domain and trademark availability for VetPath (and backups).</div></div>
+
+  <div class="note"><strong>The one thing that matters most:</strong> putting this in front of real veterans at your meeting. Everything else — name, money, features — gets easier once we've watched ten vets use it.</div>
+
+  <div class="foot">
+    VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative. All benefit data in the prototype is sample/demo data; eligibility must be verified through VA.gov, state agencies, or accredited VSOs. Fit scores are demo estimates, not guarantees.
+  </div>
+</div>
+</body>
+</html>

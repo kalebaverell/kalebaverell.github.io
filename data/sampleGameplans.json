@@ -1,0 +1,78 @@
+{
+  "_note": "SAMPLE / DEMO DATA — for prototype only. Pre-built example gameplans used to showcase output and as a fallback. The live app generates a similar plan from a user's intake answers. Not official VA guidance.",
+  "examples": [
+    {
+      "id": "transitioning-army-tx",
+      "persona": "Transitioning — Army, Texas, age 25–34",
+      "headline": "Land softly: benefits enrolled, a job pipeline, and nothing left behind.",
+      "priorities": [
+        "Lock in VA health care and a disability claim before you separate",
+        "Build a civilian job pipeline now, not after your last day",
+        "Decide education vs. work — and use the right benefit for it"
+      ],
+      "benefitCategories": ["va-healthcare", "va-disability", "employment", "gi-bill", "state-benefits"],
+      "plan30": [
+        { "text": "Finish TAP and safeguard your DD-214 + medical records", "priority": "high" },
+        { "text": "File a VA disability claim (ask about Benefits Delivery at Discharge)", "priority": "high" },
+        { "text": "Draft a civilian resume translating your MOS into plain language", "priority": "medium" }
+      ],
+      "plan60": [
+        { "text": "Apply for VA health care and pick a facility near home", "priority": "high" },
+        { "text": "Register with a Texas American Job Center + DOL VETS rep", "priority": "medium" },
+        { "text": "Request your GI Bill Certificate of Eligibility if school is likely", "priority": "medium" }
+      ],
+      "plan90": [
+        { "text": "Have 3–5 job leads or an enrollment plan in motion", "priority": "high" },
+        { "text": "Meet a free accredited VSO to review your claim", "priority": "medium" },
+        { "text": "Check Texas benefits (Hazlewood, property tax) — verify with the state", "priority": "low" }
+      ],
+      "longTerm": [
+        "Use the VA home loan when you're ready to buy",
+        "Consider VR&E if a service-connected condition affects your work",
+        "Revisit your gameplan every 90 days as life changes"
+      ],
+      "documents": ["DD-214", "Service medical records", "Resume", "Certificate of Eligibility"],
+      "resources": ["va-healthcare", "va-disability", "employment", "gi-bill"],
+      "whyItMatters": [
+        "Filing before separation can shorten the wait for a decision.",
+        "Enrolling in VA health care early protects access to care and mental health support.",
+        "A job pipeline started now prevents an income gap later."
+      ]
+    },
+    {
+      "id": "retiring-navy-fl",
+      "persona": "Retiring — Navy, Florida, age 55–64",
+      "headline": "Secure the next chapter: pay, protection, healthcare, and purpose.",
+      "priorities": [
+        "Confirm retirement pay and Survivor Benefit Plan elections",
+        "Coordinate VA health care with Medicare/TRICARE for Life",
+        "Get documents and beneficiaries fully organized"
+      ],
+      "benefitCategories": ["retirement-survivor", "va-healthcare", "state-benefits", "family-dependent"],
+      "plan30": [
+        { "text": "Review retirement pay statement and SBP election", "priority": "high" },
+        { "text": "Locate and back up all key documents in one secure folder", "priority": "medium" }
+      ],
+      "plan60": [
+        { "text": "Coordinate VA care with Medicare/TRICARE for Life", "priority": "high" },
+        { "text": "Update beneficiaries and estate documents", "priority": "medium" }
+      ],
+      "plan90": [
+        { "text": "Check Florida veteran property-tax exemptions — verify with the state", "priority": "medium" },
+        { "text": "Plan community and purpose for the next chapter", "priority": "low" }
+      ],
+      "longTerm": [
+        "Review Aid & Attendance eligibility if care needs increase",
+        "Keep survivor documents current for your family",
+        "Revisit the plan yearly"
+      ],
+      "documents": ["Retirement orders", "SBP forms", "Beneficiary designations", "Estate documents"],
+      "resources": ["retirement-survivor", "va-healthcare", "state-benefits"],
+      "whyItMatters": [
+        "SBP decisions are time-sensitive and hard to reverse.",
+        "Coordinating coverage avoids gaps and surprise costs.",
+        "Organized documents protect your family if something happens to you."
+      ]
+    }
+  ]
+}

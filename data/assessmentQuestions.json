@@ -1,0 +1,103 @@
+{
+  "_note": "SAMPLE / DEMO DATA — Pathfinder decision-engine questions. Each option contributes weights (0–5) to the veteran's profile across: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. 'speed' options tag pace preference. This is a decision aid, not a clinical instrument. Question design informed by the U.S. Department of Labor's O*NET® Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool — USDOL/ETA has not approved, endorsed, or tested this adaptation.",
+  "questions": [
+    {
+      "id": "pull",
+      "label": "What kind of work pulls at you most?",
+      "options": [
+        { "label": "Building or fixing things with my hands", "w": { "hands": 5, "physical": 3, "tech": 1 } },
+        { "label": "Technology and systems", "w": { "tech": 5, "data": 3 } },
+        { "label": "Helping or taking care of people", "w": { "care": 5, "people": 4 } },
+        { "label": "Leading teams and running operations", "w": { "lead": 5, "people": 3, "data": 1 } },
+        { "label": "Analyzing information and solving puzzles", "w": { "data": 5, "tech": 2 } },
+        { "label": "Building a business or selling", "w": { "risk": 4, "autonomy": 4, "people": 3, "lead": 2 } }
+      ]
+    },
+    {
+      "id": "setting",
+      "label": "Where do you want to spend your workday?",
+      "options": [
+        { "label": "Outdoors or on the move", "w": { "outdoor": 5, "physical": 3 } },
+        { "label": "A shop, site, or hangar", "w": { "hands": 4, "physical": 3, "outdoor": 2 } },
+        { "label": "An office or clinic", "w": { "data": 3, "people": 2 } },
+        { "label": "Home / remote", "w": { "tech": 3, "autonomy": 3, "data": 2 } },
+        { "label": "A mix — variety keeps me sharp", "w": { "hands": 2, "people": 2, "outdoor": 2, "data": 2 } }
+      ]
+    },
+    {
+      "id": "structure",
+      "label": "How much structure do you want?",
+      "options": [
+        { "label": "Clear mission, clear SOPs — tell me the standard", "w": { "autonomy": 0 } },
+        { "label": "Give me the goal, I'll pick the route", "w": { "autonomy": 3 } },
+        { "label": "Full autonomy — I want to own the whole thing", "w": { "autonomy": 5, "risk": 2 } }
+      ]
+    },
+    {
+      "id": "risk",
+      "label": "Paycheck vs. bet-on-yourself — where are you?",
+      "options": [
+        { "label": "Steady paycheck and benefits, please", "w": { "risk": 0 } },
+        { "label": "Mostly steady, some upside is fine", "w": { "risk": 2 } },
+        { "label": "I'm ready to bet on myself", "w": { "risk": 5, "autonomy": 3 } }
+      ]
+    },
+    {
+      "id": "physical",
+      "label": "How physical do you want the work to be?",
+      "options": [
+        { "label": "Very — I want to move all day", "w": { "physical": 5, "hands": 3 } },
+        { "label": "Somewhat — on my feet, not breaking my back", "w": { "physical": 3 } },
+        { "label": "Desk-first is fine by me", "w": { "physical": 0, "data": 2 } }
+      ]
+    },
+    {
+      "id": "people",
+      "label": "How much people-contact do you want?",
+      "options": [
+        { "label": "Mostly solo focus", "w": { "people": 0, "autonomy": 0 } },
+        { "label": "A tight crew", "w": { "people": 3 } },
+        { "label": "Front-of-people — customers, students, patients", "w": { "people": 5, "care": 2 } }
+      ]
+    },
+    {
+      "id": "detail",
+      "label": "How do you feel about details, records, and keeping things squared away?",
+      "options": [
+        { "label": "I like it — logs, checklists, standards done right", "w": { "data": 4 } },
+        { "label": "I can do it, but I'd rather own the bigger picture", "w": { "lead": 2, "data": 1 } },
+        { "label": "Paperwork drains me — keep me off the forms", "w": { "data": 0, "hands": 2 } }
+      ]
+    },
+    {
+      "id": "speed",
+      "label": "How fast do you need the first real paycheck on this path?",
+      "options": [
+        { "label": "ASAP — weeks", "speed": "weeks" },
+        { "label": "A few months of training is fine", "speed": "months" },
+        { "label": "Up to ~2 years (cert/associate)", "speed": "2yr" },
+        { "label": "A full degree is worth it to me", "speed": "4yr" }
+      ]
+    },
+    {
+      "id": "lead",
+      "label": "Do you want to lead again?",
+      "options": [
+        { "label": "Yes — put me in charge", "w": { "lead": 4 } },
+        { "label": "Eventually, once I've learned the terrain", "w": { "lead": 2 } },
+        { "label": "I'd rather master the craft than manage", "w": { "lead": 0, "autonomy": 2, "hands": 1 } }
+      ]
+    },
+    {
+      "id": "place",
+      "label": "What kind of place do you want to live?",
+      "options": [
+        { "label": "Big city", "place": "city" },
+        { "label": "Suburbs", "place": "either" },
+        { "label": "Small town / rural", "place": "rural" },
+        { "label": "Wherever the right opportunity is", "place": "any" }
+      ]
+    }
+  ],
+  "freePrompt": "In your own words: what does a good life after service look like for you? (optional — helps us tailor your plan)"
+}

@@ -1,0 +1,164 @@
+{
+  "batch": "5a",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "agency": {
+        "name": "South Carolina Department of Veterans' Affairs",
+        "url": "https://scdva.sc.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans with a total, permanent, service-connected disability receive a property tax exemption on their home and up to five acres plus up to two private passenger vehicles, claimable retroactively via the SCDOR.",
+          "source": "https://dor.sc.gov/tax-tips/veterans-learn-more-about-sc-property-tax-exemptions"
+        },
+        {
+          "name": "Free Tuition for Children of Certain Veterans",
+          "category": "education",
+          "blurb": "Qualified children of certain South Carolina veterans receive a tuition waiver at state-supported colleges, universities, and technical schools, including dual-enrollment programs.",
+          "source": "https://scdva.sc.gov/education"
+        },
+        {
+          "name": "Military Retirement Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement pay is 100 percent exempt from South Carolina state income tax with no earned-income cap, effective for tax years after 2021.",
+          "source": "https://scdva.sc.gov/news/claiming-military-retiree-state-income-tax-exemption-sc"
+        },
+        {
+          "name": "SCDVA Veteran Employment Services",
+          "category": "employment",
+          "blurb": "The SCDVA connects veterans to employment resources, hiring initiatives, and job-seeking support across the state.",
+          "source": "https://scdva.sc.gov/employment"
+        },
+        {
+          "name": "Veteran Consumer Resources (State Park Discounts and More)",
+          "category": "recreation",
+          "blurb": "SCDVA's consumer resources page consolidates disabled-veteran perks including state park admission discounts alongside property and income tax exemption guidance.",
+          "source": "https://scdva.sc.gov/veteran-consumer-resources"
+        }
+      ],
+      "notes": "SCDVA also operates state veterans homes; homes program page URL not captured in search results, see agency homepage."
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "agency": {
+        "name": "South Dakota Department of Veterans Affairs",
+        "url": "https://vetaffairs.sd.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Exempts the first portion of assessed valuation on the home of a veteran rated permanently and totally disabled from service-connected causes (or their unremarried surviving spouse), with a full exemption available for paraplegic veterans in wheelchair-adapted homes.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/Property%20Taxes.aspx"
+        },
+        {
+          "name": "State Education Programs (Free Tuition for Veterans)",
+          "category": "education",
+          "blurb": "Eligible veterans receive one month of free tuition at state-supported schools for each month of qualifying wartime service, from a minimum of one up to four academic years.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/State%20Education%20Programs.aspx"
+        },
+        {
+          "name": "South Dakota Veterans Bonus",
+          "category": "other",
+          "blurb": "A one-time cash bonus for veterans with qualifying active-duty service during designated periods since January 1, 1993.",
+          "source": "https://vetaffairs.sd.gov/benefits/State/Veterans%20Bonus.aspx"
+        },
+        {
+          "name": "Michael J. Fitzmaurice South Dakota Veterans Home",
+          "category": "housing",
+          "blurb": "The state veterans home in Hot Springs provides nursing and domiciliary care for honorably discharged veterans of any era and eligible spouses.",
+          "source": "https://vetaffairs.sd.gov/veteranshome/default.aspx"
+        }
+      ],
+      "notes": "South Dakota has no state personal income tax, so military retirement pay is untaxed by default. Employment preference exists but an official URL was not captured in search results."
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "agency": {
+        "name": "Tennessee Department of Veterans Services",
+        "url": "https://www.tn.gov/veteran.html"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Relief for Disabled Veterans",
+          "category": "tax",
+          "blurb": "State-funded property tax relief on the primary residence of eligible disabled veteran homeowners and their surviving spouses, administered through the Tennessee Comptroller of the Treasury.",
+          "source": "https://www.tn.gov/veteran/veteran-benefits/tn-state-benefits/homeowners/property-tax-relief-for-disabled-veterans.html"
+        },
+        {
+          "name": "Helping Heroes Grant",
+          "category": "education",
+          "blurb": "A per-semester higher-education grant for eligible Tennessee veterans, awarded first-come first-served to students who complete their coursework.",
+          "source": "https://www.tn.gov/veteran/veteran-education/scholarships/veterans/helping-heroes-grant.html"
+        },
+        {
+          "name": "Veterans Education Transition Support (VETS) Act In-State Tuition",
+          "category": "education",
+          "blurb": "Guarantees in-state tuition rates at Tennessee public colleges for eligible veterans and their dependents regardless of official residency status.",
+          "source": "https://www.tn.gov/thec/for-institutions/veteran-initiatives.html"
+        },
+        {
+          "name": "Tennessee State Veterans Homes",
+          "category": "housing",
+          "blurb": "TDVS serves as liaison for four Tennessee State Veterans Homes providing long-term skilled nursing care for eligible veterans.",
+          "source": "https://www.tn.gov/veteran/veteran-benefits/tn-state-benefits.html"
+        },
+        {
+          "name": "Disabled Veteran (DAV) Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Tennessee offers deeply discounted lifetime-style hunting and fishing licenses to disabled American veterans for a one-time fee.",
+          "source": "https://comptroller.tn.gov/office-functions/research-and-education-accountability/publications/other-topics/state-benefits-for-veterans-in-tennessee.html"
+        }
+      ],
+      "notes": "Tennessee has no state tax on wage or retirement income, so military retirement pay is untaxed by default."
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "agency": {
+        "name": "Texas Veterans Commission",
+        "url": "https://tvc.texas.gov/"
+      },
+      "programs": [
+        {
+          "name": "Hazlewood Act",
+          "category": "education",
+          "blurb": "Exempts qualified Texas veterans, spouses, and dependent children from tuition and most fees for up to 150 semester credit hours at Texas public colleges and universities, with unused hours transferable to a child through the Legacy program.",
+          "source": "https://tvc.texas.gov/education/hazlewood/"
+        },
+        {
+          "name": "Disabled Veteran Property Tax Exemptions (Tiered)",
+          "category": "tax",
+          "blurb": "Graduated statutory property tax exemptions rise with VA disability rating (10-29%, 30-49%, 50-69%, 70-99%), and veterans rated 100 percent disabled or individually unemployable receive a total exemption on their residence homestead under Tax Code Section 11.131.",
+          "source": "https://comptroller.texas.gov/taxes/property-tax/exemptions/disabledvet-faq.php"
+        },
+        {
+          "name": "Texas Veterans Land Board Land, Home, and Home Improvement Loans",
+          "category": "housing",
+          "blurb": "The VLB's nation-unique loan programs let Texas veterans and military members finance land purchases, homes, and home improvements at competitive rates, with discounted interest for veterans rated 30 percent or more service-connected disabled.",
+          "source": "https://vlb.texas.gov/loans/home-loans/index.html"
+        },
+        {
+          "name": "TVC Veteran Employment Services",
+          "category": "employment",
+          "blurb": "The Texas Veterans Commission delivers veteran employment services through Jobs for Veterans State Grant and state-level programs in more than 75 cities across Texas.",
+          "source": "https://tvc.texas.gov/wp-content/uploads/2023/07/2023-TVC-State-Benefits.pdf"
+        },
+        {
+          "name": "Disabled Veteran Super Combo Hunting and All-Water Fishing Package",
+          "category": "recreation",
+          "blurb": "Qualifying disabled veterans (50 percent or greater rating or loss of use of a foot or leg) receive a free Super Combo hunting and all-water fishing license package with five state endorsements from Texas Parks and Wildlife.",
+          "source": "https://tpwd.texas.gov/regulations/outdoor-annual/licenses/combination-hunting-fishing/disabled-veteran-super-combo-hunting-and-all-water-fishing-package"
+        }
+      ],
+      "notes": "Flagship state. Texas has no state personal income tax. The Veterans Land Board (part of the General Land Office) also operates Texas State Veterans Homes and free-burial Texas State Veterans Cemeteries (https://www.glo.texas.gov/veterans). TVC employment page (tvc.texas.gov/employment/) blocked automated access; employment details cited from TVC's official state-benefits publication."
+    }
+  ]
+}

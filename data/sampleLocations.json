@@ -1,0 +1,23 @@
+{
+  "_note": "SAMPLE / DEMO DATA — illustrative metro examples for location-fit guidance. Verify VA facilities via the VA facility locator (va.gov/find-locations) and job markets independently. Not an endorsement of any location.",
+  "rules": {
+    "highDisability": "With a higher rating or ongoing care needs, prioritize living within ~30–45 minutes of a VA Medical Center and check specialty-care availability before you sign a lease.",
+    "midDisability": "Keep a VA clinic (CBOC) within easy reach and know where your nearest full VA Medical Center is.",
+    "ruralNote": "Rural living can absolutely work — pair a VA community clinic (CBOC) with VA telehealth, and confirm Community Care options for anything the clinic doesn't cover.",
+    "generalNote": "Balance four things: VA access, the job market for YOUR path, cost of living, and community — a veteran network nearby changes everything."
+  },
+  "metros": [
+    { "name": "San Antonio", "state": "TX", "vibe": "big", "va": "Major VA medical center + military medical hub", "strongFor": ["healthcare-nursing", "cybersecurity-analyst", "it-support-network", "federal-civil-service"], "costSample": "Moderate", "note": "Huge veteran community; 'Military City USA'." },
+    { "name": "Dallas–Fort Worth", "state": "TX", "vibe": "big", "va": "VA medical center + broad clinic network", "strongFor": ["project-manager", "it-support-network", "cdl-driver", "business-analyst", "franchise-owner"], "costSample": "Moderate", "note": "Massive job market across every track." },
+    { "name": "Tampa", "state": "FL", "vibe": "big", "va": "Major VA medical center", "strongFor": ["cybersecurity-analyst", "project-manager", "service-business-owner"], "costSample": "Moderate", "note": "Strong defense/vet employer base; no state income tax." },
+    { "name": "Phoenix", "state": "AZ", "vibe": "big", "va": "VA medical center + growing clinic network", "strongFor": ["hvac-tech", "electrician", "cdl-driver", "it-support-network"], "costSample": "Moderate", "note": "Trades demand runs hot — literally." },
+    { "name": "Colorado Springs", "state": "CO", "vibe": "mid", "va": "VA clinics + military treatment facilities nearby", "strongFor": ["cybersecurity-analyst", "federal-civil-service", "teacher-trainer"], "costSample": "Moderate-high", "note": "Defense-heavy, outdoors lifestyle, big vet community." },
+    { "name": "Nashville", "state": "TN", "vibe": "big", "va": "VA medical center", "strongFor": ["healthcare-nursing", "welder", "service-business-owner", "franchise-owner"], "costSample": "Moderate", "note": "Healthcare capital; booming trades; no state income tax." },
+    { "name": "Raleigh–Durham", "state": "NC", "vibe": "mid", "va": "VA medical center (Durham)", "strongFor": ["business-analyst", "it-support-network", "project-manager", "teacher-trainer"], "costSample": "Moderate", "note": "Education + tech corridor with veteran pipelines." },
+    { "name": "Pittsburgh", "state": "PA", "vibe": "mid", "va": "Two VA medical centers", "strongFor": ["welder", "electrician", "healthcare-nursing", "aviation-maintenance"], "costSample": "Low-moderate", "note": "Affordable, strong VA presence, real trades economy." },
+    { "name": "Huntsville", "state": "AL", "vibe": "mid", "va": "VA clinics; Birmingham VAMC ~1.5h", "strongFor": ["cybersecurity-analyst", "govcon-sdvosb", "aviation-maintenance", "federal-civil-service"], "costSample": "Low", "note": "Defense/aerospace GovCon heaven for SDVOSBs." },
+    { "name": "Sioux Falls", "state": "SD", "vibe": "small", "va": "VA medical center (right-sized city)", "strongFor": ["cdl-driver", "welder", "hvac-tech", "service-business-owner"], "costSample": "Low", "note": "Small-city pace WITH a VA medical center — rare combo." },
+    { "name": "Boise", "state": "ID", "vibe": "mid", "va": "VA medical center", "strongFor": ["electrician", "hvac-tech", "service-business-owner", "teacher-trainer"], "costSample": "Moderate", "note": "Outdoors life plus a real VAMC." },
+    { "name": "Rural + telehealth pattern", "state": "—", "vibe": "small", "va": "CBOC clinic + VA telehealth + Community Care", "strongFor": ["cdl-driver", "welder", "service-business-owner", "franchise-owner"], "costSample": "Lowest", "note": "Country living works when you anchor to a CBOC and confirm Community Care coverage first." }
+  ]
+}
