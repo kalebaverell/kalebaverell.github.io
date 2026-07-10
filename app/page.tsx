@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import { BRAND } from "@/lib/data";
+import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { Wrap, Stat, Callout, Eyebrow, SectionHead } from "@/components/ui";
+import PlanDemo from "@/components/PlanDemo";
 
 function WhoCard({ icon, title, body }: { icon: string; title: string; body: string }) {
   return (
@@ -97,13 +98,15 @@ export default function Landing() {
 
       <div className="trust-bar">
         <div className="trust-bar-inner">
-          <span className="item"><i className="ti ti-route" /> 4 transition tracks</span>
+          <span className="item"><i className="ti ti-map-pin-check" /> {STATE_BENEFITS.states.length} states verified from official sources</span>
           <span className="sep" />
-          <span className="item"><i className="ti ti-briefcase" /> 15+ career paths mapped</span>
+          <span className="item"><i className="ti ti-award" /> {STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0)} benefit programs, each cited</span>
           <span className="sep" />
-          <span className="item"><i className="ti ti-award" /> 11 benefit categories</span>
+          <span className="item"><i className="ti ti-chart-bar" /> Careers on official BLS pay data</span>
           <span className="sep" />
-          <span className="item"><i className="ti ti-calendar-stats" /> 30 / 60 / 90-day plans</span>
+          <Link className="item" href="/trust" style={{ color: "var(--accent-ink)", fontWeight: 600 }}>
+            <i className="ti ti-shield-check" /> Every number has a source →
+          </Link>
         </div>
       </div>
 
@@ -143,6 +146,14 @@ export default function Landing() {
           </div>
         </div>
 
+        <div style={{ marginTop: 56 }} data-reveal="true">
+          <SectionHead
+            eyebrow="See it work"
+            title="Watch a plan build itself"
+            sub="From a veteran's answers to a recommended path to a living 30/60/90 plan — this is the engine, not a mockup."
+          />
+          <PlanDemo />
+        </div>
       </Wrap>
 
       {/* Mission band — real transition-assistance moment (public-domain photo, see /img/CREDITS.md) */}
@@ -169,7 +180,7 @@ export default function Landing() {
       <Wrap>
         <div>
           <Callout kind="info">
-            <strong>A planning tool, not the VA.</strong> {BRAND.name} helps you organize and prioritize. It does not determine eligibility or provide legal, medical, or financial advice. All data shown is sample/demo data for this prototype.
+            <strong>A planning tool, not the VA.</strong> {BRAND.name} helps you organize and prioritize. It does not determine eligibility or provide legal, medical, or financial advice. Benefit content is verified against official sources where marked — <Link href="/trust">see how we earn trust</Link>.
           </Callout>
         </div>
 

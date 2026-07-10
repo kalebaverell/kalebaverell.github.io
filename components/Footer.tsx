@@ -48,6 +48,8 @@ export default function Footer() {
         <hr className="hairline" style={{ margin: "22px 0" }} />
 
         <div className="disclaimer" style={{ textAlign: "left" }}>
+          <a href="/trust" style={{ fontWeight: 600 }}>How we earn trust — every number has a source →</a>
+          <br />
           <strong style={{ color: "var(--ink-strong)" }}>{BRAND.name} is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</strong>{" "}
           All benefit information here is <strong>sample/demo data</strong>. Eligibility and amounts must be confirmed through official sources such as{" "}
           <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>, your state veterans agency, or an accredited VSO.
