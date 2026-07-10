@@ -21,6 +21,34 @@
 
 ---
 
+## Entry — 2026-07-10 (Trust surface + business-builder ops + PWA/app view)
+
+Directive: think like an experienced business developer — make the site read as trusted and
+professional, not "another AI-made site"; add visuals/motion/video; stand up skills and scheduled
+tasks so the operation runs itself.
+
+- **Homepage trust surface** (commit 78c9741): mission band now plays an 11.5s looping palindrome of
+  U.S. Army SFL-TAP footage (DVIDS 872406, Fort Bliss, public domain — public/video/CREDITS.md),
+  poster fallback + still photo under prefers-reduced-motion, defensive play() for post-hydration
+  autoplay; trust bar shows LIVE counts computed from the shipped data (51 states, 259 programs)
+  linking to /trust; "Watch a plan build itself" band = components/PlanDemo.tsx, a 3-act looping
+  product demo (answers → % fit count-up → plan adapts to a new baby), static final frame under
+  reduced motion; disclaimer callout links to /trust.
+- **/trust page** ("Every number has a source"): live dataset counts, source & cadence table
+  (VA.gov / state .gov / BLS OOH / O*NET / BEA RPP / HUD FMR / BLS LAUS), six operating rules,
+  honest "what's still illustrative" callout.
+- **Ops infrastructure**: git repo (3 commits); repo skills .claude/skills/vetpath-{verify,release,
+  mirror} encode the QA gauntlet, release refresh, and hardened demo-mirror protocol; scheduled
+  tasks: quarterly data re-verification (1 Jan/Apr/Jul/Oct 9am) + weekly Monday health check.
+- **PWA/app view**: manifest.webmanifest + sw.js (network-first) + generated icons; 5-tab bottom
+  bar (components/BottomTabs.tsx) on mobile with profile; verified at 390×844.
+- **Demo mirror**: chunk 1 complete (verified data + optimizer + attribution). Chunk 2 agent was
+  quota-killed mid-flight; file left WORKING with relocate data/screen + family screen live;
+  finisher agent relaunched for scoreMetros, /updates (life events + diff), tools grid. Chunk 3
+  (dashboard planning cards, hero/admin copy, photos) queued behind it; release refresh after.
+
+---
+
 ## Entry — 2026-07-09/10 (Wave 2: the "Planning Engine" — five differentiators)
 
 Strategy memo: separate from "how to use AI" tools — VetPath is the planning engine combining
