@@ -1,6 +1,6 @@
 /* VetPath service worker — app-shell caching for installed/offline use.
    Network-first for pages (fresh content when online), cache fallback offline. */
-const CACHE = "vetpath-v1";
+const CACHE = "vetpath-v2";
 const CORE = [
   "/", "/dashboard/", "/pathfinder/", "/benefits/", "/tools/", "/plan/",
   "/relocate/", "/family/", "/updates/", "/onboarding/", "/goals/",
@@ -24,7 +24,12 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   const req = e.request;
-  if (req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
+  const url = new URL(req.url);
+  if (req.method !== "GET" || url.origin !== location.origin) return;
+  // Video/audio stream via Range requests; Cache.put rejects partial (206)
+  // responses and a cache-stitched reply breaks <video> decoding. Let the
+  // browser fetch media natively.
+  if (req.headers.has("range") || /\.(mp4|webm|mp3|m4a)$/i.test(url.pathname)) return;
   e.respondWith(
     fetch(req)
       .then((res) => {

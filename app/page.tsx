@@ -51,6 +51,34 @@ function MissionMedia() {
   );
 }
 
+/** Hero backdrop: ambient looping footage under a navy scrim. Renders nothing when the user
+ *  prefers reduced motion (or before hydration) — the hero-wrap gradient is the fallback. */
+function HeroBackdrop() {
+  const [motionOk, setMotionOk] = useState(false);
+  useEffect(() => {
+    setMotionOk(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+  if (!motionOk) return null;
+  return (
+    <>
+      <video
+        ref={(el) => { el?.play().catch(() => {}); }}
+        className="hero-media"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/video/hero-poster.jpg"
+        src="/video/hero-loop.mp4"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      <div className="hero-scrim" aria-hidden="true" />
+    </>
+  );
+}
+
 function HeroVisual() {
   return (
     <div className="hero-visual" aria-hidden="true">
@@ -105,6 +133,7 @@ export default function Landing() {
   return (
     <>
       <section className="hero-wrap">
+        <HeroBackdrop />
         <div className="hero-orb" aria-hidden="true" />
         <div className="hero hero-inner">
           <div>
