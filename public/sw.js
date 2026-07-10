@@ -3,7 +3,7 @@
 const CACHE = "vetpath-v2";
 const CORE = [
   "/", "/dashboard/", "/pathfinder/", "/benefits/", "/tools/", "/plan/",
-  "/relocate/", "/family/", "/updates/", "/onboarding/", "/goals/",
+  "/relocate/", "/family/", "/updates/", "/timeline/", "/onboarding/", "/goals/",
   "/resume/", "/transcript/", "/network/", "/profile/",
   "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png",
 ];
