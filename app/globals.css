@@ -168,7 +168,6 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 /* ---- Hero ---- */
 .hero-wrap { position:relative; overflow:hidden; color:#fff;
   background:
-    repeating-radial-gradient(circle at 88% 6%, transparent 0 47px, rgba(255,255,255,.038) 47px 48px),
     radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
     linear-gradient(158deg, var(--primary-900) 0%, var(--primary) 58%, var(--primary-800) 100%);
 }
@@ -179,7 +178,6 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 @keyframes hero-media-in { to { opacity:1; } }
 .hero-scrim { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
-    repeating-radial-gradient(circle at 88% 6%, transparent 0 47px, rgba(255,255,255,.038) 47px 48px),
     radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
     linear-gradient(105deg, color-mix(in srgb, var(--primary-900) 95%, transparent) 0%, color-mix(in srgb, var(--primary) 90%, transparent) 48%, color-mix(in srgb, var(--primary-800) 78%, transparent) 100%);
 }

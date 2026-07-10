@@ -69,8 +69,8 @@ function HeroBackdrop() {
         loop
         playsInline
         preload="metadata"
-        poster="/video/hero-poster.jpg"
-        src="/video/hero-loop.mp4"
+        poster="/video/career-summit-poster.jpg"
+        src="/video/career-summit-loop.mp4"
         aria-hidden="true"
         tabIndex={-1}
       />
