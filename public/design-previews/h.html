@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview H — Mission Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--void:#050B12;--cream:#FFF3EA;--cream-dim:#BDB2A7;--gold:#C8863C;--gold-hi:#E8C89B;--hair:rgba(255,243,234,.16)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--void);color:var(--cream);overflow:hidden}
+.mono{font-family:"Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.switch{position:fixed;right:14px;bottom:14px;z-index:60;background:rgba(5,11,18,.85);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;font-size:12px}
+.switch a{color:var(--cream);text-decoration:none;font-weight:600;margin:0 4px}.switch a.on{color:var(--gold-hi)}
+/* backdrop */
+.bg{position:fixed;inset:0}
+.bg video{width:100%;height:100%;object-fit:cover;filter:grayscale(.45) brightness(.34) contrast(1.08) sepia(.14)}
+.bg .tint{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(5,11,18,.25) 0%,rgba(5,11,18,.88) 78%)}
+/* HUD frame */
+.hud{position:fixed;inset:16px;pointer-events:none;z-index:20;border:1px solid rgba(255,243,234,.09)}
+.hud i{position:absolute;width:44px;height:44px;border:1px solid rgba(200,134,60,.7)}
+.hud i:nth-child(1){top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud i:nth-child(2){top:-1px;right:-1px;border-left:0;border-bottom:0}
+.hud i:nth-child(3){bottom:-1px;left:-1px;border-right:0;border-top:0}
+.hud i:nth-child(4){bottom:-1px;right:-1px;border-left:0;border-top:0}
+/* telemetry corners */
+.tele{position:fixed;z-index:22;font-size:9.5px;line-height:2;color:var(--cream-dim)}
+.tele b{color:var(--gold-hi);font-weight:700}
+.tele.tl{top:34px;left:40px}
+.tele.tr{top:34px;right:40px;text-align:right}
+.tele.bl{bottom:34px;left:40px}
+.tele.br{bottom:34px;right:40px;text-align:right}
+.brand{position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:22;display:flex;gap:10px;align-items:center}
+.brand .mk{width:28px;height:28px;border-radius:7px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:15px}
+.brand b{font-family:Fraunces,serif;font-weight:500;font-size:18px}
+/* center stage */
+.stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:21;padding:80px 30px}
+.screen{max-width:780px;text-align:center;display:none}
+.screen.on{display:block;animation:fadeup .7s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.k{font-size:11px;color:var(--gold-hi);margin-bottom:22px}
+h1{font-family:Fraunces,serif;font-weight:300;font-size:clamp(36px,6vw,76px);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold-hi)}
+.sub{color:var(--cream-dim);font-size:16px;line-height:1.75;max-width:520px;margin:22px auto 0}
+.readout{display:flex;gap:1px;background:var(--hair);border:1px solid var(--hair);max-width:560px;margin:30px auto 0}
+.ro{flex:1;background:rgba(5,11,18,.82);padding:18px 10px}
+.ro b{font-family:Fraunces,serif;font-size:30px;font-weight:400;color:var(--gold-hi);display:block;line-height:1}
+.ro span{font-size:8.5px;color:var(--cream-dim);display:block;margin-top:8px}
+.plate{display:inline-block;margin-top:34px;font-size:11px;color:var(--cream);text-decoration:none;border:1px solid var(--hair);padding:15px 28px;position:relative;background:rgba(5,11,18,.6)}
+.plate::before{content:"";position:absolute;top:-1px;left:-1px;width:9px;height:9px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.plate::after{content:"";position:absolute;bottom:-1px;right:-1px;width:9px;height:9px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.plate:hover{background:rgba(200,134,60,.14);color:var(--gold-hi)}
+.plate.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+/* channel nav */
+.chan{position:fixed;bottom:38px;left:50%;transform:translateX(-50%);z-index:23;display:flex;gap:26px}
+.chip{background:none;border:0;cursor:pointer;font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px}
+.chip::before{content:"";width:34px;height:2px;background:var(--hair);transition:background .3s}
+.chip.on{color:var(--gold-hi)}
+.chip.on::before{background:var(--gold)}
+.disc{position:fixed;bottom:8px;left:0;right:0;text-align:center;font-size:8.5px;color:rgba(255,243,234,.4);z-index:22;letter-spacing:.06em}
+@media(max-width:760px){.tele{display:none}.chan{gap:12px}}
+@media(prefers-reduced-motion:reduce){.screen.on{animation:none}}
+</style></head><body>
+<div class="bg" aria-hidden="true">
+  <video autoplay muted loop playsinline src="/video/career-summit-loop.mp4?v=2" poster="/video/career-summit-poster.jpg?v=2"></video>
+  <div class="tint"></div>
+</div>
+<div class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<div class="tele tl mono">Mission · Civilian transition<br><b>Status: window open</b></div>
+<div class="tele tr mono">States verified <b>51</b><br>Programs cited <b>259</b></div>
+<div class="tele bl mono">Fit — sample <b>93% Electrician</b><br>Next window <b>BDD · T−180</b></div>
+<div class="tele br mono">Clock <b>T−12 → +24 mo</b><br>Data · <b>VA.gov / BLS / O*NET</b></div>
+<div class="brand"><span class="mk">V</span><b>VetPath</b></div>
+
+<div class="stage">
+  <div class="screen on" id="scr-brief">
+    <div class="k mono">Channel 01 · The brief</div>
+    <h1>The same brief ends here.<br>Leave with <em>your</em> gameplan.</h1>
+    <p class="sub">One adaptive plan for the whole clock — the path, the benefits, the place, the family, and what to do this week.</p>
+    <a class="plate gold mono" href="#">Build my gameplan</a>
+  </div>
+  <div class="screen" id="scr-path">
+    <div class="k mono">Channel 02 · The path</div>
+    <h1>Ten questions.<br>An honest destination.</h1>
+    <p class="sub">Four tracks, twenty-four careers, a fit score with reasons attached — grounded in O*NET and BLS, never a black box.</p>
+    <div class="readout">
+      <div class="ro"><b>93%</b><span class="mono">Electrician · fit</span></div>
+      <div class="ro"><b>89%</b><span class="mono">HVAC tech · next</span></div>
+      <div class="ro"><b>10</b><span class="mono">questions · 3 min</span></div>
+    </div>
+    <a class="plate mono" href="#">Run the Pathfinder →</a>
+  </div>
+  <div class="screen" id="scr-benefits">
+    <div class="k mono">Channel 03 · The benefits</div>
+    <h1>Everything you earned.<br>Nothing you have to guess.</h1>
+    <p class="sub">Federal and state programs tiered honestly — act now, check, later — with the unforgiving windows marked.</p>
+    <div class="readout">
+      <div class="ro"><b>259</b><span class="mono">programs cited</span></div>
+      <div class="ro"><b>180–90</b><span class="mono">BDD window · days</span></div>
+      <div class="ro"><b>240</b><span class="mono">VGLI grace · days</span></div>
+    </div>
+    <a class="plate mono" href="#">Open the optimizer →</a>
+  </div>
+  <div class="screen" id="scr-landing">
+    <div class="k mono">Channel 04 · The landing</div>
+    <h1>Nobody lands alone.</h1>
+    <p class="sub">Family checkpoints, the right city by real data, free accredited help — and a plan that rewrites itself when life changes.</p>
+    <div class="readout">
+      <div class="ro"><b>29</b><span class="mono">metros · real data</span></div>
+      <div class="ro"><b>51</b><span class="mono">state agencies</span></div>
+      <div class="ro"><b>988·1</b><span class="mono">crisis line · 24/7</span></div>
+    </div>
+    <a class="plate gold mono" href="#">Begin your gameplan</a>
+  </div>
+</div>
+
+<div class="chan" role="tablist" aria-label="Channels">
+  <button class="chip on" data-s="scr-brief">Brief</button>
+  <button class="chip" data-s="scr-path">Path</button>
+  <button class="chip" data-s="scr-benefits">Benefits</button>
+  <button class="chip" data-s="scr-landing">Landing</button>
+</div>
+<div class="disc mono">VetPath is a planning tool — not the VA · sample data · verify at VA.gov or with an accredited VSO · In crisis? 988, press 1</div>
+<div class="switch mono">C·<a href="/design-previews/f.html">F</a>·<a href="/design-previews/g.html">G</a>·<a href="/design-previews/h.html" class="on">H</a>·<a href="/design-previews/i.html">I</a> — <a href="/design-previews/index.html">all</a></div>
+<script>
+const chips=[...document.querySelectorAll('.chip')];
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+  chips.forEach(c=>c.classList.toggle('on',c.dataset.s===id));
+}
+chips.forEach(c=>c.addEventListener('click',()=>{show(c.dataset.s);clearInterval(auto)}));
+// gentle auto-advance until the user interacts
+let idx=0;
+const auto=setInterval(()=>{idx=(idx+1)%chips.length;show(chips[idx].dataset.s)},7000);
+</script>
+</body></html>

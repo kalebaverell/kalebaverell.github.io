@@ -12,7 +12,7 @@ p.lead{color:var(--muted);max-width:640px;line-height:1.65;margin:14px 0 34px}
 .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 a.card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(22,50,77,.06);transition:transform .15s ease, box-shadow .15s ease}
 a.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,50,77,.14)}
-.thumb{height:150px;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:20px;color:#fff}
+.thumb{height:150px;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:20px;color:#fff;overflow:hidden}
 .t-a{background:linear-gradient(120deg,var(--navy9),var(--navy) 60%,#1E4266)}
 .t-b{background:linear-gradient(120deg,#FDFBF7,#F3EBDD);color:var(--navy)!important}
 .t-c{background:linear-gradient(120deg,#101D2B,#25455F);}
@@ -20,13 +20,22 @@ a.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,50,77,.14
 .tag{display:inline-block;margin-top:12px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .note{margin-top:36px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;line-height:1.6}
 </style></head><body><div class="wrap">
-<div class="eyebrow">Design exploration · round 2 — Mission Editorial refinements</div>
-<h1>Mission Editorial, three ways</h1>
-<p class="lead">Direction chosen: Mission Editorial. These variants keep what you asked to preserve — the current tab bar and the floating gameplan diagram — blended into the editorial structure in different amounts. Click any card for a full-screen interactive preview.</p>
+<style>
+.t-moon{background:radial-gradient(120% 140% at 50% 120%,#13273C 0%,#0B1826 40%,#060C14 75%);color:#FFF3EA!important;position:relative}
+.t-moon::after{content:"";position:absolute;left:50%;bottom:-40%;transform:translateX(-50%);width:150%;height:80%;border-radius:50%;background:radial-gradient(closest-side,#1B3350,#0B1826);box-shadow:0 -1px 0 rgba(232,200,155,.4)}
+.t-moon span{position:relative;z-index:2}
+.moonlabel{font-family:"Space Mono",monospace;font-size:11px!important;letter-spacing:.14em;text-transform:uppercase;color:#E8C89B}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<div class="eyebrow">Design exploration · round 3 — the "21 Hrs on the Moon" study</div>
+<h1>Mission Editorial, gone cinematic</h1>
+<p class="lead">You picked C, so it stays exactly as-is. The four new options (F–I) borrow the language of <a href="https://www.21hrs.space/" target="_blank" style="color:var(--gold)">21 Hrs on the Moon</a> — near-black void, warm cream ink, HUD framing corners, monospace mission labels, and the transition reframed as a countdown/descent. Same VetPath brand colors and verified content underneath. Click any card for a full-screen interactive preview.</p>
 <div class="grid">
-<a class="card" href="/design-previews/c.html"><div class="thumb t-c">C · Mission Editorial</div><div class="body"><h3>The pure version</h3><p>Full-bleed video hero, quiet marketing nav, editorial sections, heavy trust signals. No tabs, no diagram — the institution look, unchanged from round 1.</p><span class="tag">As picked · unchanged</span></div></a>
-<a class="card" href="/design-previews/d.html"><div class="thumb t-a">D · Editorial + your tabs &amp; card</div><div class="body"><h3>The blend you described</h3><p>Your current tab bar (icons, gold underline) stays on top. The video hero keeps C's cinematic feel, with the 93% gameplan diagram floating over it on the right. C's editorial sections follow.</p><span class="tag">Tabs kept · diagram kept · video hero</span></div></a>
-<a class="card" href="/design-previews/e.html"><div class="thumb t-b" style="background:linear-gradient(120deg,#FBF9F5,#F0E7D6);color:#16324D!important">E · The Briefing Board</div><div class="body"><h3>The plan as the page</h3><p>Tabs kept; no hero at all. A centered statement, then one composed board of tiles — video, the 93% destination card, benefit chips, live stats, and the T-12→+24 timeline — threaded by the marching route.</p><span class="tag">Tabs kept · diagram as tiles · bento structure</span></div></a>
+<a class="card" href="/design-previews/c.html"><div class="thumb t-c">C · Mission Editorial</div><div class="body"><h3>Your pick — kept as-is</h3><p>Full-bleed video hero, quiet marketing nav, editorial sections, heavy trust signals. The light "institution" look you chose, unchanged.</p><span class="tag">As chosen · light · unchanged</span></div></a>
+<a class="card" href="/design-previews/f.html"><div class="thumb t-moon"><span>F · The Descent</span></div><div class="body"><h3>Scroll to land</h3><p>Opens in a starfield above a glowing horizon. As you scroll, you descend through four chapters — Path, Arsenal, Landing — with a mission-clock rail filling on the left. The moon site's core move: scroll <em>is</em> the descent.</p><span class="tag moonlabel">Scrollytelling · HUD frame · dark</span></div></a>
+<a class="card" href="/design-previews/g.html"><div class="thumb t-moon"><span>G · T-Minus</span></div><div class="body"><h3>The mission clock</h3><p>A giant countdown numeral pins to the left while the transition scrolls past on the right — T-12, T-6, T-0, +24 — each phase lighting the clock. The timeline told as a launch sequence.</p><span class="tag moonlabel">Sticky clock · phase feed · dark</span></div></a>
+<a class="card" href="/design-previews/h.html"><div class="thumb t-moon"><span>H · Mission Control</span></div><div class="body"><h3>One screen, four channels</h3><p>No scrolling. A single full-viewport console with the video dimmed behind it, telemetry readouts in all four corners, and channel buttons that switch the brief — Path, Benefits, Landing. Pure HUD, like the moon site's landed state.</p><span class="tag moonlabel">Single-screen · telemetry · dark</span></div></a>
+<a class="card" href="/design-previews/i.html"><div class="thumb t-moon"><span>I · The Debrief</span></div><div class="body"><h3>Editorial, in the dark</h3><p>The closest cousin to C: same story, same sections — but rendered as a dark "field guide" magazine. Outlined chapter numerals, Fraunces italic pull-quotes, duotone photography, monospace datelines. Cinematic without the interaction cost.</p><span class="tag moonlabel">Dark editorial · closest to C</span></div></a>
 </div>
-<p class="note"><strong>Round 1 for reference:</strong> <a href="/design-previews/a.html">A · Command Center</a> (sidebar app shell) and <a href="/design-previews/b.html">B · Guided Journey</a> (wizard-first) are still up. Palette, type, photography, and honesty rules are constant across all previews so the comparison stays purely structural.</p>
+<p class="note"><strong>Earlier rounds still up:</strong> <a href="/design-previews/d.html">D</a> / <a href="/design-previews/e.html">E</a> (tabs + diagram blends), and <a href="/design-previews/a.html">A</a> / <a href="/design-previews/b.html">B</a> (app shell &amp; wizard). Every preview holds the VetPath palette, Fraunces/Inter type, real photography, and honesty rules constant so the comparison stays purely structural.</p>
 </div></body></html>

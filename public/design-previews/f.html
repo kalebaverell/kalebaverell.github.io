@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview F — The Descent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--void:#060C14;--cream:#FFF3EA;--cream-dim:#C9BDB2;--gold:#C8863C;--gold-hi:#E8C89B;--hair:rgba(255,243,234,.16)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--void);color:var(--cream)}
+.mono{font-family:"Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.switch{position:fixed;right:14px;bottom:14px;z-index:60;background:rgba(6,12,20,.85);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;font-size:12px}
+.switch a{color:var(--cream);text-decoration:none;font-weight:600;margin:0 4px}.switch a.on{color:var(--gold-hi)}
+/* HUD frame */
+.hud{position:fixed;inset:14px;pointer-events:none;z-index:50}
+.hud i{position:absolute;width:56px;height:56px;border:1px solid rgba(200,134,60,.55)}
+.hud i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+.hud i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.hud i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+.hud i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+/* fixed chrome */
+.brand{position:fixed;top:26px;left:34px;z-index:52;display:flex;gap:10px;align-items:center;color:var(--cream);text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:16px}
+.brand b{font-family:Fraunces,serif;font-weight:500;font-size:18px}
+.enter{position:fixed;top:26px;right:34px;z-index:52;font-size:11px;color:var(--cream);text-decoration:none;border:1px solid var(--hair);padding:10px 16px;background:rgba(6,12,20,.6)}
+.enter:hover{border-color:var(--gold);color:var(--gold-hi)}
+/* mission clock rail */
+.rail{position:fixed;left:34px;top:50%;transform:translateY(-50%);z-index:52;display:flex;flex-direction:column;gap:0;align-items:center}
+.rail .seg{width:1px;height:52px;background:var(--hair);position:relative}
+.rail .seg .fill{position:absolute;top:0;left:0;width:100%;height:0;background:var(--gold)}
+.rail .pt{display:flex;align-items:center;gap:9px;position:relative}
+.rail .dot{width:7px;height:7px;border-radius:50%;border:1px solid var(--cream-dim);background:var(--void)}
+.rail .pt.lit .dot{background:var(--gold);border-color:var(--gold)}
+.rail .lab{position:absolute;left:16px;font-size:9px;color:var(--cream-dim);white-space:nowrap}
+.rail .pt.lit .lab{color:var(--gold-hi)}
+/* stars */
+.stars{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 12% 20%,rgba(255,243,234,.7),transparent 100%),radial-gradient(1px 1px at 70% 12%,rgba(255,243,234,.5),transparent 100%),radial-gradient(1.5px 1.5px at 86% 60%,rgba(255,243,234,.6),transparent 100%),radial-gradient(1px 1px at 34% 74%,rgba(255,243,234,.4),transparent 100%),radial-gradient(1px 1px at 55% 42%,rgba(255,243,234,.55),transparent 100%),radial-gradient(1.5px 1.5px at 22% 55%,rgba(255,243,234,.35),transparent 100%),radial-gradient(1px 1px at 92% 30%,rgba(255,243,234,.5),transparent 100%)}
+/* chapters */
+.ch{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:90px 22px}
+.chin{max-width:880px;width:100%;position:relative;z-index:2;text-align:center}
+.num{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--gold-hi);margin-bottom:22px}
+h1,h2{font-family:Fraunces,serif;font-weight:400;letter-spacing:-.015em;line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(42px,7.5vw,92px)}
+h2{font-size:clamp(32px,5vw,62px)}
+.sub{color:var(--cream-dim);font-size:17px;line-height:1.75;max-width:560px;margin:26px auto 0}
+.plate{display:inline-block;margin-top:44px;font-size:12px;color:var(--cream);text-decoration:none;border:1px solid var(--hair);padding:16px 30px;position:relative;background:rgba(6,12,20,.5)}
+.plate::before,.plate::after{content:"";position:absolute;width:9px;height:9px}
+.plate::before{top:-1px;left:-1px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.plate::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.plate:hover{background:rgba(200,134,60,.12);color:var(--gold-hi)}
+.plate.gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.plate.gold:hover{background:#B37732;color:#fff}
+/* horizon arc */
+.horizon{position:absolute;left:50%;transform:translateX(-50%);bottom:-62vw;width:160vw;height:80vw;border-radius:50% 50% 0 0/100% 100% 0 0;background:radial-gradient(120% 100% at 50% 0%,#13273C 0%,#0B1826 34%,#071220 60%);box-shadow:0 -1px 0 rgba(232,200,155,.35),0 -18px 60px rgba(200,134,60,.12);z-index:1}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+/* chapter 2 destination plate */
+.dest{margin:38px auto 0;max-width:430px;border:1px solid var(--hair);background:rgba(6,12,20,.65);padding:26px;text-align:left;position:relative}
+.dest::before{content:"";position:absolute;top:-1px;left:-1px;width:12px;height:12px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.dest::after{content:"";position:absolute;bottom:-1px;right:-1px;width:12px;height:12px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.dest .row{display:flex;align-items:baseline;gap:14px}
+.dest .fit{font-family:Fraunces,serif;font-size:56px;color:var(--gold-hi);line-height:1}
+.dest .what{font-family:Fraunces,serif;font-size:24px}
+.dest .mono{font-size:10px;color:var(--cream-dim);display:block;margin-bottom:12px}
+.dest .why{font-size:13px;color:var(--cream-dim);line-height:1.7;margin-top:14px}
+.dest .why b{color:var(--cream)}
+/* stats ch3 */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);margin:44px auto 0;max-width:760px}
+.stat{background:var(--void);padding:28px 18px}
+.stat b{font-family:Fraunces,serif;font-size:44px;font-weight:400;color:var(--gold-hi);display:block;line-height:1}
+.stat span{font-size:10px;color:var(--cream-dim);display:block;margin-top:10px}
+/* ch4 video */
+.filmwrap{margin:40px auto 0;max-width:720px;border:1px solid var(--hair);padding:10px;position:relative}
+.filmwrap::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.filmwrap::after{content:"";position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.filmwrap video{width:100%;display:block;filter:saturate(.6) contrast(1.05);opacity:.9}
+.cap{font-size:9.5px;color:var(--cream-dim);margin-top:10px;text-align:left}
+footer{position:relative;z-index:2;padding:60px 34px 90px;text-align:center;color:var(--cream-dim);font-size:12.5px;line-height:1.8;border-top:1px solid var(--hair)}
+footer b{color:var(--cream)}
+@media(max-width:760px){.rail{display:none}.hud i{width:34px;height:34px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style></head><body>
+<div class="stars" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="brand" href="#"><span class="mk">V</span><b>VetPath</b></a>
+<a class="enter mono" href="#">My gameplan →</a>
+<div class="rail" aria-hidden="true" id="rail">
+  <div class="pt lit"><span class="dot"></span><span class="lab mono">T-12</span></div>
+  <div class="seg"><div class="fill"></div></div>
+  <div class="pt"><span class="dot"></span><span class="lab mono">T-6</span></div>
+  <div class="seg"><div class="fill"></div></div>
+  <div class="pt"><span class="dot"></span><span class="lab mono">T-0</span></div>
+  <div class="seg"><div class="fill"></div></div>
+  <div class="pt"><span class="dot"></span><span class="lab mono">+24</span></div>
+</div>
+
+<section class="ch" id="c1">
+  <div class="chin">
+    <div class="num mono rv">Mission · Life after service</div>
+    <h1 class="rv">Twenty-four months<br>that decide the next forty years.</h1>
+    <p class="sub rv">Every year, 200,000 service members step off the ramp into civilian life. Most get a binder. This is a flight plan.</p>
+    <a class="plate mono rv" href="#c2">Scroll to begin the descent ↓</a>
+  </div>
+  <div class="horizon" aria-hidden="true"></div>
+</section>
+
+<section class="ch" id="c2">
+  <div class="chin">
+    <div class="num mono rv">Chapter 01 · The Path</div>
+    <h2 class="rv">First, a destination.</h2>
+    <p class="sub rv">Ten questions. Four tracks. An honest recommendation with the reasons attached — never a black box.</p>
+    <div class="dest rv">
+      <span class="mono">Recommended destination · sample</span>
+      <div class="row"><span class="fit">93%</span><span class="what">Electrician</span></div>
+      <p class="why"><b>Why:</b> hands-on work, a shop over an office, licensed trade with a GI Bill-funded apprenticeship — pay while you learn, grounded in O*NET and BLS data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="c3">
+  <div class="chin">
+    <div class="num mono rv">Chapter 02 · The Arsenal</div>
+    <h2 class="rv">Everything you earned,<br>on one manifest.</h2>
+    <p class="sub rv">Federal and state, tiered honestly — act now, check eligibility, later — with the windows that don't forgive marked in gold.</p>
+    <div class="stats rv">
+      <div class="stat"><b>51</b><span class="mono">states + DC verified</span></div>
+      <div class="stat"><b>259</b><span class="mono">programs, cited</span></div>
+      <div class="stat"><b>180–90</b><span class="mono">day BDD window</span></div>
+      <div class="stat"><b>240</b><span class="mono">days · VGLI grace</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="c4">
+  <div class="chin">
+    <div class="num mono rv">Chapter 03 · The Landing</div>
+    <h2 class="rv">Nobody lands alone.</h2>
+    <p class="sub rv">Family checkpoints, the right city, free accredited help — and a plan that rewrites itself when life changes. Because it will.</p>
+    <div class="filmwrap rv">
+      <video autoplay muted loop playsinline src="/video/career-summit-loop.mp4?v=2" poster="/video/career-summit-poster.jpg?v=2"></video>
+      <div class="cap mono">Career summit, U.S. Army Garrison Bavaria · public domain footage</div>
+    </div>
+    <a class="plate gold mono rv" href="#" style="margin-top:38px">Begin your gameplan</a>
+  </div>
+</section>
+
+<footer>
+  <b>VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</b><br>
+  Sample/demo data — verify via VA.gov, your state veterans agency, or an accredited VSO.<br>
+  In crisis? Dial 988, then press 1 — free, confidential, 24/7.
+</footer>
+<div class="switch mono">C·<a href="/design-previews/f.html" class="on">F</a>·<a href="/design-previews/g.html">G</a>·<a href="/design-previews/h.html">H</a>·<a href="/design-previews/i.html">I</a> — <a href="/design-previews/index.html">all</a></div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// mission clock rail fills with scroll
+const pts=[...document.querySelectorAll('.rail .pt')],segs=[...document.querySelectorAll('.rail .seg .fill')];
+addEventListener('scroll',()=>{
+  const p=scrollY/(document.body.scrollHeight-innerHeight);
+  segs.forEach((s,i)=>{const lo=i/3,hi=(i+1)/3;s.style.height=Math.max(0,Math.min(1,(p-lo)/(hi-lo)))*100+'%'});
+  pts.forEach((pt,i)=>pt.classList.toggle('lit',p>=i/3-.02));
+},{passive:true});
+</script>
+</body></html>
