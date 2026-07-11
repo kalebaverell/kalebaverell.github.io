@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VetPath — Restructure previews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#16324D;--navy9:#0E2438;--gold:#C8863C;--ink:#243342;--muted:#5B6B7B;--line:#E3E9EF;--bg:#F7F9FB}
+*{box-sizing:border-box;margin:0}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:48px 22px}
+.wrap{max-width:1040px;margin:0 auto}h1{font-family:Fraunces,serif;font-weight:500;font-size:40px;color:var(--navy);letter-spacing:-.01em}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+p.lead{color:var(--muted);max-width:640px;line-height:1.65;margin:14px 0 34px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+a.card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(22,50,77,.06);transition:transform .15s ease, box-shadow .15s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,50,77,.14)}
+.thumb{height:150px;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:20px;color:#fff}
+.t-a{background:linear-gradient(120deg,var(--navy9),var(--navy) 60%,#1E4266)}
+.t-b{background:linear-gradient(120deg,#FDFBF7,#F3EBDD);color:var(--navy)!important}
+.t-c{background:linear-gradient(120deg,#101D2B,#25455F);}
+.body{padding:18px 20px 20px}.body h3{font-size:17px;margin-bottom:6px;color:var(--navy)}.body p{font-size:13.5px;color:var(--muted);line-height:1.6}
+.tag{display:inline-block;margin-top:12px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.note{margin-top:36px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;line-height:1.6}
+</style></head><body><div class="wrap">
+<div class="eyebrow">Design exploration · restructure study</div>
+<h1>Three ways to restructure VetPath</h1>
+<p class="lead">Same brand, same verified content, same engines — three different information architectures, drawn from current Figma Community reference patterns. Click any card for a full-screen interactive preview.</p>
+<div class="grid">
+<a class="card" href="/design-previews/a.html"><div class="thumb t-a">A · Command Center</div><div class="body"><h3>The app-first shell</h3><p>Persistent left sidebar, top utility bar, dashboard of widgets on entry. The site behaves like serious planning software from the first second — marketing takes the back seat.</p><span class="tag">Ref: DashStack · BankDash · ByeWind kits</span></div></a>
+<a class="card" href="/design-previews/b.html"><div class="thumb t-b">B · Guided Journey</div><div class="body"><h3>One question at a time</h3><p>No navigation until there's a plan. The front door is the interview itself — full-screen, calm, TurboTax-style. Overwhelm is the enemy; chrome disappears.</p><span class="tag">Ref: SAAS Onboarding · stepper flows</span></div></a>
+<a class="card" href="/design-previews/c.html"><div class="thumb t-c">C · Mission Editorial</div><div class="body"><h3>The institution</h3><p>Story-led marketing site with editorial sections, impact numbers, and heavy trust signals — the app lives one click behind. Built to be shared with families, VSOs, and partners.</p><span class="tag">Ref: WeHope · NGO/Red Cross layouts</span></div></a>
+</div>
+<p class="note"><strong>How to read these:</strong> each preview restructures the homepage plus the key screen it prioritizes. Palette, type (Fraunces/Inter), photography, and honesty rules are held constant so the comparison is purely structural. The current production site is a hybrid of B's intake with C's landing.</p>
+</div></body></html>

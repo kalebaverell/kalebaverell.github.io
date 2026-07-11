@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview B — Guided Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#16324D;--gold:#C8863C;--gold-ink:#8A5A22;--ink:#243342;--ink-strong:#101F2E;--muted:#5E6E7E;--line:#E7E2D8;--bg:#FBF9F5;--card:#FFFFFF}
+*{box-sizing:border-box;margin:0}html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100vh}
+.switch{position:fixed;right:14px;bottom:14px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;box-shadow:0 6px 18px rgba(18,32,46,.12)}
+.switch a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 5px}.switch a.on{color:var(--gold)}
+header{display:flex;align-items:center;gap:14px;padding:16px 26px}
+.logo{display:flex;align-items:center;gap:9px;color:var(--navy);font-family:Fraunces,serif;font-size:18px;font-weight:500}
+.logo .mk{width:28px;height:28px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.rail{flex:1;max-width:520px;margin:0 auto;display:flex;gap:6px}
+.rail i{height:5px;flex:1;border-radius:99px;background:var(--line);display:block;transition:background .3s}
+.rail i.done{background:var(--gold)}
+.exit{font-size:13px;color:var(--muted);text-decoration:none;margin-left:auto}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:30px 22px}
+.stage{max-width:660px;width:100%;text-align:center}
+.k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:16px}
+h1{font-family:Fraunces,serif;font-weight:500;font-size:clamp(28px,4.4vw,42px);line-height:1.15;color:var(--ink-strong);letter-spacing:-.015em;text-wrap:balance}
+.help{color:var(--muted);font-size:15px;margin:14px 0 30px;line-height:1.6}
+.opts{display:flex;flex-wrap:wrap;gap:11px;justify-content:center}
+.opt{border:1.5px solid var(--line);background:var(--card);border-radius:13px;padding:15px 22px;font-size:15.5px;font-family:inherit;cursor:pointer;color:var(--ink);font-weight:500;transition:all .15s}
+.opt:hover{border-color:var(--gold);transform:translateY(-1px)}
+.opt.sel{border-color:var(--gold);background:#FDF4E7;color:var(--gold-ink);font-weight:600}
+.free{margin-top:18px}
+.free input{width:100%;max-width:430px;border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;font-size:15px;font-family:inherit;background:var(--card)}
+.actions{margin-top:34px;display:flex;gap:14px;justify-content:center;align-items:center}
+.btn{border:0;border-radius:12px;padding:15px 30px;font-size:15.5px;font-weight:600;font-family:inherit;cursor:pointer}
+.btn.go{background:var(--gold);color:#fff;box-shadow:0 6px 16px rgba(200,134,60,.35)}
+.btn.back{background:transparent;color:var(--muted)}
+.whisper{font-size:12.5px;color:var(--muted);margin-top:22px}
+/* plan reveal */
+.plan{max-width:760px;width:100%;text-align:left}
+.plan h1{text-align:center}
+.build{list-style:none;padding:0;margin:26px auto 0;max-width:430px}
+.build li{display:flex;gap:12px;align-items:center;padding:9px 0;font-size:15px;color:var(--muted);opacity:0;transform:translateY(8px);transition:all .5s}
+.build li.in{opacity:1;transform:none;color:var(--ink)}
+.build .tick{width:22px;height:22px;border-radius:50%;background:#E3F2EA;color:#2E7D5B;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.mini{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 14px 34px rgba(18,32,46,.08);opacity:0;transform:translateY(12px);transition:all .6s}
+.mini.in{opacity:1;transform:none}
+.mini .row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mini .fit{font-family:Fraunces,serif;font-size:36px;color:var(--navy)}
+.mini .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mini ul{list-style:none;padding:0;margin-top:14px}
+.mini li{padding:8px 0;border-top:1px solid var(--line);font-size:14px;display:flex;gap:9px}
+.mini li b{color:var(--ink-strong)}
+.mini .chip{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#FDF4E7;color:var(--gold-ink);padding:3px 9px;border-radius:99px;white-space:nowrap;align-self:center}
+footer{text-align:center;padding:16px;color:var(--muted);font-size:12px;line-height:1.6}
+footer b{color:var(--ink)}
+.hide{display:none!important}
+</style></head><body>
+<header>
+  <span class="logo"><span class="mk">V</span> VetPath</span>
+  <div class="rail" id="rail"><i class="done"></i><i></i><i></i><i></i></div>
+  <a class="exit" href="#">Save &amp; exit</a>
+</header>
+<main>
+  <!-- STEP 1 -->
+  <div class="stage" id="s1">
+    <div class="k">First things first · 1 of 4</div>
+    <h1>Where are you on the runway?</h1>
+    <p class="help">No forms, no jargon — a few honest questions and the plan builds itself. Nothing leaves your device.</p>
+    <div class="opts" data-single>
+      <button class="opt">12+ months out</button><button class="opt sel">9–12 months</button><button class="opt">6–9 months</button><button class="opt">3–6 months</button><button class="opt">Under 3</button><button class="opt">Already out</button>
+    </div>
+    <div class="actions"><button class="btn go" onclick="go(1,2)">Continue →</button></div>
+    <div class="whisper">Takes about 3 minutes · you can change anything later</div>
+  </div>
+  <!-- STEP 2 -->
+  <div class="stage hide" id="s2">
+    <div class="k">The destination · 2 of 4</div>
+    <h1>After the uniform — what pulls at you?</h1>
+    <p class="help">Pick all that apply. "Honestly undecided" is the most common answer — that's what the Pathfinder is for.</p>
+    <div class="opts">
+      <button class="opt sel">A solid civilian job</button><button class="opt sel">School or certifications</button><button class="opt">My own business</button><button class="opt">Honestly undecided</button>
+    </div>
+    <div class="free"><input placeholder="Or say it your own way: 'something outdoors, not behind a desk…'"></div>
+    <div class="actions"><button class="btn back" onclick="go(2,1)">← Back</button><button class="btn go" onclick="go(2,3)">Continue →</button></div>
+  </div>
+  <!-- STEP 3 -->
+  <div class="stage hide" id="s3">
+    <div class="k">Who's with you · 3 of 4</div>
+    <h1>Who makes this move with you?</h1>
+    <p class="help">Family shapes the plan more than anything — school calendars, a spouse's license, aging parents.</p>
+    <div class="opts">
+      <button class="opt sel">Spouse / partner</button><button class="opt sel">School-age kids</button><button class="opt">Young kids</button><button class="opt">Just me</button>
+    </div>
+    <div class="actions"><button class="btn back" onclick="go(3,2)">← Back</button><button class="btn go" onclick="build()">Build my gameplan →</button></div>
+  </div>
+  <!-- REVEAL -->
+  <div class="stage plan hide" id="s4">
+    <div class="k" style="text-align:center">Your gameplan · draft 1</div>
+    <h1>Frank, here's your starting point.</h1>
+    <ul class="build" id="steps">
+      <li><span class="tick">✓</span> Matched against 24 veteran-friendly paths</li>
+      <li><span class="tick">✓</span> 9 Texas programs joined from verified sources</li>
+      <li><span class="tick">✓</span> Family checkpoints added for a school-year move</li>
+      <li><span class="tick">✓</span> 3 hard deadlines placed on your timeline</li>
+    </ul>
+    <div class="mini" id="mini">
+      <div class="row"><span class="fit">93%</span><div><div class="lbl">Best fit — demo</div><div style="font-family:Fraunces,serif;font-size:21px;color:var(--ink-strong)">Electrician</div></div><span style="margin-left:auto" class="chip">Why this? →</span></div>
+      <ul>
+        <li><b>This week:</b> pull your Joint Services Transcript — your training may already be worth credit.<span class="chip" style="margin-left:auto">30-day</span></li>
+        <li><b>This month:</b> free VSO screening for the conditions you mentioned.<span class="chip" style="margin-left:auto">30-day</span></li>
+        <li><b>T-6 months:</b> BDD claim window opens — 180 to 90 days before separation.<span class="chip" style="margin-left:auto">deadline</span></li>
+      </ul>
+    </div>
+    <div class="actions"><button class="btn go">Open the full plan →</button><button class="btn back" onclick="reset()">Start over</button></div>
+  </div>
+</main>
+<footer><b>A planning tool — not the VA.</b> Sample data; verify at VA.gov or with an accredited VSO. · In crisis? 988, press 1.</footer>
+<div class="switch">Preview: <a href="/design-previews/a.html">A</a>·<a class="on" href="/design-previews/b.html">B</a>·<a href="/design-previews/c.html">C</a> — <a href="/design-previews/index.html">all</a></div>
+<script>
+document.querySelectorAll('.opts').forEach(g=>{g.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{
+  if(g.hasAttribute('data-single')) g.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+  o.classList.toggle('sel');
+}))});
+const rail=[...document.querySelectorAll('#rail i')];
+function show(n){[1,2,3,4].forEach(i=>document.getElementById('s'+i).classList.toggle('hide',i!==n));rail.forEach((r,i)=>r.classList.toggle('done',i<n));}
+function go(f,t){show(t)}
+function build(){show(4);const items=[...document.querySelectorAll('#steps li')];items.forEach((li,i)=>setTimeout(()=>li.classList.add('in'),350*i+250));setTimeout(()=>document.getElementById('mini').classList.add('in'),350*items.length+420)}
+function reset(){document.querySelectorAll('#steps li,#mini').forEach(e=>e.classList.remove('in'));show(1)}
+</script>
+</body></html>

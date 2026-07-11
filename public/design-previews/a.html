@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview A — Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#16324D;--navy9:#0E2438;--navy8:#1E4266;--gold:#C8863C;--gold-soft:#F6E8D4;--ink:#243342;--ink-strong:#12202E;--muted:#5B6B7B;--line:#E3E9EF;--bg:#F4F6F9;--ok:#2E7D5B;--ok-soft:#E3F2EA}
+*{box-sizing:border-box;margin:0}html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);display:flex;min-height:100vh}
+.switch{position:fixed;right:14px;bottom:14px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;box-shadow:0 6px 18px rgba(18,32,46,.14)}
+.switch a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 5px}.switch a.on{color:var(--gold)}
+/* sidebar */
+aside{width:230px;flex-shrink:0;background:linear-gradient(180deg,var(--navy9),var(--navy));color:#C9D6E2;display:flex;flex-direction:column;padding:18px 12px;position:sticky;top:0;height:100vh}
+.logo{display:flex;align-items:center;gap:10px;padding:6px 10px 18px;color:#fff}
+.logo .mk{width:32px;height:32px;border-radius:9px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-weight:600;color:#fff}
+.logo b{font-family:Fraunces,serif;font-weight:500;font-size:19px;letter-spacing:.01em}
+nav{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+nav a{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:9px;color:#B8C7D6;text-decoration:none;font-size:13.5px;font-weight:500;cursor:pointer}
+nav a .ic{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.02em}
+nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+nav a.on{background:rgba(200,134,60,.18);color:#fff}nav a.on .ic{background:var(--gold);color:#fff}
+.sect{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7A8FA3;padding:16px 10px 6px}
+.side-foot{margin-top:auto;padding:12px 10px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;line-height:1.5}
+.side-foot .who{display:flex;gap:9px;align-items:center;color:#fff;font-weight:600;margin-bottom:8px}
+.who .av{width:30px;height:30px;border-radius:50%;background:var(--navy8);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.crisis{color:#F0B9A8}
+/* main */
+main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{background:#fff;border-bottom:1px solid var(--line);padding:12px 26px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.search{flex:1;max-width:430px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 14px;font-size:13px;color:var(--muted)}
+.chip{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-soft);color:#8A5A22;padding:5px 10px;border-radius:999px}
+.aa{margin-left:auto;border:1px solid var(--line);border-radius:8px;padding:6px 11px;font-weight:700;font-size:13px;color:var(--navy)}
+.content{padding:26px;max-width:1160px;width:100%;margin:0 auto}
+h1{font-family:Fraunces,serif;font-weight:500;font-size:27px;color:var(--ink-strong);letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13.5px;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+.kpi .lab{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kpi .val{font-family:Fraunces,serif;font-size:30px;font-weight:500;color:var(--navy);margin-top:5px;line-height:1.1}
+.kpi .det{font-size:12.5px;color:var(--muted);margin-top:4px}
+.kpi.gold .val{color:var(--gold)}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px}
+.card h3{font-size:15px;color:var(--ink-strong);margin-bottom:4px}.card .hint{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.ph{margin-bottom:13px}.ph .row{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px}.ph .row b{color:var(--ink-strong)}
+.bar{height:8px;border-radius:99px;background:var(--bg);overflow:hidden}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+ul.dl{list-style:none;padding:0}ul.dl li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.45}
+ul.dl li:first-child{border-top:0}
+.dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}.d-r{background:#C25E3A}.d-g{background:var(--gold)}.d-k{background:#8DA3B8}
+ul.dl b{color:var(--ink-strong)}ul.dl .when{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+.tiers{display:flex;flex-direction:column;gap:8px}
+.tier{display:flex;align-items:center;gap:10px;font-size:13px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}
+.pill{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:99px}
+.p-now{background:var(--ok-soft);color:var(--ok)}.p-chk{background:var(--gold-soft);color:#8A5A22}.p-ltr{background:var(--bg);color:var(--muted)}
+.foot{padding:18px 26px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);line-height:1.6}
+.foot b{color:var(--ink)}
+.pane{display:none}.pane.on{display:block}
+@media(max-width:960px){aside{display:none}.cols{grid-template-columns:1fr}}
+</style></head><body>
+<aside>
+  <div class="logo"><span class="mk">V</span><b>VetPath</b></div>
+  <nav id="nav">
+    <a class="on" data-p="overview"><span class="ic">HQ</span> Overview</a>
+    <a data-p="benefits"><span class="ic">BN</span> Benefits</a>
+    <a data-p="timeline"><span class="ic">TL</span> Timeline</a>
+    <span class="sect">Decide</span>
+    <a><span class="ic">PF</span> Pathfinder</a>
+    <a><span class="ic">RL</span> Relocate</a>
+    <a><span class="ic">FM</span> Family</a>
+    <span class="sect">Do</span>
+    <a><span class="ic">AP</span> Action plan</a>
+    <a><span class="ic">TK</span> Toolkit</a>
+  </nav>
+  <div class="side-foot">
+    <div class="who"><span class="av">F</span> Frank (sample)</div>
+    <div class="crisis">In crisis? 988, press 1.</div>
+  </div>
+</aside>
+<main>
+  <div class="topbar">
+    <div class="search">Search benefits, tasks, places…</div>
+    <span class="chip">Sample data — demo</span>
+    <span class="aa">Aa</span>
+  </div>
+  <div class="content">
+    <div class="pane on" id="overview">
+      <h1>Morning, Frank. Three things need you this week.</h1>
+      <div class="sub">Your gameplan, live — every number traces to a source.</div>
+      <div class="kpis">
+        <div class="kpi gold"><div class="lab">Destination</div><div class="val">93%</div><div class="det">Electrician — fit (demo)</div></div>
+        <div class="kpi"><div class="lab">Days 1–90</div><div class="val">6 / 10</div><div class="det">actions started</div></div>
+        <div class="kpi"><div class="lab">Hard deadlines</div><div class="val">3</div><div class="det">in the next 90 days</div></div>
+        <div class="kpi"><div class="lab">Texas programs</div><div class="val">9</div><div class="det">verified · Hazlewood incl.</div></div>
+      </div>
+      <div class="cols">
+        <div class="card">
+          <h3>30 / 60 / 90 progress</h3><div class="hint">Generated from your intake — regenerates when life changes.</div>
+          <div class="ph"><div class="row"><b>Next 30 days</b><span>4 of 5</span></div><div class="bar"><i style="width:80%"></i></div></div>
+          <div class="ph"><div class="row"><b>Days 31–60</b><span>2 of 6</span></div><div class="bar"><i style="width:33%"></i></div></div>
+          <div class="ph"><div class="row"><b>Days 61–90</b><span>0 of 4</span></div><div class="bar"><i style="width:4%"></i></div></div>
+          <h3 style="margin-top:18px">Decisions to make</h3>
+          <ul class="dl">
+            <li><span class="dot d-g"></span><span><b>Confirm the destination.</b> Electrician leads — HVAC is 2 points behind. Re-run Pathfinder if it doesn't feel right.</span></li>
+            <li><span class="dot d-k"></span><span><b>San Antonio vs. Fayetteville.</b> Compare on VA access + cost with real data.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Dates that don't forgive</h3><div class="hint">Checked against official sources 2026-07-10.</div>
+          <ul class="dl">
+            <li><span class="dot d-r"></span><span><b>BDD claim window</b><br>File 180–90 days before separation</span><span class="when">opens T-180</span></li>
+            <li><span class="dot d-g"></span><span><b>TAP start-by date</b><br>Begin no later than 365 days out</span><span class="when">now</span></li>
+            <li><span class="dot d-g"></span><span><b>VGLI no-health window</b><br>240 days after separation</span><span class="when">post-sep</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="benefits">
+      <h1>Benefits, optimized for your situation</h1>
+      <div class="sub">Tiered honestly — some things are "check eligibility," not promises.</div>
+      <div class="cols" style="margin-top:20px">
+        <div class="card"><h3>Your tiers</h3><div class="hint">From your rating, state, and goals.</div>
+          <div class="tiers">
+            <div class="tier"><span class="pill p-now">Act now</span> GI Bill — transfer decision while serving <b style="margin-left:auto">→</b></div>
+            <div class="tier"><span class="pill p-now">Act now</span> Intent to File — locks your effective date <b style="margin-left:auto">→</b></div>
+            <div class="tier"><span class="pill p-chk">Check</span> Hazlewood Act (Texas) — 150 credit hours <b style="margin-left:auto">→</b></div>
+            <div class="tier"><span class="pill p-chk">Check</span> VR&E (Ch. 31) — needs a service-connected rating <b style="margin-left:auto">→</b></div>
+            <div class="tier"><span class="pill p-ltr">Later</span> VA home loan — when location settles <b style="margin-left:auto">→</b></div>
+          </div>
+        </div>
+        <div class="card"><h3>Why these</h3><div class="hint">Plain-language reasons, always.</div>
+          <ul class="dl">
+            <li><span class="dot d-g"></span><span>You said <b>Texas</b> — Hazlewood stacks with the GI Bill for many veterans; the Texas Veterans Commission confirms eligibility.</span></li>
+            <li><span class="dot d-k"></span><span>No rating on file yet, so CHAMPVA and rating-dependent programs stay out of "now" — no false promises.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="timeline">
+      <h1>Transition timeline — T-9 months</h1>
+      <div class="sub">You are in the TAP &amp; benefits-research window.</div>
+      <div class="cols" style="margin-top:20px">
+        <div class="card"><h3>This window (T-9 → T-6)</h3><div class="hint">Weighted to your picks: benefits, employment, family.</div>
+          <ul class="dl">
+            <li><span class="dot d-r"></span><span><b>Complete TAP</b> — required by law; pick the employment track.</span><span class="when">deadline</span></li>
+            <li><span class="dot d-g"></span><span><b>List every claimable condition</b> with your VSO — free, always.</span></li>
+            <li><span class="dot d-g"></span><span><b>Spouse license portability</b> — Texas expedites military-spouse licenses.</span></li>
+          </ul>
+        </div>
+        <div class="card"><h3>Coming up</h3><div class="hint">The next two windows at a glance.</div>
+          <ul class="dl">
+            <li><span class="dot d-k"></span><span><b>T-6 → T-3:</b> BDD claim inside 180–90 days; school applications + COE.</span></li>
+            <li><span class="dot d-k"></span><span><b>T-3 → out:</b> DD-214 line-by-line review; TAMP health-coverage bridge.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><b>VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</b> All benefit information is sample/demo data; verify via VA.gov, your state agency, or an accredited VSO. In crisis? Dial 988, then press 1.</div>
+</main>
+<div class="switch">Preview: <a class="on" href="/design-previews/a.html">A</a>·<a href="/design-previews/b.html">B</a>·<a href="/design-previews/c.html">C</a> — <a href="/design-previews/index.html">all</a></div>
+<script>
+document.querySelectorAll('#nav a[data-p]').forEach(a=>a.addEventListener('click',()=>{
+  document.querySelectorAll('#nav a').forEach(x=>x.classList.remove('on'));a.classList.add('on');
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.getElementById(a.dataset.p).classList.add('on');
+}));
+</script>
+</body></html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview C — Mission Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#16324D;--navy9:#0C1E30;--gold:#C8863C;--ink:#243342;--ink-strong:#101F2E;--muted:#5E6E7E;--line:#E3E9EF;--cream:#FBF9F5}
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
+.switch{position:fixed;right:14px;bottom:14px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;box-shadow:0 6px 18px rgba(18,32,46,.14)}
+.switch a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 5px}.switch a.on{color:var(--gold)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;gap:26px;padding:16px 34px;color:#fff;background:linear-gradient(180deg,rgba(10,22,35,.72),rgba(10,22,35,0));backdrop-filter:blur(2px)}
+.nav .logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-size:20px}
+.nav .mk{width:30px;height:30px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px}
+.nav a{color:#DCE6EF;text-decoration:none;font-size:14px;font-weight:500}
+.nav .cta{margin-left:auto;background:var(--gold);color:#fff;padding:10px 20px;border-radius:10px;font-weight:600}
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,30,48,.42) 0%,rgba(12,30,48,.62) 55%,rgba(12,30,48,.9) 100%)}
+.hero .inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 34px 74px;width:100%}
+.kick{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#E8C89B;font-weight:700;margin-bottom:18px}
+.hero h1{font-family:Fraunces,serif;font-weight:500;font-size:clamp(38px,6.4vw,74px);line-height:1.04;letter-spacing:-.02em;max-width:14ch;text-wrap:balance}
+.hero p{max-width:520px;color:#C9D8E5;font-size:17px;line-height:1.65;margin:22px 0 30px}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap}
+.b1{background:var(--gold);color:#fff;text-decoration:none;padding:15px 28px;border-radius:11px;font-weight:600;font-size:15.5px}
+.b2{border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;padding:15px 28px;border-radius:11px;font-weight:600;font-size:15.5px}
+/* stats */
+.stats{background:var(--navy9);color:#fff;padding:30px 34px}
+.stats .inner{max-width:1120px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;align-items:center}
+.stat b{font-family:Fraunces,serif;font-size:31px;font-weight:500;display:block;color:#E8C89B}
+.stat span{font-size:12.5px;color:#9FB4C7}
+.stats .src{margin-left:auto;font-size:12.5px;color:#9FB4C7;max-width:220px}
+.stats .src a{color:#E8C89B;text-decoration:none;font-weight:600}
+/* editorial sections */
+section{padding:88px 34px}
+.inner{max-width:1120px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(28px,3.6vw,44px);color:var(--ink-strong);letter-spacing:-.015em;line-height:1.12;max-width:22ch;text-wrap:balance}
+.lede{color:var(--muted);font-size:16.5px;line-height:1.7;max-width:560px;margin-top:16px}
+.progs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:48px}
+.prog{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.prog .art{height:190px;background-size:cover;background-position:center}
+.prog .art.grad{background:linear-gradient(130deg,var(--navy),#2C5578);display:flex;align-items:center;justify-content:center}
+.prog .art.grad b{font-family:Fraunces,serif;color:#E8C89B;font-size:44px;font-weight:500}
+.prog .pad{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+.prog h3{font-family:Fraunces,serif;font-weight:500;font-size:23px;color:var(--ink-strong)}
+.prog p{color:var(--muted);font-size:14.5px;line-height:1.65;margin:10px 0 18px;flex:1}
+.prog a{color:var(--gold);font-weight:600;text-decoration:none;font-size:14.5px}
+/* quote */
+.quote{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote .inner{max-width:860px;text-align:center}
+.quote blockquote{font-family:Fraunces,serif;font-weight:400;font-size:clamp(22px,3vw,33px);line-height:1.35;color:var(--ink-strong);letter-spacing:-.01em}
+.quote cite{display:block;font-style:normal;color:var(--muted);font-size:13.5px;margin-top:18px}
+/* trust */
+.trust .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;margin-top:10px}
+.trust ul{list-style:none;padding:0;margin-top:26px}
+.trust li{display:flex;gap:13px;padding:13px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55}
+.trust li b{color:var(--ink-strong)}
+.tick{width:24px;height:24px;border-radius:50%;background:#E3F2EA;color:#2E7D5B;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px}
+.trust img{width:100%;border-radius:18px;box-shadow:0 24px 60px rgba(16,31,46,.18)}
+/* cta */
+.cta{background:linear-gradient(140deg,var(--navy9),var(--navy) 70%);color:#fff;text-align:center}
+.cta h2{color:#fff;margin:0 auto}
+.cta p{color:#B9CBDC;max-width:480px;margin:16px auto 30px;line-height:1.65}
+footer{padding:30px 34px;color:var(--muted);font-size:12.5px;line-height:1.7;border-top:1px solid var(--line)}
+footer .inner{max-width:1120px}
+footer b{color:var(--ink)}
+@media(max-width:880px){.trust .cols{grid-template-columns:1fr}.nav a:not(.cta){display:none}}
+</style></head><body>
+<nav class="nav">
+  <span class="logo"><span class="mk">V</span> VetPath</span>
+  <a href="#programs">Programs</a><a href="#trust">Why trust us</a><a href="#">Stories</a><a href="#">For counselors</a>
+  <a class="cta" href="#">My gameplan →</a>
+</nav>
+
+<div class="hero">
+  <video autoplay muted loop playsinline src="/video/career-summit-loop.mp4?v=2" poster="/video/career-summit-poster.jpg?v=2"></video>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kick">For the 200,000 who transition every year</div>
+    <h1>Service ends. The mission doesn't.</h1>
+    <p>VetPath turns your goals, family, and service into one adaptive gameplan — the path, the benefits, the place to land, and what to do this week.</p>
+    <div class="row"><a class="b1" href="#">Build my gameplan</a><a class="b2" href="#programs">See how it works</a></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="inner">
+    <div class="stat"><b>51</b><span>states + DC verified</span></div>
+    <div class="stat"><b>259</b><span>benefit programs, cited</span></div>
+    <div class="stat"><b>15</b><span>careers on BLS pay data</span></div>
+    <div class="stat"><b>7</b><span>phases, T-12 to +24 months</span></div>
+    <div class="src">Every number traces to an official source. <a href="#trust">See how we earn trust →</a></div>
+  </div>
+</div>
+
+<section id="programs">
+  <div class="inner">
+    <div class="eyebrow">What VetPath does</div>
+    <h2>One plan that holds the whole transition.</h2>
+    <p class="lede">Not another benefits directory. A planning engine that makes the pieces answer to each other — career, money, family, place, and time.</p>
+    <div class="progs">
+      <div class="prog"><div class="art grad"><b>93%</b></div><div class="pad"><h3>Find the path</h3><p>Ten questions, four tracks, twenty-four careers — a recommendation with a fit score and the honest reasons behind it, grounded in O*NET and BLS data.</p><a href="#">Pathfinder →</a></div></div>
+      <div class="prog"><div class="art" style="background-image:url('/img/tap-electrical-training.jpg')"></div><div class="pad"><h3>Claim what you earned</h3><p>Benefits tiered for your situation — act now, check eligibility, later — with the deadlines that don't forgive placed on your timeline.</p><a href="#">Benefits optimizer →</a></div></div>
+      <div class="prog"><div class="art" style="background-image:url('/img/transition-summit-mentors.jpg')"></div><div class="pad"><h3>Plan as a family</h3><p>School calendars, spouse licenses, caregiver support, where to land — decided together, revisited when life changes. Because it will.</p><a href="#">Family &amp; relocation →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="inner">
+    <blockquote>&ldquo;Everyone hands you a brochure. Nobody hands you a plan. This is the first thing that felt like a plan.&rdquo;</blockquote>
+    <cite>Pilot feedback, transitioning Army NCO — sample quote for demo</cite>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="inner">
+    <div class="cols">
+      <div>
+        <div class="eyebrow">Why trust us</div>
+        <h2>Every number has a source.</h2>
+        <ul>
+          <li><span class="tick">✓</span><span><b>Verified, not scraped.</b> State benefits from all 51 agencies, checked against official .gov sources with a re-verification cadence.</span></li>
+          <li><span class="tick">✓</span><span><b>Honest tiers.</b> If eligibility depends on a rating you don't have yet, we say "check" — never "guaranteed."</span></li>
+          <li><span class="tick">✓</span><span><b>Not the VA. Not a claims shop.</b> A planning tool that points you to free, accredited help — and never takes a cut of your benefits.</span></li>
+          <li><span class="tick">✓</span><span><b>Private by design.</b> Your answers stay on your device in this demo. No selling, no sharing.</span></li>
+        </ul>
+      </div>
+      <img src="/img/transition-summit-mentors.jpg" alt="Volunteer mentors walk a transitioning soldier through her resume at a veterans summit">
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <div class="eyebrow" style="color:#E8C89B">Ten minutes now saves months of guessing</div>
+    <h2>Leave with your gameplan.</h2>
+    <p>Free in the pilot. Built with veterans, for veterans and the families who transition with them.</p>
+    <a class="b1" href="#">Build my gameplan</a>
+  </div>
+</section>
+
+<footer><div class="inner"><b>VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</b> All benefit information is sample/demo data; confirm eligibility via VA.gov, your state veterans agency, or an accredited VSO. In crisis? Dial 988, then press 1 — free, confidential, 24/7.</div></footer>
+<div class="switch">Preview: <a href="/design-previews/a.html">A</a>·<a href="/design-previews/b.html">B</a>·<a class="on" href="/design-previews/c.html">C</a> — <a href="/design-previews/index.html">all</a></div>
+</body></html>
