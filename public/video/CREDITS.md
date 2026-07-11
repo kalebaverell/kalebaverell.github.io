@@ -17,13 +17,15 @@ This follows the same sourcing standard as `public/img/CREDITS.md`.
 - **License line on source page (verified 2026-07-10):** "PUBLIC DOMAIN"
 - **File fetched:** DVIDS CDN public HLS stream (960×540 variant),
   https://d34w7g4gy10iej.cloudfront.net/video/2511/DOD_111401891/DOD_111401891-960x540-1918k-hls_4.m3u8
-  (segments 7–18 sampled; final shot from ~t=141.9–145.2 of the source).
+  (segments 7–18 sampled; final shot from ~t=120.7–134.0 of the source).
 - **Processing (ffmpeg, no content edits within frames):**
-  - Extracted one continuous 3.3 s shot: transitioning service members and civilian
-    recruiters mingling and shaking hands after a career-summit session, bright window light.
-  - Native 960×540, audio removed; palindrome concat (forward + reverse) → 6.6 s seamless loop.
-  - H.264 (libx264, CRF 26, preset veryslow, yuv420p, `+faststart`) → **436 KB**.
-  - `career-summit-poster.jpg` is the first frame, JPEG q3 (**45 KB**).
+  - Extracted one continuous 13.3 s shot: a packed summit audience of transitioning
+    service members and civilians, side view with a slow camera drift, window light.
+  - Native 960×540, audio removed; 1.2 s crossfade of the tail into the head → 12.1 s
+    seamless forward-motion loop (v2 — replaced the earlier 6.6 s palindrome cut of the
+    mingling shot, whose motion reversal read as stuttering).
+  - H.264 (libx264, CRF 27, preset veryslow, yuv420p, `+faststart`) → **285 KB**.
+  - `career-summit-poster.jpg` is the first frame, JPEG q3 (**58 KB**).
 - **Content review:** no combat, no weapons, no ceremonial flag displays (a U.S. flag
   shoulder patch on one uniform is incidental); event signage/TV screens with third-party
   sponsor logos were deliberately cut around — none appear in the shipped clip; no readable

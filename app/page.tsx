@@ -43,7 +43,7 @@ function MissionMedia() {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster="/video/hero-poster.jpg"
       src="/video/hero-loop.mp4"
       aria-label="A transitioning soldier works through a Transition Assistance Program workbook in a classroom"
@@ -68,9 +68,9 @@ function HeroBackdrop() {
         muted
         loop
         playsInline
-        preload="metadata"
-        poster="/video/career-summit-poster.jpg"
-        src="/video/career-summit-loop.mp4"
+        preload="auto"
+        poster="/video/career-summit-poster.jpg?v=2"
+        src="/video/career-summit-loop.mp4?v=2"
         aria-hidden="true"
         tabIndex={-1}
       />
