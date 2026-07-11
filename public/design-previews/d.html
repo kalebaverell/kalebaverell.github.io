@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview D — Mission Editorial + your tabs & gameplan card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.34.0/tabler-icons.min.css">
+<style>
+:root{--navy:#16324D;--navy9:#0C1E30;--navy8:#1E4266;--gold:#C8863C;--gold-soft:#F6E8D4;--ink:#243342;--ink-strong:#101F2E;--muted:#5E6E7E;--line:#E3E9EF;--cream:#FBF9F5;--ok:#2E7D5B;--ok-soft:#E3F2EA}
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
+.switch{position:fixed;right:14px;bottom:14px;z-index:50;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;box-shadow:0 6px 18px rgba(18,32,46,.14)}
+.switch a{color:var(--navy);text-decoration:none;font-weight:600;margin:0 4px}.switch a.on{color:var(--gold)}
+/* ===== your current tab bar, kept ===== */
+.nav{background:var(--navy9);color:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand .mk{width:34px;height:34px;border-radius:9px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:19px}
+.brand b{font-family:Fraunces,serif;font-weight:500;font-size:20px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tab{display:flex;align-items:center;gap:7px;color:#C9D6E2;text-decoration:none;font-size:14px;font-weight:500;padding:9px 13px;border-radius:10px;border:1.5px solid transparent;position:relative}
+.tab i{font-size:17px}
+.tab:hover{color:#fff;background:rgba(255,255,255,.06)}
+.tab.active{color:#fff;border-color:var(--gold)}
+.tab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:3px;border-radius:99px;background:var(--gold)}
+.aa{margin-left:auto;border:1px solid rgba(255,255,255,.3);border-radius:9px;padding:7px 13px;font-weight:700;font-size:14px;color:#fff;background:rgba(255,255,255,.08)}
+/* ===== hero: C's video + your floatcard diagram ===== */
+.hero{position:relative;color:#fff;overflow:hidden;background:linear-gradient(158deg,var(--navy9),var(--navy) 58%,var(--navy8))}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(12,30,48,.95) 0%,rgba(22,50,77,.9) 48%,rgba(30,66,102,.72) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:70px 22px 84px;display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:center}
+.kick{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8C89B;font-weight:700;margin-bottom:16px}
+.hero h1{font-family:Fraunces,serif;font-weight:500;font-size:clamp(34px,4.8vw,56px);line-height:1.07;letter-spacing:-.02em;max-width:15ch;text-wrap:balance}
+.hero p{max-width:500px;color:#C7D6E4;font-size:16.5px;line-height:1.65;margin:18px 0 28px}
+.row{display:flex;gap:13px;flex-wrap:wrap}
+.b1{background:var(--gold);color:#fff;text-decoration:none;padding:14px 26px;border-radius:11px;font-weight:600;font-size:15px}
+.b2{border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;padding:14px 26px;border-radius:11px;font-weight:600;font-size:15px;background:rgba(255,255,255,.08)}
+/* your floatcard diagram, kept */
+.visual{position:relative;min-height:390px}
+.route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.route .march{stroke-dasharray:8 9;animation:march 3.4s linear infinite}
+@keyframes march{to{stroke-dashoffset:-64}}
+.pulse{transform-origin:center;transform-box:fill-box;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.55);opacity:.55}}
+.fc{position:absolute;background:#fff;color:var(--ink);border-radius:16px;box-shadow:0 18px 44px rgba(8,18,30,.35);border:1px solid rgba(255,255,255,.6)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.f1{top:8px;left:0;right:22px;padding:22px;animation:floaty 7s ease-in-out infinite}
+.f2{top:172px;left:38px;padding:14px 18px;display:flex;align-items:center;gap:12px;animation:floaty 8.5s ease-in-out 1.1s infinite}
+.f3{top:258px;right:4px;padding:14px 18px;display:flex;align-items:center;gap:10px;animation:floaty 7.6s ease-in-out 2.2s infinite}
+.f1 .head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.icw{width:34px;height:34px;border-radius:9px;background:var(--gold-soft);color:#8A5A22;display:flex;align-items:center;justify-content:center;font-size:18px}
+.lbl{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.f1 .dest{font-family:Fraunces,serif;font-size:20px;font-weight:500;color:var(--ink-strong)}
+.fit{margin-left:auto;text-align:center}.fit b{font-family:Fraunces,serif;font-size:30px;font-weight:500;color:var(--navy);line-height:1;display:block}.fit span{font-size:11px;color:var(--muted)}
+.bar{height:8px;background:#EFF3F7;border-radius:20px;overflow:hidden;margin-bottom:6px}.bar i{display:block;width:60%;height:100%;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.f1 .det{font-size:12.5px;color:var(--muted)}
+.sq{width:40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.sq.g{width:34px;height:34px;border-radius:9px;background:var(--ok-soft);color:var(--ok);font-size:18px}
+.f2 .t1,.f3 .t2{font-size:12.5px;color:var(--muted)}
+.f2 b,.f3 b{color:var(--ink-strong);font-size:14.5px}
+/* ===== C's editorial flow below ===== */
+.stats{background:var(--navy9);color:#fff;padding:28px 22px}
+.stats .in{max-width:1180px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;align-items:center}
+.stat b{font-family:Fraunces,serif;font-size:30px;font-weight:500;display:block;color:#E8C89B}
+.stat span{font-size:12.5px;color:#9FB4C7}
+.stats .src{margin-left:auto;font-size:12.5px;color:#9FB4C7;max-width:230px}.stats .src a{color:#E8C89B;text-decoration:none;font-weight:600}
+section{padding:82px 22px}.in{max-width:1180px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(27px,3.4vw,42px);color:var(--ink-strong);letter-spacing:-.015em;line-height:1.12;max-width:24ch;text-wrap:balance}
+.lede{color:var(--muted);font-size:16px;line-height:1.7;max-width:560px;margin-top:15px}
+.progs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;margin-top:44px}
+.prog{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.prog .art{height:180px;background-size:cover;background-position:center}
+.prog .art.grad{background:linear-gradient(130deg,var(--navy),#2C5578);display:flex;align-items:center;justify-content:center}
+.prog .art.grad b{font-family:Fraunces,serif;color:#E8C89B;font-size:42px;font-weight:500}
+.prog .pad{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.prog h3{font-family:Fraunces,serif;font-weight:500;font-size:22px;color:var(--ink-strong)}
+.prog p{color:var(--muted);font-size:14px;line-height:1.65;margin:9px 0 16px;flex:1}
+.prog a{color:var(--gold);font-weight:600;text-decoration:none;font-size:14px}
+.quote{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote .in{max-width:860px;text-align:center}
+.quote blockquote{font-family:Fraunces,serif;font-size:clamp(21px,2.8vw,31px);line-height:1.35;color:var(--ink-strong);font-weight:400}
+.quote cite{display:block;font-style:normal;color:var(--muted);font-size:13px;margin-top:16px}
+.trust .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;margin-top:8px}
+.trust ul{list-style:none;padding:0;margin-top:24px}
+.trust li{display:flex;gap:13px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.55}
+.trust li b{color:var(--ink-strong)}
+.tick{width:24px;height:24px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+.trust img{width:100%;border-radius:18px;box-shadow:0 24px 60px rgba(16,31,46,.18)}
+.cta{background:linear-gradient(140deg,var(--navy9),var(--navy) 70%);color:#fff;text-align:center}
+.cta h2{color:#fff;margin:0 auto}.cta p{color:#B9CBDC;max-width:480px;margin:15px auto 28px;line-height:1.65}
+footer{padding:28px 22px;color:var(--muted);font-size:12.5px;line-height:1.7;border-top:1px solid var(--line)}
+footer .in{max-width:1180px}footer b{color:var(--ink)}
+@media(max-width:920px){.hero-inner{grid-template-columns:1fr}.visual{display:none}.trust .cols{grid-template-columns:1fr}.tabs{display:none}}
+</style></head><body>
+
+<header class="nav"><div class="nav-inner">
+  <a class="brand" href="#"><span class="mk"><i class="ti ti-route"></i></span><b>VetPath</b></a>
+  <nav class="tabs">
+    <a class="tab active" href="#"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+    <a class="tab" href="#"><i class="ti ti-compass"></i> Pathfinder</a>
+    <a class="tab" href="#"><i class="ti ti-target"></i> Goals</a>
+    <a class="tab" href="#"><i class="ti ti-award"></i> Benefits</a>
+    <a class="tab" href="#"><i class="ti ti-tool"></i> Tools</a>
+    <a class="tab" href="#"><i class="ti ti-checkbox"></i> Action plan</a>
+    <a class="tab" href="#"><i class="ti ti-user-circle"></i> Profile</a>
+    <a class="tab" href="#"><i class="ti ti-presentation"></i> Strategy</a>
+  </nav>
+  <span class="aa">Aa</span>
+</div></header>
+
+<div class="hero">
+  <video autoplay muted loop playsinline src="/video/career-summit-loop.mp4?v=2" poster="/video/career-summit-poster.jpg?v=2"></video>
+  <div class="scrim"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="kick">Veteran life planning · benefits · transition</div>
+      <h1>Service ends. The mission doesn't.</h1>
+      <p>VetPath turns your goals, family, and service into one adaptive gameplan — the path, the benefits, the place to land, and what to do this week.</p>
+      <div class="row"><a class="b1" href="#"><i class="ti ti-compass"></i> Build my gameplan</a><a class="b2" href="#programs">See how it works</a></div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <svg class="route" viewBox="0 0 440 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="march" d="M28 356 C 150 330, 70 240, 180 205 S 320 150, 402 52" stroke="rgba(255,255,255,.34)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="28" cy="356" r="6" fill="rgba(255,255,255,.55)"/><circle cx="180" cy="205" r="4.5" fill="rgba(255,255,255,.4)"/>
+        <circle class="pulse" cx="402" cy="52" r="7" fill="#C8863C"/>
+      </svg>
+      <div class="fc f1">
+        <div class="head"><span class="icw"><i class="ti ti-flag-3"></i></span><div><div class="lbl">Your destination</div><div class="dest">Electrician</div></div><div class="fit"><b>93%</b><span>fit</span></div></div>
+        <div class="bar"><i></i></div><div class="det">Days 1–90 · 6 of 10 actions started</div>
+      </div>
+      <div class="fc f2"><span class="sq"><i class="ti ti-school"></i></span><div><div class="t1">GI Bill housing stipend</div><b>Paid while you apprentice</b></div></div>
+      <div class="fc f3"><span class="sq g"><i class="ti ti-map-pin"></i></span><div><div class="t2">Pittsburgh, PA</div><b>2 VA medical centers nearby</b></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats"><div class="in">
+  <div class="stat"><b>51</b><span>states + DC verified</span></div>
+  <div class="stat"><b>259</b><span>benefit programs, cited</span></div>
+  <div class="stat"><b>15</b><span>careers on BLS pay data</span></div>
+  <div class="stat"><b>7</b><span>phases, T-12 to +24 months</span></div>
+  <div class="src">Every number traces to an official source. <a href="#">See how we earn trust →</a></div>
+</div></div>
+
+<section id="programs"><div class="in">
+  <div class="eyebrow">What VetPath does</div>
+  <h2>One plan that holds the whole transition.</h2>
+  <p class="lede">Not another benefits directory. A planning engine that makes the pieces answer to each other — career, money, family, place, and time.</p>
+  <div class="progs">
+    <div class="prog"><div class="art grad"><b>93%</b></div><div class="pad"><h3>Find the path</h3><p>Ten questions, four tracks, twenty-four careers — a recommendation with a fit score and the honest reasons behind it.</p><a href="#">Pathfinder →</a></div></div>
+    <div class="prog"><div class="art" style="background-image:url('/img/tap-electrical-training.jpg')"></div><div class="pad"><h3>Claim what you earned</h3><p>Benefits tiered for your situation — act now, check, later — with the deadlines that don't forgive on your timeline.</p><a href="#">Benefits optimizer →</a></div></div>
+    <div class="prog"><div class="art" style="background-image:url('/img/transition-summit-mentors.jpg')"></div><div class="pad"><h3>Plan as a family</h3><p>School calendars, spouse licenses, where to land — decided together, revisited when life changes. Because it will.</p><a href="#">Family &amp; relocation →</a></div></div>
+  </div>
+</div></section>
+
+<section class="quote"><div class="in">
+  <blockquote>&ldquo;Everyone hands you a brochure. Nobody hands you a plan. This is the first thing that felt like a plan.&rdquo;</blockquote>
+  <cite>Pilot feedback, transitioning Army NCO — sample quote for demo</cite>
+</div></section>
+
+<section class="trust"><div class="in"><div class="cols">
+  <div>
+    <div class="eyebrow">Why trust us</div>
+    <h2>Every number has a source.</h2>
+    <ul>
+      <li><span class="tick"><i class="ti ti-check"></i></span><span><b>Verified, not scraped.</b> State benefits from all 51 agencies, checked against official .gov sources on a re-verification cadence.</span></li>
+      <li><span class="tick"><i class="ti ti-check"></i></span><span><b>Honest tiers.</b> If eligibility depends on a rating you don't have yet, we say "check" — never "guaranteed."</span></li>
+      <li><span class="tick"><i class="ti ti-check"></i></span><span><b>Not the VA. Not a claims shop.</b> We point you to free, accredited help — and never take a cut of your benefits.</span></li>
+    </ul>
+  </div>
+  <img src="/img/transition-summit-mentors.jpg" alt="Volunteer mentors walk a transitioning soldier through her resume at a veterans summit">
+</div></div></section>
+
+<section class="cta"><div class="in">
+  <div class="eyebrow" style="color:#E8C89B">Ten minutes now saves months of guessing</div>
+  <h2>Leave with your gameplan.</h2>
+  <p>Free in the pilot. Built with veterans, for veterans and the families who transition with them.</p>
+  <a class="b1" href="#"><i class="ti ti-compass"></i> Build my gameplan</a>
+</div></section>
+
+<footer><div class="in"><b>VetPath is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</b> All benefit information is sample/demo data; confirm via VA.gov, your state veterans agency, or an accredited VSO. In crisis? Dial 988, then press 1 — free, confidential, 24/7.</div></footer>
+<div class="switch">Preview: <a href="/design-previews/c.html">C</a>·<a class="on" href="/design-previews/d.html">D</a>·<a href="/design-previews/e.html">E</a> — <a href="/design-previews/index.html">all</a></div>
+</body></html>
