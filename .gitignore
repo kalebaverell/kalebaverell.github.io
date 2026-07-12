@@ -5,3 +5,6 @@ out/
 .env*
 demo/.mirror-checkpoint*.html
 demo/*.bak
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
