@@ -49,11 +49,7 @@ export default function Footer() {
 
         <div className="disclaimer" style={{ textAlign: "left" }}>
           <a href="/trust" style={{ fontWeight: 600 }}>How we earn trust — every number has a source →</a>
-          <br />
-          <strong style={{ color: "var(--ink-strong)" }}>{BRAND.name} is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</strong>{" "}
-          All benefit information here is <strong>sample/demo data</strong>. Eligibility and amounts must be confirmed through official sources such as{" "}
-          <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>, your state veterans agency, or an accredited VSO.
-          <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 8, color: "var(--danger)", fontWeight: 500 }}>
+          <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 8, color: "var(--danger)", fontWeight: 500 }}>
             <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 — free, confidential, 24/7.
           </div>
           <div style={{ marginTop: 14, fontSize: 12.5 }}>

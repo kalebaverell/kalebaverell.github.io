@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BRAND, STATE_BENEFITS } from "@/lib/data";
-import { Wrap, Stat, Callout, Eyebrow, SectionHead } from "@/components/ui";
+import { Wrap, Stat, Eyebrow, SectionHead } from "@/components/ui";
 import PlanDemo from "@/components/PlanDemo";
 
 /** Mission-band media: looping public-domain TAP-class footage; still photo when the user prefers reduced motion. */
@@ -172,7 +172,7 @@ export default function Landing() {
 
       <div className="trust-bar">
         <div className="trust-bar-inner">
-          <span className="item"><i className="ti ti-map-pin-check" /> {STATE_BENEFITS.states.length} states verified from official sources</span>
+          <span className="item"><i className="ti ti-map-pin-check" /> {STATE_BENEFITS.states.filter((s) => s.code !== "DC").length} states + D.C. verified from official sources</span>
           <span className="sep" />
           <span className="item"><i className="ti ti-award" /> {STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0)} benefit programs, each cited</span>
           <span className="sep" />
@@ -254,12 +254,6 @@ export default function Landing() {
       </section>
 
       <Wrap>
-        <div>
-          <Callout kind="info">
-            <strong>A planning tool, not the VA.</strong> {BRAND.name} helps you organize and prioritize. It does not determine eligibility or provide legal, medical, or financial advice. Benefit content is verified against official sources where marked — <Link href="/trust">see how we earn trust</Link>.
-          </Callout>
-        </div>
-
         <div className="card" data-reveal="true" style={{ marginTop: 24, textAlign: "center", padding: "40px 24px", background: "var(--surface-2)", border: "1px solid var(--hairline)", position: "relative", overflow: "hidden" }}>
           <svg className="compass-mark" viewBox="0 0 200 200" fill="none" aria-hidden="true">
             <circle cx="100" cy="100" r="96" stroke="var(--primary)" strokeWidth="2" />

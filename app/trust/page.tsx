@@ -24,7 +24,7 @@ export default function TrustPage() {
       </p>
 
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", margin: "26px 0" }}>
-        <Stat n={STATE_BENEFITS.states.length} l="states + DC researched from official state sources" />
+        <Stat n={STATE_BENEFITS.states.filter((s) => s.code !== "DC").length} l="states + D.C. researched from official state sources" />
         <Stat n={statePrograms} l="state benefit programs, each linked to its official page" />
         <Stat n={verifiedFederal} l="federal benefit categories verified against VA.gov / DOL / SBA" />
         <Stat n={groundedCareers} l="career paths grounded in BLS pay data + O*NET profiles" />
