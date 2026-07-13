@@ -23,7 +23,7 @@ function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void })
         <i className="ti ti-arrow-left" /> Home
       </Link>
       <h2>Create your demo profile</h2>
-      <p className="muted">No password, no signup — this is a local demo profile stored only in your browser.</p>
+      <p className="muted">Start planning right away — no account needed. Want it saved and synced across devices? Sign in from the top-right anytime and your plan comes with you.</p>
       <div className="card">
         <label className="lbl" htmlFor="pname">First name</label>
         <input className="field" id="pname" placeholder="e.g. Frank" value={name} onChange={(e) => setName(e.target.value)} style={{ marginBottom: 16 }} />
@@ -31,7 +31,7 @@ function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void })
         <input className="field" id="pemail" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} style={{ marginBottom: 20 }} />
         <button className="btn block" onClick={() => onCreate(name, email)}><i className="ti ti-user-plus" /> Start planning</button>
         <p className="small muted" style={{ textAlign: "center", margin: "14px 0 0" }}>
-          <i className="ti ti-lock" /> Stored locally. Nothing is sent anywhere in this prototype.
+          <i className="ti ti-lock" /> Not signed in? This stays in your browser. Signed in, it saves to your private, encrypted account.
         </p>
       </div>
     </Wrap>

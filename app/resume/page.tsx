@@ -34,7 +34,7 @@ export default function ResumeScanner() {
   return (
     <Wrap>
       <h2>Resume scanner</h2>
-      <p className="muted" style={{ maxWidth: 640 }}>Paste your resume and we&apos;ll grade it like a civilian recruiter would — jargon, numbers, keywords for your target path. Nothing leaves your browser in this demo.</p>
+      <p className="muted" style={{ maxWidth: 640 }}>Paste your resume and we&apos;ll grade it like a civilian recruiter would — jargon, numbers, keywords for your target path. The analysis runs in your browser; it&apos;s saved only to your own account if you&apos;re signed in.</p>
       <div style={{ margin: "8px 0 16px" }}>
         <Callout kind="info">Demo feedback from simple rules — a coaching aid, not a hiring guarantee. For a human review, your DOL VETS rep is free.</Callout>
       </div>

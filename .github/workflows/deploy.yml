@@ -36,6 +36,11 @@ jobs:
 
       - name: Build the static site
         run: npm run build
+        env:
+          # Public, browser-safe Supabase values (protected by Row-Level Security).
+          # Set under repo Settings → Secrets and variables → Actions → Variables.
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
       - name: Disable Jekyll (serve the _next folder as-is)
         run: touch ./out/.nojekyll

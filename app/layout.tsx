@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
+import { AuthProvider } from "@/lib/auth";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionFx from "@/components/MotionFx";
 import BottomTabs from "@/components/BottomTabs";
+import AuthModal from "@/components/AuthModal";
+import ProfileSync from "@/components/ProfileSync";
 
 export const metadata: Metadata = {
   title: "VetPath — A clear gameplan for life after service",
@@ -51,13 +54,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <StoreProvider>
-          <MotionFx />
-          <Nav />
-          <main id="main">{children}</main>
-          <Footer />
-          <BottomTabs />
-        </StoreProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <MotionFx />
+            <Nav />
+            <main id="main">{children}</main>
+            <Footer />
+            <BottomTabs />
+            <ProfileSync />
+            <AuthModal />
+          </StoreProvider>
+        </AuthProvider>
         <script dangerouslySetInnerHTML={{ __html: SW_REGISTER }} />
       </body>
     </html>

@@ -47,6 +47,7 @@ interface Store {
   choosePath: (careerId: string, fitPct: number | null, why: string[]) => void;
   clearPath: () => void;
   setResume: (r: ResumeState | null) => void;
+  hydrateRemote: (partial: Partial<AppState>) => void;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -149,6 +150,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const setResume = useCallback((r: ResumeState | null) => setS((p) => ({ ...p, resume: r })), []);
 
+  // Merge a profile blob loaded from the account backend into local state.
+  const hydrateRemote = useCallback((partial: Partial<AppState>) => {
+    setS((p) => ({ ...p, ...partial }));
+  }, []);
+
   const cycleStatus = useCallback((id: string) => {
     setS((p) => {
       const cur: Status = p.statuses[id] || "todo";
@@ -186,7 +192,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume }}
+      value={{ s, ready, createProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

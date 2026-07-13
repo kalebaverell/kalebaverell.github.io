@@ -53,7 +53,7 @@ export default function Profile() {
       <div style={{ marginTop: 18 }}>
         <Callout kind="info">
           <i className="ti ti-lock" style={{ display: "none" }} />
-          This demo stores your profile only in your browser&apos;s local storage. Nothing is transmitted. A real version would add secure accounts and encryption.
+          If you&apos;re signed in, your profile is saved privately to your account (encrypted, visible only to you) so it syncs across devices. Browsing without an account? It stays in your browser only. See <a href="/privacy">Privacy &amp; data</a>.
         </Callout>
       </div>
     </Wrap>
