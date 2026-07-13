@@ -56,9 +56,12 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoratio
 
 /* ---- Premium refinements (craft layer) ---- */
 ::selection { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--ink-strong); }
-h1 { text-wrap: balance; letter-spacing: -.018em; }
-h2 { text-wrap: balance; }
+h1 { text-wrap: balance; letter-spacing: -.018em; overflow-wrap: break-word; }
+h2 { text-wrap: balance; overflow-wrap: break-word; }
 p { text-wrap: pretty; }
+/* text-wrap:balance can keep a long word on an overflowing line on narrow screens —
+   fall back to normal wrapping on small viewports so nothing clips. */
+@media (max-width: 640px) { h1, h2 { text-wrap: normal; } }
 .eyebrow { position: relative; }
 
 /* Display serif for editorial headings; sans for functional sub-heads */
@@ -182,7 +185,8 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .brand-lock:hover { text-decoration:none; }
 .brand-mark { width:34px; height:34px; border-radius:9px; background:linear-gradient(145deg, var(--accent), var(--accent-600)); color:var(--primary-900); display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 2px 8px rgba(122,80,25,.35); }
 .brand-word { font-family:var(--font-display); font-size:21px; font-weight:500; letter-spacing:-.01em; }
-.nav-links { display:flex; gap:2px; margin-left:auto; flex-wrap:wrap; }
+.nav-links { display:flex; gap:2px; flex-wrap:wrap; }
+.nav-actions { display:flex; align-items:center; gap:12px; margin-left:auto; }
 .nav-link { position:relative; color:#C4D2DF; padding:10px 13px; border-radius:8px; font-size:14.5px; font-weight:500; text-decoration:none; display:inline-flex; align-items:center; gap:7px; min-height:44px; transition:color .15s ease, background .15s ease; }
 .nav-link:hover { color:#fff; background:rgba(255,255,255,.07); text-decoration:none; }
 .nav-link.active { color:#fff; }
@@ -300,9 +304,15 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 
 /* Mobile navigation — collapses into a hamburger menu */
 @media (max-width: 920px) {
-  .nav-inner { flex-wrap:nowrap; position:relative; }
+  .nav-inner { flex-wrap:nowrap; position:relative; padding:0 15px; gap:10px; }
   .nav-user { display:none; }
-  .nav-toggle { display:inline-flex; align-items:center; justify-content:center; margin-left:auto; min-width:48px; min-height:44px; border-radius:9px; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); cursor:pointer; font-size:24px; transition:background .15s ease; }
+  /* The auto-margin lives on the hamburger (first item of the right group) so the whole
+     group — hamburger then Sign in — is pushed right together and both fit. Sign in stays
+     rightmost. Aa text-size is desktop-only on mobile (browser/OS zoom covers it) to make room. */
+  .nav-aa { display:none; }
+  .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); cursor:pointer; font-size:23px; transition:background .15s ease; }
+  .nav-actions { order:3; margin-left:0; gap:8px; }
+  .nav-signin i { font-size:15px; }
   .nav-toggle:hover { background:rgba(255,255,255,.18); }
   .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:40; background:var(--primary-900); border-bottom:1px solid rgba(255,255,255,.12); flex-direction:column; padding:10px 16px 16px; gap:3px; box-shadow:var(--shadow-lg); margin-left:0; }
   .nav-links.open { display:flex; }

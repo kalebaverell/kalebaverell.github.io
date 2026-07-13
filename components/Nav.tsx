@@ -57,34 +57,36 @@ export default function Nav() {
             );
           })}
         </nav>
-        <button
-          onClick={cycleTextSize}
-          aria-label={`Text size: ${sizeLabel}. Click to change.`}
-          title={`Text size: ${sizeLabel} — click to change`}
-          className="nav-aa"
-          style={{ fontSize: s.textSize === "base" ? 16 : s.textSize === "lg" ? 18 : 20 }}
-        >
-          Aa
-        </button>
-        {authEnabled ? (
-          user ? (
-            <span className="nav-user" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <i className="ti ti-user-circle" aria-hidden="true" />
-              <span style={{ maxWidth: 150, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {(user.user_metadata as any)?.full_name || user.email}
+        <div className="nav-actions">
+          <button
+            onClick={cycleTextSize}
+            aria-label={`Text size: ${sizeLabel}. Click to change.`}
+            title={`Text size: ${sizeLabel} — click to change`}
+            className="nav-aa"
+            style={{ fontSize: s.textSize === "base" ? 16 : s.textSize === "lg" ? 18 : 20 }}
+          >
+            Aa
+          </button>
+          {authEnabled ? (
+            user ? (
+              <span className="nav-user" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <i className="ti ti-user-circle" aria-hidden="true" />
+                <span style={{ maxWidth: 150, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {(user.user_metadata as any)?.full_name || user.email}
+                </span>
+                <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
               </span>
-              <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
-            </span>
+            ) : (
+              <button type="button" onClick={openAuth} className="btn gold sm nav-signin">
+                <i className="ti ti-user-plus" aria-hidden="true" /> Sign in
+              </button>
+            )
           ) : (
-            <button type="button" onClick={openAuth} className="btn gold sm nav-signin">
-              <i className="ti ti-user-plus" aria-hidden="true" /> Sign in
-            </button>
-          )
-        ) : (
-          s.profile && (
-            <span className="nav-user"><i className="ti ti-user-circle" aria-hidden="true" /> {s.profile.name}</span>
-          )
-        )}
+            s.profile && (
+              <span className="nav-user"><i className="ti ti-user-circle" aria-hidden="true" /> {s.profile.name}</span>
+            )
+          )}
+        </div>
       </div>
     </header>
   );
