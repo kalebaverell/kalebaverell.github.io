@@ -28,11 +28,30 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-// Registers the offline/app-shell service worker on real hosts (and localhost for testing).
+// Registers the offline/app-shell service worker on real hosts (and localhost for testing),
+// and keeps it self-updating: check for a new worker on load / focus / periodically, and when
+// an updated worker takes control, reload once so the freshly deployed build shows without a
+// manual hard refresh. The reload is armed only when a worker already controls the page, so a
+// first-time visitor never sees an install-time reload flash.
 const SW_REGISTER = `
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('/sw.js').catch(function () {});
+    var wasControlled = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.register('/sw.js').then(function (reg) {
+      reg.update();
+      setInterval(function () { reg.update(); }, 30 * 60 * 1000);
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') reg.update();
+      });
+    }).catch(function () {});
+    if (wasControlled) {
+      var refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+    }
   });
 }
 `;
