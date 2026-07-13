@@ -197,9 +197,25 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .nav-signout { background:transparent; border:1px solid rgba(255,255,255,.24); color:#DCE6EF; font-family:inherit; font-size:12.5px; font-weight:500; padding:5px 11px; border-radius:8px; cursor:pointer; transition:background .15s ease, border-color .15s ease; }
 .nav-signout:hover { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.4); }
 .nav-signin { min-height:40px; }
+/* Homepage: the nav floats transparently over the hero image, then fades to a solid
+   bar on scroll or when the mobile menu opens. Only applied via the .nav--hero class
+   (added on "/" ), so every other page keeps the standard solid nav above. */
+/* Use background-color/-image longhands and transition only background-color: transitioning
+   the `background` shorthand across a gradient→solid swap leaves the color un-interpolated
+   (stuck transparent) in Chromium, which would make the scrolled nav see-through over white. */
+.nav { transition:background-color .28s ease, border-color .28s ease; }
+.nav--hero { position:fixed; left:0; right:0; top:0; border-bottom-color:transparent;
+  background-color:transparent;
+  background-image:linear-gradient(180deg, rgba(9,20,32,.72) 0%, rgba(9,20,32,.30) 52%, rgba(9,20,32,0) 100%);
+  -webkit-backdrop-filter:none; backdrop-filter:none; }
+.nav--hero.is-solid { border-bottom:1px solid rgba(255,255,255,.08);
+  background-color:rgba(11,27,43,.92);
+  background-image:none;
+  -webkit-backdrop-filter:saturate(140%) blur(8px); backdrop-filter:saturate(140%) blur(8px); }
 
 /* ---- Hero ---- */
 .hero-wrap { position:relative; overflow:hidden; color:#fff;
+  min-height:92vh; display:flex; flex-direction:column; justify-content:center;
   background:
     radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
     linear-gradient(158deg, var(--primary-900) 0%, var(--primary) 58%, var(--primary-800) 100%);
@@ -212,15 +228,18 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
   filter:saturate(.86); opacity:0; transition:opacity 1.6s ease-in-out; will-change:opacity, transform; }
 .hero-slide.active { opacity:1; animation:hero-ken 7s ease-out both; }
 @keyframes hero-ken { from { transform:scale(1.02); } to { transform:scale(1.09); } }
+/* Lighter than before so the photo reads clearly: a vertical pass darkens the top (nav
+   legibility) and the very bottom (seam into the trust bar), while a left-biased pass
+   keeps the headline column dark enough for white text and lets the right side show through. */
 .hero-scrim { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
-    radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
-    linear-gradient(105deg, color-mix(in srgb, var(--primary-900) 95%, transparent) 0%, color-mix(in srgb, var(--primary) 90%, transparent) 48%, color-mix(in srgb, var(--primary-800) 78%, transparent) 100%);
+    linear-gradient(180deg, rgba(9,20,32,.5) 0%, rgba(9,20,32,0) 22%, rgba(9,20,32,0) 60%, rgba(11,27,43,.52) 100%),
+    linear-gradient(100deg, color-mix(in srgb, var(--primary-900) 80%, transparent) 0%, color-mix(in srgb, var(--primary-900) 54%, transparent) 42%, color-mix(in srgb, var(--primary-900) 16%, transparent) 100%);
 }
-.hero-inner { position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:64px 22px 76px; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
-.hero h1 { color:#fff; letter-spacing:-.02em; }
+.hero-inner { position:relative; z-index:2; max-width:1180px; margin:0 auto; width:100%; padding:104px 22px 84px; display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+.hero h1 { color:#fff; letter-spacing:-.02em; text-shadow:0 2px 22px rgba(6,15,25,.42); }
 .hero .accent-word { font-style:italic; color:var(--accent); }
-.hero-sub { color:#C7D6E4; font-size:calc(var(--fs-body) + 2px); max-width:540px; margin:6px 0 0; line-height:1.6; }
+.hero-sub { color:#D6E2EC; font-size:calc(var(--fs-body) + 2px); max-width:540px; margin:6px 0 0; line-height:1.6; text-shadow:0 1px 14px rgba(6,15,25,.4); }
 .hero-cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
 .hero-trust { display:flex; gap:22px; flex-wrap:wrap; margin-top:34px; padding-top:22px; border-top:1px solid rgba(255,255,255,.14); }
 .hero-trust .t { display:flex; align-items:center; gap:8px; color:#B9C9D8; font-size:13.5px; }
@@ -289,8 +308,16 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 .disclaimer { font-size:var(--fs-small); color:var(--muted); line-height:1.6; }
 
 @media (max-width: 860px) {
-  .hero-inner { grid-template-columns:1fr; gap:30px; padding:44px 22px 52px; }
+  .hero-wrap { min-height:82vh; }
+  /* Extra top padding clears the now-fixed hero nav on phones. */
+  .hero-inner { grid-template-columns:1fr; gap:26px; padding:104px 22px 56px; }
   .hero-visual { display:none; }
+}
+@media (max-width: 560px) {
+  /* The mono eyebrow is wide; on narrow phones let it wrap as normal inline text
+     (block flow) instead of overflowing the viewport horizontally. */
+  .hero .eyebrow { display:block; }
+  .hero .eyebrow::before { margin-right:8px; }
 }
 
 /* App-style bottom tab bar (mobile only) */

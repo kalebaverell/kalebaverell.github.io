@@ -144,7 +144,6 @@ export default function Landing() {
     <>
       <section className="hero-wrap">
         <HeroBackdrop />
-        <div className="hero-orb" aria-hidden="true" />
         <div className="hero hero-inner">
           <div>
             <Eyebrow onDark>Veteran life planning · benefits · transition</Eyebrow>
@@ -152,7 +151,7 @@ export default function Landing() {
               Stop hearing the same brief. Leave with <span className="accent-word">your</span> gameplan.
             </h1>
             <p className="hero-sub">
-              {BRAND.name} turns your goals, family, and service into one adaptive roadmap — a recommended path, benefits optimized to your situation, 30/60/90-day steps, and a plan that changes when life does.
+              {BRAND.name} turns your goals, family, and service into one adaptive gameplan — the path, the benefits, the place to land, and what to do this week.
             </p>
             <div className="hero-cta">
               <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>

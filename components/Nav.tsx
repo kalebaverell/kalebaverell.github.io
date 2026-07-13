@@ -31,16 +31,30 @@ export default function Nav() {
   const { enabled: authEnabled, user, openAuth, signOut } = useAuth();
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   // Signed in or already started a plan → full app nav; otherwise the explore nav.
   const started = Boolean(user || s.profile);
   const links = started ? APP_LINKS : MARKETING_LINKS;
   const sizeLabel = s.textSize === "base" ? "Normal" : s.textSize === "lg" ? "Large" : "Extra large";
+  // On the homepage the nav floats transparently over the hero image, then turns solid
+  // once the reader scrolls past the hero (or opens the mobile menu). Every other page
+  // keeps the standard solid bar.
+  const onHome = path === "/" || path === "";
 
   // Close the mobile menu whenever navigation happens
   useEffect(() => { setOpen(false); }, [path]);
 
+  // Track scroll only on the homepage so the floating nav knows when to go solid.
+  useEffect(() => {
+    if (!onHome) { setScrolled(false); return; }
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [onHome]);
+
   return (
-    <header className="nav">
+    <header className={`nav${onHome ? " nav--hero" : ""}${onHome && (scrolled || open) ? " is-solid" : ""}`}>
       <a href="#main" className="skip-link">Skip to main content</a>
       <div className="nav-inner">
         <Link href="/" aria-label={`${BRAND.name} home`} className="brand-lock">
