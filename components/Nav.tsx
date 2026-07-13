@@ -6,7 +6,8 @@ import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
 import { BRAND } from "@/lib/data";
 
-const LINKS: [string, string, string][] = [
+// Full app nav — shown once someone has signed in or started a plan.
+const APP_LINKS: [string, string, string][] = [
   ["/dashboard", "Dashboard", "ti-layout-dashboard"],
   ["/pathfinder", "Pathfinder", "ti-compass"],
   ["/goals", "Goals", "ti-target"],
@@ -14,7 +15,15 @@ const LINKS: [string, string, string][] = [
   ["/tools", "Tools", "ti-tool"],
   ["/plan", "Action plan", "ti-checkbox"],
   ["/profile", "Profile", "ti-user-circle"],
-  ["/admin", "Strategy", "ti-presentation"],
+];
+// Explore nav — shown to first-time / logged-out visitors. Every one of these
+// works without an account, so there are no dead-end empty states. "Strategy"
+// (the internal founder/pitch view) is intentionally not in the public nav.
+const MARKETING_LINKS: [string, string, string][] = [
+  ["/pathfinder", "Pathfinder", "ti-compass"],
+  ["/benefits", "Benefits", "ti-award"],
+  ["/tools", "Tools", "ti-tool"],
+  ["/trust", "Why trust us", "ti-shield-check"],
 ];
 
 export default function Nav() {
@@ -22,7 +31,9 @@ export default function Nav() {
   const { enabled: authEnabled, user, openAuth, signOut } = useAuth();
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const links = s.profile ? LINKS : [["/admin", "Strategy", "ti-presentation"] as [string, string, string]];
+  // Signed in or already started a plan → full app nav; otherwise the explore nav.
+  const started = Boolean(user || s.profile);
+  const links = started ? APP_LINKS : MARKETING_LINKS;
   const sizeLabel = s.textSize === "base" ? "Normal" : s.textSize === "lg" ? "Large" : "Extra large";
 
   // Close the mobile menu whenever navigation happens

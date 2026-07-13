@@ -56,6 +56,11 @@ export default function Footer() {
           <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 8, color: "var(--danger)", fontWeight: 500 }}>
             <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 — free, confidential, 24/7.
           </div>
+          <div style={{ marginTop: 14, fontSize: 12.5 }}>
+            <a href="/privacy">Privacy &amp; data</a>
+            <span aria-hidden="true" style={{ margin: "0 8px", color: "var(--faint)" }}>·</span>
+            <a href="/admin">Strategy view (for the team)</a>
+          </div>
         </div>
       </div>
     </footer>
