@@ -39,29 +39,51 @@ function MissionMedia() {
   );
 }
 
-/** Hero backdrop: ambient looping footage under a navy scrim. Renders nothing when the user
- *  prefers reduced motion (or before hydration) — the hero-wrap gradient is the fallback. */
+/* Hero backdrop: a smooth crossfading slideshow of public-domain veteran-transition
+   imagery under a navy scrim — spanning mentorship, interview prep, networking, trade
+   training, and planning. See public/img/CREDITS.md for sourcing (all DVIDS, public domain). */
+const HERO_SLIDES: { src: string; alt: string }[] = [
+  { src: "/img/transition-summit-mentors.jpg", alt: "Volunteer mentors walk a transitioning soldier through her resume at a veterans summit" },
+  { src: "/img/hero-workshop.jpg", alt: "A transition workshop on what to say in civilian interviews" },
+  { src: "/img/hero-networking.jpg", alt: "Service members and civilian recruiters connect at a career summit" },
+  { src: "/img/tap-electrical-training.jpg", alt: "A transitioning service member trains in a licensed electrical trade" },
+  { src: "/video/hero-poster.jpg", alt: "A service member works through a transition-planning workbook in a classroom" },
+];
+
+/** Renders a single static image before hydration and under prefers-reduced-motion; the
+ *  crossfading, slowly-zooming slideshow otherwise. Always sits beneath the navy scrim. */
 function HeroBackdrop() {
-  const [motionOk, setMotionOk] = useState(false);
+  const [motionOk, setMotionOk] = useState<boolean | null>(null);
+  const [idx, setIdx] = useState(0);
+
   useEffect(() => {
     setMotionOk(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
-  if (!motionOk) return null;
+
+  useEffect(() => {
+    if (!motionOk) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % HERO_SLIDES.length), 5200);
+    return () => clearInterval(t);
+  }, [motionOk]);
+
+  if (motionOk === null || !motionOk) {
+    return (
+      <>
+        <div className="hero-slideshow" aria-hidden="true">
+          <div className="hero-slide active" style={{ backgroundImage: `url(${HERO_SLIDES[0].src})` }} />
+        </div>
+        <div className="hero-scrim" aria-hidden="true" />
+      </>
+    );
+  }
+
   return (
     <>
-      <video
-        ref={(el) => { el?.play().catch(() => {}); }}
-        className="hero-media"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/video/career-summit-poster.jpg?v=2"
-        src="/video/career-summit-loop.mp4?v=2"
-        aria-hidden="true"
-        tabIndex={-1}
-      />
+      <div className="hero-slideshow" aria-hidden="true">
+        {HERO_SLIDES.map((s, i) => (
+          <div key={s.src} className={`hero-slide${i === idx ? " active" : ""}`} style={{ backgroundImage: `url(${s.src})` }} />
+        ))}
+      </div>
       <div className="hero-scrim" aria-hidden="true" />
     </>
   );

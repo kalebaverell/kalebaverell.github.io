@@ -2,7 +2,8 @@
 
 All photographs in this folder are U.S. federal government works and therefore in the
 public domain (17 U.S.C. § 105). Each image's DVIDS source page was fetched and verified
-on **2026-07-09** to carry DVIDS' explicit **"PUBLIC DOMAIN"** license label before use.
+to carry DVIDS' explicit **"PUBLIC DOMAIN"** license label before use (still photos verified
+**2026-07-09**; the hero-slideshow video frames verified **2026-07-13**).
 No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 
 ---
@@ -38,6 +39,23 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 - **File fetched:** https://d1ldvf68ux039x.cloudfront.net/thumbs/photos/2110/6897038/2000w_q95.jpg
 - **Processing:** cropped (x 560, y 175 → 1439×1158 of the 1999×1333 original) to remove a
   third-party branded safety poster from the frame, resized to 880×708, JPEG q80 (69 KB).
+
+## hero-workshop.jpg &amp; hero-networking.jpg (home hero slideshow)
+
+- **Used on:** Landing-page hero slideshow (`app/page.tsx`, `HERO_SLIDES`)
+- **Title:** "Hiring Our Heroes B-Roll Package"
+- **Videographer:** Sgt. Scyrrus Corregidor (U.S. government work)
+- **Date taken:** 10.14.2025
+- **Source page:** https://www.dvidshub.net/video/987785
+- **License line on source page (verified 2026-07-13):** "PUBLIC DOMAIN" — page footer reads:
+  *"This work, Hiring Our Heroes B-Roll Package, by SGT Scyrrus Corregidor, identified by
+  DVIDS, must comply with the restrictions shown on
+  https://www.dvidshub.net/about/copyright"*.
+- **Processing:** single frames extracted from the B-roll (`hero-workshop.jpg` — an
+  interview-prep "What to Say" workshop; `hero-networking.jpg` — job-seekers connecting with
+  recruiters), JPEG q≈2. Frames were chosen to avoid prominent third-party sponsor backdrops;
+  a small "Hiring Our Heroes" program mark is incidental on the workshop slide and reads as
+  event context, not corporate endorsement.
 
 ---
 

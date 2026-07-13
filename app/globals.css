@@ -204,11 +204,14 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
     radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
     linear-gradient(158deg, var(--primary-900) 0%, var(--primary) 58%, var(--primary-800) 100%);
 }
-/* Ambient hero footage: sits under a navy scrim so the headline keeps full contrast.
-   The opaque hero-wrap gradient is the no-JS / reduced-motion / pre-hydration fallback. */
-.hero-media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
-  filter:saturate(.85); opacity:0; animation:hero-media-in 1.1s ease .15s forwards; }
-@keyframes hero-media-in { to { opacity:1; } }
+/* Ambient hero slideshow: crossfading, slowly-zooming stills under a navy scrim so the
+   headline keeps full contrast. The opaque hero-wrap gradient is the no-JS / pre-hydration
+   fallback; under prefers-reduced-motion only the first (already-visible) still is shown. */
+.hero-slideshow { position:absolute; inset:0; z-index:0; overflow:hidden; }
+.hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center 34%;
+  filter:saturate(.86); opacity:0; transition:opacity 1.6s ease-in-out; will-change:opacity, transform; }
+.hero-slide.active { opacity:1; animation:hero-ken 7s ease-out both; }
+@keyframes hero-ken { from { transform:scale(1.02); } to { transform:scale(1.09); } }
 .hero-scrim { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
     radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
