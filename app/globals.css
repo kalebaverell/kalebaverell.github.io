@@ -224,10 +224,15 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
    headline keeps full contrast. The opaque hero-wrap gradient is the no-JS / pre-hydration
    fallback; under prefers-reduced-motion only the first (already-visible) still is shown. */
 .hero-slideshow { position:absolute; inset:0; z-index:0; overflow:hidden; }
+/* Crossfade + Ken Burns via TRANSITIONS (not a keyframe animation): a keyframe only runs
+   while .active, so dropping the class snapped transform back a whole frame — a visible pop.
+   Transitions interpolate both directions smoothly. Stacking: other=0, prev=1 (kept opaque
+   underneath so the crossfade has no midpoint gap), active=2 (fades in on top). */
 .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center 34%;
-  filter:saturate(.86); opacity:0; transition:opacity 1.6s ease-in-out; will-change:opacity, transform; }
-.hero-slide.active { opacity:1; animation:hero-ken 7s ease-out both; }
-@keyframes hero-ken { from { transform:scale(1.02); } to { transform:scale(1.09); } }
+  filter:saturate(.86); opacity:0; transform:scale(1.03);
+  transition:opacity 1.6s ease-in-out, transform 6.6s ease-out; will-change:opacity, transform; }
+.hero-slide.prev { opacity:1; z-index:1; transform:scale(1.075); }
+.hero-slide.active { opacity:1; z-index:2; transform:scale(1.075); }
 /* Lighter than before so the photo reads clearly: a vertical pass darkens the top (nav
    legibility) and the very bottom (seam into the trust bar), while a left-biased pass
    keeps the headline column dark enough for white text and lets the right side show through. */

@@ -77,11 +77,18 @@ function HeroBackdrop() {
     );
   }
 
+  // The outgoing slide is kept fully opaque *beneath* the incoming one (the ".prev" layer)
+  // so the crossfade never lets the dark background bleed through at the midpoint.
+  const prevIdx = (idx - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
   return (
     <>
       <div className="hero-slideshow" aria-hidden="true">
         {HERO_SLIDES.map((s, i) => (
-          <div key={s.src} className={`hero-slide${i === idx ? " active" : ""}`} style={{ backgroundImage: `url(${s.src})` }} />
+          <div
+            key={s.src}
+            className={`hero-slide${i === idx ? " active" : i === prevIdx ? " prev" : ""}`}
+            style={{ backgroundImage: `url(${s.src})` }}
+          />
         ))}
       </div>
       <div className="hero-scrim" aria-hidden="true" />
