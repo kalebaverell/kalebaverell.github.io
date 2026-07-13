@@ -57,7 +57,7 @@ export default function Nav() {
   }, [onHome]);
 
   return (
-    <header className={`nav${onHome ? " nav--hero" : ""}${onHome && (scrolled || open) ? " is-solid" : ""}`}>
+    <header className={`nav${onHome ? " nav--hero" : ""}${started ? " nav--app" : ""}${onHome && (scrolled || open) ? " is-solid" : ""}`}>
       <a href="#main" className="skip-link">Skip to main content</a>
       <div className="nav-inner">
         <Link href="/" aria-label={`${BRAND.name} home`} className="brand-lock">
@@ -79,7 +79,7 @@ export default function Nav() {
             const active = path === href || path === `${href}/`;
             return (
               <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`nav-link${active ? " active" : ""}`} onClick={() => setOpen(false)}>
-                <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 17 }} />
+                <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 16 }} />
                 {label}
               </Link>
             );
@@ -99,7 +99,7 @@ export default function Nav() {
             user ? (
               <span className="nav-user" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <i className="ti ti-user-circle" aria-hidden="true" />
-                <span style={{ maxWidth: 150, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                <span style={{ maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {(user.user_metadata as any)?.full_name || user.email}
                 </span>
                 <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
