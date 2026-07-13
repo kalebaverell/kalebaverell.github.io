@@ -134,8 +134,8 @@ export default function Landing() {
             </p>
             <div className="hero-cta">
               <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
-              <Link className="btn ghost" href="/admin" style={{ background: "rgba(255,255,255,.08)", color: "#fff", borderColor: "rgba(255,255,255,.28)" }}>
-                <i className="ti ti-presentation" /> Strategy view
+              <Link className="btn ghost" href="#how-it-works" style={{ background: "rgba(255,255,255,.08)", color: "#fff", borderColor: "rgba(255,255,255,.28)" }}>
+                <i className="ti ti-arrow-down" /> See how it works
               </Link>
             </div>
             <div className="hero-trust">
@@ -183,7 +183,7 @@ export default function Landing() {
           ))}
         </div>
 
-        <div style={{ marginTop: 56 }}>
+        <div id="how-it-works" style={{ marginTop: 56, scrollMarginTop: 80 }}>
           <SectionHead
             eyebrow="How it works"
             title="From where you stand to where you're headed"
