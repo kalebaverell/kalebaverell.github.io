@@ -230,9 +230,14 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
    underneath so the crossfade has no midpoint gap), active=2 (fades in on top). */
 .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center 34%;
   filter:saturate(.86); opacity:0; transform:scale(1.03);
-  transition:opacity 1.6s ease-in-out, transform 6.6s ease-out; will-change:opacity, transform; }
+  transition:opacity 1.6s ease-in-out; will-change:opacity, transform; }
 .hero-slide.prev { opacity:1; z-index:1; transform:scale(1.075); }
-.hero-slide.active { opacity:1; z-index:2; transform:scale(1.075); }
+/* Ken Burns runs as an ANIMATION (not a transition) so it also fires on the very first
+   slide — transitions don't run on initial mount, which left the opening slide un-zoomed.
+   The 5.2s duration matches the slide interval and ends at the same scale .prev holds, so
+   the hand-off has no snap; the opacity crossfade above stays a smooth transition. */
+.hero-slide.active { opacity:1; z-index:2; animation:hero-ken 5.2s ease-out forwards; }
+@keyframes hero-ken { from { transform:scale(1.03); } to { transform:scale(1.075); } }
 /* Lighter than before so the photo reads clearly: a vertical pass darkens the top (nav
    legibility) and the very bottom (seam into the trust bar), while a left-biased pass
    keeps the headline column dark enough for white text and lets the right side show through. */

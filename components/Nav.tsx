@@ -32,14 +32,17 @@ export default function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // Signed in or already started a plan → full app nav; otherwise the explore nav.
-  const started = Boolean(user || s.profile);
-  const links = started ? APP_LINKS : MARKETING_LINKS;
   const sizeLabel = s.textSize === "base" ? "Normal" : s.textSize === "lg" ? "Large" : "Extra large";
   // On the homepage the nav floats transparently over the hero image, then turns solid
   // once the reader scrolls past the hero (or opens the mobile menu). Every other page
   // keeps the standard solid bar.
   const onHome = path === "/" || path === "";
+  // The public landing page always shows the clean marketing nav (Pathfinder · Benefits ·
+  // Tools · Why trust us) — even for signed-in / returning visitors — so the official link
+  // looks the same for everyone. Inside the app (any non-home page) a signed-in user or
+  // someone who started a plan still gets the full workspace nav.
+  const started = Boolean(user || s.profile) && !onHome;
+  const links = started ? APP_LINKS : MARKETING_LINKS;
 
   // Close the mobile menu whenever navigation happens
   useEffect(() => { setOpen(false); }, [path]);
