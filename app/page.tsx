@@ -5,18 +5,6 @@ import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { Wrap, Stat, Callout, Eyebrow, SectionHead } from "@/components/ui";
 import PlanDemo from "@/components/PlanDemo";
 
-function WhoCard({ icon, title, body }: { icon: string; title: string; body: string }) {
-  return (
-    <div className="card interactive" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-      <div className="iconwrap"><i className={`ti ${icon}`} aria-hidden="true" /></div>
-      <div>
-        <h4 style={{ marginBottom: 6 }}>{title}</h4>
-        <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
-      </div>
-    </div>
-  );
-}
-
 /** Mission-band media: looping public-domain TAP-class footage; still photo when the user prefers reduced motion. */
 function MissionMedia() {
   const [reduced, setReduced] = useState<boolean | null>(null);
@@ -180,11 +168,19 @@ export default function Landing() {
           title="Wherever you are after service, there's a path"
           sub="Whether you know exactly what's next or have no idea where to start, VetPath meets you where you are."
         />
-        <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
-          <div data-reveal="0"><WhoCard icon="ti-plane-departure" title="Transitioning out" body="Separating soon and need benefits enrolled, a job or school lined up, and nothing left behind before your last day." /></div>
-          <div data-reveal="90"><WhoCard icon="ti-briefcase" title="Building a career" body="Ready for a better job, a degree, a trade, or a business — and the veteran benefits that fund the move." /></div>
-          <div data-reveal="180"><WhoCard icon="ti-clipboard-heart" title="Navigating disability" body="Understand the process, apply for the benefit you've earned, and get free accredited help — no guesswork." /></div>
-          <div data-reveal="270"><WhoCard icon="ti-beach" title="Retiring or organizing" body="Plan the next chapter — pay, survivor protection, healthcare, and every document in one secure place." /></div>
+        <div className="index-list">
+          {([
+            ["ti-plane-departure", "Transitioning out", "Separating soon and need benefits enrolled, a job or school lined up, and nothing left behind before your last day."],
+            ["ti-briefcase", "Building a career", "Ready for a better job, a degree, a trade, or a business — and the veteran benefits that fund the move."],
+            ["ti-clipboard-heart", "Navigating disability", "Understand the process, apply for the benefit you've earned, and get free accredited help — no guesswork."],
+            ["ti-beach", "Retiring or organizing", "Plan the next chapter — pay, survivor protection, healthcare, and every document in one secure place."],
+          ] as const).map(([icon, title, body], i) => (
+            <div className="index-row" key={title} data-reveal={i * 70}>
+              <span className="idx">{String(i + 1).padStart(2, "0")}</span>
+              <span className="ttl"><i className={`ti ${icon}`} aria-hidden="true" /><h4>{title}</h4></span>
+              <p className="desc">{body}</p>
+            </div>
+          ))}
         </div>
 
         <div style={{ marginTop: 56 }}>
@@ -222,7 +218,7 @@ export default function Landing() {
 
       {/* Mission band — real transition-assistance footage (public domain; see /video/CREDITS.md).
           Video for most users; the still photo for reduced-motion users. */}
-      <section className="mission-band">
+      <section className="mission-band grain">
         <MissionMedia />
         <div className="scrim" aria-hidden="true" />
         <div className="band-inner" data-reveal="true">
