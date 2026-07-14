@@ -145,7 +145,9 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
   }
 
   if (q.type === "multi") {
-    const sel: string[] = val || [];
+    // Tolerate a legacy single-string value (e.g. a question that used to be single-select,
+    // like housing) so returning users with older saved answers don't crash the renderer.
+    const sel: string[] = Array.isArray(val) ? val : val ? [val] : [];
     const customs = sel.filter((v) => !q.options.includes(v));
     return (
       <fieldset style={{ border: "none", padding: 0, margin: 0 }}>

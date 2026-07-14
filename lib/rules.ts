@@ -33,9 +33,10 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   const status = a.status || "";
   const isTransition = status.startsWith("Transitioning") || status === "Active duty";
   const urgent = (a.urgency || "").startsWith("Right now");
+  const housingList = Array.isArray(a.housing) ? a.housing : a.housing ? [a.housing] : [];
   const crisis =
-    a.housing === "Currently homeless" ||
-    a.housing === "Unstable / at risk" ||
+    housingList.includes("Currently homeless") ||
+    housingList.includes("Unstable / at risk") ||
     ((a.wellnessPriorities || []).includes("Mental health support") && urgent);
   const career = path?.career;
 
@@ -194,7 +195,7 @@ export function sampleAnswers(): Answers {
     status: "Transitioning (separating within 12 months)",
     disabilityRating: "30–50%",
     employment: "Unemployed / job seeking",
-    housing: "Rent",
+    housing: ["Rent"],
     careerGoals: ["Get a better job"],
     educationGoals: ["Trade or certification"],
     wellnessPriorities: ["VA healthcare / physical health"],

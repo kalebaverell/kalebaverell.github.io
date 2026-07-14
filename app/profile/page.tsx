@@ -30,7 +30,7 @@ export default function Profile() {
     ["Status", a.status],
     ["Disability rating", a.disabilityRating || "—"],
     ["Employment", a.employment],
-    ["Housing", a.housing],
+    ["Housing", (Array.isArray(a.housing) ? a.housing.join(", ") : a.housing) || "—"],
     ["Urgency", a.urgency],
   ];
   const goals = (a.topGoals || []).map((id) => goalById(id)?.label).filter(Boolean).join(", ") || "—";

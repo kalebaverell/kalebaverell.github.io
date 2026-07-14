@@ -84,7 +84,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AuthModal />
           </StoreProvider>
         </AuthProvider>
-        <script dangerouslySetInnerHTML={{ __html: SW_REGISTER }} />
+        {/* Register the offline/update service worker only in production builds — running it
+            under `next dev` would cache-first the dev chunks and fight hot-reload. */}
+        {process.env.NODE_ENV === "production" && (
+          <script dangerouslySetInnerHTML={{ __html: SW_REGISTER }} />
+        )}
       </body>
     </html>
   );

@@ -25,7 +25,7 @@ export interface AnswersLike {
   status?: string;
   disabilityRating?: string;
   employment?: string;
-  housing?: string;
+  housing?: string[];
   careerGoals?: string[];
   educationGoals?: string[];
   businessInterest?: string;
@@ -167,7 +167,10 @@ export function optimizeBenefits(a: AnswersLike): OptimizedBenefit[] {
   const ratingLabel = RATING_LABEL[band];
 
   const urgent = a.urgency === "Right now — I need help urgently";
-  const housingUnstable = a.housing === "Unstable / at risk" || a.housing === "Currently homeless";
+  // housing is a multi-select list; tolerate legacy string-valued data from older saved profiles.
+  const housingList = Array.isArray(a.housing) ? a.housing : a.housing ? [a.housing] : [];
+  const ownsHome = housingList.includes("Own a home") || housingList.includes("Own property in another state");
+  const housingUnstable = housingList.includes("Unstable / at risk") || housingList.includes("Currently homeless");
   const jobSeeking = a.employment === "Unemployed / job seeking" || a.employment === "Unable to work right now";
   const olderVet = a.ageRange === "55–64" || a.ageRange === "65+";
 
@@ -308,12 +311,12 @@ export function optimizeBenefits(a: AnswersLike): OptimizedBenefit[] {
       promote("va-home-loan", "now",
         `Because you're rated ${ratingLabel} and receiving compensation, you're likely exempt from the VA funding fee — thousands saved at closing.`);
     }
-  } else if (a.housing === "Rent" || a.housing === "Living with family") {
-    promote("va-home-loan", "check",
-      "You're not a homeowner yet — when you're ready to buy, the VA loan is usually the strongest first option for veterans.");
-  } else if (a.housing === "Own a home") {
+  } else if (ownsHome) {
     promote("va-home-loan", "later",
       "You already own — the VA loan can still help with a rate-reduction refinance (IRRRL) or your next purchase.");
+  } else if (housingList.includes("Rent") || housingList.includes("Living with family")) {
+    promote("va-home-loan", "check",
+      "You're not a homeowner yet — when you're ready to buy, the VA loan is usually the strongest first option for veterans.");
   }
   if (housingUnstable) {
     cap("va-home-loan", "later",
@@ -441,7 +444,9 @@ export function optimizeBenefits(a: AnswersLike): OptimizedBenefit[] {
       promote("state-benefits", "now",
         `Because you're ${ratingLabel} rated and in ${st.name}, look at "${tax.name}" — property-tax relief often keys off your disability rating.`);
     }
-    if (a.housing === "Own a home" && rated && tax) {
+    // Property-tax relief keys off the primary residence in the user's state, so tie this to
+    // "Own a home" specifically (not a home owned in another state).
+    if (housingList.includes("Own a home") && rated && tax) {
       promote("state-benefits", "now",
         `You own your home and have a rating — in ${st.name}, "${tax.name}" could be worth real money every year.`);
     }

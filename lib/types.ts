@@ -16,7 +16,7 @@ export interface Answers {
   status?: string;
   disabilityRating?: string;
   employment?: string;
-  housing?: string;
+  housing?: string[];
   careerGoals?: string[];
   educationGoals?: string[];
   businessInterest?: string;

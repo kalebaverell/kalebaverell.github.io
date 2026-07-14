@@ -86,8 +86,8 @@
         {
           "id": "housing",
           "label": "What is your housing situation?",
-          "type": "single",
-          "options": ["Rent", "Own a home", "Living with family", "Unstable / at risk", "Currently homeless"]
+          "type": "multi",
+          "options": ["Rent", "Own a home", "Own property in another state", "Living with family", "Unstable / at risk", "Currently homeless"]
         }
       ]
     },

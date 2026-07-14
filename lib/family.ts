@@ -44,7 +44,7 @@ export interface FamilyCheckpoint {
 export interface AnswersLike {
   status?: string;
   disabilityRating?: string;
-  housing?: string;
+  housing?: string[];
   familyNeeds?: string[];
   topGoals?: string[];
   educationGoals?: string[];
@@ -109,7 +109,8 @@ export function buildFamilyPlan(a: AnswersLike, careerLabel?: string): FamilyPla
   const caregiver = needs.includes("Caregiver support");
   const moving = goals.includes("move-new-state");
   const highRating = rating === "60–90%" || rating === "100%";
-  const housingUnstable = a.housing === "Unstable / at risk" || a.housing === "Currently homeless";
+  const housingList = Array.isArray(a.housing) ? a.housing : a.housing ? [a.housing] : [];
+  const housingUnstable = housingList.includes("Unstable / at risk") || housingList.includes("Currently homeless");
   const survivorInterest =
     (a.financialPriorities || []).includes("Protect my family (survivor benefits)") ||
     status === "Retired (20+ years of service)" ||

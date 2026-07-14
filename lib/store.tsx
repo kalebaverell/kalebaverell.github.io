@@ -87,7 +87,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const toggleMulti = useCallback((id: keyof Answers, value: string) => {
     setS((p) => {
-      const arr = ([...(p.answers[id] as string[] | undefined) || []]) as string[];
+      // Normalize: a legacy single-string value (from a question that used to be single-select)
+      // must become [value], not be spread into individual characters.
+      const cur = p.answers[id] as string[] | string | undefined;
+      const arr: string[] = Array.isArray(cur) ? [...cur] : cur ? [cur] : [];
       const i = arr.indexOf(value);
       if (i >= 0) arr.splice(i, 1);
       else arr.push(value);
