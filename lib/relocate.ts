@@ -5,7 +5,7 @@
 // filters anything out — it only adds a gentle, optional note about VA access.
 // All tiers are illustrative sample data, not rankings from a cited index.
 import metrosJson from "@/data/relocationMetros.json";
-import { careerById } from "./data";
+import { careerById, realStateInfo, stateName } from "./data";
 
 // ---- Types ----
 
@@ -15,6 +15,7 @@ export interface RelocPriorities {
   vaAccess: Priority;
   cost: Priority;
   jobs: Priority;
+  stateBenefits: Priority;
   schools: Priority;
   community: Priority;
   safety: Priority;
@@ -83,6 +84,7 @@ export const RELOC_DIMS: { key: RelocDim; label: string; icon: string; help: str
   { key: "vaAccess", label: "VA healthcare access", icon: "ti-building-hospital", help: "How close a full VA medical center or clinic is." },
   { key: "cost", label: "Cost of living", icon: "ti-coin", help: "Overall costs — housing, day-to-day expenses." },
   { key: "jobs", label: "Jobs for my path", icon: "ti-briefcase", help: "How strong the market is for the work you want." },
+  { key: "stateBenefits", label: "State veteran benefits", icon: "ti-award", help: "How broad the state's own veteran benefits are — tax relief, tuition waivers, hiring preference." },
   { key: "schools", label: "Schools", icon: "ti-school", help: "What families should know — we surface notes, not rankings." },
   { key: "community", label: "Veteran community", icon: "ti-users-group", help: "How many veterans are around you — network, understanding, belonging." },
   { key: "safety", label: "Safety feel", icon: "ti-shield-check", help: "Illustrative comfort tier — always varies block by block." },
@@ -115,25 +117,57 @@ const vaPhrase = (m: Metro): string =>
       ? "VA clinics in town with a full medical center within a drive"
       : "VA community clinic (CBOC) coverage — pair with VA telehealth";
 
+// Cited official datapoints (BEA RPP / BLS unemployment) merged onto each metro in the JSON.
+type OfficialPoint = { value: number; year?: string; asOf?: string; source: string } | undefined;
+function official(m: Metro): { rpp?: OfficialPoint; unemployment?: OfficialPoint } {
+  return ((m as unknown as { official?: { rpp?: OfficialPoint; unemployment?: OfficialPoint } }).official) || {};
+}
+
 function jobsRaw(m: Metro, careerId?: string): { raw: number; matchedCareer?: string } {
   // Breadth baseline: more tracks with real depth = better generic market (0.5–0.95).
   const breadth = 0.35 + 0.15 * Math.min(4, m.jobs.tracks.length);
-  if (!careerId) return { raw: breadth };
-  const career = careerById(careerId);
-  if (m.jobs.strongCareers.includes(careerId)) {
-    return { raw: 1, matchedCareer: career?.label || careerId };
+  let base: number;
+  let matchedCareer: string | undefined;
+  if (!careerId) {
+    base = breadth;
+  } else {
+    const career = careerById(careerId);
+    if (m.jobs.strongCareers.includes(careerId)) { base = 1; matchedCareer = career?.label || careerId; }
+    else if (career && m.jobs.tracks.includes(career.track)) { base = Math.min(0.8, breadth + 0.1); }
+    else { base = breadth * 0.6; }
   }
-  if (career && m.jobs.tracks.includes(career.track)) {
-    return { raw: Math.min(0.8, breadth + 0.1) };
+  // Blend in the real BLS metro unemployment where we have it (lower = healthier market).
+  const unemp = official(m).unemployment?.value;
+  if (typeof unemp === "number") {
+    const unempScore = Math.max(0, Math.min(1, (6.5 - unemp) / (6.5 - 2.5)));
+    base = base * 0.7 + unempScore * 0.3;
   }
-  return { raw: breadth * 0.6 };
+  return { raw: Math.max(0, Math.min(1, base)), matchedCareer };
+}
+
+/** Distinct benefit categories a state covers (0–6), the main signal for the state-benefits dim. */
+function stateBenefitStrength(code: string): { cats: number; count: number } | null {
+  if (!code || code === "—") return null;
+  const info = realStateInfo(code);
+  if (!info) return null;
+  return { cats: new Set(info.programs.map((p) => p.category)).size, count: info.programs.length };
 }
 
 function rawFor(dim: RelocDim, m: Metro, careerId?: string): number {
   switch (dim) {
     case "vaAccess": return VA_RAW[m.va.level] ?? 0.5;
-    case "cost": return Math.max(0, Math.min(1, (5 - m.colTier) / 4));
+    case "cost": {
+      // Prefer the real BEA Regional Price Parity (100 = U.S. avg; ~82 cheapest, ~128 priciest).
+      const rpp = official(m).rpp?.value;
+      if (typeof rpp === "number") return Math.max(0, Math.min(1, (128 - rpp) / (128 - 82)));
+      return Math.max(0, Math.min(1, (5 - m.colTier) / 4)); // illustrative fallback
+    }
     case "jobs": return jobsRaw(m, careerId).raw;
+    case "stateBenefits": {
+      const s = stateBenefitStrength(m.state);
+      if (!s) return 0.5;
+      return Math.max(0, Math.min(1, 0.45 + s.cats * 0.09 + s.count * 0.01));
+    }
     // No school rankings in the sample data (deliberately — we don't invent them).
     // Schools score neutrally; picking it surfaces each metro's schools note instead.
     case "schools": return 0.6;
@@ -152,18 +186,36 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
       const p = vaPhrase(m);
       return p.charAt(0).toUpperCase() + p.slice(1);
     }
-    case "cost":
+    case "cost": {
+      const rpp = official(m).rpp?.value;
+      if (typeof rpp === "number") {
+        if (rpp < 97) return `Below-average cost of living — BEA price parity ${rpp.toFixed(0)} (100 = U.S. average)`;
+        if (rpp <= 103) return `About the U.S.-average cost of living — BEA price parity ${rpp.toFixed(0)}`;
+        return null; // pricier than average — no positive cost story
+      }
       if (m.colTier === 1) return "Very low cost of living (tier 1 of 5)";
       if (m.colTier === 2) return "Low cost of living (tier 2 of 5)";
       if (m.colTier === 3) return "Moderate cost of living (tier 3 of 5)";
-      return null; // no positive cost story to tell at tiers 4–5
-    case "jobs":
-      if (matchedCareer) return `Strong for ${matchedCareer} work — this metro's employers hire your path`;
+      return null;
+    }
+    case "jobs": {
+      const unemp = official(m).unemployment?.value;
+      const unempStr = typeof unemp === "number" ? ` — ${unemp}% metro unemployment (BLS)` : "";
+      if (matchedCareer) return `Strong for ${matchedCareer} work${unempStr}`;
+      if (typeof unemp === "number" && unemp <= 3.8) return `Healthy job market${unempStr}`;
       if (raw >= 0.6) {
         const tracks = m.jobs.tracks.map((t) => TRACK_LABEL[t] || t).join(", ");
         return `Solid job market across: ${tracks.toLowerCase()}`;
       }
       return null;
+    }
+    case "stateBenefits": {
+      const info = m.state && m.state !== "—" ? realStateInfo(m.state) : null;
+      if (!info || info.programs.length === 0) return null;
+      const catWord: Record<string, string> = { tax: "property-tax relief", health: "state veterans homes", education: "tuition help", employment: "hiring preference", recreation: "parks & recreation" };
+      const cats = [...new Set(info.programs.map((p) => p.category))].map((c) => catWord[c]).filter(Boolean).slice(0, 3);
+      return `${stateName(m.state)} runs ${info.programs.length} state veteran benefit programs${cats.length ? ` — incl. ${cats.join(", ")}` : ""}`;
+    }
     case "schools":
       return `Schools: ${m.schoolsNote}`;
     case "community":

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, stateName, BRAND } from "@/lib/data";
+import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL } from "@/lib/data";
+import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
 
@@ -73,6 +74,23 @@ export default function Dashboard() {
         <h3><i className="ti ti-flag-3" style={{ color: "var(--accent-ink)" }} /> Top priorities</h3>
         <ol className="steps" style={{ marginTop: 8 }}>{gp.priorities.map((p, i) => <li key={i}>{p}</li>)}</ol>
       </div>
+
+      {a.priorityWeights && Object.keys(a.priorityWeights).length > 0 && (
+        <div className="card" style={{ marginTop: 16 }}>
+          <h3><i className="ti ti-adjustments-horizontal" style={{ color: "var(--accent-ink)" }} /> What matters most to you</h3>
+          <p className="muted small">You weighted these — your recommended path and plan lean toward the ones at the top.</p>
+          <div style={{ display: "grid", gap: 8, marginTop: 10 }}>
+            {rankedPriorities(a).map((d) => (
+              <div key={d.key} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <i className={`ti ${d.icon}`} aria-hidden="true" style={{ fontSize: 18, color: "var(--accent-ink)", width: 20, textAlign: "center" }} />
+                <span style={{ flex: 1, fontWeight: d.level >= 3 ? 600 : 400, color: d.level === 0 ? "var(--muted)" : "var(--ink)" }}>{d.label}</span>
+                <span className="chip sm" style={{ background: d.level >= 3 ? "var(--accent-soft)" : "var(--surface-2)", color: d.level >= 3 ? "var(--accent-ink)" : "var(--muted)", fontWeight: d.level >= 3 ? 600 : 500 }}>{WEIGHT_LEVEL_LABEL[d.level]}</span>
+              </div>
+            ))}
+          </div>
+          <p className="small muted" style={{ marginTop: 10 }}><Link href="/onboarding">Adjust your weights →</Link></p>
+        </div>
+      )}
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>

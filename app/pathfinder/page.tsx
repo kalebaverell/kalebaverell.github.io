@@ -185,6 +185,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
             <span className="chip gold" style={{ marginBottom: 6 }}><i className="ti ti-target-arrow" /> Recommended</span>
             <h3 style={{ margin: 0 }}>{top.career.label}</h3>
             <p className="muted small" style={{ margin: "2px 0 0" }}>{top.career.paySample} · {top.career.outlookSample} · {trackById(top.career.track)?.label}</p>
+            {top.meetsSalary && (
+              <span className="chip sm" style={{ marginTop: 6, background: "var(--success-soft)", color: "var(--success)" }}>
+                <i className="ti ti-check" aria-hidden="true" /> In your target pay range
+              </span>
+            )}
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 40, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{top.fit}%</div>
@@ -216,6 +221,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
               <span style={{ fontWeight: 700, color: "var(--primary)", fontSize: 20 }}>{f.fit}%</span>
             </span>
             <span className="muted small" style={{ display: "block", marginTop: 8 }}>{f.career.blurb}</span>
+            {f.meetsSalary && (
+              <span className="chip sm" style={{ marginTop: 8, background: "var(--success-soft)", color: "var(--success)" }}>
+                <i className="ti ti-check" aria-hidden="true" /> In your pay range
+              </span>
+            )}
           </button>
         ))}
       </div>

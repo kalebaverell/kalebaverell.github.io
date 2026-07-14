@@ -3,7 +3,7 @@
 // Principle: the veteran's own stated preferences drive fit. A disability rating NEVER
 // downgrades a career — it only informs location guidance and benefit highlights.
 import type { Answers, AttrDim, Career, CareerFit } from "./types";
-import { ASSESSMENT, CAREERS, LOCATIONS, NETWORKING } from "./data";
+import { ASSESSMENT, CAREERS, LOCATIONS, NETWORKING, PRIORITY_DIMS, careerMedianPay } from "./data";
 
 const DIMS: AttrDim[] = ["hands", "tech", "people", "data", "lead", "risk", "physical", "outdoor", "care", "autonomy"];
 
@@ -52,9 +52,31 @@ function userVector(input: AssessmentInput): { vec: Record<AttrDim, number>; spe
 
 const SPEED_ORDER = ["weeks", "months", "2yr", "4yr"];
 
+// Priority-weight helpers: level 0 (not now) → 3 (must-have); "Important" (2) is neutral.
+const WEIGHT_FACTOR = [0.3, 0.65, 1, 1.5];
+export function priorityFactor(a: Answers, dim: string): number {
+  const pw = a.priorityWeights || {};
+  const lvl = dim in pw ? pw[dim] : 2;
+  return WEIGHT_FACTOR[lvl] ?? 1;
+}
+// Maps a career track to the life dimension the veteran weighted for it.
+const TRACK_DIM: Record<string, string> = { entrepreneur: "business", education: "education", employment: "career", skilled: "career" };
+const DIM_WORD: Record<string, string> = { business: "business ownership", education: "education", career: "your career" };
+
+/** The veteran's weighted life dimensions, highest weight first (for display). */
+export function rankedPriorities(a: Answers): { key: string; label: string; icon: string; level: number }[] {
+  const pw = a.priorityWeights || {};
+  return PRIORITY_DIMS
+    .map((d) => ({ ...d, level: d.key in pw ? pw[d.key] : 2 }))
+    .sort((x, y) => y.level - x.level);
+}
+
 export function scoreCareers(input: AssessmentInput): CareerFit[] {
   const { vec, speed } = userVector(input);
   const a = input.intake;
+  const salMin = typeof a.salaryTarget?.min === "number" ? a.salaryTarget.min : null;
+  const salMax = typeof a.salaryTarget?.max === "number" ? a.salaryTarget.max : null;
+  const hasSalary = salMin != null || salMax != null;
 
   const results: CareerFit[] = CAREERS.map((c) => {
     // Weighted similarity across dims; a career's defining dims count more.
@@ -74,18 +96,25 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
       if (diff === 0) { fit += 6; boosts.push("Matches how fast you need the first paycheck"); }
       else if (diff >= 2) fit -= 6;
     }
-    // Intake signals
+    // Intake signals — each scaled by how much the veteran weighted that dimension.
     if (a.businessInterest === "Yes — actively working on it" && c.track === "entrepreneur") {
-      fit += 7; boosts.push("You said you're actively working toward a business");
+      fit += 7 * priorityFactor(a, "business"); boosts.push("You said you're actively working toward a business");
     }
     if ((a.educationGoals || []).some((e) => e.includes("degree")) && c.track === "education") {
-      fit += 5; boosts.push("Lines up with your education goals");
+      fit += 5 * priorityFactor(a, "education"); boosts.push("Lines up with your education goals");
     }
     if ((a.careerGoals || []).includes("Start a business") && c.track === "entrepreneur") {
-      fit += 4; boosts.push("You listed starting a business as a career goal");
+      fit += 4 * priorityFactor(a, "business"); boosts.push("You listed starting a business as a career goal");
     }
     if ((a.urgency || "").startsWith("Right now") && (c.speed === "weeks" || c.speed === "months")) {
       fit += 3; boosts.push("Fast on-ramp fits your urgency");
+    }
+    // Priority-weight tilt: nudge toward the track the veteran said matters most.
+    const td = TRACK_DIM[c.track];
+    if (td) {
+      const tilt = (priorityFactor(a, td) - 1) * 8;
+      fit += tilt;
+      if (tilt >= 3) boosts.push(`You marked ${DIM_WORD[td]} a top priority`);
     }
 
     // Why bullets: the career's defining dims where the veteran signaled the same.
@@ -95,7 +124,15 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
     for (const d of ranked.slice(0, 3)) why.push(`You want ${DIM_PHRASE[d]} — this path is built on it.`);
     if (why.length === 0) why.push("A balanced fit across what you told us.");
 
-    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts };
+    // Salary-range match: a soft flag + light nudge. Never hides a path.
+    const medianPay = careerMedianPay(c);
+    let meetsSalary: boolean | null = null;
+    if (hasSalary && medianPay != null) {
+      meetsSalary = medianPay >= (salMin ?? 0) && medianPay <= (salMax ?? Infinity);
+      if (meetsSalary) { fit += 4; boosts.push(`Median pay ~$${medianPay.toLocaleString()} lands in your target range`); }
+    }
+
+    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts, medianPay, meetsSalary };
   });
 
   return results.sort((x, y) => y.fit - x.fit);

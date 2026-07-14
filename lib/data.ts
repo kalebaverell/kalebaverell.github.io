@@ -37,6 +37,12 @@ export const INTAKE = (intakeJson as any).steps as {
   questions: any[];
 }[];
 
+/** High-level life dimensions the veteran weights in the "What matters most" step (single source). */
+export const PRIORITY_DIMS = (
+  (INTAKE.find((s) => s.id === "weights")?.questions?.[0] as any)?.dims || []
+) as { key: string; label: string; icon: string }[];
+export const WEIGHT_LEVEL_LABEL = ["Not now", "Nice to have", "Important", "Must-have"];
+
 export const SAMPLE_GAMEPLANS = (gameplansJson as any).examples;
 
 export const benefitById = (id: string) => BENEFITS.find((b) => b.id === id);
@@ -68,6 +74,13 @@ export const LOCATIONS = locationsJson as any as {
   metros: { name: string; state: string; vibe: string; va: string; strongFor: string[]; costSample: string; note?: string }[];
 };
 export const INTAKE_NOTES_PROMPT: string = (intakeJson as any).stepNotesPrompt;
+
+/** Parse the numeric BLS median (USD) from a career's paySample string, e.g.
+ *  "$124,910 (May 2024 median, BLS)" → 124910. Returns null if none found. */
+export const careerMedianPay = (c: Career): number | null => {
+  const m = /\$([\d,]+)/.exec(c.paySample || "");
+  return m ? parseInt(m[1].replace(/,/g, ""), 10) : null;
+};
 
 export const careerById = (id?: string | null) => (id ? CAREERS.find((c) => c.id === id) : undefined);
 export const trackById = (id?: string) => (id ? TRACKS.find((t) => t.id === id) : undefined);

@@ -20,7 +20,7 @@ import {
 } from "@/lib/relocate";
 
 const DEFAULT_PRIORITIES: RelocPriorities = {
-  vaAccess: 1, cost: 1, jobs: 1, schools: 0, community: 1, safety: 0, business: 0, airport: 0,
+  vaAccess: 1, cost: 1, jobs: 1, stateBenefits: 1, schools: 0, community: 1, safety: 0, business: 0, airport: 0,
 };
 
 const PRIORITY_OPTIONS: Priority[] = [0, 1, 2];

@@ -171,6 +171,71 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
     );
   }
 
+  if (q.type === "salary") {
+    const cur: { min?: number; max?: number } = (val && typeof val === "object" && !Array.isArray(val)) ? val : {};
+    const setPart = (part: "min" | "max", raw: string) => {
+      const n = raw === "" ? undefined : Math.max(0, Math.round(Number(raw) || 0));
+      setAnswer(q.id, { ...cur, [part]: n });
+    };
+    return (
+      <div>
+        <label className="lbl">{q.label}{q.optional && <span className="muted small"> (optional)</span>}</label>
+        {q.helper && <p className="small muted" style={{ margin: "0 0 8px" }}>{q.helper}</p>}
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <span className="muted">$</span>
+          <input className="field" style={{ maxWidth: 130 }} type="number" min={0} step={1000} inputMode="numeric"
+            placeholder="Min" value={cur.min ?? ""} onChange={(e) => setPart("min", e.target.value)} aria-label="Minimum annual pay" />
+          <span className="muted">to $</span>
+          <input className="field" style={{ maxWidth: 130 }} type="number" min={0} step={1000} inputMode="numeric"
+            placeholder="Max" value={cur.max ?? ""} onChange={(e) => setPart("max", e.target.value)} aria-label="Maximum annual pay" />
+          <span className="muted small">/ year</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (q.type === "weight") {
+    const map: Record<string, number> = (val && typeof val === "object" && !Array.isArray(val)) ? val : {};
+    const LEVELS = [
+      { v: 0, label: "Not now" },
+      { v: 1, label: "Nice to have" },
+      { v: 2, label: "Important" },
+      { v: 3, label: "Must-have" },
+    ];
+    return (
+      <fieldset style={{ border: "none", padding: 0, margin: 0 }}>
+        <legend className="lbl" style={{ padding: 0 }}>{q.label}</legend>
+        {q.helper && <p className="small muted" style={{ margin: "0 0 10px" }}>{q.helper}</p>}
+        <div style={{ display: "grid", gap: 14 }}>
+          {q.dims.map((d: any) => {
+            const cur = d.key in map ? map[d.key] : 2;
+            return (
+              <div key={d.key} style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, minWidth: 168, fontWeight: 500 }}>
+                  <i className={`ti ${d.icon}`} aria-hidden="true" style={{ fontSize: 18, color: "var(--accent-ink)" }} /> {d.label}
+                </span>
+                <div role="radiogroup" aria-label={d.label} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {LEVELS.map((lv) => (
+                    <button
+                      key={lv.v}
+                      type="button"
+                      role="radio"
+                      aria-checked={cur === lv.v}
+                      className={`chip selectable ${cur === lv.v ? "selected" : ""}`}
+                      onClick={() => setAnswer(q.id, { ...map, [d.key]: lv.v })}
+                    >
+                      {lv.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </fieldset>
+    );
+  }
+
   // single
   const isCustomVal = val && !q.options.includes(val);
   return (

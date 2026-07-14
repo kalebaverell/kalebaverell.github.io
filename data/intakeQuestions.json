@@ -88,6 +88,13 @@
           "label": "What is your housing situation?",
           "type": "multi",
           "options": ["Rent", "Own a home", "Own property in another state", "Living with family", "Unstable / at risk", "Currently homeless"]
+        },
+        {
+          "id": "salaryTarget",
+          "label": "What annual pay are you aiming for?",
+          "type": "salary",
+          "optional": true,
+          "helper": "A rough range is fine — we'll flag which career paths land in it. Leave blank to skip."
         }
       ]
     },
@@ -136,6 +143,28 @@
           "type": "multi",
           "allowCustom": true,
           "options": ["Spouse benefits", "Dependent education", "Childcare", "Caregiver support", "None"]
+        }
+      ]
+    },
+    {
+      "id": "weights",
+      "title": "What matters most",
+      "subtitle": "You told us what applies — now weigh it. This tilts your recommended path and plan toward what matters most to you.",
+      "questions": [
+        {
+          "id": "priorityWeights",
+          "label": "How much does each of these matter to you right now?",
+          "type": "weight",
+          "helper": "Everything defaults to “Important.” Bump up what's a must-have and down what can wait.",
+          "dims": [
+            { "key": "career", "label": "Career & work", "icon": "ti-briefcase" },
+            { "key": "money", "label": "Money & benefits", "icon": "ti-coin" },
+            { "key": "education", "label": "Education", "icon": "ti-school" },
+            { "key": "family", "label": "Family", "icon": "ti-users" },
+            { "key": "health", "label": "Health & wellness", "icon": "ti-heartbeat" },
+            { "key": "business", "label": "Business ownership", "icon": "ti-building-store" },
+            { "key": "stability", "label": "Stability & housing", "icon": "ti-home" }
+          ]
         }
       ]
     },

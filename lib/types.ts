@@ -17,6 +17,11 @@ export interface Answers {
   disabilityRating?: string;
   employment?: string;
   housing?: string[];
+  /** How much each high-level life dimension matters, 0 (not now) → 3 (must-have). Set in the
+   *  "What matters most" step; tilts the recommended path and plan toward the heaviest weights. */
+  priorityWeights?: Record<string, number>;
+  /** Optional target annual pay range (USD). Used to flag which career paths land in range. */
+  salaryTarget?: { min?: number; max?: number };
   careerGoals?: string[];
   educationGoals?: string[];
   businessInterest?: string;
@@ -69,6 +74,8 @@ export interface CareerFit {
   fit: number;           // 0–100 demo estimate
   why: string[];
   boosts: string[];
+  medianPay?: number | null;   // parsed BLS median (USD), for salary-range matching
+  meetsSalary?: boolean | null; // vs the veteran's target range; null when no target/median
 }
 
 export interface ChosenPath {
