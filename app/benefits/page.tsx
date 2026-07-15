@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { BENEFITS, STATE_GENERIC, STATE_BENEFITS, realStateInfo, stateName, stateSamples, BRAND, benefitById } from "@/lib/data";
+import { BENEFITS, STATE_GENERIC, STATE_BENEFITS, realStateInfo, stateName, stateSamples, BRAND, benefitById, primaryState, residenceStates } from "@/lib/data";
 import type { Benefit } from "@/lib/types";
 import { Wrap, Callout, SectionHead } from "@/components/ui";
 import { optimizeBenefits, type OptimizedBenefit, type Tier } from "@/lib/optimizer";
@@ -25,9 +25,11 @@ type VerifiedBenefit = Benefit & { lastVerified?: string; sources?: string[] };
 export default function Benefits() {
   const { s } = useStore();
   const a = s.answers;
-  const real = realStateInfo(a.state);
-  const samples = stateSamples(a.state);
-  const stateList = a.state ? (samples && samples.length ? samples : [STATE_GENERIC]) : [];
+  const sc = primaryState(a);            // anchor state for this single-state section
+  const allStates = residenceStates(a);  // full "select all that apply" list
+  const real = realStateInfo(sc);
+  const samples = stateSamples(sc);
+  const stateList = sc ? (samples && samples.length ? samples : [STATE_GENERIC]) : [];
 
   const hasProfile = !!s.profile;
   const optimized = useMemo(() => (hasProfile ? optimizeBenefits(a) : []), [hasProfile, a]);
@@ -63,7 +65,7 @@ export default function Benefits() {
         </div>
       )}
 
-      {a.state && real ? (
+      {sc && real ? (
         <div className="card feature" style={{ marginBottom: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <h3 style={{ margin: 0 }}><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {real.name} — state benefits</h3>
@@ -89,10 +91,15 @@ export default function Benefits() {
           <p className="small muted" style={{ marginTop: 10 }}>
             Program rules change — details were verified against official sources on {STATE_BENEFITS.lastVerified}; always confirm current terms with {real.agency.name} before acting.
           </p>
+          {allStates.length > 1 && (
+            <p className="small" style={{ marginTop: 4 }}>
+              <i className="ti ti-map-pins" aria-hidden="true" /> You listed {allStates.length} states of residence — this shows <strong>{real.name}</strong>. <Link href="/compare">Compare all your states&apos; benefits side by side →</Link>
+            </p>
+          )}
         </div>
-      ) : a.state ? (
+      ) : sc ? (
         <div className="card" style={{ marginBottom: 16 }}>
-          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(a.state)} — state benefits (sample)</h3>
+          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(sc)} — state benefits (sample)</h3>
           <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{stateList.map((x, i) => <li key={i}>{x}</li>)}</ul>
           <p className="small muted" style={{ marginTop: 10 }}>Placeholder examples only. Verify with your state Department of Veterans Affairs.</p>
         </div>

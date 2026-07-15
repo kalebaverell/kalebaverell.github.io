@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL } from "@/lib/data";
+import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates } from "@/lib/data";
 import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
@@ -22,6 +22,7 @@ export default function Dashboard() {
   }
   const gp = s.gameplan;
   const a = s.answers;
+  const stateStr = residenceStates(a).map((c) => stateName(c) || c).join(", ");
   const all = [...gp.plan30, ...gp.plan60, ...gp.plan90];
   const done = all.filter((it) => s.statuses[it.id] === "done").length;
   const dest = gp.destination;
@@ -31,7 +32,7 @@ export default function Dashboard() {
       {gp.crisis && <CrisisBanner />}
       <div className="card" style={{ background: "var(--primary)", color: "#fff", border: "none" }}>
         <span className="chip gold">
-          <i className="ti ti-map-pin" /> {a.status || "Veteran"}{a.state ? ` · ${stateName(a.state)}` : ""}{a.branch ? ` · ${a.branch}` : ""}
+          <i className="ti ti-map-pin" /> {a.status || "Veteran"}{stateStr ? ` · ${stateStr}` : ""}{a.branch ? ` · ${a.branch}` : ""}
         </span>
         <h2 style={{ color: "#fff", margin: "10px 0 4px" }}>Your gameplan, {s.profile?.name}</h2>
         <p style={{ color: "#CBD8E4", margin: 0, maxWidth: 640 }}>{gp.headline}</p>

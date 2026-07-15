@@ -20,7 +20,7 @@ export interface OptimizedBenefit {
 /** Minimal local shape of the intake answers (subset of lib/types Answers — kept local so this module stays standalone). */
 export interface AnswersLike {
   ageRange?: string;
-  state?: string;
+  state?: string | string[];
   serviceEra?: string;
   status?: string;
   disabilityRating?: string;
@@ -187,7 +187,8 @@ export function optimizeBenefits(a: AnswersLike): OptimizedBenefit[] {
   const wantsBetterJob =
     has(a.careerGoals, "Get a better job") || has(a.careerGoals, "Change careers") || has(a.topGoals, "get-better-job");
 
-  const st = stateInfo(a.state);
+  // Residence is a "select all that apply" list; the primary (first) state anchors state benefits.
+  const st = stateInfo(Array.isArray(a.state) ? a.state[0] : a.state);
 
   // --- 1. Safety and stability come before everything else ------------------
   if (urgent) {

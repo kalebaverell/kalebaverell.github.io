@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
-import { goalById, stateName } from "@/lib/data";
+import { goalById, stateName, residenceStates } from "@/lib/data";
 import { Wrap, Callout } from "@/components/ui";
 
 export default function Profile() {
@@ -24,7 +24,7 @@ export default function Profile() {
     ["Name", s.profile.name],
     ["Email", s.profile.email || "—"],
     ["Age", a.ageRange],
-    ["State", a.state ? stateName(a.state) : "—"],
+    ["State(s)", residenceStates(a).map((c) => stateName(c) || c).join(", ") || "—"],
     ["Branch", a.branch],
     ["Service era", a.serviceEra],
     ["Status", a.status],

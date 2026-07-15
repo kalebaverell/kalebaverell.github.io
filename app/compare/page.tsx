@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useStore } from "@/lib/store";
 import { Wrap } from "@/components/ui";
-import { STATES, BRAND } from "@/lib/data";
+import { STATES, BRAND, residenceStates } from "@/lib/data";
 import { buildStateCompare, COMPARE_CATEGORIES, CATEGORY_LABEL, STATES_WITH_COST } from "@/lib/compare";
 
 const src = (url: string, label: string) => (
@@ -10,8 +11,18 @@ const src = (url: string, label: string) => (
 );
 
 export default function ComparePage() {
-  // Default to two states that carry cost data so the table is populated on arrival.
+  const { s, ready } = useStore();
+  // Default to two states that carry cost data so the table is populated on arrival…
   const [codes, setCodes] = useState<string[]>([STATES_WITH_COST[0] || "TX", STATES_WITH_COST[1] || "FL", ""]);
+  // …but if the veteran told us they have homes in more than one state, compare those instead.
+  const [prefilled, setPrefilled] = useState(false);
+  useEffect(() => {
+    if (prefilled || !ready) return;
+    const mine = residenceStates(s.answers || {});
+    if (mine.length >= 2) setCodes([mine[0] || "", mine[1] || "", mine[2] || ""]);
+    setPrefilled(true);
+  }, [prefilled, ready, s.answers]);
+
   const selected = codes.filter(Boolean);
   const compares = selected.map(buildStateCompare);
 

@@ -15,9 +15,9 @@
         },
         {
           "id": "state",
-          "label": "What state do you live in?",
-          "type": "state",
-          "helper": "State benefits vary. We'll flag anything that must be verified locally."
+          "label": "Which state(s) do you live in?",
+          "type": "multistate",
+          "helper": "Select all that apply — add every state where you keep a home or rental, or split your year. State benefits and taxes vary, so we track them all and factor them into your Compare-states and relocation tools."
         },
         {
           "id": "city",

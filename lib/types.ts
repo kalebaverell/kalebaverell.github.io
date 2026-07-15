@@ -7,7 +7,10 @@ export interface Profile {
 
 export interface Answers {
   ageRange?: string;
-  state?: string;
+  /** Residence state(s) — "select all that apply" for veterans with homes/rentals across
+   *  states or who move seasonally. Stored as a list; a legacy single string is tolerated.
+   *  Read via residenceStates()/primaryState() from lib/data. */
+  state?: string | string[];
   city?: string;
   sex?: string;
   raceEthnicity?: string[];

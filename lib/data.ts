@@ -11,12 +11,19 @@ import assessmentJson from "@/data/assessmentQuestions.json";
 import creditMapJson from "@/data/sampleCreditMap.json";
 import networkingJson from "@/data/sampleNetworking.json";
 import locationsJson from "@/data/sampleLocations.json";
-import type { Benefit, Goal, Career, Track } from "./types";
+import type { Benefit, Goal, Career, Track, Answers } from "./types";
 
 export const BRAND = {
   name: "VetPath",
   tagline: "A clear gameplan for life after service.",
 };
+
+/** Residence state(s). Intake stores a "select all that apply" list (multiple homes / rentals /
+ *  seasonal moves); legacy single-string values are tolerated. `residenceStates` is the full
+ *  list; `primaryState` is the anchor that single-state pages (benefits, plan) key off. */
+export const residenceStates = (a: Answers): string[] =>
+  Array.isArray(a.state) ? a.state.filter(Boolean) : a.state ? [a.state] : [];
+export const primaryState = (a: Answers): string | undefined => residenceStates(a)[0];
 
 export const BENEFITS: Benefit[] = (benefitsJson as any).categories.map((b: any) => ({
   ...b,

@@ -114,6 +114,44 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
     );
   }
 
+  if (q.type === "multistate") {
+    const sel: string[] = Array.isArray(val) ? val : val ? [val] : [];
+    const available = STATES.filter((st) => !sel.includes(st.code));
+    return (
+      <div>
+        <label className="lbl">{q.label}{q.optional && <span className="muted small"> (optional)</span>}</label>
+        {q.helper && <p className="small muted" style={{ margin: "0 0 8px" }}>{q.helper}</p>}
+        {sel.length > 0 && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+            {sel.map((code) => {
+              const st = STATES.find((s) => s.code === code);
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  className="chip selectable selected"
+                  onClick={() => toggleMulti(q.id, code)}
+                  aria-label={`Remove ${st?.name || code}`}
+                >
+                  {st?.name || code} <i className="ti ti-x" aria-hidden="true" style={{ marginLeft: 4 }} />
+                </button>
+              );
+            })}
+          </div>
+        )}
+        <select
+          className="field"
+          value=""
+          onChange={(e) => { if (e.target.value) toggleMulti(q.id, e.target.value); }}
+          disabled={available.length === 0}
+        >
+          <option value="">{sel.length ? "Add another state…" : "Add a state…"}</option>
+          {available.map((st) => <option key={st.code} value={st.code}>{st.name}</option>)}
+        </select>
+      </div>
+    );
+  }
+
   if (q.type === "goals") {
     const sel: string[] = val || [];
     return (

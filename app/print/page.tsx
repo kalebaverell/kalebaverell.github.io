@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, goalById, stateName, BRAND } from "@/lib/data";
+import { benefitById, goalById, stateName, BRAND, residenceStates } from "@/lib/data";
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
@@ -47,7 +47,7 @@ export default function PrintGameplan() {
         <div className="print-box" style={{ background: "var(--chip-bg)" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 8, fontSize: 14 }}>
             <div><span className="muted">Status:</span> {a.status || "—"}</div>
-            <div><span className="muted">State:</span> {a.state ? stateName(a.state) : "—"}</div>
+            <div><span className="muted">State(s):</span> {residenceStates(a).map((c) => stateName(c) || c).join(", ") || "—"}</div>
             <div><span className="muted">Branch:</span> {a.branch || "—"}</div>
             <div><span className="muted">Urgency:</span> {a.urgency || "—"}</div>
           </div>

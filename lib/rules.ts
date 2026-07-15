@@ -1,7 +1,7 @@
 // VetPath rules engine — deterministic mapping from intake answers to a gameplan.
 // Mirrors the logic in demo/vetpath-demo.html. SAMPLE guidance only; not advice.
 import type { Answers, ActionItem, Gameplan, Career } from "./types";
-import { GOALS, goalById, stateName, trackById } from "./data";
+import { GOALS, goalById, stateName, trackById, primaryState, residenceStates } from "./data";
 import { locationGuidance, networkingFor } from "./pathfinder";
 import { buildFamilyPlan } from "./family";
 
@@ -54,7 +54,7 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   });
   if ((a.familyNeeds || []).some((f) => f !== "None")) cats.add("family-dependent");
   if ((a.wellnessPriorities || []).includes("Mental health support")) cats.add("mental-health-crisis");
-  if (a.state) cats.add("state-benefits");
+  if (primaryState(a)) cats.add("state-benefits");
   if (career) trackById(career.track)?.benefits.forEach((b) => cats.add(b));
   const benefitCategories = [...cats];
 
@@ -101,7 +101,7 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (st[4]) plan90.push(item(st[4], "low"));
     if (st[5]) plan90.push(item(st[5], "low"));
   });
-  if (a.state) plan90.push(item(`Check ${stateName(a.state)} veteran benefits — verify with the state agency`, "low"));
+  for (const sc of residenceStates(a)) plan90.push(item(`Check ${stateName(sc)} veteran benefits — verify with the state agency`, "low"));
   if (plan90.length === 0) plan90.push(item("Revisit and refine this plan as your situation changes", "low"));
 
   // Documents
@@ -152,7 +152,7 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   const familyPlan = buildFamilyPlan(a as any, career?.label);
   const decisions: string[] = [...familyPlan.decisions];
   if (!career) decisions.unshift("Decide: your destination — run the Pathfinder so this plan has an endpoint.");
-  if ((a.topGoals || []).includes("move-new-state") && !a.state)
+  if ((a.topGoals || []).includes("move-new-state") && !primaryState(a))
     decisions.push("Decide: which state you're heading to — it changes your benefits picture.");
   if (career?.track === "entrepreneur")
     decisions.push("Decide: business structure and funding route — talk it through with a free VBOC advisor.");
