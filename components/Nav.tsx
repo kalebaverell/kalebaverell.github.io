@@ -105,7 +105,7 @@ export default function Nav() {
                 <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
               </span>
             ) : (
-              <button type="button" onClick={openAuth} className="btn gold sm nav-signin">
+              <button type="button" onClick={() => openAuth("signin")} className="btn gold sm nav-signin">
                 <i className="ti ti-user-plus" aria-hidden="true" /> Sign in
               </button>
             )

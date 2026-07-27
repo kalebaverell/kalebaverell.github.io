@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 
-type Mode = "signin" | "signup";
+import type { AuthMode as Mode } from "@/lib/auth";
 
 export default function AuthModal() {
-  const { authOpen, closeAuth, signUp, signIn } = useAuth();
+  const { authOpen, authMode, closeAuth, signUp, signIn, requestPasswordReset } = useAuth();
   const [mode, setMode] = useState<Mode>("signup");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,11 +16,14 @@ export default function AuthModal() {
   const [optIn, setOptIn] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
 
-  // Reset transient state whenever the modal opens/closes.
+  // Reset transient state whenever the modal opens/closes, and honour the mode the
+  // caller asked for (e.g. an expired reset link opens straight to "reset").
   useEffect(() => {
-    if (!authOpen) { setError(null); setBusy(false); setPassword(""); }
-  }, [authOpen]);
+    if (authOpen) { setMode(authMode); setError(null); setSent(false); setPassword(""); }
+    else { setError(null); setBusy(false); setPassword(""); setSent(false); }
+  }, [authOpen, authMode]);
 
   // Close on Escape.
   useEffect(() => {
@@ -35,6 +38,16 @@ export default function AuthModal() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    if (mode === "reset") {
+      if (!email.trim()) { setError("Enter the email address on your account."); return; }
+      setBusy(true);
+      await requestPasswordReset(email);
+      setBusy(false);
+      setSent(true); // always confirms, whether or not an account exists
+      return;
+    }
+
     if (!email.trim() || !password) { setError("Enter your email and a password."); return; }
     if (mode === "signup" && password.length < 8) { setError("Use at least 8 characters for your password."); return; }
     setBusy(true);
@@ -59,7 +72,9 @@ export default function AuthModal() {
     >
       <div className="card" style={{ width: "100%", maxWidth: 440, padding: 0, overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
         <div style={{ padding: "22px 26px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span className="eyebrow" style={{ margin: 0 }}>{mode === "signup" ? "Create your account" : "Welcome back"}</span>
+          <span className="eyebrow" style={{ margin: 0 }}>
+            {mode === "signup" ? "Create your account" : mode === "reset" ? "Password help" : "Welcome back"}
+          </span>
           <button type="button" aria-label="Close" onClick={closeAuth}
             style={{ border: "none", background: "transparent", cursor: "pointer", fontSize: 20, color: "var(--muted)", lineHeight: 1 }}>
             <i className="ti ti-x" aria-hidden="true" />
@@ -68,14 +83,30 @@ export default function AuthModal() {
 
         <div style={{ padding: "8px 26px 26px" }}>
           <h2 style={{ fontSize: "var(--fs-h2)", margin: "0 0 4px" }}>
-            {mode === "signup" ? "Save your gameplan" : "Sign in to VetPath"}
+            {mode === "signup" ? "Save your gameplan" : mode === "reset" ? "Reset your password" : "Sign in to VetPath"}
           </h2>
           <p className="muted small" style={{ margin: "0 0 18px" }}>
             {mode === "signup"
               ? "Create a free account to save your plan and pick up on any device."
+              : mode === "reset"
+              ? "Enter your email and we will send you a link to set a new one. Your saved plan is untouched."
               : "Access your saved plan and continue where you left off."}
           </p>
 
+          {sent ? (
+            <>
+              <div className="callout" style={{ marginBottom: 16 }} role="status">
+                <i className="ti ti-mail-check" aria-hidden="true" />
+                <span>
+                  If an account exists for <strong>{email.trim()}</strong>, a reset link is on its way.
+                  It expires after a short time, so use it soon. Check spam if you do not see it.
+                </span>
+              </div>
+              <button type="button" className="btn block" onClick={() => { setMode("signin"); setSent(false); setError(null); }}>
+                Back to sign in
+              </button>
+            </>
+          ) : (
           <form onSubmit={submit}>
             {mode === "signup" && (
               <div style={{ marginBottom: 14 }}>
@@ -87,10 +118,19 @@ export default function AuthModal() {
               <label className="lbl" htmlFor="au-email">Email</label>
               <input id="au-email" className="field" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" />
             </div>
-            <div style={{ marginBottom: 14 }}>
-              <label className="lbl" htmlFor="au-pass">Password</label>
-              <input id="au-pass" className="field" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder={mode === "signup" ? "At least 8 characters" : "Your password"} autoComplete={mode === "signup" ? "new-password" : "current-password"} />
-            </div>
+            {mode !== "reset" && (
+              <div style={{ marginBottom: 14 }}>
+                <label className="lbl" htmlFor="au-pass">Password</label>
+                <input id="au-pass" className="field" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder={mode === "signup" ? "At least 8 characters" : "Your password"} autoComplete={mode === "signup" ? "new-password" : "current-password"} />
+                {mode === "signin" && (
+                  <p className="small" style={{ margin: "8px 0 0", textAlign: "right" }}>
+                    <button type="button" onClick={() => { setMode("reset"); setError(null); setPassword(""); }} style={linkBtn}>
+                      Forgot your password?
+                    </button>
+                  </p>
+                )}
+              </div>
+            )}
 
             {mode === "signup" && (
               <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "4px 0 16px", cursor: "pointer" }}>
@@ -106,19 +146,25 @@ export default function AuthModal() {
             )}
 
             <button type="submit" className="btn gold block" disabled={busy}>
-              {busy ? "Working…" : mode === "signup" ? "Create account" : "Sign in"}
+              {busy ? "Working…" : mode === "signup" ? "Create account" : mode === "reset" ? "Send reset link" : "Sign in"}
             </button>
           </form>
+          )}
 
+          {!sent && (
           <p className="small" style={{ textAlign: "center", margin: "16px 0 0", color: "var(--muted)" }}>
             {mode === "signup" ? (
               <>Already have an account?{" "}
                 <button type="button" onClick={() => { setMode("signin"); setError(null); }} style={linkBtn}>Sign in</button></>
+            ) : mode === "reset" ? (
+              <>Remembered it?{" "}
+                <button type="button" onClick={() => { setMode("signin"); setError(null); }} style={linkBtn}>Back to sign in</button></>
             ) : (
               <>New here?{" "}
                 <button type="button" onClick={() => { setMode("signup"); setError(null); }} style={linkBtn}>Create an account</button></>
             )}
           </p>
+          )}
 
           <p className="small" style={{ textAlign: "center", margin: "14px 0 0", color: "var(--faint)", lineHeight: 1.6 }}>
             Your password is secured by our auth provider - we never see or store it.{" "}

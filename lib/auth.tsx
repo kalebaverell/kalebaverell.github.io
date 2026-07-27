@@ -8,19 +8,33 @@ import { supabase, supabaseEnabled } from "./supabase";
 
 interface SignUpOpts { fullName: string; marketingOptIn: boolean; }
 
+/** Which form the auth modal should open on. */
+export type AuthMode = "signin" | "signup" | "reset";
+
 interface AuthValue {
   enabled: boolean;
   ready: boolean;
   user: User | null;
   session: Session | null;
   authOpen: boolean;
-  openAuth: () => void;
+  /** Which form to show when the modal opens. Defaults to signup. */
+  authMode: AuthMode;
+  openAuth: (mode?: AuthMode) => void;
   closeAuth: () => void;
   signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  /** Email a recovery link. Always reports success so the form can't be used to
+   *  probe which addresses have accounts. */
+  requestPasswordReset: (email: string) => Promise<{ error: string | null }>;
+  /** Set a new password for the session established by a recovery link. */
+  updatePassword: (password: string) => Promise<{ error: string | null }>;
   deleteAccount: () => Promise<{ error: string | null }>;
 }
+
+/** Where Supabase sends someone after they click the recovery link. Must be in the
+ *  project's Redirect URLs allowlist or Supabase refuses to send them there. */
+export const RESET_PATH = "/reset/";
 
 const Ctx = createContext<AuthValue | null>(null);
 
@@ -47,6 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [ready, setReady] = useState(!supabaseEnabled);
   const [authOpen, setAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<AuthMode>("signup");
 
   useEffect(() => {
     if (!supabase) return;
@@ -63,7 +78,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => sub.subscription.unsubscribe();
   }, []);
 
-  const openAuth = useCallback(() => setAuthOpen(true), []);
+  const openAuth = useCallback((mode: AuthMode = "signup") => {
+    setAuthMode(mode);
+    setAuthOpen(true);
+  }, []);
   const closeAuth = useCallback(() => setAuthOpen(false), []);
 
   const signUp = useCallback(async (email: string, password: string, opts: SignUpOpts) => {
@@ -89,6 +107,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
   }, []);
 
+  const requestPasswordReset = useCallback(async (email: string) => {
+    if (!supabase) return { error: "Accounts aren't enabled in this environment." };
+    // Deliberately swallow "user not found" style errors: telling a stranger whether
+    // an address has an account here would leak who is using a veterans' benefits site.
+    await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}${RESET_PATH}`,
+    });
+    return { error: null };
+  }, []);
+
+  const updatePassword = useCallback(async (password: string) => {
+    if (!supabase) return { error: "Accounts aren't enabled in this environment." };
+    const { error } = await supabase.auth.updateUser({ password });
+    return { error: error ? error.message : null };
+  }, []);
+
   // Best-effort self-service data deletion: wipe the profile row (RLS-scoped to
   // the user) and sign out. Full auth-user deletion requires a privileged call;
   // the privacy page tells users they can email us to fully purge the login too.
@@ -101,7 +135,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [user]);
 
   return (
-    <Ctx.Provider value={{ enabled: supabaseEnabled, ready, user, session, authOpen, openAuth, closeAuth, signUp, signIn, signOut, deleteAccount }}>
+    <Ctx.Provider value={{ enabled: supabaseEnabled, ready, user, session, authOpen, authMode, openAuth, closeAuth, signUp, signIn, signOut, requestPasswordReset, updatePassword, deleteAccount }}>
       {children}
     </Ctx.Provider>
   );
