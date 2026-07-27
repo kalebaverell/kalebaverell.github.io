@@ -9,6 +9,11 @@ export interface TaskResource {
 }
 
 const RULES: { test: RegExp; resources: TaskResource[] }[] = [
+  // Guard/Reserve first: when a task is about continued service, that page is the whole answer.
+  { test: /\bguard\b|\breserve\b|\breserves\b|drilling|part.?time service|selected reserve/i, resources: [
+    { label: "Reserves & Guard: what it actually covers", href: "/reserves", internal: true },
+    { label: "TRICARE Reserve Select (TRICARE.mil)", href: "https://tricare.mil/Plans/HealthPlans/TRS" },
+  ]},
   { test: /\btap\b|transition assistance|dd.?214|separation|discharge/i, resources: [
     { label: "Transition Assistance Program (DoD)", href: "https://www.dodtap.mil/" },
   ]},
@@ -40,6 +45,8 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   ]},
   { test: /health ?care|enroll|medical|\bclinic\b|mental health/i, resources: [
     { label: "VA health care (VA.gov)", href: "https://www.va.gov/health-care/" },
+    // VA health care covers the veteran, not the family. Guard/Reserve coverage does.
+    { label: "Covering your family too: Guard & Reserve options", href: "/reserves", internal: true },
   ]},
   { test: /state (veteran )?benefit|state agency|property.?tax/i, resources: [
     { label: "Compare states' benefits", href: "/compare", internal: true },

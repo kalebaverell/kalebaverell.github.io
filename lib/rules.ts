@@ -4,6 +4,7 @@ import type { Answers, ActionItem, Gameplan, Career } from "./types";
 import { GOALS, goalById, stateName, trackById, primaryState, residenceStates } from "./data";
 import { locationGuidance, networkingFor } from "./pathfinder";
 import { buildFamilyPlan } from "./family";
+import { reserveFit } from "./reserves";
 
 let _idc = 0;
 function hash(s: string): number {
@@ -101,6 +102,19 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (st[4]) plan90.push(item(st[4], "low"));
     if (st[5]) plan90.push(item(st[5], "low"));
   });
+  // Guard/Reserve is the option most first-termers never get explained. Surface it as a real
+  // action rather than leaving it buried in the Tools hub, but only where it actually fits:
+  // reserveFit already scores that and drops it for anyone retired from a full career.
+  const rFit = reserveFit(a);
+  if (rFit.level !== "background") {
+    const leadsWithHealth = rFit.leadWith.includes("trs") || rFit.leadWith.includes("tdp");
+    const text = leadsWithHealth
+      ? "Price out Guard or Reserve health coverage against a civilian plan - premiums are set by law at a fraction of market rate"
+      : "Look at what Guard or Reserve service would actually cover: health care, school, and a retirement your service already counts toward";
+    const when = rFit.level === "strong" ? plan30 : plan60;
+    when.push(item(text, rFit.level === "strong" ? "high" : "medium"));
+  }
+
   for (const sc of residenceStates(a)) plan90.push(item(`Check ${stateName(sc)} veteran benefits - verify with the state agency`, "low"));
   if (plan90.length === 0) plan90.push(item("Revisit and refine this plan as your situation changes", "low"));
 
@@ -124,6 +138,8 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     why.push("Early VA health-care enrollment protects access to care and mental health support.");
   if (goals.find((g) => g.id === "buy-a-home"))
     why.push("The VA home loan can mean no down payment and no PMI - a major head start.");
+  if (rFit.level === "strong")
+    why.push("Part-time Guard or Reserve service is the option most people never get explained, and the years you already served count toward it.");
   if (why.length < 2) why.push("A written plan turns 'someday' into concrete next steps.");
 
   // Disability application prep (educational - honest maximization, free accredited help)
