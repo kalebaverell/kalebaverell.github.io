@@ -3,15 +3,48 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
+import { useAuth } from "@/lib/auth";
 import { INTAKE, INTAKE_NOTES_PROMPT, STATES, GOALS } from "@/lib/data";
 import type { Answers } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
+  const { enabled, ready: authReady, user, openAuth } = useAuth();
   if (!ready) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
+  // Building a gameplan requires a free account, so it saves to the veteran's own profile.
+  if (enabled) {
+    if (!authReady) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
+    if (!user) return <AccountGate onStart={openAuth} />;
+    if (!s.profile) return <Wrap narrow><p className="muted">Setting up your account…</p></Wrap>;
+    return <Intake />;
+  }
+  // Accounts not configured in this environment → local fallback so the app never hard-locks.
   if (!s.profile) return <ProfileGate onCreate={createProfile} />;
   return <Intake />;
+}
+
+function AccountGate({ onStart }: { onStart: () => void }) {
+  return (
+    <Wrap narrow>
+      <Link href="/" className="muted small" style={{ display: "inline-flex", gap: 6, alignItems: "center", marginBottom: 14 }}>
+        <i className="ti ti-arrow-left" /> Home
+      </Link>
+      <h2>Create your free account</h2>
+      <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in — on your phone or your computer.</p>
+      <div className="card">
+        <button className="btn block gold" onClick={onStart}><i className="ti ti-user-plus" /> Create account or sign in</button>
+        <ul style={{ margin: "16px 0 0", paddingLeft: 18, display: "grid", gap: 6 }}>
+          <li className="small">Save your plan and pick up right where you left off.</li>
+          <li className="small">Sync across every device you use.</li>
+          <li className="small">Private and encrypted — we never sell your data.</li>
+        </ul>
+        <p className="small muted" style={{ margin: "14px 0 0" }}>
+          <i className="ti ti-lock" /> We never see or store your password — sign-in is handled securely.
+        </p>
+      </div>
+    </Wrap>
+  );
 }
 
 function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void }) {
