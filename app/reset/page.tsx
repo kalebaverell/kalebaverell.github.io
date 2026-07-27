@@ -4,7 +4,7 @@
 // renders the user has a short-lived session and can set a new password.
 import { useState } from "react";
 import Link from "next/link";
-import { useAuth } from "@/lib/auth";
+import { useAuth, MIN_PASSWORD_LENGTH } from "@/lib/auth";
 import { Wrap, Callout } from "@/components/ui";
 
 export default function ResetPassword() {
@@ -63,7 +63,10 @@ export default function ResetPassword() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (password.length < 8) { setError("Use at least 8 characters for your new password."); return; }
+    if (password.length < MIN_PASSWORD_LENGTH) {
+      setError(`Use at least ${MIN_PASSWORD_LENGTH} characters for your new password.`);
+      return;
+    }
     if (password !== confirm) { setError("The two passwords do not match."); return; }
     setBusy(true);
     const res = await updatePassword(password);
@@ -83,7 +86,7 @@ export default function ResetPassword() {
             <label className="lbl" htmlFor="np">New password</label>
             <input
               id="np" className="field" type="password" required autoComplete="new-password"
-              placeholder="At least 8 characters"
+              placeholder={`At least ${MIN_PASSWORD_LENGTH} characters`}
               value={password} onChange={(e) => setPassword(e.target.value)}
             />
           </div>

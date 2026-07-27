@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 
+import { MIN_PASSWORD_LENGTH } from "@/lib/auth";
 import type { AuthMode as Mode } from "@/lib/auth";
 
 export default function AuthModal() {
@@ -50,7 +51,10 @@ export default function AuthModal() {
     }
 
     if (!email.trim() || !password) { setError("Enter your email and a password."); return; }
-    if (mode === "signup" && password.length < 8) { setError("Use at least 8 characters for your password."); return; }
+    if (mode === "signup" && password.length < MIN_PASSWORD_LENGTH) {
+      setError(`Use at least ${MIN_PASSWORD_LENGTH} characters for your password.`);
+      return;
+    }
     setBusy(true);
     const res = mode === "signup"
       ? await signUp(email, password, { fullName, marketingOptIn: optIn })
@@ -140,7 +144,7 @@ export default function AuthModal() {
             {mode !== "reset" && (
               <div style={{ marginBottom: 14 }}>
                 <label className="lbl" htmlFor="au-pass">Password</label>
-                <input id="au-pass" className="field" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder={mode === "signup" ? "At least 8 characters" : "Your password"} autoComplete={mode === "signup" ? "new-password" : "current-password"} />
+                <input id="au-pass" className="field" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder={mode === "signup" ? `At least ${MIN_PASSWORD_LENGTH} characters` : "Your password"} autoComplete={mode === "signup" ? "new-password" : "current-password"} />
                 {mode === "signin" && (
                   <p className="small" style={{ margin: "8px 0 0", textAlign: "right" }}>
                     <button type="button" onClick={() => { setMode("reset"); setError(null); setPassword(""); }} style={linkBtn}>

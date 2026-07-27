@@ -11,6 +11,12 @@ interface SignUpOpts { fullName: string; marketingOptIn: boolean; }
 /** Which form the auth modal should open on. */
 export type AuthMode = "signin" | "signup" | "reset";
 
+/** Minimum password length. This MUST match the Supabase project's
+ *  Authentication > Sign In / Providers > Email > "Minimum password length"
+ *  setting. If the two drift apart, the browser either accepts a password the
+ *  server will reject, or blocks one the server would allow. Server is currently 8. */
+export const MIN_PASSWORD_LENGTH = 8;
+
 interface AuthValue {
   enabled: boolean;
   ready: boolean;
