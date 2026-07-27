@@ -30,7 +30,7 @@
       "vamc": {
         "name": "Chalmers P. Wylie Veterans Outpatient Clinic (VA Central Ohio health care)",
         "source": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
-        "note": "CBOC/ambulatory-care center only — Columbus has no full inpatient VA medical center in-metro; nearest full VAMCs (e.g., Dayton, Chillicothe) are a drive away. Matches the 'CBOC' level in relocationMetros.json."
+        "note": "CBOC/ambulatory-care center only - Columbus has no full inpatient VA medical center in-metro; nearest full VAMCs (e.g., Dayton, Chillicothe) are a drive away. Matches the 'CBOC' level in relocationMetros.json."
       },
       "notes": ""
     },

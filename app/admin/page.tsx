@@ -10,7 +10,7 @@ export default function Admin() {
   return (
     <Wrap narrow>
       <h2>Internal controls</h2>
-      <Callout kind="warn">Internal preview tools — not part of the veteran-facing product.</Callout>
+      <Callout kind="warn">Internal preview tools - not part of the veteran-facing product.</Callout>
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3 style={{ marginTop: 0 }}><i className="ti ti-user-check" style={{ color: "var(--accent-ink)" }} /> Sample veteran</h3>

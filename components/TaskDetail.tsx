@@ -1,5 +1,5 @@
 "use client";
-// Collapsible "open this task" detail — reveals relevant sourced links (official VA/DoD pages +
+// Collapsible "open this task" detail - reveals relevant sourced links (official VA/DoD pages +
 // the matching VetPath tool) for an action item. Each task can be opened for help.
 import { useState } from "react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function TaskDetail({ text }: { text: string }) {
         aria-expanded={open}
         style={{ background: "none", border: "none", cursor: "pointer", color: "var(--info)", padding: "2px 0", fontFamily: "inherit", fontSize: "var(--fs-small)", display: "inline-flex", alignItems: "center", gap: 4 }}
       >
-        <i className={`ti ti-chevron-${open ? "down" : "right"}`} aria-hidden="true" /> {open ? "Hide resources" : "Open — resources & links"}
+        <i className={`ti ti-chevron-${open ? "down" : "right"}`} aria-hidden="true" /> {open ? "Hide resources" : "Open - resources & links"}
       </button>
       {open && (
         <ul style={{ margin: "6px 0 2px", paddingLeft: 18, display: "grid", gap: 5 }}>

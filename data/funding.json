@@ -1,6 +1,6 @@
 {
   "lastVerified": "2026-07",
-  "disclaimer": "Informational only — amounts and eligibility vary by person, school, employer, and year, and programs change. VetPath does not determine eligibility. Confirm every program at its official source before counting on it.",
+  "disclaimer": "Informational only - amounts and eligibility vary by person, school, employer, and year, and programs change. VetPath does not determine eligibility. Confirm every program at its official source before counting on it.",
   "programs": [
     {
       "id": "post911",
@@ -8,11 +8,11 @@
       "type": "Federal",
       "name": "Post-9/11 GI Bill",
       "amount": "Full in-state public tuition (or up to the yearly private/out-of-state cap), a monthly housing allowance, and up to $1,000/yr for books.",
-      "eligibility": "Amount is tied to your qualifying active-duty time — 100% at 36+ months of service.",
+      "eligibility": "Amount is tied to your qualifying active-duty time - 100% at 36+ months of service.",
       "stackNote": "The base most funded paths build on.",
       "tip": "See your exact housing allowance in VA's GI Bill Comparison Tool.",
       "source": "https://www.va.gov/education/about-gi-bill-benefits/post-9-11/",
-      "sourceLabel": "VA.gov — Post-9/11 GI Bill"
+      "sourceLabel": "VA.gov - Post-9/11 GI Bill"
     },
     {
       "id": "vre",
@@ -20,32 +20,32 @@
       "type": "Federal",
       "name": "VR&E (Chapter 31)",
       "amount": "Pays tuition and required fees in full, plus a monthly subsistence allowance while you train.",
-      "eligibility": "For a service-connected disability with an employment need — often fuller coverage than the GI Bill. You generally use one or the other for a given program.",
-      "stackNote": "The disability track — usually the strongest option if you qualify.",
+      "eligibility": "For a service-connected disability with an employment need - often fuller coverage than the GI Bill. You generally use one or the other for a given program.",
+      "stackNote": "The disability track - usually the strongest option if you qualify.",
       "source": "https://www.va.gov/careers-employment/vocational-rehabilitation/",
-      "sourceLabel": "VA.gov — Veteran Readiness & Employment"
+      "sourceLabel": "VA.gov - Veteran Readiness & Employment"
     },
     {
       "id": "yellowRibbon",
       "layer": "education",
       "type": "Federal + school",
       "name": "Yellow Ribbon Program",
-      "amount": "Covers tuition above the GI Bill's cap — the school pledges an amount and VA matches it dollar-for-dollar.",
+      "amount": "Covers tuition above the GI Bill's cap - the school pledges an amount and VA matches it dollar-for-dollar.",
       "eligibility": "For veterans at the 100% Post-9/11 tier, at participating schools. Not combined with VR&E.",
       "stackNote": "Closes the gap at private, graduate, and out-of-state programs.",
       "source": "https://www.va.gov/education/about-gi-bill-benefits/post-9-11/yellow-ribbon-program/",
-      "sourceLabel": "VA.gov — Yellow Ribbon Program"
+      "sourceLabel": "VA.gov - Yellow Ribbon Program"
     },
     {
       "id": "vettec",
       "layer": "education",
       "type": "Federal",
       "name": "VET TEC (high-tech training)",
-      "amount": "Covers tuition for approved coding, IT, data, and cybersecurity programs plus a monthly housing stipend — without using your GI Bill entitlement.",
-      "eligibility": "For VA-approved tech programs. Availability is limited and program-specific — confirm current status with VA.",
+      "amount": "Covers tuition for approved coding, IT, data, and cybersecurity programs plus a monthly housing stipend - without using your GI Bill entitlement.",
+      "eligibility": "For VA-approved tech programs. Availability is limited and program-specific - confirm current status with VA.",
       "stackNote": "A tech on-ramp that saves your GI Bill for later.",
       "source": "https://www.va.gov/education/about-gi-bill-benefits/how-to-use-benefits/vettec-high-tech-program/",
-      "sourceLabel": "VA.gov — VET TEC"
+      "sourceLabel": "VA.gov - VET TEC"
     },
     {
       "id": "tillman",
@@ -53,7 +53,7 @@
       "type": "Scholarship",
       "name": "Pat Tillman Foundation",
       "amount": "Scholarship funding plus a national leadership network for veterans, service members, and military spouses.",
-      "eligibility": "Competitive national award — apply directly.",
+      "eligibility": "Competitive national award - apply directly.",
       "stackNote": "Stacks on top of your federal benefits.",
       "source": "https://pattillmanfoundation.org/",
       "sourceLabel": "Pat Tillman Foundation"
@@ -64,10 +64,10 @@
       "type": "Scholarship",
       "name": "Student Veterans of America",
       "amount": "Dozens of scholarships for student veterans, funded by SVA and corporate partners.",
-      "eligibility": "For enrolled or enrolling student veterans — apply directly.",
+      "eligibility": "For enrolled or enrolling student veterans - apply directly.",
       "stackNote": "Field- and background-specific awards you can stack on top.",
       "source": "https://studentveterans.org/programs/scholarships/",
-      "sourceLabel": "Student Veterans of America — Scholarships"
+      "sourceLabel": "Student Veterans of America - Scholarships"
     },
     {
       "id": "obap",
@@ -75,7 +75,7 @@
       "type": "Scholarship",
       "name": "Aviation & aerospace scholarships (OBAP)",
       "amount": "Scholarships toward pilot training and aerospace careers.",
-      "eligibility": "For students pursuing aviation/aerospace — apply directly. An example of a field- and background-specific award you can stack on federal benefits.",
+      "eligibility": "For students pursuing aviation/aerospace - apply directly. An example of a field- and background-specific award you can stack on federal benefits.",
       "stackNote": "Field-specific money on top of the GI Bill.",
       "source": "https://obap.org/",
       "sourceLabel": "Organization of Black Aerospace Professionals"
@@ -85,9 +85,9 @@
       "layer": "career",
       "type": "Employer",
       "name": "Employer-paid tuition",
-      "amount": "Big employers pre-pay school — Amazon Career Choice, Walmart's Live Better U ($1/day college), and Starbucks' College Achievement Plan (100% tuition), among others.",
+      "amount": "Big employers pre-pay school - Amazon Career Choice, Walmart's Live Better U ($1/day college), and Starbucks' College Achievement Plan (100% tuition), among others.",
       "eligibility": "Often a perk from day one, even part-time. Confirm the terms with the employer.",
-      "stackNote": "Let the job fund your next degree — and save your GI Bill.",
+      "stackNote": "Let the job fund your next degree - and save your GI Bill.",
       "source": "https://www.amazon.jobs/content/en/career-programs/upskilling/career-choice",
       "sourceLabel": "Example: Amazon Career Choice"
     },
@@ -96,7 +96,7 @@
       "layer": "career",
       "type": "Federal (DoD)",
       "name": "DoD SkillBridge",
-      "amount": "Train or intern with a civilian employer during your last up-to-180 days of service — while you keep full military pay and benefits.",
+      "amount": "Train or intern with a civilian employer during your last up-to-180 days of service - while you keep full military pay and benefits.",
       "eligibility": "For service members within ~180 days of separation, with command approval.",
       "stackNote": "Get hired before you take off the uniform.",
       "source": "https://skillbridge.osd.mil/",
@@ -108,7 +108,7 @@
       "type": "Federal",
       "name": "Veterans' hiring preference + incentives",
       "amount": "Veterans' Preference gives you an edge in federal hiring, and hard-to-fill roles can add recruitment, relocation, or retention incentives (commonly up to 25% of salary).",
-      "eligibility": "For federal employment — preference eligibility depends on your service. VRA lets agencies hire eligible veterans directly.",
+      "eligibility": "For federal employment - preference eligibility depends on your service. VRA lets agencies hire eligible veterans directly.",
       "stackNote": "A faster lane into stable federal careers.",
       "source": "https://www.fedshirevets.gov/",
       "sourceLabel": "FedsHireVets.gov"
@@ -119,10 +119,10 @@
       "type": "Federal",
       "name": "Public Service Loan Forgiveness",
       "amount": "Forgives your entire remaining federal student-loan balance after 120 qualifying monthly payments (about 10 years).",
-      "eligibility": "For full-time work with government or a nonprofit — including many healthcare, teaching, and public-safety jobs.",
+      "eligibility": "For full-time work with government or a nonprofit - including many healthcare, teaching, and public-safety jobs.",
       "stackNote": "Turns a public-service career into loan freedom.",
       "source": "https://studentaid.gov/manage-loans/forgiveness-cancellation/public-service",
-      "sourceLabel": "StudentAid.gov — PSLF"
+      "sourceLabel": "StudentAid.gov - PSLF"
     }
   ]
 }

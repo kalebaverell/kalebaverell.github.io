@@ -67,7 +67,7 @@ function EntryRow({ e }: { e: FamilyEntry }) {
       )}
       {e.verified && (
         <div className="small muted" style={{ marginTop: 2 }}>
-          Facts checked against the official source {e.verified} — always confirm before deciding.
+          Facts checked against the official source {e.verified} - always confirm before deciding.
         </div>
       )}
     </div>
@@ -87,14 +87,14 @@ export default function FamilyPlanning() {
       <Wrap narrow>
         <h2>Family-centered planning</h2>
         <p className="muted" style={{ maxWidth: 640 }}>
-          Veterans don&apos;t transition alone — spouses, kids, and caregivers live every one of these decisions too.
+          Veterans don&apos;t transition alone - spouses, kids, and caregivers live every one of these decisions too.
           This page turns your plan into a household plan.
         </p>
         <div className="card" style={{ marginTop: 16, textAlign: "center", padding: "36px 24px" }}>
           <i className="ti ti-users" aria-hidden="true" style={{ fontSize: 44, color: "var(--accent-ink)" }} />
-          <h3 style={{ margin: "12px 0 6px" }}>No family selections yet — and that&apos;s okay</h3>
+          <h3 style={{ margin: "12px 0 6px" }}>No family selections yet - and that&apos;s okay</h3>
           <p className="muted" style={{ maxWidth: 520, margin: "0 auto" }}>
-            If there&apos;s a spouse, kids, or a caregiver in the picture, VetPath can fold them into your gameplan —
+            If there&apos;s a spouse, kids, or a caregiver in the picture, VetPath can fold them into your gameplan -
             GI Bill transfers, spouse career moves, childcare timing, caregiver support. Tell us in step 3 of the
             intake and this page builds the shared checkpoints for you.
           </p>
@@ -107,7 +107,7 @@ export default function FamilyPlanning() {
             </Link>
           </div>
           <p className="small muted" style={{ margin: "16px 0 0" }}>
-            A plan for just you is a complete plan — this lens is here whenever your household needs it.
+            A plan for just you is a complete plan - this lens is here whenever your household needs it.
           </p>
         </div>
         <p className="small muted" style={{ marginTop: 16 }}>{FAMILY_NOTE}</p>
@@ -129,7 +129,7 @@ export default function FamilyPlanning() {
     <Wrap>
       <h2>Family-centered planning</h2>
       <p className="muted" style={{ maxWidth: 640 }}>
-        You decide as a household — so your plan should too. Shared checkpoints, decisions to make together, and
+        You decide as a household - so your plan should too. Shared checkpoints, decisions to make together, and
         official resources for everyone under your roof. Sample guidance only; verify everything at the official source.
       </p>
 
@@ -162,7 +162,7 @@ export default function FamilyPlanning() {
       {career && (
         <div style={{ margin: "12px 0 0" }}>
           <Callout kind="info">
-            Planned around your destination: <strong>{career.label}</strong> — the household checkpoints below assume
+            Planned around your destination: <strong>{career.label}</strong> - the household checkpoints below assume
             the family is making that move with you. Change it anytime in the Pathfinder.
           </Callout>
         </div>
@@ -208,7 +208,7 @@ export default function FamilyPlanning() {
           <h3>
             <i className="ti ti-scale" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Decisions to make together
           </h3>
-          <p className="muted small">These aren&apos;t solo calls — put them on the kitchen table, not just your to-do list.</p>
+          <p className="muted small">These aren&apos;t solo calls - put them on the kitchen table, not just your to-do list.</p>
           <ul style={{ margin: "8px 0 0", paddingLeft: 18 }}>
             {plan.decisions.map((d, i) => (
               <li key={i} style={{ marginBottom: 8 }}>{d}</li>
@@ -223,7 +223,7 @@ export default function FamilyPlanning() {
           <i className="ti ti-lifebuoy" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Resources for your household
         </h3>
         <p className="muted small" style={{ maxWidth: 640 }}>
-          Filtered to who you&apos;re planning for. Official sources only — always verify there before acting.
+          Filtered to who you&apos;re planning for. Official sources only - always verify there before acting.
         </p>
         {resourcesByGroup.map(({ group, entries }) => (
           <div className="card" style={{ marginTop: 16 }} key={group.id}>

@@ -1,4 +1,4 @@
-// Compare-states data builder — deterministic, sourced, no LLM. Joins the cited state
+// Compare-states data builder - deterministic, sourced, no LLM. Joins the cited state
 // veteran-benefit data (all 51 jurisdictions) with the cited metro cost/rent/jobs numbers
 // (BEA RPP / HUD FMR / BLS, where a metro exists for the state). Every figure links to source.
 import metrosJson from "@/data/relocationMetros.json";
@@ -70,5 +70,5 @@ export function buildStateCompare(code: string): StateCompare {
 
 /** Two-letter codes that have cited metro cost data (for a small "cost data available" hint). */
 export const STATES_WITH_COST: string[] = Array.from(
-  new Set(METROS_RAW.filter((m) => m.official && m.state && m.state !== "—").map((m) => m.state))
+  new Set(METROS_RAW.filter((m) => m.official && m.state && m.state !== "-").map((m) => m.state))
 );

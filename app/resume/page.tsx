@@ -34,9 +34,9 @@ export default function ResumeScanner() {
   return (
     <Wrap>
       <h2>Resume scanner</h2>
-      <p className="muted" style={{ maxWidth: 640 }}>Paste your resume and we&apos;ll grade it like a civilian recruiter would — jargon, numbers, keywords for your target path. The analysis runs in your browser; it&apos;s saved only to your own account if you&apos;re signed in.</p>
+      <p className="muted" style={{ maxWidth: 640 }}>Paste your resume and we&apos;ll grade it like a civilian recruiter would - jargon, numbers, keywords for your target path. The analysis runs in your browser; it&apos;s saved only to your own account if you&apos;re signed in.</p>
       <div style={{ margin: "8px 0 16px" }}>
-        <Callout kind="info">Demo feedback from simple rules — a coaching aid, not a hiring guarantee. For a human review, your DOL VETS rep is free.</Callout>
+        <Callout kind="info">Demo feedback from simple rules - a coaching aid, not a hiring guarantee. For a human review, your DOL VETS rep is free.</Callout>
       </div>
 
       <div className="card">
@@ -61,7 +61,7 @@ export default function ResumeScanner() {
               <span className="small muted">/ 100</span>
             </div>
             <div style={{ flex: 1, minWidth: 220 }}>
-              <h3 style={{ margin: "0 0 6px" }}>{result.score >= 80 ? "Strong — polish and send" : result.score >= 60 ? "Good bones — tighten these up" : "Worth a rework before you send it"}</h3>
+              <h3 style={{ margin: "0 0 6px" }}>{result.score >= 80 ? "Strong - polish and send" : result.score >= 60 ? "Good bones - tighten these up" : "Worth a rework before you send it"}</h3>
               <p className="muted small" style={{ margin: 0 }}>{result.words} words · {result.issues.length} fixes flagged · demo score</p>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function ResumeScanner() {
           {careerId && (
             <div className="card" style={{ marginTop: 16 }}>
               <h3><i className="ti ti-key" style={{ color: "var(--accent-ink)" }} /> Keywords for {careerById(careerId)?.label}</h3>
-              <p className="small muted">Work missing terms into real accomplishments — never stuff them.</p>
+              <p className="small muted">Work missing terms into real accomplishments - never stuff them.</p>
               <div>
                 {result.keywordsHit.map((k) => <span key={k} className="chip" style={{ background: "var(--success-soft)", color: "var(--success)" }}><i className="ti ti-check" /> {k}</span>)}
                 {result.keywordsMissing.map((k) => <span key={k} className="chip"><i className="ti ti-plus" /> {k}</span>)}

@@ -15,7 +15,7 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 - **Photographer:** Christine Cabalo (U.S. government work)
 - **Date taken:** 10.19.2016
 - **Source page:** https://www.dvidshub.net/image/2953284/transition-summit-helps-military-job-seekers
-- **License line on source page (verified 2026-07-09):** "PUBLIC DOMAIN" — page footer reads:
+- **License line on source page (verified 2026-07-09):** "PUBLIC DOMAIN" - page footer reads:
   *"This work, Transition Summit helps military job seekers, by Christine Cabalo,
   identified by DVIDS, must comply with the restrictions shown on
   https://www.dvidshub.net/about/copyright"* (those restrictions confirm DVIDS-labeled
@@ -31,7 +31,7 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 - **Photographer:** David Poe (U.S. government work)
 - **Date taken:** 10.14.2021
 - **Source page:** https://www.dvidshub.net/image/6897038/tap-bliss-transition-assistance-program-partners-with-industry-prepares-transitioning-soldiers-careers-demand
-- **License line on source page (verified 2026-07-09):** "PUBLIC DOMAIN" — page footer reads:
+- **License line on source page (verified 2026-07-09):** "PUBLIC DOMAIN" - page footer reads:
   *"This work, TAP in: Bliss Transition Assistance Program partners with industry,
   prepares transitioning Soldiers for careers in demand, by David Poe, identified by
   DVIDS, must comply with the restrictions shown on
@@ -47,12 +47,12 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 - **Videographer:** Sgt. Scyrrus Corregidor (U.S. government work)
 - **Date taken:** 10.14.2025
 - **Source page:** https://www.dvidshub.net/video/987785
-- **License line on source page (verified 2026-07-13):** "PUBLIC DOMAIN" — page footer reads:
+- **License line on source page (verified 2026-07-13):** "PUBLIC DOMAIN" - page footer reads:
   *"This work, Hiring Our Heroes B-Roll Package, by SGT Scyrrus Corregidor, identified by
   DVIDS, must comply with the restrictions shown on
   https://www.dvidshub.net/about/copyright"*.
-- **Processing:** single frames extracted from the B-roll (`hero-workshop.jpg` — an
-  interview-prep "What to Say" workshop; `hero-networking.jpg` — job-seekers connecting with
+- **Processing:** single frames extracted from the B-roll (`hero-workshop.jpg` - an
+  interview-prep "What to Say" workshop; `hero-networking.jpg` - job-seekers connecting with
   recruiters), JPEG q≈2. Frames were chosen to avoid prominent third-party sponsor backdrops;
   a small "Hiring Our Heroes" program mark is incidental on the workshop slide and reads as
   event context, not corporate endorsement.
@@ -61,10 +61,10 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
 
 ## Removed images
 
-- **dvids-6897038-raw.jpg** — replaced by the processed/cropped `tap-electrical-training.jpg`
+- **dvids-6897038-raw.jpg** - replaced by the processed/cropped `tap-electrical-training.jpg`
   above (same source, license verified).
-- **dvids-8518024-raw.jpg** — "Hiring Our Heroes Military Spouse Hiring Event" (Image 3 of 3),
+- **dvids-8518024-raw.jpg** - "Hiring Our Heroes Military Spouse Hiring Event" (Image 3 of 3),
   https://www.dvidshub.net/image/8518024, by Olivia Mendoza Sencalar. Its DVIDS page also
-  states "PUBLIC DOMAIN" (verified 2026-07-09), so the license was fine — but the photo is
+  states "PUBLIC DOMAIN" (verified 2026-07-09), so the license was fine - but the photo is
   dominated by prominent Boeing and Hiring Our Heroes branding, which could imply corporate
   endorsement. Deleted on taste/endorsement grounds, not license grounds.

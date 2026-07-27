@@ -7,7 +7,7 @@ export interface Profile {
 
 export interface Answers {
   ageRange?: string;
-  /** Residence state(s) — "select all that apply" for veterans with homes/rentals across
+  /** Residence state(s) - "select all that apply" for veterans with homes/rentals across
    *  states or who move seasonally. Stored as a list; a legacy single string is tolerated.
    *  Read via residenceStates()/primaryState() from lib/data. */
   state?: string | string[];
@@ -15,7 +15,7 @@ export interface Answers {
   sex?: string;
   raceEthnicity?: string[];
   branch?: string;
-  /** Military job — MOS (Army/Marines), rating (Navy), or AFSC (Air Force). Helps align
+  /** Military job - MOS (Army/Marines), rating (Navy), or AFSC (Air Force). Helps align
    *  civilian career matches and resources to skills the veteran already has. */
   mos?: string;
   serviceEra?: string;

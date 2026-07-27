@@ -58,13 +58,13 @@ function CheckRow({ it, status, onClick }: { it: ActionItem; status: Status; onC
   const next = status === "todo" ? "In progress" : status === "prog" ? "Completed" : "Not started";
   return (
     <div className={`check ${status === "done" ? "done" : ""}`}>
-      <button type="button" className={boxClass} onClick={onClick} aria-label={`${it.text} — status: ${label}. Click to mark as ${next}.`} title={`Status: ${label} — click to mark as ${next}`}>
+      <button type="button" className={boxClass} onClick={onClick} aria-label={`${it.text} - status: ${label}. Click to mark as ${next}.`} title={`Status: ${label} - click to mark as ${next}`}>
         {inner}
       </button>
       <div style={{ flex: 1 }}>
         <span className={`pill ${it.priority}`}>{it.priority} priority</span>
         <div className="txt" style={{ marginTop: 4 }}>{it.text}</div>
-        <span className="small muted">{label} — click the box to update</span>
+        <span className="small muted">{label} - click the box to update</span>
         <TaskDetail text={it.text} />
       </div>
     </div>

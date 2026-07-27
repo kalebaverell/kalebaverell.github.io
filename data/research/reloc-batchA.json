@@ -32,7 +32,7 @@
       "rpp": { "value": 99.484, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
       "fmr2br": { "value": 1658, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
       "unemployment": { "value": 4.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT122726000000003" },
-      "vamc": { "name": "No VAMC in the metro — outpatient clinics only (Jacksonville 1, Jacksonville 2, Jacksonville North VA Clinics). Nearest full VA medical center: Malcom Randall VAMC, Gainesville (VA North Florida/South Georgia Health Care System)", "source": "https://www.va.gov/north-florida-health-care/locations/jacksonville-1-va-clinic/" },
+      "vamc": { "name": "No VAMC in the metro - outpatient clinics only (Jacksonville 1, Jacksonville 2, Jacksonville North VA Clinics). Nearest full VA medical center: Malcom Randall VAMC, Gainesville (VA North Florida/South Georgia Health Care System)", "source": "https://www.va.gov/north-florida-health-care/locations/jacksonville-1-va-clinic/" },
       "notes": "Jacksonville, FL MSA / HUD Metro FMR Area. Confirms the dataset's CBOC-only characterization: Jacksonville hosts multi-specialty VA outpatient clinics; inpatient VAMCs for the system are in Gainesville and Lake City, FL."
     },
     {
@@ -48,7 +48,7 @@
       "rpp": { "value": 100.058, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
       "fmr2br": { "value": 1820, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
       "unemployment": { "value": 3.2, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT131206000000003" },
-      "vamc": { "name": "Joseph Maxwell Cleland Atlanta VA Medical Center (Decatur, GA — VA Atlanta Health Care System)", "source": "https://www.va.gov/atlanta-health-care/locations/joseph-maxwell-cleland-atlanta-va-medical-center/" },
+      "vamc": { "name": "Joseph Maxwell Cleland Atlanta VA Medical Center (Decatur, GA - VA Atlanta Health Care System)", "source": "https://www.va.gov/atlanta-health-care/locations/joseph-maxwell-cleland-atlanta-va-medical-center/" },
       "notes": "Atlanta-Sandy Springs-Roswell, GA MSA / HMFA."
     },
     {
@@ -64,7 +64,7 @@
       "rpp": { "value": 111.887, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
       "fmr2br": { "value": 3001, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
       "unemployment": { "value": 3.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT064174000000003" },
-      "vamc": { "name": "Jennifer Moreno Department of Veterans Affairs Medical Center (La Jolla — VA San Diego Healthcare System)", "source": "https://www.va.gov/san-diego-health-care/locations/jennifer-moreno-department-of-veterans-affairs-medical-center/" },
+      "vamc": { "name": "Jennifer Moreno Department of Veterans Affairs Medical Center (La Jolla - VA San Diego Healthcare System)", "source": "https://www.va.gov/san-diego-health-care/locations/jennifer-moreno-department-of-veterans-affairs-medical-center/" },
       "notes": "San Diego-Chula Vista-Carlsbad, CA MSA."
     },
     {
@@ -72,7 +72,7 @@
       "rpp": { "value": 105.782, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
       "fmr2br": { "value": 2089, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
       "unemployment": { "value": 3.6, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT081974000000003" },
-      "vamc": { "name": "Rocky Mountain Regional VA Medical Center (Aurora, CO — VA Eastern Colorado Health Care System)", "source": "https://www.va.gov/eastern-colorado-health-care/locations/rocky-mountain-regional-va-medical-center/" },
+      "vamc": { "name": "Rocky Mountain Regional VA Medical Center (Aurora, CO - VA Eastern Colorado Health Care System)", "source": "https://www.va.gov/eastern-colorado-health-care/locations/rocky-mountain-regional-va-medical-center/" },
       "notes": "Denver-Aurora-Centennial, CO MSA."
     },
     {

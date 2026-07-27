@@ -29,19 +29,19 @@ export default function NetworkHub() {
   return (
     <Wrap>
       <h2>Networking &amp; mentorship</h2>
-      <p className="muted" style={{ maxWidth: 640 }}>Most veteran jobs and first customers come through people, not portals. Start with one mentor call this week — the programs below are free.</p>
+      <p className="muted" style={{ maxWidth: 640 }}>Most veteran jobs and first customers come through people, not portals. Start with one mentor call this week - the programs below are free.</p>
       {career && (
         <div style={{ margin: "8px 0" }}>
           <Callout kind="info">Tailored to your destination: <strong>{career.label}</strong> ({TRACKS.find((t) => t.id === track)?.label} track). Change it in the Pathfinder anytime.</Callout>
         </div>
       )}
-      <Group title="Start here — free mentors" icon="ti-users-group" items={NETWORKING.general} />
+      <Group title="Start here - free mentors" icon="ti-users-group" items={NETWORKING.general} />
       {track && <Group title={`For your track: ${TRACKS.find((t) => t.id === track)?.label}`} icon="ti-target" items={NETWORKING.byTrack[track] || []} />}
       {!track && TRACKS.map((t) => <Group key={t.id} title={`${t.label} track`} icon={t.icon} items={NETWORKING.byTrack[t.id] || []} />)}
       <Group title="VA & local" icon="ti-building-community" items={NETWORKING.vaSpecific} />
       {s.answers.sex === "Female" && <Group title="Women veteran programs" icon="ti-heart-handshake" items={NETWORKING.targeted.women} />}
       {minority && <Group title="Minority veteran & business programs" icon="ti-heart-handshake" items={NETWORKING.targeted.minority} />}
-      <p className="small muted" style={{ marginTop: 16 }}>Sample list — programs change; verify each directly.</p>
+      <p className="small muted" style={{ marginTop: 16 }}>Sample list - programs change; verify each directly.</p>
       <Link className="btn ghost" href="/tools"><i className="ti ti-arrow-left" /> All tools</Link>
     </Wrap>
   );

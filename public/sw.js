@@ -1,13 +1,13 @@
-/* VetPath service worker — hardened, self-updating app-shell cache.
+/* VetPath service worker - hardened, self-updating app-shell cache.
 
    Why this shape: the built HTML lives at stable URLs ("/", "/pathfinder/", …) served with
    Cache-Control: max-age=600, while JS/CSS under /_next/static/ are content-hashed (immutable).
    A plain network-first worker still reads stale HTML from the HTTP cache for up to the TTL
-   after a deploy — the HTML then points at old asset hashes, so users saw the previous build
+   after a deploy - the HTML then points at old asset hashes, so users saw the previous build
    until a hard refresh. Fixes:
      - HTML / navigations: network-first with the HTTP cache BYPASSED (cache:"no-store"), so a
        fresh deploy is visible on the next load while online; cached shell is the offline fallback.
-     - /_next/static/ (hashed, immutable): cache-first — fast, and never stale (new build → new URL).
+     - /_next/static/ (hashed, immutable): cache-first - fast, and never stale (new build → new URL).
      - skipWaiting + clients.claim so a new worker takes over at once; the page reloads once on
        controllerchange (see the registration in app/layout.tsx) to pick up the new build.
    Bump VERSION on any change so the activate step purges older caches. */
@@ -42,7 +42,7 @@ self.addEventListener("fetch", (e) => {
   const url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== location.origin) return;
   // Media served via Range requests: Cache.put rejects 206s and a stitched reply breaks
-  // <video> decoding — let the browser fetch these natively.
+  // <video> decoding - let the browser fetch these natively.
   if (req.headers.has("range") || /\.(mp4|webm|mp3|m4a|ogg)$/i.test(url.pathname)) return;
 
   // Immutable, content-hashed build assets → cache-first (fast; a new build ships new URLs).

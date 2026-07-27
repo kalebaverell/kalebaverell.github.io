@@ -1,5 +1,5 @@
 "use client";
-// "Every number has a source" — the methodology & trust page.
+// "Every number has a source" - the methodology & trust page.
 // Counts are computed live from the actual data files, so this page can't drift from reality.
 import Link from "next/link";
 import { BENEFITS, CAREERS, STATE_BENEFITS, ASSESSMENT, BRAND } from "@/lib/data";
@@ -19,7 +19,7 @@ export default function TrustPage() {
       <p className="muted" style={{ maxWidth: 640, fontSize: "calc(var(--fs-body) + 1px)" }}>
         Veterans have been burned by tools that guess. {BRAND.name} is built the opposite way:
         content is verified against official sources, stamped with the date we checked it, and
-        linked so you can confirm it yourself — and our recommendation engines are deterministic
+        linked so you can confirm it yourself - and our recommendation engines are deterministic
         rules you can read, not a black box.
       </p>
 
@@ -44,7 +44,7 @@ export default function TrustPage() {
           </thead>
           <tbody>
             {[
-              ["State benefits (all 50 + DC)", "State departments of veterans affairs (.gov)", STATE_BENEFITS.lastVerified || "—", "Quarterly"],
+              ["State benefits (all 50 + DC)", "State departments of veterans affairs (.gov)", STATE_BENEFITS.lastVerified || "-", "Quarterly"],
               ["Federal benefits (11 categories)", "VA.gov · DOL VETS · SBA · Veterans Crisis Line", "Jul 2026", "Quarterly"],
               ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2024 medians)", "Jul 2026", "Annually (new BLS editions)"],
               ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", "Jul 2026", "Quarterly"],
@@ -66,10 +66,10 @@ export default function TrustPage() {
           {[
             ["ti-scale", "We never determine eligibility", "Only VA, your state agency, or an accredited VSO can. Every card links to the official source to confirm."],
             ["ti-heart-handshake", "Free accredited help comes first", "Accredited VSO and county service officers are free. We will never point you to paid claims help."],
-            ["ti-settings", "Explainable engines, not a black box", "Fit scores and benefit tiers come from deterministic rules built on your own answers — every recommendation shows its reasons."],
-            ["ti-lock", "Your data stays yours", "Browse anonymously and everything stays in your browser. Create an account and your plan is saved privately to it — encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
-            ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Stale dates are treated as bugs — a quarterly re-verification is part of the operating rhythm."],
-            ["ti-urgent", "Crisis support is always visible", "Veterans Crisis Line: dial 988, then press 1 — free, confidential, 24/7, on every page."],
+            ["ti-settings", "Explainable engines, not a black box", "Fit scores and benefit tiers come from deterministic rules built on your own answers - every recommendation shows its reasons."],
+            ["ti-lock", "Your data stays yours", "Browse anonymously and everything stays in your browser. Create an account and your plan is saved privately to it - encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
+            ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Stale dates are treated as bugs - a quarterly re-verification is part of the operating rhythm."],
+            ["ti-urgent", "Crisis support is always visible", "Veterans Crisis Line: dial 988, then press 1 - free, confidential, 24/7, on every page."],
           ].map(([icon, title, body]) => (
             <div key={title as string} className="card">
               <div className="iconwrap" style={{ marginBottom: 12 }}><i className={`ti ${icon}`} aria-hidden="true" /></div>
@@ -83,9 +83,9 @@ export default function TrustPage() {
       <div style={{ marginTop: 28 }}>
         <Callout kind="warn">
           <strong>What&apos;s still illustrative:</strong> relocation comparison tiers (the 1–5 ratings) are decision aids, not
-          cited rankings — though the cost, rent, jobs, and VA-facility datapoints beside them are official and linked.
+          cited rankings - though the cost, rent, jobs, and VA-facility datapoints beside them are official and linked.
           Fit percentages are demo estimates from your own answers. Pay figures change as BLS publishes new data.
-          {" "}{BRAND.name} is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.
+          {" "}{BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.
         </Callout>
       </div>
 

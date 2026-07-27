@@ -1,4 +1,4 @@
-// Funded Path — the stacked-benefits funnel for a matched trajectory. Reads top-to-bottom as a
+// Funded Path - the stacked-benefits funnel for a matched trajectory. Reads top-to-bottom as a
 // plain story: here's how you pay for the training (benefits that combine), then what the
 // destination job adds on top. Content + selection come from lib/funding (all sourced).
 import type { Answers, Career } from "@/lib/types";
@@ -7,9 +7,9 @@ import { buildFundedPath, FUNDING_VERIFIED, type FundingProgram } from "@/lib/fu
 // Color-code each program by where the money comes from, so a veteran can scan public vs.
 // scholarship vs. employer at a glance.
 function typeColor(type: string): string {
-  if (/scholarship/i.test(type)) return "var(--accent-ink)"; // gold — scholarships
-  if (/employer/i.test(type)) return "var(--success)";       // green — private employers
-  return "var(--primary)";                                    // navy — federal / government
+  if (/scholarship/i.test(type)) return "var(--accent-ink)"; // gold - scholarships
+  if (/employer/i.test(type)) return "var(--success)";       // green - private employers
+  return "var(--primary)";                                    // navy - federal / government
 }
 
 function Item({ p }: { p: FundingProgram }) {
@@ -63,7 +63,7 @@ export default function FundedPath({ a, career }: { a: Answers; career?: Career 
         <div>
           <h3 style={{ margin: 0 }}>Your funded path</h3>
           <p className="small muted" style={{ margin: "2px 0 0" }}>
-            How to pay for {dest ? <strong>{dest}</strong> : "your path"} — and what the job adds on top.
+            How to pay for {dest ? <strong>{dest}</strong> : "your path"} - and what the job adds on top.
           </p>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function FundedPath({ a, career }: { a: Answers; career?: Career 
       <Layer n={2} icon="ti-briefcase" title="Then land the job" hint="Money your destination adds on top." items={careerLayer} />
 
       <p className="small muted" style={{ marginTop: 16 }}>
-        Verified {FUNDING_VERIFIED}. Amounts and eligibility vary and change — confirm each program at its official source. {"VetPath"} doesn&apos;t determine eligibility.
+        Verified {FUNDING_VERIFIED}. Amounts and eligibility vary and change - confirm each program at its official source. {"VetPath"} doesn&apos;t determine eligibility.
       </p>
     </div>
   );

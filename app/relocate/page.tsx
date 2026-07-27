@@ -1,5 +1,5 @@
 "use client";
-// Relocation Planner — compare places to live across what veterans actually weigh,
+// Relocation Planner - compare places to live across what veterans actually weigh,
 // scored by THEIR priorities and (optionally) their chosen path. SAMPLE data only.
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -26,7 +26,7 @@ const DEFAULT_PRIORITIES: RelocPriorities = {
 const PRIORITY_OPTIONS: Priority[] = [0, 1, 2];
 
 function vaLocatorUrl(m: Metro): string {
-  if (!m.state || m.state === "—") return "https://www.va.gov/find-locations";
+  if (!m.state || m.state === "-") return "https://www.va.gov/find-locations";
   return `https://www.va.gov/find-locations/?address=${encodeURIComponent(`${m.name}, ${m.state}`)}`;
 }
 
@@ -39,7 +39,7 @@ function OfficialFacts({ m }: { m: Metro }) {
   if (!o) return null;
   const fact = (label: string, p: OfficialPoint, fmt: (v: number | string) => string) =>
     p ? (
-      <a key={label} className="tag" href={p.source} target="_blank" rel="noopener noreferrer" title={`${label} — official source`} style={{ textDecoration: "none" }}>
+      <a key={label} className="tag" href={p.source} target="_blank" rel="noopener noreferrer" title={`${label} - official source`} style={{ textDecoration: "none" }}>
         {label}: {fmt(p.value)} {(p.year || p.asOf) ? `(${p.year || p.asOf})` : ""}
       </a>
     ) : null;
@@ -50,7 +50,7 @@ function OfficialFacts({ m }: { m: Metro }) {
       {fact("2BR rent", o.fmr2br ?? null, (v) => (typeof v === "number" ? `$${v.toLocaleString()}` : String(v)))}
       {fact("Unemployment", o.unemployment ?? null, (v) => `${v}%`)}
       {o.vamc && (
-        <a className="tag" href={o.vamc.source} target="_blank" rel="noopener noreferrer" title="VA facility — official source" style={{ textDecoration: "none" }}>
+        <a className="tag" href={o.vamc.source} target="_blank" rel="noopener noreferrer" title="VA facility - official source" style={{ textDecoration: "none" }}>
           {o.vamc.name}
         </a>
       )}
@@ -70,11 +70,11 @@ function VaChip({ m }: { m: Metro }) {
 }
 
 function StateBenefitsTeaser({ m }: { m: Metro }) {
-  const info = realStateInfo(m.state !== "—" ? m.state : undefined);
+  const info = realStateInfo(m.state !== "-" ? m.state : undefined);
   if (!info) {
     return (
       <p className="small muted" style={{ margin: "10px 0 0" }}>
-        State benefits follow the state you pick — once you narrow it down, the{" "}
+        State benefits follow the state you pick - once you narrow it down, the{" "}
         <Link href="/benefits">Benefits page</Link> has the verified list per state.
       </p>
     );
@@ -84,7 +84,7 @@ function StateBenefitsTeaser({ m }: { m: Metro }) {
     <p className="small muted" style={{ margin: "10px 0 0" }}>
       <i className="ti ti-map-pin" aria-hidden="true" />{" "}
       <strong>{stateName(m.state)} benefits:</strong> {info.agency.name}
-      {flagship ? <> — e.g., {flagship.name}</> : null}. See the{" "}
+      {flagship ? <> - e.g., {flagship.name}</> : null}. See the{" "}
       <Link href="/benefits">Benefits page</Link> for the verified list.
     </p>
   );
@@ -106,7 +106,7 @@ function MetroCard({
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
         <div>
           <h3 style={{ margin: 0 }}>
-            {rank}. {m.name}{m.state !== "—" ? `, ${m.state}` : ""}
+            {rank}. {m.name}{m.state !== "-" ? `, ${m.state}` : ""}
           </h3>
           <div className="small muted">{m.colNote}</div>
         </div>
@@ -197,11 +197,11 @@ export default function RelocatePage() {
       <SectionHead
         eyebrow="Relocation planner"
         title="Where should the next chapter happen?"
-        sub="Tell us what matters — VA access, cost, your career path, schools, community — and compare places side by side, with each state's real benefits attached."
+        sub="Tell us what matters - VA access, cost, your career path, schools, community - and compare places side by side, with each state's real benefits attached."
       />
 
       <Callout kind="warn">
-        <strong>Sample decision-support data.</strong> These ratings exist for comparison only — tiers are
+        <strong>Sample decision-support data.</strong> These ratings exist for comparison only - tiers are
         illustrative, not rankings from a cited index. Always verify VA facilities at{" "}
         <a href="https://www.va.gov/find-locations" target="_blank" rel="noopener noreferrer">va.gov/find-locations</a>{" "}
         and check housing, schools, safety, and the job market independently before any move.
@@ -209,10 +209,10 @@ export default function RelocatePage() {
 
       {/* ---- Step 1: priorities ---- */}
       <div style={{ marginTop: 28 }}>
-        <h3><i className="ti ti-adjustments" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 1 — what matters to you?</h3>
+        <h3><i className="ti ti-adjustments" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 1 - what matters to you?</h3>
         <p className="muted" style={{ maxWidth: 640, marginTop: 4 }}>
           Mark each factor <strong>Skip</strong>, <strong>Nice to have</strong>, or <strong>Must have</strong>.
-          Must-haves count double. There are no wrong answers — this is your move.
+          Must-haves count double. There are no wrong answers - this is your move.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: 14, marginTop: 14 }}>
           {RELOC_DIMS.map((d) => (
@@ -239,18 +239,18 @@ export default function RelocatePage() {
         </div>
         {nothingSelected && (
           <p className="small muted" style={{ marginTop: 10 }}>
-            Everything is set to skip — we&apos;ll weigh all factors evenly until you choose.
+            Everything is set to skip - we&apos;ll weigh all factors evenly until you choose.
           </p>
         )}
       </div>
 
       {/* ---- Step 2: profile toggle ---- */}
       <div className="card" style={{ marginTop: 22 }}>
-        <h3><i className="ti ti-user-check" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 2 — use your profile &amp; path? (optional)</h3>
+        <h3><i className="ti ti-user-check" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 2 - use your profile &amp; path? (optional)</h3>
         <p className="muted" style={{ maxWidth: 640, marginTop: 4 }}>
           If you turn this on, we boost metros that are strong for your chosen career path
           {career ? <> (<strong>{career.label}</strong>)</> : null}, and if your rating or health priorities
-          suggest VA care matters, we&apos;ll add a gentle reminder about VA access — never a filter, never a rule.
+          suggest VA care matters, we&apos;ll add a gentle reminder about VA access - never a filter, never a rule.
         </p>
         <label className={`chip selectable${useProfile ? " selected" : ""}`} style={{ position: "relative", minHeight: "var(--tap)" }}>
           <input
@@ -263,7 +263,7 @@ export default function RelocatePage() {
         </label>
         {useProfile && !hasProfileSignal && (
           <p className="small muted" style={{ marginTop: 10 }}>
-            No saved path or rating yet — that&apos;s fine, your priorities above still drive everything.
+            No saved path or rating yet - that&apos;s fine, your priorities above still drive everything.
             Want tailored job boosts? Find your path in the <Link href="/pathfinder">Pathfinder</Link> first.
           </p>
         )}
@@ -322,7 +322,7 @@ export default function RelocatePage() {
                   </th>
                   {compareMetroList.map((m) => (
                     <th key={m.id} scope="col" style={{ textAlign: "left", padding: "14px 18px", borderBottom: "2px solid var(--border)", color: "var(--ink-strong)" }}>
-                      {m.name}{m.state !== "—" ? `, ${m.state}` : ""}
+                      {m.name}{m.state !== "-" ? `, ${m.state}` : ""}
                       <div style={{ marginTop: 4 }}>
                         <a href={vaLocatorUrl(m)} target="_blank" rel="noopener noreferrer" className="small" style={{ fontWeight: 400 }}>
                           VA locator <i className="ti ti-external-link" style={{ fontSize: 12 }} aria-hidden="true" />
@@ -356,7 +356,7 @@ export default function RelocatePage() {
       )}
 
       <p className="small muted" style={{ marginTop: 26 }}>
-        Sample list of {METROS.length} illustrative places — real decisions need a visit, current listings,
+        Sample list of {METROS.length} illustrative places - real decisions need a visit, current listings,
         and a conversation with veterans who already live there. VetPath is not the VA.
       </p>
       <Link className="btn ghost" href="/tools"><i className="ti ti-arrow-left" aria-hidden="true" /> All tools</Link>

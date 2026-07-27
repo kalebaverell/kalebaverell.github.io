@@ -64,7 +64,7 @@ export default function Dashboard() {
           <div className="iconwrap"><i className="ti ti-compass" aria-hidden="true" /></div>
           <div style={{ flex: 1, minWidth: 220 }}>
             <h3 style={{ margin: 0 }}>Your plan needs a destination</h3>
-            <p className="small muted" style={{ margin: "2px 0 0" }}>Run the Pathfinder — 10 questions, a recommended career path with a % fit, and this whole plan re-routes around it.</p>
+            <p className="small muted" style={{ margin: "2px 0 0" }}>Run the Pathfinder - 10 questions, a recommended career path with a % fit, and this whole plan re-routes around it.</p>
           </div>
           <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Find my path</Link>
         </div>
@@ -111,7 +111,7 @@ export default function Dashboard() {
       {a.priorityWeights && Object.keys(a.priorityWeights).length > 0 && (
         <div className="card" style={{ marginTop: 16 }}>
           <h3><i className="ti ti-adjustments-horizontal" style={{ color: "var(--accent-ink)" }} /> What matters most to you</h3>
-          <p className="muted small">You weighted these — your recommended path and plan lean toward the ones at the top.</p>
+          <p className="muted small">You weighted these - your recommended path and plan lean toward the ones at the top.</p>
           <div style={{ display: "grid", gap: 8, marginTop: 10 }}>
             {rankedPriorities(a).map((d) => (
               <div key={d.key} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -143,15 +143,15 @@ export default function Dashboard() {
           {gp.skillBridge && (
             <div className="card">
               <h3><i className="ti ti-bridge" style={{ color: "var(--accent-ink)" }} /> SkillBridge window</h3>
-              <p className="small" style={{ margin: "6px 0 0" }}>Still in service? DoD SkillBridge lets you intern with a civilian employer during your <strong>last 180 days on military pay</strong>. Big career shifts get much easier with civilian experience already on your resume — ask your command early; slots take approval time.</p>
+              <p className="small" style={{ margin: "6px 0 0" }}>Still in service? DoD SkillBridge lets you intern with a civilian employer during your <strong>last 180 days on military pay</strong>. Big career shifts get much easier with civilian experience already on your resume - ask your command early; slots take approval time.</p>
               <a className="btn ghost sm" style={{ marginTop: 10 }} href="https://skillbridge.osd.mil" target="_blank" rel="noopener noreferrer">SkillBridge program <i className="ti ti-external-link" /></a>
             </div>
           )}
           {gp.disabilityPrep && gp.disabilityPrep.length > 0 && (
             <div className="card">
-              <h3><i className="ti ti-clipboard-heart" style={{ color: "var(--accent-ink)" }} /> Get your full disability benefit — the honest way</h3>
+              <h3><i className="ti ti-clipboard-heart" style={{ color: "var(--accent-ink)" }} /> Get your full disability benefit - the honest way</h3>
               <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{gp.disabilityPrep.map((d, i) => <li key={i} className="small" style={{ marginBottom: 5 }}>{d}</li>)}</ul>
-              <p className="small muted" style={{ margin: "8px 0 0" }}>Education only — an accredited VSO's help is free and beats anyone charging for claims.</p>
+              <p className="small muted" style={{ margin: "8px 0 0" }}>Education only - an accredited VSO's help is free and beats anyone charging for claims.</p>
             </div>
           )}
         </div>
@@ -176,7 +176,7 @@ export default function Dashboard() {
               <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{gp.locationTips.slice(0, 2).map((t, i) => <li key={i} className="small" style={{ marginBottom: 5 }}>{t}</li>)}</ul>
               {gp.metroSuggestions && gp.metroSuggestions.length > 0 && (
                 <div style={{ marginTop: 8 }}>
-                  {gp.metroSuggestions.map((m) => <span key={m.name} className="tag">{m.name}{m.state !== "—" ? `, ${m.state}` : ""}</span>)}
+                  {gp.metroSuggestions.map((m) => <span key={m.name} className="tag">{m.name}{m.state !== "-" ? `, ${m.state}` : ""}</span>)}
                 </div>
               )}
               <p className="small muted" style={{ margin: "8px 0 0" }}>Verify at the <a href="https://www.va.gov/find-locations/" target="_blank" rel="noopener noreferrer">VA facility locator</a>.</p>
@@ -188,7 +188,7 @@ export default function Dashboard() {
       {gp.decisions && gp.decisions.length > 0 && (
         <div className="card feature" style={{ marginTop: 16 }}>
           <h3><i className="ti ti-scale" style={{ color: "var(--accent-ink)" }} /> Decisions to make</h3>
-          <p className="muted small">A plan isn&apos;t just tasks — these are the calls to make (together, where it&apos;s a household decision).</p>
+          <p className="muted small">A plan isn&apos;t just tasks - these are the calls to make (together, where it&apos;s a household decision).</p>
           <ol className="steps" style={{ marginTop: 8 }}>{gp.decisions.map((d, i) => <li key={i}>{d}</li>)}</ol>
           {gp.familyCheckpoints && gp.familyCheckpoints.length > 0 && (
             <p className="small" style={{ marginTop: 12 }}>
@@ -222,11 +222,11 @@ export default function Dashboard() {
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 16 }}>
         <Link href="/updates" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
           <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-refresh" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Life changed?</h4>
-          <span className="muted small">Moved, new rating, new child, career change — see exactly how your plan adapts before you commit.</span>
+          <span className="muted small">Moved, new rating, new child, career change - see exactly how your plan adapts before you commit.</span>
         </Link>
         <Link href="/family" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
           <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-users" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Plan as a household</h4>
-          <span className="muted small">Spouse, kids, caregiver — checkpoints and decisions the whole family should see.</span>
+          <span className="muted small">Spouse, kids, caregiver - checkpoints and decisions the whole family should see.</span>
         </Link>
         <Link href="/relocate" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
           <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-map-2" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Where should we live?</h4>

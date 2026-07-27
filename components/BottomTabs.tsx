@@ -1,5 +1,5 @@
 "use client";
-// App-style bottom tab bar (mobile only, ≤920px) — the five primary destinations.
+// App-style bottom tab bar (mobile only, ≤920px) - the five primary destinations.
 // Everything else stays reachable via the hamburger menu.
 import { useEffect } from "react";
 import Link from "next/link";

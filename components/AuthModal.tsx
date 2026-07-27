@@ -1,6 +1,6 @@
 "use client";
 // Sign-in / create-account modal. Passwords are handled by Supabase Auth
-// (hashed server-side) — never stored by us. Opened via the auth context.
+// (hashed server-side) - never stored by us. Opened via the auth context.
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
@@ -121,7 +121,7 @@ export default function AuthModal() {
           </p>
 
           <p className="small" style={{ textAlign: "center", margin: "14px 0 0", color: "var(--faint)", lineHeight: 1.6 }}>
-            Your password is secured by our auth provider — we never see or store it.{" "}
+            Your password is secured by our auth provider - we never see or store it.{" "}
             <Link href="/privacy" onClick={closeAuth}>Privacy &amp; data</Link>.
           </p>
         </div>

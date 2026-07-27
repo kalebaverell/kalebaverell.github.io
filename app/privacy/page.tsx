@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 export const metadata = {
-  title: "Privacy & data — VetPath",
+  title: "Privacy & data - VetPath",
   description: "What VetPath stores, why, how it's protected, and how to delete it.",
 };
 
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
       <Section title="How it's protected">
         Account data lives in a managed Postgres database (Supabase), encrypted at rest. Access is
         governed by <strong>row-level security</strong>, meaning your row can only be read or changed by
-        you when signed in — no other user can see it. We do not sell your data or share it with
+        you when signed in - no other user can see it. We do not sell your data or share it with
         advertisers.
       </Section>
 
@@ -65,14 +65,14 @@ export default function PrivacyPage() {
       </Section>
 
       <Section title="Deleting your data">
-        You can delete your saved plan and profile from your account at any time — this removes your row
+        You can delete your saved plan and profile from your account at any time - this removes your row
         from our database. To also fully remove your login record, email us and we&apos;ll purge it.
         We&apos;ll add one-click full deletion before public launch.
       </Section>
 
       <Section title="Crisis support">
         VetPath can&apos;t provide emergency help. If you&apos;re in crisis, call or text{" "}
-        <strong>988 and press 1</strong> for the Veterans Crisis Line — free, confidential, 24/7.
+        <strong>988 and press 1</strong> for the Veterans Crisis Line - free, confidential, 24/7.
       </Section>
 
       <Section title="Questions">

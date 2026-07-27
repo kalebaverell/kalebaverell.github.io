@@ -40,7 +40,7 @@ function MissionMedia() {
 }
 
 /* Hero backdrop: a smooth crossfading slideshow of public-domain veteran-transition
-   imagery under a navy scrim — spanning mentorship, interview prep, networking, trade
+   imagery under a navy scrim - spanning mentorship, interview prep, networking, trade
    training, and planning. See public/img/CREDITS.md for sourcing (all DVIDS, public domain). */
 const HERO_SLIDES: { src: string; alt: string }[] = [
   { src: "/img/transition-summit-mentors.jpg", alt: "Volunteer mentors walk a transitioning soldier through her resume at a veterans summit" },
@@ -158,7 +158,7 @@ export default function Landing() {
               Stop hearing the same brief. Leave with <span className="accent-word">your</span> gameplan.
             </h1>
             <p className="hero-sub">
-              {BRAND.name} turns your goals, family, and service into one adaptive gameplan — the path, the benefits, the place to land, and what to do this week.
+              {BRAND.name} turns your goals, family, and service into one adaptive gameplan: the path, the benefits, the place to land, and what to do this week.
             </p>
             <div className="hero-cta">
               <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
@@ -168,7 +168,7 @@ export default function Landing() {
             </div>
             <div className="hero-trust">
               <span className="t"><i className="ti ti-shield-check" /> Built with and for veterans</span>
-              <span className="t"><i className="ti ti-lock" /> Private — nothing shared</span>
+              <span className="t"><i className="ti ti-lock" /> Private, nothing shared</span>
               <span className="t"><i className="ti ti-circle-check" /> Points you to official sources</span>
             </div>
           </div>
@@ -199,9 +199,9 @@ export default function Landing() {
         <div className="index-list">
           {([
             ["ti-plane-departure", "Transitioning out", "Separating soon and need benefits enrolled, a job or school lined up, and nothing left behind before your last day."],
-            ["ti-briefcase", "Building a career", "Ready for a better job, a degree, a trade, or a business — and the veteran benefits that fund the move."],
-            ["ti-clipboard-heart", "Navigating disability", "Understand the process, apply for the benefit you've earned, and get free accredited help — no guesswork."],
-            ["ti-beach", "Retiring or organizing", "Plan the next chapter — pay, survivor protection, healthcare, and every document in one secure place."],
+            ["ti-briefcase", "Building a career", "Ready for a better job, a degree, a trade, or a business, with the veteran benefits that fund the move."],
+            ["ti-clipboard-heart", "Navigating disability", "Understand the process, apply for the benefit you've earned, and get free accredited help. No guesswork."],
+            ["ti-beach", "Retiring or organizing", "Plan the next chapter: pay, survivor protection, healthcare, and every document in one secure place."],
           ] as const).map(([icon, title, body], i) => (
             <div className="index-row" key={title} data-reveal={i * 70}>
               <span className="idx">{String(i + 1).padStart(2, "0")}</span>
@@ -219,7 +219,7 @@ export default function Landing() {
           />
           <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))" }}>
             {[
-              ["ti-messages", "Tell us your story", "Age, state, service, goals — in the boxes or in your own words."],
+              ["ti-messages", "Tell us your story", "Age, state, service, goals. In the boxes or in your own words."],
               ["ti-compass", "Find your path", "The Pathfinder recommends a best-fit direction with a clear % fit and the reasoning behind it."],
               ["ti-map-2", "Get your gameplan", "Prioritized benefits and a 30/60/90-day action plan, all pointed at your destination."],
               ["ti-circle-check", "Act & verify", "Check off steps, gather documents, and confirm each one at VA.gov or an accredited VSO."],
@@ -238,13 +238,13 @@ export default function Landing() {
           <SectionHead
             eyebrow="See it work"
             title="Watch a plan build itself"
-            sub="From a veteran's answers to a recommended path to a living 30/60/90 plan — this is the engine, not a mockup."
+            sub="From a veteran's answers to a recommended path to a living 30/60/90 plan. This is the engine, not a mockup."
           />
           <PlanDemo />
         </div>
       </Wrap>
 
-      {/* Mission band — real transition-assistance footage (public domain; see /video/CREDITS.md).
+      {/* Mission band - real transition-assistance footage (public domain; see /video/CREDITS.md).
           Video for most users; the still photo for reduced-motion users. */}
       <section className="mission-band grain">
         <MissionMedia />
@@ -253,7 +253,7 @@ export default function Landing() {
           <Eyebrow onDark>On the ground</Eyebrow>
           <h2>Nobody figures this out alone.</h2>
           <p className="band-sub">
-            Across the country, mentors sit down with transitioning service members — one resume, one plan at a time. {BRAND.name} brings that same one-on-one clarity to your kitchen table.
+            Across the country, mentors sit down with transitioning service members - one resume, one plan at a time. {BRAND.name} brings that same one-on-one clarity to your kitchen table.
           </p>
         </div>
         <span className="credit">U.S. Army footage, Fort Bliss SFL-TAP · public domain</span>

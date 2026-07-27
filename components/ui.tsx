@@ -71,7 +71,7 @@ export function Pill({ priority }: { priority: "high" | "medium" | "low" }) {
   return <span className={`pill ${priority}`}>{priority}</span>;
 }
 
-/** Quiet corner line-art for index cards — same compass/route/waypoint family as the hero. */
+/** Quiet corner line-art for index cards - same compass/route/waypoint family as the hero. */
 export function CardArt({ kind }: { kind: "compass" | "doc" | "layers" | "nodes" }) {
   return (
     <svg className="card-art" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">

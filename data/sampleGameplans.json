@@ -1,14 +1,14 @@
 {
-  "_note": "SAMPLE / DEMO DATA — for prototype only. Pre-built example gameplans used to showcase output and as a fallback. The live app generates a similar plan from a user's intake answers. Not official VA guidance.",
+  "_note": "SAMPLE / DEMO DATA - for prototype only. Pre-built example gameplans used to showcase output and as a fallback. The live app generates a similar plan from a user's intake answers. Not official VA guidance.",
   "examples": [
     {
       "id": "transitioning-army-tx",
-      "persona": "Transitioning — Army, Texas, age 25–34",
+      "persona": "Transitioning - Army, Texas, age 25–34",
       "headline": "Land softly: benefits enrolled, a job pipeline, and nothing left behind.",
       "priorities": [
         "Lock in VA health care and a disability claim before you separate",
         "Build a civilian job pipeline now, not after your last day",
-        "Decide education vs. work — and use the right benefit for it"
+        "Decide education vs. work - and use the right benefit for it"
       ],
       "benefitCategories": ["va-healthcare", "va-disability", "employment", "gi-bill", "state-benefits"],
       "plan30": [
@@ -24,7 +24,7 @@
       "plan90": [
         { "text": "Have 3–5 job leads or an enrollment plan in motion", "priority": "high" },
         { "text": "Meet a free accredited VSO to review your claim", "priority": "medium" },
-        { "text": "Check Texas benefits (Hazlewood, property tax) — verify with the state", "priority": "low" }
+        { "text": "Check Texas benefits (Hazlewood, property tax) - verify with the state", "priority": "low" }
       ],
       "longTerm": [
         "Use the VA home loan when you're ready to buy",
@@ -41,7 +41,7 @@
     },
     {
       "id": "retiring-navy-fl",
-      "persona": "Retiring — Navy, Florida, age 55–64",
+      "persona": "Retiring - Navy, Florida, age 55–64",
       "headline": "Secure the next chapter: pay, protection, healthcare, and purpose.",
       "priorities": [
         "Confirm retirement pay and Survivor Benefit Plan elections",
@@ -58,7 +58,7 @@
         { "text": "Update beneficiaries and estate documents", "priority": "medium" }
       ],
       "plan90": [
-        { "text": "Check Florida veteran property-tax exemptions — verify with the state", "priority": "medium" },
+        { "text": "Check Florida veteran property-tax exemptions - verify with the state", "priority": "medium" },
         { "text": "Plan community and purpose for the next chapter", "priority": "low" }
       ],
       "longTerm": [

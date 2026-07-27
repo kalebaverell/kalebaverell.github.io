@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ============================================================
-   VetPath design system — "Trust & Authority"
+   VetPath design system - "Trust & Authority"
    Serif display + refined navy/gold + layered depth.
    Theme: [data-theme=warm|civic] · Text size: [data-textsize=lg|xl]
    ============================================================ */
@@ -36,7 +36,7 @@
   --chip-bg:#E7EAED; --chip-ink:#3A4249; --hero-glow:rgba(85,112,138,.18);
 }
 
-/* Text-size system — user-adjustable via the "Aa" control (persisted). */
+/* Text-size system - user-adjustable via the "Aa" control (persisted). */
 :root {
   --fs-body:17px; --fs-small:14px; --fs-h1:44px; --fs-h2:30px; --fs-h3:20px; --fs-h4:16px;
   --fs-btn:16px; --tap:48px;
@@ -59,7 +59,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoratio
 h1 { text-wrap: balance; letter-spacing: -.018em; overflow-wrap: break-word; }
 h2 { text-wrap: balance; overflow-wrap: break-word; }
 p { text-wrap: pretty; }
-/* text-wrap:balance can keep a long word on an overflowing line on narrow screens —
+/* text-wrap:balance can keep a long word on an overflowing line on narrow screens -
    fall back to normal wrapping on small viewports so nothing clips. */
 @media (max-width: 640px) { h1, h2 { text-wrap: normal; } }
 .eyebrow { position: relative; }
@@ -69,14 +69,14 @@ h1, h2 { margin: 0 0 .35em; font-family: var(--font-display); font-optical-sizin
 h3, h4 { margin: 0 0 .4em; font-family: var(--font-sans); font-weight: 600; color: var(--ink-strong); line-height: 1.3; letter-spacing: -.005em; }
 h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); } h4 { font-size: var(--fs-h4); }
 
-/* Eyebrow / kicker — the hallmark of premium marketing pages */
+/* Eyebrow / kicker - the hallmark of premium marketing pages */
 .eyebrow { display:inline-flex; align-items:baseline; gap:10px; font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--accent-ink); margin:0 0 16px; }
-.eyebrow::before { content:"—"; color:var(--accent); font-weight:400; letter-spacing:0; }
+.eyebrow::before { content:""; width:18px; height:2px; border-radius:2px; background:var(--accent); align-self:center; }
 .eyebrow.on-dark { color:#E8C79A; }
-.eyebrow.on-dark::before { color:var(--accent); }
+.eyebrow.on-dark::before { background:var(--accent); }
 
 /* ---- Editorial layer (human-made design language) ---- */
-/* Numbered "contents" index — replaces symmetric card grids where the content is a set of entries. */
+/* Numbered "contents" index - replaces symmetric card grids where the content is a set of entries. */
 .index-list { margin-top:14px; }
 .index-row { display:grid; grid-template-columns:52px minmax(150px,215px) 1fr; gap:26px; align-items:baseline; padding:26px 4px; border-top:1px solid var(--border); }
 .index-row:last-child { border-bottom:1px solid var(--border); }
@@ -89,7 +89,7 @@ h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: 
   .index-row { grid-template-columns:38px 1fr; gap:8px 16px; padding:20px 2px; }
   .index-row .desc { grid-column:1 / -1; }
 }
-/* Subtle print-like grain for dark sections — static, reduced-motion safe. */
+/* Subtle print-like grain for dark sections - static, reduced-motion safe. */
 .grain::after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.055;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
@@ -225,7 +225,7 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
    fallback; under prefers-reduced-motion only the first (already-visible) still is shown. */
 .hero-slideshow { position:absolute; inset:0; z-index:0; overflow:hidden; }
 /* Crossfade + Ken Burns via TRANSITIONS (not a keyframe animation): a keyframe only runs
-   while .active, so dropping the class snapped transform back a whole frame — a visible pop.
+   while .active, so dropping the class snapped transform back a whole frame - a visible pop.
    Transitions interpolate both directions smoothly. Stacking: other=0, prev=1 (kept opaque
    underneath so the crossfade has no midpoint gap), active=2 (fades in on top). */
 .hero-slide { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center 34%;
@@ -233,7 +233,7 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
   transition:opacity 1.6s ease-in-out; will-change:opacity, transform; }
 .hero-slide.prev { opacity:1; z-index:1; transform:scale(1.075); }
 /* Ken Burns runs as an ANIMATION (not a transition) so it also fires on the very first
-   slide — transitions don't run on initial mount, which left the opening slide un-zoomed.
+   slide - transitions don't run on initial mount, which left the opening slide un-zoomed.
    The 5.2s duration matches the slide interval and ends at the same scale .prev holds, so
    the hand-off has no snap; the opacity crossfade above stays a smooth transition. */
 .hero-slide.active { opacity:1; z-index:2; animation:hero-ken 5.2s ease-out forwards; }
@@ -271,7 +271,7 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .route-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 .route-svg .march { stroke-dasharray:8 9; animation:march 3.4s linear infinite; }
 .route-svg .pulse { transform-origin:center; transform-box:fill-box; animation:pulse-dot 2.4s ease-in-out infinite; }
-/* Scroll reveals — hidden state only applies once JS confirms it's running */
+/* Scroll reveals - hidden state only applies once JS confirms it's running */
 html.js [data-reveal] { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
 html.js [data-reveal].in { opacity:1; transform:none; }
 .btn i.ti-arrow-right, .btn i.ti-compass { transition:transform .18s ease; }
@@ -298,14 +298,14 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   .mission-band .scrim { background:color-mix(in srgb, var(--primary-900) 78%, transparent); }
 }
 
-/* Split intro (text + photo) — stacks on mobile */
+/* Split intro (text + photo) - stacks on mobile */
 .intro-split { display:grid; grid-template-columns:1.08fr .92fr; gap:40px; align-items:center; }
 @media (max-width: 860px) { .intro-split { grid-template-columns:1fr; gap:22px; } }
 .photo-frame { position:relative; margin:0; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--hairline); box-shadow:var(--shadow-md); background:var(--surface-2); }
 .photo-frame img { display:block; width:100%; height:auto; }
 .photo-frame .photo-cap { position:absolute; left:0; right:0; bottom:0; padding:30px 16px 12px; background:linear-gradient(180deg, transparent, rgba(11,27,43,.85)); color:#fff; font-size:12.5px; line-height:1.5; }
 
-/* Corner line-art on index cards — quiet compass/route family motifs */
+/* Corner line-art on index cards - quiet compass/route family motifs */
 .card-art { position:absolute; top:-8px; right:-10px; width:120px; height:120px; color:var(--primary); opacity:.08; pointer-events:none; }
 
 /* Trust strip below hero */
@@ -342,13 +342,13 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   body.has-tabbar footer { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
 
-/* Mobile navigation — collapses the 4-item marketing nav into a hamburger menu.
-   (The denser signed-in "app" nav collapses earlier — see the .nav--app block below.) */
+/* Mobile navigation - collapses the 4-item marketing nav into a hamburger menu.
+   (The denser signed-in "app" nav collapses earlier - see the .nav--app block below.) */
 @media (max-width: 920px) {
   .nav-inner { flex-wrap:nowrap; position:relative; padding:0 15px; gap:10px; }
   .nav-user { display:none; }
   /* The auto-margin lives on the hamburger (first item of the right group) so the whole
-     group — hamburger then Sign in — is pushed right together and both fit. Sign in stays
+     group - hamburger then Sign in - is pushed right together and both fit. Sign in stays
      rightmost. Aa text-size is desktop-only on mobile (browser/OS zoom covers it) to make room. */
   .nav-aa { display:none; }
   .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); cursor:pointer; font-size:23px; transition:background .15s ease; }
@@ -363,7 +363,7 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 }
 
 /* The signed-in app nav carries 7 tabs plus the account controls, so it collapses to the
-   hamburger earlier (≤1200px) than the 4-item marketing nav — otherwise those 7 tabs +
+   hamburger earlier (≤1200px) than the 4-item marketing nav - otherwise those 7 tabs +
    name + Sign out would overflow a single row on mid-size laptops. */
 @media (min-width: 921px) and (max-width: 1200px) {
   .nav--app .nav-inner { position:relative; }

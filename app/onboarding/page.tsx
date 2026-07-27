@@ -31,16 +31,16 @@ function AccountGate({ onStart }: { onStart: () => void }) {
         <i className="ti ti-arrow-left" /> Home
       </Link>
       <h2>Create your free account</h2>
-      <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in — on your phone or your computer.</p>
+      <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in, on your phone or your computer.</p>
       <div className="card">
         <button className="btn block gold" onClick={onStart}><i className="ti ti-user-plus" /> Create account or sign in</button>
-        <ul style={{ margin: "16px 0 0", paddingLeft: 18, display: "grid", gap: 6 }}>
+        <ul style={{ margin: "16px auto 0", padding: 0, listStyle: "none", display: "grid", gap: 8, textAlign: "center", maxWidth: 340 }}>
           <li className="small">Save your plan and pick up right where you left off.</li>
           <li className="small">Sync across every device you use.</li>
-          <li className="small">Private and encrypted — we never sell your data.</li>
+          <li className="small">Private and encrypted, we never sell your data.</li>
         </ul>
-        <p className="small muted" style={{ margin: "14px 0 0" }}>
-          <i className="ti ti-lock" /> We never see or store your password — sign-in is handled securely.
+        <p className="small muted" style={{ margin: "14px auto 0", textAlign: "center", maxWidth: 340 }}>
+          <i className="ti ti-lock" /> We never see or store your password. Sign-in is handled securely.
         </p>
       </div>
     </Wrap>
@@ -56,7 +56,7 @@ function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void })
         <i className="ti ti-arrow-left" /> Home
       </Link>
       <h2>Create your demo profile</h2>
-      <p className="muted">Start planning right away — no account needed. Want it saved and synced across devices? Sign in from the top-right anytime and your plan comes with you.</p>
+      <p className="muted">Start planning right away - no account needed. Want it saved and synced across devices? Sign in from the top-right anytime and your plan comes with you.</p>
       <div className="card">
         <label className="lbl" htmlFor="pname">First name</label>
         <input className="field" id="pname" placeholder="e.g. Frank" value={name} onChange={(e) => setName(e.target.value)} style={{ marginBottom: 16 }} />
@@ -78,7 +78,7 @@ function Intake() {
   const sec = INTAKE[step];
   const pct = (step / INTAKE.length) * 100;
 
-  // Advancing to (or returning to) a step should start at the top — not wherever the Next
+  // Advancing to (or returning to) a step should start at the top - not wherever the Next
   // button sat at the bottom of the previous step.
   useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [step]);
 
@@ -110,7 +110,7 @@ function Intake() {
           id={`notes-${sec.id}`}
           className="field"
           rows={3}
-          placeholder="Your words, your situation — anything the boxes above missed."
+          placeholder="Your words, your situation - anything the boxes above missed."
           value={s.answers.stepNotes?.[sec.id] || ""}
           onChange={(e) => setStepNote(sec.id, e.target.value)}
           style={{ minHeight: 80, resize: "vertical" }}
@@ -343,7 +343,7 @@ function OtherInput({ current, onUse }: { current: string; onUse: (t: string) =>
   const [text, setText] = useState(current);
   return (
     <div style={{ display: "flex", gap: 8, marginTop: 4, flexWrap: "wrap", alignItems: "center" }}>
-      <input className="field" style={{ flex: 1, minWidth: 180 }} placeholder="Other — type your own answer…" value={text}
+      <input className="field" style={{ flex: 1, minWidth: 180 }} placeholder="Other - type your own answer…" value={text}
         onChange={(e) => setText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && text.trim()) onUse(text.trim()); }} aria-label="Other answer" />
       <button type="button" className="btn ghost" onClick={() => text.trim() && onUse(text.trim())} disabled={!text.trim()}>
         {current && current === text.trim() ? <><i className="ti ti-check" /> Using</> : "Use this"}

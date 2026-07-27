@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA — for prototype only. State benefit examples are illustrative placeholders and MUST be verified with each state's Department of Veterans Affairs. VetPath does not guarantee state eligibility.",
+  "_note": "SAMPLE / DEMO DATA - for prototype only. State benefit examples are illustrative placeholders and MUST be verified with each state's Department of Veterans Affairs. VetPath does not guarantee state eligibility.",
   "genericPlaceholder": "Sample placeholder: Most states offer some mix of property-tax relief, tuition or education support, license/park discounts, and employment preference for veterans. Contact your state Department of Veterans Affairs and county veteran service officer to confirm what applies to you.",
   "states": [
     { "code": "AL", "name": "Alabama", "hasSampleData": false },

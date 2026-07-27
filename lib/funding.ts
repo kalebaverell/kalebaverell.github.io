@@ -1,7 +1,7 @@
-// Funded Path builder — assembles a stacked, sourced list of funding programs for a veteran's
+// Funded Path builder - assembles a stacked, sourced list of funding programs for a veteran's
 // trajectory: how public + employer + scholarship money combines to pay for the training, then
 // what the destination job adds on top. All content is real and cited (see data/funding.json);
-// this module only SELECTS and ORDERS — it never invents amounts or eligibility.
+// this module only SELECTS and ORDERS - it never invents amounts or eligibility.
 import fundingJson from "@/data/funding.json";
 import type { Answers, Career } from "./types";
 

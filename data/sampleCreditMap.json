@@ -1,10 +1,10 @@
 {
-  "_note": "SAMPLE / DEMO DATA — illustrative military-to-college-credit examples in the style of ACE recommendations. Real credit is determined by your Joint Services Transcript (JST) / CCAF transcript and each school's registrar. Numbers here are examples only.",
+  "_note": "SAMPLE / DEMO DATA - illustrative military-to-college-credit examples in the style of ACE recommendations. Real credit is determined by your Joint Services Transcript (JST) / CCAF transcript and each school's registrar. Numbers here are examples only.",
   "howItWorks": [
-    "Request your free Joint Services Transcript (Army, Navy, Marines, Coast Guard) at jst.doded.mil — it lists ACE credit recommendations for your training.",
-    "Air Force & Space Force: request your Community College of the Air Force (CCAF) transcript — CCAF is an accredited degree-granting college.",
+    "Request your free Joint Services Transcript (Army, Navy, Marines, Coast Guard) at jst.doded.mil - it lists ACE credit recommendations for your training.",
+    "Air Force & Space Force: request your Community College of the Air Force (CCAF) transcript - CCAF is an accredited degree-granting college.",
     "Send the transcript to your target school; the registrar decides what transfers.",
-    "ACE recommendations are advisory — schools vary widely, so compare a few before enrolling."
+    "ACE recommendations are advisory - schools vary widely, so compare a few before enrolling."
   ],
   "roles": [
     { "branch": "Army", "code": "68W", "title": "Combat Medic Specialist", "credits": [

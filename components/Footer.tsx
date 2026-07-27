@@ -48,9 +48,9 @@ export default function Footer() {
         <hr className="hairline" style={{ margin: "22px 0" }} />
 
         <div className="disclaimer" style={{ textAlign: "left" }}>
-          <a href="/trust" style={{ fontWeight: 600 }}>How we earn trust — every number has a source →</a>
+          <a href="/trust" style={{ fontWeight: 600 }}>How we earn trust - every number has a source →</a>
           <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 8, color: "var(--danger)", fontWeight: 500 }}>
-            <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 — free, confidential, 24/7.
+            <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7.
           </div>
           <div style={{ marginTop: 14, fontSize: 12.5 }}>
             <a href="/privacy">Privacy &amp; data</a>

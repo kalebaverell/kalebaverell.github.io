@@ -58,7 +58,7 @@ function Detail({ g, mine, onBack }: { g: Goal; mine: string[]; onBack: () => vo
       {g.sensitive && (
         <div style={{ marginTop: 14 }}>
           <Callout kind="warn">
-            This area can involve legal and medical questions. {BRAND.name} offers education only — work with a <strong>free accredited VSO</strong> for claims help, and never pay for basic assistance.
+            This area can involve legal and medical questions. {BRAND.name} offers education only - work with a <strong>free accredited VSO</strong> for claims help, and never pay for basic assistance.
           </Callout>
         </div>
       )}

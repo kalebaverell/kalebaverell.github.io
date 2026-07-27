@@ -1,5 +1,5 @@
 "use client";
-// "Watch a plan build itself" — an auto-looping product demonstration.
+// "Watch a plan build itself" - an auto-looping product demonstration.
 // Three acts: your story → your path → your plan adapting to life.
 // Pure CSS/JS motion; reduced-motion users get the complete final frame, static.
 import { useEffect, useRef, useState } from "react";
@@ -53,7 +53,7 @@ export default function PlanDemo() {
   return (
     <div className="card" style={{ padding: 0, overflow: "hidden" }} aria-label="Demonstration: a veteran's plan assembling from their answers">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", minHeight: 250 }}>
-        {/* Act 1 — the story */}
+        {/* Act 1 - the story */}
         <div style={{ padding: "22px 24px", borderRight: "1px solid var(--hairline)" }}>
           <div className="eyebrow" style={{ marginBottom: 10 }}>1 · Your story</div>
           <div>
@@ -63,10 +63,10 @@ export default function PlanDemo() {
             {chip("Family of four", show(0), 360)}
             {chip("Wants hands-on work", show(0), 480)}
           </div>
-          <p className="small muted" style={{ marginTop: 10 }}>Ten questions — boxes or your own words.</p>
+          <p className="small muted" style={{ marginTop: 10 }}>Ten questions - boxes or your own words.</p>
         </div>
 
-        {/* Act 2 — the path */}
+        {/* Act 2 - the path */}
         <div style={{ padding: "22px 24px", borderRight: "1px solid var(--hairline)", opacity: show(1) ? 1 : 0.35, transition: "opacity .5s ease" }}>
           <div className="eyebrow" style={{ marginBottom: 10 }}>2 · Your path</div>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -78,12 +78,12 @@ export default function PlanDemo() {
               <div className="small muted">Skilled trades · $62k median (BLS)</div>
             </div>
           </div>
-          <p className="small muted" style={{ marginTop: 10 }}>Recommended with reasons — never a black box.</p>
+          <p className="small muted" style={{ marginTop: 10 }}>Recommended with reasons - never a black box.</p>
         </div>
 
-        {/* Act 3 — the adaptive plan */}
+        {/* Act 3 - the adaptive plan */}
         <div style={{ padding: "22px 24px", opacity: show(2) ? 1 : 0.35, transition: "opacity .5s ease" }}>
-          <div className="eyebrow" style={{ marginBottom: 10 }}>3 · Your plan — alive</div>
+          <div className="eyebrow" style={{ marginBottom: 10 }}>3 · Your plan - alive</div>
           {[
             "File VA claim in the BDD window",
             "Apply: Helmets to Hardhats",
@@ -103,7 +103,7 @@ export default function PlanDemo() {
         {[0, 1, 2].map((i) => (
           <span key={i} style={{ width: act === i && !reduced ? 22 : 8, height: 8, borderRadius: 8, background: act === i && !reduced ? "var(--accent)" : "var(--border)", transition: "all .4s ease" }} />
         ))}
-        <span className="small muted" style={{ marginLeft: "auto" }}>A real walkthrough of how {""}the engine works — sample data</span>
+        <span className="small muted" style={{ marginLeft: "auto" }}>A real walkthrough of how {""}the engine works - sample data</span>
       </div>
     </div>
   );

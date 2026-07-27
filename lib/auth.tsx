@@ -1,6 +1,6 @@
 "use client";
 // Authentication context built on Supabase Auth. Supabase manages password
-// hashing and session persistence server-side — we never store a raw password.
+// hashing and session persistence server-side - we never store a raw password.
 // When Supabase isn't configured, this provider is inert and the app stays local-only.
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import type { Session, User } from "@supabase/supabase-js";

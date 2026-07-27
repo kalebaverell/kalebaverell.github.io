@@ -1,5 +1,5 @@
 {
-  "_note": "REAL, CITED state benefit data researched from official state sources. Every program links to its official source. Rules change — the product must always show lastVerified and direct users to the agency to confirm.",
+  "_note": "REAL, CITED state benefit data researched from official state sources. Every program links to its official source. Rules change - the product must always show lastVerified and direct users to the agency to confirm.",
   "lastVerified": "2026-07-08",
   "coverage": {
     "total": 51,
@@ -921,7 +921,7 @@
           "source": "https://www.maine.gov/veterans/sites/maine.gov.veterans/files/Resourceguide.pdf"
         }
       ],
-      "notes": "Maine Veterans' Homes is a state-chartered independent nonprofit (mainevets.org); cited here via the Bureau of Maine Veterans' Services official resource guide. Maine also offers veterans hiring preference in state employment (not detailed here — gap)."
+      "notes": "Maine Veterans' Homes is a state-chartered independent nonprofit (mainevets.org); cited here via the Bureau of Maine Veterans' Services official resource guide. Maine also offers veterans hiring preference in state employment (not detailed here - gap)."
     },
     {
       "code": "MI",
@@ -1619,7 +1619,7 @@
         {
           "name": "Pennsylvania State Veterans Homes",
           "category": "health",
-          "blurb": "DMVA operates six state veterans homes across the Commonwealth — Delaware Valley Veterans' Home, Gino J. Merli Veterans' Center, Hollidaysburg Veterans' Home, Pennsylvania Soldiers' and Sailors' Home, Southeastern Veterans' Center, and Southwestern Veterans' Center — providing long-term care to eligible veterans.",
+          "blurb": "DMVA operates six state veterans homes across the Commonwealth - Delaware Valley Veterans' Home, Gino J. Merli Veterans' Center, Hollidaysburg Veterans' Home, Pennsylvania Soldiers' and Sailors' Home, Southeastern Veterans' Center, and Southwestern Veterans' Center - providing long-term care to eligible veterans.",
           "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/programs-and-services"
         },
         {
@@ -1975,7 +1975,7 @@
         {
           "name": "Washington State Veterans Homes",
           "category": "health",
-          "blurb": "WDVA operates four Medicare/Medicaid-certified long-term care homes — Orting, Port Orchard, Spokane, and Walla Walla — serving veterans, spouses, surviving spouses, and Gold Star parents.",
+          "blurb": "WDVA operates four Medicare/Medicaid-certified long-term care homes - Orting, Port Orchard, Spokane, and Walla Walla - serving veterans, spouses, surviving spouses, and Gold Star parents.",
           "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-homes"
         },
         {

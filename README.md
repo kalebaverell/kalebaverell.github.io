@@ -3,10 +3,10 @@
 **A clear gameplan for life after service.**
 
 VetPath turns a veteran's goals, life stage, state, and status into a personalized
-**30/60/90-day gameplan** — with prioritized benefit categories, an action checklist,
+**30/60/90-day gameplan** - with prioritized benefit categories, an action checklist,
 and links to the official sources to verify each step.
 
-> ⚠️ **VetPath is a planning & education tool — not the VA, a law firm, or an accredited
+> ⚠️ **VetPath is a planning & education tool - not the VA, a law firm, or an accredited
 > claims representative.** All benefit information in this prototype is **sample/demo data**.
 > Eligibility must be confirmed through official sources (VA.gov, state veterans agencies,
 > accredited VSOs). In crisis? Dial **988**, then press **1**.
@@ -15,14 +15,14 @@ and links to the official sources to verify each step.
 
 ## Two ways to run it
 
-### 1. Instant demo (no install) — best for showing Frank
+### 1. Instant demo (no install) - best for showing Frank
 Open the self-contained file in any browser:
 
 ```
 demo/vetpath-demo.html
 ```
 
-Double-click it (or open it in a browser). It works fully offline — all screens,
+Double-click it (or open it in a browser). It works fully offline - all screens,
 the rules engine, progress tracking, and a live **A/B/C theme switcher** are built in.
 This is the fastest way to review the product tomorrow.
 
@@ -62,7 +62,7 @@ Benefits & resources library · Goal planning · Action plan/checklist · Profil
 Strategy (internal, for Frank & team).
 
 ## Working name & theming
-The working brand name is **VetPath** (`BRAND` in `lib/data.ts` and the demo file — one place to change).
+The working brand name is **VetPath** (`BRAND` in `lib/data.ts` and the demo file - one place to change).
 Three design directions ship as swappable themes: **Professional** (default), **Warm**, **Civic**.
 Flip them live from the footer or the Strategy page.
 

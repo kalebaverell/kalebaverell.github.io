@@ -46,10 +46,10 @@ export default function PrintGameplan() {
       <div className="print-section">
         <div className="print-box" style={{ background: "var(--chip-bg)" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 8, fontSize: 14 }}>
-            <div><span className="muted">Status:</span> {a.status || "—"}</div>
-            <div><span className="muted">State(s):</span> {residenceStates(a).map((c) => stateName(c) || c).join(", ") || "—"}</div>
-            <div><span className="muted">Branch:</span> {a.branch || "—"}</div>
-            <div><span className="muted">Urgency:</span> {a.urgency || "—"}</div>
+            <div><span className="muted">Status:</span> {a.status || "-"}</div>
+            <div><span className="muted">State(s):</span> {residenceStates(a).map((c) => stateName(c) || c).join(", ") || "-"}</div>
+            <div><span className="muted">Branch:</span> {a.branch || "-"}</div>
+            <div><span className="muted">Urgency:</span> {a.urgency || "-"}</div>
           </div>
           {goals && <div style={{ marginTop: 8, fontSize: 14 }}><span className="muted">Top goals:</span> {goals}</div>}
         </div>
@@ -58,7 +58,7 @@ export default function PrintGameplan() {
       {gp.crisis && (
         <div className="print-section">
           <div className="print-box" style={{ borderColor: "#D89", background: "#FBEAEA" }}>
-            <strong>Immediate support (free, confidential, 24/7):</strong> Veterans Crisis Line — dial <strong>988</strong> then press <strong>1</strong>, or text <strong>838255</strong>. Homeless Veterans line: <strong>1-877-424-3838</strong>.
+            <strong>Immediate support (free, confidential, 24/7):</strong> Veterans Crisis Line - dial <strong>988</strong> then press <strong>1</strong>, or text <strong>838255</strong>. Homeless Veterans line: <strong>1-877-424-3838</strong>.
           </div>
         </div>
       )}
@@ -86,13 +86,13 @@ export default function PrintGameplan() {
 
       <div className="print-section print-break">
         <h3>Recommended benefits &amp; official sources to verify</h3>
-        <p className="muted small">{BRAND.name} does not confirm eligibility — verify each item at its official source.</p>
+        <p className="muted small">{BRAND.name} does not confirm eligibility - verify each item at its official source.</p>
         {gp.benefitCategories.map((id) => {
           const b = benefitById(id);
           if (!b) return null;
           return (
             <div key={id} className="print-box" style={{ marginBottom: 8 }}>
-              <strong>{b.name}</strong> — <span className="small">{b.summary}</span>
+              <strong>{b.name}</strong> - <span className="small">{b.summary}</span>
               <div className="small" style={{ marginTop: 3 }}><span className="muted">Verify at:</span> <a href={b.official.url}>{b.official.name}</a></div>
             </div>
           );
@@ -102,7 +102,7 @@ export default function PrintGameplan() {
       {gp.decisions && gp.decisions.length > 0 && (
         <div className="print-section">
           <h3>Decisions to make</h3>
-          <p className="muted small">Not tasks — calls to make, together where it&apos;s a household decision.</p>
+          <p className="muted small">Not tasks - calls to make, together where it&apos;s a household decision.</p>
           <ol style={{ margin: "6px 0 0", paddingLeft: 22 }}>
             {gp.decisions.map((d, i) => <li key={i} style={{ marginBottom: 5 }}>{d}</li>)}
           </ol>
@@ -121,9 +121,9 @@ export default function PrintGameplan() {
 
       <div className="print-section">
         <div className="print-box" style={{ fontSize: 12, color: "var(--muted)" }}>
-          <strong>{BRAND.name} is a planning &amp; education tool — not the VA, a law firm, or an accredited claims representative.</strong> All
+          <strong>{BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.</strong> All
           benefit information here is sample/demo data for this prototype. Confirm eligibility and amounts through official sources such as
-          VA.gov, your state veterans agency, or an accredited VSO (VFW, American Legion, DAV, or your county veteran service officer — their help is usually free).
+          VA.gov, your state veterans agency, or an accredited VSO (VFW, American Legion, DAV, or your county veteran service officer - their help is usually free).
         </div>
       </div>
     </div>

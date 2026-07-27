@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
 import { BRAND } from "@/lib/data";
 
-// Full app nav — shown once someone has signed in or started a plan.
+// Full app nav - shown once someone has signed in or started a plan.
 const APP_LINKS: [string, string, string][] = [
   ["/dashboard", "Dashboard", "ti-layout-dashboard"],
   ["/pathfinder", "Pathfinder", "ti-compass"],
@@ -16,7 +16,7 @@ const APP_LINKS: [string, string, string][] = [
   ["/plan", "Action plan", "ti-checkbox"],
   ["/profile", "Profile", "ti-user-circle"],
 ];
-// Explore nav — shown to first-time / logged-out visitors. Every one of these
+// Explore nav - shown to first-time / logged-out visitors. Every one of these
 // works without an account, so there are no dead-end empty states. "Strategy"
 // (the internal founder/pitch view) is intentionally not in the public nav.
 const MARKETING_LINKS: [string, string, string][] = [
@@ -38,7 +38,7 @@ export default function Nav() {
   // keeps the standard solid bar.
   const onHome = path === "/" || path === "";
   // The public landing page always shows the clean marketing nav (Pathfinder · Benefits ·
-  // Tools · Why trust us) — even for signed-in / returning visitors — so the official link
+  // Tools · Why trust us) - even for signed-in / returning visitors - so the official link
   // looks the same for everyone. Inside the app (any non-home page) a signed-in user or
   // someone who started a plan still gets the full workspace nav.
   const started = Boolean(user || s.profile) && !onHome;
@@ -89,7 +89,7 @@ export default function Nav() {
           <button
             onClick={cycleTextSize}
             aria-label={`Text size: ${sizeLabel}. Click to change.`}
-            title={`Text size: ${sizeLabel} — click to change`}
+            title={`Text size: ${sizeLabel} - click to change`}
             className="nav-aa"
             style={{ fontSize: s.textSize === "base" ? 16 : s.textSize === "lg" ? 18 : 20 }}
           >

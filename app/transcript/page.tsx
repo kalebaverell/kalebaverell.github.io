@@ -15,9 +15,9 @@ export default function SmartTranscript() {
   return (
     <Wrap>
       <h2>Smart transcript</h2>
-      <p className="muted" style={{ maxWidth: 640 }}>Your military training may already be college credit. Pick your role to see illustrative examples of what schools often award — then pull your real transcript and make them honor it.</p>
+      <p className="muted" style={{ maxWidth: 640 }}>Your military training may already be college credit. Pick your role to see illustrative examples of what schools often award - then pull your real transcript and make them honor it.</p>
       <div style={{ margin: "8px 0 16px" }}>
-        <Callout kind="warn">Sample estimates in the style of ACE recommendations. Your ACTUAL credit comes from your Joint Services Transcript (JST) or CCAF transcript — and each school&apos;s registrar decides what transfers.</Callout>
+        <Callout kind="warn">Sample estimates in the style of ACE recommendations. Your ACTUAL credit comes from your Joint Services Transcript (JST) or CCAF transcript - and each school&apos;s registrar decides what transfers.</Callout>
       </div>
 
       <div className="card">
@@ -31,9 +31,9 @@ export default function SmartTranscript() {
             <label className="lbl" htmlFor="mos">Your MOS / rating / AFSC</label>
             <select id="mos" className="field" value={code} onChange={(e) => setCode(e.target.value)}>
               <option value="">Select role…</option>
-              {roles.map((r) => <option key={r.code} value={r.code}>{r.code} — {r.title}</option>)}
+              {roles.map((r) => <option key={r.code} value={r.code}>{r.code} - {r.title}</option>)}
             </select>
-            <p className="small muted" style={{ margin: "8px 0 0" }}>Don&apos;t see yours? This demo has {CREDIT_MAP.roles.length} sample roles — the real version maps every rating via the JST/ACE database.</p>
+            <p className="small muted" style={{ margin: "8px 0 0" }}>Don&apos;t see yours? This demo has {CREDIT_MAP.roles.length} sample roles - the real version maps every rating via the JST/ACE database.</p>
           </>
         )}
       </div>
@@ -42,7 +42,7 @@ export default function SmartTranscript() {
         <>
           <div className="card" style={{ marginTop: 16 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <h3 style={{ margin: 0 }}>{role.code} — {role.title}</h3>
+              <h3 style={{ margin: 0 }}>{role.code} - {role.title}</h3>
               <span className="chip gold" style={{ fontSize: "var(--fs-h4)" }}><i className="ti ti-school" /> ~{total} sample credit hours</span>
             </div>
             <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 12, fontSize: "var(--fs-small)" }}>

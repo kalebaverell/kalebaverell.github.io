@@ -43,7 +43,7 @@ export default function Updates() {
       <Wrap narrow>
         <div style={{ textAlign: "center" }}>
           <h2>No profile yet</h2>
-          <p className="muted">Create a demo profile and finish intake — then this page can adapt your plan when life changes.</p>
+          <p className="muted">Create a demo profile and finish intake - then this page can adapt your plan when life changes.</p>
           <Link className="btn" href="/onboarding">Create profile</Link>
         </div>
       </Wrap>
@@ -63,7 +63,7 @@ export default function Updates() {
 
   const setInput = (id: string, v: string) => {
     setInputs((p) => ({ ...p, [id]: v }));
-    setPreview(null); // inputs changed — any previous preview is stale
+    setPreview(null); // inputs changed - any previous preview is stale
     setApplied(false);
   };
 
@@ -83,7 +83,7 @@ export default function Updates() {
   const doApply = () => {
     if (!preview) return;
     // Commit only through existing store actions: one setAnswer per changed
-    // field (arrays included — setAnswer accepts any value), then regenerate.
+    // field (arrays included - setAnswer accepts any value), then regenerate.
     for (const k of changedKeys(s.answers, preview.patched)) {
       setAnswer(k, (preview.patched as any)[k]);
     }
@@ -135,14 +135,14 @@ export default function Updates() {
           <h3 style={{ marginTop: 0 }}><i className={`ti ${ev.icon}`} aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> {ev.label}</h3>
           {ev.fields.length === 0 ? (
             <p className="muted small" style={{ marginTop: 0 }}>
-              No extra details needed — we&apos;ll adjust your answers automatically and show you the change first.
+              No extra details needed - we&apos;ll adjust your answers automatically and show you the change first.
             </p>
           ) : (
             <p className="muted small" style={{ marginTop: 0 }}>Update the details below, then preview the change.</p>
           )}
           {ev.id === "career-change" && (
             <Callout kind="info">
-              A career change is a big shift. After you apply this update, consider re-running the <strong>Pathfinder</strong> to pick a new destination — the plan is only as good as where it&apos;s pointed.
+              A career change is a big shift. After you apply this update, consider re-running the <strong>Pathfinder</strong> to pick a new destination - the plan is only as good as where it&apos;s pointed.
             </Callout>
           )}
           <div style={{ marginTop: ev.fields.length ? 14 : 0 }}>
@@ -210,7 +210,7 @@ export default function Updates() {
             <h3 style={{ marginTop: 0 }}>
               <i className="ti ti-circle-check" aria-hidden="true" style={{ color: "var(--success)" }} /> Plan updated
             </h3>
-            <p className="muted">Your answers were updated and the gameplan regenerated — same plan, new reality.</p>
+            <p className="muted">Your answers were updated and the gameplan regenerated - same plan, new reality.</p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link className="btn" href="/dashboard"><i className="ti ti-layout-dashboard" aria-hidden="true" /> See your dashboard</Link>
               <Link className="btn ghost" href="/plan"><i className="ti ti-list-check" aria-hidden="true" /> Open the action plan</Link>
@@ -254,7 +254,7 @@ function DiffPanel({ diff, nextPlan, onApply }: { diff: PlanDiff; nextPlan: Game
 
       {noChange ? (
         <Callout kind="info">
-          Your current plan already covers this — applying will save the updated answers, but no actions change.
+          Your current plan already covers this - applying will save the updated answers, but no actions change.
         </Callout>
       ) : (
         <>

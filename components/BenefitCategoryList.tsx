@@ -1,5 +1,5 @@
 "use client";
-// Recommended benefit categories on the dashboard — each one expands inline to show what it is,
+// Recommended benefit categories on the dashboard - each one expands inline to show what it is,
 // who it's for, and the official source to verify, so a veteran can see the detail without
 // leaving the page.
 import { useState } from "react";

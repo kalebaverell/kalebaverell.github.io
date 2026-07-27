@@ -1,8 +1,8 @@
-// VetPath Relocation Planner — deterministic, explainable scoring engine (SAMPLE logic).
+// VetPath Relocation Planner - deterministic, explainable scoring engine (SAMPLE logic).
 // Priorities in → ranked metros out, with a normalized 0–100 score, per-dimension
 // contributions, and plain-language "why" bullets. Same principle as the Pathfinder:
 // the veteran's own stated priorities drive the ranking. A disability rating NEVER
-// filters anything out — it only adds a gentle, optional note about VA access.
+// filters anything out - it only adds a gentle, optional note about VA access.
 // All tiers are illustrative sample data, not rankings from a cited index.
 import metrosJson from "@/data/relocationMetros.json";
 import { careerById, realStateInfo, stateName } from "./data";
@@ -31,7 +31,7 @@ export type AirportLevel = "international" | "regional" | "limited";
 export interface Metro {
   id: string;
   name: string;
-  state: string; // 2-letter code ("—" for the rural pattern entry)
+  state: string; // 2-letter code ("-" for the rural pattern entry)
   vibe: "big" | "mid" | "small";
   va: { level: VaLevel; note: string };
   colTier: number; // 1 = lowest cost of living, 5 = highest (illustrative)
@@ -82,14 +82,14 @@ export const metroById = (id: string): Metro | undefined => METROS.find((m) => m
 
 export const RELOC_DIMS: { key: RelocDim; label: string; icon: string; help: string }[] = [
   { key: "vaAccess", label: "VA healthcare access", icon: "ti-building-hospital", help: "How close a full VA medical center or clinic is." },
-  { key: "cost", label: "Cost of living", icon: "ti-coin", help: "Overall costs — housing, day-to-day expenses." },
+  { key: "cost", label: "Cost of living", icon: "ti-coin", help: "Overall costs - housing, day-to-day expenses." },
   { key: "jobs", label: "Jobs for my path", icon: "ti-briefcase", help: "How strong the market is for the work you want." },
-  { key: "stateBenefits", label: "State veteran benefits", icon: "ti-award", help: "How broad the state's own veteran benefits are — tax relief, tuition waivers, hiring preference." },
-  { key: "schools", label: "Schools", icon: "ti-school", help: "What families should know — we surface notes, not rankings." },
-  { key: "community", label: "Veteran community", icon: "ti-users-group", help: "How many veterans are around you — network, understanding, belonging." },
-  { key: "safety", label: "Safety feel", icon: "ti-shield-check", help: "Illustrative comfort tier — always varies block by block." },
+  { key: "stateBenefits", label: "State veteran benefits", icon: "ti-award", help: "How broad the state's own veteran benefits are - tax relief, tuition waivers, hiring preference." },
+  { key: "schools", label: "Schools", icon: "ti-school", help: "What families should know - we surface notes, not rankings." },
+  { key: "community", label: "Veteran community", icon: "ti-users-group", help: "How many veterans are around you - network, understanding, belonging." },
+  { key: "safety", label: "Safety feel", icon: "ti-shield-check", help: "Illustrative comfort tier - always varies block by block." },
   { key: "business", label: "Business climate", icon: "ti-building-store", help: "Taxes and friction if you plan to start something." },
-  { key: "airport", label: "Airport access", icon: "ti-plane-departure", help: "How easy it is to fly out — family visits, travel work." },
+  { key: "airport", label: "Airport access", icon: "ti-plane-departure", help: "How easy it is to fly out - family visits, travel work." },
 ];
 
 export const PRIORITY_LABELS: Record<Priority, string> = { 0: "Skip", 1: "Nice to have", 2: "Must have" };
@@ -115,7 +115,7 @@ const vaPhrase = (m: Metro): string =>
     ? "full VA medical center in the metro"
     : m.va.level === "nearby"
       ? "VA clinics in town with a full medical center within a drive"
-      : "VA community clinic (CBOC) coverage — pair with VA telehealth";
+      : "VA community clinic (CBOC) coverage - pair with VA telehealth";
 
 // Cited official datapoints (BEA RPP / BLS unemployment) merged onto each metro in the JSON.
 type OfficialPoint = { value: number; year?: string; asOf?: string; source: string } | undefined;
@@ -147,7 +147,7 @@ function jobsRaw(m: Metro, careerId?: string): { raw: number; matchedCareer?: st
 
 /** Distinct benefit categories a state covers (0–6), the main signal for the state-benefits dim. */
 function stateBenefitStrength(code: string): { cats: number; count: number } | null {
-  if (!code || code === "—") return null;
+  if (!code || code === "-") return null;
   const info = realStateInfo(code);
   if (!info) return null;
   return { cats: new Set(info.programs.map((p) => p.category)).size, count: info.programs.length };
@@ -168,7 +168,7 @@ function rawFor(dim: RelocDim, m: Metro, careerId?: string): number {
       if (!s) return 0.5;
       return Math.max(0, Math.min(1, 0.45 + s.cats * 0.09 + s.count * 0.01));
     }
-    // No school rankings in the sample data (deliberately — we don't invent them).
+    // No school rankings in the sample data (deliberately - we don't invent them).
     // Schools score neutrally; picking it surfaces each metro's schools note instead.
     case "schools": return 0.6;
     case "community": return Math.max(0, Math.min(1, (m.community - 1) / 4));
@@ -189,9 +189,9 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
     case "cost": {
       const rpp = official(m).rpp?.value;
       if (typeof rpp === "number") {
-        if (rpp < 97) return `Below-average cost of living — BEA price parity ${rpp.toFixed(0)} (100 = U.S. average)`;
-        if (rpp <= 103) return `About the U.S.-average cost of living — BEA price parity ${rpp.toFixed(0)}`;
-        return null; // pricier than average — no positive cost story
+        if (rpp < 97) return `Below-average cost of living - BEA price parity ${rpp.toFixed(0)} (100 = U.S. average)`;
+        if (rpp <= 103) return `About the U.S.-average cost of living - BEA price parity ${rpp.toFixed(0)}`;
+        return null; // pricier than average - no positive cost story
       }
       if (m.colTier === 1) return "Very low cost of living (tier 1 of 5)";
       if (m.colTier === 2) return "Low cost of living (tier 2 of 5)";
@@ -200,7 +200,7 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
     }
     case "jobs": {
       const unemp = official(m).unemployment?.value;
-      const unempStr = typeof unemp === "number" ? ` — ${unemp}% metro unemployment (BLS)` : "";
+      const unempStr = typeof unemp === "number" ? ` - ${unemp}% metro unemployment (BLS)` : "";
       if (matchedCareer) return `Strong for ${matchedCareer} work${unempStr}`;
       if (typeof unemp === "number" && unemp <= 3.8) return `Healthy job market${unempStr}`;
       if (raw >= 0.6) {
@@ -210,11 +210,11 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
       return null;
     }
     case "stateBenefits": {
-      const info = m.state && m.state !== "—" ? realStateInfo(m.state) : null;
+      const info = m.state && m.state !== "-" ? realStateInfo(m.state) : null;
       if (!info || info.programs.length === 0) return null;
       const catWord: Record<string, string> = { tax: "property-tax relief", health: "state veterans homes", education: "tuition help", employment: "hiring preference", recreation: "parks & recreation" };
       const cats = [...new Set(info.programs.map((p) => p.category))].map((c) => catWord[c]).filter(Boolean).slice(0, 3);
-      return `${stateName(m.state)} runs ${info.programs.length} state veteran benefit programs${cats.length ? ` — incl. ${cats.join(", ")}` : ""}`;
+      return `${stateName(m.state)} runs ${info.programs.length} state veteran benefit programs${cats.length ? ` - incl. ${cats.join(", ")}` : ""}`;
     }
     case "schools":
       return `Schools: ${m.schoolsNote}`;
@@ -223,7 +223,7 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
       if (m.community === 3) return "Moderate veteran presence (3 of 5)";
       return null;
     case "safety":
-      if (m.safetyTier >= 4) return `Favorable sample safety tier (${m.safetyTier} of 5) — still visit neighborhoods yourself`;
+      if (m.safetyTier >= 4) return `Favorable sample safety tier (${m.safetyTier} of 5) - still visit neighborhoods yourself`;
       return null;
     case "business":
       if (m.businessTier >= 4) return `Business-friendly climate (tier ${m.businessTier} of 5)`;
@@ -277,12 +277,12 @@ export function scoreMetros(
       .map((c) => c.text);
     if (whyBullets.length === 0) whyBullets.push("A balanced option across the priorities you picked.");
 
-    // Gentle, optional nudge — never forced, never a filter. Only shown when the
+    // Gentle, optional nudge - never forced, never a filter. Only shown when the
     // caller says VA care likely matters (rating ≥ 60% or health priorities) yet
     // VA access was set to "skip".
     if (opts?.highVaNeed && p.vaAccess === 0) {
       whyBullets.push(
-        `A gentle note: you skipped VA access, but based on your rating or health priorities it may still be worth weighing — here that would mean a ${vaPhrase(m)}. Your call, always.`
+        `A gentle note: you skipped VA access, but based on your rating or health priorities it may still be worth weighing - here that would mean a ${vaPhrase(m)}. Your call, always.`
       );
     }
 
@@ -323,7 +323,7 @@ export function compareMetros(ids: string[]): CompareRow[] {
     })),
     row("Schools", (m) => ({ value: m.schoolsNote })),
     row("Veteran community", (m) => ({ value: `${m.community} of 5`, detail: m.communityNote })),
-    row("Safety (sample tier)", (m) => ({ value: `Tier ${m.safetyTier} of 5`, detail: "Varies block by block — visit in person." })),
+    row("Safety (sample tier)", (m) => ({ value: `Tier ${m.safetyTier} of 5`, detail: "Varies block by block - visit in person." })),
     row("Business climate", (m) => ({ value: `Tier ${m.businessTier} of 5`, detail: m.businessNote })),
     row("Airport", (m) => ({ value: AIRPORT_SHORT[m.airport] ?? m.airport })),
     row("Worth knowing", (m) => ({ value: m.notes })),

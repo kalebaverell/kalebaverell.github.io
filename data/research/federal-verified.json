@@ -29,7 +29,7 @@
       "verifiedEligibility": "Most veterans who served on active duty and were discharged under other than dishonorable conditions can apply; your priority group depends on service history, disability rating, income, and toxic-exposure status.",
       "verifiedSteps": [
         "Apply for VA health care online at VA.gov, by phone at 877-222-8387, or with a VSO.",
-        "Check PACT Act toxic-exposure eligibility — many veterans can now enroll directly without first applying for other VA benefits.",
+        "Check PACT Act toxic-exposure eligibility - many veterans can now enroll directly without first applying for other VA benefits.",
         "Choose a VA facility and schedule an intake appointment.",
         "Ask about mental health and telehealth options."
       ],
@@ -47,7 +47,7 @@
       "id": "gi-bill",
       "officialUrl": "https://www.va.gov/education/",
       "urlChanged": false,
-      "verifiedEligibility": "Post-9/11 GI Bill benefits scale with qualifying active-duty time — from 50% at 90 days up to 100% at 36 months — and transfers to a spouse or child must be approved by DoD while you're still serving.",
+      "verifiedEligibility": "Post-9/11 GI Bill benefits scale with qualifying active-duty time - from 50% at 90 days up to 100% at 36 months - and transfers to a spouse or child must be approved by DoD while you're still serving.",
       "verifiedSteps": [
         "Apply for benefits and request a Certificate of Eligibility on VA.gov.",
         "If transferring to dependents, request the transfer through DoD while still serving (generally 6 years in with a 4-year additional commitment).",
@@ -55,7 +55,7 @@
         "Meet the School Certifying Official to enroll."
       ],
       "corrections": [
-        "The line 'Some benefits are transferable to dependents' understates the conditions: transfer requires at least 6 years of service, an agreement to serve 4 more years, and must be requested and approved through DoD while the member is still in the armed forces — veterans cannot initiate a transfer after separation. A child can generally start using transferred benefits only after the member completes 10 years of service. Source: https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
+        "The line 'Some benefits are transferable to dependents' understates the conditions: transfer requires at least 6 years of service, an agreement to serve 4 more years, and must be requested and approved through DoD while the member is still in the armed forces - veterans cannot initiate a transfer after separation. A child can generally start using transferred benefits only after the member completes 10 years of service. Source: https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
         "Verified benefit tiers: 90 days-5 months = 50%, 6-17 months = 60%, 18-23 months = 70%, 24-29 months = 80%, 30-35 months = 90%, 36+ months = 100%. Source: https://www.va.gov/resources/how-we-determine-your-percentage-of-post-911-gi-bill-benefits/"
       ],
       "sources": [
@@ -95,7 +95,7 @@
         "Build an approved rehabilitation and employment plan."
       ],
       "corrections": [
-        "NAMING ERROR: the summary calls the program 'VA Readiness & Employment' — the official name is 'Veteran Readiness and Employment' (VR&E), formerly Vocational Rehabilitation and Employment. Fix the summary text. Source: https://www.va.gov/careers-employment/vocational-rehabilitation/",
+        "NAMING ERROR: the summary calls the program 'VA Readiness & Employment' - the official name is 'Veteran Readiness and Employment' (VR&E), formerly Vocational Rehabilitation and Employment. Fix the summary text. Source: https://www.va.gov/careers-employment/vocational-rehabilitation/",
         "Verified specificity: eligibility requires a service-connected disability rating of at least 10% (the existing 'typically requires a service-connected disability rating' is correct but can state the 10% minimum). Source: https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/",
         "Verified addition: the 12-year basic eligibility period applies only to veterans discharged before January 1, 2013; those discharged on or after that date have no time limit. Source: https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/"
       ],
@@ -117,7 +117,7 @@
       ],
       "corrections": [
         "No errors found in existing content. Verified: the Jobs for Veterans Act establishes priority of service for veterans and eligible spouses in DOL-funded job training programs, delivered through roughly 2,600 American Job Centers. Sources: https://www.dol.gov/agencies/eta/jobs-for-veterans-act and https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
-        "Minor precision note: the 'DOL VETS employment representative' step refers to Jobs for Veterans State Grants (JVSG) staff — Disabled Veterans' Outreach Program (DVOP) specialists and Local Veterans' Employment Representatives (LVER) — who are state-employed staff at American Job Centers, not federal DOL employees."
+        "Minor precision note: the 'DOL VETS employment representative' step refers to Jobs for Veterans State Grants (JVSG) staff - Disabled Veterans' Outreach Program (DVOP) specialists and Local Veterans' Employment Representatives (LVER) - who are state-employed staff at American Job Centers, not federal DOL employees."
       ],
       "sources": [
         "https://www.dol.gov/agencies/vets",
@@ -150,9 +150,9 @@
       "id": "mental-health-crisis",
       "officialUrl": "https://www.veteranscrisisline.net/",
       "urlChanged": false,
-      "verifiedEligibility": "The Veterans Crisis Line is free, confidential, and available 24/7 to veterans, service members, and their families — no VA enrollment required; dial 988 then press 1, text 838255, or chat online.",
+      "verifiedEligibility": "The Veterans Crisis Line is free, confidential, and available 24/7 to veterans, service members, and their families - no VA enrollment required; dial 988 then press 1, text 838255, or chat online.",
       "verifiedSteps": [
-        "Save the Veterans Crisis Line: dial 988, then press 1 — or text 838255, or chat online at veteranscrisisline.net.",
+        "Save the Veterans Crisis Line: dial 988, then press 1 - or text 838255, or chat online at veteranscrisisline.net.",
         "Ask your VA facility about same-day mental health support.",
         "Connect with a peer support group or Vet Center."
       ],
@@ -170,16 +170,16 @@
       "id": "retirement-survivor",
       "officialUrl": "https://www.va.gov/pension/",
       "urlChanged": false,
-      "verifiedEligibility": "Military retired pay (DFAS), VA Veterans Pension, and the Survivor Benefit Plan are separate programs with distinct rules — VA pension is needs-based for wartime veterans who meet age or disability plus income and net-worth limits.",
+      "verifiedEligibility": "Military retired pay (DFAS), VA Veterans Pension, and the Survivor Benefit Plan are separate programs with distinct rules - VA pension is needs-based for wartime veterans who meet age or disability plus income and net-worth limits.",
       "verifiedSteps": [
         "Review retirement pay and Survivor Benefit Plan (SBP) elections with DFAS.",
         "Check VA Veterans Pension and Aid & Attendance / Housebound eligibility at VA.gov.",
         "Update beneficiaries and estate documents."
       ],
       "corrections": [
-        "No errors found. Verified: VA pension, military retirement, and SBP are distinct programs — VA pension is needs-based (income counted against the Maximum Annual Pension Rate, with a net worth limit of $163,699 for Dec 1, 2025 - Nov 30, 2026). Sources: https://www.va.gov/pension/eligibility/ and https://www.va.gov/family-and-caregiver-benefits/survivor-compensation/survivors-pension/rates/",
+        "No errors found. Verified: VA pension, military retirement, and SBP are distinct programs - VA pension is needs-based (income counted against the Maximum Annual Pension Rate, with a net worth limit of $163,699 for Dec 1, 2025 - Nov 30, 2026). Sources: https://www.va.gov/pension/eligibility/ and https://www.va.gov/family-and-caregiver-benefits/survivor-compensation/survivors-pension/rates/",
         "Verified: Aid and Attendance / Housebound benefits are add-ons to VA pension for veterans and survivors who need help with daily activities, are housebound, or are in a nursing home. Source: https://www.va.gov/pension/aid-attendance-housebound/",
-        "Note: military retired pay and SBP administration is handled by DFAS (dfas.mil), not VA — the existing 'verify with DFAS, VA' guidance is correct."
+        "Note: military retired pay and SBP administration is handled by DFAS (dfas.mil), not VA - the existing 'verify with DFAS, VA' guidance is correct."
       ],
       "sources": [
         "https://www.va.gov/pension/",

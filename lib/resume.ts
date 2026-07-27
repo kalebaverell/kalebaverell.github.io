@@ -1,4 +1,4 @@
-// VetPath resume scanner — deterministic, client-side analysis (SAMPLE logic, no upload).
+// VetPath resume scanner - deterministic, client-side analysis (SAMPLE logic, no upload).
 // Tailors feedback toward a chosen career path's keywords. A coaching aid, not an ATS oracle.
 import type { Career } from "./types";
 
@@ -60,8 +60,8 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
   let score = 100;
 
   // Length
-  if (words < 150) { score -= 15; issues.push({ severity: "high", title: "Too short", detail: `Only ~${words} words. Aim for 350–650 — enough to show impact on one page.` }); }
-  else if (words > 900) { score -= 8; issues.push({ severity: "medium", title: "Running long", detail: `~${words} words. Civilian resumes get ~30 seconds — tighten to 1 page (2 max for senior roles).` }); }
+  if (words < 150) { score -= 15; issues.push({ severity: "high", title: "Too short", detail: `Only ~${words} words. Aim for 350–650 - enough to show impact on one page.` }); }
+  else if (words > 900) { score -= 8; issues.push({ severity: "medium", title: "Running long", detail: `~${words} words. Civilian resumes get ~30 seconds - tighten to 1 page (2 max for senior roles).` }); }
   else strengths.push("Good length for a civilian one-pager.");
 
   // Contact info
@@ -72,13 +72,13 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
 
   // Sections
   const sections = ["experience", "education", "skills"].filter((s) => lower.includes(s));
-  if (sections.length < 2) { score -= 8; issues.push({ severity: "medium", title: "Add clear sections", detail: "Recruiters and ATS software scan for Experience / Education / Skills headers — make them explicit." }); }
+  if (sections.length < 2) { score -= 8; issues.push({ severity: "medium", title: "Add clear sections", detail: "Recruiters and ATS software scan for Experience / Education / Skills headers - make them explicit." }); }
   else strengths.push("Clear section structure detected.");
 
   // Quantification
   const numberish = (clean.match(/\d[\d,.]*\s*(%|percent|people|personnel|soldiers|members|vehicles|\$|k\b|million)?/gi) || []).length;
   if (numberish < 4) { score -= 12; issues.push({ severity: "high", title: "Not enough numbers", detail: "Quantify: team size, budget, equipment value, readiness %, incidents reduced. \"Led 12-person team; maintained $3.2M of equipment at 98% readiness\" beats any adjective." }); }
-  else strengths.push("You quantify your impact — recruiters trust numbers.");
+  else strengths.push("You quantify your impact - recruiters trust numbers.");
 
   // Weak phrases
   const weakFound = WEAK_PHRASES.filter((p) => lower.includes(p));
@@ -91,7 +91,7 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
 
   // First person
   if (/\b(i|my|me)\b/i.test(clean.replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, ""))) {
-    score -= 4; issues.push({ severity: "low", title: "Drop first person", detail: "Resumes skip \"I/my\" — start lines directly with the verb." });
+    score -= 4; issues.push({ severity: "low", title: "Drop first person", detail: "Resumes skip \"I/my\" - start lines directly with the verb." });
   }
 
   // Jargon & acronyms (word-boundary match so e.g. "OIC" doesn't fire inside "NCOIC")
@@ -99,7 +99,7 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
     const esc = t.trim().toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     return new RegExp(`(^|[^a-z0-9])${esc}([^a-z0-9]|$)`, "i").test(lower);
   }).map(([term, plain]) => ({ term: term.trim(), plain }));
-  if (jargonFound.length > 2) { score -= 8; issues.push({ severity: "high", title: "Translate military language", detail: "A civilian recruiter may not know these terms — swap in the plain-English versions below." }); }
+  if (jargonFound.length > 2) { score -= 8; issues.push({ severity: "high", title: "Translate military language", detail: "A civilian recruiter may not know these terms - swap in the plain-English versions below." }); }
   else if (jargonFound.length) { score -= 3; issues.push({ severity: "low", title: "A little jargon slipped in", detail: "Swap the flagged terms below for their civilian versions." }); }
   else strengths.push("Reads clean of military jargon.");
   const acronyms = (clean.match(/\b[A-Z]{2,5}\b/g) || []).filter((a2) => !["USA", "GPA", "CEO", "CDL", "EMT", "IT", "PM", "RN", "AWS", "FAA", "EPA", "PMP", "SQL"].includes(a2));
@@ -112,7 +112,7 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
     keywordsHit = career.keywords.filter((k) => lower.includes(k.toLowerCase()));
     keywordsMissing = career.keywords.filter((k) => !lower.includes(k.toLowerCase()));
     if (keywordsHit.length >= Math.ceil(career.keywords.length / 2)) strengths.push(`Speaks ${career.label} language (${keywordsHit.length}/${career.keywords.length} key terms).`);
-    else { score -= 10; issues.push({ severity: "high", title: `Tailor it to ${career.label}`, detail: "ATS filters and recruiters match against role keywords — work the missing terms below into real accomplishments (never keyword-stuff)." }); }
+    else { score -= 10; issues.push({ severity: "high", title: `Tailor it to ${career.label}`, detail: "ATS filters and recruiters match against role keywords - work the missing terms below into real accomplishments (never keyword-stuff)." }); }
   }
 
   // Bullet density
@@ -123,7 +123,7 @@ export function analyzeResume(text: string, career?: Career): ResumeResult {
     "Have a DOL VETS rep or American Job Center review it free.",
     "Run your MOS through O*NET's military crosswalk for civilian titles and keywords.",
     career?.skillbridge ? "Ask about SkillBridge internships in this field if you're still in service." : "Get a mock interview through ACP or Veterati (free mentors).",
-    "Save versions per job application — tailor the top third every time.",
+    "Save versions per job application - tailor the top third every time.",
   ];
 
   return {

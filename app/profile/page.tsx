@@ -22,19 +22,19 @@ export default function Profile() {
   const a = s.answers;
   const rows: [string, string | undefined][] = [
     ["Name", s.profile.name],
-    ["Email", s.profile.email || "—"],
+    ["Email", s.profile.email || "-"],
     ["Age", a.ageRange],
-    ["State(s)", residenceStates(a).map((c) => stateName(c) || c).join(", ") || "—"],
+    ["State(s)", residenceStates(a).map((c) => stateName(c) || c).join(", ") || "-"],
     ["Branch", a.branch],
     ...(a.mos ? [["Military job (MOS)", a.mos] as [string, string]] : []),
     ["Service era", a.serviceEra],
     ["Status", a.status],
-    ["Disability rating", a.disabilityRating || "—"],
+    ["Disability rating", a.disabilityRating || "-"],
     ["Employment", a.employment],
-    ["Housing", (Array.isArray(a.housing) ? a.housing.join(", ") : a.housing) || "—"],
+    ["Housing", (Array.isArray(a.housing) ? a.housing.join(", ") : a.housing) || "-"],
     ["Urgency", a.urgency],
   ];
-  const goals = (a.topGoals || []).map((id) => goalById(id)?.label).filter(Boolean).join(", ") || "—";
+  const goals = (a.topGoals || []).map((id) => goalById(id)?.label).filter(Boolean).join(", ") || "-";
 
   return (
     <Wrap narrow>
@@ -42,7 +42,7 @@ export default function Profile() {
       <p className="muted">Edit anything and regenerate your gameplan.</p>
       <div className="card">
         {rows.map(([k, v]) => (
-          <div key={k} className="kv"><span className="k">{k}</span><span>{v || "—"}</span></div>
+          <div key={k} className="kv"><span className="k">{k}</span><span>{v || "-"}</span></div>
         ))}
         <div className="kv"><span className="k">Top goals</span><span style={{ textAlign: "right" }}>{goals}</span></div>
       </div>

@@ -1,4 +1,4 @@
-// VetPath adaptive planning — life-event definitions (pure module, no React).
+// VetPath adaptive planning - life-event definitions (pure module, no React).
 // A life event describes which intake answers it touches and how. Applying one
 // only edits the local demo answers; the rules engine regenerates the plan.
 import type { Answers } from "@/lib/types";
@@ -81,7 +81,7 @@ export const LIFE_EVENTS: LifeEvent[] = [
     id: "career-change",
     label: "I want a career change",
     icon: "ti-arrows-exchange",
-    blurb: "Point the plan at a new destination — then re-run the Pathfinder for a fresh fit.",
+    blurb: "Point the plan at a new destination - then re-run the Pathfinder for a fresh fit.",
     fields: [],
     extraPatch: (a) => ({ careerGoals: addUnique(a.careerGoals, "Change careers") }),
   },
@@ -92,7 +92,7 @@ export const LIFE_EVENTS: LifeEvent[] = [
     blurb: "SBA veteran programs and business-launch steps get pulled forward.",
     fields: [],
     extraPatch: (a) => ({
-      businessInterest: "Yes — actively working on it",
+      businessInterest: "Yes - actively working on it",
       careerGoals: addUnique(a.careerGoals, "Start a business"),
       topGoals: withGoal(a.topGoals, "start-a-business"),
     }),

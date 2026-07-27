@@ -1,7 +1,7 @@
-// VetPath Pathfinder — deterministic, explainable decision engine (SAMPLE logic).
+// VetPath Pathfinder - deterministic, explainable decision engine (SAMPLE logic).
 // Detailed inputs in → ranked career paths out, with a % fit and plain-language "why".
 // Principle: the veteran's own stated preferences drive fit. A disability rating NEVER
-// downgrades a career — it only informs location guidance and benefit highlights.
+// downgrades a career - it only informs location guidance and benefit highlights.
 import type { Answers, AttrDim, Career, CareerFit } from "./types";
 import { ASSESSMENT, CAREERS, LOCATIONS, NETWORKING, PRIORITY_DIMS, careerMedianPay } from "./data";
 
@@ -96,8 +96,8 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
       if (diff === 0) { fit += 6; boosts.push("Matches how fast you need the first paycheck"); }
       else if (diff >= 2) fit -= 6;
     }
-    // Intake signals — each scaled by how much the veteran weighted that dimension.
-    if (a.businessInterest === "Yes — actively working on it" && c.track === "entrepreneur") {
+    // Intake signals - each scaled by how much the veteran weighted that dimension.
+    if (a.businessInterest === "Yes - actively working on it" && c.track === "entrepreneur") {
       fit += 7 * priorityFactor(a, "business"); boosts.push("You said you're actively working toward a business");
     }
     if ((a.educationGoals || []).some((e) => e.includes("degree")) && c.track === "education") {
@@ -121,7 +121,7 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
     const why: string[] = [];
     const ranked = DIMS.filter((d) => c.attrs[d] >= 4 && Math.abs(c.attrs[d] - vec[d]) <= 1.5)
       .sort((d1, d2) => vec[d2] - vec[d1]);
-    for (const d of ranked.slice(0, 3)) why.push(`You want ${DIM_PHRASE[d]} — this path is built on it.`);
+    for (const d of ranked.slice(0, 3)) why.push(`You want ${DIM_PHRASE[d]} - this path is built on it.`);
     if (why.length === 0) why.push("A balanced fit across what you told us.");
 
     // Salary-range match: a soft flag + light nudge. Never hides a path.
@@ -161,7 +161,7 @@ export function locationGuidance(a: Answers, place: string | undefined, career?:
   if (place === "rural") tips.push(LOCATIONS.rules.ruralNote);
   tips.push(LOCATIONS.rules.generalNote);
   if (career && career.cityBias === "city" && place === "rural")
-    tips.push(`Heads up: ${career.label} roles cluster in metro areas — a mid-size city may balance both.`);
+    tips.push(`Heads up: ${career.label} roles cluster in metro areas - a mid-size city may balance both.`);
 
   let metros = LOCATIONS.metros.filter((m) => m.name !== "Rural + telehealth pattern");
   if (place === "city") metros = metros.filter((m) => m.vibe === "big");

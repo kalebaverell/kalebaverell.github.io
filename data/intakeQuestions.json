@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA — for prototype only. Intake questions used to generate a personalized VetPath gameplan. Not official VA guidance. allowCustom on a question lets the veteran type their own answer; every step also offers a free-response notes box.",
+  "_note": "SAMPLE / DEMO DATA - for prototype only. Intake questions used to generate a personalized VetPath gameplan. Not official VA guidance. allowCustom on a question lets the veteran type their own answer; every step also offers a free-response notes box.",
   "stepNotesPrompt": "Anything else about your situation we should know? (optional, your words)",
   "steps": [
     {
@@ -17,7 +17,7 @@
           "id": "state",
           "label": "Which state(s) do you live in?",
           "type": "multistate",
-          "helper": "Select all that apply — add every state where you keep a home or rental, or split your year. State benefits and taxes vary, so we track them all and factor them into your Compare-states and relocation tools."
+          "helper": "Select all that apply - add every state where you keep a home or rental, or split your year. State benefits and taxes vary, so we track them all and factor them into your Compare-states and relocation tools."
         },
         {
           "id": "city",
@@ -38,7 +38,7 @@
         },
         {
           "id": "raceEthnicity",
-          "label": "Race / ethnicity? (optional — select any)",
+          "label": "Race / ethnicity? (optional - select any)",
           "type": "multi",
           "optional": true,
           "allowCustom": true,
@@ -57,7 +57,7 @@
           "type": "text",
           "optional": true,
           "placeholder": "e.g. 25B IT Specialist, HM Corpsman, 3D0X2",
-          "helper": "Your MOS, rating, or AFSC — code or title. It helps us line up civilian careers and resources to skills you already have."
+          "helper": "Your MOS, rating, or AFSC - code or title. It helps us line up civilian careers and resources to skills you already have."
         },
         {
           "id": "serviceEra",
@@ -102,14 +102,14 @@
           "label": "What annual pay are you aiming for?",
           "type": "salary",
           "optional": true,
-          "helper": "A rough range is fine — we'll flag which career paths land in it. Leave blank to skip."
+          "helper": "A rough range is fine - we'll flag which career paths land in it. Leave blank to skip."
         }
       ]
     },
     {
       "id": "priorities",
       "title": "What matters to you",
-      "subtitle": "Pick everything that applies — we'll turn it into a plan.",
+      "subtitle": "Pick everything that applies - we'll turn it into a plan.",
       "questions": [
         {
           "id": "educationGoals",
@@ -129,7 +129,7 @@
           "id": "businessInterest",
           "label": "Interested in owning a business?",
           "type": "single",
-          "options": ["Yes — actively working on it", "Yes — someday", "No"]
+          "options": ["Yes - actively working on it", "Yes - someday", "No"]
         },
         {
           "id": "wellnessPriorities",
@@ -157,7 +157,7 @@
     {
       "id": "weights",
       "title": "What matters most",
-      "subtitle": "You told us what applies — now weigh it. This tilts your recommended path and plan toward what matters most to you.",
+      "subtitle": "You told us what applies - now weigh it. This tilts your recommended path and plan toward what matters most to you.",
       "questions": [
         {
           "id": "priorityWeights",
@@ -191,7 +191,7 @@
           "id": "urgency",
           "label": "How urgent does this feel?",
           "type": "single",
-          "options": ["Right now — I need help urgently", "Next 1–3 months", "Next 6–12 months", "Just exploring"]
+          "options": ["Right now - I need help urgently", "Next 1–3 months", "Next 6–12 months", "Just exploring"]
         }
       ]
     }

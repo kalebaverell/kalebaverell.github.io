@@ -1,5 +1,5 @@
 "use client";
-// Transition Timeline — discovery interview first, then a personalized,
+// Transition Timeline - discovery interview first, then a personalized,
 // phase-based plan for the last 12 months in uniform + first 24 months out.
 // Grouped, multiple-choice-first questions; the plan is deterministic and
 // every deadline cites the official source it was checked against.
@@ -66,7 +66,7 @@ export default function TimelinePage() {
   const [plan, setPlan] = useState<TransitionTimeline | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
-  // Hydrate once from localStorage (answers only — the plan regenerates deterministically).
+  // Hydrate once from localStorage (answers only - the plan regenerates deterministically).
   useEffect(() => {
     try {
       const raw = localStorage.getItem(LS_KEY);
@@ -87,7 +87,7 @@ export default function TimelinePage() {
   const set = <K extends keyof TimelineAnswers>(k: K, v: TimelineAnswers[K]) => {
     setA((p) => { const next = { ...p, [k]: v }; save(next, false); return next; });
   };
-  // Multi-selects toggle inside the functional updater — computing the new list
+  // Multi-selects toggle inside the functional updater - computing the new list
   // from render-time state drops selections when clicks land in the same batch.
   const toggleIn = (k: "goals" | "family" | "priorities", v: string, max?: number) => {
     setA((p) => {
@@ -130,13 +130,13 @@ export default function TimelinePage() {
   return (
     <Wrap narrow>
       <Eyebrow>Transition timeline</Eyebrow>
-      <h2 style={{ marginTop: 0 }}>{plan ? "Your transition timeline" : "Your last 12 months in — first 24 months out"}</h2>
+      <h2 style={{ marginTop: 0 }}>{plan ? "Your transition timeline" : "Your last 12 months in - first 24 months out"}</h2>
 
       {!plan && (
         <>
           <p className="muted">
-            A few grouped questions, then a personalized month-by-month plan. Missing a window — a claim
-            deadline, an insurance conversion, an enrollment date — is expensive; this puts every one on
+            A few grouped questions, then a personalized month-by-month plan. Missing a window - a claim
+            deadline, an insurance conversion, an enrollment date - is expensive; this puts every one on
             a single timeline you control.
           </p>
           <div style={{ display: "flex", gap: 6, margin: "14px 0 18px" }} aria-hidden="true">
@@ -193,7 +193,7 @@ export default function TimelinePage() {
               </fieldset>
               <label className="lbl" htmlFor="tl-state">Target state (leave blank if undecided)</label>
               <select id="tl-state" className="field" value={a.targetState} onChange={(e) => set("targetState", e.target.value)}>
-                <option value="">Still deciding — that&apos;s fine</option>
+                <option value="">Still deciding - that&apos;s fine</option>
                 {STATES.map((st) => <option key={st.code} value={st.code}>{st.name}</option>)}
               </select>
               <fieldset style={{ border: "none", padding: 0, margin: "16px 0" }}>
@@ -219,7 +219,7 @@ export default function TimelinePage() {
                 <legend className="lbl" style={{ padding: 0 }}>Planning to claim service-connected conditions through the VA?</legend>
                 {CLAIMS_OPTIONS.map((c) => (
                   <button key={c.v} type="button" aria-pressed={a.claims === c.v} className={`opt ${a.claims === c.v ? "sel" : ""}`} onClick={() => set("claims", c.v)}>
-                    <strong>{c.label}</strong> — {c.hint}
+                    <strong>{c.label}</strong> - {c.hint}
                   </button>
                 ))}
               </fieldset>
@@ -227,7 +227,7 @@ export default function TimelinePage() {
                 <legend className="lbl" style={{ padding: 0 }}>Financial picture at separation (roughly)</legend>
                 {FIN_OPTIONS.map((f) => (
                   <button key={f.v} type="button" aria-pressed={a.finances === f.v} className={`opt ${a.finances === f.v ? "sel" : ""}`} onClick={() => set("finances", f.v)}>
-                    <strong>{f.label}</strong> — {f.hint}
+                    <strong>{f.label}</strong> - {f.hint}
                   </button>
                 ))}
               </fieldset>
@@ -250,7 +250,7 @@ export default function TimelinePage() {
                   </button>
                 ))}
               </fieldset>
-              <p className="muted small">Everything still appears — your picks just rise to the top of each phase.</p>
+              <p className="muted small">Everything still appears - your picks just rise to the top of each phase.</p>
               <label className="lbl" htmlFor="tl-notes">Anything else on your mind? (optional, your words)</label>
               <textarea id="tl-notes" className="field" rows={3} value={a.notes} onChange={(e) => set("notes", e.target.value)}
                 placeholder="e.g. spouse is mid-degree, elderly parent nearby, worried about losing my crew…" />
@@ -273,16 +273,16 @@ export default function TimelinePage() {
 
           {a.notes.trim() && (
             <Callout kind="info">
-              <strong>Your notes, kept front and center:</strong> &ldquo;{a.notes.trim()}&rdquo; — bring these
+              <strong>Your notes, kept front and center:</strong> &ldquo;{a.notes.trim()}&rdquo; - bring these
               to your TAP counselor and VSO; the human conversations are where the edge cases get solved.
             </Callout>
           )}
 
           {plan.catchUp.length > 0 && (
             <div className="card" style={{ borderColor: "var(--accent)", borderWidth: 2, marginTop: 14 }}>
-              <h3 style={{ marginTop: 0 }}><i className="ti ti-alert-triangle" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Catch-up list — do these first</h3>
+              <h3 style={{ marginTop: 0 }}><i className="ti ti-alert-triangle" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Catch-up list - do these first</h3>
               <p className="muted small" style={{ marginTop: 0 }}>
-                Based on your date, these windows are normally earlier — none of them are lost, they just move to the front of the line.
+                Based on your date, these windows are normally earlier - none of them are lost, they just move to the front of the line.
               </p>
               <ul style={{ margin: 0, paddingLeft: 20 }}>
                 {plan.catchUp.map((t) => (
@@ -304,7 +304,7 @@ export default function TimelinePage() {
               </div>
               <p className="muted small" style={{ margin: "8px 0 12px" }}>{p.narrative}</p>
               {p.tasks.length === 0 ? (
-                <p className="muted small" style={{ margin: 0 }}>Nothing extra in this window for your situation — breathe.</p>
+                <p className="muted small" style={{ margin: 0 }}>Nothing extra in this window for your situation - breathe.</p>
               ) : (
                 <div style={{ overflowX: "auto" }}>
                   <table className="tl-table" style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--fs-small)" }}>
@@ -348,7 +348,7 @@ export default function TimelinePage() {
               ))}
             </ul>
             <p className="muted small" style={{ margin: "12px 0 0" }}>
-              Deadline details checked against the linked official sources as of {TIMELINE_VERIFIED} (demo) —
+              Deadline details checked against the linked official sources as of {TIMELINE_VERIFIED} (demo) -
               rules change, so confirm each one before acting on it.
             </p>
           </div>
@@ -356,14 +356,14 @@ export default function TimelinePage() {
           <Callout kind="info">
             <strong>Want this even more personal?</strong> In the full product you&apos;ll be able to upload a
             resume, LES, or separation packet to tighten the plan around your actual record. This demo
-            personalizes from your answers only — nothing you typed leaves your browser.
+            personalizes from your answers only - nothing you typed leaves your browser.
           </Callout>
 
           <div className="disclaimer" style={{ marginTop: 16 }}>
             <strong style={{ color: "var(--ink-strong)" }}>This timeline is a planning aid, not a substitute for professional guidance.</strong>{" "}
             Confirm disability claims with an accredited VSO or representative, financial commitments with a licensed
             financial advisor, legal questions with a legal assistance office, and medical matters with your provider.
-            Benefit details are sample/demo data — verify through <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>,
+            Benefit details are sample/demo data - verify through <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>,
             your state veterans agency, or your installation&apos;s transition office.
           </div>
 

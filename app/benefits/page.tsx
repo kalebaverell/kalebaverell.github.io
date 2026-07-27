@@ -14,9 +14,9 @@ const CAT_ICON: Record<string, string> = {
 
 const TIER_META: Record<Tier, { label: string; icon: string; blurb: string }> = {
   now: { label: "Act on these now", icon: "ti-bolt", blurb: "Timing or your situation makes these the first moves." },
-  check: { label: "Worth checking", icon: "ti-zoom-check", blurb: "Likely relevant — confirm the details against your exact situation." },
+  check: { label: "Worth checking", icon: "ti-zoom-check", blurb: "Likely relevant - confirm the details against your exact situation." },
   later: { label: "Later", icon: "ti-clock", blurb: "Keep on the radar; nothing urgent from your answers." },
-  unlikely: { label: "Probably not a fit right now", icon: "ti-circle-dashed", blurb: "Based on your answers — revisit if things change." },
+  unlikely: { label: "Probably not a fit right now", icon: "ti-circle-dashed", blurb: "Based on your answers - revisit if things change." },
 };
 
 /** Extra verified-metadata fields present in the JSON but not in the shared Benefit type (types.ts is read-only). */
@@ -48,7 +48,7 @@ export default function Benefits() {
       <p className="muted">Every card links to the official source you should use to verify.</p>
       <div style={{ margin: "8px 0 18px" }}>
         <Callout kind="warn">
-          {BRAND.name} does not determine eligibility — confirm everything with VA.gov, your state agency, or an accredited VSO. Federal content below was checked against official sources (see the verified date on each card), but rules change — always confirm current details.
+          {BRAND.name} does not determine eligibility - confirm everything with VA.gov, your state agency, or an accredited VSO. Federal content below was checked against official sources (see the verified date on each card), but rules change - always confirm current details.
         </Callout>
       </div>
 
@@ -56,7 +56,7 @@ export default function Benefits() {
         <OptimizedSection name={s.profile!.name} optimized={optimized} onJump={jumpTo} />
       ) : (
         <div className="card feature" style={{ marginBottom: 24 }}>
-          <h3 style={{ marginTop: 0 }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> See what likely applies to you — and when</h3>
+          <h3 style={{ marginTop: 0 }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> See what likely applies to you - and when</h3>
           <p style={{ margin: "6px 0 14px" }}>
             Answer a few questions about your service, rating, family, and goals, and {BRAND.name} will order this
             library around your situation: what to act on now, what to check, and what can wait.
@@ -68,7 +68,7 @@ export default function Benefits() {
       {sc && real ? (
         <div className="card feature" style={{ marginBottom: 16 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <h3 style={{ margin: 0 }}><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {real.name} — state benefits</h3>
+            <h3 style={{ margin: 0 }}><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {real.name} - state benefits</h3>
             <span className="chip" style={{ background: "var(--success-soft)", color: "var(--success)", margin: 0 }}>
               <i className="ti ti-circle-check" /> Verified {STATE_BENEFITS.lastVerified}
             </span>
@@ -89,17 +89,17 @@ export default function Benefits() {
             </div>
           ))}
           <p className="small muted" style={{ marginTop: 10 }}>
-            Program rules change — details were verified against official sources on {STATE_BENEFITS.lastVerified}; always confirm current terms with {real.agency.name} before acting.
+            Program rules change - details were verified against official sources on {STATE_BENEFITS.lastVerified}; always confirm current terms with {real.agency.name} before acting.
           </p>
           {allStates.length > 1 && (
             <p className="small" style={{ marginTop: 4 }}>
-              <i className="ti ti-map-pins" aria-hidden="true" /> You listed {allStates.length} states of residence — this shows <strong>{real.name}</strong>. <Link href="/compare">Compare all your states&apos; benefits side by side →</Link>
+              <i className="ti ti-map-pins" aria-hidden="true" /> You listed {allStates.length} states of residence - this shows <strong>{real.name}</strong>. <Link href="/compare">Compare all your states&apos; benefits side by side →</Link>
             </p>
           )}
         </div>
       ) : sc ? (
         <div className="card" style={{ marginBottom: 16 }}>
-          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(sc)} — state benefits (sample)</h3>
+          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(sc)} - state benefits (sample)</h3>
           <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{stateList.map((x, i) => <li key={i}>{x}</li>)}</ul>
           <p className="small muted" style={{ marginTop: 10 }}>Placeholder examples only. Verify with your state Department of Veterans Affairs.</p>
         </div>
@@ -120,12 +120,12 @@ function OptimizedSection({ name, optimized, onJump }: { name: string; optimized
     <section aria-label="Benefits optimized for you" style={{ marginBottom: 28 }}>
       <SectionHead
         eyebrow="Optimized for you"
-        title={`${name}, here's what likely applies — and when`}
+        title={`${name}, here's what likely applies - and when`}
         sub="Built from your own answers: rating, status, family, state, goals, and timing."
       />
       <div style={{ margin: "0 0 16px" }}>
         <Callout kind="info">
-          This ordering is <strong>decision support from your answers — not an eligibility determination</strong>. Only VA, your state agency, or an accredited VSO can confirm eligibility; verify each item at its official source.
+          This ordering is <strong>decision support from your answers - not an eligibility determination</strong>. Only VA, your state agency, or an accredited VSO can confirm eligibility; verify each item at its official source.
         </Callout>
       </div>
 
@@ -236,7 +236,7 @@ function Accordion({ b, open, onToggle }: { b: Benefit; open: boolean; onToggle:
           <a className="btn ghost sm" href={b.official.url} target="_blank" rel="noopener noreferrer">{b.official.name} <i className="ti ti-external-link" /></a>
           {vb.lastVerified && (
             <p className="small muted" style={{ margin: "10px 0 0" }}>
-              Checked against official sources on {vb.lastVerified} — rules change; confirm current details at the link above.
+              Checked against official sources on {vb.lastVerified} - rules change; confirm current details at the link above.
             </p>
           )}
         </div>

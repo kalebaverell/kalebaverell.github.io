@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA — for prototype only. Life goals a veteran can choose; each maps to sample benefit categories and suggested steps. Not official VA guidance.",
+  "_note": "SAMPLE / DEMO DATA - for prototype only. Life goals a veteran can choose; each maps to sample benefit categories and suggested steps. Not official VA guidance.",
   "goals": [
     {
       "id": "transition-out",
@@ -51,7 +51,7 @@
       "id": "buy-a-home",
       "label": "Buy a home",
       "icon": "ti-home",
-      "blurb": "Use your VA home loan benefit the smart way — no down payment, no PMI.",
+      "blurb": "Use your VA home loan benefit the smart way - no down payment, no PMI.",
       "benefits": ["va-home-loan", "state-benefits"],
       "steps": [
         "Request your VA home loan Certificate of Eligibility.",
@@ -81,12 +81,12 @@
       "id": "understand-disability",
       "label": "Understand the disability process",
       "icon": "ti-clipboard-heart",
-      "blurb": "Learn how VA disability compensation works and where to get accredited help — no guarantees, just clarity.",
+      "blurb": "Learn how VA disability compensation works and where to get accredited help - no guarantees, just clarity.",
       "benefits": ["va-disability", "va-healthcare", "mental-health-crisis"],
       "steps": [
         "Learn the basics of how VA rates service-connected conditions (education only).",
         "Gather your service and medical records and a symptom timeline.",
-        "Work with an accredited VSO or county veteran service officer — usually free.",
+        "Work with an accredited VSO or county veteran service officer - usually free.",
         "Understand the claim, evidence, and appeals process at a high level.",
         "Never pay for basic claims help you can get free from an accredited VSO."
       ],
@@ -112,7 +112,7 @@
       "id": "move-new-state",
       "label": "Move to a new state",
       "icon": "ti-map-pin",
-      "blurb": "Understand how your benefits travel — and what's specific to your new home.",
+      "blurb": "Understand how your benefits travel - and what's specific to your new home.",
       "benefits": ["state-benefits", "va-healthcare", "employment"],
       "steps": [
         "Find your new state's Department of Veterans Affairs and county service officer.",
@@ -142,7 +142,7 @@
       "id": "find-local-support",
       "label": "Find local veteran support",
       "icon": "ti-users-group",
-      "blurb": "Connect with people and services near you — from VSOs to peer groups.",
+      "blurb": "Connect with people and services near you - from VSOs to peer groups.",
       "benefits": ["mental-health-crisis", "state-benefits", "employment"],
       "steps": [
         "Find your county veteran service officer (free benefits help).",

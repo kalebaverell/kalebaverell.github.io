@@ -36,7 +36,7 @@ export default function ComparePage() {
     <Wrap>
       <h2><i className="ti ti-columns-3" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Compare states</h2>
       <p className="muted" style={{ maxWidth: 640 }}>
-        Because so many veteran benefits — property-tax relief, tuition waivers, hiring preference — are set by the
+        Because so many veteran benefits - property-tax relief, tuition waivers, hiring preference - are set by the
         state, where you land changes the math. Pick two or three to compare, side by side, from verified sources.
       </p>
 
@@ -72,13 +72,13 @@ export default function ComparePage() {
                 <tr>
                   <td style={rowLabel}>State veterans agency</td>
                   {compares.map((c) => (
-                    <td key={c.code} style={td}>{c.agency ? src(c.agency.url, c.agency.name) : "—"}</td>
+                    <td key={c.code} style={td}>{c.agency ? src(c.agency.url, c.agency.name) : "-"}</td>
                   ))}
                 </tr>
                 <tr>
                   <td style={rowLabel}>Benefit programs (total)</td>
                   {compares.map((c) => (
-                    <td key={c.code} style={td}><strong style={{ fontSize: 16, color: "var(--primary)" }}>{c.totalPrograms || "—"}</strong></td>
+                    <td key={c.code} style={td}><strong style={{ fontSize: 16, color: "var(--primary)" }}>{c.totalPrograms || "-"}</strong></td>
                   ))}
                 </tr>
                 {COMPARE_CATEGORIES.map((cat) => (
@@ -93,7 +93,7 @@ export default function ComparePage() {
                               <strong>{b.count}</strong>
                               {b.top && <div className="muted" style={{ marginTop: 2 }}>{src(b.top.source, b.top.name)}</div>}
                             </>
-                          ) : <span className="muted">—</span>}
+                          ) : <span className="muted">-</span>}
                         </td>
                       );
                     })}
@@ -115,7 +115,7 @@ export default function ComparePage() {
                     <td key={c.code} style={td}>
                       {c.cost?.fmr2br
                         ? <>{src(c.cost.fmr2br.source, `$${c.cost.fmr2br.value.toLocaleString()}/mo`)}<div className="muted" style={{ marginTop: 2 }}>{c.cost.fmr2br.year}</div></>
-                        : <span className="muted">—</span>}
+                        : <span className="muted">-</span>}
                     </td>
                   ))}
                 </tr>
@@ -125,7 +125,7 @@ export default function ComparePage() {
                     <td key={c.code} style={td}>
                       {c.cost?.unemployment
                         ? <>{src(c.cost.unemployment.source, `${c.cost.unemployment.value}%`)}<div className="muted" style={{ marginTop: 2 }}>{c.cost.unemployment.asOf}</div></>
-                        : <span className="muted">—</span>}
+                        : <span className="muted">-</span>}
                     </td>
                   ))}
                 </tr>
@@ -135,9 +135,9 @@ export default function ComparePage() {
 
           <p className="small muted" style={{ marginTop: 12 }}>
             Cost of living is the BEA Regional Price Parity for a representative metro in each state, where{" "}
-            <strong>100 = the U.S. average</strong> — lower is cheaper. Rent is HUD&apos;s Fair Market Rent for a 2-bedroom;
+            <strong>100 = the U.S. average</strong> - lower is cheaper. Rent is HUD&apos;s Fair Market Rent for a 2-bedroom;
             unemployment is the BLS metro rate. State-benefit counts come from each state&apos;s official veterans agency.
-            {BRAND.name} does not determine eligibility — confirm every program at its linked official source.
+            {BRAND.name} does not determine eligibility - confirm every program at its linked official source.
           </p>
           <p className="small" style={{ marginTop: 8 }}>
             <Link href="/benefits"><i className="ti ti-award" aria-hidden="true" /> See full benefit details for your state →</Link>

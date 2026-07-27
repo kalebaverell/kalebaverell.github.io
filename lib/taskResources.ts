@@ -1,4 +1,4 @@
-// Task resources — maps an auto-generated action item to relevant, sourced links (official VA/DoD
+// Task resources - maps an auto-generated action item to relevant, sourced links (official VA/DoD
 // pages + the matching VetPath tool) by keyword, so every task can be "opened" for help without
 // hand-authoring detail for each one. Every external link points to an official source.
 
@@ -14,7 +14,7 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   ]},
   { test: /gi bill|tuition|\bdegree\b|\bschool\b|\bcollege\b|education|certification|apprentice/i, resources: [
     { label: "GI Bill & education benefits (VA.gov)", href: "https://www.va.gov/education/about-gi-bill-benefits/" },
-    { label: "See how to fund it — your funded path", href: "/pathfinder", internal: true },
+    { label: "See how to fund it - your funded path", href: "/pathfinder", internal: true },
   ]},
   { test: /disabilit|rating|\bclaim\b|intent to file|c&p|compensation|secondary condition/i, resources: [
     { label: "File a disability claim (VA.gov)", href: "https://www.va.gov/disability/" },

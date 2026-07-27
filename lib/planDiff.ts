@@ -1,4 +1,4 @@
-// VetPath adaptive planning — pure diff between two generated gameplans.
+// VetPath adaptive planning - pure diff between two generated gameplans.
 // Powers the "what changes" preview so a veteran sees exactly what a life
 // event does to the plan before committing.
 import type { Gameplan } from "@/lib/types";

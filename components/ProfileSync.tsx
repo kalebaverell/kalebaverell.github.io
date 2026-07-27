@@ -14,7 +14,7 @@ export default function ProfileSync() {
   const loadedFor = useRef<string | null>(null);
   const canSave = useRef(false);
 
-  // A signed-in user already gave us their name + email at sign-up — fill the profile from the
+  // A signed-in user already gave us their name + email at sign-up - fill the profile from the
   // account so the onboarding "create profile" gate never re-asks. Only runs when none is set.
   useEffect(() => {
     if (!user || !ready || s.profile) return;

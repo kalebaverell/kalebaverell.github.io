@@ -31,7 +31,7 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
       <div className="intro-split" style={{ marginBottom: 8 }}>
         <div>
           <Eyebrow>Decision engine</Eyebrow>
-          <h2>Pathfinder — pick your next mission</h2>
+          <h2>Pathfinder - pick your next mission</h2>
           <p className="muted" style={{ maxWidth: 640, margin: 0 }}>
             Transition programs teach four tracks out of the service. Choose one directly, or let the decision engine recommend your best-fit path from what matters to you.
           </p>
@@ -51,7 +51,7 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
       {chosen && (
         <div style={{ margin: "12px 0" }}>
           <Callout kind="info">
-            <strong>Current destination: {chosen.label}</strong>{s.chosenPath?.fitPct ? ` — ${s.chosenPath.fitPct}% fit (demo)` : ""}. You can change it anytime below.
+            <strong>Current destination: {chosen.label}</strong>{s.chosenPath?.fitPct ? ` - ${s.chosenPath.fitPct}% fit (demo)` : ""}. You can change it anytime below.
           </Callout>
         </div>
       )}
@@ -70,12 +70,12 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
       <div className="card" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ maxWidth: 420 }}>
           <h3 style={{ margin: 0 }}>Not sure which track?</h3>
-          <p className="muted small" style={{ margin: "4px 0 0" }}>Answer {ASSESSMENT.questions.length} quick questions. We&apos;ll rank your best-fit paths with a % fit and show you exactly why — then build your plan around the one you pick.</p>
+          <p className="muted small" style={{ margin: "4px 0 0" }}>Answer {ASSESSMENT.questions.length} quick questions. We&apos;ll rank your best-fit paths with a % fit and show you exactly why - then build your plan around the one you pick.</p>
         </div>
         <button className="btn gold" onClick={() => setView({ kind: "assess", q: 0 })}><i className="ti ti-compass" /> Help me decide</button>
       </div>
       <p className="small muted" style={{ marginTop: 14 }}>
-        Fit scores are demo estimates from your own answers — a decision aid, not a guarantee. Verify programs at official sources.
+        Fit scores are demo estimates from your own answers - a decision aid, not a guarantee. Verify programs at official sources.
       </p>
     </Wrap>
   );
@@ -140,10 +140,10 @@ function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
         </>
       ) : (
         <>
-          <h2>Last one — in your own words</h2>
+          <h2>Last one - in your own words</h2>
           <p className="muted">{ASSESSMENT.freePrompt}</p>
           <div className="card">
-            <textarea className="field" rows={4} value={s.assessmentFree} placeholder="Optional — write anything"
+            <textarea className="field" rows={4} value={s.assessmentFree} placeholder="Optional - write anything"
               onChange={(e) => setAssessmentFree(e.target.value)} style={{ minHeight: 110, resize: "vertical" }} />
           </div>
         </>
@@ -177,7 +177,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
         <i className="ti ti-arrow-left" aria-hidden="true" /> Adjust answers
       </button>
       <h2>Your best-fit path</h2>
-      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. Fit scores are demo estimates built only from your answers — here&apos;s the reasoning, not a black box.</p>
+      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. Fit scores are demo estimates built only from your answers - here&apos;s the reasoning, not a black box.</p>
 
       <div className="card" style={{ border: "2px solid var(--accent)", marginTop: 8 }}>
         <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
@@ -236,11 +236,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
       </div>
       <p className="small muted" style={{ marginTop: 16 }}>None of these feel right? <button type="button" onClick={() => setView({ kind: "browse" })} style={{ background: "none", border: "none", color: "var(--info)", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0, textDecoration: "underline" }}>Browse all paths</button> or adjust your answers.</p>
       <p className="small muted" style={{ marginTop: 18, marginBottom: 4 }}>
-        Question design informed by the U.S. Department of Labor&apos;s O*NET&reg; Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool — USDOL/ETA has not approved, endorsed, or tested this adaptation.
+        Question design informed by the U.S. Department of Labor&apos;s O*NET&reg; Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool - USDOL/ETA has not approved, endorsed, or tested this adaptation.
       </p>
       <p className="small" style={{ margin: 0 }}>
         <a href="https://www.mynextmove.org/vets/" target="_blank" rel="noopener noreferrer">Compare with the official My Next Move for Veterans &rarr;</a>
-        <span className="muted"> — the Department of Labor&apos;s validated interest instrument, with a military-to-civilian career crosswalk.</span>
+        <span className="muted"> - the Department of Labor&apos;s validated interest instrument, with a military-to-civilian career crosswalk.</span>
       </p>
     </Wrap>
   );
@@ -273,7 +273,7 @@ function Detail({ careerId, fromResults, setView }: { careerId: string; fromResu
         <div className="iconwrap" style={{ width: 52, height: 52, fontSize: 26 }}><i className={`ti ${c.icon}`} aria-hidden="true" /></div>
         <div style={{ flex: 1 }}>
           <h2 style={{ margin: 0 }}>{c.label}</h2>
-          <p className="muted" style={{ margin: "2px 0 0" }}>{t?.label} track · {c.paySample} · {c.outlookSample} <span className="small">(figures change — verify at source)</span></p>
+          <p className="muted" style={{ margin: "2px 0 0" }}>{t?.label} track · {c.paySample} · {c.outlookSample} <span className="small">(figures change - verify at source)</span></p>
           {(c.blsUrl || c.onetUrl) && (
             <p className="small muted" style={{ margin: "4px 0 0" }}>
               Pay/outlook:{" "}
@@ -296,21 +296,21 @@ function Detail({ careerId, fromResults, setView }: { careerId: string; fromResu
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> The route</h3>
         <ol className="steps">{c.entryPath.map((st, i) => <li key={i}>{st}</li>)}</ol>
-        {c.skillbridge && <div style={{ marginTop: 10 }}><Callout kind="info"><strong>Still in service?</strong> This path is SkillBridge-friendly — intern with a civilian employer during your last 180 days while keeping military pay. Ask your command early.</Callout></div>}
+        {c.skillbridge && <div style={{ marginTop: 10 }}><Callout kind="info"><strong>Still in service?</strong> This path is SkillBridge-friendly - intern with a civilian employer during your last 180 days while keeping military pay. Ask your command early.</Callout></div>}
       </div>
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> Where to live for this path (sample)</h3>
         <ul style={{ margin: "6px 0 10px", paddingLeft: 18 }}>{loc.tips.map((tp, i) => <li key={i} className="small" style={{ marginBottom: 4 }}>{tp}</li>)}</ul>
         {loc.metros.map((m) => (
-          <div key={m.name} className="kv"><span className="k">{m.name}{m.state !== "—" ? `, ${m.state}` : ""}</span><span className="small" style={{ textAlign: "right" }}>{m.va}</span></div>
+          <div key={m.name} className="kv"><span className="k">{m.name}{m.state !== "-" ? `, ${m.state}` : ""}</span><span className="small" style={{ textAlign: "right" }}>{m.va}</span></div>
         ))}
-        <p className="small muted" style={{ margin: "10px 0 0" }}>Examples only — verify facilities via the <a href="https://www.va.gov/find-locations/" target="_blank" rel="noopener noreferrer">VA facility locator</a>.</p>
+        <p className="small muted" style={{ margin: "10px 0 0" }}>Examples only - verify facilities via the <a href="https://www.va.gov/find-locations/" target="_blank" rel="noopener noreferrer">VA facility locator</a>.</p>
       </div>
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
         {isCurrent ? (
-          <Link className="btn" href="/dashboard"><i className="ti ti-layout-dashboard" /> This is your destination — view plan</Link>
+          <Link className="btn" href="/dashboard"><i className="ti ti-layout-dashboard" /> This is your destination - view plan</Link>
         ) : (
           <button className="btn gold" onClick={lockIn}><i className="ti ti-flag-3" /> Set as my destination &amp; update my plan</button>
         )}

@@ -10,9 +10,9 @@ import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
 
 export const metadata: Metadata = {
-  title: "VetPath — A clear gameplan for life after service",
+  title: "VetPath - A clear gameplan for life after service",
   description:
-    "VetPath turns a veteran's goals, life stage, and status into a personalized 30/60/90-day gameplan. A planning and education tool — not the VA. Sample data only.",
+    "VetPath turns a veteran's goals, life stage, and status into a personalized 30/60/90-day gameplan. A planning and education tool - not the VA. Sample data only.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "VetPath" },
   icons: {
@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AuthModal />
           </StoreProvider>
         </AuthProvider>
-        {/* Register the offline/update service worker only in production builds — running it
+        {/* Register the offline/update service worker only in production builds - running it
             under `next dev` would cache-first the dev chunks and fight hot-reload. */}
         {process.env.NODE_ENV === "production" && (
           <script dangerouslySetInnerHTML={{ __html: SW_REGISTER }} />
