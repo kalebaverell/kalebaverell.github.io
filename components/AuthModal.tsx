@@ -3,9 +3,8 @@
 // (hashed server-side) - never stored by us. Opened via the auth context.
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useAuth } from "@/lib/auth";
-
-import { MIN_PASSWORD_LENGTH, PROVIDER_META } from "@/lib/auth";
+import { useAuth, MIN_PASSWORD_LENGTH, PROVIDER_META } from "@/lib/auth";
+import { BRAND } from "@/lib/data";
 import type { AuthMode as Mode, OAuthProvider } from "@/lib/auth";
 
 export default function AuthModal() {
@@ -83,27 +82,30 @@ export default function AuthModal() {
       }}
     >
       <div className="card" style={{ width: "100%", maxWidth: 440, padding: 0, overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
-        <div style={{ padding: "22px 26px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span className="eyebrow" style={{ margin: 0 }}>
-            {mode === "signup" ? "Create your account" : mode === "reset" ? "Password help" : "Welcome back"}
-          </span>
+        <div style={{ padding: "16px 20px 0", display: "flex", justifyContent: "flex-end" }}>
           <button type="button" aria-label="Close" onClick={closeAuth}
             style={{ border: "none", background: "transparent", cursor: "pointer", fontSize: 20, color: "var(--muted)", lineHeight: 1 }}>
             <i className="ti ti-x" aria-hidden="true" />
           </button>
         </div>
 
-        <div style={{ padding: "8px 26px 26px" }}>
-          <h2 style={{ fontSize: "var(--fs-h2)", margin: "0 0 4px" }}>
-            {mode === "signup" ? "Save your gameplan" : mode === "reset" ? "Reset your password" : "Sign in to VetPath"}
-          </h2>
-          <p className="muted small" style={{ margin: "0 0 18px" }}>
-            {mode === "signup"
-              ? "Create a free account to save your plan and pick up on any device."
-              : mode === "reset"
-              ? "Enter your email and we will send you a link to set a new one. Your saved plan is untouched."
-              : "Access your saved plan and continue where you left off."}
-          </p>
+        <div style={{ padding: "0 26px 28px" }}>
+          {/* Brand mark and welcome, centered: the shape people expect from a sign-in screen. */}
+          <div style={{ textAlign: "center", marginBottom: 22 }}>
+            <span aria-hidden="true" className="brand-mark" style={{ width: 44, height: 44, fontSize: 24, margin: "0 auto 14px" }}>
+              <i className="ti ti-route" />
+            </span>
+            <h2 style={{ fontSize: "var(--fs-h2)", margin: "0 0 6px" }}>
+              {mode === "signup" ? `Welcome to ${BRAND.name}` : mode === "reset" ? "Reset your password" : "Welcome back"}
+            </h2>
+            <p className="muted small" style={{ margin: "0 auto", maxWidth: 320 }}>
+              {mode === "signup"
+                ? "Create a free account to build and save your gameplan."
+                : mode === "reset"
+                ? "Enter your email and we will send you a link to set a new one. Your saved plan is untouched."
+                : "Sign in to pick up right where you left off."}
+            </p>
+          </div>
 
           {confirmSent ? (
             <>
