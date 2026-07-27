@@ -128,13 +128,6 @@ export default function TermsPage() {
         </p>
       </Section>
 
-      <Section title="If we ever earn money from a referral">
-        We do not currently take any payment for connecting you with a lender, a real estate agent, an
-        insurance agent, or anyone else. If that ever changes, we will say so plainly on the page where it
-        happens, we will always show you more than one option, and payment will never change what we
-        recommend or the order we show it in. We would rather lose the fee than lose your trust.
-      </Section>
-
       <Section title="Changes to these terms">
         If we change something meaningful here, we will update the date at the top. These are plain
         language pilot terms and will be reviewed by counsel, and replaced with formal terms including
