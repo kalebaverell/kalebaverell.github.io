@@ -5,6 +5,9 @@ const nextConfig = {
   output: "export",
   images: { unoptimized: true },
   trailingSlash: true,
+  // Lets a verification build write somewhere other than .next, so it can run
+  // safely while a dev server is using .next. Unset in normal use and in CI.
+  ...(process.env.VP_DIST_DIR ? { distDir: process.env.VP_DIST_DIR } : {}),
 };
 
 export default nextConfig;

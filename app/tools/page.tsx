@@ -7,6 +7,7 @@ import { Wrap, CardArt } from "@/components/ui";
 const TOOLS: { href: string; icon: string; title: string; body: string; art: "compass" | "doc" | "layers" | "nodes" }[] = [
   { href: "/pathfinder", icon: "ti-compass", title: "Pathfinder", body: "The decision engine: 4 tracks, 10 questions, your best-fit career path with a % fit and the route to get there.", art: "compass" },
   { href: "/timeline", icon: "ti-timeline", title: "Transition timeline", body: "Your last 12 months in uniform and first 24 months out, phase by phase - every deadline on one plan you control.", art: "layers" },
+  { href: "/reserves", icon: "ti-shield-star", title: "Reserves & Guard", body: "The option most people never get explained: health care, dental, school, and a retirement your service already counts toward. Not a recruiting pitch, just the math.", art: "layers" },
   { href: "/relocate", icon: "ti-map-2", title: "Relocation planner", body: "Compare places to live on what matters to you: VA access, cost, jobs for your path, schools, community, and more.", art: "compass" },
   { href: "/compare", icon: "ti-columns-3", title: "Compare states", body: "Two or three states side by side: veteran benefits by category plus cost of living, rent, and jobs - every figure from a verified source.", art: "layers" },
   { href: "/family", icon: "ti-users", title: "Family planner", body: "Plan as a household - spouse, kids, and caregiver checkpoints, shared decisions, and verified family programs.", art: "nodes" },
