@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -44,6 +44,10 @@ function Intake() {
   const step = Math.min(s.step, INTAKE.length - 1);
   const sec = INTAKE[step];
   const pct = (step / INTAKE.length) * 100;
+
+  // Advancing to (or returning to) a step should start at the top — not wherever the Next
+  // button sat at the bottom of the previous step.
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [step]);
 
   const finish = () => {
     if (!s.answers.topGoals || s.answers.topGoals.length === 0) {

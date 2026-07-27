@@ -10,9 +10,18 @@ import { useStore } from "@/lib/store";
 
 export default function ProfileSync() {
   const { user } = useAuth();
-  const { s, ready, hydrateRemote } = useStore();
+  const { s, ready, hydrateRemote, ensureProfile } = useStore();
   const loadedFor = useRef<string | null>(null);
   const canSave = useRef(false);
+
+  // A signed-in user already gave us their name + email at sign-up — fill the profile from the
+  // account so the onboarding "create profile" gate never re-asks. Only runs when none is set.
+  useEffect(() => {
+    if (!user || !ready || s.profile) return;
+    const meta = (user.user_metadata || {}) as Record<string, unknown>;
+    const name = (typeof meta.full_name === "string" && meta.full_name) || user.email?.split("@")[0] || "Veteran";
+    ensureProfile(name, user.email || "");
+  }, [user, ready, s.profile, ensureProfile]);
 
   // Load-on-login (once per user).
   useEffect(() => {

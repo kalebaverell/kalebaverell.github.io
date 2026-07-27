@@ -52,6 +52,14 @@
           "options": ["Army", "Navy", "Air Force", "Marine Corps", "Coast Guard", "Space Force", "National Guard / Reserve"]
         },
         {
+          "id": "mos",
+          "label": "What was your military job? (optional)",
+          "type": "text",
+          "optional": true,
+          "placeholder": "e.g. 25B IT Specialist, HM Corpsman, 3D0X2",
+          "helper": "Your MOS, rating, or AFSC — code or title. It helps us line up civilian careers and resources to skills you already have."
+        },
+        {
           "id": "serviceEra",
           "label": "When did you serve?",
           "type": "single",

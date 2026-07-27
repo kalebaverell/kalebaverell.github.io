@@ -30,6 +30,9 @@ interface Store {
   s: AppState;
   ready: boolean;
   createProfile: (name: string, email: string) => void;
+  /** Fill the profile from a signed-in account only if none exists yet — so a logged-in
+   *  user is never re-asked for their name and email. Never resets onboarding progress. */
+  ensureProfile: (name: string, email: string) => void;
   setAnswer: (id: keyof Answers, value: any) => void;
   toggleMulti: (id: keyof Answers, value: string) => void;
   toggleGoal: (id: string) => void;
@@ -79,6 +82,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   const createProfile = useCallback((name: string, email: string) => {
     setS((p) => ({ ...p, profile: { name: name.trim() || "Veteran", email: email.trim() }, step: 0 }));
+  }, []);
+
+  // Set the profile from a signed-in account, but only if one isn't already set — never
+  // resets step/answers. Lets a logged-in user skip the "create profile" gate entirely.
+  const ensureProfile = useCallback((name: string, email: string) => {
+    setS((p) => (p.profile ? p : { ...p, profile: { name: name.trim() || "Veteran", email: email.trim() } }));
   }, []);
 
   const setAnswer = useCallback((id: keyof Answers, value: any) => {
@@ -195,7 +204,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

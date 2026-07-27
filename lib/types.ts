@@ -15,6 +15,9 @@ export interface Answers {
   sex?: string;
   raceEthnicity?: string[];
   branch?: string;
+  /** Military job — MOS (Army/Marines), rating (Navy), or AFSC (Air Force). Helps align
+   *  civilian career matches and resources to skills the veteran already has. */
+  mos?: string;
   serviceEra?: string;
   status?: string;
   disabilityRating?: string;

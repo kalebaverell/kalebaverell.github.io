@@ -26,6 +26,7 @@ export default function Profile() {
     ["Age", a.ageRange],
     ["State(s)", residenceStates(a).map((c) => stateName(c) || c).join(", ") || "—"],
     ["Branch", a.branch],
+    ...(a.mos ? [["Military job (MOS)", a.mos] as [string, string]] : []),
     ["Service era", a.serviceEra],
     ["Status", a.status],
     ["Disability rating", a.disabilityRating || "—"],
