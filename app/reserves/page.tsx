@@ -17,6 +17,7 @@ import {
   RESERVES_DISCLAIMER,
   RESERVES_NOT_RECRUITER,
   STATE_EDUCATION_NOTE,
+  STATE_EDUCATION_COVERAGE,
 } from "@/lib/reserves";
 import type { ReserveBenefit } from "@/lib/reserves";
 
@@ -179,7 +180,10 @@ export default function Reserves() {
       <h3 style={{ margin: "30px 0 0" }}>
         <i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} aria-hidden="true" /> Your state
       </h3>
-      <p className="muted small" style={{ margin: "4px 0 12px" }}>{STATE_EDUCATION_NOTE}</p>
+      <p className="muted small" style={{ margin: "4px 0 12px" }}>
+        {STATE_EDUCATION_NOTE} We have verified {STATE_EDUCATION_COVERAGE} states so far. If yours is not listed,
+        that does not mean it has no program, only that we have not confirmed one yet, so go straight to your state's agency.
+      </p>
 
       {statePrograms.length > 0 ? (
         <div style={{ display: "grid", gap: 14 }}>

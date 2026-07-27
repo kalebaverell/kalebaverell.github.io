@@ -152,7 +152,7 @@
       "sourceLabel": "Military OneSource, commissaries and exchanges"
     }
   ],
-  "stateEducationNote": "State tuition programs are funded by individual states and are almost always run by that state's National Guard, with eligibility written as membership in that state's Guard. Because the federal Reserve components have no state counterpart, Reserve members generally cannot use them, though a few states are exceptions worth checking. Most of these programs depend on an annual state appropriation and can be prorated or capped in a tight budget year. We have verified 16 states so far. If yours is not listed, that does not mean it has no program, only that we have not verified it yet, so go to your state's agency.",
+  "stateEducationNote": "State tuition programs are funded by individual states and are almost always run by that state's National Guard, with eligibility written as membership in that state's Guard. Because the federal Reserve components have no state counterpart, Reserve members generally cannot use them, though a few states are exceptions worth checking. Most of these programs depend on an annual state appropriation and can be prorated or capped in a tight budget year.",
   "stateEducation": [
     {
       "code": "TX",
@@ -297,6 +297,339 @@
       "eligibility": "An active member in good standing with a federally recognized Alabama Guard unit, basic training complete, at least 17, enrolled at an accredited Alabama institution with a 2.0 GPA and a FAFSA on file, pursuing a first undergraduate or graduate degree. If the appropriation falls short, awards are prorated across institutions.",
       "source": "https://admincode.legislature.state.al.us/api/chapter/300-4-4",
       "sourceLabel": "Alabama Administrative Code 300-4-4"
+    },
+    {
+      "code": "IN",
+      "state": "Indiana",
+      "program": "National Guard Tuition Supplement Grant",
+      "blurb": "Covers 100 percent of tuition and regularly assessed fees at Indiana public colleges and universities. At Indiana private nonprofit schools it pays up to $5,000 a year toward tuition and fees. It applies to your first degree at each level, up to a master's.",
+      "eligibility": "An active drilling member of the Indiana Army or Air National Guard with a high school diploma or GED, not AWOL in the 12 months before enrolling, with a FAFSA on file and meeting your school's academic progress standards.",
+      "source": "https://www.in.gov/che/state-financial-aid/state-financial-aid-by-program/national-guard-tuition-supplement-grant/",
+      "sourceLabel": "Indiana Commission for Higher Education"
+    },
+    {
+      "code": "IA",
+      "state": "Iowa",
+      "program": "National Guard Service Scholarship Program",
+      "blurb": "Pays money directly to your school. By law the award cannot exceed the resident tuition rate at Iowa's Regents universities, and it is reduced by any federal military tuition assistance you receive. The exact amount is set each year and depends on what the legislature appropriates.",
+      "eligibility": "An Iowa resident in an Iowa Army or Air Guard unit who has finished initial active duty training and attends at least 90 percent of scheduled drills and annual training. Undergraduates only, with a FAFSA on file. Assistance stops after 120 credit hours, and you are not eligible if you have already met the requirements for a bachelor's degree.",
+      "source": "https://www.legis.iowa.gov/docs/code/256.210.pdf",
+      "sourceLabel": "Iowa Code 256.210"
+    },
+    {
+      "code": "KS",
+      "state": "Kansas",
+      "program": "Kansas National Guard Educational Assistance Program",
+      "blurb": "Covers 100 percent of tuition and required fees at Kansas public colleges, universities, community colleges, and technical colleges. At accredited independent Kansas colleges the award is capped at the highest rate charged by the public institutions. What you actually receive depends on what the Kansas Legislature funds that year.",
+      "eligibility": "A current Kansas Guard member in good standing with a high school diploma or GED, enrolled at a Kansas school, keeping at least a 2.0 GPA, and not already holding a bachelor's degree. Worth knowing before you sign: you agree to serve 24 more months in the Kansas Guard after your last funded semester, and if you do not, you repay the full amount.",
+      "source": "https://www.kansasregents.gov/resources/PDF/Students/Student_Financial_Aid/NG_2026-2027.1.pdf",
+      "sourceLabel": "Kansas Board of Regents"
+    },
+    {
+      "code": "NE",
+      "state": "Nebraska",
+      "program": "Nebraska National Guard Tuition Assistance Program",
+      "blurb": "A credit worth 100 percent of resident tuition for a diploma, certificate, associate, or bachelor's program, and 50 percent for graduate or professional work. Usable at Nebraska public schools and at independent nonprofit Nebraska colleges, though a private school award cannot exceed what you would have received at the University of Nebraska-Lincoln. No more than 1,200 members can receive it in a state fiscal year.",
+      "eligibility": "A Nebraska Guard member in satisfactory standing, using it within your first 10 years of membership. Enlisted members who already hold a bachelor's degree are not eligible, and neither are Active Guard and Reserve personnel. Worth knowing before you sign: you agree in writing to three more years of Nebraska Guard service, and you may have to repay if you leave early or do not complete a course the state paid for.",
+      "source": "https://www.nebraskalegislature.gov/laws/statutes.php?statute=85-505",
+      "sourceLabel": "Nebraska Revised Statute 85-505"
+    },
+    {
+      "code": "MO",
+      "state": "Missouri",
+      "program": "National Guard educational assistance",
+      "blurb": "Missouri Guard members can apply each semester for either a tuition and fee waiver for undergraduate courses at a Missouri public college that receives state appropriations, or a grant paid to an eligible Missouri institution. The waiver covers only what is left after military tuition assistance, GI Bill benefits, outside scholarships, and federal grants are applied.",
+      "eligibility": "An active Missouri Guard member with a certificate of satisfactory service, a cumulative GPA of at least 2.5, a FAFSA on file for the term, and no bachelor's degree yet. Capped at 120 completed credit hours. Worth knowing before you sign: if you stop maintaining active military affiliation you repay that semester's award, except in cases of death, disability, or medical disqualification.",
+      "source": "https://revisor.mo.gov/main/OneSection.aspx?section=173.239",
+      "sourceLabel": "Missouri Revised Statutes 173.239"
+    },
+    {
+      "code": "OK",
+      "state": "Oklahoma",
+      "program": "Oklahoma National Guard Educational Assistance Program",
+      "blurb": "Pays resident tuition plus approved mandatory, program, and academic service fees at public colleges in the Oklahoma State System of Higher Education. Covers up to 18 credit hours a semester, up to 120 hours total for an associate or bachelor's degree and 40 hours for a master's. Graduate assistance is funded only if undergraduate assistance is fully funded first.",
+      "eligibility": "A current Oklahoma Guard member in good standing with a high school diploma or GED and at least one year left on your enlistment at the start of each semester you apply for, keeping a 2.0 GPA and satisfactory Guard participation. Worth knowing before you sign: you agree to serve at least 24 more months after your last funded semester, and falling short triggers prorated repayment, though a hardship waiver can be requested from the Adjutant General.",
+      "source": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2257%20ENR.PDF",
+      "sourceLabel": "Oklahoma HB 2257 (2025), amending 70 O.S. 3231"
+    },
+    {
+      "code": "CA",
+      "state": "California",
+      "program": "California Military Department GI Bill Award Program",
+      "blurb": "A state award toward college at the University of California, California State University, the community colleges, and eligible California private and for-profit schools. The award is capped at the maximum Cal Grant amount for your type of school, and it cannot exceed the gap between your cost of attendance and other federal veterans benefits. No more than 1,000 awards are issued in a fiscal year, so apply early.",
+      "eligibility": "An active member of the California Army or Air National Guard, the California State Guard, or the California Naval Militia, meeting state residency rules, enrolled in at least three units a semester with a FAFSA on file, working toward a credential you do not already hold. Worth knowing before you sign: you agree to serve two more years after the last term the program pays for.",
+      "source": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=EDC&division=5.&title=3.&part=42.&chapter=2.&article=20.7.",
+      "sourceLabel": "California Education Code, Article 20.7"
+    },
+    {
+      "code": "WA",
+      "state": "Washington",
+      "program": "Washington National Guard Postsecondary Education Grant Program",
+      "blurb": "A state grant for tuition at accredited Washington schools. State law caps it at the maximum Washington College Grant amount plus $500 for books, and it can never exceed one year of undergraduate tuition and fees at the University of Washington plus a book allowance. The lifetime limit is six full-time years, which you can share with a dependent you designate.",
+      "eligibility": "An active drilling member in good standing of the Washington National Guard, or a spouse or dependent that member designates, who is a Washington resident student with a FAFSA or WASFA on file and satisfactory academic progress. Worth knowing before you sign: you owe one year of Washington Guard service for each year of grant money received, and not fulfilling it means repaying the grant with interest.",
+      "source": "https://app.leg.wa.gov/rcw/default.aspx?cite=28B.103&full=true",
+      "sourceLabel": "Washington RCW Chapter 28B.103"
+    },
+    {
+      "code": "OR",
+      "state": "Oregon",
+      "program": "Oregon National Guard State Tuition Assistance",
+      "blurb": "A state award for undergraduate study at Oregon community colleges, public universities, Oregon Health and Science University, and eligible Oregon private nonprofit schools. It pays up to resident tuition after federal tuition assistance and other grant aid are applied first. For 2025-26 the state says budget limits mean it covers tuition only, with no fees or book allowance. Good for up to 90 community college credits or 180 quarter credits at a university.",
+      "eligibility": "A currently drilling Oregon Guard member who has completed basic training, enrolled in a certificate, associate, or bachelor's program at an eligible Oregon school, not already holding a bachelor's degree, not in default on federal student loans, and keeping a 2.0 GPA. The published rule does not state a service obligation or a repayment clause.",
+      "source": "https://oregonstudentaid.gov/grants/oregon-national-guard-state-tuition-assistance/",
+      "sourceLabel": "Oregon Student Aid, Higher Education Coordinating Commission"
+    },
+    {
+      "code": "NV",
+      "state": "Nevada",
+      "program": "Nevada National Guard fee waiver",
+      "blurb": "A waiver at Nevada System of Higher Education schools that lets active Nevada Guard members register for courses without paying the base registration fee, which is the equivalent of resident tuition, and that also covers laboratory fees on certain courses. It applies to state-supported undergraduate and graduate programs. Four professional programs are excluded: the Boyd School of Law, both medical schools, and the UNLV dental school.",
+      "eligibility": "An active member of the Nevada National Guard maintaining at least a 2.0 semester grade point average. You can transfer an existing registration and laboratory fee waiver to a spouse or child during a period of reenlistment.",
+      "source": "https://nshe.nevada.edu/system-administration/departments/asa/students/student-veterans/",
+      "sourceLabel": "Nevada System of Higher Education"
+    },
+    {
+      "code": "AZ",
+      "state": "Arizona",
+      "program": "Arizona National Guard tuition and fees reimbursement",
+      "blurb": "Arizona pays you back for tuition and fees after you finish a semester at an Arizona public or private postsecondary school or a certificated vocational technical school. The reimbursement is the lower of two numbers: the maximum in-state tuition and fees charged at an Arizona state university that year, or what you actually spent. The law says plainly that no right to reimbursement exists beyond what the legislature appropriates, so the money can run out.",
+      "eligibility": "A member of an Arizona Army or Air National Guard unit throughout each semester you apply for, having satisfactorily completed initial active duty service, attending at least 90 percent of scheduled drills and annual training, and keeping a C average or better. Spouses, legal dependents, and state military department employees may also apply, but Guard members are paid first.",
+      "source": "https://www.azleg.gov/ars/26/00179.htm",
+      "sourceLabel": "Arizona Revised Statutes 26-179"
+    },
+    {
+      "code": "HI",
+      "state": "Hawaii",
+      "program": "State Tuition Assistance Program",
+      "blurb": "Hawaii reimburses tuition for Hawaii National Guard members attending University of Hawaii system schools statewide, including the community colleges. It covers 100 percent of tuition for courses that apply directly to your first undergraduate degree, and 50 percent for courses toward your first master's. It works as a reimbursement, so you pay first and the state pays you back.",
+      "eligibility": "A military grade of E1 to E9, W1 to W5, or O1 to O3, a Hawaii resident as the University of Hawaii defines residency, participating satisfactorily with your unit, with Advanced Individual Training complete and a separation date that runs past the last day of class. You need a C- or better in the course.",
+      "source": "https://dod.hawaii.gov/hiarng/resources/education/stap-applications/",
+      "sourceLabel": "Hawaii Department of Defense, Army National Guard"
+    },
+    {
+      "code": "AK",
+      "state": "Alaska",
+      "program": "Alaska National Guard Tuition Assistance",
+      "blurb": "Alaska National Guard members may receive up to 100 percent tuition assistance at any University of Alaska system school, and may also qualify for separate federal tuition assistance. Alaska publishes very little about this publicly, so caps, credit limits, and the rules for schools outside the University of Alaska system are not stated online.",
+      "eligibility": "Active members of the Alaska National Guard. The state page does not publish a GPA requirement, a service obligation, or a repayment clause, so contact the Alaska National Guard education office for the full rules before you enroll.",
+      "source": "https://veterans.alaska.gov/education/",
+      "sourceLabel": "Alaska Office of Veterans Affairs"
+    },
+    {
+      "code": "AR",
+      "state": "Arkansas",
+      "program": "Arkansas National Guard Tuition Waiver Program",
+      "blurb": "Waives tuition at Arkansas state-supported public colleges, at private nonprofit Arkansas colleges eligible for federal student aid, and at schools offering postsecondary certificate programs. Covers up to 120 semester credit hours toward an undergraduate degree. At a private school the benefit is capped at what the state would have paid at a public college. Mandatory fees may also be covered, but only as funds allow.",
+      "eligibility": "Currently serving in the Arkansas National Guard, an Arkansas resident or eligible for in-state tuition, initial active duty training complete, and not already holding a bachelor's degree, with a FAFSA and the state SAMS application on file. Worth knowing before you sign: the state recoups the money if you fail to complete the semester, stop being eligible with the Guard during it, or drop more than six credit hours after the drop date.",
+      "source": "https://military.arkansas.gov/wp-content/uploads/6CAR530_250507.pdf",
+      "sourceLabel": "Code of Arkansas Rules 6 CAR 530"
+    },
+    {
+      "code": "LA",
+      "state": "Louisiana",
+      "program": "State Tuition Exemption Program",
+      "blurb": "Exempts Louisiana National Guard members from all or part of the tuition charged by Louisiana public colleges and universities. You can claim it for five separate academic years, or until you earn an associate, bachelor's, master's, or professional degree, whichever comes first.",
+      "eligibility": "At least 17, domiciled in Louisiana, and a member in good standing of the active Louisiana National Guard at the start of and throughout the entire semester. Worth knowing before you sign: if your Guard service ends or you are placed on scholastic probation while receiving it, you lose it immediately and must repay the school for all the tuition you were exempted from.",
+      "source": "https://legis.la.gov/Legis/Law.aspx?d=85550",
+      "sourceLabel": "Louisiana Revised Statutes 29:36.1"
+    },
+    {
+      "code": "LA",
+      "state": "Louisiana",
+      "program": "Louisiana National Guard Patriot Scholarship",
+      "blurb": "Pays the mandatory fees that the state tuition exemption does not cover at Louisiana public colleges and universities. The award equals the mandatory fees shown on your fee bill, so there is no fixed dollar amount. Good for up to 12 semesters, and payment depends on the legislature appropriating the money.",
+      "eligibility": "An active member in good standing of the Louisiana National Guard, enrolled in at least one credit hour at a Louisiana public institution, and eligible for the state tuition exemption. Not available if you are on academic probation or already earned a bachelor's degree using these funds. The time limit extends if you are mobilized or called to active duty.",
+      "source": "https://mylosfa.la.gov/paying-for-college/scholarships-grants/louisiana-national-guard-patriot-scholarship/",
+      "sourceLabel": "Louisiana Office of Student Financial Assistance"
+    },
+    {
+      "code": "MS",
+      "state": "Mississippi",
+      "program": "State Education Assistance Program",
+      "blurb": "Pays up to $10,000 per state fiscal year at Mississippi colleges and universities, which works out to $5,000 a semester full time. At junior and community colleges it pays up to $5,000 per fiscal year. Vocational and credentialing programs are covered up to the cost of the program, not exceeding $10,000 a year. All of it depends on what the State Legislature appropriates.",
+      "eligibility": "Basic Training complete or enrolled in the ROTC Simultaneous Membership Program, a legal registered voter in Mississippi, actively serving in good standing and not flagged, serving through the end of the semester, and maintaining a 2.0 GPA. Courses must be finished before your separation or mandatory removal date. Usable toward a first undergraduate degree or technical certificate only.",
+      "source": "https://www.ng.ms.gov/gs/g1/edu/benefits",
+      "sourceLabel": "Mississippi National Guard"
+    },
+    {
+      "code": "KY",
+      "state": "Kentucky",
+      "program": "Kentucky National Guard Tuition Award Program",
+      "blurb": "Pays tuition at Kentucky schools, including the community and technical college system, Kentucky private colleges, the four-year public universities, and the two public research universities. The award equals what your school charges for tuition minus other aid restricted to paying tuition. Worth noting: GI Bill benefits and Pell Grants do not reduce your award. Lifetime caps vary by school type and rise five percent a year, so check the current figure.",
+      "eligibility": "A Kentucky Guard member in satisfactory membership status, meaning you passed your most recent fitness test, meet height and weight standards, met attendance standards for the previous 12 months with no unauthorized absences, and have no restrictions in your personnel file. Members who have not completed basic training are not eligible unless they are in ROTC. Eligibility ends at a bachelor's degree or the lifetime cap.",
+      "source": "https://apps.legislature.ky.gov/law/kar/titles/106/003/010/",
+      "sourceLabel": "106 KAR 3:010, Kentucky Administrative Regulations"
+    },
+    {
+      "code": "WV",
+      "state": "West Virginia",
+      "program": "West Virginia National Guard Educational Encouragement Program",
+      "blurb": "Pays tuition and fees for West Virginia Army and Air Guard members at accredited community and technical colleges, universities, and business, vocational, trade, or aviation schools in West Virginia. The state program portal states $10,000 a year in tuition benefits. Payment cannot exceed actual tuition and fees at a state school, and at a private school it is capped at the highest amount payable at any state-supported school. It depends on the Legislature appropriating the money.",
+      "eligibility": "A West Virginia Army or Air Guard member enrolled toward a certificate, an undergraduate degree, a master's, or a medical degree. You get one certificate, one undergraduate degree, and one master's under the program. Worth knowing: you must upload final grades within 14 days each term or the funds are fully recouped. A member discharged because of wounds received in the line of duty may keep receiving payments as if still serving.",
+      "source": "https://code.wvlegislature.gov/15-1B-21/",
+      "sourceLabel": "West Virginia Code 15-1B-21"
+    },
+    {
+      "code": "MD",
+      "state": "Maryland",
+      "program": "State Tuition Waiver and State Tuition Assistance Reimbursement",
+      "blurb": "Maryland runs two benefits that are normally used together. The tuition waiver waives up to 50 percent of tuition at Maryland schools that partner with the Maryland National Guard, and each partner school sets its own limits on seats and credit hours. The reimbursement then pays you back for tuition and fees you paid out of pocket, capped at $8,500 per fiscal year. Use the waiver first so you spend less of your reimbursement.",
+      "eligibility": "For the waiver, an actively drilling Maryland Guard soldier in good standing. For the reimbursement you also need at least two years left on your contract from the course start date, and time in the inactive Guard does not count. You must attempt to use Federal Tuition Assistance first if you are eligible, and passing your courses is required or the money is recouped.",
+      "source": "https://military.maryland.gov/NG/Pages/tuition-assistance.aspx",
+      "sourceLabel": "Maryland Military Department"
+    },
+    {
+      "code": "DE",
+      "state": "Delaware",
+      "program": "Delaware National Guard Education Benefits",
+      "blurb": "Pays tuition and fees for Delaware National Guard members. At a Delaware state-supported college it covers full tuition and fees up to the in-state resident rate, and you are charged the in-state rate no matter which state you live in. At a Delaware private school it pays the average tuition and fees of the state-supported schools. You get one certificate, one associate, one bachelor's, and one master's. The program runs within what the General Assembly appropriates.",
+      "eligibility": "An active member of a federally recognized Delaware Guard unit meeting the Adjutant General's membership requirements, applying before the class starts, and first using all other reasonably available tuition assistance including scholarships and civilian employer education benefits. Worth knowing before you sign: you agree to at least six years of satisfactory Delaware Guard service, and failing that means repaying everything received, with interest, on a pro rata basis. Benefits end 15 years after your first course, extended for time on active duty.",
+      "source": "https://delcode.delaware.gov/title14/c034/sc11/index.html",
+      "sourceLabel": "Delaware Code Title 14, Chapter 34"
+    },
+    {
+      "code": "DC",
+      "state": "District of Columbia",
+      "program": "DC National Guard Retention and College Access Program",
+      "blurb": "The District has a Guard tuition program even though it has no governor: by law the President is commander-in-chief of the DC militia. It pays tuition costs that Federal Tuition Assistance does not cover, and it pays your school directly rather than reimbursing you, so the request has to go in before the course starts. Usable for one associate, one bachelor's, one master's, and one professional degree. Official sources currently disagree on the annual dollar cap, so confirm the figure with the DC Guard education office before counting on it.",
+      "eligibility": "A current DC National Guard member actively serving in good standing, holding a Common Access Card, with no flags or pending unfavorable actions, and at least one year remaining on your contract measured from the last day you attended a course the program paid for. Your school must be accredited, and the Army and Air Force benefit libraries add that it must also be registered with the DC Government.",
+      "source": "https://myarmybenefits.us.army.mil/Benefit-Library/State/Territory-Benefits/District-of-Columbia",
+      "sourceLabel": "myArmyBenefits, official Army benefits library"
+    },
+    {
+      "code": "CT",
+      "state": "Connecticut",
+      "program": "National Guard Tuition Waiver",
+      "blurb": "Waives tuition for active Connecticut Army or Air Guard members at the state's public colleges: CT State Community College, the Connecticut State Universities, the University of Connecticut, and Charter Oak State College. Since July 2025 it also waives extension fees for summer and winter sessions. It covers tuition only, so books, room and board, and other campus fees are still yours, and the waiver is reduced dollar for dollar by any tuition an employer reimburses you.",
+      "eligibility": "An active member of the Connecticut Army or Air National Guard, certified in good standing by the Adjutant General, enrolled or accepted full or part time in a degree-granting program. Community college coverage is undergraduate only, while the state universities and UConn cover graduate programs too. Unusually generous in one respect: there is no state residency requirement, no added service obligation, and no repayment clause.",
+      "source": "https://www.cga.ct.gov/current/pub/chap_185b.htm",
+      "sourceLabel": "Connecticut General Statutes, Chapter 185b"
+    },
+    {
+      "code": "NJ",
+      "state": "New Jersey",
+      "program": "New Jersey National Guard tuition benefits",
+      "blurb": "Lets New Jersey National Guard members take regularly scheduled courses at any New Jersey public college or university and receive up to 16 credits per semester tuition free, undergraduate or graduate. The state reimburses the college for the tuition your Post-9/11 GI Bill does not already pay, so the benefit fills the gap rather than paying twice.",
+      "eligibility": "Initial Active Duty Training complete, in good standing as an active New Jersey Guard member, accepted and enrolled in good standing, and having applied for the state and federal grants and Post-9/11 tuition benefits you qualify for. No added service obligation and no repayment clause. If a deployment interrupts your enrollment you may still use it afterward, and a medical discharge from illness or injury incurred in a combat theater, terrorist action, or disaster response extends eligibility until you finish your degree or for five years.",
+      "source": "https://pub.njleg.gov/Bills/2024/S5000/4760_I1.HTM",
+      "sourceLabel": "New Jersey Legislature, text of N.J.S. 18A:62-24"
+    },
+    {
+      "code": "RI",
+      "state": "Rhode Island",
+      "program": "State Tuition Assistance Program",
+      "blurb": "Waives basic tuition or general fee charges for up to five courses a semester at Rhode Island's state colleges, meaning the Community College of Rhode Island, Rhode Island College, and the University of Rhode Island. Courses can count toward an associate, bachelor's, or master's degree. Fees and books are not covered. Worth knowing: by law the funding pool cannot exceed $100,000 in any fiscal year, shared equally among the institutions, which is the tightest funding cap of any state here.",
+      "eligibility": "An active Rhode Island Guard member in good standing, satisfactorily participating in all unit training assemblies and annual training as certified by the Adjutant General, and a student in good standing. Worth knowing before you sign: you commit to one extra year of Rhode Island Guard service for every 12 course credits waived. Falling short of that, dropping a course for personal reasons, leaving an incomplete unresolved, or not sending your grade report within 30 days means repaying a pro rata share, which becomes a debt the state can collect from your tax refund.",
+      "source": "https://webserver.rilegislature.gov/Statutes/TITLE30/30-3/30-3-40.3.htm",
+      "sourceLabel": "Rhode Island General Laws 30-3-40.3"
+    },
+    {
+      "code": "NH",
+      "state": "New Hampshire",
+      "program": "New Hampshire National Guard Education Assistance Act",
+      "blurb": "New Hampshire Guard members can take courses tuition free at state-supported colleges, meaning any school in the Community College System or the University System of New Hampshire. The law defines the benefit as a waiver of a course's tuition cost, so fees, books, and housing are not covered. A member living out of state who cannot qualify for the waiver may still take the course at the in-state rate. Members who complete at least six years of initial obligated service may transfer the waiver to a spouse, though that transfer provision is scheduled to be repealed on July 1, 2027.",
+      "eligibility": "A sworn active member of the New Hampshire National Guard, living in state or out, enrolled in a degree-enhancing curriculum, and using your Post-9/11 and other federally funded military tuition assistance first. There is no up-front service contract, but if your Guard service ends or becomes unsatisfactory while you are receiving assistance, including dropping below 90 percent attendance or hitting nine unsatisfactory drills in a year, you pay the rest of that course's tuition pro rata and become permanently ineligible for further assistance.",
+      "source": "https://gc.nh.gov/rsa/html/VIII/110-B/110-B-63-c.htm",
+      "sourceLabel": "New Hampshire RSA 110-B:63-c"
+    },
+    {
+      "code": "VT",
+      "state": "Vermont",
+      "program": "Vermont National Guard Tuition Benefit Program",
+      "blurb": "Pays tuition for Vermont National Guard members at the in-state rate. At the University of Vermont or a Vermont State College it pays that school's in-state rate, and at an eligible Vermont private college, training institution, or an approved out-of-state school offering a degree not available in Vermont, it pays UVM's in-state rate. You can earn more than one credential under it, graduate degrees included, capped in total at twice UVM's full-time in-state bachelor's rate. Payment depends on the General Assembly appropriating money specifically for it.",
+      "eligibility": "An active Vermont Guard member, resident or nonresident, with basic training complete, enrolled in a qualifying certificate or degree program, keeping satisfactory academic progress, using Post-9/11 and other federal military tuition assistance first, and giving the Vermont Student Assistance Corporation a good standing statement signed by your commanding officer within 30 days before each semester. Worth knowing before you sign: you sign a promissory note, and each full academic year of benefits carries a two-year Vermont Guard service commitment. Leaving early without good cause means repaying a pro rata share.",
+      "source": "https://legislature.vermont.gov/statutes/section/16/087/02857",
+      "sourceLabel": "16 V.S.A. 2857"
+    },
+    {
+      "code": "ME",
+      "state": "Maine",
+      "program": "Maine National Guard Education Assistance Program",
+      "blurb": "Pays 100 percent of tuition for Maine National Guard members at state postsecondary institutions, including the University of Maine System, the Maine Community College System, Maine Maritime Academy, and the Maine Criminal Justice Academy. Registered Maine private nonprofit colleges participate too, capped there at the previous year's in-state tuition at the University of Maine at Orono. Tuition means the cost of instruction only, so mandatory fees, lab fees, books, and room and board are not covered. A useful protection: if the state fund runs short, the law requires the school itself to provide the waiver, so a shortfall does not cut you off.",
+      "eligibility": "Basic training or a commission complete, a satisfactory participant in good standing at the start of and throughout the entire semester, not already holding a bachelor's degree, and having applied for all other available tuition help first including federal military tuition assistance, employer reimbursement, and Pell grants. Worth knowing before you sign: you commit in writing to at least one more year of Maine Guard service beyond the covered term. The benefit stops after 130 credit hours or if your cumulative GPA falls below 2.0, and you repay for any course you fail to complete or finish below a 2.0.",
+      "source": "https://legislature.maine.gov/statutes/37-b/title37-Bsec353-B.html",
+      "sourceLabel": "37-B M.R.S. 353-B"
+    },
+    {
+      "code": "CO",
+      "state": "Colorado",
+      "program": "Colorado National Guard Tuition Waiver Program",
+      "blurb": "Designated Colorado public colleges and universities waive a Guard member's remaining tuition balance after any private, state, or federal financial aid is applied. There is no dollar cap in the law, but there are credit hour limits: 65 at a designated two-year school, 130 at a designated four-year school, and 145 total if you attend both. It covers tuition only and is subject to annual appropriations. Colorado rewrote this program twice recently, most recently effective July 1, 2026, so confirm the current terms before you plan around it.",
+      "eligibility": "An enlisted member or officer of the Colorado National Guard, accepted by one of the designated Colorado institutions, in good standing with the Guard, with either a Colorado Application for State Financial Aid or a FAFSA on file. Worth knowing before you sign: leaving the Guard in violation of your agreement during a term you are using the waiver means repaying that term plus collection costs, and falling out of satisfactory academic standing means reimbursing the state military department.",
+      "source": "https://leg.colorado.gov/bills/hb26-1386",
+      "sourceLabel": "Colorado General Assembly, HB26-1386"
+    },
+    {
+      "code": "UT",
+      "state": "Utah",
+      "program": "State Tuition Waiver",
+      "blurb": "The Utah National Guard waives base tuition for one or two semesters at eight Utah public schools: Salt Lake Community College, Snow College, Southern Utah University, the University of Utah, Utah State University, Utah Tech University, Utah Valley University, and Weber State University. Fall and spring semesters only, not summer, and it does not cover fees.",
+      "eligibility": "A Utah National Guard member working toward a first associate or bachelor's degree, enrolled full time at 12 to 18 credit hours, with at least a 2.0 GPA, though Utah State University requires 2.75. Applications open January 1 and close April 30 for the following school year. If you already hold a degree you do not qualify. Slots are limited and recent years have run a waitlist, so apply early.",
+      "source": "https://guard.utah.gov/stw/",
+      "sourceLabel": "Utah National Guard"
+    },
+    {
+      "code": "UT",
+      "state": "Utah",
+      "program": "State Tuition Assistance",
+      "blurb": "Separate from the waiver, the Utah National Guard offers up to $7,000 in tuition assistance that can be used at any accredited postsecondary school and some certificate programs, so it is not limited to schools in Utah. You can combine it with the State Tuition Waiver to help pay education fees the waiver does not cover.",
+      "eligibility": "Open to Utah National Guard members. Applications are due 8 days before the course start date. The official page does not state a GPA minimum, a service obligation, or a repayment clause.",
+      "source": "https://guard.utah.gov/education-services/",
+      "sourceLabel": "Utah National Guard, Education Services"
+    },
+    {
+      "code": "ID",
+      "state": "Idaho",
+      "program": "State Education Assistance Program",
+      "blurb": "The Idaho National Guard reimburses tuition and fees for members attending school in Idaho. The Idaho Military Division states the program can provide up to $8,000 per state fiscal year, and state law lets the adjutant general authorize up to 100 percent of registration fees or tuition per semester at an Idaho public or private college, career technical school, or community college. Worth knowing: this depends on annual funding, and Idaho's own FY2027 budget documents describe a reduction that will cut the tuition assistance available, so confirm the current amount.",
+      "eligibility": "A member in good standing of the active Idaho National Guard at the beginning of and throughout the entire semester for which you receive the benefit. Idaho law does not state a separate service obligation, GPA minimum, or repayment clause.",
+      "source": "https://www.imd.idaho.gov/idaho-national-guard/careers/our-benefits/",
+      "sourceLabel": "Idaho Military Division"
+    },
+    {
+      "code": "MT",
+      "state": "Montana",
+      "program": "Montana National Guard Tuition Waiver",
+      "blurb": "Montana University System campuses waive tuition for Montana National Guard members. It is a last dollar award, meaning all federal, state, and private grants and scholarships come off your tuition bill first and the waiver covers only what is left, up to the in-state rate. Because of that the amount varies from person to person. It covers tuition only, not fees, and it does not apply to flat fee courses.",
+      "eligibility": "A member of the Montana Army or Air National Guard certified in good standing by the Adjutant General, with Initial Entry Training complete. Apply no later than the third week of the first semester you want covered, because there are no retroactive awards. You must maintain satisfactory academic progress and still owe tuition after all other aid is applied. ROTC students on scholarship are not eligible. Non-residents who meet the criteria get in-state tuition status for the waiver.",
+      "source": "https://www.mus.edu/Prepare/Pay/Waivers/NGTW-FACT-SHEET-and-APPLICATION.pdf",
+      "sourceLabel": "Montana University System"
+    },
+    {
+      "code": "WY",
+      "state": "Wyoming",
+      "program": "Wyoming National Guard Educational Assistance Plan",
+      "blurb": "Pays tuition and mandatory fees for Wyoming National Guard members at Wyoming schools. At the University of Wyoming and the community colleges it can cover the full cost of tuition and mandatory fees. At a Wyoming private school it pays the lesser of your actual cost or the average resident tuition and fees at Wyoming public schools for a 12 credit hour undergraduate load. Payment goes directly to the school, and the plan plus any federal tuition assistance cannot exceed 100 percent of your bill. Wyoming also lets you transfer unused benefits to a spouse or dependent after your initial six years, in exchange for four more years of service.",
+      "eligibility": "An active Wyoming Guard member in good standing with basic or officer training complete, committed to at least a six year enlistment, with a declared major and at least a 2.0 cumulative GPA. Worth knowing before you sign: this is a genuine repayment program. You agree in writing to serve two more years after your last funded term, failing to maintain satisfactory participation means repaying that term, and failing the six year commitment or the two year post-school service means repaying everything you received. It covers one degree or certificate within 10 years of first enrolling.",
+      "source": "https://veteranseducation.wyo.gov/state-tuition-assistance/Welcome-page",
+      "sourceLabel": "Wyoming Veterans Education, W.S. 19-9-501"
+    },
+    {
+      "code": "ND",
+      "state": "North Dakota",
+      "program": "National Guard Tuition Waiver and Tuition Grants",
+      "blurb": "North Dakota runs two connected benefits. At a state-controlled North Dakota school a qualifying Guard member is entitled to a 35 percent tuition waiver, and the adjutant general reimburses the school. At a participating in-state private school the school waives 25 percent and you may receive a grant up to the cost of tuition and fees at the most expensive North Dakota University System school. Members at out-of-state or online schools may receive a grant up to 100 percent of tuition and fees at that same benchmark rate. All of it is limited by what the legislature appropriates.",
+      "eligibility": "A qualifying member of the North Dakota National Guard maintaining satisfactory performance, meeting the adjutant general's rules, and keeping up with your school's normal course requirements. You must apply for the waiver each semester at the time of enrollment, and it stays valid only while you remain in satisfactory standing. No post-school service obligation appears in the statute.",
+      "source": "https://www.ndlegis.gov/cencode/t37c07-1.pdf",
+      "sourceLabel": "North Dakota Century Code 37-07.1"
+    },
+    {
+      "code": "SD",
+      "state": "South Dakota",
+      "program": "Reduced Tuition for South Dakota National Guard members",
+      "blurb": "The most generous arrangement we verified anywhere. South Dakota law gives Guard members a 100 percent reduction of in-state resident tuition at Board of Regents universities, for up to 128 credit hours toward a bachelor's degree and up to 32 toward a graduate degree. Residents can also get 100 percent of tuition for one approved program at a state technical college. Participating in-state private nonprofit schools must accept the state benefit plus any federal benefit as payment in full. Federal tuition assistance is applied first and the state benefit covers the rest.",
+      "eligibility": "A member of the South Dakota Army or Air National Guard for the entire semester or program you are claiming, with initial basic training complete, attending at least 90 percent of drills and training periods, maintaining satisfactory academic progress, and notifying the school at registration. Non-resident Guard members are treated as South Dakota residents for calculating the benefit. No post-school service obligation or repayment clause appears in the statute.",
+      "source": "https://sdlegislature.gov/api/Statutes/33-6.html?all=true",
+      "sourceLabel": "South Dakota Codified Laws 33-6"
+    },
+    {
+      "code": "NM",
+      "state": "New Mexico",
+      "program": "In-state tuition rates for Guard members",
+      "blurb": "We could not verify a named New Mexico Guard tuition assistance program with published rules, so we are not naming one. What is clearly in state law is worth using on its own: active New Mexico Guard members, along with their spouses and children, get in-state residency for tuition purposes at every state institution of higher learning, which can be the single largest line on a tuition bill. The state's own site separately references up to 100 percent of tuition and fees for Army Guard members without naming a program or its rules.",
+      "eligibility": "Active members of the New Mexico National Guard, plus spouses and children, for the in-state tuition rate. Because the rules for any additional state tuition assistance are not published anywhere we could verify, ask your unit education office what exists right now rather than relying on figures you find online.",
+      "source": "https://www.nm.gov/departments-and-agencies/new-mexico-army-national-guard/",
+      "sourceLabel": "State of New Mexico, Army National Guard"
     }
   ]
 }

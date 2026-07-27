@@ -223,3 +223,6 @@ export function orderedBenefits(fit: ReserveFit): ReserveBenefit[] {
 export function stateEducationFor(codes: string[]): StateEducationProgram[] {
   return STATE_EDUCATION.filter((p) => codes.includes(p.code));
 }
+
+/** How many jurisdictions we have verified. Derived, so the copy can never go stale. */
+export const STATE_EDUCATION_COVERAGE = new Set(STATE_EDUCATION.map((p) => p.code)).size;
