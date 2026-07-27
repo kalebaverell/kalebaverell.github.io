@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById } from "@/lib/data";
@@ -11,6 +12,7 @@ import BenefitCategoryList from "@/components/BenefitCategoryList";
 
 export default function Dashboard() {
   const { s, ready } = useStore();
+  const [showMore, setShowMore] = useState(false);
   if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
   if (!s.gameplan) {
     return (
@@ -74,6 +76,27 @@ export default function Dashboard() {
         </div>
       )}
 
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>
+        <p className="muted small" style={{ marginBottom: 10 }}>Tap any to see what it is and the official source to verify.</p>
+        <BenefitCategoryList ids={gp.benefitCategories} />
+      </div>
+
+      <h3 style={{ margin: "24px 0 0" }}><i className="ti ti-checklist" style={{ color: "var(--accent-ink)" }} /> Your next steps</h3>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 12 }}>
+        <PlanCard title="Next 30 days" icon="ti-calendar-due" items={gp.plan30} />
+        <PlanCard title="Days 31–60" icon="ti-calendar" items={gp.plan60} />
+        <PlanCard title="Days 61–90" icon="ti-calendar-plus" items={gp.plan90} />
+      </div>
+
+      <div style={{ textAlign: "center", margin: "22px 0 2px" }}>
+        <button type="button" className="btn ghost" onClick={() => setShowMore((v) => !v)} aria-expanded={showMore}>
+          <i className={`ti ti-chevron-${showMore ? "up" : "down"}`} aria-hidden="true" /> {showMore ? "Show less" : "Show more of my plan"}
+        </button>
+      </div>
+
+      {showMore && (
+      <>
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", margin: "16px 0" }}>
         <Stat n={gp.priorities.length} l="top priorities" />
         <Stat n={gp.benefitCategories.length} l="benefit categories" />
@@ -101,18 +124,6 @@ export default function Dashboard() {
           <p className="small muted" style={{ marginTop: 10 }}><Link href="/onboarding">Adjust your weights →</Link></p>
         </div>
       )}
-
-      <div className="card" style={{ marginTop: 16 }}>
-        <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>
-        <p className="muted small" style={{ marginBottom: 10 }}>Tap any to see what it is and the official source to verify.</p>
-        <BenefitCategoryList ids={gp.benefitCategories} />
-      </div>
-
-      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 16 }}>
-        <PlanCard title="Next 30 days" icon="ti-calendar-due" items={gp.plan30} />
-        <PlanCard title="Days 31–60" icon="ti-calendar" items={gp.plan60} />
-        <PlanCard title="Days 61–90" icon="ti-calendar-plus" items={gp.plan90} />
-      </div>
 
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 16 }}>
         <div className="card">
@@ -205,6 +216,8 @@ export default function Dashboard() {
           ) : null;
         })}
       </div>
+      </>
+      )}
 
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 16 }}>
         <Link href="/updates" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
