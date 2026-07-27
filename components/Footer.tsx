@@ -52,8 +52,9 @@ export default function Footer() {
           <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 8, color: "var(--danger)", fontWeight: 500 }}>
             <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7.
           </div>
-          <div style={{ marginTop: 14, fontSize: 12.5 }}>
+          <div style={{ marginTop: 14, fontSize: 12.5, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <a href="/privacy">Privacy &amp; data</a>
+            <a href="/terms">Terms of use</a>
           </div>
         </div>
       </div>
