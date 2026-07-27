@@ -4,7 +4,16 @@
 // When Supabase isn't configured, this provider is inert and the app stays local-only.
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { supabase, supabaseEnabled } from "./supabase";
+import { supabase, supabaseEnabled, supabaseUrl, supabaseAnonKey } from "./supabase";
+
+/** Social sign-in providers we support. Supabase calls Microsoft "azure". */
+export type OAuthProvider = "google" | "azure" | "apple";
+
+export const PROVIDER_META: Record<OAuthProvider, { label: string; icon: string }> = {
+  google: { label: "Google", icon: "ti-brand-google" },
+  azure: { label: "Microsoft", icon: "ti-brand-windows" },
+  apple: { label: "Apple", icon: "ti-brand-apple" },
+};
 
 interface SignUpOpts { fullName: string; marketingOptIn: boolean; }
 
@@ -33,6 +42,14 @@ interface AuthValue {
   signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null; needsConfirmation: boolean }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  /** Providers actually enabled on the project. Buttons render only for these, so
+   *  a provider that has not been configured yet never shows a dead button. */
+  oauthProviders: OAuthProvider[];
+  signInWithProvider: (p: OAuthProvider) => Promise<{ error: string | null }>;
+  /** An error handed back in the URL fragment by Supabase, e.g. an expired
+   *  confirmation link. Surfaced so the user gets an explanation, not a blank form. */
+  authError: string | null;
+  clearAuthError: () => void;
   /** Email a recovery link. Always reports success so the form can't be used to
    *  probe which addresses have accounts. */
   requestPasswordReset: (email: string) => Promise<{ error: string | null }>;
@@ -71,6 +88,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(!supabaseEnabled);
   const [authOpen, setAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("signup");
+  const [oauthProviders, setOauthProviders] = useState<OAuthProvider[]>([]);
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  // Ask the project which providers are switched on, so buttons appear as each one
+  // is configured and never before. Failure is silent: worst case, email only.
+  useEffect(() => {
+    if (!supabaseUrl || !supabaseAnonKey) return;
+    let cancelled = false;
+    fetch(`${supabaseUrl}/auth/v1/settings`, { headers: { apikey: supabaseAnonKey } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (cancelled || !j?.external) return;
+        const on = (["google", "azure", "apple"] as OAuthProvider[]).filter((p) => j.external[p]);
+        setOauthProviders(on);
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
+  // Supabase reports link failures in the URL fragment. Read it once, translate it
+  // into something a person can act on, then strip it so a refresh looks clean.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash || !hash.includes("error")) return;
+    const p = new URLSearchParams(hash.replace(/^#/, ""));
+    const code = p.get("error_code");
+    const desc = p.get("error_description")?.replace(/\+/g, " ");
+    if (!code && !desc) return;
+    setAuthError(
+      code === "otp_expired"
+        ? "That link has already been used or has expired. Company email filters often open links automatically to scan them, which can use up a one-time link before you get to it. Send yourself a new one and it will work."
+        : desc || "That sign-in link did not work. Please try again."
+    );
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }, []);
 
   useEffect(() => {
     if (!supabase) return;
@@ -126,6 +178,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
   }, []);
 
+  // Social sign-in. Redirects away to the provider and back, so there is no
+  // success path to handle here: onAuthStateChange picks it up on return.
+  const signInWithProvider = useCallback(async (p: OAuthProvider) => {
+    if (!supabase) return { error: "Accounts aren't enabled in this environment." };
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: p,
+      options: { redirectTo: `${window.location.origin}/onboarding/` },
+    });
+    return { error: error ? error.message : null };
+  }, []);
+
+  const clearAuthError = useCallback(() => setAuthError(null), []);
+
   const requestPasswordReset = useCallback(async (email: string) => {
     if (!supabase) return { error: "Accounts aren't enabled in this environment." };
     // Deliberately swallow "user not found" style errors: telling a stranger whether
@@ -154,7 +219,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [user]);
 
   return (
-    <Ctx.Provider value={{ enabled: supabaseEnabled, ready, user, session, authOpen, authMode, openAuth, closeAuth, signUp, signIn, signOut, requestPasswordReset, updatePassword, deleteAccount }}>
+    <Ctx.Provider value={{ enabled: supabaseEnabled, ready, user, session, authOpen, authMode, openAuth, closeAuth, signUp, signIn, signOut, oauthProviders, signInWithProvider, authError, clearAuthError, requestPasswordReset, updatePassword, deleteAccount }}>
       {children}
     </Ctx.Provider>
   );

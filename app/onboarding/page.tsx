@@ -10,12 +10,12 @@ import { Wrap, ProgressBar } from "@/components/ui";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
-  const { enabled, ready: authReady, user, openAuth } = useAuth();
+  const { enabled, ready: authReady, user, openAuth, authError } = useAuth();
   if (!ready) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
   // Building a gameplan requires a free account, so it saves to the veteran's own profile.
   if (enabled) {
     if (!authReady) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
-    if (!user) return <AccountGate onStart={() => openAuth("signup")} />;
+    if (!user) return <AccountGate onStart={() => openAuth("signup")} notice={authError} />;
     if (!s.profile) return <Wrap narrow><p className="muted">Setting up your account…</p></Wrap>;
     return <Intake />;
   }
@@ -24,12 +24,18 @@ export default function Onboarding() {
   return <Intake />;
 }
 
-function AccountGate({ onStart }: { onStart: () => void }) {
+function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string | null }) {
   return (
     <Wrap narrow>
       <Link href="/" className="muted small" style={{ display: "inline-flex", gap: 6, alignItems: "center", marginBottom: 14 }}>
         <i className="ti ti-arrow-left" /> Home
       </Link>
+      {/* A failed email link lands back here. Say why, instead of showing a blank form. */}
+      {notice && (
+        <div className="callout warn" role="alert" style={{ marginBottom: 16 }}>
+          <i className="ti ti-alert-triangle" aria-hidden="true" /> <span>{notice}</span>
+        </div>
+      )}
       <h2>Create your free account</h2>
       <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in, on your phone or your computer.</p>
       <div className="card">

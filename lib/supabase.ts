@@ -8,6 +8,10 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabaseEnabled = Boolean(url && anonKey);
+/** Exported so the auth layer can ask the project which sign-in providers are
+ *  actually turned on, and only render buttons for those. */
+export const supabaseUrl = url;
+export const supabaseAnonKey = anonKey;
 
 export const supabase: SupabaseClient | null = supabaseEnabled
   ? createClient(url as string, anonKey as string, {

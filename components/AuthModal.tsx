@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 
-import { MIN_PASSWORD_LENGTH } from "@/lib/auth";
-import type { AuthMode as Mode } from "@/lib/auth";
+import { MIN_PASSWORD_LENGTH, PROVIDER_META } from "@/lib/auth";
+import type { AuthMode as Mode, OAuthProvider } from "@/lib/auth";
 
 export default function AuthModal() {
-  const { authOpen, authMode, closeAuth, signUp, signIn, requestPasswordReset } = useAuth();
+  const { authOpen, authMode, closeAuth, signUp, signIn, requestPasswordReset,
+          oauthProviders, signInWithProvider } = useAuth();
   const [mode, setMode] = useState<Mode>("signup");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -130,6 +131,38 @@ export default function AuthModal() {
               </button>
             </>
           ) : (
+          <>
+          {/* Social sign-in first: one tap, no password to invent or forget, and no
+              confirmation email that a corporate mail filter can consume. */}
+          {mode !== "reset" && oauthProviders.length > 0 && (
+            <div style={{ display: "grid", gap: 10, marginBottom: 18 }}>
+              {oauthProviders.map((p: OAuthProvider) => (
+                <button
+                  key={p}
+                  type="button"
+                  className="btn ghost block"
+                  disabled={busy}
+                  onClick={async () => {
+                    setError(null);
+                    setBusy(true);
+                    const res = await signInWithProvider(p);
+                    // On success the browser leaves for the provider, so there is
+                    // nothing to reset. Only an immediate failure lands back here.
+                    if (res.error) { setBusy(false); setError(res.error); }
+                  }}
+                  style={{ justifyContent: "center", fontWeight: 600 }}
+                >
+                  <i className={`ti ${PROVIDER_META[p].icon}`} aria-hidden="true" />
+                  Continue with {PROVIDER_META[p].label}
+                </button>
+              ))}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 4 }}>
+                <span style={{ flex: 1, height: 1, background: "var(--border)" }} />
+                <span className="small muted">or use your email</span>
+                <span style={{ flex: 1, height: 1, background: "var(--border)" }} />
+              </div>
+            </div>
+          )}
           <form onSubmit={submit}>
             {mode === "signup" && (
               <div style={{ marginBottom: 14 }}>
@@ -172,6 +205,7 @@ export default function AuthModal() {
               {busy ? "Working…" : mode === "signup" ? "Create account" : mode === "reset" ? "Send reset link" : "Sign in"}
             </button>
           </form>
+          </>
           )}
 
           {!sent && !confirmSent && (
