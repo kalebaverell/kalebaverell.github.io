@@ -181,8 +181,10 @@ export default function Reserves() {
         <i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} aria-hidden="true" /> Your state
       </h3>
       <p className="muted small" style={{ margin: "4px 0 12px" }}>
-        {STATE_EDUCATION_NOTE} We have verified {STATE_EDUCATION_COVERAGE} states so far. If yours is not listed,
-        that does not mean it has no program, only that we have not confirmed one yet, so go straight to your state's agency.
+        {STATE_EDUCATION_NOTE}{" "}
+        {STATE_EDUCATION_COVERAGE >= 51
+          ? "We have verified all 50 states and the District of Columbia against official sources."
+          : `We have verified ${STATE_EDUCATION_COVERAGE} jurisdictions so far. If yours is not listed, that does not mean it has no program, only that we have not confirmed one yet, so go straight to your state's agency.`}
       </p>
 
       {statePrograms.length > 0 ? (
