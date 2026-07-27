@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useStore } from "@/lib/store";
 import type { ActionItem, Status } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
+import TaskDetail from "@/components/TaskDetail";
 
 export default function ActionPlan() {
   const { s, ready, cycleStatus } = useStore();
@@ -64,6 +65,7 @@ function CheckRow({ it, status, onClick }: { it: ActionItem; status: Status; onC
         <span className={`pill ${it.priority}`}>{it.priority} priority</span>
         <div className="txt" style={{ marginTop: 4 }}>{it.text}</div>
         <span className="small muted">{label} — click the box to update</span>
+        <TaskDetail text={it.text} />
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
+import TaskDetail from "@/components/TaskDetail";
+import BenefitCategoryList from "@/components/BenefitCategoryList";
 
 export default function Dashboard() {
   const { s, ready } = useStore();
@@ -102,13 +104,8 @@ export default function Dashboard() {
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>
-        <p className="muted small">Tap any to learn more and see the official source to verify.</p>
-        <div>
-          {gp.benefitCategories.map((id) => {
-            const b = benefitById(id);
-            return b ? <Link key={id} className="chip" href="/benefits"><i className={`ti ${b.icon}`} /> {b.name}</Link> : null;
-          })}
-        </div>
+        <p className="muted small" style={{ marginBottom: 10 }}>Tap any to see what it is and the official source to verify.</p>
+        <BenefitCategoryList ids={gp.benefitCategories} />
       </div>
 
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 16 }}>
@@ -242,6 +239,7 @@ function PlanCard({ title, icon, items }: { title: string; icon: string; items: 
           <div key={it.id} style={{ padding: "8px 0", borderBottom: "1px solid var(--border)" }}>
             <span className={`pill ${it.priority}`}>{it.priority}</span>
             <div style={{ marginTop: 5, fontSize: 14 }}>{it.text}</div>
+            <TaskDetail text={it.text} />
           </div>
         )) : <p className="muted small">Nothing scheduled here.</p>}
       </div>
