@@ -16,13 +16,14 @@ export default function AuthModal() {
   const [optIn, setOptIn] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState(false);            // reset link emailed
+  const [confirmSent, setConfirmSent] = useState(false); // signup needs email confirmation
 
   // Reset transient state whenever the modal opens/closes, and honour the mode the
   // caller asked for (e.g. an expired reset link opens straight to "reset").
   useEffect(() => {
-    if (authOpen) { setMode(authMode); setError(null); setSent(false); setPassword(""); }
-    else { setError(null); setBusy(false); setPassword(""); setSent(false); }
+    if (authOpen) { setMode(authMode); setError(null); setSent(false); setConfirmSent(false); setPassword(""); }
+    else { setError(null); setBusy(false); setPassword(""); setSent(false); setConfirmSent(false); }
   }, [authOpen, authMode]);
 
   // Close on Escape.
@@ -56,6 +57,12 @@ export default function AuthModal() {
       : await signIn(email, password);
     setBusy(false);
     if (res.error) { setError(res.error); return; }
+    // With email confirmation required there is no session yet, so closing the modal
+    // would leave them looking signed out with no idea why.
+    if (mode === "signup" && "needsConfirmation" in res && res.needsConfirmation) {
+      setConfirmSent(true);
+      return;
+    }
     closeAuth();
   };
 
@@ -93,7 +100,19 @@ export default function AuthModal() {
               : "Access your saved plan and continue where you left off."}
           </p>
 
-          {sent ? (
+          {confirmSent ? (
+            <>
+              <div className="callout" style={{ marginBottom: 16 }} role="status">
+                <i className="ti ti-mail-check" aria-hidden="true" />
+                <span>
+                  Your account is created. We sent a confirmation link to <strong>{email.trim()}</strong>.
+                  Click it and you will land right back here, signed in and ready to build your gameplan.
+                  Check your spam folder if it does not arrive in a few minutes.
+                </span>
+              </div>
+              <button type="button" className="btn block" onClick={closeAuth}>Got it</button>
+            </>
+          ) : sent ? (
             <>
               <div className="callout" style={{ marginBottom: 16 }} role="status">
                 <i className="ti ti-mail-check" aria-hidden="true" />
@@ -151,7 +170,7 @@ export default function AuthModal() {
           </form>
           )}
 
-          {!sent && (
+          {!sent && !confirmSent && (
           <p className="small" style={{ textAlign: "center", margin: "16px 0 0", color: "var(--muted)" }}>
             {mode === "signup" ? (
               <>Already have an account?{" "}

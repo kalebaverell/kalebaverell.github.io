@@ -21,7 +21,10 @@ interface AuthValue {
   authMode: AuthMode;
   openAuth: (mode?: AuthMode) => void;
   closeAuth: () => void;
-  signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null }>;
+  /** `needsConfirmation` is true when the project requires email verification: the
+   *  account exists but there is no session yet, so the caller must say so rather
+   *  than pretending the user is signed in. */
+  signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null; needsConfirmation: boolean }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   /** Email a recovery link. Always reports success so the form can't be used to
@@ -78,22 +81,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => sub.subscription.unsubscribe();
   }, []);
 
-  const openAuth = useCallback((mode: AuthMode = "signup") => {
-    setAuthMode(mode);
+  const openAuth = useCallback((mode?: AuthMode) => {
+    // Guard: this is easy to hand straight to onClick, where the argument is a
+    // MouseEvent rather than a mode. Anything unrecognised falls back to signup.
+    const valid = mode === "signin" || mode === "signup" || mode === "reset";
+    setAuthMode(valid ? mode : "signup");
     setAuthOpen(true);
   }, []);
   const closeAuth = useCallback(() => setAuthOpen(false), []);
 
   const signUp = useCallback(async (email: string, password: string, opts: SignUpOpts) => {
-    if (!supabase) return { error: "Accounts aren't enabled in this environment." };
+    if (!supabase) return { error: "Accounts aren't enabled in this environment.", needsConfirmation: false };
     const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
-      options: { data: { full_name: opts.fullName.trim(), marketing_opt_in: opts.marketingOptIn } },
+      options: {
+        data: { full_name: opts.fullName.trim(), marketing_opt_in: opts.marketingOptIn },
+        // Where the confirmation link drops them once they verify.
+        emailRedirectTo: `${window.location.origin}/onboarding/`,
+      },
     });
-    if (error) return { error: error.message };
-    if (data.user) await upsertIdentity(data.user);
-    return { error: null };
+    if (error) return { error: error.message, needsConfirmation: false };
+    // No session means the project requires email confirmation. Writing the profile
+    // row would fail anyway, since RLS has no auth.uid() to match yet: it gets
+    // written by onAuthStateChange the moment they confirm and sign in.
+    if (data.session && data.user) await upsertIdentity(data.user);
+    return { error: null, needsConfirmation: !data.session };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {

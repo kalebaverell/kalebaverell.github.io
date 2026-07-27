@@ -15,7 +15,7 @@ export default function Onboarding() {
   // Building a gameplan requires a free account, so it saves to the veteran's own profile.
   if (enabled) {
     if (!authReady) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
-    if (!user) return <AccountGate onStart={openAuth} />;
+    if (!user) return <AccountGate onStart={() => openAuth("signup")} />;
     if (!s.profile) return <Wrap narrow><p className="muted">Setting up your account…</p></Wrap>;
     return <Intake />;
   }
