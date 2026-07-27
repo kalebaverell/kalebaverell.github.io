@@ -54,8 +54,6 @@ export default function Footer() {
           </div>
           <div style={{ marginTop: 14, fontSize: 12.5 }}>
             <a href="/privacy">Privacy &amp; data</a>
-            <span aria-hidden="true" style={{ margin: "0 8px", color: "var(--faint)" }}>·</span>
-            <a href="/admin">Strategy view (for the team)</a>
           </div>
         </div>
       </div>

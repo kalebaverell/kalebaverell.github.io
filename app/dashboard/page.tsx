@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates } from "@/lib/data";
+import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById } from "@/lib/data";
 import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
+import FundedPath from "@/components/FundedPath";
 
 export default function Dashboard() {
   const { s, ready } = useStore();
@@ -62,6 +63,12 @@ export default function Dashboard() {
             <p className="small muted" style={{ margin: "2px 0 0" }}>Run the Pathfinder — 10 questions, a recommended career path with a % fit, and this whole plan re-routes around it.</p>
           </div>
           <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Find my path</Link>
+        </div>
+      )}
+
+      {dest && (
+        <div style={{ marginTop: 16 }}>
+          <FundedPath a={a} career={careerById(s.chosenPath?.careerId)} />
         </div>
       )}
 

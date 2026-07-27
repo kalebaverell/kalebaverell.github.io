@@ -7,6 +7,7 @@ import { TRACKS, CAREERS, ASSESSMENT, careerById, trackById } from "@/lib/data";
 import { scoreCareers, topTrack, locationGuidance } from "@/lib/pathfinder";
 import type { Career, CareerFit } from "@/lib/types";
 import { Wrap, Callout, ProgressBar, Eyebrow } from "@/components/ui";
+import FundedPath from "@/components/FundedPath";
 
 type View = { kind: "intro" } | { kind: "browse"; track?: string } | { kind: "assess"; q: number } | { kind: "results" } | { kind: "detail"; careerId: string; fromResults?: boolean };
 
@@ -206,6 +207,10 @@ function Results({ setView }: { setView: (v: View) => void }) {
         <button className="btn gold" style={{ marginTop: 14 }} onClick={() => setView({ kind: "detail", careerId: top.career.id, fromResults: true })}>
           See the full route <i className="ti ti-arrow-right" />
         </button>
+      </div>
+
+      <div style={{ marginTop: 20 }}>
+        <FundedPath a={s.answers} career={top.career} />
       </div>
 
       <h3 style={{ marginTop: 24 }}>Strong runners-up</h3>
