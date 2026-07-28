@@ -337,7 +337,10 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   /* "Verify at the official source" links sit at the heart of the trust promise.
      They rendered ~23px tall, well under the 44px touch minimum. */
   .card a.small,
-  .card a[target="_blank"] { display:inline-flex; align-items:center; min-height:44px; }
+  .card a[target="_blank"],
+  /* Task resource links: internal ones are Next <Link>, so they carry neither
+     .small nor target=_blank and were missed by the two selectors above. */
+  .card li a { display:inline-flex; align-items:center; min-height:44px; }
 
   /* Small buttons ("Change path", "Full networking hub") to a full target. */
   .btn.sm { min-height:44px; padding:11px 16px; }
