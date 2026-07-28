@@ -328,6 +328,36 @@ html.js [data-reveal].in { opacity:1; transform:none; }
      (block flow) instead of overflowing the viewport horizontally. */
   .hero .eyebrow { display:block; }
   .hero .eyebrow::before { margin-right:8px; }
+
+  /* ---- Thumb-friendly pass ----
+     The audience skews older and includes people with service-connected motor
+     and vision limits. Grow the HIT AREA, not the visual weight: type sizes move
+     only a little, padding does the work, so the desktop look is preserved. */
+
+  /* "Verify at the official source" links sit at the heart of the trust promise.
+     They rendered ~23px tall, well under the 44px touch minimum. */
+  .card a.small,
+  .card a[target="_blank"] { display:inline-flex; align-items:center; min-height:44px; }
+
+  /* Small buttons ("Change path", "Full networking hub") to a full target. */
+  .btn.sm { min-height:44px; padding:11px 16px; }
+
+  /* Smallest body text: 14px is tight on a phone for this audience. */
+  :root { --fs-small:15px; }
+
+  /* Inline label chips (Federal / Scholarship / Employer) were ~11px. */
+  .chip.sm, .chip { font-size:13px; }
+  .tag { font-size:13px; padding:4px 10px; }
+
+  /* Give stacked, tappable rows room so a thumb cannot straddle two of them. */
+  .card ul { line-height:1.65; }
+
+  /* Footer links (privacy, terms, trust) were ~20px. People do reach for these,
+     and the legal ones need to be reachable on a phone. */
+  .disclaimer a { display:inline-flex; align-items:center; min-height:44px; }
+
+  /* Theme preview control. */
+  .disclaimer button, footer button { min-height:44px; }
 }
 
 /* App-style bottom tab bar (mobile only) */

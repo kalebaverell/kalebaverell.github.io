@@ -5,6 +5,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { taskResources } from "@/lib/taskResources";
 
+// Padded to a 44px touch target. This was a 27px strip, which is hard to hit
+// reliably on a phone, and this audience skews older.
+const TOGGLE_STYLE: React.CSSProperties = {
+  background: "none", border: "none", cursor: "pointer", color: "var(--info)",
+  padding: "10px 0", minHeight: 44, fontFamily: "inherit", fontSize: "var(--fs-small)",
+  display: "inline-flex", alignItems: "center", gap: 6,
+};
+
 export default function TaskDetail({ text }: { text: string }) {
   const [open, setOpen] = useState(false);
   const resources = taskResources(text);
@@ -14,7 +22,7 @@ export default function TaskDetail({ text }: { text: string }) {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--info)", padding: "2px 0", fontFamily: "inherit", fontSize: "var(--fs-small)", display: "inline-flex", alignItems: "center", gap: 4 }}
+        style={TOGGLE_STYLE}
       >
         <i className={`ti ti-chevron-${open ? "down" : "right"}`} aria-hidden="true" /> {open ? "Hide resources" : "Open - resources & links"}
       </button>
