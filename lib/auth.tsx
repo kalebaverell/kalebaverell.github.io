@@ -6,14 +6,20 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase, supabaseEnabled, supabaseUrl, supabaseAnonKey } from "./supabase";
 
-/** Social sign-in providers we support. Supabase calls Microsoft "azure". */
-export type OAuthProvider = "google" | "azure" | "apple";
+/** Social sign-in providers we support. Supabase calls Microsoft "azure".
+ *  Apple is deliberately not here: Sign in with Apple requires a paid Apple
+ *  Developer account ($99/yr), and this project stays on free infrastructure.
+ *  Order is the render order, so Google leads: it is the account most veterans
+ *  already have. */
+export type OAuthProvider = "google" | "azure";
 
 export const PROVIDER_META: Record<OAuthProvider, { label: string; icon: string }> = {
   google: { label: "Google", icon: "ti-brand-google" },
   azure: { label: "Microsoft", icon: "ti-brand-windows" },
-  apple: { label: "Apple", icon: "ti-brand-apple" },
 };
+
+/** Single source of truth for which providers the UI will look for. */
+export const SUPPORTED_PROVIDERS: OAuthProvider[] = ["google", "azure"];
 
 interface SignUpOpts { fullName: string; marketingOptIn: boolean; }
 
@@ -100,8 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (cancelled || !j?.external) return;
-        const on = (["google", "azure", "apple"] as OAuthProvider[]).filter((p) => j.external[p]);
-        setOauthProviders(on);
+        setOauthProviders(SUPPORTED_PROVIDERS.filter((p) => j.external[p]));
       })
       .catch(() => {});
     return () => { cancelled = true; };
