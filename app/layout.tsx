@@ -9,15 +9,51 @@ import BottomTabs from "@/components/BottomTabs";
 import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
 
+const SITE = "https://kalebaverell.github.io";
+
+// Kept near the 155-character mark so search results and link previews show it
+// whole. The old copy said "Sample data only", which stopped being true once the
+// state, federal, and career data were verified against official sources.
+const DESCRIPTION =
+  "Turn your service and goals into a personal 30/60/90 day plan: benefits to claim, careers that fit, and how to pay for the training. Free. Not the VA.";
+
 export const metadata: Metadata = {
+  // Required for a static export: without it, Next cannot resolve the relative
+  // image path below into the absolute URL that social crawlers demand.
+  metadataBase: new URL(SITE),
   title: "VetPath - A clear gameplan for life after service",
-  description:
-    "VetPath turns a veteran's goals, life stage, and status into a personalized 30/60/90-day gameplan. A planning and education tool - not the VA. Sample data only.",
+  description: DESCRIPTION,
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "VetPath" },
   icons: {
     icon: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "VetPath",
+    url: SITE,
+    title: "VetPath - A clear gameplan for life after service",
+    description:
+      "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, and every figure links to an official source.",
+    locale: "en_US",
+    images: [
+      {
+        // Public-domain U.S. Army footage of mentors working through resumes at a
+        // transition summit. See public/img/CREDITS.md.
+        url: "/img/transition-summit-mentors.jpg",
+        width: 1600,
+        height: 1064,
+        alt: "Volunteer mentors walking a soldier through her resume at a veterans transition summit",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VetPath - A clear gameplan for life after service",
+    description:
+      "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans.",
+    images: ["/img/transition-summit-mentors.jpg"],
   },
 };
 

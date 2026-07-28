@@ -1,6 +1,8 @@
-// Route title only - pages in this segment are client components, so the tab
-// title lives here. Description inherits from the root layout.
-export const metadata = { title: "Tools - VetPath" };
+// Route title, description, and link-preview card. Pages in this segment are
+// client components, so metadata lives here.
+import { routeMeta } from "@/lib/metadata";
+
+export const metadata = routeMeta("Tools");
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children;

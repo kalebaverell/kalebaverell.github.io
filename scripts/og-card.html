@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!--
+  Source for public/og-card.png (the link preview card).
+
+  To regenerate: copy this file into the built static export root so the
+  absolute /img and /fonts paths resolve, open it at exactly 1200x630, and
+  screenshot the .card element. Kept in scripts/ rather than public/ so it is
+  not served as a page on the live site.
+-->
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  html,body { margin:0; padding:0; background:#0B1B2B; }
+  .card {
+    width:1200px; height:630px; position:relative; overflow:hidden;
+    font-family:Inter, system-ui, sans-serif; color:#fff;
+  }
+  .photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* Navy scrim, heavier on the left so the type always has a dark bed to sit on */
+  .scrim { position:absolute; inset:0;
+    background:linear-gradient(100deg, rgba(11,27,43,.96) 0%, rgba(11,27,43,.90) 42%, rgba(11,27,43,.58) 100%); }
+  .inner { position:absolute; inset:0; padding:72px 80px; display:flex; flex-direction:column; justify-content:space-between; }
+  .lockup { display:flex; align-items:center; gap:16px; }
+  .mark { width:60px; height:60px; border-radius:15px;
+    background:linear-gradient(145deg,#C8863C,#B0722B); color:#0B1B2B;
+    display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:700; }
+  .word { font-family:Fraunces, Georgia, serif; font-size:40px; font-weight:500; letter-spacing:-.01em; }
+  h1 { font-family:Fraunces, Georgia, serif; font-weight:500; font-size:66px; line-height:1.08;
+    letter-spacing:-.02em; margin:0 0 18px; max-width:19ch; }
+  h1 .hl { color:#E8B96F; }
+  p { margin:0; font-size:26px; line-height:1.45; color:#C8D6E3; max-width:34ch; }
+  .foot { display:flex; align-items:center; gap:14px; font-size:20px; color:#9FB3C6; }
+  .dot { width:7px; height:7px; border-radius:50%; background:#C8863C; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="photo" src="/img/transition-summit-mentors.jpg" alt="">
+    <div class="scrim"></div>
+    <div class="inner">
+      <div class="lockup">
+        <span class="mark">&#9906;</span>
+        <span class="word">VetPath</span>
+      </div>
+      <div>
+        <h1>Leave with <span class="hl">your</span> gameplan.</h1>
+        <p>Benefits, career paths, and the next 90 days, built around your service and your goals.</p>
+      </div>
+      <div class="foot">
+        <span class="dot"></span>
+        <span>Free for veterans &nbsp;·&nbsp; Every number has an official source</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
