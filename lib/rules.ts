@@ -16,6 +16,64 @@ function item(text: string, priority: ActionItem["priority"]): ActionItem {
   return { id: `a${_idc++}-${hash(text)}`, text, priority };
 }
 
+/* ---------- Plan de-duplication ----------
+ * Tasks arrive from three independent sources that do not know about each
+ * other: the hardcoded transition block, the chosen career's entry path, and
+ * the steps attached to each selected goal. A veteran who is separating AND
+ * picked transition goals used to get the same instruction two or three times,
+ * with different wording, different windows, and contradicting priorities
+ * ("start your claim now, high" alongside "file your claim in 60 days,
+ * medium"). Two conflicting answers are worse than either one alone.
+ *
+ * Rule: one task per topic. The earliest window wins, because timing advice
+ * like filing before separation is the substantive part, and the surviving
+ * item takes the highest priority any of its duplicates carried.
+ */
+const TOPIC_RULES: { key: string; test: RegExp }[] = [
+  { key: "tap", test: /\bTAP\b|Transition Assistance Program/i },
+  { key: "dd214", test: /DD.?214/i },
+  { key: "disability-claim", test: /disability claim|intent to file/i },
+  { key: "va-healthcare", test: /VA health ?care|enroll in VA health/i },
+  { key: "resume", test: /\bresume\b/i },
+  { key: "skillbridge", test: /SkillBridge/i },
+  { key: "vre", test: /VR&E|Veteran Readiness/i },
+  { key: "home-loan", test: /home ?loan|certificate of eligibility/i },
+];
+
+const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium: 1, low: 2 };
+
+/** Topic key for an item, or a normalized-text key so near-identical repeats
+ *  still collapse even when they fall outside the rules above. */
+function planKey(text: string): string {
+  const hit = TOPIC_RULES.find((r) => r.test.test(text));
+  if (hit) return `topic:${hit.key}`;
+  return `text:${text.toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim()}`;
+}
+
+/** Collapse duplicates across the 30/60/90 buckets, keeping the first
+ *  occurrence in reading order so the earliest window and the original
+ *  sequence both survive. */
+function dedupePlan(buckets: ActionItem[][]): void {
+  const kept = new Map<string, ActionItem>();
+  for (const bucket of buckets) {
+    const survivors: ActionItem[] = [];
+    for (const it of bucket) {
+      const key = planKey(it.text);
+      const prev = kept.get(key);
+      if (!prev) {
+        kept.set(key, it);
+        survivors.push(it);
+        continue;
+      }
+      // Already covered: drop this copy, but let it raise the surviving task's
+      // priority if this duplicate was flagged more urgent.
+      if (PRIORITY_RANK[it.priority] < PRIORITY_RANK[prev.priority]) prev.priority = it.priority;
+    }
+    bucket.length = 0;
+    bucket.push(...survivors);
+  }
+}
+
 const PRIORITY_LABEL: Record<string, string> = {
   "buy-a-home": "Use your VA home loan benefit the smart way",
   "start-a-business": "Stand up your veteran-owned business with SBA support",
@@ -78,7 +136,11 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   const plan60: ActionItem[] = [];
   const plan90: ActionItem[] = [];
   if (isTransition) {
-    plan30.push(item("Complete TAP and safeguard your DD-214 + medical records", "high"));
+    // One action per item. This used to bundle TAP, the DD-214, and medical
+    // records into a single line, which made it impossible to tick off honestly
+    // and hid the overlap with the transition-out goal's own steps.
+    plan30.push(item("Complete the DoD Transition Assistance Program (TAP)", "high"));
+    plan30.push(item("Request and safeguard your DD-214 and full medical records", "high"));
     plan30.push(item("Start a VA disability claim (ask about Benefits Delivery at Discharge)", "high"));
     plan60.push(item("Apply for VA health care and pick a facility near home", "high"));
     if (career?.skillbridge) plan30.push(item(`Ask your command about a DoD SkillBridge internship in ${career.label.toLowerCase()} - civilian experience on military pay`, "high"));
@@ -116,6 +178,11 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   }
 
   for (const sc of residenceStates(a)) plan90.push(item(`Check ${stateName(sc)} veteran benefits - verify with the state agency`, "low"));
+
+  // Every source has contributed by here. Collapse the overlaps before anyone
+  // sees a plan that tells them the same thing twice at two priorities.
+  dedupePlan([plan30, plan60, plan90]);
+
   if (plan90.length === 0) plan90.push(item("Revisit and refine this plan as your situation changes", "low"));
 
   // Documents
