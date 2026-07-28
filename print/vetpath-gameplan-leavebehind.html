@@ -44,8 +44,14 @@
     body{background:#fff}
     .sheet{box-shadow:none;margin:0;max-width:none;padding:0}
     .toolbar{display:none}
-    section,.ben,.snap,.crisis,.why{break-inside:avoid;page-break-inside:avoid}
-    .page2{page-break-before:always}
+    /* Only the small self-contained blocks stay whole. Letting a long section
+       (the 30/60/90 plan) split is what keeps the sheet from stranding half a
+       page of white space every time a section will not fit in the remainder. */
+    .ben,.snap,.crisis,.why{break-inside:avoid;page-break-inside:avoid}
+    .row{break-inside:avoid;page-break-inside:avoid}
+    h3,.phase{break-after:avoid;page-break-after:avoid}
+    /* No forced break here any more. It was written when the plan section could
+       not split, and now just buys a short page in the middle of the handout. */
     a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
     @page{size:letter;margin:0.6in}
   }
