@@ -70,11 +70,13 @@ export default function Dashboard() {
         </div>
       )}
 
-      {dest && (
-        <div style={{ marginTop: 16 }}>
-          <FundedPath a={a} career={careerById(s.chosenPath?.careerId)} />
-        </div>
-      )}
+      {/* Not gated on a destination: GI Bill, VR&E, and scholarships apply whether or
+          not someone has run the Pathfinder yet, and hiding this until they do meant
+          the funding never appeared for anyone who skipped it. FundedPath already
+          falls back to "your path" when there is no career chosen. */}
+      <div style={{ marginTop: 16 }}>
+        <FundedPath a={a} career={careerById(s.chosenPath?.careerId)} />
+      </div>
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>
