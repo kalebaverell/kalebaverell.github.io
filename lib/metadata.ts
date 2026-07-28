@@ -9,12 +9,12 @@ import type { Metadata } from "next";
 export const SITE = "https://kalebaverell.github.io";
 
 export const OG_IMAGE = {
-  // Public-domain U.S. Army footage of mentors working through resumes at a
-  // transition summit. See public/img/CREDITS.md.
-  url: "/img/transition-summit-mentors.jpg",
-  width: 1600,
-  height: 1064,
-  alt: "Volunteer mentors walking a soldier through her resume at a veterans transition summit",
+  // Purpose-built 1200x630 card rendered from scripts/og-card.html over a
+  // public-domain DVIDS photo. See public/img/CREDITS.md.
+  url: "/og-card.jpg",
+  width: 1200,
+  height: 630,
+  alt: "VetPath: leave with your gameplan. Benefits, career paths, and the next 90 days, built around your service and your goals.",
 };
 
 const SHARED_DESCRIPTION =

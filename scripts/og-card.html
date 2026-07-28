@@ -11,13 +11,19 @@
   not served as a page on the live site.
 -->
 <link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/tabler-icons.css">
 <style>
   html,body { margin:0; padding:0; background:#0B1B2B; }
   .card {
     width:1200px; height:630px; position:relative; overflow:hidden;
     font-family:Inter, system-ui, sans-serif; color:#fff;
   }
-  .photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  /* Widened and anchored left so the event banner at the far right edge of the
+     source frame ("Hiring Our Heroes") falls outside the card. VetPath is not
+     affiliated with that program, and a link preview is the most decontextualised
+     image the site has, so third-party signage must not appear in it. Matches the
+     content rule already applied to the homepage video (see public/video/CREDITS.md). */
+  .photo { position:absolute; top:0; left:0; width:118%; height:100%; object-fit:cover; object-position:left center; }
   /* Navy scrim, heavier on the left so the type always has a dark bed to sit on */
   .scrim { position:absolute; inset:0;
     background:linear-gradient(100deg, rgba(11,27,43,.96) 0%, rgba(11,27,43,.90) 42%, rgba(11,27,43,.58) 100%); }
@@ -41,7 +47,7 @@
     <div class="scrim"></div>
     <div class="inner">
       <div class="lockup">
-        <span class="mark">&#9906;</span>
+        <span class="mark"><i class="ti ti-route"></i></span>
         <span class="word">VetPath</span>
       </div>
       <div>

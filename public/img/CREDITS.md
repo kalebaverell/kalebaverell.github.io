@@ -22,6 +22,16 @@ No VA/DoD seals, unit insignia, or corporate logos appear in the shipped crops.
   public-domain works are free to use without permission).
 - **File fetched:** https://d1ldvf68ux039x.cloudfront.net/thumbs/photos/1610/2953284/2000w_q95.jpg
 - **Processing:** resized 2000w → 1600×1064, JPEG q72 (215 KB). No content edits.
+- **Derived work:** `public/og-card.jpg` (the link-preview card) composites this photo
+  under a navy scrim with VetPath type, rendered from `scripts/og-card.html` at
+  1200×630, JPEG q90 (101 KB).
+  - **Content review:** the source frame carries a "Hiring Our Heroes" event banner at
+    its far right edge. VetPath has no affiliation with that program, and a link
+    preview travels without context, so the card is framed to crop the banner out
+    entirely (`.photo { width:118%; object-position:left center }`). Verified by
+    magnifying the rendered card's top-right corner. Same rule the homepage video
+    follows (see `public/video/CREDITS.md`): no third-party signage or sponsor logos
+    in shipped imagery.
 
 ## tap-electrical-training.jpg
 

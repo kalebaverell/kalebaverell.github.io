@@ -6,10 +6,9 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionFx from "@/components/MotionFx";
 import BottomTabs from "@/components/BottomTabs";
+import { SITE, OG_IMAGE } from "@/lib/metadata";
 import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
-
-const SITE = "https://kalebaverell.github.io";
 
 // Kept near the 155-character mark so search results and link previews show it
 // whole. The old copy said "Sample data only", which stopped being true once the
@@ -37,23 +36,14 @@ export const metadata: Metadata = {
     description:
       "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, and every figure links to an official source.",
     locale: "en_US",
-    images: [
-      {
-        // Public-domain U.S. Army footage of mentors working through resumes at a
-        // transition summit. See public/img/CREDITS.md.
-        url: "/img/transition-summit-mentors.jpg",
-        width: 1600,
-        height: 1064,
-        alt: "Volunteer mentors walking a soldier through her resume at a veterans transition summit",
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "VetPath - A clear gameplan for life after service",
     description:
       "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans.",
-    images: ["/img/transition-summit-mentors.jpg"],
+    images: [OG_IMAGE.url],
   },
 };
 
