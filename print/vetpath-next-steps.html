@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VetPath - Where We Are &amp; What's Next</title>
+<title>VetPath - Saturday Working Session</title>
 <style>
   :root{ --primary:#16324D; --primary-900:#0B1B2B; --accent:#C8863C; --accent-soft:#F6EDDF; --accent-ink:#7A5019;
-    --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --border:#CBD3DA; --chip:#EAF0F6; --success:#0F6E56; }
+    --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --border:#CBD3DA; --chip:#EAF0F6; --success:#0F6E56;
+    --warn-bg:#FBF1E4; --warn-line:#D9A867; --warn-ink:#7A4F14; }
   *{box-sizing:border-box}
   body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#EEF1F4;line-height:1.5;font-size:13.5px}
   .sheet{max-width:820px;margin:22px auto;background:#fff;padding:40px 44px;box-shadow:0 2px 14px rgba(16,36,56,.12)}
@@ -16,25 +17,41 @@
   .tag{margin-left:auto;color:var(--muted);font-size:12px;text-align:right}
   h1{font-family:Georgia,serif;font-size:25px;margin:0 0 4px;color:var(--ink-strong);font-weight:600}
   h2{font-size:14px;margin:20px 0 8px;background:var(--primary);color:#fff;padding:7px 12px;border-radius:6px;font-weight:600}
+  h2 .num{opacity:.65;font-weight:600;margin-right:7px}
   p{margin:0 0 8px}
   .muted{color:var(--muted)} .small{font-size:12px}
   table{width:100%;border-collapse:collapse;font-size:12.5px;margin:4px 0 8px}
   th,td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top}
   th{background:var(--chip);color:var(--primary);font-weight:600}
   ul{margin:4px 0 8px;padding-left:19px} li{margin-bottom:4px}
+  ol{margin:4px 0 8px;padding-left:20px} ol li{margin-bottom:5px}
   .row{padding:4px 0;display:flex;gap:9px;align-items:flex-start;font-size:13px}
   .box{width:14px;height:14px;border:1.6px solid #7A8794;border-radius:3px;flex-shrink:0;margin-top:3px}
-  .pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:#E1F0EA;color:var(--success);text-transform:uppercase;letter-spacing:.4px}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:#E1F0EA;color:var(--success);text-transform:uppercase;letter-spacing:.4px;flex-shrink:0}
   .pill.you{background:var(--accent-soft);color:var(--accent-ink)}
   .note{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:12.5px;margin:8px 0}
+  .flag{background:var(--warn-bg);border-left:4px solid var(--warn-line);border-radius:0 6px 6px 0;padding:10px 14px;font-size:12.5px;margin:8px 0;color:var(--warn-ink)}
+  .flag b{color:#5E3C0C}
+  .link{background:var(--chip);border-radius:8px;padding:11px 14px;margin:6px 0 10px;font-size:13px}
+  .link .url{font-family:"Consolas",Menlo,monospace;font-size:13.5px;color:var(--primary);font-weight:600;word-break:break-all}
   .foot{font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px;margin-top:18px}
   .toolbar{max-width:820px;margin:14px auto 0;text-align:right}
   .btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
   @media print{
     body{background:#fff} .sheet{box-shadow:none;margin:0;max-width:none;padding:0} .toolbar{display:none}
-    h2,table,.note{break-inside:avoid;page-break-inside:avoid}
-    @page{size:letter;margin:0.5in}
+    h2,table,.note,.flag,.link{break-inside:avoid;page-break-inside:avoid}
+    h2{break-after:avoid;page-break-after:avoid}
+    /* Print-only tightening. On screen the doc can breathe; on paper this is
+       what pulls the closing note and the disclaimer up onto the second sheet
+       instead of stranding them alone on a third. */
+    h2{margin:12px 0 6px}
+    .row{padding:2.5px 0}
+    .grid2{gap:2px 24px}
+    .note,.flag,.link{margin:6px 0}
+    ol li,ul li{margin-bottom:3px}
+    .foot{margin-top:11px;padding-top:8px}
+    @page{size:letter;margin:0.45in}
   }
 </style>
 </head>
@@ -43,56 +60,75 @@
 <div class="sheet">
   <div class="bar">
     <span class="mark">V</span><span class="brand">VetPath</span>
-    <span class="tag">Progress update &amp; next steps<br>July 8, 2026 · prepared for Frank</span>
+    <span class="tag">Working session &middot; Saturday, August 1, 2026<br>Status as of July 28 &middot; prepared for Frank</span>
   </div>
-  <h1>Where we are - and the next 30 days</h1>
-  <p class="muted">Everything from our coffee chat is now built into the working prototype. Here's the short version and the decisions we need to make together.</p>
+  <h1>Where we are, and the two things we decide Saturday</h1>
+  <p class="muted">Short version: it is no longer a file I email you. It is a live site, the benefit research is real and cited, and it is ready for veterans to touch. Saturday is about the name and the money.</p>
 
-  <h2>1 · Your ideas are in the app</h2>
+  <h2><span class="num">1</span>It is live</h2>
+  <p>Since we last talked it moved from an attachment to a real site that updates within a minute of any change. Open it on your phone.</p>
+  <div class="link">
+    <div class="url">https://kalebaverell.github.io</div>
+    <div class="small muted" style="margin-top:4px">Temporary address. It changes the day we settle the name, which is decision 1 below.</div>
+  </div>
   <div class="grid2">
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>The 4 tracks (Employment / Education / Trades / Entrepreneur)</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>"Pathfinder" decision engine → recommended path with a % fit</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Resume scanner with military-to-civilian translation</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Smart transcript (military training → college credit examples)</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Location guidance driven by VA disability % (hospital proximity)</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Honest "get your full disability benefit" prep (free VSO route)</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Networking &amp; mentorship hub, tailored to the chosen path</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>SkillBridge surfaced for anyone still in service</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>Type-your-own answers on every question + open notes</div></div>
-    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div>The action plan now has an endpoint - a destination, not chores</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Real state benefit data for all 51 jurisdictions</strong> (50 states plus DC), each program cited to its official source, last verified July 8, 2026</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Reserves &amp; National Guard tab</strong> - 10 federal benefits plus state tuition programs, the "best kept secret" you flagged</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Funded path</strong> - not just what to do, but how to pay for it</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Pathfinder</strong> - 10 questions in, a recommended direction and a 30/60/90 plan out</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Free account</strong> so a veteran's plan is still there next week, on any device</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Privacy policy and terms</strong> written to match what the site actually does</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Works on phones</strong>, installs like an app, and works offline once opened</div></div>
+    <div class="row"><span class="box" style="background:var(--success);border-color:var(--success)"></span><div><strong>Printable gameplan</strong> a veteran can walk out of your meeting holding</div></div>
   </div>
-  <p class="small muted" style="margin-top:6px">Plus: a professional redesign, adjustable text size for older eyes, works on phones, and a print-your-gameplan button. All benefit data is still clearly-labeled sample data.</p>
+  <p class="small muted" style="margin-top:6px">Honest line on the data: state benefits, federal benefits, and the Reserve/Guard content are real and cited. The career library and the sample veteran are still demo content, clearly labeled as such in the app.</p>
 
-  <h2>2 · How to look at it (5 minutes)</h2>
-  <ul>
-    <li>Open the attached <strong>vetpath-demo.html</strong> file - just double-click it; it runs in your browser, nothing to install.</li>
-    <li>Go to <strong>Strategy</strong> → click <strong>"Load a sample veteran &amp; plan."</strong></li>
-    <li>Then try <strong>Pathfinder → "Help me decide"</strong> and answer the 9 questions as yourself.</li>
-    <li>Gut-check: does the recommended path feel right? Does anything feel off to a veteran's eye?</li>
-  </ul>
+  <h2><span class="num">2</span>Before Saturday: ten minutes, on your phone</h2>
+  <ol>
+    <li>Open the address above and <strong>create a free account</strong> with your email. Takes about a minute.</li>
+    <li>Run <strong>Pathfinder</strong> and answer the 10 questions <em>as yourself</em>, not as a tester.</li>
+    <li>Look at the plan it gives you. <strong>Does anything in it read as wrong to a veteran?</strong> That is the only question I need answered.</li>
+    <li>Tap into <strong>Reserves &amp; Guard</strong>. You said this is the best kept secret in the community. Tell me if it lands that way.</li>
+  </ol>
+  <p class="small muted">If anything makes you hesitate to hand it to someone you know, write that down. That reaction is worth more than a feature request.</p>
 
-  <h2>3 · Decisions we need to make together</h2>
+  <h2><span class="num">3</span>Decision one: the name</h2>
+  <p>We are on a temporary address and every deliverable says VetPath. The longer that stays true, the more expensive changing it gets.</p>
   <table>
-    <tr><th style="width:30%">Decision</th><th>Recommendation on the table</th></tr>
-    <tr><td>Name</td><td>Keep "VetPath" (check domain/trademark) - or pick another before we go public.</td></tr>
-    <tr><td>Structure</td><td>LLC / benefit corp now for speed; nonprofit arm later if grants become the core.</td></tr>
-    <tr><td>How it makes money</td><td>Free for veterans. Organizations pay (VSOs, universities, employers) + grants/sponsors.</td></tr>
-    <tr><td>First real data</td><td>Build accurate, cited benefits for 2 states first - which two?</td></tr>
-    <tr><td>First pilot</td><td>Your recurring meeting. Which date works?</td></tr>
+    <tr><th style="width:26%">Question</th><th>Where it stands</th></tr>
+    <tr><td>Keep VetPath?</td><td>It is descriptive, it is short, and everything is already built around it.</td></tr>
+    <tr><td>Is it available?</td><td><strong>Not checked yet.</strong> Domain and trademark both need a real search before we commit. I did not want to spend the research budget on a name we might drop Saturday.</td></tr>
+    <tr><td>Real domain</td><td>Needed either way. The GitHub address is fine for testing and wrong for veterans.</td></tr>
+    <tr><td>If we change it</td><td>Cheapest now. It touches the site, the printed pieces, and the account system.</td></tr>
   </table>
+  <p class="small">Bring two or three alternatives you would be comfortable saying out loud at your meeting. We pick one Saturday and I register it the same day.</p>
 
-  <h2>4 · Next 30 days</h2>
-  <div class="row"><span class="pill you">Frank</span><div><strong>This week:</strong> click through the demo (5 min) and send reactions - especially anything that would make a veteran distrust it.</div></div>
-  <div class="row"><span class="pill you">Frank</span><div><strong>Pick two dates:</strong> one for a working session on the decisions above, one to pilot it live at your meeting.</div></div>
-  <div class="row"><span class="pill you">Frank</span><div><strong>Line up 5–10 veterans</strong> willing to try it and give honest feedback (we have a printed worksheet for this).</div></div>
-  <div class="row"><span class="pill">Kaleb</span><div><strong>Start the real data</strong> for our first two states - cited, dated, verified benefit info (the credibility engine).</div></div>
-  <div class="row"><span class="pill">Kaleb</span><div><strong>Draft the partner one-pager</strong> (what a VSO/university/employer gets and pays) + a list of 5 veteran-focused grants.</div></div>
-  <div class="row"><span class="pill">Kaleb</span><div><strong>Name check:</strong> domain and trademark availability for VetPath (and backups).</div></div>
+  <h2><span class="num">4</span>Decision two: how it pays for itself</h2>
+  <p>The rule I would hold to: <strong>free for veterans, always.</strong> The question is who does pay.</p>
+  <table>
+    <tr><th style="width:26%">Route</th><th>What it means, and the honest catch</th></tr>
+    <tr><td>Organizations pay</td><td>VSOs, universities, and employers license it for the veterans they serve. Closest to the mission, slowest to close.</td></tr>
+    <tr><td>Grants and sponsors</td><td>Veteran-focused foundations and corporate giving. Real money, but it needs a nonprofit arm or a fiscal sponsor to receive most of it.</td></tr>
+    <tr><td>Entity structure</td><td>This is the fork underneath the other two. Nonprofit opens grants and closes investment. For-profit is the reverse. We should decide the direction Saturday even if we file later.</td></tr>
+    <tr><td>Referral fees</td><td><strong>Parked, deliberately.</strong> See the flag below before we reopen it.</td></tr>
+  </table>
+  <div class="flag">
+    <b>Why referrals are parked.</b> The idea of earning a fee for sending veterans to a lender or a realtor is the one revenue route that could cost us the whole thing. Paid referrals in mortgage and real estate are governed by federal law, and steering a veteran toward someone who pays us is exactly the behavior a veteran should distrust. It also reads badly that the natural first referrals are family. I am not a lawyer and this is not legal advice, so if we want this route it needs a real attorney's read first, not a decision at a kitchen table. My recommendation is that we stay a planning tool that points to free accredited help and never takes a cut.
+  </div>
 
-  <div class="note"><strong>The one thing that matters most:</strong> putting this in front of real veterans at your meeting. Everything else - name, money, features - gets easier once we've watched ten vets use it.</div>
+  <h2><span class="num">5</span>What is still open, and who owns it</h2>
+  <div class="row"><span class="pill you">Frank</span><div>Ten minutes on the site before Saturday, plus two or three name candidates.</div></div>
+  <div class="row"><span class="pill you">Frank</span><div><strong>Pick a pilot date</strong> at your recurring meeting. This is the one thing I cannot do without you.</div></div>
+  <div class="row"><span class="pill you">Frank</span><div>Five to ten veterans willing to use it in front of us and say what they actually think.</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div><strong>Sign in with Google and Microsoft</strong> is built and waiting. The buttons appear on their own once I finish the vendor setup. Email sign-in works today.</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div>A real sending address for password resets, and a privacy contact address on the legal pages.</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div>Register the domain the day we pick the name.</div></div>
+  <div class="row"><span class="pill">Kaleb</span><div>Partner one-pager: what a VSO, university, or employer actually gets, and what it costs them.</div></div>
+
+  <div class="note"><strong>Still the thing that matters most:</strong> watching real veterans use this at your meeting. The name and the money get easier after we have seen ten people touch it. If Saturday only produces a pilot date, it was a good Saturday.</div>
 
   <div class="foot">
-    VetPath is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative. All benefit data in the prototype is sample/demo data; eligibility must be verified through VA.gov, state agencies, or accredited VSOs. Fit scores are demo estimates, not guarantees.
+    VetPath is a planning and education tool. It is not the VA, a law firm, or an accredited claims representative, and nothing here is legal, medical, or financial advice. State, federal, and Reserve/Guard benefit content is researched from official sources and dated in the app; the career library and sample veteran are demo content. Eligibility and dollar amounts change and must be confirmed through VA.gov, your state veterans agency, or an accredited VSO. Fit scores are decision support, not guarantees.
   </div>
 </div>
 </body>
