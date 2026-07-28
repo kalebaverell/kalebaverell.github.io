@@ -336,14 +336,22 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 
   /* "Verify at the official source" links sit at the heart of the trust promise.
      They rendered ~23px tall, well under the 44px touch minimum. */
-  .card a.small,
-  .card a[target="_blank"],
-  /* Task resource links: internal ones are Next <Link>, so they carry neither
-     .small nor target=_blank and were missed by the two selectors above. */
-  .card li a { display:inline-flex; align-items:center; min-height:44px; }
+  /* Standalone links: source links, back links, "see full detail" links, and the
+     trust bar. Scoped with :not(p a) so links inside a sentence keep normal line
+     flow instead of stretching the paragraph. */
+  a.small:not(p a),
+  .card a[target="_blank"]:not(p a),
+  .card li a:not(p a),
+  .trust-bar a,
+  .disclaimer a { display:inline-flex; align-items:center; min-height:44px; }
 
-  /* Small buttons ("Change path", "Full networking hub") to a full target. */
-  .btn.sm { min-height:44px; padding:11px 16px; }
+  /* Every button variant to a full target, including .sm. */
+  .btn, .btn.sm { min-height:44px; }
+  .btn.sm { padding:11px 16px; }
+
+  /* Section kickers were 11.5px. Nudged for readability; the uppercase mono
+     treatment and tracking are unchanged. */
+  .eyebrow { font-size:12.5px; }
 
   /* Smallest body text: 14px is tight on a phone for this audience. */
   :root { --fs-small:15px; }
