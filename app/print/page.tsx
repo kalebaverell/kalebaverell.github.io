@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, goalById, stateName, BRAND, residenceStates } from "@/lib/data";
+import { benefitById, goalById, stateName, BRAND, residenceStates, careerById } from "@/lib/data";
+import { buildFundedPath, FUNDING_VERIFIED, FUNDING_DISCLAIMER } from "@/lib/funding";
+import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reserves";
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
@@ -23,6 +25,14 @@ export default function PrintGameplan() {
   const gp = s.gameplan;
   const a = s.answers;
   const goals = (a.topGoals || []).map((id) => goalById(id)?.label).filter(Boolean).join(" · ");
+
+  // The two things a veteran most needs on paper: how the training gets paid for,
+  // and whether part-time service is worth a look. Both use the same rules as the
+  // screen, so the printout can never disagree with what they were just shown.
+  const dest = gp.destination;
+  const funded = buildFundedPath(a, careerById(s.chosenPath?.careerId));
+  const rFit = reserveFit(a);
+  const reserveTop = rFit.level !== "background" ? orderedBenefits(rFit).slice(0, 4) : [];
 
   return (
     <div className="print-doc">
@@ -67,6 +77,71 @@ export default function PrintGameplan() {
         <h3>Top priorities</h3>
         <ol style={{ margin: "8px 0 0", paddingLeft: 22 }}>{gp.priorities.map((p, i) => <li key={i} style={{ marginBottom: 5 }}>{p}</li>)}</ol>
       </div>
+
+      {(funded.education.length > 0 || funded.career.length > 0) && (
+        <div className="print-section print-break">
+          <h3>How to pay for it</h3>
+          <p className="muted small" style={{ margin: "0 0 10px" }}>
+            {dest
+              ? `Funding toward your destination: ${dest.label}. These stack, so read them together rather than picking one.`
+              : "These stack, so read them together rather than picking one."}
+          </p>
+
+          {funded.education.length > 0 && (
+            <>
+              <strong style={{ fontSize: 14 }}>Pay for the training</strong>
+              <ul style={{ margin: "6px 0 12px", paddingLeft: 22 }}>
+                {funded.education.map((p) => (
+                  <li key={p.id} style={{ marginBottom: 7 }}>
+                    <strong>{p.name}</strong> ({p.type}). {p.amount}
+                    <div className="muted" style={{ fontSize: 12 }}>Verify: {p.sourceLabel} - {p.source}</div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {funded.career.length > 0 && (
+            <>
+              <strong style={{ fontSize: 14 }}>Then land the job</strong>
+              <ul style={{ margin: "6px 0 0", paddingLeft: 22 }}>
+                {funded.career.map((p) => (
+                  <li key={p.id} style={{ marginBottom: 7 }}>
+                    <strong>{p.name}</strong> ({p.type}). {p.amount}
+                    <div className="muted" style={{ fontSize: 12 }}>Verify: {p.sourceLabel} - {p.source}</div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <p className="muted" style={{ fontSize: 12, margin: "10px 0 0" }}>
+            Verified {FUNDING_VERIFIED}. {FUNDING_DISCLAIMER}
+          </p>
+        </div>
+      )}
+
+      {reserveTop.length > 0 && (
+        <div className="print-section">
+          <h3>Worth a look: Reserves &amp; National Guard</h3>
+          {rFit.reasons.length > 0 && (
+            <ul style={{ margin: "6px 0 10px", paddingLeft: 22 }}>
+              {rFit.reasons.map((r, i) => <li key={i} style={{ marginBottom: 4 }}>{r.text}</li>)}
+            </ul>
+          )}
+          <ul style={{ margin: "0", paddingLeft: 22 }}>
+            {reserveTop.map((b) => (
+              <li key={b.id} style={{ marginBottom: 7 }}>
+                <strong>{b.name}</strong>. {b.summary}
+                <div className="muted" style={{ fontSize: 12 }}>Verify: {b.sourceLabel} - {b.source}</div>
+              </li>
+            ))}
+          </ul>
+          <p className="muted" style={{ fontSize: 12, margin: "10px 0 0" }}>
+            {BRAND.name} is not a recruiter. {RESERVES_NOT_RECRUITER}
+          </p>
+        </div>
+      )}
 
       <div className="print-section">
         <h3>Your 30 / 60 / 90-day action plan</h3>
