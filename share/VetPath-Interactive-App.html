@@ -868,6 +868,40 @@ const PRIORITY_LABEL = {
   "find-local-support":"Plug into local veteran support near you"
 };
 
+// Three sources feed the plan (the transition block, the career entry path, and
+// each goal's steps) and they overlap, so the same action could land twice in
+// different windows with different priorities. One task per topic: earliest
+// window wins, and the survivor takes the highest priority any copy carried.
+const TOPIC_RULES=[
+  {key:"tap",test:/\bTAP\b|Transition Assistance Program/i},
+  {key:"dd214",test:/DD.?214/i},
+  {key:"disability-claim",test:/disability claim|intent to file/i},
+  {key:"va-healthcare",test:/VA health ?care|enroll in VA health/i},
+  {key:"resume",test:/\bresume\b/i},
+  {key:"skillbridge",test:/SkillBridge/i},
+  {key:"vre",test:/VR&E|Veteran Readiness/i},
+  {key:"home-loan",test:/home ?loan|certificate of eligibility/i}
+];
+const PRIORITY_RANK={high:0,medium:1,low:2};
+function planKey(text){
+  const hit=TOPIC_RULES.find(r=>r.test.test(text));
+  if(hit) return "topic:"+hit.key;
+  return "text:"+text.toLowerCase().replace(/[^a-z0-9 ]/g,"").replace(/\s+/g," ").trim();
+}
+function dedupePlan(buckets){
+  const kept=new Map();
+  for(const bucket of buckets){
+    const survivors=[];
+    for(const it of bucket){
+      const key=planKey(it.text);
+      const prev=kept.get(key);
+      if(!prev){ kept.set(key,it); survivors.push(it); continue; }
+      if(PRIORITY_RANK[it.priority]<PRIORITY_RANK[prev.priority]) prev.priority=it.priority;
+    }
+    bucket.length=0;
+    bucket.push.apply(bucket,survivors);
+  }
+}
 function generateGameplan(a, path){
   _idc=0;
   const goals = (a.topGoals||[]).map(goalById).filter(Boolean);
@@ -911,7 +945,8 @@ function generateGameplan(a, path){
   // action items distributed into 30/60/90
   const plan30=[], plan60=[], plan90=[];
   if(isTransition){
-    plan30.push(item("Complete TAP and safeguard your DD-214 + medical records","high"));
+    plan30.push(item("Complete the DoD Transition Assistance Program (TAP)","high"));
+    plan30.push(item("Request and safeguard your DD-214 and full medical records","high"));
     plan30.push(item("Start a VA disability claim (ask about Benefits Delivery at Discharge)","high"));
     plan60.push(item("Apply for VA health care and pick a facility near home","high"));
     if(career && career.skillbridge) plan30.push(item("Ask your command about a DoD SkillBridge internship in "+career.label.toLowerCase()+" - civilian experience on military pay","high"));
@@ -938,6 +973,8 @@ function generateGameplan(a, path){
   if(a.state){
     plan90.push(item("Check "+stateName(a.state)+" veteran benefits - verify with the state agency","low"));
   }
+  dedupePlan([plan30,plan60,plan90]);
+
   if(plan90.length===0) plan90.push(item("Revisit and refine this plan as your situation changes","low"));
 
   // documents union
