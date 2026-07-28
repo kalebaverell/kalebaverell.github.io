@@ -1,6 +1,11 @@
 node_modules/
 .next/
 out/
+# Isolated output for verification builds run via VP_DIST_DIR while a dev
+# server holds .next. Pure build artifact, never committed.
+.next-verify/
+# Rollback copies taken before editing the single-file demo (see vetpath-mirror).
+demo/.mirror-checkpoint-*.html
 *.log
 .env*
 demo/.mirror-checkpoint*.html
