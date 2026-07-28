@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { NETWORKING, TRACKS, careerById } from "@/lib/data";
@@ -21,7 +22,7 @@ function Group({ title, icon, items }: { title: string; icon: string; items: { n
 
 export default function NetworkHub() {
   const { s, ready } = useStore();
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
   const career = careerById(s.chosenPath?.careerId);
   const track = career?.track;
   const minority = (s.answers.raceEthnicity || []).some((r) => r && r !== "White" && r !== "Prefer not to say");

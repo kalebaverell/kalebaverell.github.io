@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { careerById } from "@/lib/data";
@@ -76,7 +77,7 @@ function EntryRow({ e }: { e: FamilyEntry }) {
 
 export default function FamilyPlanning() {
   const { s, ready, setStep } = useStore();
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
 
   const a = s.answers;
   const hasFamily = hasFamilySelections(a);

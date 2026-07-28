@@ -2,6 +2,7 @@
 // Where a password-recovery link lands. Supabase puts a recovery token in the URL
 // fragment; the client is configured with detectSessionInUrl, so by the time this
 // renders the user has a short-lived session and can set a new password.
+import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import Link from "next/link";
 import { useAuth, MIN_PASSWORD_LENGTH } from "@/lib/auth";
@@ -25,7 +26,7 @@ export default function ResetPassword() {
     );
   }
 
-  if (!ready) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="narrow" />;
 
   // No session means the link was already used, expired, or was opened in a
   // different browser than the one that requested it.

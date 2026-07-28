@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -11,12 +12,12 @@ import { Wrap, ProgressBar } from "@/components/ui";
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
   const { enabled, ready: authReady, user, openAuth, authError } = useAuth();
-  if (!ready) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="narrow" />;
   // Building a gameplan requires a free account, so it saves to the veteran's own profile.
   if (enabled) {
-    if (!authReady) return <Wrap narrow><p className="muted">Loading…</p></Wrap>;
+    if (!authReady) return <PageSkeleton kind="narrow" />;
     if (!user) return <AccountGate onStart={() => openAuth("signup")} notice={authError} />;
-    if (!s.profile) return <Wrap narrow><p className="muted">Setting up your account…</p></Wrap>;
+    if (!s.profile) return <PageSkeleton kind="narrow" label="Setting up your account" />;
     return <Intake />;
   }
   // Accounts not configured in this environment → local fallback so the app never hard-locks.

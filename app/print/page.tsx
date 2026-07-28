@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { benefitById, goalById, stateName, BRAND, residenceStates, careerById } from "@/lib/data";
@@ -7,7 +8,7 @@ import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reser
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
-  if (!ready) return <div className="print-doc"><p className="muted">Loading…</p></div>;
+  if (!ready) return <PageSkeleton kind="print" />;
 
   if (!s.gameplan || !s.profile) {
     return (

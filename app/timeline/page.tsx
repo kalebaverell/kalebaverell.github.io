@@ -3,6 +3,7 @@
 // phase-based plan for the last 12 months in uniform + first 24 months out.
 // Grouped, multiple-choice-first questions; the plan is deterministic and
 // every deadline cites the official source it was checked against.
+import PageSkeleton from "@/components/PageSkeleton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { STATES } from "@/lib/data";
@@ -125,7 +126,7 @@ export default function TimelinePage() {
     window.scrollTo({ top: 0 });
   };
 
-  if (!hydrated) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!hydrated) return <PageSkeleton kind="cards" />;
 
   return (
     <Wrap narrow>

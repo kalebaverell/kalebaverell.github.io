@@ -2,6 +2,7 @@
 // Reserve & National Guard - the option most first-termers never hear explained.
 // Essentials are visible; the detail sits behind "What this means" toggles so the page
 // stays readable for someone who is not fluent in benefits language.
+import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -100,7 +101,7 @@ export default function Reserves() {
   const { s, ready } = useStore();
   const [showAll, setShowAll] = useState(false);
 
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
 
   const a = s.answers || {};
   const fit = reserveFit(a);

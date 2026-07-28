@@ -1,6 +1,7 @@
 "use client";
 // Adaptive planning: report a life event, preview exactly what changes in the
 // gameplan, then commit the update through the existing store actions.
+import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -37,7 +38,7 @@ export default function Updates() {
   const [preview, setPreview] = useState<Preview | null>(null);
   const [applied, setApplied] = useState(false);
 
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
   if (!s.profile) {
     return (
       <Wrap narrow>

@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import type { ActionItem, Status } from "@/lib/types";
@@ -7,7 +8,7 @@ import TaskDetail from "@/components/TaskDetail";
 
 export default function ActionPlan() {
   const { s, ready, cycleStatus } = useStore();
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
   if (!s.gameplan) {
     return (
       <Wrap narrow>

@@ -1,6 +1,7 @@
 "use client";
 // Relocation Planner - compare places to live across what veterans actually weigh,
 // scored by THEIR priorities and (optionally) their chosen path. SAMPLE data only.
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useStore } from "@/lib/store";
@@ -190,7 +191,7 @@ export default function RelocatePage() {
     });
   };
 
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
 
   return (
     <Wrap>

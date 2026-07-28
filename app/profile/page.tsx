@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
@@ -8,7 +9,7 @@ import { Wrap, Callout } from "@/components/ui";
 export default function Profile() {
   const { s, ready, setStep, regen, reset } = useStore();
   const router = useRouter();
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="narrow" />;
   if (!s.profile) {
     return (
       <Wrap narrow>

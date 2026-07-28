@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -21,7 +22,7 @@ export default function ResumeScanner() {
     }
   }, [ready, hydrated, s.resume, s.chosenPath]);
 
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
 
   const run = () => {
     const career = careerById(careerId);

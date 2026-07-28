@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -13,7 +14,7 @@ import BenefitCategoryList from "@/components/BenefitCategoryList";
 export default function Dashboard() {
   const { s, ready } = useStore();
   const [showMore, setShowMore] = useState(false);
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="dashboard" />;
   if (!s.gameplan) {
     return (
       <Wrap narrow>

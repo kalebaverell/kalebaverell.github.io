@@ -1,4 +1,5 @@
 "use client";
+import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -14,7 +15,7 @@ type View = { kind: "intro" } | { kind: "browse"; track?: string } | { kind: "as
 export default function Pathfinder() {
   const { s, ready } = useStore();
   const [view, setView] = useState<View>({ kind: "intro" });
-  if (!ready) return <Wrap><p className="muted">Loading…</p></Wrap>;
+  if (!ready) return <PageSkeleton kind="cards" />;
 
   if (view.kind === "intro") return <Intro setView={setView} hasPath={!!s.chosenPath} />;
   if (view.kind === "browse") return <Browse track={view.track} setView={setView} />;
