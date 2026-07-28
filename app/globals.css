@@ -10,7 +10,10 @@
 :root {
   --primary:#16324D; --primary-700:#0F2438; --primary-800:#12283D; --primary-900:#0B1B2B; --primary-ink:#FFFFFF;
   --accent:#C8863C; --accent-600:#B0722B; --accent-soft:#F6EDDF; --accent-ink:#7A5019;
-  --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --faint:#8A97A3;
+  /* --faint is decorative de-emphasis (separator dots, unchecked borders). Darkened
+     from #8A97A3 (2.66:1) to pass the 3:1 WCAG minimum for UI component boundaries;
+     running text should use --muted, which clears 4.5:1. */
+  --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --faint:#6E7E8C;
   --bg:#F3F2EE; --surface:#FFFFFF; --surface-2:#ECE9E2;
   --border:#E1DBD0; --hairline:rgba(31,26,18,.09);
   --chip-bg:#EAF0F6; --chip-ink:#16324D;
@@ -27,12 +30,12 @@
 }
 [data-theme="warm"] {
   --primary:#0F6E56; --primary-700:#0A5241; --primary-800:#0A5241; --primary-900:#073D30; --accent:#D98A3D; --accent-600:#BE762C; --accent-soft:#FAECD9; --accent-ink:#8A5714;
-  --ink:#2A362C; --ink-strong:#14231A; --muted:#6E7A6F; --faint:#98A197; --bg:#FAF6EE; --surface:#FFFFFF; --surface-2:#F3EEE1; --border:#E6DFD1; --hairline:rgba(20,35,26,.09);
+  --ink:#2A362C; --ink-strong:#14231A; --muted:#6E7A6F; --faint:#75837B; --bg:#FAF6EE; --surface:#FFFFFF; --surface-2:#F3EEE1; --border:#E6DFD1; --hairline:rgba(20,35,26,.09);
   --chip-bg:#E1F0EA; --chip-ink:#0F6E56; --success:#0F6E56; --success-soft:#E1F0EA; --hero-glow:rgba(217,138,61,.18);
 }
 [data-theme="civic"] {
   --primary:#2E3338; --primary-700:#202428; --primary-800:#22272C; --primary-900:#181C20; --accent:#55708A; --accent-600:#456079; --accent-soft:#E3EAF0; --accent-ink:#33506A;
-  --ink:#2B333A; --ink-strong:#151A1F; --muted:#6B747C; --faint:#949BA1; --bg:#F4F6F7; --surface:#FFFFFF; --surface-2:#EBEEF1; --border:#DEE2E6; --hairline:rgba(21,26,31,.09);
+  --ink:#2B333A; --ink-strong:#151A1F; --muted:#6B747C; --faint:#707880; --bg:#F4F6F7; --surface:#FFFFFF; --surface-2:#EBEEF1; --border:#DEE2E6; --hairline:rgba(21,26,31,.09);
   --chip-bg:#E7EAED; --chip-ink:#3A4249; --hero-glow:rgba(85,112,138,.18);
 }
 

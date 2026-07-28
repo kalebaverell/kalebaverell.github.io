@@ -1,7 +1,7 @@
 "use client";
 // Sign-in / create-account modal. Passwords are handled by Supabase Auth
 // (hashed server-side) - never stored by us. Opened via the auth context.
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth, MIN_PASSWORD_LENGTH, PROVIDER_META } from "@/lib/auth";
 import { BRAND } from "@/lib/data";
@@ -34,6 +34,23 @@ export default function AuthModal() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [authOpen, closeAuth]);
+
+  // Focus management: on open, move focus into the first field so keyboard and
+  // screen-reader users land inside the dialog; on close, hand focus back to
+  // whatever opened it instead of dropping it on <body>.
+  const openerRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (authOpen) {
+      openerRef.current = document.activeElement as HTMLElement | null;
+      // Next tick: the dialog renders after this effect fires.
+      const t = setTimeout(() => {
+        (document.getElementById("au-name") || document.getElementById("au-email"))?.focus();
+      }, 0);
+      return () => clearTimeout(t);
+    }
+    openerRef.current?.focus?.();
+    openerRef.current = null;
+  }, [authOpen]);
 
   if (!authOpen) return null;
 
@@ -225,7 +242,7 @@ export default function AuthModal() {
           </p>
           )}
 
-          <p className="small" style={{ textAlign: "center", margin: "14px 0 0", color: "var(--faint)", lineHeight: 1.6 }}>
+          <p className="small" style={{ textAlign: "center", margin: "14px 0 0", color: "var(--muted)", lineHeight: 1.6 }}>
             Your password is secured by our auth provider - we never see or store it.{" "}
             <Link href="/privacy" onClick={closeAuth}>Privacy &amp; data</Link>.
           </p>

@@ -112,12 +112,11 @@ export default function PrivacyPage() {
             <strong>GitHub Pages</strong> serves the website itself. Like any web host, its servers log the
             IP addresses that request pages.
           </li>
-          <li>
-            <strong>Google Fonts and Cloudflare</strong> deliver the fonts and icons the page uses. Your
-            browser requests those files directly, which means those services can see your IP address and
-            which page you are on. They do not receive your answers or your plan.
-          </li>
         </ul>
+        <p style={{ margin: "10px 0 0" }}>
+          Fonts and icons are served from this site directly, not from a font network, so no additional
+          service learns that you visited.
+        </p>
         <p style={{ margin: "10px 0 0" }}>
           Nobody else. No data brokers, no advertising networks, no lead buyers.
         </p>
