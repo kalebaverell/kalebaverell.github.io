@@ -31,10 +31,10 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
     <Wrap>
       <div className="intro-split" style={{ marginBottom: 8 }}>
         <div>
-          <Eyebrow>Decision engine</Eyebrow>
-          <h2>Pathfinder - pick your next mission</h2>
+          <Eyebrow>Step 2 of your gameplan</Eyebrow>
+          <h2>Pick your path</h2>
           <p className="muted" style={{ maxWidth: 640, margin: 0 }}>
-            Transition programs teach four tracks out of the service. Choose one directly, or let the decision engine recommend your best-fit path from what matters to you.
+            Take the career test and get a best-fit recommendation, or browse the four tracks yourself.
           </p>
         </div>
         <figure className="photo-frame">
@@ -56,7 +56,15 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
           </Callout>
         </div>
       )}
-      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", margin: "18px 0" }}>
+      <div className="card" style={{ margin: "18px 0", border: "2px solid var(--accent)", display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ maxWidth: 420 }}>
+          <h3 style={{ margin: 0 }}>Take the career test</h3>
+          <p className="muted small" style={{ margin: "4px 0 0" }}>{ASSESSMENT.questions.length} quick questions. Your best-fit paths, ranked, with the why.</p>
+        </div>
+        <button className="btn gold" onClick={() => setView({ kind: "assess", q: 0 })}><i className="ti ti-compass" /> Start the test</button>
+      </div>
+      <p className="muted small" style={{ margin: "0 0 10px" }}>Or browse a track directly:</p>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", margin: "0 0 18px" }}>
         {TRACKS.map((t) => (
           <button key={t.id} type="button" className="card" onClick={() => setView({ kind: "browse", track: t.id })}
             style={{ cursor: "pointer", textAlign: "left", fontFamily: "inherit", fontSize: "inherit", color: "var(--ink)" }}>
@@ -64,16 +72,8 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
               <span className="iconwrap"><i className={`ti ${t.icon}`} aria-hidden="true" /></span>
               <span style={{ fontWeight: 600, fontSize: "var(--fs-h4)" }}>{t.label}</span>
             </span>
-            <span className="muted small" style={{ display: "block", margin: "10px 0 0" }}>{t.blurb}</span>
           </button>
         ))}
-      </div>
-      <div className="card" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ maxWidth: 420 }}>
-          <h3 style={{ margin: 0 }}>Not sure which track?</h3>
-          <p className="muted small" style={{ margin: "4px 0 0" }}>Answer {ASSESSMENT.questions.length} quick questions. We&apos;ll rank your best-fit paths with a % fit and show you exactly why - then build your plan around the one you pick.</p>
-        </div>
-        <button className="btn gold" onClick={() => setView({ kind: "assess", q: 0 })}><i className="ti ti-compass" /> Help me decide</button>
       </div>
       <p className="small muted" style={{ marginTop: 14 }}>
         Fit scores are demo estimates from your own answers - a decision aid, not a guarantee. Verify programs at official sources.

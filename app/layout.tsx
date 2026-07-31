@@ -9,6 +9,7 @@ import BottomTabs from "@/components/BottomTabs";
 import { SITE, OG_IMAGE } from "@/lib/metadata";
 import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
+import FunnelGate from "@/components/FunnelGate";
 
 // Kept near the 155-character mark so search results and link previews show it
 // whole. The old copy said "Sample data only", which stopped being true once the
@@ -106,7 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <StoreProvider>
             <MotionFx />
             <Nav />
-            <main id="main">{children}</main>
+            <main id="main"><FunnelGate>{children}</FunnelGate></main>
             <Footer />
             <BottomTabs />
             <ProfileSync />

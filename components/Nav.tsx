@@ -6,23 +6,18 @@ import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
 import { BRAND } from "@/lib/data";
 
-// Full app nav - shown once someone has signed in or started a plan.
+// Post-plan nav: four destinations, not seven. Pathfinder, goals, and benefits
+// are reached from inside the gameplan, where they have context, instead of
+// competing as top-level tabs.
 const APP_LINKS: [string, string, string][] = [
-  ["/dashboard", "Dashboard", "ti-layout-dashboard"],
-  ["/pathfinder", "Pathfinder", "ti-compass"],
-  ["/goals", "Goals", "ti-target"],
-  ["/benefits", "Benefits", "ti-award"],
-  ["/tools", "Tools", "ti-tool"],
+  ["/dashboard", "My gameplan", "ti-layout-dashboard"],
   ["/plan", "Action plan", "ti-checkbox"],
+  ["/tools", "Explore", "ti-tool"],
   ["/profile", "Profile", "ti-user-circle"],
 ];
-// Explore nav - shown to first-time / logged-out visitors. Every one of these
-// works without an account, so there are no dead-end empty states. "Strategy"
-// (the internal founder/pitch view) is intentionally not in the public nav.
+// Pre-plan nav: the funnel is a single action, so the only link besides the
+// build-my-gameplan CTA (rendered in nav-actions) is the credibility page.
 const MARKETING_LINKS: [string, string, string][] = [
-  ["/pathfinder", "Pathfinder", "ti-compass"],
-  ["/benefits", "Benefits", "ti-award"],
-  ["/tools", "Tools", "ti-tool"],
   ["/trust", "Why trust us", "ti-shield-check"],
 ];
 
@@ -37,11 +32,11 @@ export default function Nav() {
   // once the reader scrolls past the hero (or opens the mobile menu). Every other page
   // keeps the standard solid bar.
   const onHome = path === "/" || path === "";
-  // The public landing page always shows the clean marketing nav (Pathfinder · Benefits ·
-  // Tools · Why trust us) - even for signed-in / returning visitors - so the official link
-  // looks the same for everyone. Inside the app (any non-home page) a signed-in user or
-  // someone who started a plan still gets the full workspace nav.
-  const started = Boolean(user || s.profile) && !onHome;
+  // The funnel decides the nav: until a gameplan exists there is nothing to
+  // navigate to, so visitors get one link and one CTA. The homepage keeps the
+  // minimal nav even for returning users, so the shared link looks the same
+  // for everyone.
+  const started = Boolean(s.gameplan) && !onHome;
   const links = started ? APP_LINKS : MARKETING_LINKS;
 
   // Close the mobile menu whenever navigation happens
@@ -86,6 +81,11 @@ export default function Nav() {
           })}
         </nav>
         <div className="nav-actions">
+          {!started && path !== "/onboarding" && path !== "/onboarding/" && (
+            <Link className="btn gold sm" href="/onboarding">
+              <i className="ti ti-compass" aria-hidden="true" /> Build my gameplan
+            </Link>
+          )}
           <button
             onClick={cycleTextSize}
             aria-label={`Text size: ${sizeLabel}. Click to change.`}

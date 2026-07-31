@@ -153,23 +153,20 @@ export default function Landing() {
         <HeroBackdrop />
         <div className="hero hero-inner">
           <div>
-            <Eyebrow onDark>Veteran life planning · benefits · transition</Eyebrow>
+            <Eyebrow onDark>For veterans and transitioning service members</Eyebrow>
             <h1 style={{ maxWidth: 620 }}>
-              Stop hearing the same brief. Leave with <span className="accent-word">your</span> gameplan.
+              Find your <span className="accent-word">next</span> steps.
             </h1>
             <p className="hero-sub">
-              {BRAND.name} turns your goals, family, and service into one adaptive gameplan: the path, the benefits, the place to land, and what to do this week.
+              Answer a few questions. Get a plan for your next 90 days: the career, the benefits, the place to land.
             </p>
             <div className="hero-cta">
               <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
-              <Link className="btn ghost" href="#how-it-works" style={{ background: "rgba(255,255,255,.08)", color: "#fff", borderColor: "rgba(255,255,255,.28)" }}>
-                <i className="ti ti-arrow-down" /> See how it works
-              </Link>
             </div>
             <div className="hero-trust">
-              <span className="t"><i className="ti ti-shield-check" /> Built with and for veterans</span>
+              <span className="t"><i className="ti ti-shield-check" /> Free. Built with veterans</span>
               <span className="t"><i className="ti ti-lock" /> Private, nothing shared</span>
-              <span className="t"><i className="ti ti-circle-check" /> Points you to official sources</span>
+              <span className="t"><i className="ti ti-circle-check" /> Every number has an official source</span>
             </div>
           </div>
           <HeroVisual />

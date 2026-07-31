@@ -40,6 +40,9 @@ interface Store {
   regen: () => void;
   addGoal: (id: string) => void;
   cycleStatus: (id: string) => void;
+  /** One-tap complete/un-complete for checkbox UIs: anything not done becomes done,
+   *  done goes back to todo. cycleStatus keeps the three-state flow for the full checklist. */
+  toggleDone: (id: string) => void;
   setTheme: (t: AppState["theme"]) => void;
   cycleTextSize: () => void;
   loadSample: () => void;
@@ -175,6 +178,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const toggleDone = useCallback((id: string) => {
+    setS((p) => {
+      const next: Status = p.statuses[id] === "done" ? "todo" : "done";
+      return { ...p, statuses: { ...p.statuses, [id]: next } };
+    });
+  }, []);
+
   const setTheme = useCallback((t: AppState["theme"]) => setS((p) => ({ ...p, theme: t })), []);
 
   const cycleTextSize = useCallback(() => {
@@ -204,7 +214,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

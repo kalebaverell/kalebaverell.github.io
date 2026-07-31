@@ -7,17 +7,18 @@ import { usePathname } from "next/navigation";
 import { useStore } from "@/lib/store";
 
 const TABS: [string, string, string][] = [
-  ["/dashboard", "Home", "ti-layout-dashboard"],
-  ["/pathfinder", "Path", "ti-compass"],
-  ["/benefits", "Benefits", "ti-award"],
-  ["/tools", "Tools", "ti-tool"],
-  ["/plan", "Plan", "ti-checkbox"],
+  ["/dashboard", "Gameplan", "ti-layout-dashboard"],
+  ["/plan", "Actions", "ti-checkbox"],
+  ["/tools", "Explore", "ti-tool"],
+  ["/profile", "Profile", "ti-user-circle"],
 ];
 
 export default function BottomTabs() {
   const { s, ready } = useStore();
   const path = usePathname();
-  const show = ready && !!s.profile;
+  // Tabs appear only once a gameplan exists - before that the funnel has a
+  // single action and a tab bar would just be four locked doors.
+  const show = ready && !!s.gameplan;
 
   useEffect(() => {
     document.body.classList.toggle("has-tabbar", show);

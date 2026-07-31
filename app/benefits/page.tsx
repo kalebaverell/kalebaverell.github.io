@@ -48,7 +48,7 @@ export default function Benefits() {
       <p className="muted">Every card links to the official source you should use to verify.</p>
       <div style={{ margin: "8px 0 18px" }}>
         <Callout kind="warn">
-          {BRAND.name} does not determine eligibility - confirm everything with VA.gov, your state agency, or an accredited VSO. Federal content below was checked against official sources (see the verified date on each card), but rules change - always confirm current details.
+          {BRAND.name} does not determine eligibility. Rules change - confirm everything at VA.gov, your state agency, or a free accredited VSO.
         </Callout>
       </div>
 

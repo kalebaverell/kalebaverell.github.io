@@ -11,8 +11,14 @@ import FundedPath from "@/components/FundedPath";
 import TaskDetail from "@/components/TaskDetail";
 import BenefitCategoryList from "@/components/BenefitCategoryList";
 
+// The dashboard leads with what to DO, not what we know. Order: who you are,
+// where you're headed, your next actions, the three tracks. Every data-heavy
+// section lives behind "Show the full picture" so the first screen is a plan,
+// not a briefing.
+const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium: 1, low: 2 };
+
 export default function Dashboard() {
-  const { s, ready } = useStore();
+  const { s, ready, toggleDone } = useStore();
   const [showMore, setShowMore] = useState(false);
   if (!ready) return <PageSkeleton kind="dashboard" />;
   if (!s.gameplan) {
@@ -20,8 +26,8 @@ export default function Dashboard() {
       <Wrap narrow>
         <div style={{ textAlign: "center" }}>
           <h2>No gameplan yet</h2>
-          <p className="muted">Answer a few quick questions to generate your plan.</p>
-          <Link className="btn" href="/onboarding">Start intake</Link>
+          <p className="muted">A few quick questions build it.</p>
+          <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
         </div>
       </Wrap>
     );
@@ -32,6 +38,13 @@ export default function Dashboard() {
   const all = [...gp.plan30, ...gp.plan60, ...gp.plan90];
   const done = all.filter((it) => s.statuses[it.id] === "done").length;
   const dest = gp.destination;
+  // The whole plan lives on /plan. Here: only the next three open tasks -
+  // earliest window first, highest priority within it - so there is exactly
+  // one obvious thing to do, and finishing it pulls the next one in.
+  const nextThree = [gp.plan30, gp.plan60, gp.plan90]
+    .flatMap((win) => [...win].sort((x, y) => PRIORITY_RANK[x.priority] - PRIORITY_RANK[y.priority]))
+    .filter((it) => s.statuses[it.id] !== "done")
+    .slice(0, 3);
 
   return (
     <Wrap>
@@ -44,13 +57,24 @@ export default function Dashboard() {
         <p style={{ color: "#CBD8E4", margin: 0, maxWidth: 640 }}>{gp.headline}</p>
       </div>
 
+      {/* The journey in three steps. Disappears once all three are done - it exists
+          to point at the next move, not to decorate the page. */}
+      {!(dest && done > 0) && (
+        <div className="card" style={{ marginTop: 16, display: "flex", gap: "8px 22px", flexWrap: "wrap", alignItems: "center", padding: "14px 20px" }}>
+          <JourneyStep n={1} label="Plan built" state="done" />
+          <i className="ti ti-chevron-right" aria-hidden="true" style={{ color: "var(--faint)" }} />
+          <JourneyStep n={2} label="Pick your path" state={dest ? "done" : "now"} />
+          <i className="ti ti-chevron-right" aria-hidden="true" style={{ color: "var(--faint)" }} />
+          <JourneyStep n={3} label="Check off your first win" state={done > 0 ? "done" : dest ? "now" : "next"} />
+        </div>
+      )}
+
       {dest ? (
         <div className="card" style={{ marginTop: 16, border: "2px solid var(--accent)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
           <div className="iconwrap" style={{ width: 52, height: 52, fontSize: 26 }}><i className="ti ti-flag-3" aria-hidden="true" /></div>
           <div style={{ flex: 1, minWidth: 220 }}>
             <span className="small muted">Your destination</span>
             <h3 style={{ margin: "2px 0 0" }}>{dest.label}</h3>
-            <p className="small muted" style={{ margin: "2px 0 0" }}>Every action below routes toward this. Fit scores are demo estimates.</p>
           </div>
           {dest.fitPct && (
             <div style={{ textAlign: "center" }}>
@@ -64,42 +88,78 @@ export default function Dashboard() {
         <div className="card" style={{ marginTop: 16, border: "2px dashed var(--border)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
           <div className="iconwrap"><i className="ti ti-compass" aria-hidden="true" /></div>
           <div style={{ flex: 1, minWidth: 220 }}>
-            <h3 style={{ margin: 0 }}>Your plan needs a destination</h3>
-            <p className="small muted" style={{ margin: "2px 0 0" }}>Run the Pathfinder - 10 questions, a recommended career path with a % fit, and this whole plan re-routes around it.</p>
+            <h3 style={{ margin: 0 }}>Pick your path</h3>
+            <p className="small muted" style={{ margin: "2px 0 0" }}>10 questions. A career path that fits, and this plan re-routes around it.</p>
           </div>
           <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Find my path</Link>
         </div>
       )}
 
-      {/* Not gated on a destination: GI Bill, VR&E, and scholarships apply whether or
-          not someone has run the Pathfinder yet, and hiding this until they do meant
-          the funding never appeared for anyone who skipped it. FundedPath already
-          falls back to "your path" when there is no career chosen. */}
+      <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", margin: "24px 0 0" }}>
+        <h3 style={{ margin: 0 }}><i className="ti ti-checklist" style={{ color: "var(--accent-ink)" }} /> Do these first</h3>
+        <span className="small muted">{done} of {all.length} done</span>
+      </div>
+      <div className="card" style={{ marginTop: 12 }}>
+        {nextThree.length > 0 ? (
+          nextThree.map((it) => (
+            <div key={it.id} className="check" style={{ padding: "12px 0" }}>
+              <button
+                type="button"
+                className="box"
+                onClick={() => toggleDone(it.id)}
+                aria-label={`${it.text} - tap to mark complete`}
+              />
+              <div style={{ flex: 1 }}>
+                <div className="txt" style={{ fontWeight: 600 }}>{it.text}</div>
+                <TaskDetail text={it.text} />
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="small" style={{ color: "var(--success)", fontWeight: 600, margin: 0 }}>
+            <i className="ti ti-circle-check" aria-hidden="true" /> Every action is done. Rebuild or print your plan below.
+          </p>
+        )}
+        <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginTop: 12, paddingTop: 12, borderTop: "1px solid var(--hairline)" }}>
+          <Link className="btn sm" href="/plan"><i className="ti ti-checkbox" /> Full action plan ({all.length - done} open)</Link>
+          <span className="small muted">Three at a time. Finish one and the next steps in.</span>
+        </div>
+      </div>
+
+      <h3 style={{ margin: "28px 0 0" }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> Your three tracks</h3>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 12 }}>
+        <Link href="/pathfinder" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
+          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-briefcase" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Career</h4>
+          <span className="muted small">Your path, your fit, and the benefits that fund the training.</span>
+        </Link>
+        <Link href="/relocate" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
+          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-home" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Housing</h4>
+          <span className="muted small">The VA loan, and where to land: care, cost, jobs, community.</span>
+        </Link>
+        <Link href="/goals" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
+          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-building-store" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Start a business</h4>
+          <span className="muted small">From idea to plan, with veteran programs behind it.</span>
+        </Link>
+      </div>
+
+      <div style={{ textAlign: "center", margin: "26px 0 2px" }}>
+        <button type="button" className="btn ghost" onClick={() => setShowMore((v) => !v)} aria-expanded={showMore}>
+          <i className={`ti ti-chevron-${showMore ? "up" : "down"}`} aria-hidden="true" /> {showMore ? "Hide the full picture" : "Show the full picture"}
+        </button>
+      </div>
+
+      {showMore && (
+      <>
       <div style={{ marginTop: 16 }}>
         <FundedPath a={a} career={careerById(s.chosenPath?.careerId)} />
       </div>
 
       <div className="card" style={{ marginTop: 16 }}>
         <h3><i className="ti ti-award" style={{ color: "var(--accent-ink)" }} /> Recommended benefit categories</h3>
-        <p className="muted small" style={{ marginBottom: 10 }}>Tap any to see what it is and the official source to verify.</p>
+        <p className="muted small" style={{ marginBottom: 10 }}>Tap any to see what it is and where to verify it.</p>
         <BenefitCategoryList ids={gp.benefitCategories} />
       </div>
 
-      <h3 style={{ margin: "24px 0 0" }}><i className="ti ti-checklist" style={{ color: "var(--accent-ink)" }} /> Your next steps</h3>
-      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 12 }}>
-        <PlanCard title="Next 30 days" icon="ti-calendar-due" items={gp.plan30} />
-        <PlanCard title="Days 31–60" icon="ti-calendar" items={gp.plan60} />
-        <PlanCard title="Days 61–90" icon="ti-calendar-plus" items={gp.plan90} />
-      </div>
-
-      <div style={{ textAlign: "center", margin: "22px 0 2px" }}>
-        <button type="button" className="btn ghost" onClick={() => setShowMore((v) => !v)} aria-expanded={showMore}>
-          <i className={`ti ti-chevron-${showMore ? "up" : "down"}`} aria-hidden="true" /> {showMore ? "Show less" : "Show more of my plan"}
-        </button>
-      </div>
-
-      {showMore && (
-      <>
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", margin: "16px 0" }}>
         <Stat n={gp.priorities.length} l="top priorities" />
         <Stat n={gp.benefitCategories.length} l="benefit categories" />
@@ -114,7 +174,6 @@ export default function Dashboard() {
       {a.priorityWeights && Object.keys(a.priorityWeights).length > 0 && (
         <div className="card" style={{ marginTop: 16 }}>
           <h3><i className="ti ti-adjustments-horizontal" style={{ color: "var(--accent-ink)" }} /> What matters most to you</h3>
-          <p className="muted small">You weighted these - your recommended path and plan lean toward the ones at the top.</p>
           <div style={{ display: "grid", gap: 8, marginTop: 10 }}>
             {rankedPriorities(a).map((d) => (
               <div key={d.key} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -146,7 +205,7 @@ export default function Dashboard() {
           {gp.skillBridge && (
             <div className="card">
               <h3><i className="ti ti-bridge" style={{ color: "var(--accent-ink)" }} /> SkillBridge window</h3>
-              <p className="small" style={{ margin: "6px 0 0" }}>Still in service? DoD SkillBridge lets you intern with a civilian employer during your <strong>last 180 days on military pay</strong>. Big career shifts get much easier with civilian experience already on your resume - ask your command early; slots take approval time.</p>
+              <p className="small" style={{ margin: "6px 0 0" }}>Still in service? Intern with a civilian employer during your <strong>last 180 days on military pay</strong>. Ask your command early; slots take approval time.</p>
               <a className="btn ghost sm" style={{ marginTop: 10 }} href="https://skillbridge.osd.mil" target="_blank" rel="noopener noreferrer">SkillBridge program <i className="ti ti-external-link" /></a>
             </div>
           )}
@@ -154,7 +213,7 @@ export default function Dashboard() {
             <div className="card">
               <h3><i className="ti ti-clipboard-heart" style={{ color: "var(--accent-ink)" }} /> Get your full disability benefit - the honest way</h3>
               <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{gp.disabilityPrep.map((d, i) => <li key={i} className="small" style={{ marginBottom: 5 }}>{d}</li>)}</ul>
-              <p className="small muted" style={{ margin: "8px 0 0" }}>Education only - an accredited VSO's help is free and beats anyone charging for claims.</p>
+              <p className="small muted" style={{ margin: "8px 0 0" }}>Education only - an accredited VSO&apos;s help is free and beats anyone charging for claims.</p>
             </div>
           )}
         </div>
@@ -191,7 +250,6 @@ export default function Dashboard() {
       {gp.decisions && gp.decisions.length > 0 && (
         <div className="card feature" style={{ marginTop: 16 }}>
           <h3><i className="ti ti-scale" style={{ color: "var(--accent-ink)" }} /> Decisions to make</h3>
-          <p className="muted small">A plan isn&apos;t just tasks - these are the calls to make (together, where it&apos;s a household decision).</p>
           <ol className="steps" style={{ marginTop: 8 }}>{gp.decisions.map((d, i) => <li key={i}>{d}</li>)}</ol>
           {gp.familyCheckpoints && gp.familyCheckpoints.length > 0 && (
             <p className="small" style={{ marginTop: 12 }}>
@@ -219,46 +277,44 @@ export default function Dashboard() {
           ) : null;
         })}
       </div>
-      </>
-      )}
 
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 16 }}>
         <Link href="/updates" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
           <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-refresh" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Life changed?</h4>
-          <span className="muted small">Moved, new rating, new child, career change - see exactly how your plan adapts before you commit.</span>
+          <span className="muted small">Moved, new rating, new child - see how your plan adapts.</span>
         </Link>
         <Link href="/family" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
           <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-users" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Plan as a household</h4>
-          <span className="muted small">Spouse, kids, caregiver - checkpoints and decisions the whole family should see.</span>
-        </Link>
-        <Link href="/relocate" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
-          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-map-2" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Where should we live?</h4>
-          <span className="muted small">Compare places on VA access, cost, jobs for your path, schools, and community.</span>
+          <span className="muted small">Checkpoints the whole family should see.</span>
         </Link>
       </div>
+      </>
+      )}
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
         <Link className="btn" href="/plan"><i className="ti ti-checkbox" /> Open my action checklist</Link>
         <Link className="btn gold" href="/print"><i className="ti ti-printer" /> Print my gameplan</Link>
-        <Link className="btn ghost" href="/goals"><i className="ti ti-target" /> Explore goals</Link>
       </div>
     </Wrap>
   );
 }
 
-function PlanCard({ title, icon, items }: { title: string; icon: string; items: ActionItem[] }) {
+// One node of the three-step journey strip.
+function JourneyStep({ n, label, state }: { n: number; label: string; state: "done" | "now" | "next" }) {
   return (
-    <div className="card">
-      <h4><i className={`ti ${icon}`} style={{ color: "var(--accent-ink)" }} /> {title}</h4>
-      <div style={{ marginTop: 6 }}>
-        {items.length ? items.map((it) => (
-          <div key={it.id} style={{ padding: "8px 0", borderBottom: "1px solid var(--border)" }}>
-            <span className={`pill ${it.priority}`}>{it.priority}</span>
-            <div style={{ marginTop: 5, fontSize: 14 }}>{it.text}</div>
-            <TaskDetail text={it.text} />
-          </div>
-        )) : <p className="muted small">Nothing scheduled here.</p>}
-      </div>
-    </div>
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: state === "now" ? 700 : 500, color: state === "next" ? "var(--muted)" : "var(--ink)" }}>
+      <span
+        aria-hidden="true"
+        style={{
+          width: 26, height: 26, borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700,
+          background: state === "done" ? "var(--success)" : state === "now" ? "var(--accent)" : "var(--surface-2)",
+          color: state === "next" ? "var(--muted)" : "#fff",
+        }}
+      >
+        {state === "done" ? <i className="ti ti-check" /> : n}
+      </span>
+      {label}
+      {state === "now" && <span className="pill high" style={{ marginLeft: 2 }}>you are here</span>}
+    </span>
   );
 }

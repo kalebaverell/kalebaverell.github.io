@@ -4,17 +4,40 @@ import { useStore } from "@/lib/store";
 import { careerById } from "@/lib/data";
 import { Wrap, CardArt } from "@/components/ui";
 
-const TOOLS: { href: string; icon: string; title: string; body: string; art: "compass" | "doc" | "layers" | "nodes" }[] = [
-  { href: "/pathfinder", icon: "ti-compass", title: "Pathfinder", body: "The decision engine: 4 tracks, 10 questions, your best-fit career path with a % fit and the route to get there.", art: "compass" },
-  { href: "/timeline", icon: "ti-timeline", title: "Transition timeline", body: "Your last 12 months in uniform and first 24 months out, phase by phase - every deadline on one plan you control.", art: "layers" },
-  { href: "/reserves", icon: "ti-shield-star", title: "Reserves & Guard", body: "The option most people never get explained: health care, dental, school, and a retirement your service already counts toward. Not a recruiting pitch, just the math.", art: "layers" },
-  { href: "/relocate", icon: "ti-map-2", title: "Relocation planner", body: "Compare places to live on what matters to you: VA access, cost, jobs for your path, schools, community, and more.", art: "compass" },
-  { href: "/compare", icon: "ti-columns-3", title: "Compare states", body: "Two or three states side by side: veteran benefits by category plus cost of living, rent, and jobs - every figure from a verified source.", art: "layers" },
-  { href: "/family", icon: "ti-users", title: "Family planner", body: "Plan as a household - spouse, kids, and caregiver checkpoints, shared decisions, and verified family programs.", art: "nodes" },
-  { href: "/updates", icon: "ti-refresh", title: "Life changed?", body: "Moved, new rating, new child, career change? Report it and see exactly how your gameplan adapts - before you commit.", art: "layers" },
-  { href: "/resume", icon: "ti-file-text", title: "Resume scanner", body: "Paste your resume, get recruiter-style feedback: jargon translation, missing numbers, and keywords for your target path.", art: "doc" },
-  { href: "/transcript", icon: "ti-school", title: "Smart transcript", body: "See what your military training may be worth in college credit - and how to claim it via the JST/CCAF.", art: "layers" },
-  { href: "/network", icon: "ti-users-group", title: "Networking & mentors", body: "Free mentorship and veteran networks, tailored to your destination - because people beat portals.", art: "nodes" },
+type Tool = { href: string; icon: string; title: string; body: string; art: "compass" | "doc" | "layers" | "nodes" };
+
+// Grouped by the same three tracks the dashboard uses, so Explore reads as
+// "go deeper on your track", not a drawer of ten unrelated gadgets. One line
+// per tool - the tool explains itself once opened.
+const GROUPS: { label: string; icon: string; tools: Tool[] }[] = [
+  {
+    label: "Career",
+    icon: "ti-briefcase",
+    tools: [
+      { href: "/pathfinder", icon: "ti-compass", title: "Pathfinder", body: "10 questions. A career path that fits, with the route to get there.", art: "compass" },
+      { href: "/timeline", icon: "ti-timeline", title: "Transition timeline", body: "Every deadline from 12 months out to 24 months after.", art: "layers" },
+      { href: "/resume", icon: "ti-file-text", title: "Resume scanner", body: "Recruiter-style feedback on your resume, in plain English.", art: "doc" },
+      { href: "/transcript", icon: "ti-school", title: "Smart transcript", body: "What your training may be worth in college credit.", art: "layers" },
+      { href: "/network", icon: "ti-users-group", title: "Networking & mentors", body: "Free mentors and veteran networks for your path.", art: "nodes" },
+    ],
+  },
+  {
+    label: "Housing",
+    icon: "ti-home",
+    tools: [
+      { href: "/relocate", icon: "ti-map-2", title: "Relocation planner", body: "Compare places on VA access, cost, jobs, and community.", art: "compass" },
+      { href: "/compare", icon: "ti-columns-3", title: "Compare states", body: "Two or three states side by side, every figure sourced.", art: "layers" },
+    ],
+  },
+  {
+    label: "Life & family",
+    icon: "ti-users",
+    tools: [
+      { href: "/family", icon: "ti-users", title: "Family planner", body: "Checkpoints and decisions the whole household should see.", art: "nodes" },
+      { href: "/updates", icon: "ti-refresh", title: "Life changed?", body: "See how your plan adapts before you commit.", art: "layers" },
+      { href: "/reserves", icon: "ti-shield-star", title: "Reserves & Guard", body: "The option nobody explains. Just the math, no pitch.", art: "layers" },
+    ],
+  },
 ];
 
 export default function Tools() {
@@ -22,24 +45,29 @@ export default function Tools() {
   const chosen = ready ? careerById(s.chosenPath?.careerId) : undefined;
   return (
     <Wrap>
-      <h2>Your toolkit</h2>
+      <h2>Explore</h2>
       <p className="muted" style={{ maxWidth: 640 }}>
         {chosen
-          ? <>Everything here is tuned toward your destination: <strong>{chosen.label}</strong>{s.chosenPath?.fitPct ? ` (${s.chosenPath.fitPct}% fit, demo)` : ""}.</>
-          : <>Pick a destination in the Pathfinder first and every tool tunes itself to it - or dive straight in.</>}
+          ? <>Tuned to your destination: <strong>{chosen.label}</strong>.</>
+          : <>Every tool tunes itself once you pick a path in the Pathfinder.</>}
       </p>
-      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", marginTop: 14 }}>
-        {TOOLS.map((t) => (
-          <Link key={t.href} href={t.href} className="card" style={{ textDecoration: "none", color: "var(--ink)", position: "relative", overflow: "hidden" }}>
-            <CardArt kind={t.art} />
-            <span style={{ display: "flex", gap: 12, alignItems: "center" }}>
-              <span className="iconwrap"><i className={`ti ${t.icon}`} aria-hidden="true" /></span>
-              <span style={{ fontWeight: 600, fontSize: "var(--fs-h4)" }}>{t.title}</span>
-            </span>
-            <span className="muted small" style={{ display: "block", margin: "10px 0 0" }}>{t.body}</span>
-          </Link>
-        ))}
-      </div>
+      {GROUPS.map((g) => (
+        <div key={g.label}>
+          <h3 style={{ margin: "22px 0 0" }}><i className={`ti ${g.icon}`} style={{ color: "var(--accent-ink)" }} /> {g.label}</h3>
+          <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", marginTop: 12 }}>
+            {g.tools.map((t) => (
+              <Link key={t.href} href={t.href} className="card" style={{ textDecoration: "none", color: "var(--ink)", position: "relative", overflow: "hidden" }}>
+                <CardArt kind={t.art} />
+                <span style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                  <span className="iconwrap"><i className={`ti ${t.icon}`} aria-hidden="true" /></span>
+                  <span style={{ fontWeight: 600, fontSize: "var(--fs-h4)" }}>{t.title}</span>
+                </span>
+                <span className="muted small" style={{ display: "block", margin: "10px 0 0" }}>{t.body}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
     </Wrap>
   );
 }
