@@ -16,31 +16,21 @@
      Theme: [data-theme=warm|civic] · Text size: [data-textsize=lg|xl] (on <body>)
      ============================================================ */
   :root{
-    --primary:#16324D; --primary-700:#0F2438; --primary-800:#12283D; --primary-900:#0B1B2B; --primary-ink:#FFFFFF;
-    --accent:#C8863C; --accent-600:#B0722B; --accent-soft:#F6EDDF; --accent-ink:#7A5019;
-    --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --faint:#8A97A3;
-    --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
-    --border:#DDE3E9; --hairline:rgba(15,34,51,.09);
-    --chip-bg:#EAF0F6; --chip-ink:#16324D;
+    --primary:#0F6E56; --primary-700:#0A5241; --primary-800:#0A5241; --primary-900:#073D30; --primary-ink:#FFFFFF;
+    --accent:#D98A3D; --accent-600:#BE762C; --accent-soft:#FAECD9; --accent-ink:#8A5714;
+    --ink:#2A362C; --ink-strong:#14231A; --muted:#6E7A6F; --faint:#75837B;
+    --bg:#FAF6EE; --surface:#FFFFFF; --surface-2:#F3EEE1;
+    --border:#E6DFD1; --hairline:rgba(20,35,26,.09);
+    --chip-bg:#E1F0EA; --chip-ink:#0F6E56;
     --success:#0F6E56; --success-soft:#E1F0EA; --warn:#8A5A1C; --danger:#A32D2D; --danger-soft:#FBEAEA; --info:#185FA5;
-    --hero-glow:rgba(200,134,60,.16);
-    --radius:14px; --radius-sm:10px; --radius-lg:18px;
+    --hero-glow:rgba(217,138,61,.18);
+    --radius:16px; --radius-sm:12px; --radius-lg:20px;
     --shadow-sm:0 1px 2px rgba(15,34,51,.05), 0 1px 3px rgba(15,34,51,.05);
     --shadow-md:0 6px 18px rgba(15,34,51,.09), 0 2px 6px rgba(15,34,51,.05);
     --shadow-lg:0 20px 48px rgba(11,27,43,.16), 0 6px 14px rgba(11,27,43,.07);
     --shadow:var(--shadow-sm);
     --font-display:"Fraunces", Georgia, "Times New Roman", serif;
     --font-sans:Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  [data-theme="warm"]{
-    --primary:#0F6E56; --primary-700:#0A5241; --primary-800:#0A5241; --primary-900:#073D30; --accent:#D98A3D; --accent-600:#BE762C; --accent-soft:#FAECD9; --accent-ink:#8A5714;
-    --ink:#2A362C; --ink-strong:#14231A; --muted:#6E7A6F; --faint:#98A197; --bg:#FAF6EE; --surface:#FFFFFF; --surface-2:#F3EEE1; --border:#E6DFD1; --hairline:rgba(20,35,26,.09);
-    --chip-bg:#E1F0EA; --chip-ink:#0F6E56; --success:#0F6E56; --success-soft:#E1F0EA; --hero-glow:rgba(217,138,61,.18);
-  }
-  [data-theme="civic"]{
-    --primary:#2E3338; --primary-700:#202428; --primary-800:#22272C; --primary-900:#181C20; --accent:#55708A; --accent-600:#456079; --accent-soft:#E3EAF0; --accent-ink:#33506A;
-    --ink:#2B333A; --ink-strong:#151A1F; --muted:#6B747C; --faint:#949BA1; --bg:#F4F6F7; --surface:#FFFFFF; --surface-2:#EBEEF1; --border:#DEE2E6; --hairline:rgba(21,26,31,.09);
-    --chip-bg:#E7EAED; --chip-ink:#3A4249; --hero-glow:rgba(85,112,138,.18);
   }
   :root{--fs-body:17px;--fs-small:14px;--fs-h1:44px;--fs-h2:30px;--fs-h3:20px;--fs-h4:16px;--fs-btn:16px;--tap:48px}
   [data-textsize="lg"]{--fs-body:19px;--fs-small:16px;--fs-h1:48px;--fs-h2:33px;--fs-h3:22px;--fs-h4:18px;--fs-btn:18px}
@@ -88,7 +78,8 @@
   .nav-aa:hover{background:rgba(255,255,255,.18)}
   .nav-user{color:#C4D2DF;font-size:13.5px;display:flex;align-items:center;gap:6px;padding-left:4px}
   /* ---- Buttons ---- */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--primary);color:var(--primary-ink);border:1px solid transparent;border-radius:var(--radius-sm);padding:13px 24px;min-height:var(--tap);font-size:var(--fs-btn);font-weight:600;letter-spacing:.005em;cursor:pointer;font-family:inherit;box-shadow:0 1px 2px rgba(11,27,43,.22), inset 0 1px 0 rgba(255,255,255,.07);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--primary);color:var(--primary-ink);border:1px solid transparent;border-radius:999px;padding:13px 26px;min-height:var(--tap);font-size:var(--fs-btn);font-weight:600;letter-spacing:.005em;cursor:pointer;font-family:inherit;box-shadow:0 1px 2px rgba(11,27,43,.22), inset 0 1px 0 rgba(255,255,255,.07);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+  .btn.xl{padding:17px 34px;font-size:calc(var(--fs-btn) + 2px)}
   .btn:hover{background:var(--primary-800);text-decoration:none;transform:translateY(-1px);box-shadow:0 8px 20px rgba(11,27,43,.20)}
   .btn:active{transform:translateY(0) scale(.99)}
   .btn.gold{background:var(--accent);color:var(--primary-900);box-shadow:0 1px 2px rgba(122,80,25,.28), inset 0 1px 0 rgba(255,255,255,.22)}
@@ -131,9 +122,13 @@
   .bar{height:8px;background:var(--surface-2);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(15,34,51,.06)}
   .bar>span{display:block;height:100%;background:linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--accent)));border-radius:20px;transition:width .4s ease}
   /* forms */
-  .opt{display:flex;align-items:center;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;min-height:var(--tap);margin-bottom:10px;font-size:var(--fs-body);cursor:pointer;font-family:inherit;color:var(--ink);box-shadow:var(--shadow-sm);transition:border-color .14s ease, background .14s ease, box-shadow .14s ease, transform .14s ease}
-  .opt:hover{border-color:var(--primary);transform:translateX(2px)}
-  .opt.sel{border-color:var(--primary);background:var(--chip-bg);font-weight:600;box-shadow:inset 3px 0 0 var(--accent), var(--shadow-sm)}
+  .opt{display:flex;align-items:center;width:100%;text-align:left;background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:16px 18px;min-height:var(--tap);margin-bottom:12px;font-size:var(--fs-body);cursor:pointer;font-family:inherit;color:var(--ink);box-shadow:var(--shadow-sm);transition:border-color .14s ease, background .14s ease, box-shadow .14s ease, transform .14s ease}
+  .opt:hover{border-color:var(--primary);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft);font-weight:600;box-shadow:var(--shadow-sm)}
+  .hero-proof{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);color:#E8EFF6;border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;margin-bottom:18px}
+  .hero-proof i{color:var(--accent);font-size:16px}
+  .step-badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(160deg, var(--accent) 0%, var(--accent-600) 100%);color:#fff;font-family:var(--font-display);font-size:22px;font-weight:600;box-shadow:0 3px 8px rgba(122,80,25,.28)}
+  .hero h1{font-size:clamp(var(--fs-h1), 6vw, 62px);line-height:1.06}
   .opt.sel:not(.goal)::after{content:"✓";margin-left:auto;color:var(--success);font-weight:700;font-size:1.1em}
   .field{width:100%;padding:12px 14px;min-height:var(--tap);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:var(--fs-body);font-family:inherit;color:var(--ink);background:var(--surface);transition:border-color .15s ease, box-shadow .15s ease}
   .field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--accent-soft)}
@@ -1144,12 +1139,6 @@ function footer(){
           <div class="muted" style="font-size:13px">${BRAND.tagline}</div>
         </div>
       </div>
-      <div class="themebar" role="group" aria-label="Preview theme">
-        <span style="font-weight:500">Preview theme:</span>
-        <button data-theme-btn="professional" onclick="setTheme('professional')">Professional</button>
-        <button data-theme-btn="warm" onclick="setTheme('warm')">Warm</button>
-        <button data-theme-btn="civic" onclick="setTheme('civic')">Civic</button>
-      </div>
     </div>
     <hr class="hairline" style="margin:22px 0">
     <div class="disclaimer">
@@ -1160,9 +1149,8 @@ function footer(){
     </div>
   </div></footer>`;
 }
-function setTheme(t){ document.body.setAttribute("data-theme",t); localStorage.setItem("vetpath_theme",t); markTheme(); }
-function markTheme(){ const t=document.body.getAttribute("data-theme"); document.querySelectorAll("[data-theme-btn]").forEach(b=>b.classList.toggle("on",b.getAttribute("data-theme-btn")===t)); }
-(function(){const t=localStorage.getItem("vetpath_theme");if(t)document.body.setAttribute("data-theme",t);})();
+// One colorway (Warm) - the theme system is gone. Old saved theme prefs are ignored.
+function markTheme(){ /* retained as a no-op: wire() still calls it */ }
 
 /* ---------- SCREENS ---------- */
 function eyebrow(text,onDark){ return `<span class="eyebrow${onDark?' on-dark':''}">${text}</span>`; }
@@ -1208,20 +1196,19 @@ function Landing(){
     ["ti-compass","Find your path","The Pathfinder recommends a best-fit direction with a clear % fit and the reasoning behind it."],
     ["ti-map-2","Get your gameplan","Prioritized benefits and a 30/60/90-day action plan, all pointed at your destination."],
     ["ti-circle-check","Act &amp; verify","Check off steps, gather documents, and confirm each one at VA.gov or an accredited VSO."]
-  ].map(([icon,title,body],i)=>`<div class="card" style="position:relative;padding-top:26px">
-      <span style="position:absolute;top:18px;right:20px;font-family:var(--font-display);font-size:30px;font-weight:500;color:var(--border)">0${i+1}</span>
-      <div class="iconwrap" style="margin-bottom:14px"><i class="ti ${icon}" aria-hidden="true"></i></div>
-      <h4 style="margin-bottom:6px">${title}</h4>
+  ].map(([icon,title,body],i)=>`<div class="card">
+      <span class="step-badge" aria-hidden="true">${i+1}</span>
+      <h4 style="margin:12px 0 6px"><i class="ti ${icon}" aria-hidden="true" style="color:var(--accent-ink)"></i> ${title}</h4>
       <p class="muted small" style="margin:0;line-height:1.6">${body}</p>
     </div>`).join("");
   return `
   <section class="hero-wrap"><div class="hero hero-inner">
     <div>
-      ${eyebrow("For veterans and transitioning service members",true)}
+      <span class="hero-proof"><i class="ti ti-shield-check" aria-hidden="true"></i> Built with veterans · every number has an official source</span>
       <h1 style="max-width:620px">Find your <span class="accent-word">next</span> steps.</h1>
       <p class="hero-sub">Answer a few questions. Get a plan for your next 90 days: the career, the benefits, the place to land.</p>
       <div class="hero-cta">
-        <a class="btn gold" href="#/onboarding"><i class="ti ti-compass"></i> Build my gameplan</a>
+        <a class="btn gold xl" href="#/onboarding"><i class="ti ti-compass"></i> Build my gameplan</a>
       </div>
       <div class="hero-trust">
         <span class="t"><i class="ti ti-shield-check"></i> Free. Built with veterans</span>
@@ -1254,6 +1241,7 @@ function Landing(){
     <div style="margin-top:56px">
       ${sectionHead("How it works","From where you stand to where you're headed","Four steps. The plan updates itself as your answers and goals change.")}
       <div class="grid" style="gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">${how}</div>
+      <div class="center" style="margin-top:26px"><a class="btn gold" href="#/onboarding"><i class="ti ti-compass"></i> Build my gameplan</a></div>
     </div>
 
     <div style="margin-top:56px">
@@ -1266,7 +1254,7 @@ function Landing(){
       ${eyebrow("Your next mission")}
       <h2 style="margin:0 auto 8px;max-width:560px">Ten minutes now saves months of guessing later.</h2>
       <p class="muted" style="max-width:480px;margin:0 auto 22px">Answer a few questions and walk away with a plan you can actually follow.</p>
-      <a class="btn" href="#/onboarding" style="display:inline-flex"><i class="ti ti-arrow-right"></i> Start my gameplan</a>
+      <a class="btn gold xl" href="#/onboarding" style="display:inline-flex"><i class="ti ti-compass"></i> Build my gameplan</a>
     </div>
   </div>`;
 }
@@ -1307,6 +1295,7 @@ function ProfileGate(){
     <a class="backlink" onclick="location.hash='#/'"><i class="ti ti-arrow-left"></i> Home</a>
     <h2>Create your demo profile</h2>
     <p class="muted">No password, no signup - this is a local demo profile stored only in your browser.</p>
+    <p class="small muted" style="margin:0 0 14px"><i class="ti ti-clock" aria-hidden="true"></i> About 10 minutes from here to your plan.</p>
     <div class="card">
       <label class="lbl" for="pname">First name</label>
       <input class="field" id="pname" placeholder="e.g. Frank" style="margin-bottom:16px">
@@ -1408,7 +1397,7 @@ function Dashboard(){
         <h3 style="margin:0">Pick your path</h3>
         <p class="small muted" style="margin:2px 0 0">10 questions. A career path that fits, and this plan re-routes around it.</p>
       </div>
-      <a class="btn gold" href="#/pathfinder"><i class="ti ti-compass"></i> Find my path</a>
+      <a class="btn gold" href="#/pathfinder"><i class="ti ti-compass"></i> Pick my path</a>
     </div>`}
 
     <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:24px 0 0">
