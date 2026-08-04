@@ -1,34 +1,5 @@
 "use client";
-import { useStore } from "@/lib/store";
 import { BRAND } from "@/lib/data";
-
-export function ThemeSwitcher({ align = "center" }: { align?: "center" | "flex-start" }) {
-  const { s, setTheme } = useStore();
-  const btn = (t: "professional" | "warm" | "civic", label: string) => {
-    const on = s.theme === t;
-    return (
-      <button
-        type="button"
-        aria-pressed={on}
-        onClick={() => setTheme(t)}
-        style={{
-          border: "1.5px solid var(--border)",
-          background: on ? "var(--primary)" : "var(--surface)",
-          color: on ? "#fff" : "var(--ink)",
-          borderColor: on ? "var(--primary)" : "var(--border)",
-          borderRadius: 20, padding: "6px 15px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500,
-        }}
-      >
-        {label}
-      </button>
-    );
-  };
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 8, justifyContent: align, flexWrap: "wrap", fontSize: 13, color: "var(--muted)" }}>
-      <span style={{ fontWeight: 500 }}>Preview theme:</span> {btn("professional", "Professional")} {btn("warm", "Warm")} {btn("civic", "Civic")}
-    </div>
-  );
-}
 
 export default function Footer() {
   return (

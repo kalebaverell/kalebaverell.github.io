@@ -43,7 +43,6 @@ interface Store {
   /** One-tap complete/un-complete for checkbox UIs: anything not done becomes done,
    *  done goes back to todo. cycleStatus keeps the three-state flow for the full checklist. */
   toggleDone: (id: string) => void;
-  setTheme: (t: AppState["theme"]) => void;
   cycleTextSize: () => void;
   loadSample: () => void;
   reset: () => void;
@@ -73,10 +72,6 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (ready) localStorage.setItem(KEY, JSON.stringify(s));
   }, [s, ready]);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", s.theme);
-  }, [s.theme]);
 
   useEffect(() => {
     if (s.textSize === "base") document.documentElement.removeAttribute("data-textsize");
@@ -185,8 +180,6 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const setTheme = useCallback((t: AppState["theme"]) => setS((p) => ({ ...p, theme: t })), []);
-
   const cycleTextSize = useCallback(() => {
     setS((p) => {
       const next = p.textSize === "base" ? "lg" : p.textSize === "lg" ? "xl" : "base";
@@ -214,7 +207,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, setTheme, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

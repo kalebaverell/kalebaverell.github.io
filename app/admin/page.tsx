@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
 import { Wrap, Callout } from "@/components/ui";
-import { ThemeSwitcher } from "@/components/Footer";
 
 export default function Admin() {
   const { loadSample } = useStore();
@@ -20,11 +19,6 @@ export default function Admin() {
         </button>
       </div>
 
-      <div className="card" style={{ marginTop: 16 }}>
-        <h3 style={{ marginTop: 0 }}><i className="ti ti-adjustments" style={{ color: "var(--accent-ink)" }} /> Design theme</h3>
-        <p className="muted small" style={{ margin: "4px 0 12px" }}>Flip the design direction while reviewing (also in the footer).</p>
-        <ThemeSwitcher align="flex-start" />
-      </div>
     </Wrap>
   );
 }
