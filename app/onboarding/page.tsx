@@ -39,6 +39,7 @@ function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string
       )}
       <h2>Create your free account</h2>
       <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in, on your phone or your computer.</p>
+      <p className="small muted" style={{ margin: "0 0 14px" }}><i className="ti ti-clock" aria-hidden="true" /> About 10 minutes from here to your plan.</p>
       <div className="card">
         <button className="btn block gold" onClick={onStart}><i className="ti ti-user-plus" /> Create account or sign in</button>
         <ul style={{ margin: "16px auto 0", padding: 0, listStyle: "none", display: "grid", gap: 8, textAlign: "center", maxWidth: 340 }}>

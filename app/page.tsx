@@ -153,7 +153,11 @@ export default function Landing() {
         <HeroBackdrop />
         <div className="hero hero-inner">
           <div>
-            <Eyebrow onDark>For veterans and transitioning service members</Eyebrow>
+            {/* Proof before the pitch: real counts, pulled from the same data the site cites. */}
+            <span className="hero-proof">
+              <i className="ti ti-shield-check" aria-hidden="true" />
+              {STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0)} benefit programs · 51 states &amp; D.C. · every number sourced
+            </span>
             <h1 style={{ maxWidth: 620 }}>
               Find your <span className="accent-word">next</span> steps.
             </h1>
@@ -161,7 +165,7 @@ export default function Landing() {
               Answer a few questions. Get a plan for your next 90 days: the career, the benefits, the place to land.
             </p>
             <div className="hero-cta">
-              <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
+              <Link className="btn gold xl" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
             </div>
             <div className="hero-trust">
               <span className="t"><i className="ti ti-shield-check" /> Free. Built with veterans</span>
@@ -221,13 +225,15 @@ export default function Landing() {
               ["ti-map-2", "Get your gameplan", "Prioritized benefits and a 30/60/90-day action plan, all pointed at your destination."],
               ["ti-circle-check", "Act & verify", "Check off steps, gather documents, and confirm each one at VA.gov or an accredited VSO."],
             ].map(([icon, title, body], i) => (
-              <div key={i} className="card" data-reveal={i * 90} style={{ position: "relative", paddingTop: 26 }}>
-                <span style={{ position: "absolute", top: 18, right: 20, fontFamily: "var(--font-display)", fontSize: 30, fontWeight: 500, color: "var(--border)" }}>{String(i + 1).padStart(2, "0")}</span>
-                <div className="iconwrap" style={{ marginBottom: 14 }}><i className={`ti ${icon}`} aria-hidden="true" /></div>
-                <h4 style={{ marginBottom: 6 }}>{title}</h4>
+              <div key={i} className="card" data-reveal={i * 90}>
+                <span className="step-badge" aria-hidden="true">{i + 1}</span>
+                <h4 style={{ margin: "12px 0 6px" }}><i className={`ti ${icon}`} aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> {title}</h4>
                 <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
               </div>
             ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: 26 }} data-reveal="true">
+            <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
           </div>
         </div>
 
@@ -235,9 +241,12 @@ export default function Landing() {
           <SectionHead
             eyebrow="See it work"
             title="Watch a plan build itself"
-            sub="From a veteran's answers to a recommended path to a living 30/60/90 plan. This is the engine, not a mockup."
+            sub="A sample veteran's answers becoming a real plan. Yours works the same way."
           />
           <PlanDemo />
+          <div style={{ textAlign: "center", marginTop: 26 }} data-reveal="true">
+            <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
+          </div>
         </div>
       </Wrap>
 
@@ -270,7 +279,7 @@ export default function Landing() {
           <Eyebrow>Your next mission</Eyebrow>
           <h2 style={{ margin: "0 0 8px", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>Ten minutes now saves months of guessing later.</h2>
           <p className="muted" style={{ maxWidth: 480, margin: "0 auto 22px" }}>Answer a few questions and walk away with a plan you can actually follow.</p>
-          <Link className="btn" href="/onboarding" style={{ display: "inline-flex" }}><i className="ti ti-arrow-right" /> Start my gameplan</Link>
+          <Link className="btn gold xl" href="/onboarding" style={{ display: "inline-flex" }}><i className="ti ti-compass" /> Build my gameplan</Link>
         </div>
       </Wrap>
     </>

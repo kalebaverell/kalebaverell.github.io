@@ -42,7 +42,6 @@ export default function Footer() {
               <div className="muted" style={{ fontSize: 13 }}>{BRAND.tagline}</div>
             </div>
           </div>
-          <ThemeSwitcher />
         </div>
 
         <hr className="hairline" style={{ margin: "22px 0" }} />

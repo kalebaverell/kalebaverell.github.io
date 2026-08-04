@@ -91,7 +91,7 @@ export default function Dashboard() {
             <h3 style={{ margin: 0 }}>Pick your path</h3>
             <p className="small muted" style={{ margin: "2px 0 0" }}>10 questions. A career path that fits, and this plan re-routes around it.</p>
           </div>
-          <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Find my path</Link>
+          <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Pick my path</Link>
         </div>
       )}
 

@@ -19,7 +19,7 @@
   --chip-bg:#EAF0F6; --chip-ink:#16324D;
   --success:#0F6E56; --success-soft:#E1F0EA; --warn:#8A5A1C; --danger:#A32D2D; --danger-soft:#FBEAEA; --info:#185FA5;
   --hero-glow:rgba(200,134,60,.16);
-  --radius:11px; --radius-sm:7px; --radius-lg:13px;
+  --radius:16px; --radius-sm:12px; --radius-lg:20px;
   --shadow-sm:0 1px 2px rgba(15,34,51,.05), 0 1px 3px rgba(15,34,51,.05);
   --shadow-md:0 6px 18px rgba(15,34,51,.09), 0 2px 6px rgba(15,34,51,.05);
   --shadow-lg:0 20px 48px rgba(11,27,43,.16), 0 6px 14px rgba(11,27,43,.07);
@@ -126,7 +126,9 @@ h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 /* ---- Buttons ---- */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--primary); color:var(--primary-ink); border:1px solid transparent; border-radius:var(--radius-sm); padding:13px 24px; min-height:var(--tap); font-size:var(--fs-btn); font-weight:600; letter-spacing:.005em; cursor:pointer; font-family:inherit; box-shadow:0 1px 2px rgba(11,27,43,.22), inset 0 1px 0 rgba(255,255,255,.07); transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; background:var(--primary); color:var(--primary-ink); border:1px solid transparent; border-radius:999px; padding:13px 26px; min-height:var(--tap); font-size:var(--fs-btn); font-weight:600; letter-spacing:.005em; cursor:pointer; font-family:inherit; box-shadow:0 1px 2px rgba(11,27,43,.22), inset 0 1px 0 rgba(255,255,255,.07); transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+/* Hero-scale CTA: one big pill, the single action the page asks for. */
+.btn.xl { padding:17px 34px; font-size:calc(var(--fs-btn) + 2px); }
 .btn:hover { background:var(--primary-800); text-decoration:none; transform:translateY(-1px); box-shadow:0 8px 20px rgba(11,27,43,.20); }
 .btn:active { transform:translateY(0) scale(.99); }
 .btn.gold { background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 88%, #fff) 0%, var(--accent) 58%, var(--accent-600) 100%); color:var(--primary-900); box-shadow:0 1px 2px rgba(122,80,25,.28), inset 0 1px 0 rgba(255,255,255,.32); }
@@ -164,9 +166,9 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .bar { height:8px; background:var(--surface-2); border-radius:20px; overflow:hidden; box-shadow:inset 0 1px 2px rgba(15,34,51,.06); }
 .bar > span { display:block; height:100%; background:linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--accent))); border-radius:20px; transition:width .4s ease; }
 
-.opt { display:flex; align-items:center; width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:14px 16px; min-height:var(--tap); margin-bottom:10px; font-size:var(--fs-body); cursor:pointer; font-family:inherit; color:var(--ink); box-shadow:var(--shadow-sm); transition:border-color .14s ease, background .14s ease, box-shadow .14s ease, transform .14s ease; }
-.opt:hover { border-color:var(--primary); transform:translateX(2px); }
-.opt.sel { border-color:var(--primary); background:var(--chip-bg); font-weight:600; box-shadow:inset 3px 0 0 var(--accent), var(--shadow-sm); }
+.opt { display:flex; align-items:center; width:100%; text-align:left; background:var(--surface); border:2px solid var(--border); border-radius:var(--radius); padding:16px 18px; min-height:var(--tap); margin-bottom:12px; font-size:var(--fs-body); cursor:pointer; font-family:inherit; color:var(--ink); box-shadow:var(--shadow-sm); transition:border-color .14s ease, background .14s ease, box-shadow .14s ease, transform .14s ease; }
+.opt:hover { border-color:var(--primary); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+.opt.sel { border-color:var(--accent); background:var(--accent-soft); font-weight:600; box-shadow:var(--shadow-sm); }
 .opt.sel:not(.goal)::after { content:"\2713"; margin-left:auto; color:var(--success); font-weight:700; font-size:1.1em; }
 .field { width:100%; padding:12px 14px; min-height:var(--tap); border:1.5px solid var(--border); border-radius:var(--radius-sm); font-size:var(--fs-body); font-family:inherit; color:var(--ink); background:var(--surface); transition:border-color .15s ease, box-shadow .15s ease; }
 .field:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--accent-soft); }
@@ -195,6 +197,14 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .check .box.done { background:var(--success); border-color:var(--success); }
 .check .box.prog { background:var(--accent); border-color:var(--accent); }
 .check.done .txt { text-decoration:line-through; color:var(--muted); }
+/* The hero headline runs bigger than the page scale - it is the one sentence
+   the visitor must read, and it earns display size on wide screens. */
+.hero h1 { font-size:clamp(var(--fs-h1), 6vw, 62px); line-height:1.06; }
+/* Proof chip above the hero headline: the receipts before the promise. */
+.hero-proof { display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); color:#E8EFF6; border-radius:999px; padding:8px 16px; font-size:13.5px; font-weight:600; margin-bottom:18px; backdrop-filter:blur(6px); }
+.hero-proof i { color:var(--accent); font-size:16px; }
+/* Big rounded step number, the "1 2 3" the eye follows down the page. */
+.step-badge { display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; background:linear-gradient(160deg, var(--accent) 0%, var(--accent-600) 100%); color:var(--primary-900); font-family:var(--font-display); font-size:22px; font-weight:600; box-shadow:0 3px 8px rgba(122,80,25,.28); }
 /* Button that reads as an inline link - used for quiet show/hide toggles. */
 .linklike { background:none; border:none; padding:0; font:inherit; color:var(--accent-ink); font-weight:600; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
 .linklike:hover { color:var(--primary); }

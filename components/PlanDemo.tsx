@@ -103,7 +103,7 @@ export default function PlanDemo() {
         {[0, 1, 2].map((i) => (
           <span key={i} style={{ width: act === i && !reduced ? 22 : 8, height: 8, borderRadius: 8, background: act === i && !reduced ? "var(--accent)" : "var(--border)", transition: "all .4s ease" }} />
         ))}
-        <span className="small muted" style={{ marginLeft: "auto" }}>A real walkthrough of how {""}the engine works - sample data</span>
+        <span className="small muted" style={{ marginLeft: "auto" }}>Built from a sample veteran&apos;s answers</span>
       </div>
     </div>
   );
