@@ -130,8 +130,8 @@ export default function FamilyPlanning() {
     <Wrap>
       <h2>Family-centered planning</h2>
       <p className="muted" style={{ maxWidth: 640 }}>
-        You decide as a household - so your plan should too. Shared checkpoints, decisions to make together, and
-        official resources for everyone under your roof. Sample guidance only; verify everything at the official source.
+        You decide as a household - so your plan should too. Shared checkpoints, decisions to make together,
+        and official resources for everyone under your roof. Verify details at each official source.
       </p>
 
       {/* Household snapshot */}

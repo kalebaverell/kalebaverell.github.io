@@ -43,9 +43,9 @@ export default function Updates() {
     return (
       <Wrap narrow>
         <div style={{ textAlign: "center" }}>
-          <h2>No profile yet</h2>
-          <p className="muted">Create a demo profile and finish intake - then this page can adapt your plan when life changes.</p>
-          <Link className="btn" href="/onboarding">Create profile</Link>
+          <h2>No gameplan yet</h2>
+          <p className="muted">Build your gameplan first - then this page can update it when life changes.</p>
+          <Link className="btn" href="/onboarding">Build my gameplan</Link>
         </div>
       </Wrap>
     );

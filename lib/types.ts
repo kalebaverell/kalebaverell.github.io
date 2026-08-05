@@ -82,6 +82,7 @@ export interface CareerFit {
   boosts: string[];
   medianPay?: number | null;   // parsed BLS median (USD), for salary-range matching
   meetsSalary?: boolean | null; // vs the veteran's target range; null when no target/median
+  belowTarget?: boolean | null; // median falls short of their stated minimum; drives a rank penalty + flag
 }
 
 export interface ChosenPath {

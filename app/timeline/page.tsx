@@ -136,9 +136,8 @@ export default function TimelinePage() {
       {!plan && (
         <>
           <p className="muted">
-            A few grouped questions, then a personalized month-by-month plan. Missing a window - a claim
-            deadline, an insurance conversion, an enrollment date - is expensive; this puts every one on
-            a single timeline you control.
+            Four short steps, then a month-by-month plan with every deadline that matters - claims,
+            insurance conversions, enrollment windows - on one timeline you control.
           </p>
           <div style={{ display: "flex", gap: 6, margin: "14px 0 18px" }} aria-hidden="true">
             {[0, 1, 2, 3].map((i) => (

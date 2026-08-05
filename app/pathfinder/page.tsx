@@ -192,6 +192,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
                 <i className="ti ti-check" aria-hidden="true" /> In your target pay range
               </span>
             )}
+            {top.belowTarget && top.medianPay != null && (
+              <span className="chip sm" style={{ marginTop: 6, background: "var(--accent-soft)", color: "var(--accent-ink)" }}>
+                <i className="ti ti-trending-down" aria-hidden="true" /> Median ~${top.medianPay.toLocaleString()} - below the pay you&apos;re aiming for
+              </span>
+            )}
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 40, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{top.fit}%</div>
@@ -230,6 +235,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
             {f.meetsSalary && (
               <span className="chip sm" style={{ marginTop: 8, background: "var(--success-soft)", color: "var(--success)" }}>
                 <i className="ti ti-check" aria-hidden="true" /> In your pay range
+              </span>
+            )}
+            {f.belowTarget && f.medianPay != null && (
+              <span className="chip sm" style={{ marginTop: 8, background: "var(--accent-soft)", color: "var(--accent-ink)" }}>
+                <i className="ti ti-trending-down" aria-hidden="true" /> Median ~${f.medianPay.toLocaleString()} - below your target
               </span>
             )}
           </button>

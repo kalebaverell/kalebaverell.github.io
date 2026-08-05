@@ -124,15 +124,24 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
     for (const d of ranked.slice(0, 3)) why.push(`You want ${DIM_PHRASE[d]} - this path is built on it.`);
     if (why.length === 0) why.push("A balanced fit across what you told us.");
 
-    // Salary-range match: a soft flag + light nudge. Never hides a path.
+    // Salary-range match. In-range earns a nudge up; short of their stated
+    // minimum pulls the rank down in proportion to the shortfall (capped, so
+    // it informs the ordering but never hides a path). Above their max is
+    // neither penalized nor flagged - more pay than asked for is not a miss.
     const medianPay = careerMedianPay(c);
     let meetsSalary: boolean | null = null;
+    let belowTarget: boolean | null = null;
     if (hasSalary && medianPay != null) {
       meetsSalary = medianPay >= (salMin ?? 0) && medianPay <= (salMax ?? Infinity);
+      belowTarget = salMin != null && medianPay < salMin;
       if (meetsSalary) { fit += 4; boosts.push(`Median pay ~$${medianPay.toLocaleString()} lands in your target range`); }
+      else if (belowTarget) {
+        const shortfall = (salMin! - medianPay) / salMin!;
+        fit -= Math.min(12, 4 + Math.round(24 * shortfall));
+      }
     }
 
-    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts, medianPay, meetsSalary };
+    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts, medianPay, meetsSalary, belowTarget };
   });
 
   return results.sort((x, y) => y.fit - x.fit);

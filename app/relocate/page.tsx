@@ -249,9 +249,8 @@ export default function RelocatePage() {
       <div className="card" style={{ marginTop: 22 }}>
         <h3><i className="ti ti-user-check" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 2 - use your profile &amp; path? (optional)</h3>
         <p className="muted" style={{ maxWidth: 640, marginTop: 4 }}>
-          If you turn this on, we boost metros that are strong for your chosen career path
-          {career ? <> (<strong>{career.label}</strong>)</> : null}, and if your rating or health priorities
-          suggest VA care matters, we&apos;ll add a gentle reminder about VA access - never a filter, never a rule.
+          Boosts metros that fit your chosen path{career ? <> (<strong>{career.label}</strong>)</> : null} and
+          flags VA access where your rating or health priorities suggest it matters. A nudge, never a filter.
         </p>
         <label className={`chip selectable${useProfile ? " selected" : ""}`} style={{ position: "relative", minHeight: "var(--tap)" }}>
           <input
