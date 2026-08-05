@@ -23,26 +23,44 @@ export default function ProfileSync() {
     ensureProfile(name, user.email || "");
   }, [user, ready, s.profile, ensureProfile]);
 
-  // Load-on-login (once per user).
+  // Load-on-login (once per user). The rule that keeps this from ever losing
+  // work: whichever side actually HAS a plan wins. A remote blob that exists
+  // but holds no gameplan and no answers is just the empty shell written at
+  // first sign-in, and it must never overwrite a local state with real data
+  // in it. That exact clobber wiped a user's plan on 2026-08-04.
   useEffect(() => {
     if (!supabase || !user || !ready) return;
     if (loadedFor.current === user.id) return;
     loadedFor.current = user.id;
     canSave.current = false;
+    const local = s;
     (async () => {
-      const { data } = await supabase
-        .from("profiles")
-        .select("profile")
-        .eq("id", user.id)
-        .maybeSingle();
-      const remote = data?.profile as Record<string, unknown> | null | undefined;
-      if (remote && Object.keys(remote).length > 0) {
-        hydrateRemote(remote as any); // returning user → restore their saved plan
-      } else {
-        // first time on this account → keep any plan they built before signing up
-        await supabase.from("profiles").update({ profile: s, updated_at: new Date().toISOString() }).eq("id", user.id);
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("profile")
+          .eq("id", user.id)
+          .maybeSingle();
+        if (error) throw error;
+        const remote = data?.profile as Record<string, any> | null | undefined;
+        const hasPlan = (p: Record<string, any> | null | undefined) =>
+          !!p && (p.gameplan != null || Object.keys(p.answers ?? {}).length > 0);
+        if (hasPlan(remote)) {
+          hydrateRemote(remote as any); // returning user → restore their saved plan
+        } else if (hasPlan(local)) {
+          // plan built before signing in (or remote is only the empty shell) → push local up
+          const { error: upErr } = await supabase
+            .from("profiles")
+            .update({ profile: local, updated_at: new Date().toISOString() })
+            .eq("id", user.id);
+          if (upErr) throw upErr;
+        }
+        // neither side has a plan: nothing worth writing in either direction
+      } catch (e) {
+        console.warn("VetPath profile sync: load-on-login failed", e);
+      } finally {
+        canSave.current = true;
       }
-      canSave.current = true;
     })();
   }, [user, ready, s, hydrateRemote]);
 
@@ -51,14 +69,21 @@ export default function ProfileSync() {
     if (!user) { loadedFor.current = null; canSave.current = false; }
   }, [user]);
 
-  // Debounced save while signed in.
+  // Debounced save while signed in. The builder MUST be awaited: supabase-js
+  // queries are lazy thenables, and an un-awaited chain never sends a request.
+  // That exact mistake made every save here a silent no-op until 2026-08-04.
   useEffect(() => {
     if (!supabase || !user || !ready || !canSave.current) return;
-    const t = setTimeout(() => {
-      supabase!
-        .from("profiles")
-        .update({ profile: s, updated_at: new Date().toISOString() })
-        .eq("id", user.id);
+    const t = setTimeout(async () => {
+      try {
+        const { error } = await supabase!
+          .from("profiles")
+          .update({ profile: s, updated_at: new Date().toISOString() })
+          .eq("id", user.id);
+        if (error) throw error;
+      } catch (e) {
+        console.warn("VetPath profile sync: save failed", e);
+      }
     }, 1200);
     return () => clearTimeout(t);
   }, [s, user, ready]);

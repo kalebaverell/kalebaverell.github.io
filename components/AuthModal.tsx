@@ -9,7 +9,7 @@ import type { AuthMode as Mode, OAuthProvider } from "@/lib/auth";
 
 export default function AuthModal() {
   const { authOpen, authMode, closeAuth, signUp, signIn, requestPasswordReset,
-          oauthProviders, signInWithProvider } = useAuth();
+          oauthProviders, signInWithProvider, authError, clearAuthError } = useAuth();
   const [mode, setMode] = useState<Mode>("signup");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,6 +34,11 @@ export default function AuthModal() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [authOpen, closeAuth]);
+
+  // A redirect error should be read once, not haunt the next open.
+  useEffect(() => {
+    if (!authOpen && authError) clearAuthError();
+  }, [authOpen, authError, clearAuthError]);
 
   // Focus management: on open, move focus into the first field so keyboard and
   // screen-reader users land inside the dialog; on close, hand focus back to
@@ -151,6 +156,14 @@ export default function AuthModal() {
             </>
           ) : (
           <>
+          {/* A failure handed back in the redirect (e.g. an expired Google sign-in)
+              surfaces here, because this modal is the one thing guaranteed to open. */}
+          {authError && (
+            <div className="callout warn" style={{ marginBottom: 16 }} role="alert">
+              <i className="ti ti-alert-triangle" aria-hidden="true" />
+              <span>{authError}</span>
+            </div>
+          )}
           {/* Social sign-in first: one tap, no password to invent or forget, and no
               confirmation email that a corporate mail filter can consume. */}
           {mode !== "reset" && oauthProviders.length > 0 && (

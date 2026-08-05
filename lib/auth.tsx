@@ -115,18 +115,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Supabase reports link failures in the URL fragment. Read it once, translate it
   // into something a person can act on, then strip it so a refresh looks clean.
   useEffect(() => {
+    // Failures arrive in the fragment (email links) or the query string (OAuth
+    // redirects, e.g. an expired state after a slow Google sign-in). Check both,
+    // or an OAuth failure strands the user on the homepage with no explanation.
     const hash = window.location.hash;
-    if (!hash || !hash.includes("error")) return;
-    const p = new URLSearchParams(hash.replace(/^#/, ""));
+    const query = window.location.search;
+    const source = hash && hash.includes("error") ? hash.replace(/^#/, "") : query && query.includes("error") ? query.replace(/^\?/, "") : null;
+    if (!source) return;
+    const p = new URLSearchParams(source);
     const code = p.get("error_code");
     const desc = p.get("error_description")?.replace(/\+/g, " ");
     if (!code && !desc) return;
     setAuthError(
       code === "otp_expired"
         ? "That link has already been used or has expired. Company email filters often open links automatically to scan them, which can use up a one-time link before you get to it. Send yourself a new one and it will work."
-        : desc || "That sign-in link did not work. Please try again."
+        : code === "bad_oauth_state"
+        ? "That sign-in took too long and timed out. Please click the sign-in button and try again - it only stays valid for a few minutes."
+        : desc || "That sign-in did not work. Please try again."
     );
-    history.replaceState(null, "", window.location.pathname + window.location.search);
+    // Strip the error params so a refresh does not re-show a stale failure, and
+    // open the sign-in modal so the message is actually seen: OAuth failures land
+    // on the homepage, which renders no error of its own.
+    history.replaceState(null, "", window.location.pathname);
+    setAuthMode("signin");
+    setAuthOpen(true);
   }, []);
 
   useEffect(() => {
