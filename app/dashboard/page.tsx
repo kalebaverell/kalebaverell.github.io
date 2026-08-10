@@ -60,7 +60,7 @@ export default function Dashboard() {
           <i className="ti ti-map-pin" /> {a.status || "Veteran"}{stateStr ? ` · ${stateStr}` : ""}{a.branch ? ` · ${a.branch}` : ""}
         </span>
         <h2 style={{ color: "#fff", margin: "10px 0 4px" }}>Your gameplan, {s.profile?.name}</h2>
-        <p style={{ color: "#CBD8E4", margin: 0, maxWidth: 640 }}>{gp.headline}</p>
+        <p style={{ color: "#CFE0D6", margin: 0, maxWidth: 640 }}>{gp.headline}</p>
       </div>
 
       {/* The journey in three steps. Disappears once all three are done - it exists

@@ -131,7 +131,7 @@ export default function Reserves() {
             {fit.reasons.map((r, i) => (
               <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                 <i className={`ti ${r.icon}`} aria-hidden="true" style={{ color: "var(--accent)", fontSize: 19, marginTop: 2, flex: "none" }} />
-                <span style={{ color: "#CBD8E4" }}>{r.text}</span>
+                <span style={{ color: "#CFE0D6" }}>{r.text}</span>
               </div>
             ))}
           </div>

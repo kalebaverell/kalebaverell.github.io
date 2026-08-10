@@ -100,7 +100,7 @@ export default function AuthModal() {
       onMouseDown={(e) => { if (e.target === e.currentTarget) closeAuth(); }}
       style={{
         position: "fixed", inset: 0, zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center",
-        padding: 20, background: "rgba(11,27,43,.55)", backdropFilter: "blur(4px)",
+        padding: 20, background: "rgba(7,32,24,.55)", backdropFilter: "blur(4px)",
       }}
     >
       <div className="card" style={{ width: "100%", maxWidth: 440, padding: 0, overflow: "hidden", boxShadow: "var(--shadow-lg)" }}>
