@@ -39,7 +39,7 @@ export default function ActionPlan() {
   return (
     <Wrap>
       <h2>Action plan</h2>
-      <p className="muted">Tap a box to update it. Progress saves on this device.</p>
+      <p className="muted">Tap a box to update it - once for in progress, again for done. Progress saves automatically and syncs to your account when you&apos;re signed in.</p>
       <div className="card" style={{ marginBottom: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, gap: 12, flexWrap: "wrap" }}>
           <strong>Overall progress</strong>
@@ -66,8 +66,10 @@ export default function ActionPlan() {
         return (
           <div key={title} className="card" style={{ marginTop: 16 }}>
             <h3><i className="ti ti-calendar" style={{ color: "var(--accent-ink)" }} /> {title}</h3>
-            {open.map((it) => <CheckRow key={it.id} it={it} status={status(it)} onClick={() => cycleStatus(it.id)} />)}
-            {open.length === 0 && finished.length === 0 && <p className="muted small">No items.</p>}
+            {open.map((it) => <CheckRow key={it.id} it={it} status={status(it)} onClick={() => cycleStatus(it.id)} showPriority={showAll} />)}
+            {open.length === 0 && finished.length === 0 && (
+              <p className="muted small">{hidden > 0 ? "Nothing high-priority in this window." : "No items."}</p>
+            )}
             {open.length === 0 && finished.length > 0 && (
               <p className="small" style={{ color: "var(--success)", fontWeight: 600 }}>
                 <i className="ti ti-circle-check" aria-hidden="true" /> All done here. Well earned.
@@ -76,7 +78,7 @@ export default function ActionPlan() {
             {finished.length > 0 && (
               <div style={{ marginTop: 8, paddingTop: 6, borderTop: "1px dashed var(--border)" }}>
                 <span className="small muted" style={{ fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", fontSize: 11 }}>Done</span>
-                {finished.map((it) => <CheckRow key={it.id} it={it} status="done" onClick={() => cycleStatus(it.id)} />)}
+                {finished.map((it) => <CheckRow key={it.id} it={it} status="done" onClick={() => cycleStatus(it.id)} showPriority={showAll} />)}
               </div>
             )}
             {hidden > 0 && !showAll && <p className="small muted" style={{ margin: "8px 0 0" }}>+{hidden} lower-priority hidden</p>}
@@ -90,7 +92,7 @@ export default function ActionPlan() {
   );
 }
 
-function CheckRow({ it, status, onClick }: { it: ActionItem; status: Status; onClick: () => void }) {
+function CheckRow({ it, status, onClick, showPriority }: { it: ActionItem; status: Status; onClick: () => void; showPriority?: boolean }) {
   const boxClass = status === "done" ? "box done" : status === "prog" ? "box prog" : "box";
   const inner = status === "done" ? <i className="ti ti-check" aria-hidden="true" /> : status === "prog" ? <i className="ti ti-dots" aria-hidden="true" /> : null;
   const label = status === "done" ? "Completed" : status === "prog" ? "In progress" : "Not started";
@@ -101,9 +103,11 @@ function CheckRow({ it, status, onClick }: { it: ActionItem; status: Status; onC
         {inner}
       </button>
       <div style={{ flex: 1 }}>
-        <span className={`pill ${it.priority}`}>{it.priority} priority</span>
-        <div className="txt" style={{ marginTop: 4 }}>{it.text}</div>
-        <span className="small muted">{label} - click the box to update</span>
+        {/* In the default high-priority-only view every visible row is high, so the
+            badge is pure noise there; it earns its place in the mixed all-tasks view. */}
+        {showPriority && <span className={`pill ${it.priority}`}>{it.priority} priority</span>}
+        <div className="txt" style={{ marginTop: showPriority ? 4 : 0 }}>{it.text}</div>
+        {status !== "todo" && <span className="small muted">{label}</span>}
         <TaskDetail text={it.text} />
       </div>
     </div>

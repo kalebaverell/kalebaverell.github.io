@@ -55,7 +55,7 @@ export default function Profile() {
       </div>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 16 }}>
         <button className="btn" onClick={() => { setStep(0); router.push("/onboarding"); }}><i className="ti ti-edit" /> Edit answers</button>
-        <button className="btn gold" onClick={() => { regen(); router.push("/dashboard"); }}><i className="ti ti-refresh" /> Regenerate gameplan</button>
+        <button className="btn" onClick={() => { regen(); router.push("/dashboard"); }}><i className="ti ti-refresh" /> Regenerate gameplan</button>
         <button className="btn ghost" onClick={() => { if (confirm("Erase your answers and plan and start fresh?")) { reset(); router.push("/"); } }}><i className="ti ti-trash" /> Start over</button>
       </div>
       <div style={{ marginTop: 18 }}>

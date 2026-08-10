@@ -2,8 +2,22 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BRAND, STATE_BENEFITS } from "@/lib/data";
+import { useStore } from "@/lib/store";
 import { Wrap, Stat, Eyebrow, SectionHead } from "@/components/ui";
 import PlanDemo from "@/components/PlanDemo";
+
+/** The homepage CTA follows the funnel: build a plan if you don't have one,
+ *  get back into it if you do. Sending a returning veteran to the quiz they
+ *  already finished reads like the site forgot them. */
+function CtaLink({ xl, style }: { xl?: boolean; style?: React.CSSProperties }) {
+  const { s, ready } = useStore();
+  const hasPlan = ready && Boolean(s.gameplan);
+  return (
+    <Link className={`btn gold${xl ? " xl" : ""}`} href={hasPlan ? "/dashboard" : "/onboarding"} style={style}>
+      <i className={`ti ${hasPlan ? "ti-map-check" : "ti-compass"}`} /> {hasPlan ? "Open my gameplan" : "Build my gameplan"}
+    </Link>
+  );
+}
 
 /** Mission-band media: looping public-domain TAP-class footage; still photo when the user prefers reduced motion. */
 function MissionMedia() {
@@ -165,7 +179,7 @@ export default function Landing() {
               Answer a few questions. Get a plan for your next 90 days: the career, the benefits, the place to land.
             </p>
             <div className="hero-cta">
-              <Link className="btn gold xl" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
+              <CtaLink xl />
             </div>
             <div className="hero-trust">
               <span className="t"><i className="ti ti-shield-check" /> Free. Built with veterans</span>
@@ -233,7 +247,7 @@ export default function Landing() {
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: 26 }} data-reveal="true">
-            <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
+            <CtaLink />
           </div>
         </div>
 
@@ -245,7 +259,7 @@ export default function Landing() {
           />
           <PlanDemo />
           <div style={{ textAlign: "center", marginTop: 26 }} data-reveal="true">
-            <Link className="btn gold" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>
+            <CtaLink />
           </div>
         </div>
       </Wrap>
@@ -279,7 +293,7 @@ export default function Landing() {
           <Eyebrow>Your next mission</Eyebrow>
           <h2 style={{ margin: "0 0 8px", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>Ten minutes now saves months of guessing later.</h2>
           <p className="muted" style={{ maxWidth: 480, margin: "0 auto 22px" }}>Answer a few questions and walk away with a plan you can actually follow.</p>
-          <Link className="btn gold xl" href="/onboarding" style={{ display: "inline-flex" }}><i className="ti ti-compass" /> Build my gameplan</Link>
+          <CtaLink xl style={{ display: "inline-flex" }} />
         </div>
       </Wrap>
     </>

@@ -33,10 +33,10 @@ export default function Nav() {
   // keeps the standard solid bar.
   const onHome = path === "/" || path === "";
   // The funnel decides the nav: until a gameplan exists there is nothing to
-  // navigate to, so visitors get one link and one CTA. The homepage keeps the
-  // minimal nav even for returning users, so the shared link looks the same
-  // for everyone.
-  const started = Boolean(s.gameplan) && !onHome;
+  // navigate to, so visitors get one link and one CTA. Once a plan exists the
+  // app links follow the user everywhere - including the homepage, where a
+  // returning veteran needs a way back into their plan, not a restart pitch.
+  const started = Boolean(s.gameplan);
   const links = started ? APP_LINKS : MARKETING_LINKS;
 
   // Close the mobile menu whenever navigation happens
@@ -86,6 +86,11 @@ export default function Nav() {
               <i className="ti ti-compass" aria-hidden="true" /> Build my gameplan
             </Link>
           )}
+          {started && onHome && (
+            <Link className="btn gold sm" href="/dashboard">
+              <i className="ti ti-map-check" aria-hidden="true" /> Open my gameplan
+            </Link>
+          )}
           <button
             onClick={cycleTextSize}
             aria-label={`Text size: ${sizeLabel}. Click to change.`}
@@ -95,9 +100,12 @@ export default function Nav() {
           >
             Aa
           </button>
+          {/* nav-user carries no inline display style: the ≤920px media query hides
+              the chip, and an inline style would defeat it and shove the CTA off
+              small screens. */}
           {authEnabled ? (
             user ? (
-              <span className="nav-user" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span className="nav-user">
                 <i className="ti ti-user-circle" aria-hidden="true" />
                 <span style={{ maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {(user.user_metadata as any)?.full_name || user.email}

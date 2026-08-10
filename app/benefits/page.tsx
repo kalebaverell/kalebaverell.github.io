@@ -154,12 +154,32 @@ function OptimizedSection({ name, optimized, onJump }: { name: string; optimized
               </h3>
             )}
             {!collapsed && (
-              <>
-                {tier !== "unlikely" && <p className="muted small" style={{ margin: "0 0 10px" }}>{meta.blurb}</p>}
-                <div style={{ display: "grid", gap: 10 }}>
-                  {items.map((o) => <OptimizedCard key={o.id} o={o} onJump={onJump} />)}
+              tier === "later" ? (
+                // One compact card, not one near-empty card per category - every
+                // "Later" item carries the same "nothing points here yet" message.
+                <div className="card" style={{ padding: 16 }}>
+                  <p className="muted small" style={{ margin: "0 0 10px" }}>
+                    Nothing in your answers points to these right now - worth a look if your plans change.
+                  </p>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {items.map((o) => {
+                      const b = benefitById(o.id);
+                      return b ? (
+                        <button key={o.id} type="button" className="chip selectable" onClick={() => onJump(o.id)}>
+                          <i className={`ti ${b.icon}`} aria-hidden="true" /> {b.name}
+                        </button>
+                      ) : null;
+                    })}
+                  </div>
                 </div>
-              </>
+              ) : (
+                <>
+                  {tier !== "unlikely" && <p className="muted small" style={{ margin: "0 0 10px" }}>{meta.blurb}</p>}
+                  <div style={{ display: "grid", gap: 10 }}>
+                    {items.map((o) => <OptimizedCard key={o.id} o={o} onJump={onJump} />)}
+                  </div>
+                </>
+              )
             )}
           </div>
         );

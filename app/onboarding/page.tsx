@@ -106,23 +106,47 @@ function Intake() {
       <h2>{sec.title}</h2>
       <p className="muted">{sec.subtitle}</p>
       <div className="card">
-        {sec.questions.map((q: any, i: number) => (
+        {sec.questions.filter((q: any) => !q.demographic).map((q: any, i: number) => (
           <div key={q.id}>
             {i > 0 && <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />}
             <Question q={q} answers={s.answers} setAnswer={setAnswer} toggleMulti={toggleMulti} toggleGoal={toggleGoal} />
           </div>
         ))}
-        <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />
-        <label className="lbl" htmlFor={`notes-${sec.id}`}>{INTAKE_NOTES_PROMPT}</label>
-        <textarea
-          id={`notes-${sec.id}`}
-          className="field"
-          rows={3}
-          placeholder="Your words, your situation - anything the boxes above missed."
-          value={s.answers.stepNotes?.[sec.id] || ""}
-          onChange={(e) => setStepNote(sec.id, e.target.value)}
-          style={{ minHeight: 80, resize: "vertical" }}
-        />
+        {/* Demographics live behind a fold: some programs are gender- or
+            minority-specific, but nobody should face those questions as a wall
+            on question three of a ten-minute promise. */}
+        {sec.questions.some((q: any) => q.demographic) && (
+          <details style={{ marginTop: 22, borderTop: "1px solid var(--border)", paddingTop: 18 }}>
+            <summary style={{ cursor: "pointer", fontWeight: 600, color: "var(--ink-strong)" }}>
+              More about you <span className="muted small">(optional - unlocks a few targeted programs)</span>
+            </summary>
+            <div style={{ marginTop: 14 }}>
+              {sec.questions.filter((q: any) => q.demographic).map((q: any, i: number) => (
+                <div key={q.id}>
+                  {i > 0 && <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />}
+                  <Question q={q} answers={s.answers} setAnswer={setAnswer} toggleMulti={toggleMulti} toggleGoal={toggleGoal} />
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+        {/* One open box at the end of the run, not one per step - the fifth
+            identical textarea reads as nagging, and they all feed the same plan. */}
+        {step === INTAKE.length - 1 && (
+          <>
+            <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />
+            <label className="lbl" htmlFor={`notes-${sec.id}`}>{INTAKE_NOTES_PROMPT}</label>
+            <textarea
+              id={`notes-${sec.id}`}
+              className="field"
+              rows={3}
+              placeholder="Your words, your situation - anything the boxes above missed."
+              value={s.answers.stepNotes?.[sec.id] || ""}
+              onChange={(e) => setStepNote(sec.id, e.target.value)}
+              style={{ minHeight: 80, resize: "vertical" }}
+            />
+          </>
+        )}
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
         <button className="btn ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>
@@ -325,9 +349,23 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
     <fieldset style={{ border: "none", padding: 0, margin: 0 }}>
       <legend className="lbl" style={{ padding: 0 }}>{q.label}{q.optional && <span className="muted small"> (optional)</span>}</legend>
       {q.helper && <p className="small muted" style={{ margin: "0 0 8px" }}>{q.helper}</p>}
-      {q.options.map((o: string) => (
-        <button key={o} type="button" aria-pressed={val === o} className={`opt ${val === o ? "sel" : ""}`} onClick={() => setAnswer(q.id, o)}>{o}</button>
-      ))}
+      {q.compact ? (
+        // Short-label single-selects render as a chip row: same tap targets,
+        // a third of the vertical space of full-width stacked buttons.
+        <div role="radiogroup" aria-label={q.label}>
+          {q.options.map((o: string) => (
+            <button key={o} type="button" role="radio" aria-checked={val === o}
+              className={`chip selectable ${val === o ? "selected" : ""}`}
+              onClick={() => setAnswer(q.id, o)}>
+              {o}
+            </button>
+          ))}
+        </div>
+      ) : (
+        q.options.map((o: string) => (
+          <button key={o} type="button" aria-pressed={val === o} className={`opt ${val === o ? "sel" : ""}`} onClick={() => setAnswer(q.id, o)}>{o}</button>
+        ))
+      )}
       {q.allowCustom && (
         <OtherInput current={isCustomVal ? val : ""} onUse={(t) => setAnswer(q.id, t)} />
       )}

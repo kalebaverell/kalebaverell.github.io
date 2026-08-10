@@ -229,7 +229,7 @@ export default function Updates() {
 
       <div style={{ marginTop: 18 }}>
         <Callout kind="info">
-          Honest note: reporting a life event just updates your intake answers and regenerates the same local demo plan. Nothing is sent anywhere, and none of this is official VA guidance.
+          Honest note: reporting a life event updates your intake answers and regenerates your plan right here. If you&apos;re signed in it syncs privately to your account; nothing goes to the VA or anyone else, and none of this is official VA guidance.
         </Callout>
       </div>
     </Wrap>

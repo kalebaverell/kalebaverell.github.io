@@ -3,7 +3,7 @@ import PageSkeleton from "@/components/PageSkeleton";
 import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById } from "@/lib/data";
+import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById, careerMedianPay } from "@/lib/data";
 import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
@@ -38,6 +38,12 @@ export default function Dashboard() {
   const all = [...gp.plan30, ...gp.plan60, ...gp.plan90];
   const done = all.filter((it) => s.statuses[it.id] === "done").length;
   const dest = gp.destination;
+  // The pay-target flag from the Pathfinder results follows the choice onto the
+  // dashboard - the caveat matters most at the moment it became the plan.
+  const destCareer = careerById(s.chosenPath?.careerId);
+  const salMin = typeof a.salaryTarget?.min === "number" ? a.salaryTarget.min : null;
+  const destMedian = destCareer ? careerMedianPay(destCareer) : null;
+  const destBelowTarget = salMin != null && destMedian != null && destMedian < salMin;
   // The whole plan lives on /plan. Here: only the next three open tasks -
   // earliest window first, highest priority within it - so there is exactly
   // one obvious thing to do, and finishing it pulls the next one in.
@@ -75,11 +81,16 @@ export default function Dashboard() {
           <div style={{ flex: 1, minWidth: 220 }}>
             <span className="small muted">Your destination</span>
             <h3 style={{ margin: "2px 0 0" }}>{dest.label}</h3>
+            {destBelowTarget && (
+              <span className="chip sm" style={{ marginTop: 6, background: "var(--accent-soft)", color: "var(--accent-ink)" }}>
+                <i className="ti ti-trending-down" aria-hidden="true" /> Median ~${destMedian!.toLocaleString()} - below the pay you&apos;re aiming for
+              </span>
+            )}
           </div>
           {dest.fitPct && (
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 34, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{dest.fitPct}%</div>
-              <div className="small muted">fit (demo)</div>
+              <div className="small muted">fit estimate</div>
             </div>
           )}
           <Link className="btn ghost sm" href="/pathfinder"><i className="ti ti-compass" /> Change path</Link>
@@ -128,18 +139,20 @@ export default function Dashboard() {
 
       <h3 style={{ margin: "28px 0 0" }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> Your three tracks</h3>
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 12 }}>
-        <Link href="/pathfinder" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
-          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-briefcase" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Career</h4>
-          <span className="muted small">Your path, your fit, and the benefits that fund the training.</span>
-        </Link>
-        <Link href="/relocate" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
-          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-home" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Housing</h4>
-          <span className="muted small">The VA loan, and where to land: care, cost, jobs, community.</span>
-        </Link>
-        <Link href="/goals" className="card" style={{ textDecoration: "none", color: "var(--ink)" }}>
-          <h4 style={{ margin: "0 0 4px" }}><i className="ti ti-building-store" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Start a business</h4>
-          <span className="muted small">From idea to plan, with veteran programs behind it.</span>
-        </Link>
+        {([
+          ["/pathfinder", "ti-briefcase", "Career", "Your path, your fit, and the benefits that fund the training."],
+          ["/relocate", "ti-home", "Housing", "The VA loan, and where to land: care, cost, jobs, community."],
+          ["/goals", "ti-building-store", "Start a business", "From idea to plan, with veteran programs behind it."],
+        ] as const).map(([href, icon, title, blurb]) => (
+          <Link key={href} href={href} className="card" style={{ textDecoration: "none", color: "var(--ink)", display: "flex", flexDirection: "column" }}>
+            <h4 style={{ margin: "0 0 4px" }}><i className={`ti ${icon}`} aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> {title}</h4>
+            <span className="muted small">{blurb}</span>
+            {/* Cards that navigate need to say so - without this cue they read as static labels. */}
+            <span className="small" style={{ marginTop: 10, fontWeight: 600, color: "var(--info)", display: "inline-flex", alignItems: "center", gap: 4 }}>
+              Open <i className="ti ti-arrow-right" aria-hidden="true" />
+            </span>
+          </Link>
+        ))}
       </div>
 
       <div style={{ textAlign: "center", margin: "26px 0 2px" }}>
@@ -292,8 +305,10 @@ export default function Dashboard() {
       )}
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
+        {/* One primary action: the checklist. Print is real but secondary - gold
+            is reserved for the next step in the funnel, not utilities. */}
         <Link className="btn" href="/plan"><i className="ti ti-checkbox" /> Open my action checklist</Link>
-        <Link className="btn gold" href="/print"><i className="ti ti-printer" /> Print my gameplan</Link>
+        <Link className="btn ghost" href="/print"><i className="ti ti-printer" /> Print my gameplan</Link>
       </div>
     </Wrap>
   );

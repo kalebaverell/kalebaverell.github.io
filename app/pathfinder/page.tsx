@@ -52,7 +52,7 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
       {chosen && (
         <div style={{ margin: "12px 0" }}>
           <Callout kind="info">
-            <strong>Current destination: {chosen.label}</strong>{s.chosenPath?.fitPct ? ` - ${s.chosenPath.fitPct}% fit (demo)` : ""}. You can change it anytime below.
+            <strong>Current destination: {chosen.label}</strong>{s.chosenPath?.fitPct ? ` - ${s.chosenPath.fitPct}% fit estimate` : ""}. You can change it anytime below.
           </Callout>
         </div>
       )}
@@ -76,7 +76,7 @@ function Intro({ setView, hasPath }: { setView: (v: View) => void; hasPath: bool
         ))}
       </div>
       <p className="small muted" style={{ marginTop: 14 }}>
-        Fit scores are demo estimates from your own answers - a decision aid, not a guarantee. Verify programs at official sources.
+        Fit scores are estimates built only from your answers - a decision aid, not a guarantee. Verify programs at official sources.
       </p>
     </Wrap>
   );
@@ -125,8 +125,10 @@ function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
 
   return (
     <Wrap narrow>
-      <ProgressBar pct={(q / (total + 1)) * 100} label={`Pathfinder question ${Math.min(q + 1, total + 1)} of ${total + 1}`} />
-      <p className="small muted" aria-live="polite" style={{ marginTop: 8 }}>Question {Math.min(q + 1, total + 1)} of {total + 1}</p>
+      {/* The pitch says "10 questions", so the counter counts those 10 - the
+          optional free-text box at the end is a bonus, not question 11. */}
+      <ProgressBar pct={(q / (total + 1)) * 100} label={isFree ? "Pathfinder: optional final note" : `Pathfinder question ${q + 1} of ${total}`} />
+      <p className="small muted" aria-live="polite" style={{ marginTop: 8 }}>{isFree ? "One more - optional" : `Question ${q + 1} of ${total}`}</p>
       {!isFree ? (
         <>
           <h2>{question.label}</h2>
@@ -178,7 +180,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
         <i className="ti ti-arrow-left" aria-hidden="true" /> Adjust answers
       </button>
       <h2>Your best-fit path</h2>
-      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. Fit scores are demo estimates built only from your answers - here&apos;s the reasoning, not a black box.</p>
+      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. Fit scores are estimates built only from your answers - here&apos;s the reasoning, not a black box.</p>
 
       <div className="card" style={{ border: "2px solid var(--accent)", marginTop: 8 }}>
         <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
@@ -200,7 +202,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 40, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{top.fit}%</div>
-            <div className="small muted">fit (demo)</div>
+            <div className="small muted">fit estimate</div>
           </div>
         </div>
         <div style={{ marginTop: 14 }}>
@@ -213,10 +215,6 @@ function Results({ setView }: { setView: (v: View) => void }) {
         <button className="btn gold" style={{ marginTop: 14 }} onClick={() => setView({ kind: "detail", careerId: top.career.id, fromResults: true })}>
           See the full route <i className="ti ti-arrow-right" />
         </button>
-      </div>
-
-      <div style={{ marginTop: 20 }}>
-        <FundedPath a={s.answers} career={top.career} />
       </div>
 
       <h3 style={{ marginTop: 24 }}>Strong runners-up</h3>
@@ -246,6 +244,12 @@ function Results({ setView }: { setView: (v: View) => void }) {
         ))}
       </div>
       <p className="small muted" style={{ marginTop: 16 }}>None of these feel right? <button type="button" onClick={() => setView({ kind: "browse" })} style={{ background: "none", border: "none", color: "var(--info)", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0, textDecoration: "underline" }}>Browse all paths</button> or adjust your answers.</p>
+
+      {/* Funding detail comes after the compare moment: pick the path first,
+          then see how to pay for it - not the other way around. */}
+      <div style={{ marginTop: 24 }}>
+        <FundedPath a={s.answers} career={top.career} />
+      </div>
       <p className="small muted" style={{ marginTop: 18, marginBottom: 4 }}>
         Question design informed by the U.S. Department of Labor&apos;s O*NET&reg; Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool - USDOL/ETA has not approved, endorsed, or tested this adaptation.
       </p>
@@ -294,7 +298,7 @@ function Detail({ careerId, fromResults, setView }: { careerId: string; fromResu
             </p>
           )}
         </div>
-        {fit && <div style={{ textAlign: "center" }}><div style={{ fontSize: 34, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{fit.fit}%</div><div className="small muted">fit (demo)</div></div>}
+        {fit && <div style={{ textAlign: "center" }}><div style={{ fontSize: 34, fontWeight: 700, color: "var(--primary)", lineHeight: 1 }}>{fit.fit}%</div><div className="small muted">fit estimate</div></div>}
       </div>
       <p style={{ marginTop: 12 }}>{c.blurb}</p>
 

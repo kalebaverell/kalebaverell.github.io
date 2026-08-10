@@ -213,7 +213,8 @@ export default function RelocatePage() {
         <h3><i className="ti ti-adjustments" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 1 - what matters to you?</h3>
         <p className="muted" style={{ maxWidth: 640, marginTop: 4 }}>
           Mark each factor <strong>Skip</strong>, <strong>Nice to have</strong>, or <strong>Must have</strong>.
-          Must-haves count double. There are no wrong answers - this is your move.
+          Must-haves count double. We&apos;ve pre-marked a common starting point - change anything;
+          there are no wrong answers, this is your move.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: 14, marginTop: 14 }}>
           {RELOC_DIMS.map((d) => (

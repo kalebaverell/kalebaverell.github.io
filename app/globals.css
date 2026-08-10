@@ -412,6 +412,17 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 
 /* Mobile navigation - collapses the 4-item marketing nav into a hamburger menu.
    (The denser signed-in "app" nav collapses earlier - see the .nav--app block below.) */
+/* Phone widths: the brand mark alone identifies us (the wordmark + hamburger +
+   CTA pill cannot all fit in 390px), and the pill tightens up. Without this the
+   header CTA clips off the right edge of the screen. */
+@media (max-width: 560px) {
+  .nav-inner { padding:0 10px; gap:8px; }
+  .brand-word { display:none; }
+  .nav-actions { gap:6px; }
+  .nav-actions .btn.sm { padding:8px 12px; font-size:13px; }
+  .nav-actions .btn.sm i { display:none; }
+}
+
 @media (max-width: 920px) {
   .nav-inner { flex-wrap:nowrap; position:relative; padding:0 15px; gap:10px; }
   .nav-user { display:none; }

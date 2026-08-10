@@ -175,7 +175,12 @@ export default function TimelinePage() {
               <label className="lbl" htmlFor="tl-mos">Your MOS / rate / AFSC (optional, any wording)</label>
               <input id="tl-mos" className="field" value={a.mos} onChange={(e) => set("mos", e.target.value)} placeholder="e.g. 12B combat engineer, IT rating, aircraft maintenance" />
               <div style={{ marginTop: 16 }}>
-                <button className="btn gold" onClick={() => setStep(1)}>Next <i className="ti ti-arrow-right" aria-hidden="true" /></button>
+                {/* Separation window and years of service steer every phase and
+                    deadline, so neither is pre-answered - a rushed default here
+                    means a plan for the wrong timeline. */}
+                <button className="btn gold" disabled={!a.sepWindow || !a.yearsOfService} onClick={() => setStep(1)}>
+                  {!a.sepWindow || !a.yearsOfService ? "Pick your window and years to continue" : "Next"} <i className="ti ti-arrow-right" aria-hidden="true" />
+                </button>
               </div>
             </div>
           )}

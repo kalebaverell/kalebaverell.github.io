@@ -8,6 +8,9 @@ const nextConfig = {
   // Lets a verification build write somewhere other than .next, so it can run
   // safely while a dev server is using .next. Unset in normal use and in CI.
   ...(process.env.VP_DIST_DIR ? { distDir: process.env.VP_DIST_DIR } : {}),
+  // Caps static-generation workers on memory-starved machines (spawn errors at
+  // full parallelism). Unset in normal use and in CI.
+  ...(process.env.VP_BUILD_CPUS ? { experimental: { cpus: Number(process.env.VP_BUILD_CPUS) } } : {}),
 };
 
 export default nextConfig;

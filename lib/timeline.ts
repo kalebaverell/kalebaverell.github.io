@@ -27,8 +27,10 @@ export type Finances = "runway" | "some" | "income-now" | "pension";
 
 export interface TimelineAnswers {
   branch: string;
-  sepWindow: SepWindow;
-  yearsOfService: "0-4" | "4-10" | "10-20" | "20+";
+  /** "" until chosen - these two steer the whole plan, so they are never
+   *  pre-answered; the interview gates on them instead. */
+  sepWindow: SepWindow | "";
+  yearsOfService: "0-4" | "4-10" | "10-20" | "20+" | "";
   rankGroup: string;
   mos: string;
   goals: Goal[];
@@ -42,8 +44,8 @@ export interface TimelineAnswers {
 
 export const freshTimelineAnswers = (): TimelineAnswers => ({
   branch: "",
-  sepWindow: "12+",
-  yearsOfService: "4-10",
+  sepWindow: "",
+  yearsOfService: "",
   rankGroup: "",
   mos: "",
   goals: [],
@@ -236,7 +238,9 @@ function narrative(phase: TimelinePhase, a: TimelineAnswers): string {
 }
 
 export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
-  const m = sepMonths(a.sepWindow);
+  // The interview gates on sepWindow, so "" only reaches here via a hand-edited
+  // or stale saved state - treat it as farthest-out rather than crashing.
+  const m = sepMonths(a.sepWindow || "12+");
   const all = buildTasks(a);
 
   const phases: TimelinePhase[] = PHASE_META.map((p) => {
