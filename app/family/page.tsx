@@ -139,7 +139,7 @@ export default function FamilyPlanning() {
         <h3 style={{ color: "#fff", margin: "0 0 8px" }}>
           <i className="ti ti-home-heart" aria-hidden="true" /> Household snapshot
         </h3>
-        <p style={{ color: "#CFE0D6", margin: "0 0 12px", maxWidth: 640 }}>
+        <p style={{ color: "#CBD8E4", margin: "0 0 12px", maxWidth: 640 }}>
           {a.status ? `${a.status}. ` : ""}
           {a.disabilityRating && a.disabilityRating !== "Prefer not to say" ? `VA rating: ${a.disabilityRating}. ` : ""}
           Planning together for:
@@ -153,7 +153,7 @@ export default function FamilyPlanning() {
           ))}
         </div>
         <div style={{ marginTop: 8 }}>
-          <span className="small" style={{ color: "#CFE0D6" }}>Your intake selections: </span>
+          <span className="small" style={{ color: "#CBD8E4" }}>Your intake selections: </span>
           {selections.map((f) => (
             <span key={f} className="tag" style={{ background: "rgba(255,255,255,.12)", color: "#fff" }}>{f}</span>
           ))}
