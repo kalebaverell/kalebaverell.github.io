@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VetPath - Funding Options Playbook</title>
+<style>
+  :root{ --primary:#0F6E56; --primary-900:#073D30; --accent:#D98A3D; --accent-soft:#FAECD9; --accent-ink:#8A5714;
+    --ink:#26333F; --ink-strong:#0F2233; --muted:#5A6B7B; --border:#CBD3DA; --chip:#E1F0EA; --success:#0F6E56; --danger:#A32D2D; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#EEF1F4;line-height:1.5;font-size:13px}
+  .sheet{max-width:860px;margin:22px auto;background:#fff;padding:40px 44px;box-shadow:0 2px 14px rgba(16,36,56,.12)}
+  .bar{display:flex;align-items:center;gap:12px;border-bottom:3px solid var(--primary);padding-bottom:12px;margin-bottom:14px}
+  .mark{width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--primary-900);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .brand{font-size:20px;font-weight:700;color:var(--primary);font-family:Georgia,serif}
+  .tag{margin-left:auto;color:var(--muted);font-size:12px;text-align:right}
+  h1{font-family:Georgia,serif;font-size:24px;margin:0 0 4px;color:var(--ink-strong);font-weight:600}
+  h2{font-size:14px;margin:20px 0 8px;background:var(--primary);color:#fff;padding:7px 12px;border-radius:6px;font-weight:600}
+  h2 .num{opacity:.65;font-weight:600;margin-right:7px}
+  h3{font-size:13px;margin:14px 0 4px;color:var(--primary)}
+  p{margin:0 0 8px}
+  .muted{color:var(--muted)} .small{font-size:11.5px}
+  table{width:100%;border-collapse:collapse;font-size:11.8px;margin:4px 0 10px}
+  th,td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:var(--chip);color:var(--primary);font-weight:600}
+  td.num{white-space:nowrap;font-weight:600;color:var(--ink-strong)}
+  ul{margin:4px 0 8px;padding-left:19px} li{margin-bottom:4px}
+  .note{background:var(--accent-soft);border-radius:8px;padding:10px 14px;font-size:12px;margin:8px 0}
+  .no{background:#FBEAEA;border-left:4px solid var(--danger);border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;margin:8px 0}
+  .no b{color:var(--danger)}
+  .pill{display:inline-block;font-size:10px;font-weight:700;border-radius:5px;padding:2px 8px;text-transform:uppercase;letter-spacing:.4px}
+  .pill.np{background:var(--chip);color:var(--success)}
+  .pill.fp{background:var(--accent-soft);color:var(--accent-ink)}
+  .pill.either{background:#E8ECF0;color:var(--muted)}
+  .foot{font-size:10.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px;margin-top:18px}
+  .toolbar{max-width:860px;margin:14px auto 0;text-align:right}
+  .btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+  @media (max-width:700px){ .grid2{grid-template-columns:1fr} .sheet{padding:24px 18px} }
+  @media print{
+    body{background:#fff;font-size:11.5px} .sheet{box-shadow:none;margin:0;max-width:none;padding:0} .toolbar{display:none}
+    h2{break-after:avoid;page-break-after:avoid;margin:12px 0 6px}
+    table,.note,.no{break-inside:avoid;page-break-inside:avoid}
+    tr{break-inside:avoid;page-break-inside:avoid}
+    .foot{margin-top:12px;padding-top:8px}
+    @page{size:letter;margin:0.5in}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button class="btn" onclick="window.print()">Print / Save as PDF</button></div>
+<div class="sheet">
+  <div class="bar">
+    <span class="mark">V</span><span class="brand">VetPath</span>
+    <span class="tag">Funding options playbook &middot; prepared August 2026<br>For the entity + revenue decision &middot; all figures are planning placeholders</span>
+  </div>
+  <h1>How VetPath pays for itself - the honest playbook</h1>
+  <p class="muted">One rule shapes everything below: <strong>free for veterans, always.</strong> That rule closes one door (charging the people we serve), and it is also our strongest asset with every funder on this list. Dollar figures are realistic placeholders drawn from published grant data and market comparables - verify each before building a budget on it.</p>
+
+  <h2><span class="num">1</span>The entity fork comes first - it gates everything else</h2>
+  <p>Profit vs. nonprofit is not a philosophy question. It is a question of <strong>which doors you want open</strong>. Each funding option below is tagged with the structure it requires.</p>
+  <table>
+    <tr><th style="width:22%">Structure</th><th>What it opens</th><th>What it closes</th><th style="width:20%">Cost &amp; timeline</th></tr>
+    <tr>
+      <td><strong>501(c)(3) nonprofit</strong> <span class="pill np">NP</span></td>
+      <td>Foundation grants, state veteran-assistance grants, most VA grant programs, tax-deductible donations, corporate giving, volunteer/AmeriCorps labor. Earned revenue (org licensing) is still allowed if mission-related.</td>
+      <td>Equity investment. Founders don't own it - a board governs it. Slower to change direction.</td>
+      <td>TX incorporation ~$25; IRS Form 1023-EZ $275 (small orgs) or 1023 $600. Roughly 1-6 months to determination.</td>
+    </tr>
+    <tr>
+      <td><strong>For-profit (LLC / C-corp)</strong> <span class="pill fp">FP</span></td>
+      <td>DoD SBIR/STTR contracts (for-profit small businesses only), equity investment, fast decisions, founders own it. B2B revenue keeps veterans free.</td>
+      <td>Nearly all foundation and state veteran-assistance grants. Tax-deductible gifts. Some partners read "for-profit" as a trust question.</td>
+      <td>TX LLC ~$300, days to form. No IRS process.</td>
+    </tr>
+    <tr>
+      <td><strong>Fiscal sponsorship</strong> <span class="pill np">Bridge</span></td>
+      <td>Grant-ready in weeks: an existing 501(c)(3) receives funds on your behalf while you operate. Standard fee 5-10% of funds raised. Lets you test the nonprofit path before committing.</td>
+      <td>Sponsor holds the money and some control. Not all funders accept sponsored projects.</td>
+      <td>Weeks. Fee only, no formation cost.</td>
+    </tr>
+    <tr>
+      <td><strong>Hybrid (both, later)</strong> <span class="pill either">Both</span></td>
+      <td>A for-profit builds the product; an affiliated nonprofit receives grants and serves veterans. Common in this space, workable.</td>
+      <td>Double the admin, real legal care needed on money flowing between the two. Not a year-one move.</td>
+      <td>Add ~$2-5k/yr accounting + legal overhead.</td>
+    </tr>
+  </table>
+  <p class="small muted">Market reality check: of the tools on our competitive landscape, Combined Arms and PATRIOTlink are nonprofits; AI Ready Veteran is for-profit and charges veterans ~$195/yr - which is exactly the position we chose to run against.</p>
+
+  <h2><span class="num">2</span>Option A - Outside fundraising (grants + philanthropy) <span class="pill np" style="float:right;margin-top:2px">Needs 501(c)(3) or sponsor</span></h2>
+  <table>
+    <tr><th style="width:26%">Source</th><th style="width:24%">Real numbers (published)</th><th>The catch</th><th style="width:17%">Realistic for us</th></tr>
+    <tr>
+      <td><strong>State veteran agencies</strong> - e.g. Texas Veterans Commission, Fund for Veterans' Assistance</td>
+      <td>~$30M/yr pool across grant types; individual General Assistance awards commonly <strong>$200k-300k</strong> to local veteran-serving orgs.</td>
+      <td>Annual RFA cycle; needs a Texas footprint, measurable outcomes, and usually some operating history. This is literally "government pays so vets don't" at state level.</td>
+      <td class="num">$50-150k/yr<br><span class="small muted">year 2-3, after pilot data</span></td>
+    </tr>
+    <tr>
+      <td><strong>Veteran-focused foundations</strong> - e.g. Bob Woodruff Foundation</td>
+      <td>Grants <strong>$5k-500k, ~$100k average</strong>; $6.5M+ distributed in their spring 2026 round alone.</td>
+      <td>BWF requires two years of IRS 990s and $50k+ gross receipts - young orgs wait. Other funders (Schultz, Newmark, Wounded Warrior partner grants) have similar maturity bars.</td>
+      <td class="num">$25-100k/yr<br><span class="small muted">year 2-3</span></td>
+    </tr>
+    <tr>
+      <td><strong>Federal VA grants</strong> - e.g. SSG Fox suicide-prevention program</td>
+      <td>Up to <strong>$750k/yr</strong> per entity; VA has awarded $52.5M in a cycle.</td>
+      <td>Scoped to specific outcomes (SSG Fox is suicide prevention - adjacent to us, not core). Federal reporting burden is real. A stretch target, not a base plan.</td>
+      <td class="num">$0 early;<br><span class="small muted">long-shot upside later</span></td>
+    </tr>
+    <tr>
+      <td><strong>Corporate sponsorship</strong> - veteran-facing brands, DFW employers</td>
+      <td>National programs (USAA, Home Depot Foundation, Comcast, Boeing) run eight-figure veteran budgets; local sponsorships realistically <strong>$5k-50k</strong> each.</td>
+      <td>Wants logo placement and reach numbers. Underwriting ("supported by X") preserves trust; ads and data-sharing do not - see the red lines in section 5.</td>
+      <td class="num">$10-40k/yr<br><span class="small muted">reachable year 1-2 via Frank's + Kaleb's networks</span></td>
+    </tr>
+    <tr>
+      <td><strong>Individual giving / crowdfunding</strong></td>
+      <td>Small unless a story catches - typical community campaigns land <strong>$5-25k</strong>.</td>
+      <td>Cheap to try, real effort to sustain. Best as a pilot-moment push ("fund the first 100 gameplans"), not a base.</td>
+      <td class="num">$5-15k one-time</td>
+    </tr>
+  </table>
+  <p class="small"><strong>Honest math:</strong> philanthropy is mostly closed in year 1 (no entity, no history) and opens meaningfully in years 2-3 <em>if</em> the pilot produces countable outcomes: veterans served, plans completed, benefits reached. The pilot is not just product testing - it is the grant application.</p>
+
+  <h2><span class="num">3</span>Option B - Charging to use the app/site <span class="pill fp" style="float:right;margin-top:2px">Either structure</span></h2>
+  <div class="grid2">
+    <div>
+      <h3>What it would look like</h3>
+      <ul>
+        <li><strong>Freemium:</strong> plan free, "premium" extras $5-15/mo or ~$99-195/yr (AI Ready Veteran charges ~$195/yr).</li>
+        <li><strong>One-time unlock:</strong> $29-49 for a "pro" tier.</li>
+        <li><strong>Optional support:</strong> "pay it forward - fund a veteran's gameplan" donation button. Keeps the rule intact.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>The honest math</h3>
+      <ul>
+        <li>Benchmark freemium conversion is 2-5%. At $10/mo you need <strong>~2,000-5,000 active free users to make $5-15k/yr</strong>. We have a pilot group.</li>
+        <li>Most of our landscape is free (MyVetBENEFITS, Battle Buddy, PATRIOTlink, VA itself). Paid puts us on the wrong side of our own comparison table.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="no"><b>Recommendation: rule this out as a primary stream.</b> "Free for veterans, always" is the wedge, the trust position, and the funder pitch. The only version worth keeping is the optional donation button and - much later, maybe - paid concierge facilitation for organizations, which is really Option D wearing a different hat.</div>
+
+  <h2><span class="num">4</span>Option C - Government pays, so veterans don't (DoD, VA, states)</h2>
+  <table>
+    <tr><th style="width:26%">Route</th><th style="width:24%">Real numbers (published)</th><th>The catch</th><th style="width:17%">Realistic for us</th></tr>
+    <tr>
+      <td><strong>DoD SBIR / STTR</strong> <span class="pill fp">FP only</span></td>
+      <td>Phase I <strong>$50k-275k</strong> (feasibility); Phase II <strong>$500k-1.8M</strong>. DoD awards $1.8B+/yr - the largest program. Open topics fit dual-use tools like transition tech.</td>
+      <td>Requires a for-profit small business, SAM.gov registration, and 6-12 months from proposal to first dollar. Competitive but genuinely winnable for a working product with a veteran founder story.</td>
+      <td class="num">$75-250k<br><span class="small muted">Phase I, 12-18 mo out - the strongest argument for the for-profit path</span></td>
+    </tr>
+    <tr>
+      <td><strong>Direct DoD / TAP adoption</strong></td>
+      <td>TAP itself is government-run and delivered by large prime contractors. Direct adoption would be a subcontract or multi-year procurement.</td>
+      <td>The slowest door in this document. Not a plan for the next two years; a possibility after scale + past performance.</td>
+      <td class="num">$0 near-term</td>
+    </tr>
+    <tr>
+      <td><strong>VA prize competitions</strong></td>
+      <td>VA has run innovation challenges with prize pools in the <strong>$250k-3M</strong> range (e.g. Mission Daybreak class).</td>
+      <td>Episodic - you enter what exists when it exists. Cheap to enter with a working product; also a credibility stamp.</td>
+      <td class="num">$10-100k<br><span class="small muted">if a fitting challenge opens</span></td>
+    </tr>
+    <tr>
+      <td><strong>State / county contracts</strong> <span class="pill np">Usually NP</span></td>
+      <td>State agencies grant to service orgs (see TVC above); counties fund veteran service offices that could license a tool for their caseload.</td>
+      <td>Sales cycle through Frank-style relationships; small individual checks ($2-10k/county/yr placeholder) but they stack and renew.</td>
+      <td class="num">$10-50k/yr<br><span class="small muted">year 2+</span></td>
+    </tr>
+  </table>
+
+  <h2><span class="num">5</span>Option D - The models not yet on your whiteboard</h2>
+  <table>
+    <tr><th style="width:26%">Model</th><th>How it works</th><th style="width:20%">Placeholder pricing</th><th style="width:17%">Realistic for us</th></tr>
+    <tr>
+      <td><strong>Organization licensing</strong> (the Combined Arms-adjacent play)</td>
+      <td>VSOs, university veteran success centers, workforce boards, and employer ERGs license VetPath for the veterans they already serve. They pay; the veteran never does. Fits our "be the planning layer, partner with directories" strategy exactly.</td>
+      <td class="num">$3-15k/yr per org</td>
+      <td class="num">5-10 orgs = $25-100k/yr by year 2-3</td>
+    </tr>
+    <tr>
+      <td><strong>Employer-side hiring revenue</strong></td>
+      <td>Veteran-hungry employers pay for presence in the career tracks (postings, apprenticeship pipelines, "hiring now" tags). Veterans stay free; employers pay for reach. Opt-in introductions only.</td>
+      <td class="num">$500-2k/posting or $5-25k/yr partner</td>
+      <td class="num">$10-50k/yr at modest traffic</td>
+    </tr>
+    <tr>
+      <td><strong>White-label instances</strong></td>
+      <td>A state agency or large VSO runs a branded VetPath for its population. One anchor deal can carry a year.</td>
+      <td class="num">$25-100k/yr per instance</td>
+      <td class="num">0-1 deals; year 3 ambition</td>
+    </tr>
+    <tr>
+      <td><strong>Sponsored facilitation events</strong></td>
+      <td>Transition workshops at bases, VSO halls, employers - built on Frank's meeting format; a sponsor underwrites each event.</td>
+      <td class="num">$2-10k/event</td>
+      <td class="num">$5-30k/yr, startable now</td>
+    </tr>
+  </table>
+  <div class="no"><b>Red lines - money we don't take, in writing:</b> no selling or sharing veteran data; no referral fees from lenders, insurance, or paid claims consultants (the claims-shark boundary already in our compliance rules); no ad networks. Every one of these converts the trust position into inventory. The entire moat is "every number has a source and nobody is selling you anything."</div>
+
+  <h2><span class="num">6</span>Three ways to put it together (placeholder scenarios)</h2>
+  <table>
+    <tr><th style="width:24%">Path</th><th>Sequence</th><th style="width:13%">Year 1</th><th style="width:13%">Year 2</th><th style="width:13%">Year 3</th></tr>
+    <tr>
+      <td><strong>Nonprofit classic</strong> <span class="pill np">NP</span></td>
+      <td>Fiscal sponsor now &rarr; pilot with countable outcomes &rarr; file 1023 &rarr; TVC/state grants + one foundation grant + org licensing + sponsorships.</td>
+      <td class="num">$10-30k</td>
+      <td class="num">$100-250k</td>
+      <td class="num">$250-500k</td>
+    </tr>
+    <tr>
+      <td><strong>For-profit, B2B/B2G pays</strong> <span class="pill fp">FP</span></td>
+      <td>LLC now &rarr; SBIR Phase I proposal + org licensing + employer side. Veterans still free. Grants door mostly closed.</td>
+      <td class="num">$5-100k <span class="small muted">(swings on SBIR)</span></td>
+      <td class="num">$100-400k <span class="small muted">(Phase II swing)</span></td>
+      <td class="num">$200-600k</td>
+    </tr>
+    <tr>
+      <td><strong>Hybrid, decided later</strong> <span class="pill either">Both</span></td>
+      <td>Fiscal sponsorship for donations now + keep the entity question open until after the pilot; form whichever the pilot evidence favors; add the second arm only if a specific check requires it.</td>
+      <td class="num">$10-30k</td>
+      <td class="num">$75-250k</td>
+      <td class="num">depends on fork</td>
+    </tr>
+  </table>
+  <p class="small muted">Cost side, for contrast: today's run rate is roughly $0/month (free hosting and database tiers) plus a domain. First real costs are entity + legal + email infrastructure (~$1-3k), then paid time. Every scenario above clears that bar by year 2.</p>
+
+  <h2><span class="num">7</span>The five questions that decide it (for the Frank conversation)</h2>
+  <ul>
+    <li><strong>1. Do any of these paths require charging veterans?</strong> No. So the rule survives every option - that debate is closed.</li>
+    <li><strong>2. Do we ever want equity investors?</strong> Yes &rarr; for-profit or hybrid. Never &rarr; nonprofit and stop thinking about it.</li>
+    <li><strong>3. Do we want grant money within ~18 months?</strong> Yes &rarr; fiscal sponsorship this quarter, 501(c)(3) after the pilot.</li>
+    <li><strong>4. Is DoD/SBIR a serious ambition or a someday?</strong> Serious &rarr; that is the one strong argument for for-profit. Someday &rarr; it shouldn't drive the structure.</li>
+    <li><strong>5. Who owns this in ten years?</strong> Founders own an asset &rarr; for-profit. The mission owns itself &rarr; nonprofit.</li>
+  </ul>
+  <div class="note"><strong>The honest read of the board:</strong> the free-for-veterans rule, the partner-not-compete strategy, and where the actual money sits in this space (state funds, foundations, corporate giving) all tilt toward the <strong>nonprofit path, entered via fiscal sponsorship now</strong> - with SBIR as the one door that argues for-profit. If SBIR is a real ambition, the hybrid path defers the decision without closing either door, at the price of some admin. Decide question 4 first; the rest follows.</div>
+
+  <div class="foot">
+    Planning document with placeholder estimates - not legal, tax, or investment advice; engage an attorney and CPA before forming any entity. Published figures as of August 2026: Bob Woodruff Foundation grant ranges and eligibility (bobwoodrufffoundation.org), Texas Veterans Commission Fund for Veterans' Assistance award examples (tvc.texas.gov, gov.texas.gov announcements), VA SSG Fox SPGP award cap (news.va.gov, federalregister.gov), DoD SBIR/STTR phase amounts (dodsbirsttr.mil program norms). All "realistic for us" columns are VetPath planning placeholders, not commitments or predictions. VetPath is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.
+  </div>
+</div>
+</body>
+</html>
