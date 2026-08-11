@@ -239,6 +239,15 @@
     a[href^="#"]::after,a[href^="/"]::after{content:""}
     @page{size:letter;margin:0.6in}
   }
+
+/* Sticky action bar on phone flows: Back/Next stay at thumb height (mirrors app). */
+@media (max-width: 760px) {
+  .flow-nav { position:sticky; bottom:0; z-index:20; margin:18px -8px 0; padding:10px 8px calc(10px + env(safe-area-inset-bottom));
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border-top:1px solid var(--hairline, rgba(20,35,26,.09)); }
+  body.has-tabbar .flow-nav { bottom:calc(64px + env(safe-area-inset-bottom)); }
+}
 </style>
 </head>
 <body data-theme="professional">
@@ -314,32 +323,32 @@ const STATE_BENEFITS = {"lastVerified": "2026-07-08", "states": [{"code": "AK", 
 const STEP_NOTES_PROMPT = "Anything else about your situation we should know? (optional, your words)";
 const INTAKE = [
   {id:"basics",title:"The basics",subtitle:"Helps us tailor timing and state resources.",questions:[
-    {id:"ageRange",label:"What is your age range?",type:"single",options:["Under 25","25–34","35–44","45–54","55–64","65+"]},
+    {id:"ageRange",compact:true,label:"What is your age range?",type:"single",options:["Under 25","25–34","35–44","45–54","55–64","65+"]},
     {id:"state",label:"What state do you live in?",type:"state",helper:"State benefits vary. We'll flag anything that must be verified locally."},
     {id:"city",label:"What city or town? (optional)",type:"text",optional:true,placeholder:"e.g. San Antonio",helper:"Helps us think about VA facility access and local resources."},
-    {id:"sex",label:"What is your sex?",type:"single",optional:true,allowCustom:true,options:["Male","Female","Prefer not to say"],helper:"Why we ask: some programs specifically serve women veterans (health services, V-WISE entrepreneurship). Sharing is optional and only personalizes suggestions."},
-    {id:"raceEthnicity",label:"Race / ethnicity? (optional - select any)",type:"multi",optional:true,allowCustom:true,options:["American Indian / Alaska Native","Asian","Black / African American","Hispanic / Latino","Native Hawaiian / Pacific Islander","White","Prefer not to say"],helper:"Why we ask: some business and support programs specifically serve minority veterans (e.g., MBDA centers). Optional, never required, never shared."},
-    {id:"branch",label:"Which branch did you serve in?",type:"single",options:["Army","Navy","Air Force","Marine Corps","Coast Guard","Space Force","National Guard / Reserve"]},
-    {id:"serviceEra",label:"When did you serve?",type:"single",options:["Currently serving","Post-9/11 (2001–present)","Gulf War (1990–2001)","Cold War / peacetime","Vietnam era","Other / not sure"]}
+    {id:"branch",compact:true,label:"Which branch did you serve in?",type:"single",options:["Army","Navy","Air Force","Marine Corps","Coast Guard","Space Force","National Guard / Reserve"]},
+    {id:"serviceEra",compact:true,label:"When did you serve?",type:"single",options:["Currently serving","Post-9/11 (2001–present)","Gulf War (1990–2001)","Cold War / peacetime","Vietnam era","Other / not sure"]},
+    {id:"sex",demographic:true,label:"What is your sex?",type:"single",optional:true,allowCustom:true,options:["Male","Female","Prefer not to say"],helper:"Why we ask: some programs specifically serve women veterans (health services, V-WISE entrepreneurship). Sharing is optional and only personalizes suggestions."},
+    {id:"raceEthnicity",demographic:true,label:"Race / ethnicity? (optional)",type:"multi",optional:true,allowCustom:true,options:["American Indian / Alaska Native","Asian","Black / African American","Hispanic / Latino","Native Hawaiian / Pacific Islander","White","Prefer not to say"],helper:"Why we ask: some business and support programs specifically serve minority veterans (e.g., MBDA centers). Optional, never required, never shared."}
   ]},
   {id:"status",title:"Where you are right now",subtitle:"This shapes what we prioritize first.",questions:[
-    {id:"status",label:"What best describes your current status?",type:"single",options:["Active duty","Transitioning (separating within 12 months)","Veteran","Retired (20+ years of service)","Spouse / family member"]},
-    {id:"disabilityRating",label:"Do you have a VA disability rating? (optional)",type:"single",optional:true,options:["None / not rated","Claim pending or filing","0–20%","30–50%","60–90%","100%","Prefer not to say"]},
-    {id:"employment",label:"What is your employment situation?",type:"single",options:["Employed full-time","Employed part-time","Unemployed / job seeking","Self-employed / business owner","Student","Retired","Unable to work right now"]},
+    {id:"status",compact:true,label:"What best describes your current status?",type:"single",options:["Active duty","Transitioning (separating within 12 months)","Veteran","Retired (20+ years of service)","Spouse / family member"]},
+    {id:"disabilityRating",compact:true,label:"Do you have a VA disability rating?",type:"single",optional:true,options:["None / not rated","Claim pending or filing","0–20%","30–50%","60–90%","100%","Prefer not to say"]},
+    {id:"employment",compact:true,label:"What is your employment situation?",type:"single",options:["Employed full-time","Employed part-time","Unemployed / job seeking","Self-employed / business owner","Student","Retired","Unable to work right now"]},
     {id:"housing",label:"What is your housing situation?",type:"single",options:["Rent","Own a home","Living with family","Unstable / at risk","Currently homeless"]},
     {id:"salaryTarget",label:"What annual pay are you aiming for? (optional)",type:"payrange",helper:"A rough range is fine - we'll flag which career paths land in it. Leave blank to skip."}
   ]},
   {id:"priorities",title:"What matters to you",subtitle:"Pick everything that applies - we'll turn it into a plan.",questions:[
     {id:"educationGoals",label:"Any education goals?",type:"multi",allowCustom:true,options:["Finish a degree","Start a degree","Trade or certification","Help a dependent with school","No education plans"]},
     {id:"careerGoals",label:"Any career goals?",type:"multi",allowCustom:true,options:["Get a better job","Change careers","Advance / get promoted","Start a business","Wind down toward retirement","Not sure yet"]},
-    {id:"businessInterest",label:"Interested in owning a business?",type:"single",options:["Yes - actively working on it","Yes - someday","No"]},
+    {id:"businessInterest",compact:true,label:"Interested in owning a business?",type:"single",options:["Yes - actively working on it","Yes - someday","No"]},
     {id:"wellnessPriorities",label:"Health & wellness priorities?",type:"multi",allowCustom:true,options:["Mental health support","VA healthcare / physical health","Fitness","Community & connection","None right now"]},
     {id:"financialPriorities",label:"Financial priorities?",type:"multi",allowCustom:true,options:["Budgeting / debt","Buy a home","Save & invest","Understand VA disability compensation","Retirement planning","Protect my family (survivor benefits)"]},
     {id:"familyNeeds",label:"Family or dependent needs?",type:"multi",allowCustom:true,options:["Spouse benefits","Dependent education","Childcare","Caregiver support","None"]}
   ]},
   {id:"goals",title:"Your top goals",subtitle:"Choose up to 3. These drive your gameplan.",questions:[
     {id:"topGoals",label:"What are your top 3 goals right now?",type:"goals",max:3},
-    {id:"urgency",label:"How urgent does this feel?",type:"single",options:["Right now - I need help urgently","Next 1–3 months","Next 6–12 months","Just exploring"]}
+    {id:"urgency",compact:true,label:"How urgent does this feel?",type:"single",options:["Right now - I need help urgently","Next 1–3 months","Next 6–12 months","Just exploring"]}
   ]}
 ];
 
@@ -1297,16 +1306,20 @@ function Onboarding(){
   const pct = Math.round((step)/(INTAKE.length)*100);
   return `<div class="narrow pad">
     <div class="bar" style="margin-bottom:8px"><span style="width:${pct}%"></span></div>
-    <p class="small muted">Step ${step+1} of ${INTAKE.length}</p>
+    <p class="small muted">Step ${step+1} of ${INTAKE.length} <span style="margin:0 8px;opacity:.5">·</span> <i class="ti ti-cloud-check" aria-hidden="true"></i> Saved automatically - leave anytime, pick up here</p>
     <h2>${sec.title}</h2>
     <p class="muted">${sec.subtitle}</p>
     <div class="card">
-      ${sec.questions.map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}
-      <hr style="border:none;border-top:1px solid var(--border);margin:22px 0">
+      ${sec.questions.filter(q=>!q.demographic).map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}
+      ${sec.questions.some(q=>q.demographic)?`<details style="margin-top:22px;border-top:1px solid var(--border);padding-top:18px">
+        <summary style="cursor:pointer;font-weight:600;color:var(--ink-strong)">More about you <span class="muted small">(optional - unlocks a few targeted programs)</span></summary>
+        <div style="margin-top:14px">${sec.questions.filter(q=>q.demographic).map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}</div>
+      </details>`:''}
+      ${step===INTAKE.length-1?`<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">
       <label class="lbl" for="notes-${sec.id}">${STEP_NOTES_PROMPT}</label>
-      <textarea id="notes-${sec.id}" class="field" rows="3" placeholder="Your words, your situation - anything the boxes above missed." style="min-height:80px;resize:vertical" oninput="setStepNote('${sec.id}',this.value)">${esc((S.answers.stepNotes||{})[sec.id]||"")}</textarea>
+      <textarea id="notes-${sec.id}" class="field" rows="3" placeholder="Your words, your situation - anything the boxes above missed." style="min-height:80px;resize:vertical" oninput="setStepNote('${sec.id}',this.value)">${esc((S.answers.stepNotes||{})[sec.id]||"")}</textarea>`:''}
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:18px">
+    <div class="flow-nav" style="display:flex;justify-content:space-between;margin-top:18px">
       <button class="btn ghost" ${step===0?'disabled':''} onclick="gotoStep(${step-1})"><i class="ti ti-arrow-left"></i> Back</button>
       ${step<INTAKE.length-1
         ? `<button class="btn" onclick="gotoStep(${step+1})">Next <i class="ti ti-arrow-right"></i></button>`
@@ -1381,7 +1394,9 @@ function question(q){
     return `<fieldset style="border:none;padding:0;margin:0"><legend class="lbl" style="padding:0">${q.label} <span class="muted small">(select all that apply)</span></legend>${q.helper?`<p class="small muted" style="margin:0 0 8px">${q.helper}</p>`:''}<div>${chips}</div>${custom}</fieldset>`;
   }
   // single
-  const opts=q.options.map(o=>`<button type="button" aria-pressed="${val===o}" class="opt ${val===o?'sel':''}" data-val="${esc(o)}" onclick="setAns('${q.id}',this.dataset.val)">${o}</button>`).join("");
+  const opts=q.compact
+    ? `<div role="radiogroup" aria-label="${esc(q.label)}">`+q.options.map(o=>`<button type="button" role="radio" aria-checked="${val===o}" class="chip selectable ${val===o?'selected':''}" data-val="${esc(o)}" onclick="setAns('${q.id}',this.dataset.val)">${o}</button>`).join("")+`</div>`
+    : q.options.map(o=>`<button type="button" aria-pressed="${val===o}" class="opt ${val===o?'sel':''}" data-val="${esc(o)}" onclick="setAns('${q.id}',this.dataset.val)">${o}</button>`).join("");
   const isCustomVal=val&&!q.options.includes(val);
   const other=q.allowCustom?`<div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;align-items:center">
     <input class="field" id="other-${q.id}" style="flex:1;min-width:180px" placeholder="Other - type your own answer…" aria-label="Other answer" value="${isCustomVal?esc(val):''}" onkeydown="if(event.key==='Enter'){event.preventDefault();useOther('${q.id}')}">
@@ -1425,7 +1440,7 @@ function Dashboard(){
         <h3 style="margin:2px 0 0">${dest.label}</h3>
         <p class="small muted" style="margin:2px 0 0">Every action below routes toward this. Fit scores are demo estimates.</p>
       </div>
-      ${dest.fitPct?`<div style="text-align:center"><div style="font-size:34px;font-weight:700;color:var(--primary);line-height:1">${dest.fitPct}%</div><div class="small muted">fit (demo)</div></div>`:''}
+      ${dest.fitPct?`<div style="text-align:center"><div style="font-size:34px;font-weight:700;color:var(--primary);line-height:1">${dest.fitPct}%</div><div class="small muted">fit estimate</div></div>`:''}
       <a class="btn ghost sm" href="#/pathfinder"><i class="ti ti-compass"></i> Change path</a>
     </div>`
     :`<div class="card" style="margin-top:16px;border:2px dashed var(--border);display:flex;gap:16px;align-items:center;flex-wrap:wrap">
@@ -1642,7 +1657,7 @@ function Print(){
         <div><span class="muted">Branch:</span> ${a.branch||'-'}</div>
         <div><span class="muted">Urgency:</span> ${a.urgency||'-'}</div>
       </div>${goals?`<div style="margin-top:8px;font-size:14px"><span class="muted">Top goals:</span> ${goals}</div>`:''}
-      ${gp.destination?`<div style="margin-top:8px;font-size:14px"><span class="muted">Destination:</span> ${gp.destination.label}${gp.destination.fitPct?` - ${gp.destination.fitPct}% fit (demo)`:''}</div>`:''}
+      ${gp.destination?`<div style="margin-top:8px;font-size:14px"><span class="muted">Destination:</span> ${gp.destination.label}${gp.destination.fitPct?` - ${gp.destination.fitPct}% fit estimate`:''}</div>`:''}
     </div></div>
     ${gp.crisis?`<div class="print-section"><div class="print-box" style="border-color:#D89;background:#FBEAEA"><strong>Immediate support (free, confidential, 24/7):</strong> Veterans Crisis Line - dial <strong>988</strong> then press <strong>1</strong>, or text <strong>838255</strong>. Homeless Veterans line: <strong>1-877-424-3838</strong>.</div></div>`:''}
     <div class="print-section"><h3>Top priorities</h3><ol style="margin:8px 0 0;padding-left:22px">${gp.priorities.map(p=>`<li style="margin-bottom:5px">${p}</li>`).join("")}</ol></div>
@@ -2214,7 +2229,7 @@ function ActionPlan(){
   const hiddenTotal=[...gp.plan30,...gp.plan60,...gp.plan90].filter(it=>st(it)==="todo"&&it.priority!=="high").length;
   return `<div class="wrap pad">
     <h2>Action plan</h2>
-    <p class="muted">Tap a box to update it. Progress saves in this browser.</p>
+    <p class="muted">Tap a box to update it - once for in progress, again for done. Progress saves in this browser.</p>
     <div class="card" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:12px;flex-wrap:wrap"><strong>Overall progress</strong><span class="muted small">${prog.done} of ${prog.total} complete</span></div>
       <div class="bar"><span style="width:${prog.total?Math.round(prog.done/prog.total*100):0}%"></span></div>
@@ -2425,7 +2440,7 @@ function Pathfinder(){
 }
 function pfIntro(){
   const chosen=careerById(S.chosenPath?S.chosenPath.careerId:null);
-  const cur=chosen?`<div class="callout info" style="margin:12px 0"><i class="ti ti-flag-3"></i><div><strong>Current destination: ${chosen.label}</strong>${S.chosenPath.fitPct?` - ${S.chosenPath.fitPct}% fit (demo)`:''}. You can change it anytime below.</div></div>`:'';
+  const cur=chosen?`<div class="callout info" style="margin:12px 0"><i class="ti ti-flag-3"></i><div><strong>Current destination: ${chosen.label}</strong>${S.chosenPath.fitPct?` - ${S.chosenPath.fitPct}% fit estimate`:''}. You can change it anytime below.</div></div>`:'';
   return `<div class="wrap pad">
     <div class="intro-split" style="margin-bottom:8px">
       <div>
@@ -2488,10 +2503,10 @@ function pfAssess(q){
     <div class="card"><textarea class="field" rows="4" placeholder="Optional - write anything" style="min-height:110px;resize:vertical" oninput="pfFreeText(this.value)">${esc(S.assessmentFree||"")}</textarea></div>`;
   }
   return `<div class="narrow pad">
-    <div class="bar" role="progressbar" aria-valuenow="${Math.round(pct)}" aria-valuemin="0" aria-valuemax="100" aria-label="Pathfinder question ${Math.min(q+1,total+1)} of ${total+1}"><span style="width:${pct}%"></span></div>
-    <p class="small muted" aria-live="polite" style="margin-top:8px">Question ${Math.min(q+1,total+1)} of ${total+1}</p>
+    <div class="bar" role="progressbar" aria-valuenow="${Math.round(pct)}" aria-valuemin="0" aria-valuemax="100" aria-label="${isFree?`Pathfinder: optional final note`:`Pathfinder question ${q+1} of ${total}`}"><span style="width:${pct}%"></span></div>
+    <p class="small muted" aria-live="polite" style="margin-top:8px">${isFree?`One more - optional`:`Question ${q+1} of ${total}`}</p>
     ${body}
-    <div style="display:flex;justify-content:space-between;margin-top:18px">
+    <div class="flow-nav" style="display:flex;justify-content:space-between;margin-top:18px">
       <button class="btn ghost" onclick="${q===0?"pfSet('intro')":`pfSet('assess',${q-1})`}"><i class="ti ti-arrow-left"></i> Back</button>
       ${isFree
         ?`<button class="btn gold" onclick="pfSet('results')"><i class="ti ti-sparkles"></i> Show my best-fit paths</button>`
@@ -2521,7 +2536,7 @@ function pfResults(){
         </div>
         <div style="text-align:center">
           <div style="font-size:40px;font-weight:700;color:var(--primary);line-height:1">${top.fit}%</div>
-          <div class="small muted">fit (demo)</div>
+          <div class="small muted">fit estimate</div>
         </div>
       </div>
       <div style="margin-top:14px">
@@ -2570,7 +2585,7 @@ function pfDetail(careerId,fromResults){
         <p class="muted" style="margin:2px 0 0">${t?t.label:''} track · ${c.paySample} · ${c.outlookSample} <span class="small">(figures change - verify at source)</span></p>
         ${(c.blsUrl||c.onetUrl)?`<p class="small muted" style="margin:4px 0 0">Pay/outlook: ${c.blsUrl?`<a href="${c.blsUrl}" target="_blank" rel="noopener">BLS OOH</a>`:''}${c.blsUrl&&c.onetUrl?' · ':''}${c.onetUrl?`<a href="${c.onetUrl}" target="_blank" rel="noopener">O*NET profile</a>`:''}</p>`:''}
       </div>
-      ${fit?`<div style="text-align:center"><div style="font-size:34px;font-weight:700;color:var(--primary);line-height:1">${fit.fit}%</div><div class="small muted">fit (demo)</div></div>`:''}
+      ${fit?`<div style="text-align:center"><div style="font-size:34px;font-weight:700;color:var(--primary);line-height:1">${fit.fit}%</div><div class="small muted">fit estimate</div></div>`:''}
     </div>
     <p style="margin-top:12px">${c.blurb}</p>
 
