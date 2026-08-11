@@ -239,6 +239,15 @@
     a[href^="#"]::after,a[href^="/"]::after{content:""}
     @page{size:letter;margin:0.6in}
   }
+
+/* Sticky action bar on phone flows: Back/Next stay at thumb height (mirrors app). */
+@media (max-width: 760px) {
+  .flow-nav { position:sticky; bottom:0; z-index:20; margin:18px -8px 0; padding:10px 8px calc(10px + env(safe-area-inset-bottom));
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border-top:1px solid var(--hairline, rgba(20,35,26,.09)); }
+  body.has-tabbar .flow-nav { bottom:calc(64px + env(safe-area-inset-bottom)); }
+}
 </style>
 </head>
 <body data-theme="professional">
@@ -1297,7 +1306,7 @@ function Onboarding(){
   const pct = Math.round((step)/(INTAKE.length)*100);
   return `<div class="narrow pad">
     <div class="bar" style="margin-bottom:8px"><span style="width:${pct}%"></span></div>
-    <p class="small muted">Step ${step+1} of ${INTAKE.length}</p>
+    <p class="small muted">Step ${step+1} of ${INTAKE.length} <span style="margin:0 8px;opacity:.5">·</span> <i class="ti ti-cloud-check" aria-hidden="true"></i> Saved automatically - leave anytime, pick up here</p>
     <h2>${sec.title}</h2>
     <p class="muted">${sec.subtitle}</p>
     <div class="card">
@@ -1310,7 +1319,7 @@ function Onboarding(){
       <label class="lbl" for="notes-${sec.id}">${STEP_NOTES_PROMPT}</label>
       <textarea id="notes-${sec.id}" class="field" rows="3" placeholder="Your words, your situation - anything the boxes above missed." style="min-height:80px;resize:vertical" oninput="setStepNote('${sec.id}',this.value)">${esc((S.answers.stepNotes||{})[sec.id]||"")}</textarea>`:''}
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:18px">
+    <div class="flow-nav" style="display:flex;justify-content:space-between;margin-top:18px">
       <button class="btn ghost" ${step===0?'disabled':''} onclick="gotoStep(${step-1})"><i class="ti ti-arrow-left"></i> Back</button>
       ${step<INTAKE.length-1
         ? `<button class="btn" onclick="gotoStep(${step+1})">Next <i class="ti ti-arrow-right"></i></button>`
@@ -2497,7 +2506,7 @@ function pfAssess(q){
     <div class="bar" role="progressbar" aria-valuenow="${Math.round(pct)}" aria-valuemin="0" aria-valuemax="100" aria-label="${isFree?`Pathfinder: optional final note`:`Pathfinder question ${q+1} of ${total}`}"><span style="width:${pct}%"></span></div>
     <p class="small muted" aria-live="polite" style="margin-top:8px">${isFree?`One more - optional`:`Question ${q+1} of ${total}`}</p>
     ${body}
-    <div style="display:flex;justify-content:space-between;margin-top:18px">
+    <div class="flow-nav" style="display:flex;justify-content:space-between;margin-top:18px">
       <button class="btn ghost" onclick="${q===0?"pfSet('intro')":`pfSet('assess',${q-1})`}"><i class="ti ti-arrow-left"></i> Back</button>
       ${isFree
         ?`<button class="btn gold" onclick="pfSet('results')"><i class="ti ti-sparkles"></i> Show my best-fit paths</button>`
