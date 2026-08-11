@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "July 27, 2026";
+const LAST_UPDATED = "August 11, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         </h3>
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 8 }}>
           <li>We never sell your data, and we do not share it with advertisers.</li>
-          <li>There are no analytics tools, no trackers, and no advertising pixels on this site.</li>
+          <li>No trackers and no advertising pixels. The only measurement is an anonymous page counter that cannot identify you - explained below.</li>
           <li>You can use most of the tools without an account. Building and saving a gameplan needs one.</li>
           <li>Your password is never seen or stored by us.</li>
           <li>You can ask us to delete everything, and we will.</li>
@@ -112,6 +112,11 @@ export default function PrivacyPage() {
             <strong>GitHub Pages</strong> serves the website itself. Like any web host, its servers log the
             IP addresses that request pages.
           </li>
+          <li>
+            <strong>GoatCounter</strong> counts page views anonymously so we can tell which pages actually
+            help. No cookies, no personal identifiers - it cannot tell who you are, and neither can we.
+            Explained plainly below.
+          </li>
         </ul>
         <p style={{ margin: "10px 0 0" }}>
           Fonts and icons are served from this site directly, not from a font network, so no additional
@@ -125,11 +130,26 @@ export default function PrivacyPage() {
       <Section title="What we do not do">
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
           <li>We do not sell, rent, or trade your information to anyone.</li>
-          <li>We do not run analytics, tracking pixels, or advertising scripts. There are none on this site.</li>
+          <li>We do not run advertising scripts, tracking pixels, or cross-site tracking of any kind. The only measurement on this site is the anonymous page counter described in the next section.</li>
           <li>We do not sell your details as a sales lead to lenders, insurers, agents, or schools.</li>
           <li>We do not use your answers to train any AI model. Your plan is produced by fixed rules we wrote, not by a language model.</li>
           <li>We do not share anything with the VA or any government agency, and they do not see your account.</li>
         </ul>
+      </Section>
+
+      <Section title="The anonymous page counter, in plain terms">
+        We use GoatCounter, an open-source counter built for exactly one job: telling us how many times
+        each page was viewed. Here is everything it records about a visit: which page, which site linked
+        to it, the browser family, the screen size, and the country. Here is what it does not have: no
+        cookies, no fingerprinting, no names, no emails, no link to your account, and no way to recognize
+        you if you come back tomorrow.
+        <p style={{ margin: "10px 0 0" }}>
+          We cannot look anyone up in it, and neither can anyone else - there is nothing personal in it to
+          look up. It never sees what you type, your answers, or your plan; those follow the rules in the
+          sections above. If your browser sends a Do Not Track or Global Privacy Control signal, we do not
+          count the visit at all. GoatCounter publishes its own privacy policy at{" "}
+          <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">goatcounter.com/help/privacy</a>.
+        </p>
       </Section>
 
       <Section title="How it's protected">

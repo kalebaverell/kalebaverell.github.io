@@ -13,4 +13,4 @@
 //      not do" analytics line, the "who else touches your data" list
 //      (GoatCounter joins it), and the anonymous-counting section.
 // Never flip this on without the privacy page moving with it.
-export const GOATCOUNTER_CODE = "";
+export const GOATCOUNTER_CODE = "vetpath";
