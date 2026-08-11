@@ -10,6 +10,7 @@ import { SITE, OG_IMAGE } from "@/lib/metadata";
 import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
 import FunnelGate from "@/components/FunnelGate";
+import Analytics from "@/components/Analytics";
 
 // Kept near the 155-character mark so search results and link previews show it
 // whole. The old copy said "Sample data only", which stopped being true once the
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <BottomTabs />
             <ProfileSync />
             <AuthModal />
+            <Analytics />
           </StoreProvider>
         </AuthProvider>
         {/* Register the offline/update service worker only in production builds - running it
