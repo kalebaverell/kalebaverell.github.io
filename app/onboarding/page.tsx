@@ -102,7 +102,13 @@ function Intake() {
   return (
     <Wrap narrow>
       <ProgressBar pct={pct} label={`Intake progress: step ${step + 1} of ${INTAKE.length}`} />
-      <p className="small muted" aria-live="polite" style={{ marginTop: 8 }}>Step {step + 1} of {INTAKE.length}</p>
+      {/* The sync is real (local always, account when signed in) - saying so where
+          the anxiety happens is what lets a veteran walk away mid-form and return. */}
+      <p className="small muted" aria-live="polite" style={{ marginTop: 8 }}>
+        Step {step + 1} of {INTAKE.length}
+        <span style={{ margin: "0 8px", opacity: .5 }}>·</span>
+        <i className="ti ti-cloud-check" aria-hidden="true" /> Saved automatically - leave anytime, pick up here
+      </p>
       <h2>{sec.title}</h2>
       <p className="muted">{sec.subtitle}</p>
       <div className="card">
@@ -148,7 +154,7 @@ function Intake() {
           </>
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
+      <div className="flow-nav" style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
         <button className="btn ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>
           <i className="ti ti-arrow-left" /> Back
         </button>

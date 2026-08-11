@@ -151,7 +151,7 @@ function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
           </div>
         </>
       )}
-      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
+      <div className="flow-nav" style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
         <button className="btn ghost" onClick={() => (q === 0 ? setView({ kind: "intro" }) : setView({ kind: "assess", q: q - 1 }))}>
           <i className="ti ti-arrow-left" /> Back
         </button>
