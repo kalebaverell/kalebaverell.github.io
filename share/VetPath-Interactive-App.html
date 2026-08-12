@@ -384,7 +384,17 @@ const CAREERS = [
 const ASSESSMENT = {
   _note:"SAMPLE / DEMO DATA - Pathfinder decision-engine questions. Question design informed by the U.S. Department of Labor's O*NET® Interest Profiler framework (Holland RIASEC) and O*NET Work Values; VetPath is an independent tool - USDOL/ETA has not approved, endorsed, or tested this adaptation. This is a decision aid, not a clinical instrument.",
   questions:[
-    {id:"pull",label:"What kind of work pulls at you most?",options:[
+    {id:"wins",label:"When two paths pull in different directions, what wins?",
+     help:"Your later answers refine the results - this one settles conflicts. Example: if pay wins, a high-paying path stays on top even where it clashes with a preference, and we label the clash instead of hiding the path.",
+     options:[
+      {label:"Making the most money - I'll flex on everything else",objective:"money"},
+      {label:"Steady and secure - reliable pay, low churn",objective:"stability"},
+      {label:"Enjoying the day-to-day work",objective:"enjoy"},
+      {label:"Working and earning as fast as possible",objective:"speed"}
+    ]},
+    {id:"pull",label:"What kind of work pulls at you? (pick up to 3)",multi:true,max:3,
+     help:"Pick up to three. Most people are pulled more than one way - we blend them instead of making you choose too early.",
+     options:[
       {label:"Building or fixing things with my hands",w:{hands:5,physical:3,tech:1}},
       {label:"Technology and systems",w:{tech:5,data:3}},
       {label:"Helping or taking care of people",w:{care:5,people:4}},
@@ -641,17 +651,33 @@ const DIM_PHRASE = {
 };
 const SPEED_ORDER = ["weeks","months","2yr","4yr"];
 
+// Normalizes an answer to a list - multi-select questions (pull) store an
+// array, old saved states hold plain strings. Both shapes must keep working.
+function asList(v){ if(v==null||v==="")return[]; return Array.isArray(v)?v:[v]; }
+
+// The ruling objective from the `wins` question; "enjoy" doubles as the
+// default so pre-wins saved states score exactly as before.
+function rulingObjective(answers){
+  const q=ASSESSMENT.questions.find(x=>x.id==="wins");
+  const chosen=asList(answers["wins"])[0];
+  const opt=q?q.options.find(o=>o.label===chosen):null;
+  const obj=opt?opt.objective:null;
+  return (obj==="money"||obj==="stability"||obj==="speed")?obj:"enjoy";
+}
+
 function userVector(input){
   const sums={}, counts={};
   let speed, place;
   for(const q of ASSESSMENT.questions){
-    const chosen=input.answers[q.id];
-    if(!chosen)continue;
-    const opt=q.options.find(o=>o.label===chosen);
-    if(!opt)continue;
-    if(opt.speed)speed=opt.speed;
-    if(opt.place)place=opt.place;
-    if(opt.w){ for(const [d,v] of Object.entries(opt.w)){ sums[d]=(sums[d]||0)+v; counts[d]=(counts[d]||0)+1; } }
+    // Multi-select answers (pull) blend: every selected direction contributes
+    // its weights instead of forcing a premature single choice.
+    for(const label of asList(input.answers[q.id])){
+      const opt=q.options.find(o=>o.label===label);
+      if(!opt)continue;
+      if(opt.speed)speed=opt.speed;
+      if(opt.place)place=opt.place;
+      if(opt.w){ for(const [d,v] of Object.entries(opt.w)){ sums[d]=(sums[d]||0)+v; counts[d]=(counts[d]||0)+1; } }
+    }
   }
   const vec={};
   for(const d of DIMS) vec[d]=counts[d]?sums[d]/counts[d]:2.5; // neutral where unsignaled
@@ -667,6 +693,7 @@ function careerMedianPay(c){
 function scoreCareers(input){
   const {vec,speed}=userVector(input);
   const a=input.intake;
+  const objective=rulingObjective(input.answers);
   const salMin=(a.salaryTarget&&typeof a.salaryTarget.min==="number")?a.salaryTarget.min:null;
   const salMax=(a.salaryTarget&&typeof a.salaryTarget.max==="number")?a.salaryTarget.max:null;
   const hasSalary=salMin!=null||salMax!=null;
@@ -714,8 +741,45 @@ function scoreCareers(input){
       }
     }
 
-    return {career:c, fit:Math.max(35,Math.min(99,Math.round(fit))), why, boosts, medianPay, meetsSalary, belowTarget};
+    // Honest clash labels: dims this career leans on hard that the veteran
+    // signaled away from. Under a ruling objective these paths stay ranked
+    // on that objective - the clash is disclosed instead of hiding the path.
+    const tradeoffs=[];
+    if(objective!=="enjoy"){
+      const OBJ_WORD={money:"pay",stability:"stability",speed:"a fast start"};
+      for(const d of DIMS){
+        if(c.attrs[d]>=4 && vec[d]<=1.5){
+          tradeoffs.push("Heavy on "+DIM_PHRASE[d]+" - more than you'd prefer. You said "+OBJ_WORD[objective]+" wins, so it stays ranked on "+OBJ_WORD[objective]+".");
+        }
+      }
+    }
+
+    return {career:c, fit:Math.max(35,Math.min(99,Math.round(fit))), why, boosts, medianPay, meetsSalary, belowTarget, tradeoffs};
   });
+
+  // The ruling objective decides the ORDER. The fit number stays what it
+  // always was - preference fit - so a people-heavy path ranked #1 for a
+  // money-first veteran shows its true (lower) fit next to its pay, with
+  // the trade-off spelled out. Preferences refine; they never veto.
+  if(objective==="money"){
+    const pays=results.map(r=>r.medianPay).filter(p=>p!=null);
+    const lo=Math.min.apply(null,pays), hi=Math.max.apply(null,pays);
+    const payNorm=p=>p==null?40:(hi===lo?50:((p-lo)/(hi-lo))*100);
+    for(const r of results){
+      if(r.medianPay!=null && payNorm(r.medianPay)>=75){
+        r.boosts.unshift("Median pay ~$"+r.medianPay.toLocaleString()+" - among the highest here, and you said money wins");
+      }
+    }
+    return results.sort((x,y)=>(0.6*payNorm(y.medianPay)+0.4*y.fit)-(0.6*payNorm(x.medianPay)+0.4*x.fit));
+  }
+  if(objective==="stability"){
+    const stab=r=>r.fit+(r.career.attrs.risk>=4?-8:(r.career.attrs.risk<=2?3:0));
+    return results.sort((x,y)=>stab(y)-stab(x));
+  }
+  if(objective==="speed"){
+    const quick=r=>r.fit+(3-SPEED_ORDER.indexOf(r.career.speed))*6;
+    return results.sort((x,y)=>quick(y)-quick(x));
+  }
   return results.sort((x,y)=>y.fit-x.fit);
 }
 
@@ -2415,6 +2479,21 @@ function pfSet(kind,arg,extra){
 }
 function pfPick(qi,oi){
   const q=ASSESSMENT.questions[qi];
+  if(q.multi){
+    // Multi-select (pull): toggle in place, capped at q.max; no auto-advance.
+    // Tolerates an old string value by folding it into the array first.
+    const cur=S.assessment[q.id];
+    const arr=Array.isArray(cur)?cur.slice():(typeof cur==="string"&&cur?[cur]:[]);
+    const label=q.options[oi].label;
+    const i=arr.indexOf(label);
+    if(i>=0)arr.splice(i,1);
+    else if(arr.length<(q.max||3))arr.push(label);
+    else return; // at cap - ignore instead of silently evicting a choice
+    S.assessment[q.id]=arr;
+    save();
+    router();
+    return;
+  }
   S.assessment[q.id]=q.options[oi].label;
   save();
   PF={kind:"assess",q:qi+1};
@@ -2493,12 +2572,20 @@ function pfAssess(q){
   const isFree=q>=total;
   const qi=Math.min(q,total-1);
   const question=ASSESSMENT.questions[qi];
-  const chosen=S.assessment[question.id];
+  const picked=asList(S.assessment[question.id]);
+  const chosen=picked[0];
+  const isMulti=!!question.multi;
+  const max=question.max||3;
   const pct=(q/(total+1))*100;
   let body;
   if(!isFree){
     body=`<h2>${question.label}</h2>
-    <div class="card">${question.options.map((o,oi)=>`<button type="button" aria-pressed="${chosen===o.label}" class="opt ${chosen===o.label?'sel':''}" onclick="pfPick(${qi},${oi})">${o.label}</button>`).join("")}</div>`;
+    ${question.help?`<p class="muted small" style="margin:0 0 10px">${question.help}</p>`:''}
+    <div class="card">${question.options.map((o,oi)=>{
+      const sel=isMulti?picked.includes(o.label):chosen===o.label;
+      return `<button type="button" aria-pressed="${sel}" class="opt ${sel?'sel':''}" onclick="pfPick(${qi},${oi})">${isMulti?`<i class="ti ${sel?'ti-square-check':'ti-square'}" aria-hidden="true" style="margin-right:8px"></i>`:''}${o.label}</button>`;
+    }).join("")}</div>
+    ${isMulti?`<p class="small muted" aria-live="polite" style="margin:8px 0 0">${picked.length===0?`Pick 1 to ${max}.`:`${picked.length} of ${max} picked - add another or continue.`}</p>`:''}`;
   }else{
     body=`<h2>Last one - in your own words</h2>
     <p class="muted">${ASSESSMENT.freePrompt}</p>
@@ -2512,19 +2599,25 @@ function pfAssess(q){
       <button class="btn ghost" onclick="${q===0?"pfSet('intro')":`pfSet('assess',${q-1})`}"><i class="ti ti-arrow-left"></i> Back</button>
       ${isFree
         ?`<button class="btn gold" onclick="pfSet('results')"><i class="ti ti-sparkles"></i> Show my best-fit paths</button>`
-        :`<button class="btn" ${chosen?'':'disabled'} onclick="pfSet('assess',${q+1})">${chosen?'Next':'Pick one to continue'} <i class="ti ti-arrow-right"></i></button>`}
+        :`<button class="btn" ${picked.length>0?'':'disabled'} onclick="pfSet('assess',${q+1})">${picked.length>0?'Next':(isMulti?'Pick at least one':'Pick one to continue')} <i class="ti ti-arrow-right"></i></button>`}
     </div>
   </div>`;
 }
+const PF_OBJECTIVE_LINE={
+  money:"You said money wins, so paths are ordered by earning power first. Fit stays honest: where a top-pay path clashes with a preference, the clash is labeled - never hidden.",
+  stability:"You said steady wins, so reliable, lower-churn paths rise first. Where one clashes with a preference, the clash is labeled.",
+  speed:"You said a fast start wins, so the quickest on-ramps rise first. Where one clashes with a preference, the clash is labeled."
+};
 function pfResults(){
   const fits=pfFits();
+  const objective=rulingObjective(S.assessment);
   const top=fits[0];
   const runners=fits.slice(1,4);
   const tt=trackById(topTrack(fits));
   return `<div class="wrap pad">
     <button type="button" class="backlink" style="background:transparent;border:none;font-family:inherit;padding:8px 8px 8px 0" onclick="pfSet('assess',${ASSESSMENT.questions.length})"><i class="ti ti-arrow-left" aria-hidden="true"></i> Adjust answers</button>
     <h2>Your best-fit path</h2>
-    <p class="muted">Recommended track: <strong>${tt?tt.label:''}</strong>. Fit scores are demo estimates built only from your answers - here's the reasoning, not a black box.</p>
+    <p class="muted">Recommended track: <strong>${tt?tt.label:''}</strong>. ${PF_OBJECTIVE_LINE[objective]||"Fit scores are demo estimates built only from your answers - here's the reasoning, not a black box."}</p>
 
     <div class="card" style="border:2px solid var(--accent);margin-top:8px">
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
@@ -2548,6 +2641,10 @@ function pfResults(){
           ${top.boosts.map(b=>`<li class="small" style="margin-bottom:3px">${b}.</li>`).join("")}
         </ul>
       </div>
+      ${(top.tradeoffs&&top.tradeoffs.length)?`<div style="margin-top:10px;background:var(--accent-soft);border-radius:8px;padding:8px 12px">
+        <strong class="small" style="color:var(--accent-ink)"><i class="ti ti-scale" aria-hidden="true"></i> The trade-off, said plainly:</strong>
+        <ul style="margin:4px 0 0;padding-left:18px">${top.tradeoffs.map(t=>`<li class="small" style="margin-bottom:2px">${t}</li>`).join("")}</ul>
+      </div>`:''}
       <button class="btn gold" style="margin-top:14px" onclick="pfSet('detail','${top.career.id}',1)">See the full route <i class="ti ti-arrow-right"></i></button>
     </div>
 
@@ -2561,6 +2658,7 @@ function pfResults(){
         <span class="muted small" style="display:block;margin-top:8px">${f.career.blurb}</span>
         ${f.meetsSalary?`<span class="chip sm" style="margin-top:8px;background:var(--success-soft);color:var(--success)"><i class="ti ti-check" aria-hidden="true"></i> In your pay range</span>`:''}
         ${f.belowTarget&&f.medianPay!=null?`<span class="chip sm" style="margin-top:8px;background:var(--accent-soft);color:var(--accent-ink)"><i class="ti ti-trending-down" aria-hidden="true"></i> Median ~$${f.medianPay.toLocaleString()} - below your target</span>`:''}
+        ${(f.tradeoffs&&f.tradeoffs.length)?`<span class="chip sm" style="margin-top:8px;background:var(--accent-soft);color:var(--accent-ink)"><i class="ti ti-scale" aria-hidden="true"></i> ${f.tradeoffs[0].split(" - ")[0]} - labeled trade-off</span>`:''}
       </button>`).join("")}
     </div>
     <p class="small muted" style="margin-top:16px">None of these feel right? <button type="button" onclick="pfSet('browse')" style="background:none;border:none;color:var(--info);cursor:pointer;font-family:inherit;font-size:inherit;padding:0;text-decoration:underline">Browse all paths</button> or adjust your answers.</p>
@@ -2573,7 +2671,7 @@ function pfDetail(careerId,fromResults){
   if(!c)return `<div class="wrap pad"><p class="muted">Path not found.</p></div>`;
   const fit=fromResults?(pfFits().find(f=>f.career.id===c.id)||null):null;
   const placeQ=ASSESSMENT.questions.find(q=>q.id==="place");
-  const placeOpt=placeQ?placeQ.options.find(o=>o.label===S.assessment["place"]):null;
+  const placeOpt=placeQ?placeQ.options.find(o=>o.label===asList(S.assessment["place"])[0]):null;
   const place=placeOpt?placeOpt.place:undefined;
   const loc=locationGuidance(S.answers,place,c);
   const t=trackById(c.track);
