@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { TRACKS, CAREERS, ASSESSMENT, careerById, trackById } from "@/lib/data";
-import { scoreCareers, topTrack, locationGuidance } from "@/lib/pathfinder";
+import { scoreCareers, topTrack, locationGuidance, asList, rulingObjective } from "@/lib/pathfinder";
 import type { Career, CareerFit } from "@/lib/types";
 import { Wrap, Callout, ProgressBar, Eyebrow } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
@@ -117,29 +117,47 @@ function Browse({ track, setView }: { track?: string; setView: (v: View) => void
 }
 
 function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
-  const { s, setAssessment, setAssessmentFree } = useStore();
+  const { s, setAssessment, toggleAssessmentMulti, setAssessmentFree } = useStore();
   const total = ASSESSMENT.questions.length;
   const isFree = q >= total;
   const question = ASSESSMENT.questions[Math.min(q, total - 1)];
-  const chosen = s.assessment[question?.id];
+  // Multi-select questions (pull) hold an array; old saved profiles may hold
+  // a plain string there - asList tolerates both.
+  const picked = asList(s.assessment[question?.id]);
+  const chosen = picked[0];
+  const isMulti = !!question?.multi;
+  const max = question?.max ?? 3;
 
   return (
     <Wrap narrow>
-      {/* The pitch says "10 questions", so the counter counts those 10 - the
-          optional free-text box at the end is a bonus, not question 11. */}
+      {/* The counter counts the real questions - the optional free-text box
+          at the end is a bonus, not an extra question. */}
       <ProgressBar pct={(q / (total + 1)) * 100} label={isFree ? "Pathfinder: optional final note" : `Pathfinder question ${q + 1} of ${total}`} />
       <p className="small muted" aria-live="polite" style={{ marginTop: 8 }}>{isFree ? "One more - optional" : `Question ${q + 1} of ${total}`}</p>
       {!isFree ? (
         <>
           <h2>{question.label}</h2>
+          {question.help && <p className="muted small" style={{ margin: "0 0 10px" }}>{question.help}</p>}
           <div className="card">
-            {question.options.map((o) => (
-              <button key={o.label} type="button" aria-pressed={chosen === o.label} className={`opt ${chosen === o.label ? "sel" : ""}`}
-                onClick={() => { setAssessment(question.id, o.label); setTimeout(() => setView({ kind: "assess", q: q + 1 }), 150); }}>
-                {o.label}
-              </button>
-            ))}
+            {question.options.map((o) => {
+              const sel = isMulti ? picked.includes(o.label) : chosen === o.label;
+              return (
+                <button key={o.label} type="button" aria-pressed={sel} className={`opt ${sel ? "sel" : ""}`}
+                  onClick={() => {
+                    if (isMulti) toggleAssessmentMulti(question.id, o.label, max);
+                    else { setAssessment(question.id, o.label); setTimeout(() => setView({ kind: "assess", q: q + 1 }), 150); }
+                  }}>
+                  {isMulti && <i className={`ti ${sel ? "ti-square-check" : "ti-square"}`} aria-hidden="true" style={{ marginRight: 8 }} />}
+                  {o.label}
+                </button>
+              );
+            })}
           </div>
+          {isMulti && (
+            <p className="small muted" aria-live="polite" style={{ margin: "8px 0 0" }}>
+              {picked.length === 0 ? `Pick 1 to ${max}.` : `${picked.length} of ${max} picked - add another or continue.`}
+            </p>
+          )}
         </>
       ) : (
         <>
@@ -158,8 +176,8 @@ function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
         {isFree ? (
           <button className="btn gold" onClick={() => setView({ kind: "results" })}><i className="ti ti-sparkles" /> Show my best-fit paths</button>
         ) : (
-          <button className="btn" disabled={!chosen} onClick={() => setView({ kind: "assess", q: q + 1 })}>
-            {chosen ? "Next" : "Pick one to continue"} <i className="ti ti-arrow-right" />
+          <button className="btn" disabled={picked.length === 0} onClick={() => setView({ kind: "assess", q: q + 1 })}>
+            {picked.length > 0 ? "Next" : isMulti ? "Pick at least one" : "Pick one to continue"} <i className="ti ti-arrow-right" />
           </button>
         )}
       </div>
@@ -167,9 +185,16 @@ function Assess({ q, setView }: { q: number; setView: (v: View) => void }) {
   );
 }
 
+const OBJECTIVE_LINE: Record<string, string> = {
+  money: "You said money wins, so paths are ordered by earning power first. Fit stays honest: where a top-pay path clashes with a preference, the clash is labeled - never hidden.",
+  stability: "You said steady wins, so reliable, lower-churn paths rise first. Where one clashes with a preference, the clash is labeled.",
+  speed: "You said a fast start wins, so the quickest on-ramps rise first. Where one clashes with a preference, the clash is labeled.",
+};
+
 function Results({ setView }: { setView: (v: View) => void }) {
   const { s } = useStore();
   const fits = scoreCareers({ answers: s.assessment, free: s.assessmentFree, intake: s.answers });
+  const objective = rulingObjective(s.assessment);
   const top = fits[0];
   const runners = fits.slice(1, 4);
   const tt = trackById(topTrack(fits));
@@ -180,7 +205,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
         <i className="ti ti-arrow-left" aria-hidden="true" /> Adjust answers
       </button>
       <h2>Your best-fit path</h2>
-      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. Fit scores are estimates built only from your answers - here&apos;s the reasoning, not a black box.</p>
+      <p className="muted">Recommended track: <strong>{tt?.label}</strong>. {OBJECTIVE_LINE[objective] ?? "Fit scores are estimates built only from your answers - here's the reasoning, not a black box."}</p>
 
       <div className="card" style={{ border: "2px solid var(--accent)", marginTop: 8 }}>
         <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
@@ -212,6 +237,14 @@ function Results({ setView }: { setView: (v: View) => void }) {
             {top.boosts.map((b, i) => <li key={`b${i}`} className="small" style={{ marginBottom: 3 }}>{b}.</li>)}
           </ul>
         </div>
+        {(top.tradeoffs?.length ?? 0) > 0 && (
+          <div style={{ marginTop: 10, background: "var(--accent-soft)", borderRadius: 8, padding: "8px 12px" }}>
+            <strong className="small" style={{ color: "var(--accent-ink)" }}><i className="ti ti-scale" aria-hidden="true" /> The trade-off, said plainly:</strong>
+            <ul style={{ margin: "4px 0 0", paddingLeft: 18 }}>
+              {top.tradeoffs!.map((t, i) => <li key={i} className="small" style={{ marginBottom: 2 }}>{t}</li>)}
+            </ul>
+          </div>
+        )}
         <button className="btn gold" style={{ marginTop: 14 }} onClick={() => setView({ kind: "detail", careerId: top.career.id, fromResults: true })}>
           See the full route <i className="ti ti-arrow-right" />
         </button>
@@ -238,6 +271,11 @@ function Results({ setView }: { setView: (v: View) => void }) {
             {f.belowTarget && f.medianPay != null && (
               <span className="chip sm" style={{ marginTop: 8, background: "var(--accent-soft)", color: "var(--accent-ink)" }}>
                 <i className="ti ti-trending-down" aria-hidden="true" /> Median ~${f.medianPay.toLocaleString()} - below your target
+              </span>
+            )}
+            {(f.tradeoffs?.length ?? 0) > 0 && (
+              <span className="chip sm" style={{ marginTop: 8, background: "var(--accent-soft)", color: "var(--accent-ink)" }}>
+                <i className="ti ti-scale" aria-hidden="true" /> {f.tradeoffs![0].split(" - ")[0]} - labeled trade-off
               </span>
             )}
           </button>
@@ -269,7 +307,7 @@ function Detail({ careerId, fromResults, setView }: { careerId: string; fromResu
 
   const fits = fromResults ? scoreCareers({ answers: s.assessment, free: s.assessmentFree, intake: s.answers }) : null;
   const fit: CareerFit | undefined = fits?.find((f) => f.career.id === c.id);
-  const place = ASSESSMENT.questions.find((q) => q.id === "place")?.options.find((o) => o.label === s.assessment["place"])?.place;
+  const place = ASSESSMENT.questions.find((q) => q.id === "place")?.options.find((o) => o.label === asList(s.assessment["place"])[0])?.place;
   const loc = locationGuidance(s.answers, place, c);
   const t = trackById(c.track);
   const isCurrent = s.chosenPath?.careerId === c.id;

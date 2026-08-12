@@ -48,6 +48,7 @@ interface Store {
   reset: () => void;
   setStepNote: (stepId: string, text: string) => void;
   setAssessment: (qid: string, value: string) => void;
+  toggleAssessmentMulti: (qid: string, label: string, max: number) => void;
   setAssessmentFree: (text: string) => void;
   choosePath: (careerId: string, fitPct: number | null, why: string[]) => void;
   clearPath: () => void;
@@ -142,6 +143,20 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     setS((p) => ({ ...p, assessment: { ...p.assessment, [qid]: value } }));
   }, []);
 
+  // Multi-select assessment questions (pull). Tolerates an old string value
+  // by folding it into the array before toggling. Capped at `max`.
+  const toggleAssessmentMulti = useCallback((qid: string, label: string, max: number) => {
+    setS((p) => {
+      const cur = p.assessment[qid];
+      const arr = Array.isArray(cur) ? [...cur] : typeof cur === "string" && cur ? [cur] : [];
+      const i = arr.indexOf(label);
+      if (i >= 0) arr.splice(i, 1);
+      else if (arr.length < max) arr.push(label);
+      else return p; // at cap - ignore instead of silently evicting a choice
+      return { ...p, assessment: { ...p.assessment, [qid]: arr } };
+    });
+  }, []);
+
   const setAssessmentFree = useCallback((text: string) => setS((p) => ({ ...p, assessmentFree: text })), []);
 
   const choosePath = useCallback((careerId: string, fitPct: number | null, why: string[]) => {
@@ -207,7 +222,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, loadSample, reset, setStepNote, setAssessment, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, loadSample, reset, setStepNote, setAssessment, toggleAssessmentMulti, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

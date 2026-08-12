@@ -15,7 +15,7 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 - data/sampleBenefits.json → 11 categories, each with lastVerified + sources[]
 - data/sampleCareers.json → 15 careers, each with onetCode/onetUrl/blsUrl + year-labeled paySample
 - data/relocationMetros.json → 29 metros; 28 with `official` blocks (rural-telehealth exempt)
-- data/assessmentQuestions.json → 10 questions incl. id "detail"; people/"Mostly solo" has autonomy 0
+- data/assessmentQuestions.json → 11 questions incl. ids "wins" (first, objective options) and "detail"; "pull" has multi:true max:3; people/"Mostly solo" has autonomy 0
 
 ## 3. Production build — NEVER while a dev server runs (shared .next corrupts; this caused real outages)
 Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + kill by PID, plus any
@@ -28,7 +28,7 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
 3. /relocate → 2 priorities to Must → matches with official-data tags → 2-metro compare table
 4. /updates → New disability rating → Preview diff renders → Apply → success
 5. /family → renders (empty state or checkpoints depending on familyNeeds)
-6. /pathfinder → "10 quick questions"; results show attribution + My Next Move link
+6. /pathfinder → "11 quick questions"; results show attribution + My Next Move link
 7. /timeline → 4-step interview (multi-selects hold ALL clicked options — regression watch) →
    plan with 7 phases, "You are here" status pill, deadline pills w/ official source links,
    catch-up card when inside T-12, closing disclaimer; "Under 3 months" persona excludes BDD

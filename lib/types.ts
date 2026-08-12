@@ -83,6 +83,10 @@ export interface CareerFit {
   medianPay?: number | null;   // parsed BLS median (USD), for salary-range matching
   meetsSalary?: boolean | null; // vs the veteran's target range; null when no target/median
   belowTarget?: boolean | null; // median falls short of their stated minimum; drives a rank penalty + flag
+  // Honest clash labels when the ruling objective keeps a path ranked high
+  // despite a preference mismatch ("People-heavy - you said pay wins").
+  // The mismatch is disclosed, never used to hide the path.
+  tradeoffs?: string[];
 }
 
 export interface ChosenPath {
@@ -162,7 +166,10 @@ export interface AppState {
   step: number;
   theme: "professional" | "warm" | "civic";
   textSize: "base" | "lg" | "xl";
-  assessment: Record<string, string>;
+  // Single-select questions store a string; multi-select (pull) stores an
+  // array. Old saved profiles hold plain strings everywhere - readers must
+  // accept both shapes (see asList in lib/pathfinder.ts).
+  assessment: Record<string, string | string[]>;
   assessmentFree: string;
   chosenPath: ChosenPath | null;
   resume: ResumeState | null;

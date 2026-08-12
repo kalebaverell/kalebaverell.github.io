@@ -63,7 +63,9 @@ export const stateSamples = (code?: string) =>
 export const TRACKS: Track[] = (tracksJson as any).tracks;
 export const CAREERS: Career[] = (careersJson as any).careers;
 export const ASSESSMENT = assessmentJson as any as {
-  questions: { id: string; label: string; options: { label: string; w?: Record<string, number>; speed?: string; place?: string }[] }[];
+  // `multi`/`max`: multi-select questions (pull). `help`: sub-line under the
+  // label. Option `objective`: the ruling objective set by the `wins` question.
+  questions: { id: string; label: string; help?: string; multi?: boolean; max?: number; options: { label: string; w?: Record<string, number>; speed?: string; place?: string; objective?: string }[] }[];
   freePrompt: string;
 };
 export const CREDIT_MAP = creditMapJson as any as {

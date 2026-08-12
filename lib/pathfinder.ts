@@ -21,9 +21,26 @@ const DIM_PHRASE: Record<AttrDim, string> = {
 };
 
 export interface AssessmentInput {
-  answers: Record<string, string>; // question id -> chosen option label
+  // question id -> chosen option label(s). Multi-select questions (pull)
+  // store an array; old saved profiles hold plain strings everywhere.
+  answers: Record<string, string | string[]>;
   free: string;
   intake: Answers;
+}
+
+/** Normalizes an answer to a list, accepting both shapes (old string / new array). */
+export function asList(v: string | string[] | undefined): string[] {
+  if (v == null || v === "") return [];
+  return Array.isArray(v) ? v : [v];
+}
+
+/** The ruling objective from the `wins` question; "enjoy" doubles as the default (legacy behavior). */
+export type Objective = "money" | "stability" | "enjoy" | "speed";
+export function rulingObjective(answers: Record<string, string | string[]>): Objective {
+  const q = ASSESSMENT.questions.find((x) => x.id === "wins");
+  const chosen = asList(answers["wins"])[0];
+  const obj = q?.options.find((o) => o.label === chosen)?.objective;
+  return (obj === "money" || obj === "stability" || obj === "speed") ? obj : "enjoy";
 }
 
 function userVector(input: AssessmentInput): { vec: Record<AttrDim, number>; speed?: string; place?: string } {
@@ -32,16 +49,19 @@ function userVector(input: AssessmentInput): { vec: Record<AttrDim, number>; spe
   let speed: string | undefined;
   let place: string | undefined;
   for (const q of ASSESSMENT.questions) {
-    const chosen = input.answers[q.id];
-    if (!chosen) continue;
-    const opt = q.options.find((o) => o.label === chosen);
-    if (!opt) continue;
-    if (opt.speed) speed = opt.speed;
-    if (opt.place) place = opt.place;
-    if (opt.w) {
-      for (const [d, v] of Object.entries(opt.w)) {
-        sums[d] = (sums[d] || 0) + v;
-        counts[d] = (counts[d] || 0) + 1;
+    // Multi-select answers (pull) blend: every selected direction contributes
+    // its weights, so "hands AND leading ops" raises both dims instead of
+    // forcing a premature single choice.
+    for (const label of asList(input.answers[q.id])) {
+      const opt = q.options.find((o) => o.label === label);
+      if (!opt) continue;
+      if (opt.speed) speed = opt.speed;
+      if (opt.place) place = opt.place;
+      if (opt.w) {
+        for (const [d, v] of Object.entries(opt.w)) {
+          sums[d] = (sums[d] || 0) + v;
+          counts[d] = (counts[d] || 0) + 1;
+        }
       }
     }
   }
@@ -74,6 +94,7 @@ export function rankedPriorities(a: Answers): { key: string; label: string; icon
 export function scoreCareers(input: AssessmentInput): CareerFit[] {
   const { vec, speed } = userVector(input);
   const a = input.intake;
+  const objective = rulingObjective(input.answers);
   const salMin = typeof a.salaryTarget?.min === "number" ? a.salaryTarget.min : null;
   const salMax = typeof a.salaryTarget?.max === "number" ? a.salaryTarget.max : null;
   const hasSalary = salMin != null || salMax != null;
@@ -141,9 +162,47 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
       }
     }
 
-    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts, medianPay, meetsSalary, belowTarget };
+    // Honest clash labels: dims this career leans on hard that the veteran
+    // signaled away from. Under a ruling objective these paths stay ranked
+    // on that objective - the clash is disclosed instead of hiding the path.
+    const tradeoffs: string[] = [];
+    if (objective !== "enjoy") {
+      const OBJ_WORD: Record<Objective, string> = { money: "pay", stability: "stability", speed: "a fast start", enjoy: "" };
+      for (const d of DIMS) {
+        if (c.attrs[d] >= 4 && vec[d] <= 1.5) {
+          tradeoffs.push(`Heavy on ${DIM_PHRASE[d]} - more than you'd prefer. You said ${OBJ_WORD[objective]} wins, so it stays ranked on ${OBJ_WORD[objective]}.`);
+        }
+      }
+    }
+
+    return { career: c, fit: Math.max(35, Math.min(99, Math.round(fit))), why, boosts, medianPay, meetsSalary, belowTarget, tradeoffs };
   });
 
+  // The ruling objective decides the ORDER. The fit number stays what it
+  // always was - preference fit - so a people-heavy path ranked #1 for a
+  // money-first veteran shows its true (lower) fit next to its pay, with
+  // the trade-off spelled out. Preferences refine; they never veto.
+  if (objective === "money") {
+    const pays = results.map((r) => r.medianPay).filter((p): p is number => p != null);
+    const lo = Math.min(...pays);
+    const hi = Math.max(...pays);
+    const payNorm = (p: number | null | undefined) =>
+      p == null ? 40 : hi === lo ? 50 : ((p - lo) / (hi - lo)) * 100;
+    for (const r of results) {
+      if (r.medianPay != null && payNorm(r.medianPay) >= 75) {
+        r.boosts.unshift(`Median pay ~$${r.medianPay.toLocaleString()} - among the highest here, and you said money wins`);
+      }
+    }
+    return results.sort((x, y) => (0.6 * payNorm(y.medianPay) + 0.4 * y.fit) - (0.6 * payNorm(x.medianPay) + 0.4 * x.fit));
+  }
+  if (objective === "stability") {
+    const stab = (r: CareerFit) => r.fit + (r.career.attrs.risk >= 4 ? -8 : r.career.attrs.risk <= 2 ? 3 : 0);
+    return results.sort((x, y) => stab(y) - stab(x));
+  }
+  if (objective === "speed") {
+    const quick = (r: CareerFit) => r.fit + (3 - SPEED_ORDER.indexOf(r.career.speed)) * 6;
+    return results.sort((x, y) => quick(y) - quick(x));
+  }
   return results.sort((x, y) => y.fit - x.fit);
 }
 
