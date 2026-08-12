@@ -11,6 +11,8 @@ import AuthModal from "@/components/AuthModal";
 import ProfileSync from "@/components/ProfileSync";
 import FunnelGate from "@/components/FunnelGate";
 import Analytics from "@/components/Analytics";
+import FirstTouch from "@/components/FirstTouch";
+import MarketingPixels from "@/components/MarketingPixels";
 
 // Kept near the 155-character mark so search results and link previews show it
 // whole. The old copy said "Sample data only", which stopped being true once the
@@ -114,6 +116,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ProfileSync />
             <AuthModal />
             <Analytics />
+            <FirstTouch />
+            <MarketingPixels />
           </StoreProvider>
         </AuthProvider>
         {/* Register the offline/update service worker only in production builds - running it

@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth";
 import { useStore } from "@/lib/store";
+import { readFirstTouch } from "@/lib/firstTouch";
 
 export default function ProfileSync() {
   const { user } = useAuth();
@@ -38,10 +39,21 @@ export default function ProfileSync() {
       try {
         const { data, error } = await supabase
           .from("profiles")
-          .select("profile")
+          .select("profile,first_touch")
           .eq("id", user.id)
           .maybeSingle();
         if (error) throw error;
+        // Write-once attribution: if this account has no first-touch record
+        // yet and this device captured one (lib/firstTouch.ts), attach it.
+        // Best-effort - a failure here must never block the plan sync below.
+        if (data && data.first_touch == null) {
+          const ft = readFirstTouch();
+          if (ft) {
+            try {
+              await supabase.from("profiles").update({ first_touch: ft }).eq("id", user.id);
+            } catch { /* attribution is never worth a failed sync */ }
+          }
+        }
         const remote = data?.profile as Record<string, any> | null | undefined;
         const hasPlan = (p: Record<string, any> | null | undefined) =>
           !!p && (p.gameplan != null || Object.keys(p.answers ?? {}).length > 0);

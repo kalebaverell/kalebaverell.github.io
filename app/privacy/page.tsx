@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "August 11, 2026";
+const LAST_UPDATED = "August 12, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -82,6 +82,12 @@ export default function PrivacyPage() {
           <li>Your generated gameplan and which steps you have checked off.</li>
           <li>Your Pathfinder answers and, if you use the resume scanner, the resume text you paste in.</li>
           <li>Display settings like your theme and text size.</li>
+          <li>
+            If you first arrived from one of our flyers, QR codes, or shared links, the campaign tag
+            on that link (for example &quot;vso&quot; for the sheet we hand to veteran service posts),
+            plus the site that referred you. This tells us which outreach actually reaches veterans.
+            It records how you found us - never what you did on other sites.
+          </li>
         </ul>
         <p style={{ margin: "10px 0 0" }}>
           Your <strong>password is never seen or stored by us</strong>. Sign-in is handled by our
