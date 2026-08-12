@@ -1,5 +1,6 @@
 "use client";
 import { BRAND } from "@/lib/data";
+import { PIXELS_CONFIGURED } from "@/lib/marketing";
 
 export default function Footer() {
   return (
@@ -25,6 +26,11 @@ export default function Footer() {
           <div style={{ marginTop: 14, fontSize: 12.5, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <a href="/privacy">Privacy &amp; data</a>
             <a href="/terms">Terms of use</a>
+            {/* Required in the footer once visit data reaches an ad platform, and
+                only confusing before that - so it appears with the pixels. */}
+            {PIXELS_CONFIGURED && (
+              <a href="/do-not-sell">Do not sell or share my personal information</a>
+            )}
           </div>
         </div>
       </div>

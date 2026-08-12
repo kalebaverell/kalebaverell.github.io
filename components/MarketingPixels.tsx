@@ -15,6 +15,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { META_PIXEL_ID, GOOGLE_ADS_TAG_ID, PIXEL_ALLOWED_ROUTES } from "@/lib/marketing";
+import { isAdOptedOut } from "@/lib/adConsent";
 
 function optedOut(): boolean {
   const n = navigator as Navigator & { globalPrivacyControl?: boolean };
@@ -31,6 +32,7 @@ export default function MarketingPixels() {
     if (!META_PIXEL_ID && !GOOGLE_ADS_TAG_ID) return; // inert until configured
     if (!PIXEL_ALLOWED_ROUTES.includes(norm(pathname || "/"))) return;
     if (optedOut()) return;
+    if (isAdOptedOut()) return; // explicit choice on /do-not-sell wins
     if (window.location.hostname === "localhost") return;
 
     if (META_PIXEL_ID && !document.getElementById("vp-meta-pixel")) {

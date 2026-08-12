@@ -150,8 +150,10 @@ export default function PrivacyPage() {
         cookies, no fingerprinting, no names, no emails, no link to your account, and no way to recognize
         you if you come back tomorrow.
         <p style={{ margin: "10px 0 0" }}>
-          We cannot look anyone up in it, and neither can anyone else - there is nothing personal in it to
-          look up. It never sees what you type, your answers, or your plan; those follow the rules in the
+          If we ever add advertising measurement, you will be able to switch it off for your device on
+          the <Link href="/do-not-sell">do not sell or share my information</Link> page, which works today
+          and needs no account. We cannot look anyone up in the counter, and neither can anyone else -
+          there is nothing personal in it to look up. It never sees what you type, your answers, or your plan; those follow the rules in the
           sections above. If your browser sends a Do Not Track or Global Privacy Control signal, we do not
           count the visit at all. GoatCounter publishes its own privacy policy at{" "}
           <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">goatcounter.com/help/privacy</a>.

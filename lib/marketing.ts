@@ -21,3 +21,9 @@ export const GOOGLE_ADS_TAG_ID = "";
 // must NEVER carry an ad pixel. Widening this list is a privacy-page
 // change, not a config tweak.
 export const PIXEL_ALLOWED_ROUTES = ["/", "/trust"];
+
+// True once any ad platform is configured. Drives the visitor-facing
+// opt-out link: a "Do Not Sell or Share" control is required once we share
+// visit data with an ad platform, and is only confusing before that, when
+// there is nothing to switch off.
+export const PIXELS_CONFIGURED = Boolean(META_PIXEL_ID || GOOGLE_ADS_TAG_ID);

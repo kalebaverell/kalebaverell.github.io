@@ -20,6 +20,14 @@ same breath as the behavior.
   conversion ground truth later.
 - Outreach segments view (`outreach.segments` in Supabase, owner-only):
   targeting lists for email today, custom-audience seeds for ads later.
+- **Opt-out layer, built and tested** (`lib/adConsent.ts`,
+  `components/AdOptOutControl.tsx`, `/do-not-sell`): a visitor-level switch
+  the pixel loader checks before injecting anything, with no dark patterns
+  (opting out and back in are one click each, equal prominence). The footer
+  link appears automatically once a pixel ID is set; the page is reachable
+  today and exempt from the funnel gate. Verified against a temporary test
+  pixel ID on 2026-08-12: pixel loads on `/`, does NOT load on
+  `/onboarding`, and does NOT load anywhere once the switch is set.
 
 ## Step 1 - Kaleb: create the ad account (nobody else can do this)
 
@@ -53,10 +61,12 @@ DO NOT COMMIT YET - steps 3 and 4 go in the same commit.
   GoatCounter section's honesty bar: what the pixel sees (marketing page
   visits), what it never sees (answers, plans, anything behind sign-in),
   and how to opt out.
-- Add a "Do Not Sell or Share My Personal Information" link (footer + privacy
-  page) wired to suppress pixels for that visitor (localStorage flag the
-  MarketingPixels component checks alongside GPC/DNT).
 - Bump LAST_UPDATED.
+- The Do Not Sell/Share link and its opt-out switch are already built and
+  wired; the footer link surfaces itself the moment an ID is set. Re-read
+  `/do-not-sell` copy though: the "as of today there is nothing to switch
+  off" banner disappears automatically, but the surrounding sentences should
+  be checked once ads are real.
 
 ## Step 4 - Same commit or same week: printed material
 

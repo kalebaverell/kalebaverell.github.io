@@ -16,6 +16,7 @@ const OPEN_PATHS = new Set([
   "trust", // the credibility promise stays public
   "privacy",
   "terms",
+  "do-not-sell", // a privacy control can never be behind a funnel
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
 ]);
