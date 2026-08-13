@@ -6,7 +6,9 @@
 // accurate without duplicating the card definition in 21 layout files.
 import type { Metadata } from "next";
 
-export const SITE = "https://kalebaverell.github.io";
+// vetpathusa.com went live 2026-08-14 (Cloudflare Registrar, GitHub Pages
+// custom domain). The old kalebaverell.github.io address 301-redirects here.
+export const SITE = "https://vetpathusa.com";
 
 export const OG_IMAGE = {
   // Purpose-built 1200x630 card rendered from scripts/og-card.html over a

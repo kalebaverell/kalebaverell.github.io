@@ -1,0 +1,32 @@
+Subject: Round 3 - your feedback is built, come break it again
+
+Team - every note from the last round is now live. Same link:
+
+https://vetpathusa.com/?utm_campaign=tester-round-3
+
+What changed because of YOU:
+
+* Relocation planner: toggles now visibly reshape the list - you'll see
+  "Updated - the order changed" and up/down markers on every card. Also
+  new: a winters preference (warmer vs colder) and a state income tax
+  factor. (Schools is the one switch that never re-ranks - we won't
+  invent school ratings, so it surfaces district notes instead. It says
+  so right on the toggle now.)
+* New "Home prices & the VA loan" tool (under Tools > Housing): compare
+  two states, look up actual towns and what homes typically cost there,
+  plus the exact questions to ask a lender to find out if you qualify -
+  and what to ask a realtor so you get one who knows VA deals.
+* Resume scanner now reads your experience and suggests which career
+  paths it already matches - and it's linked right on your dashboard.
+* The intake now covers living on base / in barracks (your plan will
+  tell you to line up housing before BAH stops) and dependents with
+  special needs (EFMP, IEP transfer, ABLE accounts - real programs only).
+* A floating checklist follows you through the app - tap the pill in the
+  corner to see what's done and what's next, and check things off
+  anywhere.
+
+The ask: run your real situation through it again - especially whatever
+annoyed you last time - and tell me anything that still feels off. Blunt
+beats polite.
+
+- Kaleb
