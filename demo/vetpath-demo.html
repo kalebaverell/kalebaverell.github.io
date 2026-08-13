@@ -342,6 +342,7 @@ const INTAKE = [
   ]},
   {id:"priorities",title:"What matters to you",subtitle:"Pick everything that applies - we'll turn it into a plan.",questions:[
     {id:"educationGoals",label:"Any education goals?",type:"multi",allowCustom:true,options:["Finish a degree","Start a degree","Trade or certification","Help a dependent with school","No education plans"]},
+    {id:"giBillRemaining",label:"How much Post-9/11 GI Bill do you have left?",helper:"Rough is fine - check your exact months at VA.gov. If you're running low, we'll point you to programs that still pay.",type:"single",options:["Haven't used any","More than a year","6-12 months","1-6 months","None - used it up","Not sure"]},
     {id:"careerGoals",label:"Any career goals?",type:"multi",allowCustom:true,options:["Get a better job","Change careers","Advance / get promoted","Start a business","Wind down toward retirement","Not sure yet"]},
     {id:"businessInterest",compact:true,label:"Interested in owning a business?",type:"single",options:["Yes - actively working on it","Yes - someday","No"]},
     {id:"wellnessPriorities",label:"Health & wellness priorities?",type:"multi",allowCustom:true,options:["Mental health support","VA healthcare / physical health","Fitness","Community & connection","None right now"]},
@@ -1093,6 +1094,9 @@ function generateGameplan(a, path){
   if((a.familyNeeds||[]).includes("Dependent with special needs")){
     plan30.push(item("Gather your dependent's special-needs records - EFMP file (while serving), current IEP or 504 plan, provider notes - so the next school and care team can pick up without a gap","high"));
   }
+  if((a.giBillRemaining==="1-6 months"||a.giBillRemaining==="None - used it up")&&(a.educationGoals||[]).some(e=>e!=="No education plans")){
+    plan30.push(item("Map your remaining GI Bill months against your program length, and line up what covers the gap before you enroll - VR&E, the Rogers STEM extension, your state's tuition programs, FAFSA","high"));
+  }
   // Destination roadmap steps distributed across the plan
   if(career){
     const ep=career.entryPath;
@@ -1706,6 +1710,17 @@ function Dashboard(){
       return `<div class="card" style="margin-top:16px;border:2px solid var(--accent)">
         <h3><i class="ti ti-cash" style="color:var(--accent-ink)"></i> Your funded path</h3>
         <p class="muted small" style="margin:0 0 6px">${dest ? `How to pay for ${dest.label}, and what the job adds on top.` : "How to pay for your training, and what the job adds on top."} These stack.</p>
+        ${(S.answers.giBillRemaining==="1-6 months"||S.answers.giBillRemaining==="None - used it up")?`<div style="margin-top:10px;background:var(--accent-soft);border-radius:10px;padding:12px 16px">
+          <strong class="small" style="color:var(--accent-ink)"><i class="ti ti-hourglass-low" aria-hidden="true"></i> Running low on GI Bill - these still pay:</strong>
+          <ul style="margin:8px 0 0;padding-left:18px;display:grid;gap:6px">
+            <li class="small"><strong>VR&amp;E (Chapter 31)</strong> - a separate program with its own entitlement, for a service-connected disability with an employment need. <a href="https://www.va.gov/careers-employment/vocational-rehabilitation/" target="_blank" rel="noopener">VA.gov</a></li>
+            <li class="small"><strong>Rogers STEM Scholarship</strong> - up to 9 additional months for qualifying STEM programs when entitlement runs out. <a href="https://www.va.gov/education/other-va-education-benefits/stem-scholarship/" target="_blank" rel="noopener">VA.gov</a></li>
+            <li class="small"><strong>Your state's tuition programs</strong> - many pay regardless of federal months (Texas's Hazlewood Act, for example).</li>
+            <li class="small"><strong>Federal student aid</strong> - Pell/FAFSA are separate from VA benefits. <a href="https://studentaid.gov/" target="_blank" rel="noopener">studentaid.gov</a></li>
+            <li class="small"><strong>Registered apprenticeships</strong> - earn while you train, little or no tuition. <a href="https://www.apprenticeship.gov/" target="_blank" rel="noopener">apprenticeship.gov</a></li>
+          </ul>
+          <p class="small muted" style="margin:8px 0 0">Check your exact months: <a href="https://www.va.gov/education/check-remaining-benefits/" target="_blank" rel="noopener">VA.gov benefits status</a>.</p>
+        </div>`:""}
         ${fp.education.length ? `<div style="margin-top:10px"><strong class="small">Pay for the training</strong>${fp.education.map(row).join("")}</div>` : ""}
         ${fp.career.length ? `<div style="margin-top:14px"><strong class="small">Then land the job</strong>${fp.career.map(row).join("")}</div>` : ""}
         <p class="muted small" style="margin:12px 0 0">Verified ${FUNDING.lastVerified}. ${FUNDING.disclaimer}</p>
@@ -3601,7 +3616,14 @@ const TL_FOCUS_META={
   family:{label:"Family & relocation",icon:"ti-home-heart"},
   wellbeing:{label:"Mental health & identity",icon:"ti-heart-handshake"}
 };
-function tlFreshAnswers(){return{branch:"",sepWindow:"12+",yearsOfService:"4-10",rankGroup:"",mos:"",goals:[],targetState:"",family:[],claims:"unsure",finances:"some",priorities:[],notes:""};}
+function tlFreshAnswers(){return{branch:"",easDate:"",sepWindow:"12+",yearsOfService:"4-10",rankGroup:"",mos:"",goals:[],targetState:"",family:[],claims:"unsure",finances:"some",priorities:[],notes:""};}
+function tlSetEas(v){
+  TL.a.easDate=v;
+  const em=tlMonthsToEas(v);
+  if(em!=null)TL.a.sepWindow=tlWindowFromEas(em);
+  if(S.answers)S.answers.easDate=v; // profile keeps the date for the dashboard countdown
+  tlSave(false); save(); router();
+}
 const TL_PHASE_META=[
   {id:"p1",label:"Early planning",window:"T-12 to T-9 months",hi:12,lo:9},
   {id:"p2",label:"TAP & benefits research",window:"T-9 to T-6 months",hi:9,lo:6},
@@ -3613,6 +3635,23 @@ const TL_PHASE_META=[
 ];
 /* Approximate months until separation for phase past/current/ahead math. */
 function tlSepMonths(w){return w==="12+"?13:w==="9-12"?10:w==="6-9"?7:w==="3-6"?4:w==="0-3"?1.5:-1;}
+// EAS date math (tester feedback 2026-08-13) - mirrors lib/timeline.ts.
+function tlMonthsToEas(easDate){
+  if(!/^\d{4}-\d{2}$/.test(easDate||""))return null;
+  const y=+easDate.slice(0,4),mo=+easDate.slice(5,7);
+  if(mo<1||mo>12)return null;
+  return (new Date(y,mo-1,15).getTime()-Date.now())/(1000*60*60*24*30.44);
+}
+function tlWindowFromEas(m){return m<0?"out":m<=3?"0-3":m<=6?"3-6":m<=9?"6-9":m<=12?"9-12":"12+";}
+const TL_MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function tlEasLabel(d){if(!/^\d{4}-\d{2}$/.test(d||""))return"";const mo=+d.slice(5,7);return mo>=1&&mo<=12?TL_MON[mo-1]+" "+d.slice(0,4):"";}
+function tlPhaseDates(easDate,hi,lo){
+  if(!/^\d{4}-\d{2}$/.test(easDate||""))return"";
+  const y=+easDate.slice(0,4),mo=+easDate.slice(5,7);
+  const at=off=>new Date(y,mo-1-off,1);
+  const s=at(hi),e=at(lo);
+  return TL_MON[s.getMonth()]+(s.getFullYear()!==e.getFullYear()?" "+s.getFullYear():"")+" - "+TL_MON[e.getMonth()]+" "+e.getFullYear();
+}
 const TL_SRC={
   tap:{label:"DoD TAP",url:"https://www.dodtap.mil/"},
   bdd:{label:"VA - pre-discharge (BDD) claims",url:"https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/"},
@@ -3729,27 +3768,36 @@ function tlNarrative(phase,a){
   return parts.join(" ");
 }
 function tlBuildTimeline(a){
-  const m=tlSepMonths(a.sepWindow);
+  // A real EAS date beats the coarse bucket (mirrors lib/timeline.ts).
+  const em=tlMonthsToEas(a.easDate);
+  const effWindow=em!=null?tlWindowFromEas(em):a.sepWindow;
+  const m=em!=null?em:tlSepMonths(a.sepWindow);
   const all=tlBuildTasks(a);
   const phases=TL_PHASE_META.map(p=>{
     const status=m>p.hi?"ahead":m>p.lo?"current":"past";
     // Someone already out sits in p5.
-    const adj=(a.sepWindow==="out"&&p.id==="p5")?"current":status;
+    const adj=(effWindow==="out"&&p.id==="p5")?"current":status;
     const tasks=tlOrderTasks(all.filter(t=>t.phase===p.id),a.priorities);
     const ph={id:p.id,label:p.label,window:p.window,status:adj,narrative:"",tasks:tasks};
+    if(em!=null)ph.dates=tlPhaseDates(a.easDate,p.hi,p.lo);
     ph.narrative=tlNarrative(ph,a);
     return ph;
   });
   // Catch-up: essential tasks stranded in past phases. Honest exclusions:
   // the BDD window closes at T-90, and TAP attendance / the SBP election
   // aren't available once you're already out.
-  const gone=a.sepWindow==="out"?["bdd","tap","sbp"]:a.sepWindow==="0-3"?["bdd"]:[];
+  const gone=effWindow==="out"?["bdd","tap","sbp"]:effWindow==="0-3"?["bdd"]:[];
   const catchUp=[];
   phases.filter(p=>p.status==="past").forEach(p=>p.tasks.forEach(t=>{if(t.essential&&!gone.includes(t.id))catchUp.push(t);}));
   const deadlines=all.filter(t=>t.deadline);
   const bits=[];
-  bits.push(a.sepWindow==="out"?"You're already out - this plan starts where you are and runs two years forward.":
-    `Roughly ${a.sepWindow==="12+"?"a year or more":a.sepWindow==="9-12"?"9–12 months":a.sepWindow==="6-9"?"6–9 months":a.sepWindow==="3-6"?"3–6 months":"under 3 months"} to separation.`);
+  if(em!=null){
+    bits.push(em<0?`EAS ${tlEasLabel(a.easDate)} is behind you - this plan starts where you are and runs two years forward.`
+      :`EAS ${tlEasLabel(a.easDate)} - about ${Math.max(1,Math.round(em))} month${Math.round(em)===1?"":"s"} out, so every phase below carries your real calendar.`);
+  }else{
+    bits.push(effWindow==="out"?"You're already out - this plan starts where you are and runs two years forward.":
+      `Roughly ${effWindow==="12+"?"a year or more":effWindow==="9-12"?"9–12 months":effWindow==="6-9"?"6–9 months":effWindow==="3-6"?"3–6 months":"under 3 months"} to separation.`);
+  }
   if(a.goals.length&&!a.goals.includes("undecided"))bits.push(`Aimed at ${a.goals.map(g=>g==="employment"?"civilian employment":g==="education"?"education":"starting a business").join(" + ")}.`);
   if(a.goals.includes("undecided"))bits.push("Destination still open - the Pathfinder can close that gap.");
   if(a.targetState){const se=realStateInfo(a.targetState);bits.push(`Headed to ${(se&&se.name)||a.targetState}.`);}
@@ -3847,7 +3895,12 @@ function tlInterview(a){
       <fieldset style="border:none;padding:0;margin:0 0 16px"><legend class="lbl" style="padding:0">Branch</legend>
         ${TL_BRANCHES.map(b=>tlOptBtn(a.branch===b,`tlSet('branch','${b.replace(/'/g,"\\'")}')`,esc(b))).join("")}
       </fieldset>
-      <fieldset style="border:none;padding:0;margin:0 0 16px"><legend class="lbl" style="padding:0">How far from separation?</legend>
+      <div style="margin:0 0 16px">
+        <label class="lbl" for="tl-eas">EAS date, if you know it <span class="muted" style="font-weight:400">(End of Active Service - optional)</span></label>
+        <input id="tl-eas" type="month" class="field" value="${esc(a.easDate||"")}" onchange="tlSetEas(this.value)" style="max-width:240px">
+        ${a.easDate&&tlMonthsToEas(a.easDate)!=null?`<p class="small" style="margin:6px 0 0;color:var(--success)"><i class="ti ti-calendar-check" aria-hidden="true"></i> EAS ${tlEasLabel(a.easDate)} - every phase below will carry your real calendar months.</p>`:""}
+      </div>
+      <fieldset style="border:none;padding:0;margin:0 0 16px"><legend class="lbl" style="padding:0">How far from separation?${a.easDate&&tlMonthsToEas(a.easDate)!=null?" (set from your EAS date - override if needed)":""}</legend>
         ${TL_SEP_OPTIONS.map(o=>tlOptBtn(a.sepWindow===o.v,`tlSet('sepWindow','${o.v}')`,esc(o.label))).join("")}
       </fieldset>
       <fieldset style="border:none;padding:0;margin:0 0 16px"><legend class="lbl" style="padding:0">Years of service</legend>
@@ -3931,6 +3984,7 @@ function tlPlanView(a,plan){
       <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
         <h3 style="margin:0">${esc(p.label)}</h3>
         <span class="muted small">${esc(p.window)}</span>
+        ${p.dates?`<span class="chip sm" style="background:var(--chip);color:var(--primary)"><i class="ti ti-calendar" aria-hidden="true"></i> ${esc(p.dates)}</span>`:""}
         <span class="pill${chip.cls?" "+chip.cls:""}">${chip.label}</span>
       </div>
       <p class="muted small" style="margin:8px 0 12px">${esc(p.narrative)}</p>
