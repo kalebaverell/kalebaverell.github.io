@@ -27,6 +27,11 @@ export type Finances = "runway" | "some" | "income-now" | "pension";
 
 export interface TimelineAnswers {
   branch: string;
+  /** End of Active Service, "YYYY-MM". Optional but powerful (tester
+   *  feedback 2026-08-13): when set, every phase carries real calendar
+   *  months, "you are here" comes from the actual date, and the window
+   *  bucket below is derived instead of guessed. */
+  easDate: string;
   /** "" until chosen - these two steer the whole plan, so they are never
    *  pre-answered; the interview gates on them instead. */
   sepWindow: SepWindow | "";
@@ -44,6 +49,7 @@ export interface TimelineAnswers {
 
 export const freshTimelineAnswers = (): TimelineAnswers => ({
   branch: "",
+  easDate: "",
   sepWindow: "",
   yearsOfService: "",
   rankGroup: "",
@@ -79,6 +85,8 @@ export interface TimelinePhase {
   id: PhaseId;
   label: string;
   window: string;
+  /** Real calendar range ("Sep - Dec 2026") - only when an EAS date was given. */
+  dates?: string;
   status: PhaseStatus;
   narrative: string;
   tasks: TimelineTask[];
@@ -105,6 +113,43 @@ const PHASE_META: { id: PhaseId; label: string; window: string; hi: number; lo: 
 /** Approximate months until separation for phase past/current/ahead math. */
 const sepMonths = (w: SepWindow): number =>
   w === "12+" ? 13 : w === "9-12" ? 10 : w === "6-9" ? 7 : w === "3-6" ? 4 : w === "0-3" ? 1.5 : -1;
+
+// ---- EAS date math (tester feedback 2026-08-13) ----
+
+/** Fractional months from now until the EAS date; null when unset/invalid.
+ *  Mid-month anchor keeps the answer stable across a whole month. */
+export function monthsToEas(easDate: string, now: Date = new Date()): number | null {
+  if (!/^\d{4}-\d{2}$/.test(easDate)) return null;
+  const [y, mo] = easDate.split("-").map(Number);
+  if (mo < 1 || mo > 12) return null;
+  const eas = new Date(y, mo - 1, 15);
+  return (eas.getTime() - now.getTime()) / (1000 * 60 * 60 * 24 * 30.44);
+}
+
+/** The coarse interview bucket a real EAS date falls into. */
+export function windowFromEas(m: number): SepWindow {
+  return m < 0 ? "out" : m <= 3 ? "0-3" : m <= 6 ? "3-6" : m <= 9 ? "6-9" : m <= 12 ? "9-12" : "12+";
+}
+
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** "Sep 2026" for a "YYYY-MM" value; "" when invalid. */
+export function easLabel(easDate: string): string {
+  if (!/^\d{4}-\d{2}$/.test(easDate)) return "";
+  const [y, mo] = easDate.split("-").map(Number);
+  return mo >= 1 && mo <= 12 ? `${MON[mo - 1]} ${y}` : "";
+}
+
+/** Real calendar range for a phase (months relative to EAS), e.g. "Sep-Dec 2026". */
+function phaseDates(easDate: string, hi: number, lo: number): string {
+  if (!/^\d{4}-\d{2}$/.test(easDate)) return "";
+  const [y, mo] = easDate.split("-").map(Number);
+  const at = (offset: number) => new Date(y, mo - 1 - offset, 1);
+  const s = at(hi);
+  const e = at(lo);
+  const sTxt = `${MON[s.getMonth()]}${s.getFullYear() !== e.getFullYear() ? ` ${s.getFullYear()}` : ""}`;
+  return `${sTxt} - ${MON[e.getMonth()]} ${e.getFullYear()}`;
+}
 
 const src = {
   tap: { label: "DoD TAP", url: "https://www.dodtap.mil/" },
@@ -238,18 +283,22 @@ function narrative(phase: TimelinePhase, a: TimelineAnswers): string {
 }
 
 export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
-  // The interview gates on sepWindow, so "" only reaches here via a hand-edited
-  // or stale saved state - treat it as farthest-out rather than crashing.
-  const m = sepMonths(a.sepWindow || "12+");
+  // A real EAS date beats the coarse bucket for every date-driven decision
+  // below; the bucket remains the fallback. "" only reaches here via a
+  // hand-edited or stale saved state - treat it as farthest-out, not a crash.
+  const em = monthsToEas(a.easDate || "");
+  const effWindow: SepWindow = em != null ? windowFromEas(em) : (a.sepWindow || "12+");
+  const m = em != null ? em : sepMonths(a.sepWindow || "12+");
   const all = buildTasks(a);
 
   const phases: TimelinePhase[] = PHASE_META.map((p) => {
     const status: PhaseStatus = m > p.hi ? "ahead" : m > p.lo ? "current" : "past";
     // Post-separation phases are never "past" for someone still in uniform,
     // and someone already out sits in p5.
-    const adj: PhaseStatus = a.sepWindow === "out" && p.id === "p5" ? "current" : status;
+    const adj: PhaseStatus = effWindow === "out" && p.id === "p5" ? "current" : status;
     const tasks = orderTasks(all.filter((t) => t.phase === p.id), a.priorities);
     const ph: TimelinePhase = { id: p.id, label: p.label, window: p.window, status: adj, narrative: "", tasks };
+    if (em != null) ph.dates = phaseDates(a.easDate, p.hi, p.lo);
     ph.narrative = narrative(ph, a);
     return ph;
   });
@@ -258,7 +307,7 @@ export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
   // the BDD window closes at T-90, and TAP attendance / the SBP election
   // aren't available once you're already out.
   const gone = new Set<string>(
-    a.sepWindow === "out" ? ["bdd", "tap", "sbp"] : a.sepWindow === "0-3" ? ["bdd"] : []
+    effWindow === "out" ? ["bdd", "tap", "sbp"] : effWindow === "0-3" ? ["bdd"] : []
   );
   const catchUp = phases
     .filter((p) => p.status === "past")
@@ -268,8 +317,14 @@ export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
   const deadlines = all.filter((t) => t.deadline);
 
   const bits: string[] = [];
-  bits.push(a.sepWindow === "out" ? "You're already out - this plan starts where you are and runs two years forward." :
-    `Roughly ${a.sepWindow === "12+" ? "a year or more" : a.sepWindow === "9-12" ? "9–12 months" : a.sepWindow === "6-9" ? "6–9 months" : a.sepWindow === "3-6" ? "3–6 months" : "under 3 months"} to separation.`);
+  if (em != null) {
+    bits.push(em < 0
+      ? `EAS ${easLabel(a.easDate)} is behind you - this plan starts where you are and runs two years forward.`
+      : `EAS ${easLabel(a.easDate)} - about ${Math.max(1, Math.round(em))} month${Math.round(em) === 1 ? "" : "s"} out, so every phase below carries your real calendar.`);
+  } else {
+    bits.push(effWindow === "out" ? "You're already out - this plan starts where you are and runs two years forward." :
+      `Roughly ${effWindow === "12+" ? "a year or more" : effWindow === "9-12" ? "9–12 months" : effWindow === "6-9" ? "6–9 months" : effWindow === "3-6" ? "3–6 months" : "under 3 months"} to separation.`);
+  }
   if (a.goals.length && !a.goals.includes("undecided")) bits.push(`Aimed at ${a.goals.map((g) => g === "employment" ? "civilian employment" : g === "education" ? "education" : "starting a business").join(" + ")}.`);
   if (a.goals.includes("undecided")) bits.push("Destination still open - the Pathfinder can close that gap.");
   if (a.targetState) bits.push(`Headed to ${stateEntry(a.targetState)?.name || a.targetState}.`);

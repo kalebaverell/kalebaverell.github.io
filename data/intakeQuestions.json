@@ -198,6 +198,20 @@
           ]
         },
         {
+          "id": "giBillRemaining",
+          "label": "How much Post-9/11 GI Bill do you have left?",
+          "type": "single",
+          "options": [
+            "Haven't used any",
+            "More than a year",
+            "6-12 months",
+            "1-6 months",
+            "None - used it up",
+            "Not sure"
+          ],
+          "helper": "Rough is fine - check your exact months at VA.gov. If you're running low, we'll point you to programs that still pay."
+        },
+        {
           "id": "careerGoals",
           "label": "Any career goals?",
           "type": "multi",

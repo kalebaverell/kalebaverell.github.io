@@ -28,6 +28,12 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   { test: /\bresume\b|interview|cover letter/i, resources: [
     { label: "Open the Resume scanner", href: "/resume", internal: true },
   ]},
+  { test: /remaining gi bill|covers the gap|rogers stem/i, resources: [
+    { label: "Check your remaining GI Bill months (VA.gov)", href: "https://www.va.gov/education/check-remaining-benefits/" },
+    { label: "VR&E - Veteran Readiness & Employment (VA.gov)", href: "https://www.va.gov/careers-employment/vocational-rehabilitation/" },
+    { label: "Rogers STEM Scholarship (VA.gov)", href: "https://www.va.gov/education/other-va-education-benefits/stem-scholarship/" },
+    { label: "Federal student aid (FAFSA)", href: "https://studentaid.gov/" },
+  ]},
   { test: /special.?needs|\befmp\b|\biep\b|\b504 plan\b|able account/i, resources: [
     { label: "EFMP - Exceptional Family Member Program (Military OneSource)", href: "https://www.militaryonesource.mil/special-needs/efmp/" },
     { label: "ABLE accounts (SSA)", href: "https://www.ssa.gov/ssi/spotlights/spot-able.html" },

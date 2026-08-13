@@ -68,6 +68,26 @@ export default function FundedPath({ a, career }: { a: Answers; career?: Career 
         </div>
       </div>
 
+      {/* Low-GI-Bill pivot (tester feedback 2026-08-13: "1-2 months left,
+          which programs still pay?"). Real programs only, each linked. */}
+      {(a.giBillRemaining === "1-6 months" || a.giBillRemaining === "None - used it up") && (
+        <div style={{ marginTop: 16, background: "var(--accent-soft)", borderRadius: 10, padding: "12px 16px" }}>
+          <strong className="small" style={{ color: "var(--accent-ink)" }}>
+            <i className="ti ti-hourglass-low" aria-hidden="true" /> Running low on GI Bill - these still pay:
+          </strong>
+          <ul style={{ margin: "8px 0 0", paddingLeft: 18, display: "grid", gap: 6 }}>
+            <li className="small"><strong>VR&amp;E (Chapter 31)</strong> - a separate program with its own entitlement, for a service-connected disability with an employment need. Running out of GI Bill does not close this door. <a href="https://www.va.gov/careers-employment/vocational-rehabilitation/" target="_blank" rel="noopener noreferrer">VA.gov</a></li>
+            <li className="small"><strong>Rogers STEM Scholarship</strong> - up to 9 additional months of Post-9/11 benefits for qualifying STEM programs when your entitlement runs out. <a href="https://www.va.gov/education/other-va-education-benefits/stem-scholarship/" target="_blank" rel="noopener noreferrer">VA.gov</a></li>
+            <li className="small"><strong>Your state&apos;s own tuition programs</strong> - many pay regardless of your federal months (Texas&apos;s Hazlewood Act is a strong example). Check your state on the Benefits page.</li>
+            <li className="small"><strong>Federal student aid</strong> - Pell Grants and FAFSA are entirely separate from VA benefits, and veterans qualify like anyone else. <a href="https://studentaid.gov/" target="_blank" rel="noopener noreferrer">studentaid.gov</a></li>
+            <li className="small"><strong>Registered apprenticeships</strong> - earn a paycheck while you train, with little or no tuition to fund at all. <a href="https://www.apprenticeship.gov/" target="_blank" rel="noopener noreferrer">apprenticeship.gov</a></li>
+          </ul>
+          <p className="small muted" style={{ margin: "8px 0 0" }}>
+            Check your exact remaining months in your <a href="https://www.va.gov/education/check-remaining-benefits/" target="_blank" rel="noopener noreferrer">VA.gov education benefits status</a> before planning around them.
+          </p>
+        </div>
+      )}
+
       <Layer n={1} icon="ti-cash" title="Pay for the training" hint="Stack several of these together." items={education} />
       <Layer n={2} icon="ti-briefcase" title="Then land the job" hint="Money your destination adds on top." items={careerLayer} />
 

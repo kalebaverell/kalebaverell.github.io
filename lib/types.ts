@@ -37,6 +37,13 @@ export interface Answers {
   topGoals?: string[];
   urgency?: string;
   stepNotes?: Record<string, string>;
+  /** Bucketed months of Post-9/11 GI Bill entitlement left. Low/exhausted
+   *  answers steer the funding stack toward programs that still pay
+   *  (VR&E, Rogers STEM, state tuition programs, FAFSA, apprenticeships). */
+  giBillRemaining?: string;
+  /** End of Active Service, "YYYY-MM". Set in the Transition Timeline; anchors
+   *  its phases to real calendar months and drives the dashboard countdown. */
+  easDate?: string;
 }
 
 // Pathfinder decision engine

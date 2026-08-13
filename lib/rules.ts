@@ -153,6 +153,12 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (career?.skillbridge) plan30.push(item(`Ask your command about a DoD SkillBridge internship in ${career.label.toLowerCase()} - civilian experience on military pay`, "high"));
     else plan30.push(item("Ask your command about DoD SkillBridge - intern with a civilian employer your last 180 days on military pay", "medium"));
   }
+  // Low GI Bill + education plans: the gap-funding conversation has to happen
+  // BEFORE enrollment, not at the bursar's office (tester feedback 2026-08-13).
+  const lowGiBill = a.giBillRemaining === "1-6 months" || a.giBillRemaining === "None - used it up";
+  if (lowGiBill && (a.educationGoals || []).some((e) => e !== "No education plans")) {
+    plan30.push(item("Map your remaining GI Bill months against your program length, and line up what covers the gap before you enroll - VR&E, the Rogers STEM extension, your state's tuition programs, FAFSA", "high"));
+  }
   // Special-needs dependent (tester feedback 2026-08-13): the records step is
   // time-critical everywhere; the family module carries the full depth.
   if (specialNeeds) {

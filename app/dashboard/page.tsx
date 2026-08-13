@@ -56,6 +56,21 @@ export default function Dashboard() {
     <Wrap>
       {gp.crisis && <CrisisBanner />}
       <div className="card" style={{ background: "var(--primary)", color: "#fff", border: "none" }}>
+        {(() => {
+          // EAS countdown (tester feedback 2026-08-13): the one date that
+          // frames everything, kept in view once the timeline learns it.
+          const eas = a.easDate;
+          if (!eas || !/^\d{4}-\d{2}$/.test(eas)) return null;
+          const [y, mo] = eas.split("-").map(Number);
+          const days = Math.round((new Date(y, mo - 1, 15).getTime() - Date.now()) / 86400000);
+          if (days < -30) return null; // long past - not a countdown anymore
+          const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          return (
+            <span className="chip gold" style={{ marginRight: 8 }}>
+              <i className="ti ti-calendar-due" /> EAS {MON[mo - 1]} {y}{days > 0 ? ` · ~${days} days` : " · this month"}
+            </span>
+          );
+        })()}
         <span className="chip gold">
           <i className="ti ti-map-pin" /> {a.status || "Veteran"}{stateStr ? ` · ${stateStr}` : ""}{a.branch ? ` · ${a.branch}` : ""}
         </span>

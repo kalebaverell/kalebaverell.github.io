@@ -9,8 +9,10 @@ import Link from "next/link";
 import { STATES } from "@/lib/data";
 import {
   buildTimeline, freshTimelineAnswers, FOCUS_META, TIMELINE_VERIFIED,
+  monthsToEas, windowFromEas, easLabel,
   type TimelineAnswers, type TransitionTimeline, type TimelineTask, type FocusArea, type Goal, type FamilyFlag,
 } from "@/lib/timeline";
+import { useStore } from "@/lib/store";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 const LS_KEY = "vetpath-timeline-v1";
@@ -62,6 +64,7 @@ const STATUS_CHIP: Record<string, { label: string; cls: string }> = {
 };
 
 export default function TimelinePage() {
+  const { s, setAnswer } = useStore();
   const [a, setA] = useState<TimelineAnswers>(freshTimelineAnswers());
   const [step, setStep] = useState(0); // 0..3 interview, 4 = plan
   const [plan, setPlan] = useState<TransitionTimeline | null>(null);
@@ -80,6 +83,16 @@ export default function TimelinePage() {
     } catch { /* fresh start beats a crash */ }
     setHydrated(true);
   }, []);
+
+  // If the profile already knows the EAS date (set here previously, possibly
+  // on another device via account sync), prefill it once.
+  useEffect(() => {
+    const saved = s.answers?.easDate;
+    if (hydrated && saved && !a.easDate) {
+      setA((p) => (p.easDate ? p : { ...p, easDate: saved, sepWindow: p.sepWindow || windowFromEas(monthsToEas(saved) ?? 99) }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated, s.answers?.easDate]);
 
   const save = (answers: TimelineAnswers, done: boolean) => {
     try { localStorage.setItem(LS_KEY, JSON.stringify({ answers, done })); } catch { /* private mode */ }
@@ -154,8 +167,35 @@ export default function TimelinePage() {
                   <button key={b} type="button" aria-pressed={a.branch === b} className={`opt ${a.branch === b ? "sel" : ""}`} onClick={() => set("branch", b)}>{b}</button>
                 ))}
               </fieldset>
+              <div style={{ margin: "0 0 16px" }}>
+                <label className="lbl" htmlFor="eas">EAS date, if you know it <span className="muted" style={{ fontWeight: 400 }}>(End of Active Service - optional)</span></label>
+                <input
+                  id="eas"
+                  type="month"
+                  className="field"
+                  value={a.easDate}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    // A real date beats the coarse bucket: derive the window from
+                    // it, and persist it to the profile for the dashboard countdown.
+                    const em = monthsToEas(v);
+                    setA((p) => {
+                      const next = { ...p, easDate: v, sepWindow: em != null ? windowFromEas(em) : p.sepWindow };
+                      save(next, false);
+                      return next;
+                    });
+                    setAnswer("easDate", v);
+                  }}
+                  style={{ maxWidth: 240 }}
+                />
+                {a.easDate && monthsToEas(a.easDate) != null && (
+                  <p className="small" style={{ margin: "6px 0 0", color: "var(--success)" }}>
+                    <i className="ti ti-calendar-check" aria-hidden="true" /> EAS {easLabel(a.easDate)} - every phase below will carry your real calendar months.
+                  </p>
+                )}
+              </div>
               <fieldset style={{ border: "none", padding: 0, margin: "0 0 16px" }}>
-                <legend className="lbl" style={{ padding: 0 }}>How far from separation?</legend>
+                <legend className="lbl" style={{ padding: 0 }}>How far from separation?{a.easDate && monthsToEas(a.easDate) != null ? " (set from your EAS date - override if needed)" : ""}</legend>
                 {SEP_OPTIONS.map((o) => (
                   <button key={o.v} type="button" aria-pressed={a.sepWindow === o.v} className={`opt ${a.sepWindow === o.v ? "sel" : ""}`} onClick={() => set("sepWindow", o.v)}>{o.label}</button>
                 ))}
@@ -305,6 +345,7 @@ export default function TimelinePage() {
               <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
                 <h3 style={{ margin: 0 }}>{p.label}</h3>
                 <span className="muted small">{p.window}</span>
+                {p.dates && <span className="chip sm" style={{ background: "var(--chip)", color: "var(--primary)" }}><i className="ti ti-calendar" aria-hidden="true" /> {p.dates}</span>}
                 <span className={`pill ${STATUS_CHIP[p.status].cls}`}>{STATUS_CHIP[p.status].label}</span>
               </div>
               <p className="muted small" style={{ margin: "8px 0 12px" }}>{p.narrative}</p>
