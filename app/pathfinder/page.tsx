@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { TRACKS, CAREERS, ASSESSMENT, careerById, trackById } from "@/lib/data";
-import { scoreCareers, topTrack, locationGuidance, asList, rulingObjective } from "@/lib/pathfinder";
+import { scoreCareers, topTrack, locationGuidance, asList, rulingObjective, presentTop, whyBehind } from "@/lib/pathfinder";
 import type { Career, CareerFit } from "@/lib/types";
 import { Wrap, Callout, ProgressBar, Eyebrow } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
@@ -195,8 +195,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
   const { s } = useStore();
   const fits = scoreCareers({ answers: s.assessment, free: s.assessmentFree, intake: s.answers });
   const objective = rulingObjective(s.assessment);
-  const top = fits[0];
-  const runners = fits.slice(1, 4);
+  const { top, runners, alt } = presentTop(fits);
   const tt = trackById(topTrack(fits));
 
   return (
@@ -252,7 +251,7 @@ function Results({ setView }: { setView: (v: View) => void }) {
 
       <h3 style={{ marginTop: 24 }}>Strong runners-up</h3>
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))" }}>
-        {runners.map((f) => (
+        {[...runners, ...(alt ? [alt] : [])].map((f) => (
           <button key={f.career.id} type="button" className="card" onClick={() => setView({ kind: "detail", careerId: f.career.id, fromResults: true })}
             style={{ cursor: "pointer", textAlign: "left", fontFamily: "inherit", fontSize: "inherit", color: "var(--ink)" }}>
             <span style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
@@ -262,7 +261,17 @@ function Results({ setView }: { setView: (v: View) => void }) {
               </span>
               <span style={{ fontWeight: 700, color: "var(--primary)", fontSize: 20 }}>{f.fit}%</span>
             </span>
+            {alt && f.career.id === alt.career.id && (
+              <span className="chip sm" style={{ marginTop: 8, background: "var(--chip)", color: "var(--primary)" }}>
+                <i className="ti ti-route-2" aria-hidden="true" /> Best from a different track - {trackById(f.career.track)?.label}
+              </span>
+            )}
             <span className="muted small" style={{ display: "block", marginTop: 8 }}>{f.career.blurb}</span>
+            {whyBehind(f, top, objective) && (
+              <span className="small" style={{ display: "block", marginTop: 6, color: "var(--muted)" }}>
+                <i className="ti ti-arrow-down-right" aria-hidden="true" /> {whyBehind(f, top, objective)}
+              </span>
+            )}
             {f.meetsSalary && (
               <span className="chip sm" style={{ marginTop: 8, background: "var(--success-soft)", color: "var(--success)" }}>
                 <i className="ti ti-check" aria-hidden="true" /> In your pay range

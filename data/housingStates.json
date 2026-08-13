@@ -1,0 +1,215 @@
+{
+ "meta": {
+  "source": "Zillow Home Value Index (ZHVI), all homes, smoothed, seasonally adjusted",
+  "sourceUrl": "https://www.zillow.com/research/data/",
+  "dataMonth": "2026-06-30",
+  "retrieved": "2026-08-13",
+  "note": "Typical home value for the middle price tier (35th-65th percentile), not a median sale price. Verify current listings before relying."
+ },
+ "states": {
+  "CA": {
+   "name": "California",
+   "value": 775549
+  },
+  "TX": {
+   "name": "Texas",
+   "value": 302999
+  },
+  "FL": {
+   "name": "Florida",
+   "value": 378126
+  },
+  "NY": {
+   "name": "New York",
+   "value": 525947
+  },
+  "PA": {
+   "name": "Pennsylvania",
+   "value": 294099
+  },
+  "IL": {
+   "name": "Illinois",
+   "value": 298871
+  },
+  "OH": {
+   "name": "Ohio",
+   "value": 251502
+  },
+  "GA": {
+   "name": "Georgia",
+   "value": 335358
+  },
+  "NC": {
+   "name": "North Carolina",
+   "value": 340430
+  },
+  "MI": {
+   "name": "Michigan",
+   "value": 269972
+  },
+  "NJ": {
+   "name": "New Jersey",
+   "value": 584681
+  },
+  "VA": {
+   "name": "Virginia",
+   "value": 419920
+  },
+  "WA": {
+   "name": "Washington",
+   "value": 603303
+  },
+  "AZ": {
+   "name": "Arizona",
+   "value": 422822
+  },
+  "MA": {
+   "name": "Massachusetts",
+   "value": 672867
+  },
+  "TN": {
+   "name": "Tennessee",
+   "value": 338769
+  },
+  "IN": {
+   "name": "Indiana",
+   "value": 262265
+  },
+  "MD": {
+   "name": "Maryland",
+   "value": 436104
+  },
+  "MO": {
+   "name": "Missouri",
+   "value": 271597
+  },
+  "WI": {
+   "name": "Wisconsin",
+   "value": 342279
+  },
+  "CO": {
+   "name": "Colorado",
+   "value": 543435
+  },
+  "MN": {
+   "name": "Minnesota",
+   "value": 356887
+  },
+  "SC": {
+   "name": "South Carolina",
+   "value": 309323
+  },
+  "AL": {
+   "name": "Alabama",
+   "value": 241517
+  },
+  "LA": {
+   "name": "Louisiana",
+   "value": 217968
+  },
+  "KY": {
+   "name": "Kentucky",
+   "value": 235363
+  },
+  "OR": {
+   "name": "Oregon",
+   "value": 504432
+  },
+  "OK": {
+   "name": "Oklahoma",
+   "value": 225437
+  },
+  "CT": {
+   "name": "Connecticut",
+   "value": 455424
+  },
+  "UT": {
+   "name": "Utah",
+   "value": 541692
+  },
+  "IA": {
+   "name": "Iowa",
+   "value": 241255
+  },
+  "NV": {
+   "name": "Nevada",
+   "value": 448215
+  },
+  "AR": {
+   "name": "Arkansas",
+   "value": 228662
+  },
+  "MS": {
+   "name": "Mississippi",
+   "value": 198428
+  },
+  "KS": {
+   "name": "Kansas",
+   "value": 252794
+  },
+  "NM": {
+   "name": "New Mexico",
+   "value": 321186
+  },
+  "NE": {
+   "name": "Nebraska",
+   "value": 284464
+  },
+  "ID": {
+   "name": "Idaho",
+   "value": 482199
+  },
+  "WV": {
+   "name": "West Virginia",
+   "value": 182704
+  },
+  "HI": {
+   "name": "Hawaii",
+   "value": 836741
+  },
+  "NH": {
+   "name": "New Hampshire",
+   "value": 522944
+  },
+  "ME": {
+   "name": "Maine",
+   "value": 424107
+  },
+  "RI": {
+   "name": "Rhode Island",
+   "value": 517078
+  },
+  "MT": {
+   "name": "Montana",
+   "value": 476115
+  },
+  "DE": {
+   "name": "Delaware",
+   "value": 412252
+  },
+  "SD": {
+   "name": "South Dakota",
+   "value": 325618
+  },
+  "ND": {
+   "name": "North Dakota",
+   "value": 293556
+  },
+  "AK": {
+   "name": "Alaska",
+   "value": 400659
+  },
+  "DC": {
+   "name": "District of Columbia",
+   "value": 579332
+  },
+  "VT": {
+   "name": "Vermont",
+   "value": 402017
+  },
+  "WY": {
+   "name": "Wyoming",
+   "value": 372526
+  }
+ }
+}

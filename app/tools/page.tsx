@@ -27,6 +27,7 @@ const GROUPS: { label: string; icon: string; tools: Tool[] }[] = [
     tools: [
       { href: "/relocate", icon: "ti-map-2", title: "Relocation planner", body: "Compare places on VA access, cost, jobs, and community.", art: "compass" },
       { href: "/compare", icon: "ti-columns-3", title: "Compare states", body: "Two or three states side by side, every figure sourced.", art: "layers" },
+      { href: "/housing", icon: "ti-home-dollar", title: "Home prices & the VA loan", body: "What homes typically cost, town by town - and the $0-down loan you earned.", art: "doc" },
     ],
   },
   {

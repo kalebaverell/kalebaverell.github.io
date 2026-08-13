@@ -143,7 +143,16 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
     const ranked = DIMS.filter((d) => c.attrs[d] >= 4 && Math.abs(c.attrs[d] - vec[d]) <= 1.5)
       .sort((d1, d2) => vec[d2] - vec[d1]);
     for (const d of ranked.slice(0, 3)) why.push(`You want ${DIM_PHRASE[d]} - this path is built on it.`);
-    if (why.length === 0) why.push("A balanced fit across what you told us.");
+    // Fallback line: under a ruling objective, "balanced fit" undersells what
+    // actually happened - say plainly that the objective did the ranking.
+    if (why.length === 0) {
+      why.push(
+        objective === "money" ? "Ranked here on earning power per your tie-breaker - the preference gaps are labeled below."
+        : objective === "stability" ? "Ranked here on steadiness per your tie-breaker - the preference gaps are labeled below."
+        : objective === "speed" ? "Ranked here on how fast it starts paying, per your tie-breaker."
+        : "A balanced fit across what you told us."
+      );
+    }
 
     // Salary-range match. In-range earns a nudge up; short of their stated
     // minimum pulls the rank down in proportion to the shortfall (capped, so
@@ -204,6 +213,45 @@ export function scoreCareers(input: AssessmentInput): CareerFit[] {
     return results.sort((x, y) => quick(y) - quick(x));
   }
   return results.sort((x, y) => y.fit - x.fit);
+}
+
+// ---- Results presentation helpers (tester note 3: "only one outcome made
+// sense for me") ----
+
+const SPEED_LABEL: Record<string, string> = { weeks: "weeks", months: "months", "2yr": "about 2 years", "4yr": "a 4-year degree" };
+
+/**
+ * Top pick + runners, plus one "best from another track" card whenever the
+ * leading results all cluster in a single track. Additive on purpose: nothing
+ * is displaced or hidden to manufacture variety - the ruling objective keeps
+ * the order, and the extra card widens the menu.
+ */
+export function presentTop(fits: CareerFit[]): { top: CareerFit; runners: CareerFit[]; alt: CareerFit | null } {
+  const top = fits[0];
+  const runners = fits.slice(1, 4);
+  const tracks = new Set([top, ...runners].map((f) => f.career.track));
+  const alt = tracks.size === 1 ? fits.slice(4).find((f) => f.career.track !== top.career.track) ?? null : null;
+  return { top, runners, alt };
+}
+
+/**
+ * One plain sentence on why a runner sits below the top pick, in terms of
+ * the veteran's own ruling objective - so a near-miss reads as a choice,
+ * not a mystery.
+ */
+export function whyBehind(f: CareerFit, top: CareerFit, objective: Objective): string | null {
+  if (f.career.id === top.career.id) return null;
+  if (objective === "money" && f.medianPay != null && top.medianPay != null && top.medianPay > f.medianPay) {
+    return `Behind on pay: median ~$${f.medianPay.toLocaleString()} vs ~$${top.medianPay.toLocaleString()} for the top pick.`;
+  }
+  if (objective === "speed" && SPEED_ORDER.indexOf(f.career.speed) > SPEED_ORDER.indexOf(top.career.speed)) {
+    return `Slower on-ramp: ${SPEED_LABEL[f.career.speed]} to the first paycheck vs ${SPEED_LABEL[top.career.speed]} for the top pick.`;
+  }
+  if (objective === "stability" && f.career.attrs.risk > top.career.attrs.risk) {
+    return "More bet-on-yourself risk than the top pick.";
+  }
+  if (f.fit < top.fit) return `Close behind - a slightly weaker match on what you said you want (${f.fit}% vs ${top.fit}%).`;
+  return null;
 }
 
 export function topTrack(fits: CareerFit[]): string {
