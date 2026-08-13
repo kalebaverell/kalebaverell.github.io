@@ -724,7 +724,13 @@ function scoreCareers(input){
     const why=[];
     const ranked=DIMS.filter(d=>c.attrs[d]>=4 && Math.abs(c.attrs[d]-vec[d])<=1.5).sort((d1,d2)=>vec[d2]-vec[d1]);
     for(const d of ranked.slice(0,3)) why.push("You want "+DIM_PHRASE[d]+" - this path is built on it.");
-    if(why.length===0) why.push("A balanced fit across what you told us.");
+    // Under a ruling objective, say plainly that the objective did the ranking.
+    if(why.length===0){
+      why.push(objective==="money"?"Ranked here on earning power per your tie-breaker - the preference gaps are labeled below."
+        :objective==="stability"?"Ranked here on steadiness per your tie-breaker - the preference gaps are labeled below."
+        :objective==="speed"?"Ranked here on how fast it starts paying, per your tie-breaker."
+        :"A balanced fit across what you told us.");
+    }
 
     // Salary-range match. In-range earns a nudge up; short of their stated
     // minimum pulls the rank down in proportion to the shortfall (capped, so
@@ -783,6 +789,27 @@ function scoreCareers(input){
   return results.sort((x,y)=>y.fit-x.fit);
 }
 
+// Results presentation (tester note 3): top + runners, plus one additive
+// "best from another track" card when the leaders all cluster in one track.
+const SPEED_LABEL={weeks:"weeks",months:"months","2yr":"about 2 years","4yr":"a 4-year degree"};
+function presentTop(fits){
+  const top=fits[0];
+  const runners=fits.slice(1,4);
+  const tracks=new Set([top].concat(runners).map(f=>f.career.track));
+  const alt=tracks.size===1?(fits.slice(4).find(f=>f.career.track!==top.career.track)||null):null;
+  return {top,runners,alt};
+}
+function whyBehind(f,top,objective){
+  if(f.career.id===top.career.id)return null;
+  if(objective==="money"&&f.medianPay!=null&&top.medianPay!=null&&top.medianPay>f.medianPay)
+    return "Behind on pay: median ~$"+f.medianPay.toLocaleString()+" vs ~$"+top.medianPay.toLocaleString()+" for the top pick.";
+  if(objective==="speed"&&SPEED_ORDER.indexOf(f.career.speed)>SPEED_ORDER.indexOf(top.career.speed))
+    return "Slower on-ramp: "+SPEED_LABEL[f.career.speed]+" to the first paycheck vs "+SPEED_LABEL[top.career.speed]+" for the top pick.";
+  if(objective==="stability"&&f.career.attrs.risk>top.career.attrs.risk)
+    return "More bet-on-yourself risk than the top pick.";
+  if(f.fit<top.fit)return "Close behind - a slightly weaker match on what you said you want ("+f.fit+"% vs "+top.fit+"%).";
+  return null;
+}
 function topTrack(fits){
   const byTrack={};
   for(const f of fits.slice(0,6)){
@@ -1149,12 +1176,63 @@ function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}
 function stateName(code){const s=STATES.find(x=>x[0]===code);return s?s[1]:code}
 
 /* ---------- ROUTER ---------- */
+
+/* ----- Home prices & the VA loan (mirrors app/housing/page.tsx). State values +
+   a 5-largest-places sample per state; the live site searches all 21,000+ towns.
+   Sponsored-partner slot deliberately absent - see task #32. ----- */
+const HOUSING={meta:{"source": "Zillow Home Value Index (ZHVI), all homes, smoothed, seasonally adjusted", "sourceUrl": "https://www.zillow.com/research/data/", "dataMonth": "2026-06-30", "retrieved": "2026-08-13", "note": "Typical home value for the middle price tier (35th-65th percentile), not a median sale price. Verify current listings before relying."},states:{"CA": {"name": "California", "value": 775549}, "TX": {"name": "Texas", "value": 302999}, "FL": {"name": "Florida", "value": 378126}, "NY": {"name": "New York", "value": 525947}, "PA": {"name": "Pennsylvania", "value": 294099}, "IL": {"name": "Illinois", "value": 298871}, "OH": {"name": "Ohio", "value": 251502}, "GA": {"name": "Georgia", "value": 335358}, "NC": {"name": "North Carolina", "value": 340430}, "MI": {"name": "Michigan", "value": 269972}, "NJ": {"name": "New Jersey", "value": 584681}, "VA": {"name": "Virginia", "value": 419920}, "WA": {"name": "Washington", "value": 603303}, "AZ": {"name": "Arizona", "value": 422822}, "MA": {"name": "Massachusetts", "value": 672867}, "TN": {"name": "Tennessee", "value": 338769}, "IN": {"name": "Indiana", "value": 262265}, "MD": {"name": "Maryland", "value": 436104}, "MO": {"name": "Missouri", "value": 271597}, "WI": {"name": "Wisconsin", "value": 342279}, "CO": {"name": "Colorado", "value": 543435}, "MN": {"name": "Minnesota", "value": 356887}, "SC": {"name": "South Carolina", "value": 309323}, "AL": {"name": "Alabama", "value": 241517}, "LA": {"name": "Louisiana", "value": 217968}, "KY": {"name": "Kentucky", "value": 235363}, "OR": {"name": "Oregon", "value": 504432}, "OK": {"name": "Oklahoma", "value": 225437}, "CT": {"name": "Connecticut", "value": 455424}, "UT": {"name": "Utah", "value": 541692}, "IA": {"name": "Iowa", "value": 241255}, "NV": {"name": "Nevada", "value": 448215}, "AR": {"name": "Arkansas", "value": 228662}, "MS": {"name": "Mississippi", "value": 198428}, "KS": {"name": "Kansas", "value": 252794}, "NM": {"name": "New Mexico", "value": 321186}, "NE": {"name": "Nebraska", "value": 284464}, "ID": {"name": "Idaho", "value": 482199}, "WV": {"name": "West Virginia", "value": 182704}, "HI": {"name": "Hawaii", "value": 836741}, "NH": {"name": "New Hampshire", "value": 522944}, "ME": {"name": "Maine", "value": 424107}, "RI": {"name": "Rhode Island", "value": 517078}, "MT": {"name": "Montana", "value": 476115}, "DE": {"name": "Delaware", "value": 412252}, "SD": {"name": "South Dakota", "value": 325618}, "ND": {"name": "North Dakota", "value": 293556}, "AK": {"name": "Alaska", "value": 400659}, "DC": {"name": "District of Columbia", "value": 579332}, "VT": {"name": "Vermont", "value": 402017}, "WY": {"name": "Wyoming", "value": 372526}},sample:{"CA": [{"n": "Los Angeles", "v": 949479}, {"n": "San Diego", "v": 1002065}, {"n": "San Jose", "v": 1413804}, {"n": "San Francisco", "v": 1395852}, {"n": "Sacramento", "v": 482968}], "TX": [{"n": "Houston", "v": 265010}, {"n": "San Antonio", "v": 250888}, {"n": "Dallas", "v": 311326}, {"n": "Austin", "v": 507622}, {"n": "Fort Worth", "v": 300035}], "FL": [{"n": "Jacksonville", "v": 287871}, {"n": "Orlando", "v": 375175}, {"n": "Miami", "v": 582621}, {"n": "Tampa", "v": 380283}, {"n": "Naples", "v": 548905}], "NY": [{"n": "New York", "v": 823251}, {"n": "Buffalo", "v": 251203}, {"n": "Rochester", "v": 252192}, {"n": "Yonkers", "v": 702854}, {"n": "Syracuse", "v": 225918}], "PA": [{"n": "Philadelphia", "v": 237459}, {"n": "Pittsburgh", "v": 246117}, {"n": "Reading", "v": 268714}, {"n": "Erie", "v": 209960}, {"n": "York", "v": 282926}], "IL": [{"n": "Chicago", "v": 335521}, {"n": "Aurora", "v": 327932}, {"n": "Rockford", "v": 187245}, {"n": "Naperville", "v": 636281}, {"n": "Joliet", "v": 270919}], "OH": [{"n": "Columbus", "v": 251291}, {"n": "Cincinnati", "v": 254955}, {"n": "Cleveland", "v": 121435}, {"n": "Toledo", "v": 135476}, {"n": "Akron", "v": 144687}], "GA": [{"n": "Atlanta", "v": 387146}, {"n": "Marietta", "v": 480648}, {"n": "Lawrenceville", "v": 383935}, {"n": "Savannah", "v": 326616}, {"n": "Cumming", "v": 605713}], "NC": [{"n": "Charlotte", "v": 399434}, {"n": "Raleigh", "v": 436056}, {"n": "Greensboro", "v": 266364}, {"n": "Durham", "v": 400564}, {"n": "Winston-Salem", "v": 267668}], "MI": [{"n": "Detroit", "v": 77245}, {"n": "Grand Rapids", "v": 313551}, {"n": "Ann Arbor", "v": 540694}, {"n": "Lansing", "v": 171397}, {"n": "Warren", "v": 204491}], "NJ": [{"n": "Newark", "v": 486845}, {"n": "Jersey City", "v": 665140}, {"n": "Trenton", "v": 356470}, {"n": "Paterson", "v": 541017}, {"n": "Elizabeth", "v": 547806}], "VA": [{"n": "Virginia Beach", "v": 432734}, {"n": "Richmond", "v": 379365}, {"n": "Chesapeake", "v": 429006}, {"n": "Arlington", "v": 823028}, {"n": "Norfolk", "v": 315536}], "WA": [{"n": "Seattle", "v": 856052}, {"n": "Vancouver", "v": 511271}, {"n": "Spokane", "v": 403557}, {"n": "Tacoma", "v": 498063}, {"n": "Everett", "v": 654227}], "AZ": [{"n": "Phoenix", "v": 410222}, {"n": "Tucson", "v": 325520}, {"n": "Mesa", "v": 434616}, {"n": "Chandler", "v": 521563}, {"n": "Gilbert", "v": 572453}], "MA": [{"n": "Boston", "v": 788881}, {"n": "Worcester", "v": 443387}, {"n": "Springfield", "v": 308418}, {"n": "Cambridge", "v": 1044286}, {"n": "Lowell", "v": 492699}], "TN": [{"n": "Nashville", "v": 436603}, {"n": "Memphis", "v": 146746}, {"n": "Knoxville", "v": 376648}, {"n": "Murfreesboro", "v": 430236}, {"n": "Clarksville", "v": 322202}], "IN": [{"n": "Indianapolis", "v": 233826}, {"n": "Fort Wayne", "v": 250668}, {"n": "Evansville", "v": 206632}, {"n": "South Bend", "v": 202069}, {"n": "Bloomington", "v": 321473}], "MD": [{"n": "Baltimore", "v": 192669}, {"n": "Silver Spring", "v": 556503}, {"n": "Frederick", "v": 469711}, {"n": "Laurel", "v": 480750}, {"n": "Rockville", "v": 623896}], "MO": [{"n": "Kansas City", "v": 257356}, {"n": "Saint Louis", "v": 191644}, {"n": "Springfield", "v": 248023}, {"n": "Columbia", "v": 330373}, {"n": "Independence", "v": 214195}], "WI": [{"n": "Milwaukee", "v": 231388}, {"n": "Madison", "v": 435430}, {"n": "Green Bay", "v": 289378}, {"n": "Kenosha", "v": 286642}, {"n": "Appleton", "v": 308435}], "CO": [{"n": "Denver", "v": 538992}, {"n": "Colorado Springs", "v": 450254}, {"n": "Aurora", "v": 462424}, {"n": "Fort Collins", "v": 569102}, {"n": "Lakewood", "v": 572759}], "MN": [{"n": "Minneapolis", "v": 336624}, {"n": "Saint Paul", "v": 301096}, {"n": "Rochester", "v": 348286}, {"n": "Duluth", "v": 303635}, {"n": "Bloomington", "v": 370580}], "SC": [{"n": "Columbia", "v": 232810}, {"n": "Greenville", "v": 333224}, {"n": "Charleston", "v": 598419}, {"n": "Summerville", "v": 383532}, {"n": "Myrtle Beach", "v": 323460}], "AL": [{"n": "Mobile", "v": 199106}, {"n": "Birmingham", "v": 139502}, {"n": "Huntsville", "v": 292728}, {"n": "Montgomery", "v": 153885}, {"n": "Tuscaloosa", "v": 231708}], "LA": [{"n": "Baton Rouge", "v": 233067}, {"n": "New Orleans", "v": 247590}, {"n": "Shreveport", "v": 147051}, {"n": "Lafayette", "v": 228144}, {"n": "Metairie", "v": 334224}], "KY": [{"n": "Louisville", "v": 267770}, {"n": "Lexington", "v": 336762}, {"n": "Bowling Green", "v": 288478}, {"n": "Owensboro", "v": 216394}, {"n": "Richmond", "v": 303364}], "OR": [{"n": "Portland", "v": 540296}, {"n": "Eugene", "v": 484308}, {"n": "Beaverton", "v": 532257}, {"n": "Salem", "v": 440407}, {"n": "Bend", "v": 737350}], "OK": [{"n": "Oklahoma City", "v": 209490}, {"n": "Tulsa", "v": 222868}, {"n": "Edmond", "v": 358374}, {"n": "Broken Arrow", "v": 291736}, {"n": "Norman", "v": 265751}], "CT": [{"n": "Bridgeport", "v": 368276}, {"n": "Stamford", "v": 730252}, {"n": "New Haven", "v": 340803}, {"n": "Hartford", "v": 205552}, {"n": "Waterbury", "v": 289392}], "UT": [{"n": "Salt Lake City", "v": 580299}, {"n": "West Valley City", "v": 472447}, {"n": "West Jordan", "v": 563414}, {"n": "Provo", "v": 489807}, {"n": "Sandy", "v": 670855}], "IA": [{"n": "Des Moines", "v": 213036}, {"n": "Cedar Rapids", "v": 215210}, {"n": "Davenport", "v": 197010}, {"n": "Sioux City", "v": 202782}, {"n": "Iowa City", "v": 305697}], "NV": [{"n": "Las Vegas", "v": 425535}, {"n": "Henderson", "v": 486533}, {"n": "Reno", "v": 576913}, {"n": "North Las Vegas", "v": 408280}, {"n": "Sparks", "v": 537388}], "AR": [{"n": "Little Rock", "v": 222779}, {"n": "Fayetteville", "v": 385227}, {"n": "Fort Smith", "v": 197471}, {"n": "Jonesboro", "v": 228426}, {"n": "Springdale", "v": 342727}], "MS": [{"n": "Jackson", "v": 85739}, {"n": "Gulfport", "v": 205550}, {"n": "Hattiesburg", "v": 224680}, {"n": "Brandon", "v": 290693}, {"n": "Biloxi", "v": 239040}], "KS": [{"n": "Wichita", "v": 208245}, {"n": "Overland Park", "v": 493605}, {"n": "Topeka", "v": 199788}, {"n": "Kansas City", "v": 206133}, {"n": "Olathe", "v": 441698}], "NM": [{"n": "Albuquerque", "v": 350091}, {"n": "Las Cruces", "v": 291884}, {"n": "Santa Fe", "v": 589611}, {"n": "Rio Rancho", "v": 365636}, {"n": "Farmington", "v": 286428}], "NE": [{"n": "Omaha", "v": 300783}, {"n": "Lincoln", "v": 297539}, {"n": "Bellevue", "v": 302976}, {"n": "Grand Island", "v": 258203}, {"n": "Papillion", "v": 415721}], "ID": [{"n": "Boise", "v": 508258}, {"n": "Nampa", "v": 418847}, {"n": "Meridian", "v": 538033}, {"n": "Idaho Falls", "v": 398674}, {"n": "Caldwell", "v": 402988}], "WV": [{"n": "Morgantown", "v": 289582}, {"n": "Charleston", "v": 172278}, {"n": "Huntington", "v": 145252}, {"n": "Martinsburg", "v": 315677}, {"n": "Parkersburg", "v": 151551}], "HI": [{"n": "Honolulu", "v": 767860}, {"n": "Ewa Beach", "v": 837257}, {"n": "Waipahu", "v": 876165}, {"n": "Mililani", "v": 886626}, {"n": "Kapolei", "v": 849650}], "NH": [{"n": "Manchester", "v": 448035}, {"n": "Nashua", "v": 517357}, {"n": "Concord", "v": 459761}, {"n": "Derry", "v": 512240}, {"n": "Dover", "v": 556223}], "ME": [{"n": "Portland", "v": 571364}, {"n": "Lewiston", "v": 305711}, {"n": "Bangor", "v": 295453}, {"n": "South Portland", "v": 540160}, {"n": "Auburn", "v": 334421}], "RI": [{"n": "Providence", "v": 438893}, {"n": "Cranston", "v": 462629}, {"n": "Pawtucket", "v": 405279}, {"n": "Warwick", "v": 429195}, {"n": "East Providence", "v": 452910}], "MT": [{"n": "Billings", "v": 402554}, {"n": "Missoula", "v": 576303}, {"n": "Bozeman", "v": 733959}, {"n": "Great Falls", "v": 342814}, {"n": "Helena", "v": 483690}], "DE": [{"n": "Wilmington", "v": 335577}, {"n": "Newark", "v": 371502}, {"n": "Dover", "v": 345288}, {"n": "New Castle", "v": 286159}, {"n": "Middletown", "v": 541361}], "SD": [{"n": "Sioux Falls", "v": 336151}, {"n": "Rapid City", "v": 367620}, {"n": "Aberdeen", "v": 248542}, {"n": "Watertown", "v": 318757}, {"n": "Brookings", "v": 327508}], "ND": [{"n": "Fargo", "v": 324918}, {"n": "Bismarck", "v": 381727}, {"n": "Grand Forks", "v": 303687}, {"n": "Minot", "v": 282148}, {"n": "West Fargo", "v": 360904}], "AK": [{"n": "Anchorage", "v": 424577}, {"n": "Fairbanks", "v": 309568}, {"n": "Wasilla", "v": 424843}, {"n": "Palmer", "v": 440883}, {"n": "Eagle River", "v": 492205}], "DC": [{"n": "Washington", "v": 579159}], "VT": [{"n": "Burlington", "v": 519611}, {"n": "Essex", "v": 486576}, {"n": "Rutland", "v": 289521}, {"n": "South Burlington", "v": 491399}, {"n": "Colchester", "v": 493206}], "WY": [{"n": "Cheyenne", "v": 391685}, {"n": "Casper", "v": 314485}, {"n": "Gillette", "v": 337594}, {"n": "Laramie", "v": 381762}, {"n": "Rock Springs", "v": 295752}]}};
+let HS={a:"TX",b:"TN"};
+function hsPick(k,v){HS[k]=v;router();}
+function hsPanel(code,other){
+  const st=HOUSING.states[code];
+  const delta=other?st.value-HOUSING.states[other].value:0;
+  const taxes=((STATE_BENEFITS.states.find(s=>s.code===code)||{}).programs||[]).filter(p=>p.category==="tax");
+  return `<div class="card" style="flex:1;min-width:290px">
+    <h3 style="margin:0">${st.name}</h3>
+    <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-size:30px;font-weight:700;color:var(--primary)">$${st.value.toLocaleString()}</span><span class="small muted">typical home statewide</span></div>
+    ${other&&delta!==0?`<p class="small muted" style="margin:4px 0 0">$${Math.abs(delta).toLocaleString()} ${delta>0?"more":"less"} than ${HOUSING.states[other].name}.</p>`:""}
+    <div style="margin-top:12px"><strong class="small">Largest places (sample):</strong>
+      ${(HOUSING.sample[code]||[]).map(p=>`<div class="kv"><span class="k">${p.n}</span><span style="font-weight:600">$${p.v.toLocaleString()}</span></div>`).join("")}
+      <p class="small muted" style="margin:8px 0 0">The demo shows each state's five largest - the live site searches every published town (21,000+).</p>
+    </div>
+    ${taxes.length?`<div style="margin-top:12px"><strong class="small">Veteran property-tax relief here:</strong><ul style="margin:6px 0 0;padding-left:18px">${taxes.map(t=>`<li class="small" style="margin-bottom:3px">${t.name} - <a href="${t.source}" target="_blank" rel="noopener">verify at source</a></li>`).join("")}</ul></div>`:""}
+  </div>`;
+}
+function Housing(){
+  const opts=Object.keys(HOUSING.states).sort((a,b)=>HOUSING.states[a].name.localeCompare(HOUSING.states[b].name));
+  const sel=k=>`<label class="small" style="font-weight:600">${k==="a"?"First":"Second"} state<select class="field" style="display:block;margin-top:6px" onchange="hsPick('${k}',this.value)">${opts.map(c=>`<option value="${c}" ${HS[k]===c?"selected":""}>${HOUSING.states[c].name}</option>`).join("")}</select></label>`;
+  return `<div class="wrap pad">
+    ${sectionHead("Housing","What homes cost, and the loan you've already earned","Compare two states and put real numbers under the buy-vs-rent question. The VA loan is one of the most valuable benefits most veterans never use.")}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:0 0 14px">${sel("a")}${sel("b")}</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">${hsPanel(HS.a,HS.b)}${hsPanel(HS.b,HS.a)}</div>
+    <p class="small muted" style="margin:10px 0 0">Home values: ${HOUSING.meta.source}, ${HOUSING.meta.dataMonth} data (<a href="${HOUSING.meta.sourceUrl}" target="_blank" rel="noopener">zillow.com/research/data</a>). ${HOUSING.meta.note}</p>
+    <div class="card" style="margin-top:20px;border:2px solid var(--accent)">
+      <h3 style="margin-top:0"><i class="ti ti-home-check" style="color:var(--accent-ink)" aria-hidden="true"></i> The VA loan, in four sentences</h3>
+      <ul style="margin:8px 0 0;padding-left:18px;display:grid;gap:6px">
+        <li class="small">In most cases: <strong>no down payment and no monthly mortgage insurance</strong>. The VA guarantees part of the loan - a private lender actually makes it.</li>
+        <li class="small">Step one is your <strong>Certificate of Eligibility</strong> - <a href="https://www.va.gov/housing-assistance/home-loans/how-to-request-coe/" target="_blank" rel="noopener">request it at VA.gov</a> in minutes.</li>
+        <li class="small">A one-time VA funding fee usually applies, but <strong>veterans receiving disability compensation are typically exempt</strong> - <a href="https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/" target="_blank" rel="noopener">check the current rules</a>.</li>
+        <li class="small">It's reusable. Using it once does not use it up.</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 style="margin-top:0"><i class="ti ti-building-bank" style="color:var(--accent-ink)" aria-hidden="true"></i> Finding a lender or agent</h3>
+      <ul style="margin:8px 0 0;padding-left:18px;display:grid;gap:6px">
+        <li class="small">The VA does not lend money or endorse lenders - <strong>almost any bank, credit union, or mortgage company can make a VA loan</strong>.</li>
+        <li class="small">Get quotes from <strong>at least two lenders</strong> - rates and fees on VA loans vary more than most people expect, and comparing is free.</li>
+        <li class="small">Never pay anyone just to be "connected" to a VA lender - <a href="https://www.consumerfinance.gov/consumer-tools/mortgages/" target="_blank" rel="noopener">CFPB's mortgage guides</a> are free.</li>
+      </ul>
+    </div>
+    <div class="callout info" style="margin-top:16px"><i class="ti ti-info-circle"></i><div>Home values are market estimates, not appraisals, and they move. Confirm prices with current listings and loan terms with your lender and <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA.gov</a>. VetPath is not the VA, not a lender, and not a real-estate brokerage.</div></div>
+  </div>`;
+}
+
 const routes = {
   "/":Landing, "/onboarding":Onboarding, "/dashboard":Dashboard,
   "/benefits":Benefits, "/goals":GoalPlanning, "/plan":ActionPlan,
   "/pathfinder":Pathfinder, "/tools":Tools, "/timeline":Timeline, "/resume":Resume,
   "/transcript":Transcript, "/network":Network, "/relocate":Relocate, "/family":Family,
-  "/updates":Updates, "/profile":Profile, "/admin":Admin, "/print":Print
+  "/updates":Updates, "/housing":Housing, "/profile":Profile, "/admin":Admin, "/print":Print
 };
 function router(){
   const hash=location.hash.replace("#","")||"/";
@@ -1175,6 +1253,7 @@ function router(){
     if(router._last==="/relocate")RELOC=relocFresh();
     if(router._last==="/updates")LU=luFresh();
     if(router._last==="/timeline")TL=tlFresh();
+    if(router._last==="/housing")HS={a:"TX",b:"TN"};
   }
   document.getElementById("root").innerHTML = shell(view());
   wire(path);
@@ -2611,8 +2690,8 @@ const PF_OBJECTIVE_LINE={
 function pfResults(){
   const fits=pfFits();
   const objective=rulingObjective(S.assessment);
-  const top=fits[0];
-  const runners=fits.slice(1,4);
+  const {top,runners,alt}=presentTop(fits);
+  const shownRunners=alt?runners.concat([alt]):runners;
   const tt=trackById(topTrack(fits));
   return `<div class="wrap pad">
     <button type="button" class="backlink" style="background:transparent;border:none;font-family:inherit;padding:8px 8px 8px 0" onclick="pfSet('assess',${ASSESSMENT.questions.length})"><i class="ti ti-arrow-left" aria-hidden="true"></i> Adjust answers</button>
@@ -2650,12 +2729,14 @@ function pfResults(){
 
     <h3 style="margin-top:24px">Strong runners-up</h3>
     <div class="grid g2">
-      ${runners.map(f=>`<button type="button" class="card" style="cursor:pointer;text-align:left;font-family:inherit;font-size:inherit;color:var(--ink)" onclick="pfSet('detail','${f.career.id}',1)">
+      ${shownRunners.map(f=>`<button type="button" class="card" style="cursor:pointer;text-align:left;font-family:inherit;font-size:inherit;color:var(--ink)" onclick="pfSet('detail','${f.career.id}',1)">
         <span style="display:flex;justify-content:space-between;align-items:center;gap:8px">
           <span style="display:flex;gap:10px;align-items:center"><i class="ti ${f.career.icon}" aria-hidden="true" style="font-size:22px;color:var(--accent-ink)"></i><span style="font-weight:600">${f.career.label}</span></span>
           <span style="font-weight:700;color:var(--primary);font-size:20px">${f.fit}%</span>
         </span>
+        ${alt&&f.career.id===alt.career.id?`<span class="chip sm" style="margin-top:8px;background:var(--chip);color:var(--primary)"><i class="ti ti-route-2" aria-hidden="true"></i> Best from a different track - ${(trackById(f.career.track)||{}).label||''}</span>`:''}
         <span class="muted small" style="display:block;margin-top:8px">${f.career.blurb}</span>
+        ${whyBehind(f,top,objective)?`<span class="small" style="display:block;margin-top:6px;color:var(--muted)"><i class="ti ti-arrow-down-right" aria-hidden="true"></i> ${whyBehind(f,top,objective)}</span>`:''}
         ${f.meetsSalary?`<span class="chip sm" style="margin-top:8px;background:var(--success-soft);color:var(--success)"><i class="ti ti-check" aria-hidden="true"></i> In your pay range</span>`:''}
         ${f.belowTarget&&f.medianPay!=null?`<span class="chip sm" style="margin-top:8px;background:var(--accent-soft);color:var(--accent-ink)"><i class="ti ti-trending-down" aria-hidden="true"></i> Median ~$${f.medianPay.toLocaleString()} - below your target</span>`:''}
         ${(f.tradeoffs&&f.tradeoffs.length)?`<span class="chip sm" style="margin-top:8px;background:var(--accent-soft);color:var(--accent-ink)"><i class="ti ti-scale" aria-hidden="true"></i> ${f.tradeoffs[0].split(" - ")[0]} - labeled trade-off</span>`:''}
@@ -2731,7 +2812,8 @@ function Tools(){
       ["#/network","ti-users-group","Networking &amp; mentors","Free mentors and veteran networks for your path."]
     ]],
     ["Housing","ti-home",[
-      ["#/relocate","ti-map-2","Relocation planner","Compare places on VA access, cost, jobs, and community."]
+      ["#/relocate","ti-map-2","Relocation planner","Compare places on VA access, cost, jobs, and community."],
+      ["#/housing","ti-home-dollar","Home prices &amp; the VA loan","What homes typically cost, state by state - and the $0-down loan you earned."]
     ]],
     ["Life &amp; family","ti-users",[
       ["#/family","ti-users","Family planner","Checkpoints and decisions the whole household should see."],
