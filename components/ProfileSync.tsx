@@ -45,12 +45,15 @@ export default function ProfileSync() {
         if (error) throw error;
         // Write-once attribution: if this account has no first-touch record
         // yet and this device captured one (lib/firstTouch.ts), attach it.
+        // UPSERT, not update: on a brand-new account this select races the
+        // row-creating upsert and can see no row at all - an update would
+        // no-op silently (which is exactly what happened until 2026-08-14).
         // Best-effort - a failure here must never block the plan sync below.
-        if (data && data.first_touch == null) {
+        if (data?.first_touch == null) {
           const ft = readFirstTouch();
           if (ft) {
             try {
-              await supabase.from("profiles").update({ first_touch: ft }).eq("id", user.id);
+              await supabase.from("profiles").upsert({ id: user.id, first_touch: ft }, { onConflict: "id" });
             } catch { /* attribution is never worth a failed sync */ }
           }
         }
