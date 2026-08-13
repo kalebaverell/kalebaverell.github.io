@@ -49,6 +49,28 @@ const JARGON: [string, string][] = [
 const WEAK_PHRASES = ["responsible for", "duties included", "worked on", "helped with", "assisted with", "tasked with"];
 const ACTION_VERBS = ["led", "managed", "built", "operated", "trained", "coordinated", "maintained", "supervised", "improved", "reduced", "executed", "delivered", "launched", "designed", "implemented", "streamlined", "negotiated", "directed", "planned", "achieved"];
 
+// Experience-based path suggestions (tester note 4, 2026-08-13): which career
+// paths does the pasted resume already speak the language of? Deterministic
+// keyword counting against each career's keyword list - an estimate, labeled
+// as such, never a verdict. Careers are passed in to avoid an import cycle.
+export interface PathMatch {
+  career: Career;
+  hits: string[];
+  pct: number; // share of the career's keywords present, 0-100
+}
+export function suggestPaths(text: string, careers: Career[]): PathMatch[] {
+  const lower = text.toLowerCase();
+  if (lower.trim().split(/\s+/).filter(Boolean).length < 40) return []; // too little text to read anything into
+  return careers
+    .map((c) => {
+      const hits = c.keywords.filter((k) => lower.includes(k.toLowerCase()));
+      return { career: c, hits, pct: Math.round((hits.length / Math.max(1, c.keywords.length)) * 100) };
+    })
+    .filter((m) => m.hits.length >= 2)
+    .sort((a, b) => b.pct - a.pct || b.hits.length - a.hits.length)
+    .slice(0, 3);
+}
+
 export function analyzeResume(text: string, career?: Career): ResumeResult {
   const clean = text.trim();
   const lower = clean.toLowerCase();

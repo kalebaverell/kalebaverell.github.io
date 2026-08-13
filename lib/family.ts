@@ -82,6 +82,7 @@ export function familyAudiences(a: AnswersLike): FamilyAudience[] {
   const out = new Set<FamilyAudience>(["household"]); // any family selection = household lens
   if (needs.includes("Spouse benefits")) out.add("spouse");
   if (needs.includes("Dependent education") || needs.includes("Childcare")) out.add("kids");
+  if (needs.includes("Dependent with special needs")) out.add("kids");
   if ((a.educationGoals || []).includes("Help a dependent with school")) out.add("kids");
   if (needs.includes("Caregiver support")) out.add("caregiver");
   if ((a.financialPriorities || []).includes("Protect my family (survivor benefits)")) out.add("survivor");
@@ -171,6 +172,29 @@ export function buildFamilyPlan(a: AnswersLike, careerLabel?: string): FamilyPla
       });
     }
     decisions.push("Pick the move window together - school calendar, spouse license timeline, and housing dates all pull on the same weeks.");
+  }
+
+  // Special-needs dependent (tester feedback 2026-08-13). Only real,
+  // verifiable programs: EFMP is a DoD program that exists while serving;
+  // IEP/504 rights follow the child under IDEA regardless of state; ABLE
+  // accounts are federal law. No invented benefits.
+  if (needs.includes("Dependent with special needs")) {
+    checkpoints.push({
+      when: "30",
+      who: "kids",
+      text: "Gather your dependent's records now: EFMP file (while still serving - militaryonesource.mil/efmp), current IEP or 504 plan, and therapy/provider notes. The receiving school district and new providers will ask for all of it, and re-evaluations go faster with paperwork in hand.",
+    });
+    checkpoints.push({
+      when: "60",
+      who: "kids",
+      text: "If you're moving, contact the new school district's special-education office before enrollment - IEP/504 protections transfer under IDEA, but services are re-determined locally and waitlists for evaluations are real.",
+    });
+    checkpoints.push({
+      when: "90",
+      who: "household",
+      text: "Ask about an ABLE account - tax-advantaged savings for disability-related expenses that generally don't count against SSI/Medicaid limits (ssa.gov/able). Worth a conversation with a benefits counselor before the first deposit.",
+    });
+    decisions.push("Map your dependent's care team for the next chapter - which providers, therapies, and school supports must exist wherever you land, before you pick where you land.");
   }
 
   // Caregiver path - only claim the verified 70%+ requirement.

@@ -112,6 +112,7 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (e !== "No education plans") cats.add("gi-bill");
   });
   if ((a.familyNeeds || []).some((f) => f !== "None")) cats.add("family-dependent");
+  const specialNeeds = (a.familyNeeds || []).includes("Dependent with special needs");
   if ((a.wellnessPriorities || []).includes("Mental health support")) cats.add("mental-health-crisis");
   if (primaryState(a)) cats.add("state-benefits");
   if (career) trackById(career.track)?.benefits.forEach((b) => cats.add(b));
@@ -143,8 +144,19 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     plan30.push(item("Request and safeguard your DD-214 and full medical records", "high"));
     plan30.push(item("Start a VA disability claim (ask about Benefits Delivery at Discharge)", "high"));
     plan60.push(item("Apply for VA health care and pick a facility near home", "high"));
+    // Government quarters end with the orders - the plan has to say so out
+    // loud (tester feedback 2026-08-13). BAH stopping at separation is the
+    // part people budget around too late.
+    if (housingList.includes("On base or in government quarters") || housingList.includes("Barracks / dorms / ship")) {
+      plan30.push(item("Line up your next address now - your housing (and BAH) ends at separation. Budget deposit + first month, and compare renting vs buying with the VA loan before terminal leave", "high"));
+    }
     if (career?.skillbridge) plan30.push(item(`Ask your command about a DoD SkillBridge internship in ${career.label.toLowerCase()} - civilian experience on military pay`, "high"));
     else plan30.push(item("Ask your command about DoD SkillBridge - intern with a civilian employer your last 180 days on military pay", "medium"));
+  }
+  // Special-needs dependent (tester feedback 2026-08-13): the records step is
+  // time-critical everywhere; the family module carries the full depth.
+  if (specialNeeds) {
+    plan30.push(item("Gather your dependent's special-needs records - EFMP file (while serving), current IEP or 504 plan, provider notes - so the next school and care team can pick up without a gap", "high"));
   }
   // Destination roadmap steps distributed across the plan
   if (career) {

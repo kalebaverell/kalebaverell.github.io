@@ -133,6 +133,10 @@ export default function Dashboard() {
         )}
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginTop: 12, paddingTop: 12, borderTop: "1px solid var(--hairline)" }}>
           <Link className="btn sm" href="/plan"><i className="ti ti-checkbox" /> Full action plan ({all.length - done} open)</Link>
+          {/* Testers didn't find the scanner (2026-08-13) - put it where the work happens. */}
+          {!s.resume && (
+            <Link className="btn sm ghost" href="/resume"><i className="ti ti-file-text" /> Have a resume? Scan it</Link>
+          )}
           <span className="small muted">Three at a time. Finish one and the next steps in.</span>
         </div>
       </div>

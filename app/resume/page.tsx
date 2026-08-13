@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { CAREERS, careerById } from "@/lib/data";
-import { analyzeResume, type ResumeResult } from "@/lib/resume";
+import { analyzeResume, suggestPaths, type ResumeResult } from "@/lib/resume";
 import { Wrap, Callout } from "@/components/ui";
 
 export default function ResumeScanner() {
@@ -105,6 +105,36 @@ export default function ResumeScanner() {
               </div>
             </div>
           )}
+
+          {/* Experience-based suggestions (tester note 4, 2026-08-13): the scan
+              already read the resume - tell them which paths it sounds like. */}
+          {(() => {
+            const matches = suggestPaths(text, CAREERS).filter((m) => m.career.id !== careerId);
+            if (matches.length === 0) return null;
+            return (
+              <div className="card" style={{ marginTop: 16, border: "2px solid var(--accent)" }}>
+                <h3 style={{ marginTop: 0 }}><i className="ti ti-compass" style={{ color: "var(--accent-ink)" }} /> Your experience already sounds like&hellip;</h3>
+                <p className="small muted" style={{ margin: "4px 0 10px" }}>
+                  Based only on the language in your resume - an estimate, not a verdict. The Pathfinder
+                  test weighs what you actually <em>want</em>, which matters more.
+                </p>
+                {matches.map((m) => (
+                  <div key={m.career.id} className="kv">
+                    <span className="k">
+                      <i className={`ti ${m.career.icon}`} aria-hidden="true" style={{ color: "var(--accent-ink)", marginRight: 6 }} />
+                      {m.career.label}
+                    </span>
+                    <span className="small muted" style={{ textAlign: "right" }}>
+                      speaks its language: {m.hits.slice(0, 3).join(", ")}{m.hits.length > 3 ? "…" : ""}
+                    </span>
+                  </div>
+                ))}
+                <Link className="btn ghost" href="/pathfinder" style={{ marginTop: 12 }}>
+                  <i className="ti ti-compass" aria-hidden="true" /> Weigh these against what you want - take the test
+                </Link>
+              </div>
+            );
+          })()}
 
           <div className="card" style={{ marginTop: 16 }}>
             <h3><i className="ti ti-arrow-right" style={{ color: "var(--accent-ink)" }} /> Next steps</h3>

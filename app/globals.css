@@ -492,3 +492,10 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   a[href^="#"]::after, a[href^="/"]::after { content:""; }
   @page { size:letter; margin:0.6in; }
 }
+
+/* Running checklist pill (ProgressStrip) - floats above content; sits above
+   the mobile tab bar the same way .flow-nav does. */
+.progress-strip{position:fixed;right:14px;bottom:14px;z-index:30;display:flex;flex-direction:column;align-items:flex-end}
+@media (max-width:760px){
+  body.has-tabbar .progress-strip{bottom:calc(64px + env(safe-area-inset-bottom) + 10px)}
+}

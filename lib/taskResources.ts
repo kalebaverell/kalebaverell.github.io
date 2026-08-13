@@ -28,6 +28,15 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   { test: /\bresume\b|interview|cover letter/i, resources: [
     { label: "Open the Resume scanner", href: "/resume", internal: true },
   ]},
+  { test: /special.?needs|\befmp\b|\biep\b|\b504 plan\b|able account/i, resources: [
+    { label: "EFMP - Exceptional Family Member Program (Military OneSource)", href: "https://www.militaryonesource.mil/special-needs/efmp/" },
+    { label: "ABLE accounts (SSA)", href: "https://www.ssa.gov/ssi/spotlights/spot-able.html" },
+    { label: "Open the Family planner", href: "/family", internal: true },
+  ]},
+  { test: /next address|housing \(and bah\)|terminal leave|rent(ing)? vs buy/i, resources: [
+    { label: "Home prices & the VA loan", href: "/housing", internal: true },
+    { label: "VA home loans (VA.gov)", href: "https://www.va.gov/housing-assistance/home-loans/" },
+  ]},
   { test: /transcript|\bjst\b|ccaf|college credit|prior learning/i, resources: [
     { label: "Open the Smart transcript tool", href: "/transcript", internal: true },
   ]},

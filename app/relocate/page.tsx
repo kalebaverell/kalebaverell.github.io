@@ -3,7 +3,7 @@
 // scored by THEIR priorities and (optionally) their chosen path. SAMPLE data only.
 import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useStore } from "@/lib/store";
 import { careerById, realStateInfo, stateName } from "@/lib/data";
 import { Wrap, SectionHead, Callout } from "@/components/ui";
@@ -17,11 +17,12 @@ import {
   type Metro,
   type Priority,
   type RelocPriorities,
+  type ClimatePref,
   type ScoredMetro,
 } from "@/lib/relocate";
 
 const DEFAULT_PRIORITIES: RelocPriorities = {
-  vaAccess: 1, cost: 1, jobs: 1, stateBenefits: 1, schools: 0, community: 1, safety: 0, business: 0, airport: 0,
+  vaAccess: 1, cost: 1, jobs: 1, stateBenefits: 1, schools: 0, community: 1, safety: 0, business: 0, airport: 0, taxes: 0,
 };
 
 const PRIORITY_OPTIONS: Priority[] = [0, 1, 2];
@@ -92,10 +93,11 @@ function StateBenefitsTeaser({ m }: { m: Metro }) {
 }
 
 function MetroCard({
-  r, rank, selected, atLimit, onToggleCompare,
+  r, rank, move, selected, atLimit, onToggleCompare,
 }: {
   r: ScoredMetro;
   rank: number;
+  move?: number | "new";
   selected: boolean;
   atLimit: boolean;
   onToggleCompare: (id: string) => void;
@@ -108,6 +110,12 @@ function MetroCard({
         <div>
           <h3 style={{ margin: 0 }}>
             {rank}. {m.name}{m.state !== "-" ? `, ${m.state}` : ""}
+            {move === "new" && <span className="chip sm" style={{ marginLeft: 8, background: "var(--chip)", color: "var(--primary)", verticalAlign: "middle" }}>new to top 6</span>}
+            {typeof move === "number" && move !== 0 && (
+              <span className="chip sm" style={{ marginLeft: 8, background: move > 0 ? "var(--success-soft)" : "var(--accent-soft)", color: move > 0 ? "var(--success)" : "var(--accent-ink)", verticalAlign: "middle" }}>
+                <i className={`ti ${move > 0 ? "ti-arrow-up" : "ti-arrow-down"}`} aria-hidden="true" /> {Math.abs(move)}
+              </span>
+            )}
           </h3>
           <div className="small muted">{m.colNote}</div>
         </div>
@@ -158,6 +166,7 @@ function MetroCard({
 export default function RelocatePage() {
   const { s, ready } = useStore();
   const [prio, setPrio] = useState<RelocPriorities>(DEFAULT_PRIORITIES);
+  const [climate, setClimate] = useState<ClimatePref>(null);
   const [useProfile, setUseProfile] = useState(false);
   const [shown, setShown] = useState(false);
   const [compareIds, setCompareIds] = useState<string[]>([]);
@@ -172,10 +181,35 @@ export default function RelocatePage() {
 
   const results = useMemo(() => {
     if (!shown) return null;
-    return scoreMetros(prio, useProfile ? { careerId: career?.id, highVaNeed } : undefined);
-  }, [shown, prio, useProfile, career?.id, highVaNeed]);
+    return scoreMetros(prio, { climate, ...(useProfile ? { careerId: career?.id, highVaNeed } : {}) });
+  }, [shown, prio, climate, useProfile, career?.id, highVaNeed]);
 
   const top6 = results ? results.slice(0, 6) : [];
+
+  // Movement tracking (tester feedback 2026-08-13: "toggling doesn't change
+  // results" - it did, invisibly). Remember the previous ranking and show each
+  // metro's move; when the order genuinely holds, say that out loud too.
+  const prevOrder = useRef<string[] | null>(null);
+  const [moves, setMoves] = useState<Record<string, number | "new"> | null>(null);
+  useEffect(() => {
+    if (!results) { prevOrder.current = null; setMoves(null); return; }
+    const order = results.map((r) => r.metro.id);
+    const prev = prevOrder.current;
+    if (prev && prev.join("|") !== order.join("|")) {
+      const m: Record<string, number | "new"> = {};
+      for (const r of top6) {
+        const was = prev.indexOf(r.metro.id);
+        const now = order.indexOf(r.metro.id);
+        if (was === -1) m[r.metro.id] = "new";
+        else if (was !== now) m[r.metro.id] = was - now; // + = climbed
+      }
+      setMoves(m);
+    } else if (prev) {
+      setMoves({}); // recomputed, same order - acknowledge it
+    }
+    prevOrder.current = order;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [results]);
   const compareRows = useMemo(
     () => (compareIds.length >= 2 ? compareMetros(compareIds) : []),
     [compareIds]
@@ -213,8 +247,8 @@ export default function RelocatePage() {
         <h3><i className="ti ti-adjustments" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Step 1 - what matters to you?</h3>
         <p className="muted" style={{ maxWidth: 640, marginTop: 4 }}>
           Mark each factor <strong>Skip</strong>, <strong>Nice to have</strong>, or <strong>Must have</strong>.
-          Must-haves count double. We&apos;ve pre-marked a common starting point - change anything;
-          there are no wrong answers, this is your move.
+          Must-haves count triple, so they visibly reshape the list. We&apos;ve pre-marked a common
+          starting point - change anything; there are no wrong answers, this is your move.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: 14, marginTop: 14 }}>
           {RELOC_DIMS.map((d) => (
@@ -238,6 +272,20 @@ export default function RelocatePage() {
               </div>
             </div>
           ))}
+          <div className="card" style={{ padding: 18 }}>
+            <div style={{ fontWeight: 600, color: "var(--ink-strong)" }}>
+              <i className="ti ti-temperature" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Winters
+            </div>
+            <div className="small muted" style={{ margin: "4px 0 10px" }}>Do you run toward warm or toward snow? Counts as a must-have once you pick a direction.</div>
+            <div role="group" aria-label="Climate preference" style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {([["No preference", null], ["Warmer, please", "warm"], ["Colder is fine", "cold"]] as [string, ClimatePref][]).map(([label, v]) => (
+                <button key={label} type="button" className={`chip selectable${climate === v ? " selected" : ""}`} aria-pressed={climate === v}
+                  onClick={() => setClimate(v)}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
         {nothingSelected && (
           <p className="small muted" style={{ marginTop: 10 }}>
@@ -291,12 +339,21 @@ export default function RelocatePage() {
       {results && (
         <div style={{ marginTop: 22 }}>
           <h3>Your top matches <span className="muted small">(top 6 of {results.length} sample places)</span></h3>
+          {moves && (
+            <p className="small" aria-live="polite" style={{ margin: "6px 0 0", color: Object.keys(moves).length ? "var(--success)" : "var(--muted)" }}>
+              <i className={`ti ${Object.keys(moves).length ? "ti-arrows-sort" : "ti-check"}`} aria-hidden="true" />{" "}
+              {Object.keys(moves).length
+                ? "Updated - the order changed. Movement is marked on each card."
+                : "Updated - scores shifted but the same places still lead. (Schools never re-ranks - it surfaces notes instead.)"}
+            </p>
+          )}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16, marginTop: 12 }}>
             {top6.map((r, i) => (
               <MetroCard
                 key={r.metro.id}
                 r={r}
                 rank={i + 1}
+                move={moves ? moves[r.metro.id] : undefined}
                 selected={compareIds.includes(r.metro.id)}
                 atLimit={compareIds.length >= 3}
                 onToggleCompare={toggleCompare}

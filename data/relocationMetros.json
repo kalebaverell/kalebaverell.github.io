@@ -63,7 +63,8 @@
           "source": "https://www.va.gov/south-texas-health-care/locations/audie-l-murphy-memorial-veterans-hospital/"
         },
         "notes": "San Antonio-New Braunfels, TX MSA / HUD Metro FMR Area. Unemployment cross-checked against BLS Southwest regional release (4.1% May 2026)."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "dallas-fort-worth-tx",
@@ -122,7 +123,8 @@
           "source": "https://www.va.gov/north-texas-health-care/locations/dallas-va-medical-center/"
         },
         "notes": "RPP and unemployment are for the full Dallas-Fort Worth-Arlington, TX MSA. HUD splits the metroplex: Dallas HMFA 2BR = $1,931 (shown); Fort Worth-Arlington HMFA 2BR = $1,723 (same HUD file). System also includes Garland VA Medical Center and Fort Worth outpatient clinics."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "tampa-fl",
@@ -178,7 +180,8 @@
           "source": "https://www.va.gov/tampa-health-care/locations/james-a-haley-veterans-hospital/"
         },
         "notes": "Tampa-St. Petersburg-Clearwater, FL MSA."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "jacksonville-fl",
@@ -235,7 +238,8 @@
           "source": "https://www.va.gov/north-florida-health-care/locations/jacksonville-1-va-clinic/"
         },
         "notes": "Jacksonville, FL MSA / HUD Metro FMR Area. Confirms the dataset's CBOC-only characterization: Jacksonville hosts multi-specialty VA outpatient clinics; inpatient VAMCs for the system are in Gainesville and Lake City, FL."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "phoenix-az",
@@ -293,7 +297,8 @@
           "source": "https://www.va.gov/phoenix-health-care/locations/carl-t-hayden-veterans-administration-medical-center/"
         },
         "notes": "Phoenix-Mesa-Chandler, AZ MSA."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "atlanta-ga",
@@ -351,7 +356,8 @@
           "source": "https://www.va.gov/atlanta-health-care/locations/joseph-maxwell-cleland-atlanta-va-medical-center/"
         },
         "notes": "Atlanta-Sandy Springs-Roswell, GA MSA / HMFA."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "nashville-tn",
@@ -409,7 +415,8 @@
           "source": "https://www.va.gov/tennessee-valley-health-care/locations/nashville-va-medical-center/"
         },
         "notes": "Nashville-Davidson--Murfreesboro--Franklin, TN MSA / HMFA. System also includes Alvin C. York VA Medical Center in Murfreesboro, inside the same metro."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "san-diego-ca",
@@ -466,7 +473,8 @@
           "source": "https://www.va.gov/san-diego-health-care/locations/jennifer-moreno-department-of-veterans-affairs-medical-center/"
         },
         "notes": "San Diego-Chula Vista-Carlsbad, CA MSA."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "denver-co",
@@ -522,7 +530,8 @@
           "source": "https://www.va.gov/eastern-colorado-health-care/locations/rocky-mountain-regional-va-medical-center/"
         },
         "notes": "Denver-Aurora-Centennial, CO MSA."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "seattle-tacoma-wa",
@@ -579,7 +588,8 @@
           "source": "https://www.va.gov/puget-sound-health-care/locations/seattle-va-medical-center/"
         },
         "notes": "RPP and unemployment are for the Seattle-Tacoma-Bellevue, WA MSA. HUD splits the metro: Seattle-Bellevue HMFA 2BR = $2,501 (shown); Tacoma HMFA 2BR = $1,971 (same HUD file). American Lake VAMC page: https://www.va.gov/puget-sound-health-care/locations/american-lake-va-medical-center/"
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "washington-dc",
@@ -642,7 +652,8 @@
           "url": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/"
         },
         "notes": "Full-service VAMC at 50 Irving St NW. Federal workforce contraction in 2025-26 pushed the DC-MD division unemployment rate up (~5.2%); the wider MSA rate remains lower (3.9%)."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "virginia-beach-norfolk-va",
@@ -704,7 +715,8 @@
           "url": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/"
         },
         "notes": "Hampton VAMC (100 Emancipation Dr, Hampton) is a 432-bed teaching facility serving eastern VA and northeastern NC - full VAMC access for the metro."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "minneapolis-st-paul-mn",
@@ -766,7 +778,8 @@
           "url": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/"
         },
         "notes": "Full VAMC (1 Veterans Dr, Minneapolis) with 24/7 emergency department; VISN 23 flagship affiliated with the University of Minnesota."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "colorado-springs-co",
@@ -822,7 +835,8 @@
           "source": "https://www.va.gov/eastern-colorado-health-care/locations/pfc-floyd-k-lindstrom-department-of-veterans-affairs-clinic/"
         },
         "notes": "Colorado Springs, CO MSA / HUD Metro FMR Area. Confirms the dataset's 'nearby' VA characterization: large multi-specialty clinic in town (3141 Centennial Blvd) with same-day Veterans Express Care; inpatient care is at Rocky Mountain Regional VAMC in Aurora."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "raleigh-durham-nc",
@@ -879,7 +893,8 @@
           "source": "https://www.va.gov/durham-health-care/locations/durham-va-medical-center/"
         },
         "notes": "BEA/BLS/HUD all treat Raleigh-Cary, NC and Durham-Chapel Hill, NC as separate metros. Values shown are Raleigh-Cary MSA. Durham-Chapel Hill from same sources: RPP 97.572 (2024); 2BR FMR $1,711 (FY2026, Durham-Chapel Hill HMFA); unemployment 3.2% May 2026 (LAUMT372050000000003)."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "pittsburgh-pa",
@@ -937,7 +952,8 @@
           "source": "https://www.va.gov/pittsburgh-health-care/locations/pittsburgh-va-medical-center-university-drive/"
         },
         "notes": "Pittsburgh, PA MSA / HUD Metro FMR Area. VA Pittsburgh operates two medical centers plus six CBOCs in the region - matches the dataset's 'multiple VA medical facilities' note."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "huntsville-al",
@@ -994,7 +1010,8 @@
           "source": "https://www.va.gov/birmingham-health-care/locations/huntsville-va-clinic/"
         },
         "notes": "Huntsville, AL MSA. Confirms the dataset's CBOC characterization; Huntsville South VA specialty clinic (cardiology, chemo infusion, podiatry, neurology) opened Feb 2026, expanding local coverage."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "boise-id",
@@ -1052,7 +1069,8 @@
           "source": "https://www.va.gov/boise-health-care/locations/boise-va-medical-center/"
         },
         "notes": "Boise City, ID MSA / HUD Metro FMR Area."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "oklahoma-city-ok",
@@ -1109,7 +1127,8 @@
           "source": "https://www.va.gov/oklahoma-city-health-care/locations/oklahoma-city-va-medical-center/"
         },
         "notes": "Oklahoma City, OK MSA / HUD Metro FMR Area. System also runs 15 outpatient clinics including several within the metro (North OKC, South OKC, Norman, Yukon, Tinker AFB)."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "tucson-az",
@@ -1165,7 +1184,8 @@
           "source": "https://www.va.gov/southern-arizona-health-care/locations/tucson-va-medical-center/"
         },
         "notes": "Tucson, AZ MSA. System includes 7 CBOCs across southern Arizona plus Northwest and Southeast Tucson VA clinics inside the metro."
-      }
+      },
+      "winter": "warm"
     },
     {
       "id": "columbus-oh",
@@ -1226,7 +1246,8 @@
           "source": "https://www.va.gov/central-ohio-health-care/locations/chalmers-p-wylie-veterans-outpatient-clinic/",
           "note": "CBOC/ambulatory-care center only - Columbus has no full inpatient VA medical center in-metro; nearest full VAMCs (e.g., Dayton, Chillicothe) are a drive away. Matches the 'CBOC' level in relocationMetros.json."
         }
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "fayetteville-nc",
@@ -1287,7 +1308,8 @@
           "source": "https://www.va.gov/fayetteville-coastal-health-care/locations/fayetteville-va-medical-center/",
           "note": "Full VA medical center (Complexity Level 1c, 2300 Ramsey St), ~10 miles from Fort Bragg/Fort Liberty; system serves ~90,000 veterans across 19 counties."
         }
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "spokane-wa",
@@ -1344,7 +1366,8 @@
           "source": "https://www.va.gov/spokane-health-care/locations/mann-grandstaff-department-of-veterans-affairs-medical-center/"
         },
         "notes": "Spokane-Spokane Valley, WA MSA; HUD Spokane, WA HUD Metro FMR Area."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "knoxville-tn",
@@ -1401,7 +1424,8 @@
           "source": "https://www.va.gov/mountain-home-health-care/locations/william-c-tallent-department-of-veterans-affairs-outpatient-clinic/"
         },
         "notes": "Knoxville, TN MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization: multi-specialty outpatient clinic at 8033 Ray Mears Blvd; inpatient care is at Mountain Home VAMC (~1.5 hr drive)."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "sioux-falls-sd",
@@ -1460,7 +1484,8 @@
           "source": "https://www.va.gov/sioux-falls-health-care/locations/royal-c-johnson-veterans-memorial-hospital/"
         },
         "notes": "Sioux Falls, SD-MN MSA (BEA); HUD Sioux Falls, SD HUD Metro FMR Area. Full VAMC in a small metro, matching the dataset's note."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "fargo-nd",
@@ -1516,7 +1541,8 @@
           "source": "https://www.va.gov/fargo-health-care/locations/fargo-va-medical-center/"
         },
         "notes": "Fargo, ND-MN MSA. Despite small-metro size, Fargo hosts a full VAMC (primary care, cancer care, emergency services, surgery, mental health) - dataset's VAMC characterization confirmed."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "cheyenne-wy",
@@ -1572,7 +1598,8 @@
           "source": "https://www.va.gov/cheyenne-health-care/locations/cheyenne-va-medical-center/"
         },
         "notes": "Cheyenne, WY MSA. Contrary to the 'CBOC-only likely' expectation, Cheyenne hosts a full VA medical center (VA facility 442) - dataset's VAMC characterization confirmed."
-      }
+      },
+      "winter": "cold"
     },
     {
       "id": "clarksville-tn",
@@ -1629,7 +1656,8 @@
           "source": "https://www.va.gov/tennessee-valley-health-care/locations/clarksville-va-clinic/"
         },
         "notes": "Clarksville, TN-KY MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization; VA has five clinic sites serving Clarksville veterans, and a new multi-specialty Clarksville VA clinic is slated to open by 2030."
-      }
+      },
+      "winter": "mild"
     },
     {
       "id": "rural-telehealth",
@@ -1663,7 +1691,8 @@
       "safetyTier": 4,
       "businessTier": 4,
       "businessNote": "Low overhead and little competition - but a smaller customer base; validate demand first.",
-      "notes": "Not a place - a pattern. It works when you anchor healthcare and community on purpose, before the move."
+      "notes": "Not a place - a pattern. It works when you anchor healthcare and community on purpose, before the move.",
+      "winter": "mild"
     }
   ]
 }

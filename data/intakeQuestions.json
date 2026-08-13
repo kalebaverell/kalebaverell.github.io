@@ -163,6 +163,8 @@
             "Rent",
             "Own a home",
             "Own property in another state",
+            "On base or in government quarters",
+            "Barracks / dorms / ship",
             "Living with family",
             "Unstable / at risk",
             "Currently homeless"
@@ -256,6 +258,7 @@
             "Spouse benefits",
             "Dependent education",
             "Childcare",
+            "Dependent with special needs",
             "Caregiver support",
             "None"
           ]

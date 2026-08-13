@@ -21,7 +21,11 @@ export interface RelocPriorities {
   safety: Priority;
   business: Priority;
   airport: Priority;
+  taxes: Priority;
 }
+
+/** Directional climate preference - importance is implied (must-level) once a direction is chosen. */
+export type ClimatePref = "warm" | "cold" | null;
 
 export type RelocDim = keyof RelocPriorities;
 
@@ -46,6 +50,7 @@ export interface Metro {
   businessTier: number; // 1–5, higher = friendlier small-business climate (illustrative)
   businessNote: string;
   notes: string;
+  winter: "warm" | "mild" | "cold"; // broad, geographically factual bucket
 }
 
 export interface DimScore {
@@ -85,14 +90,27 @@ export const RELOC_DIMS: { key: RelocDim; label: string; icon: string; help: str
   { key: "cost", label: "Cost of living", icon: "ti-coin", help: "Overall costs - housing, day-to-day expenses." },
   { key: "jobs", label: "Jobs for my path", icon: "ti-briefcase", help: "How strong the market is for the work you want." },
   { key: "stateBenefits", label: "State veteran benefits", icon: "ti-award", help: "How broad the state's own veteran benefits are - tax relief, tuition waivers, hiring preference." },
-  { key: "schools", label: "Schools", icon: "ti-school", help: "What families should know - we surface notes, not rankings." },
+  { key: "schools", label: "Schools", icon: "ti-school", help: "Surfaces each metro's schools note - never re-ranks. We don't invent school ratings." },
   { key: "community", label: "Veteran community", icon: "ti-users-group", help: "How many veterans are around you - network, understanding, belonging." },
   { key: "safety", label: "Safety feel", icon: "ti-shield-check", help: "Illustrative comfort tier - always varies block by block." },
   { key: "business", label: "Business climate", icon: "ti-building-store", help: "Taxes and friction if you plan to start something." },
   { key: "airport", label: "Airport access", icon: "ti-plane-departure", help: "How easy it is to fly out - family visits, travel work." },
+  { key: "taxes", label: "State income tax", icon: "ti-receipt", help: "Favors states with no tax on wage income - a fixed, verifiable list, not our opinion." },
 ];
 
+// States with no tax on wage income (NH taxes neither wages nor, since 2025,
+// interest/dividends; WA has no wage tax but does tax high capital gains).
+// A small, stable, verifiable list - the one tax fact we can assert safely.
+const NO_WAGE_TAX = new Set(["AK", "FL", "NV", "NH", "SD", "TN", "TX", "WA", "WY"]);
+
+const WINTER_WORD: Record<Metro["winter"], string> = { warm: "warm winters", mild: "mild winters", cold: "real winters - snow and ice" };
+
 export const PRIORITY_LABELS: Record<Priority, string> = { 0: "Skip", 1: "Nice to have", 2: "Must have" };
+
+// Scoring weight per priority level. "Must have" deliberately counts 3x a
+// nice-to-have (not 2x) so flipping a must visibly reorders the list -
+// tester feedback (2026-08-13) was that toggles didn't appear to do anything.
+const PRIORITY_WEIGHT: Record<Priority, number> = { 0: 0, 1: 1, 2: 3 };
 
 const DIM_LABEL: Record<RelocDim, string> = Object.fromEntries(
   RELOC_DIMS.map((d) => [d.key, d.label])
@@ -175,7 +193,14 @@ function rawFor(dim: RelocDim, m: Metro, careerId?: string): number {
     case "safety": return Math.max(0, Math.min(1, (m.safetyTier - 1) / 4));
     case "business": return Math.max(0, Math.min(1, (m.businessTier - 1) / 4));
     case "airport": return AIRPORT_RAW[m.airport] ?? 0.25;
+    case "taxes": return m.state !== "-" && NO_WAGE_TAX.has(m.state) ? 1 : 0.35;
   }
+}
+
+/** 0-1 fit of a metro's winters against a directional preference. */
+function climateRaw(m: Metro, pref: Exclude<ClimatePref, null>): number {
+  if (pref === "warm") return m.winter === "warm" ? 1 : m.winter === "mild" ? 0.55 : 0.1;
+  return m.winter === "cold" ? 1 : m.winter === "mild" ? 0.55 : 0.1;
 }
 
 // ---- Why bullets (plain language, tied to what THEY selected) ----
@@ -218,6 +243,9 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
     }
     case "schools":
       return `Schools: ${m.schoolsNote}`;
+    case "taxes":
+      if (m.state !== "-" && NO_WAGE_TAX.has(m.state)) return `${stateName(m.state)} has no state tax on wage income`;
+      return null;
     case "community":
       if (m.community >= 4) return `Strong veteran community (${m.community} of 5)`;
       if (m.community === 3) return "Moderate veteran presence (3 of 5)";
@@ -239,10 +267,11 @@ function bulletFor(dim: RelocDim, m: Metro, raw: number, matchedCareer?: string)
 
 export function scoreMetros(
   p: RelocPriorities,
-  opts?: { careerId?: string; highVaNeed?: boolean }
+  opts?: { careerId?: string; highVaNeed?: boolean; climate?: ClimatePref }
 ): ScoredMetro[] {
   const careerId = opts?.careerId;
-  const anySelected = RELOC_DIMS.some((d) => p[d.key] > 0);
+  const climate = opts?.climate ?? null;
+  const anySelected = RELOC_DIMS.some((d) => p[d.key] > 0) || climate != null;
 
   const results: ScoredMetro[] = METROS.map((m) => {
     let weighted = 0;
@@ -253,11 +282,11 @@ export function scoreMetros(
 
     for (const d of RELOC_DIMS) {
       // If nothing is selected, weigh everything evenly so results stay useful.
-      const weight = anySelected ? p[d.key] : 1;
+      const weight = anySelected ? PRIORITY_WEIGHT[p[d.key]] : 1;
       const raw = d.key === "jobs" ? jr.raw : rawFor(d.key, m, careerId);
       weighted += weight * raw;
       totalWeight += weight;
-      dims.push({ key: d.key, label: DIM_LABEL[d.key], weight, raw, points: 0 });
+      dims.push({ key: d.key, label: DIM_LABEL[d.key], weight: anySelected ? p[d.key] : 1, raw, points: 0 });
 
       if (weight > 0) {
         const text = bulletFor(d.key, m, raw, d.key === "jobs" ? jr.matchedCareer : undefined);
@@ -265,10 +294,19 @@ export function scoreMetros(
       }
     }
 
+    // Directional climate preference: counts at must-level once chosen.
+    if (climate) {
+      const raw = climateRaw(m, climate);
+      weighted += PRIORITY_WEIGHT[2] * raw;
+      totalWeight += PRIORITY_WEIGHT[2];
+      if (raw >= 0.55) candidates.push({ strength: PRIORITY_WEIGHT[2] * raw, text: `${WINTER_WORD[m.winter].charAt(0).toUpperCase()}${WINTER_WORD[m.winter].slice(1)} - fits your climate preference` });
+    }
+
     const score = totalWeight > 0 ? Math.round((weighted / totalWeight) * 100) : 0;
     // Per-dimension contribution to the final score (they sum to the score).
     for (const ds of dims) {
-      ds.points = totalWeight > 0 ? Math.round(((ds.weight * ds.raw) / totalWeight) * 100) : 0;
+      const w = anySelected ? PRIORITY_WEIGHT[ds.weight as Priority] : 1;
+      ds.points = totalWeight > 0 ? Math.round(((w * ds.raw) / totalWeight) * 100) : 0;
     }
 
     const whyBullets = candidates
@@ -326,6 +364,11 @@ export function compareMetros(ids: string[]): CompareRow[] {
     row("Safety (sample tier)", (m) => ({ value: `Tier ${m.safetyTier} of 5`, detail: "Varies block by block - visit in person." })),
     row("Business climate", (m) => ({ value: `Tier ${m.businessTier} of 5`, detail: m.businessNote })),
     row("Airport", (m) => ({ value: AIRPORT_SHORT[m.airport] ?? m.airport })),
+    row("Winters", (m) => ({ value: WINTER_WORD[m.winter] })),
+    row("State income tax", (m) => ({
+      value: m.state !== "-" && NO_WAGE_TAX.has(m.state) ? "None on wages" : "Yes",
+      detail: m.state !== "-" && NO_WAGE_TAX.has(m.state) ? "Verify current rules with the state revenue office." : undefined,
+    })),
     row("Worth knowing", (m) => ({ value: m.notes })),
   ];
 }

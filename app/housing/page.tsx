@@ -137,6 +137,44 @@ export default function HousingPage() {
         </ul>
       </div>
 
+      {/* "Do I qualify?" - tester note 3 (2026-08-13), neutral version. */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3 style={{ marginTop: 0 }}><i className="ti ti-clipboard-check" style={{ color: "var(--accent-ink)" }} aria-hidden="true" /> Find out if you qualify - it&apos;s one conversation</h3>
+        <p className="muted small" style={{ margin: "4px 0 10px", maxWidth: 640 }}>
+          Prequalification is a free, no-commitment conversation where a lender looks at your income and
+          credit and tells you what you could borrow. It does not obligate you to anything, and doing it
+          early tells you whether &quot;buy&quot; is realistic for this move or the next one.
+        </p>
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+          <div>
+            <strong className="small">Bring to the lender conversation:</strong>
+            <ul style={{ margin: "6px 0 0", paddingLeft: 18, display: "grid", gap: 4 }}>
+              <li className="small">Your Certificate of Eligibility (or they can pull it)</li>
+              <li className="small">Recent LES or pay stubs; W-2s if you have civilian income</li>
+              <li className="small">Roughly two years of work or service history</li>
+              <li className="small">A ballpark of monthly debts - car, cards, student loans</li>
+            </ul>
+          </div>
+          <div>
+            <strong className="small">Ask the lender:</strong>
+            <ul style={{ margin: "6px 0 0", paddingLeft: 18, display: "grid", gap: 4 }}>
+              <li className="small">&quot;How many VA loans did you close last year?&quot;</li>
+              <li className="small">&quot;What rate and total fees would I qualify for today?&quot;</li>
+              <li className="small">&quot;Am I funding-fee exempt?&quot; (you typically are if you receive disability compensation)</li>
+              <li className="small">&quot;What would make me a stronger applicant in 6 months?&quot;</li>
+            </ul>
+          </div>
+          <div>
+            <strong className="small">Ask a real-estate agent:</strong>
+            <ul style={{ margin: "6px 0 0", paddingLeft: 18, display: "grid", gap: 4 }}>
+              <li className="small">&quot;How many VA purchases have you closed?&quot;</li>
+              <li className="small">&quot;Will you push back on sellers who wrongly assume VA offers are weaker?&quot;</li>
+              <li className="small">Ask your VSO post or local veteran community who they used - a referral from another veteran beats any ad.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* Neutral lender guidance. HOUSING_PARTNERS stays empty until task #32
           is decided - see lib/housing.ts for the full rule. */}
       <div className="card" style={{ marginTop: 16 }}>
