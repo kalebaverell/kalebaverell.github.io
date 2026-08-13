@@ -5,6 +5,21 @@ Decision made August 14, 2026: primary domain is **vetpathusa.com**
 the nonprofit fork lands). Availability confirmed at the Verisign
 registry immediately before this was written - register the same day.
 
+**STATUS: CUTOVER COMPLETE (Aug 13-14, 2026).** Phases 1-3 all done:
+domain registered at Cloudflare, DNS in (grey-cloud/DNS only), Pages
+custom domain + HTTPS enforced, github.io 301s verified, SITE flipped,
+QRs/print/share regenerated, Supabase URL config updated, sign-in round
+trip verified on the new domain. Also done: sitemap.xml + robots.txt
+live, and SPF (`@ TXT "v=spf1 -all"`) + DMARC
+(`_dmarc TXT "v=DMARC1; p=reject; rua=mailto:kalebaverell@gmail.com"`)
+records added and verified on 1.1.1.1 - the domain sends no email, so
+these shut the spoofing door Cloudflare's recommendation flagged. When
+Resend SMTP lands, its SPF include + DKIM records will replace/extend
+these (Resend's instructions win at that point).
+
+Remaining items live in "Unblocked by this cutover" below - all Kaleb's
+hands.
+
 ## Phase 1 - Kaleb's hands (about 10 minutes)
 
 ### 1. Register the domain
