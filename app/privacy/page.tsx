@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "August 12, 2026";
+const LAST_UPDATED = "August 14, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <i className="ti ti-list-check" style={{ color: "var(--accent-ink)" }} aria-hidden="true" /> The short version
         </h3>
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 8 }}>
-          <li>We never sell your data, and we do not share it with advertisers.</li>
+          <li>We do not sell your data, and we do not share it with advertisers.</li>
           <li>No trackers and no advertising pixels. The only measurement is an anonymous page counter that cannot identify you - explained below.</li>
           <li>You can use most of the tools without an account. Building and saving a gameplan needs one.</li>
           <li>Your password is never seen or stored by us.</li>
@@ -133,14 +133,19 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
-      <Section title="What we do not do">
+      <Section title="What we do not do today">
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
-          <li>We do not sell, rent, or trade your information to anyone.</li>
+          <li>We do not sell, rent, or trade your information.</li>
           <li>We do not run advertising scripts, tracking pixels, or cross-site tracking of any kind. The only measurement on this site is the anonymous page counter described in the next section.</li>
-          <li>We do not sell your details as a sales lead to lenders, insurers, agents, or schools.</li>
           <li>We do not use your answers to train any AI model. Your plan is produced by fixed rules we wrote, not by a language model.</li>
           <li>We do not share anything with the VA or any government agency, and they do not see your account.</li>
         </ul>
+        <p style={{ margin: "10px 0 0" }}>
+          Down the road, VetPath may offer sponsored connections - for example, an introduction to a
+          lender or real estate agent who knows VA loans, where a partner pays us for the introduction.
+          If and when that launches, it will be clearly labeled as sponsored, it will only ever happen
+          when you ask for the connection, and this page will be updated first.
+        </p>
       </Section>
 
       <Section title="The anonymous page counter, in plain terms">

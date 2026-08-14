@@ -45,7 +45,7 @@ function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string
         <ul style={{ margin: "16px auto 0", padding: 0, listStyle: "none", display: "grid", gap: 8, textAlign: "center", maxWidth: 340 }}>
           <li className="small">Save your plan and pick up right where you left off.</li>
           <li className="small">Sync across every device you use.</li>
-          <li className="small">Private and encrypted, we never sell your data.</li>
+          <li className="small">Private and encrypted, and you can delete it any time.</li>
         </ul>
         <p className="small muted" style={{ margin: "14px auto 0", textAlign: "center", maxWidth: 340 }}>
           <i className="ti ti-lock" /> We never see or store your password. Sign-in is handled securely.

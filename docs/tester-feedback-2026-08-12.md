@@ -58,6 +58,14 @@ Split in two:
   Sequence if chosen: Frank sign-off (it amends a red line in his packet)
   -> counsel on structure -> paired rewrite of privacy page + VSO sheet +
   playbook in the same commit as the feature.
+
+  RESOLVED Aug 14, 2026: Kaleb decided sponsored connections for a fee ARE
+  the direction, build "down the road." The conflicting promises were
+  removed the same day from the privacy page, VSO one-pager, and both
+  playbooks (commit history has the diffs), ahead of any referral code.
+  Still open before the feature launches: counsel review of fee structure
+  (RESPA Section 8 / Texas licensing) and Frank receiving the updated
+  packet. HOUSING_PARTNERS stays empty until the build is greenlit.
   Interim: 4a ships with a neutral "find a VA-savvy lender" section
   pointing at official resources, with a clearly-labeled sponsor slot
   that stays empty until the decision is made.

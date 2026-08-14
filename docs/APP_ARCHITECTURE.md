@@ -260,7 +260,7 @@ IntakeAnswers ─▶ rules.json + rulesEngine.ts ─▶ Gameplan
 | **Data minimization** | Collect only intake needed for the plan. | Same; drop anything not driving value. |
 | **Local-first** | All data in browser `localStorage`; nothing leaves the device. | Explicit user account, opt-in cloud sync. |
 | **Encryption** | N/A (local only) | **Encryption in transit (TLS) and at rest.** |
-| **No selling data** | N/A | **Never sell personal data**; aggregates only if de-identified + opt-in. |
+| **Data monetization** | N/A | No wholesale data sales; planned model is disclosed, veteran-initiated sponsored connections (partner pays a fee); aggregates only if de-identified + opt-in. |
 | **Consent** | Demo notice | Explicit consent for storage/sharing; clear privacy policy. |
 | **HIPAA-adjacent caution** | Not a covered entity, but treat health/disability info as sensitive | Same caution; minimize collection; secure handling even though not a HIPAA-covered entity. |
 | **Crisis safety** | Show Veterans Crisis Line (988 → 1) | Same, prominently. |

@@ -97,8 +97,8 @@ export default function TermsPage() {
       </Section>
 
       <Section title="Your information stays yours">
-        The answers, notes, and resume text you enter belong to you. We do not claim ownership of them, we
-        do not sell them, and we do not use them to train any AI model. We use them for one thing: running
+        The answers, notes, and resume text you enter belong to you. We do not claim ownership of them,
+        and we do not use them to train any AI model. We use them for running
         the tools for you and saving your plan so it comes back when you sign in. The{" "}
         <Link href="/privacy">privacy page</Link> lists exactly what is stored and who else can see it.
       </Section>

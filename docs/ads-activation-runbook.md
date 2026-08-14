@@ -3,10 +3,14 @@
 Written August 12, 2026. The pixel infrastructure is built and shipped INERT:
 `lib/marketing.ts` has empty IDs, so `components/MarketingPixels.tsx` renders
 nothing and no ad-platform script loads anywhere. This document is the
-complete, ordered checklist for turning it on. Nothing here is optional -
-steps 3 through 5 exist because the site, the privacy policy, and printed
-material currently promise "no ads," and those promises must change in the
-same breath as the behavior.
+complete, ordered checklist for turning it on.
+
+UPDATE Aug 14, 2026: Kaleb removed the "no ads, no selling" promises from the
+privacy page, VSO one-pager, and both playbooks ahead of time - direction is
+paid sponsored connections down the road. The steps below are now lighter:
+the promise-rewrite work in steps 3-4 is largely DONE; what remains before
+activation is the privacy-page retargeting section (step 3), handing Frank
+the updated packet PDFs, and the verification pass in step 5.
 
 ## What is already done (shipped dark)
 
@@ -70,10 +74,11 @@ DO NOT COMMIT YET - steps 3 and 4 go in the same commit.
 
 ## Step 4 - Same commit or same week: printed material
 
-- `print/vetpath-vso-onepager.html/pdf` promises "No ads." Revise, re-render,
-  and stop distributing the old PDF the day pixels go live.
-- The funding playbook red-line list says no ads - Frank has that packet.
-  Tell Frank before flipping the switch; it changes a written commitment.
+- DONE Aug 14, 2026: the VSO one-pager no longer promises "no ads" and the
+  funding playbook's red-line list was rewritten to the sponsored-connections
+  posture. Still required: stop distributing pre-Aug-14 printed PDFs, and
+  hand Frank the updated packet - his printed copy still carries the old
+  red lines.
 
 ## Step 5 - Verify before spending a dollar
 
