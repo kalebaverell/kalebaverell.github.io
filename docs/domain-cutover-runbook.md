@@ -26,6 +26,30 @@ https://vetpathusa.com/sitemap.xml submitted. The sitemap shows
 property, resolves on its own within days. First Performance data
 appears after Google starts indexing.
 
+**Go-live audit + optimization wave (Aug 14, 2026).** Full transition
+sweep passed: all 24 public routes 200, github.io 301s preserve deep
+links + query strings, www/http redirect, zero stale github.io refs in
+served HTML, OG url correct. Shipped optimizations (commit 1457183):
+Tabler icon font subset 810KB->29KB + CSS 245KB->5.7KB (the font was
+force-preloaded on every page; ~1MB saved per first visit), per-page
+canonical tags, fixed phantom `ti-bridge` icon (SkillBridge card - the
+icon never existed in Tabler and rendered blank). Supabase: RLS
+policies rewritten to `(select auth.uid())` form (evaluated once per
+query, not per row - Supabase lint 0003) and verified with a QA
+round-trip (insert/select/update + isolation), QA user deleted.
+Regenerating the icon subset later: scratchpad script greps `ti-` names
+from app/components/lib/data and runs fontTools; re-run it whenever new
+icons are added, or icons will render blank in production.
+
+Platform notes at scale: GitHub Pages serves via Fastly CDN (fine for
+thousands of users; static export = no server to overload). Its
+Cache-Control max-age=600 is fixed - the service worker compensates
+(cache-first on hashed assets). GoatCounter free tier caps at 100k
+pageviews/month. Supabase free tier: 500MB DB / 50k monthly active
+auth users - fine for launch. One-click security upgrade for Kaleb:
+Supabase Dashboard -> Authentication -> Passwords -> enable "Leaked
+password protection" (rejects known-compromised passwords at signup).
+
 Remaining items live in "Unblocked by this cutover" below - all Kaleb's
 hands.
 
