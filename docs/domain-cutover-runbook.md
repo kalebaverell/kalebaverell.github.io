@@ -17,6 +17,15 @@ these shut the spoofing door Cloudflare's recommendation flagged. When
 Resend SMTP lands, its SPF include + DKIM records will replace/extend
 these (Resend's instructions win at that point).
 
+**Search Console: DONE (Aug 14, 2026).** Domain property
+sc-domain:vetpathusa.com verified in Kaleb's Google account (DNS TXT
+`google-site-verification=xrSl1XqkLiFomuQDgXkIK4umwrZxESITiaSpPFsOPPo`
+added at Cloudflare - keep this record forever or verification lapses);
+https://vetpathusa.com/sitemap.xml submitted. The sitemap shows
+"Couldn't fetch" until Google's first crawl - normal for a new
+property, resolves on its own within days. First Performance data
+appears after Google starts indexing.
+
 Remaining items live in "Unblocked by this cutover" below - all Kaleb's
 hands.
 
@@ -96,8 +105,7 @@ That's the handoff. Everything below runs from here.
   Supabase SMTP (host smtp.resend.com, port 465, user "resend", password
   = the key, sender no-reply@vetpathusa.com) and test a password reset to
   a non-team address.
-- **Search Console + sitemap**: add the domain property (DNS TXT), submit
-  a sitemap - first real SEO step.
+- ~~**Search Console + sitemap**~~ DONE Aug 14, 2026 (see status above).
 - **Email addresses** (kaleb@vetpathusa.com): any host; Cloudflare Email
   Routing forwards for free if the DNS lives there.
 - Ad Grants application becomes possible the day a 501(c)(3) exists - the
