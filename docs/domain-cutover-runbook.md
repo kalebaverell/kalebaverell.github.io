@@ -124,11 +124,16 @@ That's the handoff. Everything below runs from here.
 
 ## Unblocked by this cutover (queue next)
 
-- **Resend SMTP** (parked since Aug 5): Kaleb creates the Resend account,
-  verifies vetpathusa.com (DNS TXT records), makes an API key; then wire
-  Supabase SMTP (host smtp.resend.com, port 465, user "resend", password
-  = the key, sender no-reply@vetpathusa.com) and test a password reset to
-  a non-team address.
+- ~~**Resend SMTP**~~ DONE Aug 14, 2026: Kaleb created the account, domain
+  verified (DKIM resend._domainkey + send.vetpathusa.com MX/SPF, all at
+  Cloudflare), API key wired into Supabase SMTP. End-to-end proof: real
+  password reset delivered to Gmail inbox in 0 seconds from
+  "VetPath <no-reply@vetpathusa.com>", Gmail headers show SPF PASS,
+  DKIM PASS (d=vetpathusa.com), DMARC PASS under p=REJECT. App's
+  forgot-password form redirects to /reset/ correctly (lib/auth.tsx).
+  NOTE: custom-SMTP auth emails default to 30/hour - raise under
+  Authentication -> Rate Limits before any big push (Resend free tier
+  = 3,000/month).
 - ~~**Search Console + sitemap**~~ DONE Aug 14, 2026 (see status above).
 - **Email addresses** (kaleb@vetpathusa.com): any host; Cloudflare Email
   Routing forwards for free if the DNS lives there.
