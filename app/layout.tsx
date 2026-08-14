@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   // Required for a static export: without it, Next cannot resolve the relative
   // image path below into the absolute URL that social crawlers demand.
   metadataBase: new URL(SITE),
+  // "./" resolves per-page against metadataBase, so every route gets its own
+  // canonical URL - tells Google the vetpathusa.com copy is the real one.
+  alternates: { canonical: "./" },
   title: "VetPath - A clear gameplan for life after service",
   description: DESCRIPTION,
   manifest: "/manifest.webmanifest",
