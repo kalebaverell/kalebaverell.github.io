@@ -348,6 +348,29 @@ tbody tr:last-child td { border-bottom: none; }
   text-align: right;
 }
 
+.owner {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.owner-k { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary); }
+.owner-f { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.owner-b { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+
+.tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tasks li {
+  font-size: 15px;
+  color: var(--ink-2);
+  padding-left: 0;
+}
+.tasks strong { color: var(--ink); font-weight: 600; }
+
 .timeline { display: flex; flex-direction: column; gap: 0; }
 .phase {
   display: grid;
@@ -872,81 +895,154 @@ tbody tr:last-child td { border-bottom: none; }
   <section>
     <div class="section-head">
       <p class="eyebrow">Sequencing</p>
-      <h2>What to do, in order</h2>
+      <h2>Month by month, and who owns each item</h2>
+      <p class="what"><span class="owner owner-k">Kaleb</span><span class="owner owner-f">Frank</span><span class="owner owner-b">Both</span></p>
     </div>
+
+    <div class="reality">
+      <h3>Do we need a legal entity yet? Yes - inside 60 days, and revenue is not the reason</h3>
+      <p><strong>You are personally exposed today.</strong> The site is live and public, giving veterans
+        guidance on benefits, housing, and career decisions. With no entity, a claim lands on Kaleb
+        personally. Disclaimers reduce risk; they are not a liability shield. An LLC is.</p>
+      <p><strong>Nothing is written down between the founders.</strong> Forming the entity forces the
+        operating agreement, which forces the ownership split - and that conversation is far easier before
+        money exists than after.</p>
+      <p><strong>SBIR has a runway you have not started.</strong> The chain is entity, then EIN, then
+        SAM.gov, then a UEI, then a proposal - and <strong>SAM.gov alone takes 3-8 weeks</strong>. A proposal
+        without a UEI is rejected without review. A good topic in January needs an entity in September.</p>
+      <p>The recommendation is a <strong>Texas LLC</strong>: $300 to file, days to form, and it satisfies
+        SBIR's for-profit requirement. S-corp tax treatment can be elected later once profit justifies
+        payroll - a CPA decision, not a formation-day one. None of the four free channels need any of this,
+        so those start now regardless.</p>
+    </div>
+
     <div class="timeline">
       <div class="phase">
         <div class="phase-when">This month</div>
         <div class="phase-what">
-          <p class="phase-title">Register for the VRCN consult and submit to the NRD</p>
-          <p>Free, no entity required, and together they establish the credential record every later
-            conversation depends on - including the SBIR one, where documented federal traction is a
-            differentiator.</p>
+          <p class="phase-title">Groundwork - free, and no entity required</p>
+          <ul class="tasks">
+            <li><span class="owner owner-k">Kaleb</span><strong>Read the Tower Street employment
+              agreement</strong> - outside-business-activity and conflict clauses. This gates everything
+              below. Find out before filing, not after.</li>
+            <li><span class="owner owner-k">Kaleb</span>Send the tester round-3 message.</li>
+            <li><span class="owner owner-k">Kaleb</span>Register for the VRCN consult and submit to the
+              National Resource Directory.</li>
+            <li><span class="owner owner-f">Frank</span>Call VA North Texas outreach - which engagement
+              board covers DFW?</li>
+            <li><span class="owner owner-f">Frank</span>Call NAS Fort Worth JRB transition office - what
+              gets a resource sheet on the table?</li>
+            <li><span class="owner owner-f">Frank</span><strong>Answer the PI question</strong> - can his
+              primary employment be VetPath? This decides whether SBIR is open at all.</li>
+            <li><span class="owner owner-b">Both</span>The ownership conversation: percentages, who does
+              what, what happens if one of you leaves.</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">This month</div>
+        <div class="phase-when">September</div>
         <div class="phase-what">
-          <p class="phase-title">Frank makes two calls</p>
-          <p>VA North Texas outreach staff, to find the right local engagement board; and NAS Fort Worth JRB's
-            transition office, to ask what it takes to get a resource sheet on the table.</p>
+          <p class="phase-title">Form the company</p>
+          <ul class="tasks">
+            <li><span class="owner owner-k">Kaleb</span><strong>File the Texas LLC</strong> - $300, plus
+              about $8 if paying by card online. The filing itself is a form; doing it yourself is fine.</li>
+            <li><span class="owner owner-k">Kaleb</span>Choose a registered agent. Serving as your own is
+              free but puts your home address on the public record; a service runs $50-300 a year.</li>
+            <li><span class="owner owner-k">Kaleb</span>Get the EIN from the IRS - free and instant online.</li>
+            <li><span class="owner owner-k">Kaleb</span>Open a business bank account. Never commingle funds -
+              that is what pierces the liability shield.</li>
+            <li><span class="owner owner-b">Both</span><strong>Operating agreement, with an attorney.</strong>
+              Do not do this one yourself. It is the document that makes the split real.</li>
+            <li><span class="owner owner-k">Kaleb</span>CPA meeting: tax election, and how this income stacks
+              on a W-2 at the margin.</li>
+            <li><span class="owner owner-k">Kaleb</span><strong>Start SAM.gov the day the EIN exists.</strong>
+              Free, but 3-8 weeks. Starting now costs nothing and saves months later.</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">Next 60 days</div>
+        <div class="phase-when">October</div>
         <div class="phase-what">
-          <p class="phase-title">Decide the entity, and file</p>
-          <p>The recommendation is the for-profit, because it is the only structure that reaches SBIR and the
-            only one that builds something the founders own. If Frank's judgment favors nonprofit, file
-            immediately anyway - the two-year grant clock does not start until the IRS letter is dated.</p>
+          <p class="phase-title">First dollars, and registration-ready</p>
+          <ul class="tasks">
+            <li><span class="owner owner-k">Kaleb</span>SAM.gov completes - UEI in hand.</li>
+            <li><span class="owner owner-f">Frank</span><strong>Run the first sponsored facilitation
+              event</strong> on his format, with a sponsor underwriting it. $2-10k, and the fastest real
+              revenue available to us.</li>
+            <li><span class="owner owner-b">Both</span>Build the target list of DFW employers with
+              veteran-hiring programs.</li>
+            <li><span class="owner owner-k">Kaleb</span>Start watching DoD topic releases - first Wednesday
+              of each month.</li>
+            <li><span class="owner owner-k">Kaleb</span>Read the first Search Console data: what are veterans
+              actually searching for?</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">Same 60 days</div>
+        <div class="phase-when">November</div>
         <div class="phase-what">
-          <p class="phase-title">Two professional meetings, before revenue exists</p>
-          <p>A CPA on the tax election (LLC taxed as S-corp versus C-corp), and an attorney on the operating
-            agreement and ownership split. Also on Kaleb's list: read the Tower Street producer agreement for
-            outside-business-activity clauses. All three are cheap now and expensive later.</p>
+          <p class="phase-title">First employer conversations</p>
+          <ul class="tasks">
+            <li><span class="owner owner-b">Both</span>Get one or two employer pilot partners into
+              conversation.</li>
+            <li><span class="owner owner-k">Kaleb</span>Evaluate Direct-to-Phase-II against actual open
+              topics - the working product is the argument.</li>
+            <li><span class="owner owner-b">Both</span>If pursuing sponsored connections: counsel on RESPA
+              and Texas licensing structure.</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">After the pilot</div>
+        <div class="phase-when">December</div>
         <div class="phase-what">
-          <p class="phase-title">Convert usage into evidence</p>
-          <p>The site already records which outreach channel brought each person in. After the pilot we will
-            have real numbers - what every program on this page asks for and most applicants cannot
-            produce.</p>
+          <p class="phase-title">Close and tidy</p>
+          <ul class="tasks">
+            <li><span class="owner owner-b">Both</span>Target: first employer partner signed.</li>
+            <li><span class="owner owner-k">Kaleb</span>Books clean and franchise-tax reporting calendared.
+              The annual report is <strong>required even when nothing is owed</strong> - the no-tax-due
+              threshold is $2.65M, so you will owe zero, but the filing is not optional.</li>
+            <li><span class="owner owner-b">Both</span>Decide whether a Q1 SBIR topic is worth writing for.</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">Ask Frank now</div>
+        <div class="phase-when">Q1 2027</div>
         <div class="phase-what">
-          <p class="phase-title">Settle who can be the SBIR Principal Investigator</p>
-          <p>This costs one conversation and determines whether the SBIR path is open at all. If Frank's
-            primary employment can be VetPath, the gate clears. If not, plan on a third person or on the
-            submit-now-solve-at-award route. Everything else in the SBIR column depends on this answer.</p>
+          <p class="phase-title">Submit, and scale what already works</p>
+          <ul class="tasks">
+            <li><span class="owner owner-b">Both</span>If a topic fits: write and submit. Budget several
+              weeks of focused effort.</li>
+            <li><span class="owner owner-b">Both</span>Grow employer partners from one or two to three or
+              four.</li>
+            <li><span class="owner owner-f">Frank</span>Open organization-licensing conversations with the
+              orgs met through the engagement board.</li>
+          </ul>
         </div>
       </div>
+
       <div class="phase">
-        <div class="phase-when">6&ndash;12 months</div>
+        <div class="phase-when">Q2 2027+</div>
         <div class="phase-what">
-          <p class="phase-title">Register in SAM.gov and watch the monthly DoD topic releases</p>
-          <p>Registration is free and slow, so start it long before it is needed. Topics drop the first
-            Wednesday of each month; the goal is to have the entity, the registration, the PI, and the
-            traction data all in hand when one fits. Evaluate "Direct to Phase II" at the same time - a
-            working product with real users may not need the Phase I detour.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-when">Year two</div>
-        <div class="phase-what">
-          <p class="phase-title">Sell into the relationships the channels built</p>
-          <p>Organization licensing and employer pipelines are sold to exactly the people met through
-            engagement boards and TAP offices. This is the point at which phase one pays for itself.</p>
+          <p class="phase-title">Compounding</p>
+          <ul class="tasks">
+            <li>SBIR decision lands roughly 6-9 months after submission.</li>
+            <li>Licensing deals close; white-label becomes conceivable with a track record behind us.</li>
+            <li>Revisit the S-corp election once profit makes payroll worth it.</li>
+          </ul>
         </div>
       </div>
     </div>
+
+    <div class="gate"><span class="gate-label">The one thing that could change this plan</span>The Tower
+      Street employment agreement. If it restricts outside business activity, or carries a conflict clause
+      covering insurance-adjacent work, that has to be resolved before September. Everything downstream
+      assumes Kaleb is free to own a company in this space - which is worth thirty minutes with the document
+      this week rather than a discovery in month four.</div>
   </section>
 
   <section class="sources">
