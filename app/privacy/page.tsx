@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "August 14, 2026";
+const LAST_UPDATED = "August 19, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -207,8 +207,8 @@ export default function PrivacyPage() {
       </Section>
 
       <Section title="Questions or requests">
-        Reach the VetPath team at the address you were invited from, and we will answer. That is also where
-        to send a deletion request.
+        Email <a href="mailto:kaleb@vetpathusa.com">kaleb@vetpathusa.com</a> and a person will answer. That
+        is also where to send a deletion request.
       </Section>
 
       <p style={{ marginTop: 30 }}>

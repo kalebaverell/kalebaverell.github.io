@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of these terms changes, not for typo fixes.
-const LAST_UPDATED = "July 27, 2026";
+const LAST_UPDATED = "August 19, 2026";
 
 export const metadata = {
   title: "Terms of use - VetPath",
@@ -141,8 +141,8 @@ export default function TermsPage() {
       </Section>
 
       <Section title="Questions">
-        Reach the VetPath team at the address you were invited from. If something here is unclear or feels
-        unfair, we would genuinely like to know.
+        Email <a href="mailto:kaleb@vetpathusa.com">kaleb@vetpathusa.com</a>. If something here is unclear
+        or feels unfair, we would genuinely like to know.
       </Section>
 
       <div style={{ marginTop: 22 }}>
