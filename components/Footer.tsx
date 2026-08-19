@@ -26,6 +26,7 @@ export default function Footer() {
           <div style={{ marginTop: 14, fontSize: 12.5, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <a href="/privacy">Privacy &amp; data</a>
             <a href="/terms">Terms of use</a>
+            <a href="mailto:kaleb@vetpathusa.com">Contact us</a>
             {/* Required in the footer once visit data reaches an ad platform, and
                 only confusing before that - so it appears with the pixels. */}
             {PIXELS_CONFIGURED && (
