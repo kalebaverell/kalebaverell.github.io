@@ -35,8 +35,12 @@ one paste - but the order below matters.
 
 ## Copy rules that survive any rewording (from the site's standing rules)
 
-- VetPath is NOT a charity or 501(c)(3). Never say or imply
-  tax-deductible. The page states this plainly - keep it stated.
+- DECIDED (Kaleb, Aug 20, 2026): the ask is simply "support the
+  mission" - the page and checkout carry NO charity/tax-deductibility
+  disclaimers. Do not re-add them. The line that must never be crossed
+  is implying the opposite: never say or suggest tax-deductible,
+  nonprofit, or charity. Flagged as a one-question item for the
+  attorney during September LLC formation.
 - Contributions buy nothing, unlock nothing, and never touch veteran
   data. Free-for-veterans is a promise the donate ask must reinforce,
   not undermine.

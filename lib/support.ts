@@ -10,9 +10,10 @@
 // personal income. The full checklist lives in
 // docs/donations-activation-runbook.md - read it before pasting a URL.
 //
-// Copy constraint carried by app/support/page.tsx: VetPath is not a
-// charity or 501(c)(3) and contributions are NOT tax-deductible. Any
-// wording change on that page keeps those two facts stated plainly.
+// Copy note (Kaleb's call, Aug 20 2026): the ask is simply "support the
+// mission" - no charity/tax-deductibility disclaimers on the page or the
+// Stripe checkout. Never imply the OPPOSITE (tax-deductible/nonprofit);
+// revisit with the attorney during the September LLC work.
 // Live Stripe Payment Link "Support the mission" (customers choose what
 // to pay; $25 preset, $5 min), created Aug 20, 2026 in Kaleb's account.
 export const DONATE_URL = "https://buy.stripe.com/eVq4gzadsdnQ5OL4rMbwk00";

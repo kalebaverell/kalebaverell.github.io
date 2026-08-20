@@ -114,8 +114,7 @@ export default function SupportPage() {
       </div>
 
       <div className="disclaimer" style={{ marginTop: 34, textAlign: "left", lineHeight: 1.7 }}>
-        <strong>The honest fine print.</strong> VetPath is an independent project, not a charity or
-        501(c)(3), so contributions are not tax-deductible. They are voluntary support for a free
+        <strong>The honest fine print.</strong> Contributions are voluntary support for a free
         tool: they buy nothing, unlock nothing, and never grant anyone access to any veteran&apos;s
         information. VetPath is a planning and education tool - not the VA, and not affiliated with
         or endorsed by the government.
