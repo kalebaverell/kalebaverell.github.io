@@ -81,7 +81,7 @@ government.)
 
 ## Alt text (paste one per slide - accessibility matters to this audience)
 
-1. "From one veteran to another: I left the service with a DD-214 and no plan." VetPath.
+1. "From one veteran to another: I had my DD-214. No idea what came next - or which benefits were mine." VetPath.
 2. "Nobody told me what I'd earned. I found out the hard way."
 3. "Benefits on 50 websites. Deadlines I didn't know existed."
 4. "I kept asking: why doesn't anyone hand you this on day one?"
