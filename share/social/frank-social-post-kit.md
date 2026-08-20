@@ -15,12 +15,12 @@ named on slide 1, and a real photo of him composited onto slide 1 or 5.
 
 ---
 
-## DECISION (Aug 2026): FACEBOOK-ONLY LAUNCH
+## LAUNCH STATUS (Aug 20, 2026): BOTH CHANNELS GO
 
-Kaleb's call: the carousel posts to Facebook only. Everything Frank
-needs is packaged in `VetPath-FB-Launch-for-Frank.zip` (8 slides +
-READ-ME-FIRST.txt + CAPTION.txt). The LinkedIn PDF and caption below
-are SHELVED, kept ready if that channel opens later.
+Facebook email sent to Frank (8 slides + caption + instructions);
+the LinkedIn version went to him as a second email with
+`vetpath-carousel-linkedin.pdf` and its own caption + first-comment
+link. `VetPath-FB-Launch-for-Frank.zip` remains the packaged backup.
 
 Two Facebook-specific upgrades applied in the packaged caption:
 - It ends with a comment-starter question ("what do you wish someone
