@@ -7,7 +7,7 @@ prompt on slide 7, and exactly one CTA on slide 8.
 
 **THE DECK SPEAKS IN FRANK'S FIRST-PERSON VOICE. Frank must read and
 approve slides 1-5 and 8 before anything posts** - they are his story
-in his words ("The day I got out, I had no idea what came next", "I found
+in his words ("The day I left the military, I had no idea what came next", "I found
 out the hard way", "my partner and I built it ourselves", "don't learn
 it the hard way like I did"). The lines are written to be true of the
 founding story without inventing specifics, but they go out over his
@@ -81,7 +81,7 @@ government.)
 
 ## Alt text (paste one per slide - accessibility matters to this audience)
 
-1. "From one veteran to another: The day I got out, I had no idea what came next - or which benefits were mine." VetPath.
+1. "From one veteran to another: The day I left the military, I had no idea what came next - or which benefits were mine." VetPath.
 2. "Nobody told me what I'd earned. I found out the hard way."
 3. "Benefits on 50 websites. Deadlines I didn't know existed."
 4. "I kept asking: why doesn't anyone hand you this on day one?"
@@ -99,14 +99,14 @@ produced, because this audience trusts a Marine on a phone more than an
 ad. Post it as its own follow-up a few days after the carousel. Script
 skeleton (his words beat ours - this is scaffolding):
 
-> "I'm [Frank], I [service background, one line]. When I got out,
+> "I'm [Frank], I [service background, one line]. When I left the military,
 > [the one thing he wishes someone had told him]. My partner and I
 > built a free website called VetPath so the next Marine doesn't have
 > to learn it the hard way. Ten minutes of questions, and you walk out
 > with a real plan - your benefits, your deadlines, a career direction,
 > every number linked to the official source. It's free, it always will
 > be, and we don't sell anything to you. It's at vetpathusa.com - link
-> in the post. If you know somebody getting out this year, send it to
+> in the post. If you know somebody leaving the military this year, send it to
 > them."
 
 Filming notes: phone at eye level, outdoors or good window light, first
