@@ -1,7 +1,10 @@
 # Frank's social post kit - carousel + captions
 
-Six slides live in this folder (vetpath-carousel-01 through 06, 1080x1080,
-upload in order). Two captions below - LinkedIn and Facebook read
+Eight slides live in this folder (vetpath-carousel-01 through 08, 1080x1080,
+upload in order). Built to carousel engagement research: one idea per
+slide, under 20 words per slide, swipe arrows through slide 7, a save
+prompt on slide 7, and exactly one CTA on slide 8. More swipes = more
+reach, which is why the deck is 8 short slides instead of 6 dense ones. Two captions below - LinkedIn and Facebook read
 differently on purpose. Square brackets are the only words Frank needs
 to add. **Use the exact links given** - the tags are how we learn which
 platform actually sends veterans.
@@ -67,22 +70,14 @@ government.)
 
 ## Alt text (paste one per slide - accessibility matters to this audience)
 
-1. Green slide: "Leaving the military is a full-time job. Nobody hands
-   you the plan." VetPath, for transitioning service members and veterans.
-2. "Why we built VetPath - the information exists, the plan doesn't.
-   Benefits and deadlines are scattered across fifty websites; veterans
-   find out what they earned years too late."
-3. "Ten minutes, one plan: a printable 30/60/90-day gameplan, benefits
-   cited to official sources for all 50 states, career direction with
-   real federal pay data, and a documents checklist."
-4. "Deadlines become real dates: enter your EAS or ETS date and every
-   claims window, insurance conversion, and enrollment cutoff lands on
-   your calendar."
-5. "Built to be trusted, not to sell to you: free for veterans, every
-   number links to its official source, claims point to accredited help,
-   no ad trackers. VetPath is not the VA."
-6. "Your next chapter deserves a plan. vetpathusa.com - free, no app,
-   works on any phone."
+1. "Leaving the military? Nobody hands you the plan." VetPath.
+2. "Your benefits live on 50 different websites. Written for lawyers."
+3. "Most veterans find out what they earned years too late."
+4. "Why we built VetPath - the thing you should've been handed on day one."
+5. "10 minutes becomes your 30/60/90-day plan. Benefits, career, deadlines, cited to official sources."
+6. "Type your EAS date. Every deadline lands on a real calendar."
+7. "Free, always. No ads, nothing sold to you. Claims go to accredited help, never paid consultants. Save this for someone separating soon."
+8. "vetpathusa.com - free, no app, any phone. Tap the link in this post. A planning tool, not the VA, not government-affiliated."
 
 ---
 
