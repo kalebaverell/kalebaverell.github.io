@@ -89,6 +89,13 @@ export default function TrustPage() {
         </Callout>
       </div>
 
+      {/* The "what's the catch" answer. On the page where skeptics read the
+          fine print, say plainly who pays - one line, no pitch. */}
+      <div id="who-pays" className="muted" style={{ marginTop: 20, fontSize: 14.5 }}>
+        Wondering who pays for all this? Right now, the two of us who built it - plus supporters
+        who want it to stay free. <a href="/support" style={{ fontWeight: 600 }}>Support the mission →</a>
+      </div>
+
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
         <Link className="btn" href="/benefits"><i className="ti ti-award" /> See the verified benefits library</Link>
         <Link className="btn ghost" href="/onboarding"><i className="ti ti-compass" /> Build my gameplan</Link>

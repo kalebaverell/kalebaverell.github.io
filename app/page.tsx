@@ -295,6 +295,12 @@ export default function Landing() {
           <p className="muted" style={{ maxWidth: 480, margin: "0 auto 22px" }}>Answer a few questions and walk away with a plan you can actually follow.</p>
           <CtaLink xl style={{ display: "inline-flex" }} />
         </div>
+
+        {/* Supporter path - deliberately one quiet line. The page sells the
+            plan to veterans; family and community get a doorway, not a pitch. */}
+        <div id="for-supporters" className="muted" data-reveal="true" style={{ textAlign: "center", marginTop: 18, fontSize: 14.5 }}>
+          Here for someone else? <a href="/support" style={{ fontWeight: 600 }}>Support the mission that keeps {BRAND.name} free →</a>
+        </div>
       </Wrap>
     </>
   );
