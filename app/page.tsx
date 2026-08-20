@@ -296,10 +296,66 @@ export default function Landing() {
           <CtaLink xl style={{ display: "inline-flex" }} />
         </div>
 
-        {/* Supporter path - deliberately one quiet line. The page sells the
-            plan to veterans; family and community get a doorway, not a pitch. */}
-        <div id="for-supporters" className="muted" data-reveal="true" style={{ textAlign: "center", marginTop: 18, fontSize: 14.5 }}>
-          Here for someone else? <a href="/support" style={{ fontWeight: 600 }}>Support the mission that keeps {BRAND.name} free →</a>
+        {/* Supporter band - a visible doorway for family and community.
+            Gold stays reserved for the veteran CTA above; this answers in
+            the mission-band's green with a cream button, so the two asks
+            read as different conversations, not competing ones. */}
+        <div
+          id="for-supporters"
+          className="grain"
+          data-reveal="true"
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            marginTop: 20,
+            borderRadius: "var(--radius-lg)",
+            background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)",
+            padding: "clamp(26px, 5vw, 38px) clamp(22px, 5vw, 44px)",
+            boxShadow: "0 14px 36px rgba(7, 61, 48, .24)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 24,
+            flexWrap: "wrap",
+          }}
+        >
+          <svg
+            viewBox="0 0 200 200"
+            fill="none"
+            aria-hidden="true"
+            style={{ position: "absolute", right: -40, bottom: -56, width: 180, height: 180, opacity: 0.13 }}
+          >
+            <circle cx="100" cy="100" r="96" stroke="#FBFAF7" strokeWidth="2" />
+            <circle cx="100" cy="100" r="70" stroke="#FBFAF7" strokeWidth="1.5" />
+            <circle cx="100" cy="100" r="44" stroke="#FBFAF7" strokeWidth="1" />
+            <path d="M100 14 L108 92 L100 100 L92 92 Z" fill="#D98A3D" />
+            <path d="M100 186 L92 108 L100 100 L108 108 Z" fill="#FBFAF7" />
+          </svg>
+          <div style={{ position: "relative", zIndex: 2, flex: "1 1 320px", minWidth: 260 }}>
+            <Eyebrow onDark>For supporters</Eyebrow>
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 500,
+                fontSize: "clamp(24px, 3.5vw, 31px)",
+                lineHeight: 1.18,
+                letterSpacing: "-.012em",
+                color: "#FBFAF7",
+              }}
+            >
+              Keep it free for the <span style={{ color: "#F3D9B8" }}>next veteran.</span>
+            </div>
+            <div style={{ marginTop: 8, fontSize: 14.5, color: "rgba(251, 250, 247, .78)" }}>
+              {BRAND.name} runs on supporters, not ads - any amount helps.
+            </div>
+          </div>
+          <a
+            className="btn"
+            href="/support"
+            style={{ position: "relative", zIndex: 2, background: "#FBFAF7", color: "var(--primary-800)", boxShadow: "0 2px 10px rgba(7, 61, 48, .3)" }}
+          >
+            <i className="ti ti-heart" aria-hidden="true" /> Support the mission
+          </a>
         </div>
       </Wrap>
     </>
