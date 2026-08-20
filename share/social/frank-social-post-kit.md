@@ -3,8 +3,19 @@
 Eight slides live in this folder (vetpath-carousel-01 through 08, 1080x1080,
 upload in order). Built to carousel engagement research: one idea per
 slide, under 20 words per slide, swipe arrows through slide 7, a save
-prompt on slide 7, and exactly one CTA on slide 8. More swipes = more
-reach, which is why the deck is 8 short slides instead of 6 dense ones. Two captions below - LinkedIn and Facebook read
+prompt on slide 7, and exactly one CTA on slide 8.
+
+**THE DECK SPEAKS IN FRANK'S FIRST-PERSON VOICE. Frank must read and
+approve slides 1-5 and 8 before anything posts** - they are his story
+in his words ("I left the service with a DD-214 and no plan", "I found
+out the hard way", "my partner and I built it ourselves", "don't learn
+it the hard way like I did"). The lines are written to be true of the
+founding story without inventing specifics, but they go out over his
+name: if any line isn't how he'd say it, send the exact wording he
+wants and the slide regenerates in minutes. Upgrades that make it hit
+harder, if he's willing: his service branch named on slide 1, and a
+real photo of him (service-era or current) swapped onto slide 1 or 5 -
+send the photo and it gets composited. Two captions below - LinkedIn and Facebook read
 differently on purpose. Square brackets are the only words Frank needs
 to add. **Use the exact links given** - the tags are how we learn which
 platform actually sends veterans.
@@ -70,14 +81,14 @@ government.)
 
 ## Alt text (paste one per slide - accessibility matters to this audience)
 
-1. "Leaving the military? Nobody hands you the plan." VetPath.
-2. "Your benefits live on 50 different websites. Written for lawyers."
-3. "Most veterans find out what they earned years too late."
-4. "Why we built VetPath - the thing you should've been handed on day one."
-5. "10 minutes becomes your 30/60/90-day plan. Benefits, career, deadlines, cited to official sources."
-6. "Type your EAS date. Every deadline lands on a real calendar."
-7. "Free, always. No ads, nothing sold to you. Claims go to accredited help, never paid consultants. Save this for someone separating soon."
-8. "vetpathusa.com - free, no app, any phone. Tap the link in this post. A planning tool, not the VA, not government-affiliated."
+1. "From one veteran to another: I left the service with a DD-214 and no plan." VetPath.
+2. "Nobody told me what I'd earned. I found out the hard way."
+3. "Benefits on 50 websites. Deadlines I didn't know existed."
+4. "I kept asking: why doesn't anyone hand you this on day one?"
+5. "So we stopped waiting. My partner and I built it ourselves. VetPath - the plan I wish I'd been handed."
+6. "10 minutes becomes your 30/60/90-day plan. Benefits, career, deadlines, every number cited to official sources."
+7. "Free. Always. That's the point. No ads, nothing sold to you, claims go to accredited help. Save this for someone separating soon."
+8. "Don't learn it the hard way like I did. vetpathusa.com - free, no app, 10 minutes. A planning tool, not the VA."
 
 ---
 
