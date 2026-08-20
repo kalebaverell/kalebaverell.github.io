@@ -22,6 +22,8 @@ CAMPAIGNS = {
     "nasfw":       "NAS Fort Worth JRB transition office (Kaleb)",
     "vrcn":        "VetResources Community Network listing",
     "nrd":         "National Resource Directory listing",
+    "facebook":    "Facebook posts (Frank's network)",
+    "linkedin":    "LinkedIn posts (Frank's network)",
 }
 
 out_dir = pathlib.Path("print/qr")
