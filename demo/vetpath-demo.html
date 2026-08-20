@@ -3042,6 +3042,7 @@ function relocCompareMetros(ids){
     row("Airport",m=>({value:RELOC_AIRPORT_SHORT[m.airport]||m.airport})),
     row("Winters",m=>({value:RELOC_WINTER_WORD[m.winter]||"-"})),
     row("State income tax",m=>({value:m.state!=="-"&&RELOC_NO_WAGE_TAX.indexOf(m.state)>=0?"None on wages":"Yes",detail:m.state!=="-"&&RELOC_NO_WAGE_TAX.indexOf(m.state)>=0?"Verify current rules with the state revenue office.":undefined})),
+    row("Firearm laws",m=>({value:"Differ by state and city",detail:"Never part of your match score. Carry, transport, and storage rules vary widely - read the official compilation before a move.",link:{label:m.state!=="-"?"ATF state-law compilation ("+m.state+")":"ATF state-law compilation",href:"https://www.atf.gov/firearms/tools-and-services-firearms-industry/state-laws-and-published-ordinances-firearms"}})),
     row("Worth knowing",m=>({value:m.notes}))
   ];
 }
@@ -3183,7 +3184,7 @@ function Relocate(){
           </tr></thead>
           <tbody>${rows.map(row=>`<tr>
             <th scope="row" style="text-align:left;vertical-align:top;padding:12px 18px;border-bottom:1px solid var(--hairline);color:var(--muted);font-weight:600;white-space:nowrap">${row.dimension}</th>
-            ${row.cells.map(c=>`<td style="vertical-align:top;padding:12px 18px;border-bottom:1px solid var(--hairline)"><div style="font-weight:600;color:var(--ink-strong)">${esc(c.value)}</div>${c.detail?`<div class="small muted" style="margin-top:2px">${esc(c.detail)}</div>`:""}</td>`).join("")}
+            ${row.cells.map(c=>`<td style="vertical-align:top;padding:12px 18px;border-bottom:1px solid var(--hairline)"><div style="font-weight:600;color:var(--ink-strong)">${esc(c.value)}</div>${c.detail?`<div class="small muted" style="margin-top:2px">${esc(c.detail)}</div>`:""}${c.link?`<div class="small" style="margin-top:4px"><a href="${c.link.href}" target="_blank" rel="noopener noreferrer"><i class="ti ti-external-link" aria-hidden="true"></i> ${esc(c.link.label)}</a></div>`:""}</td>`).join("")}
           </tr>`).join("")}</tbody>
         </table>
       </div>

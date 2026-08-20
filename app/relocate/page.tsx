@@ -400,6 +400,13 @@ export default function RelocatePage() {
                       <td key={c.metroId} style={{ verticalAlign: "top", padding: "12px 18px", borderBottom: "1px solid var(--hairline)" }}>
                         <div style={{ fontWeight: 600, color: "var(--ink-strong)" }}>{c.value}</div>
                         {c.detail && <div className="small muted" style={{ marginTop: 2 }}>{c.detail}</div>}
+                        {c.link && (
+                          <div className="small" style={{ marginTop: 4 }}>
+                            <a href={c.link.href} target="_blank" rel="noopener noreferrer">
+                              <i className="ti ti-external-link" aria-hidden="true" /> {c.link.label}
+                            </a>
+                          </div>
+                        )}
                       </td>
                     ))}
                   </tr>

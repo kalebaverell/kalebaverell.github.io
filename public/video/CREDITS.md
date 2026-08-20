@@ -7,32 +7,6 @@ This follows the same sourcing standard as `public/img/CREDITS.md`.
 
 ---
 
-## career-summit-loop.mp4 (+ career-summit-poster.jpg)
-
-- **Intended use:** Homepage hero - muted, looping ambient backdrop under the navy scrim.
-- **Title:** "Hiring Our Heroes B-Roll Package" (DVIDS video 987785, DoD asset ID DOD_111401891)
-- **Videographer:** Sgt. Scyrrus Corregidor, AFN Bavaria (U.S. government work)
-- **Date taken:** 10.14.2025 - Hiring Our Heroes career summit, U.S. Army Garrison Bavaria
-- **Source page:** https://www.dvidshub.net/video/987785/hiring-our-heroes-b-roll-package
-- **License line on source page (verified 2026-07-10):** "PUBLIC DOMAIN"
-- **File fetched:** DVIDS CDN public HLS stream (960×540 variant),
-  https://d34w7g4gy10iej.cloudfront.net/video/2511/DOD_111401891/DOD_111401891-960x540-1918k-hls_4.m3u8
-  (segments 7–18 sampled; final shot from ~t=120.7–134.0 of the source).
-- **Processing (ffmpeg, no content edits within frames):**
-  - Extracted one continuous 13.3 s shot: a packed summit audience of transitioning
-    service members and civilians, side view with a slow camera drift, window light.
-  - Native 960×540, audio removed; 1.2 s crossfade of the tail into the head → 12.1 s
-    seamless forward-motion loop (v2 - replaced the earlier 6.6 s palindrome cut of the
-    mingling shot, whose motion reversal read as stuttering).
-  - H.264 (libx264, CRF 27, preset veryslow, yuv420p, `+faststart`) → **285 KB**.
-  - `career-summit-poster.jpg` is the first frame, JPEG q3 (**58 KB**).
-- **Content review:** no combat, no weapons, no ceremonial flag displays (a U.S. flag
-  shoulder patch on one uniform is incidental); event signage/TV screens with third-party
-  sponsor logos were deliberately cut around - none appear in the shipped clip; no readable
-  name tapes at 540p; candid mid-distance crowd at a public, DoD-covered press event.
-
----
-
 ## hero-loop.mp4 (+ hero-poster.jpg)
 
 - **Intended use:** Homepage "On the ground" mission band - muted, looping video

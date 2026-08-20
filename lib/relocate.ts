@@ -72,6 +72,7 @@ export interface CompareCell {
   metroId: string;
   value: string;
   detail?: string;
+  link?: { label: string; href: string };
 }
 
 export interface CompareRow {
@@ -368,6 +369,17 @@ export function compareMetros(ids: string[]): CompareRow[] {
     row("State income tax", (m) => ({
       value: m.state !== "-" && NO_WAGE_TAX.has(m.state) ? "None on wages" : "Yes",
       detail: m.state !== "-" && NO_WAGE_TAX.has(m.state) ? "Verify current rules with the state revenue office." : undefined,
+    })),
+    // Tester-requested variable, deliberately informational: firearm rules are
+    // state AND local law, so this row never scores or ranks - it only hands
+    // the reader the official federal compilation to check for themselves.
+    row("Firearm laws", (m) => ({
+      value: "Differ by state and city",
+      detail: "Never part of your match score. Carry, transport, and storage rules vary widely - read the official compilation before a move.",
+      link: {
+        label: m.state !== "-" ? `ATF state-law compilation (${m.state})` : "ATF state-law compilation",
+        href: "https://www.atf.gov/firearms/tools-and-services-firearms-industry/state-laws-and-published-ordinances-firearms",
+      },
     })),
     row("Worth knowing", (m) => ({ value: m.notes })),
   ];

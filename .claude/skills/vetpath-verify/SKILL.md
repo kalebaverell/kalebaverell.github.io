@@ -34,7 +34,7 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
    catch-up card when inside T-12, closing disclaimer; "Under 3 months" persona excludes BDD
    from catch-up
 8. Mobile 390×844: bottom tab bar visible with profile, scrollWidth ≤ 390 on /, /relocate, /benefits, /timeline
-9. Homepage: hero video + mission-band video BOTH playing (SW must bypass media/range requests —
+9. Homepage: hero video playing - the single video since the funnel redesign (SW must bypass media/range requests —
    a broken second video means the service worker regressed)
 
 ## 5. Deliverable freshness
