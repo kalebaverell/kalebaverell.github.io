@@ -1,130 +1,102 @@
-import { Wrap, Eyebrow } from "@/components/ui";
+import { Eyebrow } from "@/components/ui";
 import { routeMeta } from "@/lib/metadata";
 import { DONATE_CONFIGURED, DONATE_URL, SUPPORT_EMAIL } from "@/lib/support";
 
 export const metadata = routeMeta(
   "Support VetPath",
-  "The mission: every veteran leaves the military with a real plan - free, always. This page is how supporters keep it that way."
+  "VetPath is free for every veteran who uses it. Supporters keep it that way."
 );
-
-const waysToHelp = [
-  {
-    icon: "ti-users-group",
-    title: "Send it to one veteran",
-    body:
-      "The single most valuable thing you can do costs nothing: one text to someone separating in the next year. vetpathusa.com works on any phone, no app.",
-  },
-  {
-    icon: "ti-mail",
-    title: "Introduce us to a transition office or VSO",
-    body:
-      "If you know someone at a base transition program, a county veterans office, or a VSO, a one-line introduction puts VetPath in front of every veteran they serve.",
-  },
-  {
-    icon: "ti-messages",
-    title: "Tell us what's wrong or missing",
-    body:
-      "Found a figure that's off, a broken link, or a benefit we should cover? Saying so makes the tool better for everyone after you.",
-  },
-];
 
 export default function SupportPage() {
   return (
-    <Wrap narrow>
+    <div style={{ maxWidth: 640, margin: "0 auto", padding: "64px 22px 72px", textAlign: "center" }}>
       <Eyebrow>For supporters</Eyebrow>
-      <h1 style={{ marginTop: 0 }}>Support the mission</h1>
-      <p className="muted" style={{ fontSize: "calc(var(--fs-body) + 1px)", lineHeight: 1.7 }}>
-        The mission is simple: no veteran leaves the military without a plan. VetPath is free for
-        the people it serves - no ads, no paid tiers, and nothing sold to them - so the mission
-        runs on the two of us who built it, and on supporters like you: family, friends, and
-        people who simply want transition to go better for those who served.
+      <h1 style={{ marginTop: 0, fontSize: "clamp(34px, 6vw, 46px)" }}>Support the mission</h1>
+      <p className="muted" style={{ fontSize: "calc(var(--fs-body) + 2px)", lineHeight: 1.65, margin: "10px auto 36px", maxWidth: 460 }}>
+        VetPath is free for every veteran who uses it.
+        <br />
+        Supporters keep it that way.
       </p>
 
-      <div className="card" style={{ marginTop: 26, padding: "26px 26px 28px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-          <span
-            aria-hidden="true"
+      <div
+        className="grain"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: "var(--radius-lg)",
+          background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)",
+          padding: "clamp(40px, 7vw, 56px) clamp(24px, 5vw, 48px)",
+          boxShadow: "0 18px 44px rgba(7, 61, 48, .28)",
+        }}
+      >
+        <svg
+          viewBox="0 0 200 200"
+          fill="none"
+          aria-hidden="true"
+          style={{ position: "absolute", right: -46, bottom: -52, width: 210, height: 210, opacity: 0.14 }}
+        >
+          <circle cx="100" cy="100" r="96" stroke="#FBFAF7" strokeWidth="2" />
+          <circle cx="100" cy="100" r="70" stroke="#FBFAF7" strokeWidth="1.5" />
+          <circle cx="100" cy="100" r="44" stroke="#FBFAF7" strokeWidth="1" />
+          <path d="M100 14 L108 92 L100 100 L92 92 Z" fill="#D98A3D" />
+          <path d="M100 186 L92 108 L100 100 L108 108 Z" fill="#FBFAF7" />
+        </svg>
+
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <div
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: 11,
-              background: "var(--primary)",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 21,
+              fontFamily: "var(--font-display)",
+              fontWeight: 500,
+              fontSize: "clamp(28px, 5vw, 38px)",
+              lineHeight: 1.18,
+              letterSpacing: "-.012em",
+              color: "#FBFAF7",
+              maxWidth: 400,
+              margin: "0 auto 30px",
             }}
           >
-            <i className="ti ti-heart-handshake" />
-          </span>
-          <h2 style={{ margin: 0 }}>Make a contribution</h2>
-        </div>
-        <p className="muted" style={{ lineHeight: 1.7, margin: "0 0 18px" }}>
-          Every contribution funds the mission directly: hosting, the domain, and the ongoing work
-          of keeping every benefit figure verified against its official source. Any amount moves it
-          forward, and none of it is expected.
-        </p>
-        {DONATE_CONFIGURED ? (
-          <a className="btn" href={DONATE_URL} target="_blank" rel="noopener noreferrer">
-            <i className="ti ti-heart" aria-hidden="true" /> Support the mission
-          </a>
-        ) : (
-          <>
-            <p style={{ lineHeight: 1.7, margin: "0 0 14px" }}>
-              Card contributions are almost online. Until then, email us and we&apos;ll reply
-              personally with a way to help.
-            </p>
-            <a className="btn" href={`mailto:${SUPPORT_EMAIL}?subject=Supporting%20VetPath`}>
+            Keep it free for the{" "}
+            <span style={{ color: "#F3D9B8" }}>next veteran.</span>
+          </div>
+
+          {DONATE_CONFIGURED ? (
+            <a
+              className="btn gold"
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: "calc(var(--fs-btn) + 2px)", padding: "16px 38px" }}
+            >
+              <i className="ti ti-heart" aria-hidden="true" /> Support the mission
+            </a>
+          ) : (
+            <a
+              className="btn gold"
+              href={`mailto:${SUPPORT_EMAIL}?subject=Supporting%20VetPath`}
+              style={{ fontSize: "calc(var(--fs-btn) + 2px)", padding: "16px 38px" }}
+            >
               <i className="ti ti-mail" aria-hidden="true" /> Email us about contributing
             </a>
-          </>
-        )}
-      </div>
+          )}
 
-      <div style={{ marginTop: 34 }}>
-        <h2 style={{ marginBottom: 6 }}>Three ways to help that cost nothing</h2>
-        <div style={{ display: "grid", gap: 14, marginTop: 14 }}>
-          {waysToHelp.map((w) => (
-            <div key={w.title} className="card" style={{ padding: "18px 20px", display: "flex", gap: 14 }}>
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  flexShrink: 0,
-                  background: "var(--surface-2)",
-                  color: "var(--primary)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 19,
-                }}
-              >
-                <i className={`ti ${w.icon}`} />
-              </span>
-              <div>
-                <h3 style={{ margin: "0 0 4px", fontSize: "calc(var(--fs-body) + 2px)" }}>{w.title}</h3>
-                <div className="muted" style={{ lineHeight: 1.65, fontSize: "var(--fs-body)" }}>{w.body}</div>
-              </div>
-            </div>
-          ))}
+          <div style={{ marginTop: 18, fontSize: 13.5, color: "rgba(251, 250, 247, .78)" }}>
+            Any amount helps &middot; Secure checkout by Stripe
+          </div>
         </div>
       </div>
 
-      <div className="disclaimer" style={{ marginTop: 34, textAlign: "left", lineHeight: 1.7 }}>
-        <strong>The honest fine print.</strong> Contributions are voluntary support for a free
-        tool: they buy nothing, unlock nothing, and never grant anyone access to any veteran&apos;s
-        information. VetPath is a planning and education tool - not the VA, and not affiliated with
-        or endorsed by the government.
-      </div>
-
-      <p style={{ marginTop: 26 }}>
-        <a className="btn ghost" href="/trust">
-          <i className="ti ti-arrow-left" aria-hidden="true" /> How we earn trust
-        </a>
+      <p className="muted" style={{ margin: "34px auto 0", maxWidth: 480, lineHeight: 1.65 }}>
+        Prefer to help for free? Send <strong>vetpathusa.com</strong> to one veteran - or{" "}
+        <a href={`mailto:${SUPPORT_EMAIL}?subject=VetPath%20introduction`} style={{ fontWeight: 600 }}>
+          introduce us
+        </a>{" "}
+        to a transition office or VSO.
       </p>
-    </Wrap>
+
+      <p className="muted" style={{ margin: "26px auto 0", maxWidth: 480, fontSize: 12.5, lineHeight: 1.6 }}>
+        Contributions buy nothing, unlock nothing, and never touch any veteran&apos;s information.
+        VetPath is a planning tool - not the VA, and not affiliated with the government.
+      </p>
+    </div>
   );
 }
