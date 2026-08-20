@@ -24,6 +24,7 @@ export default function Footer() {
             <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7.
           </div>
           <div style={{ marginTop: 14, fontSize: 12.5, display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <a href="/support">Support VetPath</a>
             <a href="/privacy">Privacy &amp; data</a>
             <a href="/terms">Terms of use</a>
             <a href="mailto:kaleb@vetpathusa.com">Contact us</a>

@@ -17,6 +17,7 @@ const OPEN_PATHS = new Set([
   "privacy",
   "terms",
   "do-not-sell", // a privacy control can never be behind a funnel
+  "support", // supporters aren't veterans with plans - never funnel them
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
 ]);

@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     at("/timeline/", 0.6),
     at("/family/", 0.5),
     at("/reserves/", 0.5),
+    at("/support/", 0.5),
     at("/privacy/", 0.4),
     at("/terms/", 0.3),
     at("/do-not-sell/", 0.3),
