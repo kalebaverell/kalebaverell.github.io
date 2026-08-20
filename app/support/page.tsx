@@ -4,7 +4,7 @@ import { DONATE_CONFIGURED, DONATE_URL, SUPPORT_EMAIL } from "@/lib/support";
 
 export const metadata = routeMeta(
   "Support VetPath",
-  "VetPath is free for veterans, always. If you want to help carry the costs that keep it that way, this is the page."
+  "The mission: every veteran leaves the military with a real plan - free, always. This page is how supporters keep it that way."
 );
 
 const waysToHelp = [
@@ -32,12 +32,12 @@ export default function SupportPage() {
   return (
     <Wrap narrow>
       <Eyebrow>For supporters</Eyebrow>
-      <h1 style={{ marginTop: 0 }}>Keep it free for the next veteran</h1>
+      <h1 style={{ marginTop: 0 }}>Support the mission</h1>
       <p className="muted" style={{ fontSize: "calc(var(--fs-body) + 1px)", lineHeight: 1.7 }}>
-        VetPath is free for veterans - no ads, no paid tiers, and nothing sold to the people using
-        it. That&apos;s a promise, not a business model, which means the costs of running it are
-        carried by the two of us who built it. This page exists for everyone else: family, friends,
-        and people who simply want transition to go better for those who served.
+        The mission is simple: no veteran leaves the military without a plan. VetPath is free for
+        the people it serves - no ads, no paid tiers, and nothing sold to them - so the mission
+        runs on the two of us who built it, and on supporters like you: family, friends, and
+        people who simply want transition to go better for those who served.
       </p>
 
       <div className="card" style={{ marginTop: 26, padding: "26px 26px 28px" }}>
@@ -58,16 +58,16 @@ export default function SupportPage() {
           >
             <i className="ti ti-heart-handshake" />
           </span>
-          <h2 style={{ margin: 0 }}>Chip in toward the costs</h2>
+          <h2 style={{ margin: 0 }}>Make a contribution</h2>
         </div>
         <p className="muted" style={{ lineHeight: 1.7, margin: "0 0 18px" }}>
-          Contributions go toward the direct costs of running VetPath: hosting, the domain, and the
-          ongoing work of keeping every benefit figure verified against its official source. Any
-          amount helps, and none of it is expected.
+          Every contribution funds the mission directly: hosting, the domain, and the ongoing work
+          of keeping every benefit figure verified against its official source. Any amount moves it
+          forward, and none of it is expected.
         </p>
         {DONATE_CONFIGURED ? (
           <a className="btn" href={DONATE_URL} target="_blank" rel="noopener noreferrer">
-            <i className="ti ti-heart" aria-hidden="true" /> Contribute securely
+            <i className="ti ti-heart" aria-hidden="true" /> Support the mission
           </a>
         ) : (
           <>
