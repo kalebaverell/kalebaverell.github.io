@@ -7,7 +7,7 @@ prompt on slide 7, and exactly one CTA on slide 8.
 
 **THE DECK SPEAKS IN FRANK'S FIRST-PERSON VOICE. Frank must read and
 approve slides 1-5 and 8 before anything posts** - they are his story
-in his words ("I left the service with a DD-214 and no plan", "I found
+in his words ("The day I got out, I had no idea what came next", "I found
 out the hard way", "my partner and I built it ourselves", "don't learn
 it the hard way like I did"). The lines are written to be true of the
 founding story without inventing specifics, but they go out over his
@@ -81,7 +81,7 @@ government.)
 
 ## Alt text (paste one per slide - accessibility matters to this audience)
 
-1. "From one veteran to another: I had my DD-214. No idea what came next - or which benefits were mine." VetPath.
+1. "From one veteran to another: The day I got out, I had no idea what came next - or which benefits were mine." VetPath.
 2. "Nobody told me what I'd earned. I found out the hard way."
 3. "Benefits on 50 websites. Deadlines I didn't know existed."
 4. "I kept asking: why doesn't anyone hand you this on day one?"
