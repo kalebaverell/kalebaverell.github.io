@@ -23,8 +23,10 @@ Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + k
 static), then `rm -rf .next` and restart `npm run dev` in background; wait for 200 on /.
 
 ## 4. Browser flows (Playwright MCP; cache-bust with ?v=N; only favicon-404 is acceptable in console)
-1. /admin → "Load a sample veteran & plan" → dashboard renders with destination or CTA + Decisions card
-2. /benefits → "Optimized for you" tiers + BDD timing chip + verified Texas card (Hazlewood, Verified chip)
+1. /admin → "Load a sample veteran & plan" → dashboard renders with destination headline + funnel
+   CTA; Decisions card is BEHIND the "Show the full picture" expander (click it first)
+2. /benefits → personalized tier heading ("here's what likely applies - and when") with
+   Act-now/Worth-checking/Later tiers + BDD timing chip + verified Texas card (Hazlewood, Verified chip)
 3. /relocate → 2 priorities to Must → matches with official-data tags → 2-metro compare table
 4. /updates → New disability rating → Preview diff renders → Apply → success
 5. /family → renders (empty state or checkpoints depending on familyNeeds)
