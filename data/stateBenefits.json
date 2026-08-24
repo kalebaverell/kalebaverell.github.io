@@ -468,7 +468,7 @@
           "name": "Hawaii State Veterans Homes",
           "category": "health",
           "blurb": "The state oversees the Yukio Okutsu State Veterans Home in Hilo (post-acute and skilled nursing care for veterans) and the Daniel K. Akaka State Veterans Home.",
-          "source": "https://dod.hawaii.gov/ovs/advisory-board/state-veteran-homes/hilo-veterans-homes/"
+          "source": "https://dod.hawaii.gov/ovs/"
         },
         {
           "name": "State Veterans Cemeteries and Burial Services",
@@ -779,7 +779,7 @@
           "name": "State and City Civil Service Veterans' Preference",
           "category": "employment",
           "blurb": "Louisiana state and city civil service award a five- to ten-point preference in original appointment to veterans who served honorably in the U.S. Armed Forces.",
-          "source": "https://www.vetaffairs.la.gov/benefit/louisiana-state-and-federal-civil-service/"
+          "source": "https://vetaffairs.la.gov/benefits/"
         },
         {
           "name": "Military Retirement Pay State Income Tax Exemption",
@@ -935,7 +935,7 @@
           "name": "Disabled Veterans Property Tax Exemption",
           "category": "tax",
           "blurb": "Full property tax exemption on the homestead of Michigan veterans rated 100% permanently and totally disabled, rated individually unemployable, or who received VA specially adapted housing assistance, including unremarried surviving spouses.",
-          "source": "https://www.michigan.gov/taxes/property/exemptions/veterans/disabled-veterans-exemption"
+          "source": "https://www.michigan.gov/taxes/property/exemptions/homeowner/disabled-veteran-exemption"
         },
         {
           "name": "Michigan Veterans Trust Fund Emergency Assistance",
@@ -1620,13 +1620,13 @@
           "name": "Pennsylvania State Veterans Homes",
           "category": "health",
           "blurb": "DMVA operates six state veterans homes across the Commonwealth - Delaware Valley Veterans' Home, Gino J. Merli Veterans' Center, Hollidaysburg Veterans' Home, Pennsylvania Soldiers' and Sailors' Home, Southeastern Veterans' Center, and Southwestern Veterans' Center - providing long-term care to eligible veterans.",
-          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/programs-and-services"
+          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans"
         },
         {
           "name": "Veterans Temporary Assistance",
           "category": "other",
           "blurb": "Provides eligible Pennsylvania veterans and their surviving dependents with temporary financial relief for necessities such as food, shelter, fuel, and clothing.",
-          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/programs-and-services"
+          "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans"
         }
       ],
       "notes": "DMVA also administers the Military Family Relief Assistance Program and the PA Veterans Registry. As of August 2024, veterans' benefits are excluded from need assessments for the Real Estate Tax Exemption, Educational Gratuity, and Veterans Temporary Assistance programs. Recreation-license benefits exist via the PA Game Commission but were not verified against an official page in this pass and are omitted."
@@ -1813,7 +1813,7 @@
           "name": "Texas Veterans Land Board Land, Home, and Home Improvement Loans",
           "category": "housing",
           "blurb": "The VLB's nation-unique loan programs let Texas veterans and military members finance land purchases, homes, and home improvements at competitive rates, with discounted interest for veterans rated 30 percent or more service-connected disabled.",
-          "source": "https://vlb.texas.gov/loans/home-loans/index.html"
+          "source": "https://vlb.texas.gov/home-loans/"
         },
         {
           "name": "TVC Veteran Employment Services",

@@ -1238,7 +1238,7 @@
         "unemployment": {
           "value": 2.7,
           "period": "May 2026",
-          "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT391814000000003)",
+          "source": "https://www.bls.gov/developers/ (series LAUMT391814000000003)",
           "note": "BLS LAUS, Columbus OH MSA, not seasonally adjusted. April 2026 = 2.8, March 2026 = 3.4. BLS reported Columbus had the largest YoY metro rate decline in spring 2026."
         },
         "vamc": {
@@ -1300,7 +1300,7 @@
         "unemployment": {
           "value": 4.3,
           "period": "May 2026",
-          "source": "https://api.bls.gov/publicAPI/v2/timeseries/data/ (series LAUMT372218000000003)",
+          "source": "https://www.bls.gov/developers/ (series LAUMT372218000000003)",
           "note": "BLS LAUS, Fayetteville NC MSA, not seasonally adjusted. April 2026 = 4.3, March 2026 = 4.4."
         },
         "vamc": {

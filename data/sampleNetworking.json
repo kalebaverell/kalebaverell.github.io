@@ -29,7 +29,7 @@
       { "name": "VFW/Legion halls in trade towns", "what": "Where the local hiring actually happens - show up." }
     ],
     "entrepreneur": [
-      { "name": "Veterans Business Outreach Center (VBOC)", "what": "Free SBA-funded business coaching for veterans.", "url": "https://www.sba.gov/local-assistance/resource-partners/veterans-business-outreach-center-vboc" },
+      { "name": "Veterans Business Outreach Center (VBOC)", "what": "Free SBA-funded business coaching for veterans.", "url": "https://www.sba.gov/vboc" },
       { "name": "Bunker Labs", "what": "Veteran founder community, cohorts, and city chapters.", "url": "https://bunkerlabs.org" },
       { "name": "SCORE mentors", "what": "Free experienced business mentors, many veteran-friendly.", "url": "https://www.score.org" }
     ]

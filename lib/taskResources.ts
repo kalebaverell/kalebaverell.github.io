@@ -71,7 +71,7 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
     { label: "Relocation planner", href: "/relocate", internal: true },
   ]},
   { test: /business|entrepreneur|\bsba\b|contracting|sdvosb|franchise/i, resources: [
-    { label: "SBA resources for veterans", href: "https://www.sba.gov/business-guide/manage-your-business/military-veteran-owned-businesses" },
+    { label: "SBA resources for veterans", href: "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses" },
   ]},
   { test: /pension|\bretire/i, resources: [
     { label: "VA pension (VA.gov)", href: "https://www.va.gov/pension/" },
