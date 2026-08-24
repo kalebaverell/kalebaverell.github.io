@@ -280,20 +280,14 @@ export default function Landing() {
       </section>
 
       <Wrap>
-        <div className="card" data-reveal="true" style={{ marginTop: 24, textAlign: "center", padding: "40px 24px", background: "var(--surface-2)", border: "1px solid var(--hairline)", position: "relative", overflow: "hidden" }}>
-          <svg className="compass-mark" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-            <circle cx="100" cy="100" r="96" stroke="var(--primary)" strokeWidth="2" />
-            <circle cx="100" cy="100" r="70" stroke="var(--primary)" strokeWidth="1.5" />
-            <circle cx="100" cy="100" r="44" stroke="var(--primary)" strokeWidth="1" />
-            <path d="M100 14 L108 92 L100 100 L92 92 Z" fill="var(--primary)" />
-            <path d="M100 186 L92 108 L100 100 L108 108 Z" fill="var(--accent)" />
-            <path d="M14 100 L92 92 L100 100 L92 108 Z" fill="var(--primary)" opacity=".55" />
-            <path d="M186 100 L108 108 L100 100 L108 92 Z" fill="var(--primary)" opacity=".55" />
-          </svg>
+        {/* Final CTA - flat centered treatment from the fortune preview:
+            no card box, wider measure, micro trust line under the button. */}
+        <div data-reveal="true" style={{ marginTop: 40, marginBottom: 8, textAlign: "center", padding: "24px 24px 0" }}>
           <Eyebrow>Your next mission</Eyebrow>
-          <h2 style={{ margin: "0 0 8px", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>Ten minutes now saves months of guessing later.</h2>
-          <p className="muted" style={{ maxWidth: 480, margin: "0 auto 22px" }}>Answer a few questions and walk away with a plan you can actually follow.</p>
+          <h2 style={{ margin: "0 0 10px", maxWidth: 660, marginLeft: "auto", marginRight: "auto" }}>Ten minutes now saves months of guessing later.</h2>
+          <p className="muted" style={{ maxWidth: 520, margin: "0 auto 26px" }}>Answer a few questions and walk away with a plan you can actually follow.</p>
           <CtaLink xl style={{ display: "inline-flex" }} />
+          <p className="muted" style={{ fontSize: 13.5, margin: "16px 0 0" }}>Free &middot; no app &middot; works on any phone</p>
         </div>
 
         {/* Supporter band - a visible doorway for family and community.
@@ -302,15 +296,12 @@ export default function Landing() {
             read as different conversations, not competing ones. */}
         <div
           id="for-supporters"
-          className="grain"
           data-reveal="true"
           style={{
-            position: "relative",
-            overflow: "hidden",
-            marginTop: 20,
+            marginTop: 44,
             borderRadius: "var(--radius-lg)",
             background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)",
-            padding: "clamp(26px, 5vw, 38px) clamp(22px, 5vw, 44px)",
+            padding: "30px 38px",
             boxShadow: "0 14px 36px rgba(7, 61, 48, .24)",
             display: "flex",
             alignItems: "center",
@@ -319,40 +310,27 @@ export default function Landing() {
             flexWrap: "wrap",
           }}
         >
-          <svg
-            viewBox="0 0 200 200"
-            fill="none"
-            aria-hidden="true"
-            style={{ position: "absolute", right: -40, bottom: -56, width: 180, height: 180, opacity: 0.13 }}
-          >
-            <circle cx="100" cy="100" r="96" stroke="#FBFAF7" strokeWidth="2" />
-            <circle cx="100" cy="100" r="70" stroke="#FBFAF7" strokeWidth="1.5" />
-            <circle cx="100" cy="100" r="44" stroke="#FBFAF7" strokeWidth="1" />
-            <path d="M100 14 L108 92 L100 100 L92 92 Z" fill="#D98A3D" />
-            <path d="M100 186 L92 108 L100 100 L108 108 Z" fill="#FBFAF7" />
-          </svg>
-          <div style={{ position: "relative", zIndex: 2, flex: "1 1 320px", minWidth: 260 }}>
-            <Eyebrow onDark>For supporters</Eyebrow>
+          <div style={{ flex: "1 1 320px", minWidth: 260 }}>
             <div
               style={{
                 fontFamily: "var(--font-display)",
-                fontWeight: 500,
-                fontSize: "clamp(24px, 3.5vw, 31px)",
-                lineHeight: 1.18,
+                fontWeight: 600,
+                fontSize: 23,
+                lineHeight: 1.2,
                 letterSpacing: "-.012em",
                 color: "#FBFAF7",
               }}
             >
-              Keep it free for the <span style={{ color: "#F3D9B8" }}>next veteran.</span>
+              Keep it free for the <em style={{ fontStyle: "italic", color: "#F3D9B8" }}>next veteran.</em>
             </div>
-            <div style={{ marginTop: 8, fontSize: 14.5, color: "rgba(251, 250, 247, .78)" }}>
+            <div style={{ marginTop: 5, fontSize: 13.5, color: "rgba(251, 250, 247, .78)" }}>
               {BRAND.name} runs on supporters, not ads - any amount helps.
             </div>
           </div>
           <a
             className="btn"
             href="/support"
-            style={{ position: "relative", zIndex: 2, background: "#FBFAF7", color: "var(--primary-800)", boxShadow: "0 2px 10px rgba(7, 61, 48, .3)" }}
+            style={{ background: "#FBFAF7", color: "var(--primary-800)", boxShadow: "0 2px 10px rgba(7, 61, 48, .3)" }}
           >
             <i className="ti ti-heart" aria-hidden="true" /> Support the mission
           </a>
