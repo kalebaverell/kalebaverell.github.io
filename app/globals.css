@@ -346,10 +346,21 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 .card-art { position:absolute; top:-8px; right:-10px; width:120px; height:120px; color:var(--primary); opacity:.08; pointer-events:none; }
 
 /* Trust strip below hero */
-.trust-bar { background:linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%); border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); }
-.trust-bar-inner { max-width:1180px; margin:0 auto; padding:18px 22px; display:flex; gap:30px; flex-wrap:wrap; justify-content:center; align-items:center; }
-.trust-bar .item { display:flex; align-items:center; gap:9px; color:var(--ink); font-size:13.5px; font-weight:500; letter-spacing:.003em; }
-.trust-bar .item i { color:var(--accent-ink); font-size:19px; }
+/* Stat strip garment from the fortune preview: clean white band, amber icons. */
+.trust-bar { background:var(--surface); border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); }
+.trust-bar-inner { max-width:1180px; margin:0 auto; padding:24px 22px; display:flex; gap:32px; flex-wrap:wrap; justify-content:center; align-items:center; }
+.trust-bar .item { display:flex; align-items:center; gap:9px; color:var(--ink); font-size:14px; font-weight:500; letter-spacing:.003em; }
+.trust-bar .item i { color:var(--accent-600); font-size:19px; }
+
+/* Enterprise footer columns (fortune-preview port). */
+.foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:34px; }
+.foot-head { font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#F3D9B8; margin:0 0 12px; }
+.foot-link { display:block; padding:5px 0; color:rgba(251,250,247,.75); font-size:14px; text-decoration:none; }
+.foot-link:hover { color:#FBFAF7; text-decoration:none; }
+@media (max-width: 860px) {
+  .foot-grid { grid-template-columns:1fr 1fr; }
+  .foot-grid > div:first-child { grid-column:1 / -1; }
+}
 .trust-bar .sep { width:1px; height:20px; background:var(--border); }
 
 .disclaimer { font-size:var(--fs-small); color:var(--muted); line-height:1.6; }

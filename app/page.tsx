@@ -279,6 +279,100 @@ export default function Landing() {
         <span className="credit">U.S. Army footage, Fort Bliss SFL-TAP · public domain</span>
       </section>
 
+      {/* Beyond the plan - tool doorways ordered by real engagement
+          (state benefits and family lead; see docs/traction notes). */}
+      <Wrap>
+        <div style={{ marginTop: 56, display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }} data-reveal="true">
+          <SectionHead
+            eyebrow="Beyond the plan"
+            title="Start with the plan. Go deeper when you're ready."
+          />
+          <Link href="/tools" style={{ fontWeight: 600, color: "var(--primary-800)", display: "inline-flex", alignItems: "center", gap: 6, paddingBottom: 24 }}>
+            All tools <i className="ti ti-arrow-right" aria-hidden="true" />
+          </Link>
+        </div>
+        <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+          {([
+            ["/benefits", "ti-map-2", "Benefits in your state", "Property tax to tuition - what your state actually offers on top of your federal benefits, verified and cited.", "Most used"],
+            ["/family", "ti-users", "Plan as a household", "Spouse careers, school moves, caregiving - shared checkpoints so the whole family lands together.", "Family favorite"],
+            ["/pathfinder", "ti-compass", "Career pathfinder", "Eleven questions. Your best-fit civilian paths, ranked and explained, with real federal pay data.", "11 questions"],
+          ] as const).map(([href, icon, title, body, tag], i) => (
+            <Link key={href} href={href} className="card" data-reveal={i * 90} style={{ display: "block", textDecoration: "none", color: "inherit" }}>
+              <div className="iconwrap" style={{ marginBottom: 14 }}><i className={`ti ${icon}`} aria-hidden="true" /></div>
+              <h4 style={{ marginBottom: 6 }}>{title}</h4>
+              <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
+              <span className="chip gold" style={{ marginTop: 14, fontSize: 11, fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase" }}>{tag}</span>
+            </Link>
+          ))}
+        </div>
+      </Wrap>
+
+      {/* Built to be checked - the trust page's operating rules, on the
+          homepage where skeptics look first (fortune-preview port). */}
+      <section className="grain" style={{ position: "relative", overflow: "hidden", marginTop: 64, background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)", color: "#FBFAF7" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "76px 22px 80px", position: "relative", zIndex: 2 }}>
+          <div data-reveal="true">
+            <Eyebrow onDark>Why trust us</Eyebrow>
+            <h2 style={{ color: "#FBFAF7", margin: "0 0 10px" }}>Built to be checked.</h2>
+            <p style={{ color: "rgba(251,250,247,.78)", maxWidth: 560, margin: 0, fontSize: "calc(var(--fs-body) + 1px)", lineHeight: 1.65 }}>
+              Skeptical is smart. Here are the rules this platform operates by - and every one of them is verifiable.
+            </p>
+          </div>
+          <div style={{ display: "grid", gap: 18, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 38 }}>
+            {([
+              ["ti-scale", "We never determine eligibility", "Only the VA, your state, or an accredited VSO can. Every card links to the official source to confirm."],
+              ["ti-heart-handshake", "Free accredited help first", "Claims guidance always points to free accredited representatives - never to paid consultants."],
+              ["ti-lock", "Your data stays yours", "Browse anonymously and everything stays in your browser. Saved plans are encrypted and visible only to you."],
+              ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Stale dates are treated as bugs, not business as usual."],
+            ] as const).map(([icon, title, body], i) => (
+              <div key={title} data-reveal={i * 80} style={{ background: "rgba(251,250,247,.06)", border: "1px solid rgba(251,250,247,.14)", borderRadius: 16, padding: "22px 20px" }}>
+                <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 24, color: "#F3D9B8" }} />
+                <h4 style={{ color: "#FBFAF7", margin: "12px 0 6px", fontSize: 15.5 }}>{title}</h4>
+                <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "rgba(251,250,247,.72)", margin: 0 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 30 }} data-reveal="true">
+            <Link href="/trust" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontWeight: 600, color: "#F3D9B8", borderBottom: "1.5px solid rgba(243,217,184,.4)", paddingBottom: 2 }}>
+              Read the full trust page - every number has a source <i className="ti ti-arrow-right" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* For families - the household lens, elevated to the homepage.
+          Family engagement leads the optional modules in real usage. */}
+      <Wrap>
+        <div style={{ marginTop: 72, display: "grid", gap: 48, gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", alignItems: "center" }}>
+          <div data-reveal="true">
+            <SectionHead
+              eyebrow="For families"
+              title="Transition happens to the whole household."
+              sub="Answer a few family questions and the plan folds in the checkpoints most veterans discover too late."
+            />
+            <Link className="btn ghost" href="/family" style={{ marginTop: 4 }}>
+              <i className="ti ti-users" aria-hidden="true" /> See family planning
+            </Link>
+          </div>
+          <div className="card" data-reveal="true" style={{ padding: "26px 28px", boxShadow: "0 18px 44px rgba(20,35,26,.07)" }}>
+            {([
+              ["Spouse license portability", "Many states expedite military-spouse licenses - start before the move."],
+              ["TRICARE bridge (TAMP)", "Some separations qualify for 180 days of transitional coverage - no gaps."],
+              ["School-calendar moves", "Time the move around the school year, not the other way around."],
+              ["Dependent education benefits", "State programs many families never hear about - cited and verified."],
+            ] as const).map(([title, body], i) => (
+              <div key={title} style={{ display: "flex", gap: 13, alignItems: "flex-start", padding: "12px 0", borderBottom: i < 3 ? "1px solid var(--surface-2)" : "none" }}>
+                <span style={{ width: 26, height: 26, borderRadius: "50%", background: "#E4EFEA", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0, marginTop: 2 }} aria-hidden="true"><i className="ti ti-check" /></span>
+                <div>
+                  <div style={{ fontSize: 14.5, fontWeight: 600, color: "var(--ink-strong)" }}>{title}</div>
+                  <div className="muted" style={{ fontSize: 13, marginTop: 2 }}>{body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Wrap>
+
       <Wrap>
         {/* Final CTA - flat centered treatment from the fortune preview:
             no card box, wider measure, micro trust line under the button. */}
