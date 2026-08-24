@@ -61,22 +61,24 @@
   .small{font-size:var(--fs-small)}
   .center{text-align:center}
   .hairline{border:none;border-top:1px solid var(--hairline);margin:0}
-  /* ---- Top navigation ---- */
-  .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--primary-900) 92%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+  /* ---- Announcement bar + top navigation (light enterprise garment, mirrored from the app) ---- */
+  .announce{background:var(--primary-900);color:rgba(251,250,247,.85);text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.01em}
+  .announce b{color:#F3D9B8;font-weight:600}
+  .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 93%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--hairline)}
   .nav-toggle{display:none}
   .nav-inner{max-width:1180px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;min-height:66px;flex-wrap:wrap}
-  .brand-lock{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;padding:8px 0}
+  .brand-lock{display:flex;align-items:center;gap:11px;color:var(--ink-strong);text-decoration:none;padding:8px 0}
   .brand-lock:hover{text-decoration:none}
   .brand-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg, var(--accent), var(--accent-600));color:var(--primary-900);display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 2px 8px rgba(122,80,25,.35)}
   .brand-word{font-family:var(--font-display);font-size:21px;font-weight:500;letter-spacing:-.01em}
   .nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
-  .nav-link{position:relative;color:#C4D2DF;padding:10px 13px;border-radius:8px;font-size:14.5px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:7px;min-height:44px;transition:color .15s ease, background .15s ease}
-  .nav-link:hover{color:#fff;background:rgba(255,255,255,.07);text-decoration:none}
-  .nav-link.active{color:#fff}
+  .nav-link{position:relative;color:var(--ink);padding:10px 13px;border-radius:8px;font-size:14.5px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:7px;min-height:44px;transition:color .15s ease, background .15s ease}
+  .nav-link:hover{color:var(--primary-800);background:rgba(15,110,86,.07);text-decoration:none}
+  .nav-link.active{color:var(--primary-800)}
   .nav-link.active::after{content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;background:var(--accent);border-radius:2px}
-  .nav-aa{min-width:48px;min-height:44px;border-radius:9px;cursor:pointer;background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.22);font-family:var(--font-display);font-weight:500;display:inline-flex;align-items:center;justify-content:center;transition:background .15s ease}
-  .nav-aa:hover{background:rgba(255,255,255,.18)}
-  .nav-user{color:#C4D2DF;font-size:13.5px;display:flex;align-items:center;gap:6px;padding-left:4px}
+  .nav-aa{min-width:48px;min-height:44px;border-radius:9px;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--border);font-family:var(--font-display);font-weight:500;display:inline-flex;align-items:center;justify-content:center;transition:background .15s ease}
+  .nav-aa:hover{background:var(--surface-2)}
+  .nav-user{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:6px;padding-left:4px}
   /* ---- Buttons ---- */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--primary);color:var(--primary-ink);border:1px solid transparent;border-radius:999px;padding:13px 26px;min-height:var(--tap);font-size:var(--fs-btn);font-weight:600;letter-spacing:.005em;cursor:pointer;font-family:inherit;box-shadow:0 1px 2px rgba(11,27,43,.22), inset 0 1px 0 rgba(255,255,255,.07);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
   .btn.xl{padding:17px 34px;font-size:calc(var(--fs-btn) + 2px)}
@@ -127,7 +129,19 @@
   .opt.sel{border-color:var(--accent);background:var(--accent-soft);font-weight:600;box-shadow:var(--shadow-sm)}
   .hero-proof{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);color:#E8EFF6;border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;margin-bottom:18px}
   .hero-proof i{color:var(--accent);font-size:16px}
-  .step-badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(160deg, var(--accent) 0%, var(--accent-600) 100%);color:#fff;font-family:var(--font-display);font-size:22px;font-weight:600;box-shadow:0 3px 8px rgba(122,80,25,.28)}
+  .step-num{display:block;font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-600);margin-bottom:2px}
+  .index-list{margin-top:14px}
+  .index-row{display:grid;grid-template-columns:52px minmax(150px,215px) 1fr;gap:26px;align-items:baseline;padding:26px 4px;border-top:1px solid var(--border)}
+  .index-row:last-child{border-bottom:1px solid var(--border)}
+  .index-row .idx{font-family:var(--font-mono, ui-monospace);font-size:13px;font-weight:500;color:var(--accent-ink);letter-spacing:.04em}
+  .index-row .ttl{display:flex;align-items:center;gap:11px}
+  .index-row .ttl i{color:var(--primary);font-size:22px;flex-shrink:0}
+  .index-row .ttl h4{margin:0;font-size:calc(var(--fs-h4) + 1px)}
+  .index-row .desc{color:var(--muted);font-size:var(--fs-small);line-height:1.65;margin:0;max-width:52ch}
+  @media (max-width:760px){
+    .index-row{grid-template-columns:38px 1fr;gap:8px 16px;padding:20px 2px}
+    .index-row .desc{grid-column:1 / -1}
+  }
   .hero h1{font-size:clamp(var(--fs-h1), 6vw, 62px);line-height:1.06}
   .opt.sel:not(.goal)::after{content:"✓";margin-left:auto;color:var(--success);font-weight:700;font-size:1.1em}
   .field{width:100%;padding:12px 14px;min-height:var(--tap);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:var(--fs-body);font-family:inherit;color:var(--ink);background:var(--surface);transition:border-color .15s ease, box-shadow .15s ease}
@@ -183,14 +197,18 @@
   .stat .l{font-size:var(--fs-small);color:var(--muted);margin-top:8px}
   /* running checklist pill */
   .progress-strip{position:fixed;right:14px;bottom:14px;z-index:30;display:flex;flex-direction:column;align-items:flex-end}
-  /* footer */
-  .site-footer{margin-top:56px;border-top:1px solid var(--hairline);background:var(--surface-2)}
-  .footer-inner{max-width:1180px;margin:0 auto;padding:30px 22px}
-  .footer-top{display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-  .footer-brand{display:flex;align-items:center;gap:11px}
-  .footer-mark{width:32px;height:32px;border-radius:9px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
-  .footer-name{font-family:var(--font-display);font-size:19px;font-weight:500;color:var(--ink-strong)}
-  .footer-crisis{margin-top:8px;display:inline-flex;align-items:center;gap:8px;color:var(--danger);font-weight:500}
+  /* footer - columned enterprise footer on the dark green ground (mirrored from the app) */
+  .site-footer{margin-top:56px;background:var(--primary-900);color:rgba(251,250,247,.75);font-size:14px}
+  .footer-inner{max-width:1180px;margin:0 auto;padding:52px 22px 28px}
+  .foot-grid{display:grid;gap:32px;grid-template-columns:2fr 1fr 1fr 1fr}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid>div:first-child{grid-column:1 / -1}}
+  .foot-head{margin:0 0 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,250,247,.55);font-weight:600}
+  .foot-link{display:block;color:rgba(251,250,247,.78);padding:5px 0;font-size:13.5px;text-decoration:none}
+  .foot-link:hover{color:#fff;text-decoration:underline}
+  .footer-brand{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+  .footer-mark{width:32px;height:32px;border-radius:9px;background:var(--accent);color:var(--primary-900);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .footer-name{font-family:var(--font-display);font-size:19px;font-weight:500;color:#FBFAF7}
+  .footer-crisis{margin-top:8px;display:inline-flex;align-items:center;gap:8px;color:#F5B8A9;font-weight:600}
   .disclaimer{font-size:var(--fs-small);color:var(--muted);line-height:1.6;text-align:left}
   .themebar{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
   .themebar button{border:1.5px solid var(--border);background:var(--surface);border-radius:20px;padding:6px 15px;font-size:13px;cursor:pointer;font-family:inherit;color:var(--ink);font-weight:500}
@@ -212,12 +230,12 @@
   @media (max-width: 920px){
     .nav-inner{flex-wrap:nowrap;position:relative}
     .nav-user{display:none}
-    .nav-toggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;min-width:48px;min-height:44px;border-radius:9px;background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.22);cursor:pointer;font-size:24px;transition:background .15s ease}
-    .nav-toggle:hover{background:rgba(255,255,255,.18)}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;z-index:40;background:var(--primary-900);border-bottom:1px solid rgba(255,255,255,.12);flex-direction:column;padding:10px 16px 16px;gap:3px;box-shadow:var(--shadow-lg);margin-left:0}
+    .nav-toggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;min-width:48px;min-height:44px;border-radius:9px;background:var(--surface);color:var(--ink);border:1px solid var(--border);cursor:pointer;font-size:24px;transition:background .15s ease}
+    .nav-toggle:hover{background:var(--surface-2)}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--hairline);flex-direction:column;padding:10px 16px 16px;gap:3px;box-shadow:var(--shadow-lg);margin-left:0}
     .nav-links.open{display:flex}
     .nav-links .nav-link{min-height:50px;font-size:16.5px;border-radius:10px}
-    .nav-links .nav-link.active{background:rgba(255,255,255,.13)}
+    .nav-links .nav-link.active{background:rgba(15,110,86,.08)}
     .nav-links .nav-link.active::after{display:none}
   }
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
@@ -1334,7 +1352,7 @@ function topbar(){
   const ts=document.body.getAttribute("data-textsize")||"base";
   const tsLabel=ts==="base"?"Normal":ts==="lg"?"Large":"Extra large";
   const aa=`<button onclick="cycleTextSize()" class="nav-aa" aria-label="Text size: ${tsLabel}. Click to change." title="Text size: ${tsLabel} - click to change" style="font-size:${ts==="base"?16:ts==="lg"?18:20}px">Aa</button>`;
-  return `<a href="#main" class="skip-link">Skip to main content</a><header class="nav"><div class="nav-inner">
+  return `<div class="announce">Built with veterans - <b>every number cited to its official source</b>, always free for those who served.</div><a href="#main" class="skip-link">Skip to main content</a><header class="nav"><div class="nav-inner">
     <a class="brand-lock" href="#/" aria-label="${BRAND.name} home"><span class="brand-mark" aria-hidden="true"><i class="ti ti-route"></i></span><span class="brand-word">${BRAND.name}</span></a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu" onclick="toggleNav()"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
     <nav class="nav-links" id="main-nav" aria-label="Main">${nav}</nav>
@@ -1362,20 +1380,37 @@ function cycleTextSize(){
 (function(){const t=localStorage.getItem("vetpath_textsize");if(t&&t!=="base")document.body.setAttribute("data-textsize",t);})();
 function footer(){
   return `<footer class="site-footer"><div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="footer-mark" aria-hidden="true"><i class="ti ti-route"></i></span>
-        <div>
-          <div class="footer-name">${BRAND.name}</div>
-          <div class="muted" style="font-size:13px">${BRAND.tagline}</div>
+    <div class="foot-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="footer-mark" aria-hidden="true"><i class="ti ti-route"></i></span>
+          <span class="footer-name">${BRAND.name}</span>
         </div>
+        <p style="font-size:13.5px;line-height:1.65;max-width:260px;margin:0">${BRAND.tagline} Built with veterans - every number cited to its official source.</p>
+      </div>
+      <div>
+        <h5 class="foot-head">Product</h5>
+        <a class="foot-link" href="#/">How it works</a>
+        <a class="foot-link" href="#/benefits">Benefits library</a>
+        <a class="foot-link" href="#/pathfinder">Career pathfinder</a>
+        <a class="foot-link" href="#/tools">All tools</a>
+      </div>
+      <div>
+        <h5 class="foot-head">Explore</h5>
+        <a class="foot-link" href="#/timeline">Transition timeline</a>
+        <a class="foot-link" href="#/relocate">Relocation planner</a>
+        <a class="foot-link" href="#/family">For families</a>
+      </div>
+      <div>
+        <h5 class="foot-head">Get started</h5>
+        <a class="foot-link" href="#/onboarding">Build my gameplan</a>
+        <a class="foot-link" href="#/admin">Load the sample veteran</a>
       </div>
     </div>
-    <hr class="hairline" style="margin:22px 0">
-    <div class="disclaimer">
-      <strong style="color:var(--ink-strong)">${BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.</strong>
-      All benefit information here is <strong>sample/demo data</strong>. Eligibility and amounts must be confirmed through official sources such as
-      <a href="https://www.va.gov" target="_blank" rel="noopener">VA.gov</a>, your state veterans agency, or an accredited VSO.
+    <div class="disclaimer" style="border-top:1px solid rgba(251,250,247,.14);margin-top:36px;padding-top:18px;color:rgba(251,250,247,.6);font-size:12.5px">
+      <strong style="color:rgba(251,250,247,.85)">${BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.</strong>
+      All benefit information here is <strong style="color:rgba(251,250,247,.85)">sample/demo data</strong>. Eligibility and amounts must be confirmed through official sources such as
+      <a href="https://www.va.gov" target="_blank" rel="noopener" style="color:#F3D9B8">VA.gov</a>, your state veterans agency, or an accredited VSO.
       <div class="footer-crisis"><i class="ti ti-urgent" aria-hidden="true"></i> In crisis? Dial 988, then press 1 - free, confidential, 24/7.</div>
     </div>
   </div></footer>`;
@@ -1428,8 +1463,8 @@ function Landing(){
     ["ti-map-2","Get your gameplan","Prioritized benefits and a 30/60/90-day action plan, all pointed at your destination."],
     ["ti-circle-check","Act &amp; verify","Check off steps, gather documents, and confirm each one at VA.gov or an accredited VSO."]
   ].map(([icon,title,body],i)=>`<div class="card">
-      <span class="step-badge" aria-hidden="true">${i+1}</span>
-      <h4 style="margin:12px 0 6px"><i class="ti ${icon}" aria-hidden="true" style="color:var(--accent-ink)"></i> ${title}</h4>
+      <span class="step-num" aria-hidden="true">Step 0${i+1}</span>
+      <h4 style="margin:10px 0 6px"><i class="ti ${icon}" aria-hidden="true" style="color:var(--accent-ink)"></i> ${title}</h4>
       <p class="muted small" style="margin:0;line-height:1.6">${body}</p>
     </div>`).join("");
   return `
@@ -1462,11 +1497,17 @@ function Landing(){
 
   <div class="wrap pad">
     ${sectionHead("Who it's for","Wherever you are after service, there's a path","Whether you know exactly what's next or have no idea where to start, VetPath meets you where you are.")}
-    <div class="grid" style="gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-      ${card("ti-plane-departure","Transitioning out","Separating soon and need benefits enrolled, a job or school lined up, and nothing left behind before your last day.")}
-      ${card("ti-briefcase","Building a career","Ready for a better job, a degree, a trade, or a business - and the veteran benefits that fund the move.")}
-      ${card("ti-clipboard-heart","Navigating disability","Understand the process, apply for the benefit you've earned, and get free accredited help - no guesswork.")}
-      ${card("ti-beach","Retiring or organizing","Plan the next chapter - pay, survivor protection, healthcare, and every document in one secure place.")}
+    <div class="index-list">
+      ${[
+        ["ti-plane-departure","Transitioning out","Separating soon and need benefits enrolled, a job or school lined up, and nothing left behind before your last day."],
+        ["ti-briefcase","Building a career","Ready for a better job, a degree, a trade, or a business - and the veteran benefits that fund the move."],
+        ["ti-clipboard-heart","Navigating disability","Understand the process, apply for the benefit you've earned, and get free accredited help - no guesswork."],
+        ["ti-beach","Retiring or organizing","Plan the next chapter - pay, survivor protection, healthcare, and every document in one secure place."]
+      ].map(([icon,title,body],i)=>`<div class="index-row">
+        <span class="idx" aria-hidden="true">0${i+1}</span>
+        <div class="ttl"><i class="ti ${icon}" aria-hidden="true"></i><h4>${title}</h4></div>
+        <p class="desc">${body}</p>
+      </div>`).join("")}
     </div>
 
     <div style="margin-top:56px">
@@ -1481,11 +1522,12 @@ function Landing(){
       </div>
     </div>
 
-    <div class="card" style="margin-top:24px;text-align:center;padding:40px 24px;background:var(--surface-2);border:1px solid var(--hairline)">
+    <div style="margin-top:48px;margin-bottom:8px;text-align:center;padding:24px 24px 0">
       ${eyebrow("Your next mission")}
-      <h2 style="margin:0 auto 8px;max-width:560px">Ten minutes now saves months of guessing later.</h2>
-      <p class="muted" style="max-width:480px;margin:0 auto 22px">Answer a few questions and walk away with a plan you can actually follow.</p>
+      <h2 style="margin:0 auto 10px;max-width:660px">Ten minutes now saves months of guessing later.</h2>
+      <p class="muted" style="max-width:520px;margin:0 auto 26px">Answer a few questions and walk away with a plan you can actually follow.</p>
       <a class="btn gold xl" href="#/onboarding" style="display:inline-flex"><i class="ti ti-compass"></i> Build my gameplan</a>
+      <p class="muted" style="font-size:13.5px;margin:16px 0 0">Free · no app · works on any phone</p>
     </div>
   </div>`;
 }
@@ -1640,7 +1682,7 @@ function Dashboard(){
       ${dest.fitPct?`<div style="text-align:center"><div style="font-size:34px;font-weight:700;color:var(--primary);line-height:1">${dest.fitPct}%</div><div class="small muted">fit estimate</div></div>`:''}
       <a class="btn ghost sm" href="#/pathfinder"><i class="ti ti-compass"></i> Change path</a>
     </div>`
-    :`<div class="card" style="margin-top:16px;border:2px dashed var(--border);display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    :`<div class="card" style="margin-top:16px;border-left:3px solid var(--accent);display:flex;gap:16px;align-items:center;flex-wrap:wrap">
       <div class="iconwrap"><i class="ti ti-compass" aria-hidden="true"></i></div>
       <div style="flex:1;min-width:220px">
         <h3 style="margin:0">Pick your path</h3>
