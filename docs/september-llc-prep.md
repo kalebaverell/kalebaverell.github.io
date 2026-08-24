@@ -109,7 +109,14 @@ operates.
 6. Operating agreement basics: vesting, IP assignment into the LLC
    (site, brand, code currently Kaleb's personal work), decision rights,
    exit terms.
-7. After filing: entity name goes into the site's terms page.
+7. Nonprofit optionality: confirm nothing in the operating agreement or
+   IP structure blocks adding a separate 501(c)(3) arm later (a
+   "VetPath Foundation" alongside the LLC for tax-deductible donations).
+   To be clear, the plan is NOT to convert - conversion surrenders all
+   equity, permanently locks the assets to charitable purpose, and kills
+   SBIR eligibility, and it is effectively irreversible. The LLC keeps
+   both doors open; we just want the "add an arm" door unobstructed.
+8. After filing: entity name goes into the site's terms page.
 
 ## CPA question list
 
