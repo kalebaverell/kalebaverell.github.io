@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "VetPath" },
+  // Chrome deprecated the apple-only meta; it wants this one alongside.
+  // The apple variant stays for older iOS home-screen installs.
+  other: { "mobile-web-app-capable": "yes" },
   icons: {
     icon: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
