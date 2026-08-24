@@ -240,7 +240,7 @@ export default function Landing() {
               ["ti-circle-check", "Act & verify", "Check off steps, gather documents, and confirm each one at VA.gov or an accredited VSO."],
             ].map(([icon, title, body], i) => (
               <div key={i} className="card" data-reveal={i * 90}>
-                <span className="step-badge" aria-hidden="true">{i + 1}</span>
+                <span className="step-num" aria-hidden="true">Step {String(i + 1).padStart(2, "0")}</span>
                 <h4 style={{ margin: "12px 0 6px" }}><i className={`ti ${icon}`} aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> {title}</h4>
                 <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
               </div>
