@@ -47,7 +47,11 @@ export default function Nav() {
   // navigate to, so visitors get the marketing set and one CTA. Once a plan
   // exists the app links follow the user everywhere - including the homepage,
   // where a returning veteran needs a way back into their plan, not a restart pitch.
-  const started = Boolean(s.gameplan);
+  // App tabs additionally require a signed-in account (Kaleb, Aug 24): a local
+  // plan without a session - a loaded sample, a legacy pre-auth plan - browses
+  // as a visitor until sign-in. When auth is not configured (local dev fallback),
+  // the gameplan alone still unlocks the tabs.
+  const started = Boolean(s.gameplan) && (!authEnabled || Boolean(user));
   const links = started ? APP_LINKS : MARKETING_LINKS;
 
   // Close menus whenever navigation happens

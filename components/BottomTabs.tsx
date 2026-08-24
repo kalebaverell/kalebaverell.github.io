@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/lib/store";
+import { useAuth } from "@/lib/auth";
 
 const TABS: [string, string, string][] = [
   ["/dashboard", "Gameplan", "ti-layout-dashboard"],
@@ -15,10 +16,13 @@ const TABS: [string, string, string][] = [
 
 export default function BottomTabs() {
   const { s, ready } = useStore();
+  const { enabled: authEnabled, user } = useAuth();
   const path = usePathname();
   // Tabs appear only once a gameplan exists - before that the funnel has a
-  // single action and a tab bar would just be four locked doors.
-  const show = ready && !!s.gameplan;
+  // single action and a tab bar would just be four locked doors. Same
+  // signed-in requirement as the top nav (Kaleb, Aug 24); auth-disabled
+  // environments keep the gameplan-only behavior.
+  const show = ready && !!s.gameplan && (!authEnabled || Boolean(user));
 
   useEffect(() => {
     document.body.classList.toggle("has-tabbar", show);
