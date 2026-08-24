@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/lib/store";
@@ -15,10 +15,22 @@ const APP_LINKS: [string, string, string][] = [
   ["/tools", "Explore", "ti-tool"],
   ["/profile", "Profile", "ti-user-circle"],
 ];
-// Pre-plan nav: the funnel is a single action, so the only link besides the
-// build-my-gameplan CTA (rendered in nav-actions) is the credibility page.
+// Pre-plan nav (fortune-preview port): the enterprise link set. Gated pages
+// funnel first-time visitors into the quiz pitch by design - the gate IS the
+// conversion surface, so these links feed it rather than fighting it.
 const MARKETING_LINKS: [string, string, string][] = [
+  ["/#how-it-works", "How it works", "ti-route"],
+  ["/benefits", "Benefits", "ti-award"],
   ["/trust", "Why trust us", "ti-shield-check"],
+  ["/family", "For families", "ti-users"],
+];
+const TOOL_ITEMS: [string, string, string][] = [
+  ["/pathfinder", "Career pathfinder", "ti-compass"],
+  ["/relocate", "Relocation planner", "ti-map-2"],
+  ["/timeline", "Transition timeline", "ti-calendar-check"],
+  ["/compare", "Compare places", "ti-git-compare"],
+  ["/resume", "Resume builder", "ti-file-text"],
+  ["/tools", "All tools", "ti-arrow-right"],
 ];
 
 export default function Nav() {
@@ -26,23 +38,22 @@ export default function Nav() {
   const { enabled: authEnabled, user, openAuth, signOut } = useAuth();
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const dropRef = useRef<HTMLDivElement>(null);
   const sizeLabel = s.textSize === "base" ? "Normal" : s.textSize === "lg" ? "Large" : "Extra large";
-  // On the homepage the nav floats transparently over the hero image, then turns solid
-  // once the reader scrolls past the hero (or opens the mobile menu). Every other page
-  // keeps the standard solid bar.
   const onHome = path === "/" || path === "";
   // The funnel decides the nav: until a gameplan exists there is nothing to
-  // navigate to, so visitors get one link and one CTA. Once a plan exists the
-  // app links follow the user everywhere - including the homepage, where a
-  // returning veteran needs a way back into their plan, not a restart pitch.
+  // navigate to, so visitors get the marketing set and one CTA. Once a plan
+  // exists the app links follow the user everywhere - including the homepage,
+  // where a returning veteran needs a way back into their plan, not a restart pitch.
   const started = Boolean(s.gameplan);
   const links = started ? APP_LINKS : MARKETING_LINKS;
 
-  // Close the mobile menu whenever navigation happens
-  useEffect(() => { setOpen(false); }, [path]);
+  // Close menus whenever navigation happens
+  useEffect(() => { setOpen(false); setToolsOpen(false); }, [path]);
 
-  // Track scroll only on the homepage so the floating nav knows when to go solid.
+  // Track scroll only on the homepage so the nav can tighten its border shadow.
   useEffect(() => {
     if (!onHome) { setScrolled(false); return; }
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -51,79 +62,121 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [onHome]);
 
+  // Tools dropdown: close on outside click or Escape.
+  useEffect(() => {
+    if (!toolsOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setToolsOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setToolsOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDown); document.removeEventListener("keydown", onKey); };
+  }, [toolsOpen]);
+
   return (
-    <header className={`nav${onHome ? " nav--hero" : ""}${started ? " nav--app" : ""}${onHome && (scrolled || open) ? " is-solid" : ""}`}>
-      <a href="#main" className="skip-link">Skip to main content</a>
-      <div className="nav-inner">
-        <Link href="/" aria-label={`${BRAND.name} home`} className="brand-lock">
-          <span aria-hidden="true" className="brand-mark"><i className="ti ti-route" /></span>
-          <span className="brand-word">{BRAND.name}</span>
-        </Link>
-        <button
-          type="button"
-          className="nav-toggle"
-          aria-expanded={open}
-          aria-controls="main-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen(!open)}
-        >
-          <i className={`ti ${open ? "ti-x" : "ti-menu-2"}`} aria-hidden="true" />
-        </button>
-        <nav aria-label="Main" id="main-nav" className={`nav-links${open ? " open" : ""}`}>
-          {links.map(([href, label, icon]) => {
-            const active = path === href || path === `${href}/`;
-            return (
-              <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`nav-link${active ? " active" : ""}`} onClick={() => setOpen(false)}>
-                <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 16 }} />
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="nav-actions">
-          {!started && path !== "/onboarding" && path !== "/onboarding/" && (
-            <Link className="btn gold sm" href="/onboarding">
-              <i className="ti ti-compass" aria-hidden="true" /> Build my gameplan
-            </Link>
-          )}
-          {started && onHome && (
-            <Link className="btn gold sm" href="/dashboard">
-              <i className="ti ti-map-check" aria-hidden="true" /> Open my gameplan
-            </Link>
-          )}
-          <button
-            onClick={cycleTextSize}
-            aria-label={`Text size: ${sizeLabel}. Click to change.`}
-            title={`Text size: ${sizeLabel} - click to change`}
-            className="nav-aa"
-            style={{ fontSize: s.textSize === "base" ? 16 : s.textSize === "lg" ? 18 : 20 }}
-          >
-            Aa
-          </button>
-          {/* nav-user carries no inline display style: the ≤920px media query hides
-              the chip, and an inline style would defeat it and shove the CTA off
-              small screens. */}
-          {authEnabled ? (
-            user ? (
-              <span className="nav-user">
-                <i className="ti ti-user-circle" aria-hidden="true" />
-                <span style={{ maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {(user.user_metadata as any)?.full_name || user.email}
-                </span>
-                <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
-              </span>
-            ) : (
-              <button type="button" onClick={() => openAuth("signin")} className="btn gold sm nav-signin">
-                <i className="ti ti-user-plus" aria-hidden="true" /> Sign in
-              </button>
-            )
-          ) : (
-            s.profile && (
-              <span className="nav-user"><i className="ti ti-user-circle" aria-hidden="true" /> {s.profile.name}</span>
-            )
-          )}
-        </div>
+    <>
+      <div className="announce">
+        Built with veterans - <b>every number cited to its official source</b>, always free for those who served.
       </div>
-    </header>
+      <header className={`nav${onHome ? " nav--hero" : ""}${started ? " nav--app" : ""}${onHome && (scrolled || open) ? " is-solid" : ""}`}>
+        <a href="#main" className="skip-link">Skip to main content</a>
+        <div className="nav-inner">
+          <Link href="/" aria-label={`${BRAND.name} home`} className="brand-lock">
+            <span aria-hidden="true" className="brand-mark"><i className="ti ti-route" /></span>
+            <span className="brand-word">{BRAND.name}</span>
+          </Link>
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="main-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
+          >
+            <i className={`ti ${open ? "ti-x" : "ti-menu-2"}`} aria-hidden="true" />
+          </button>
+          <nav aria-label="Main" id="main-nav" className={`nav-links${open ? " open" : ""}`}>
+            {links.map(([href, label, icon]) => {
+              const active = path === href || path === `${href}/`;
+              return (
+                <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`nav-link${active ? " active" : ""}`} onClick={() => setOpen(false)}>
+                  <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 16 }} />
+                  {label}
+                </Link>
+              );
+            })}
+            {!started && (
+              <div className="nav-drop" ref={dropRef}>
+                <button
+                  type="button"
+                  className={`nav-link nav-drop-btn${toolsOpen ? " active" : ""}`}
+                  aria-expanded={toolsOpen}
+                  aria-haspopup="true"
+                  onClick={() => setToolsOpen(!toolsOpen)}
+                >
+                  <i className="ti ti-tool" aria-hidden="true" style={{ fontSize: 16 }} />
+                  Tools
+                  <i className={`ti ${toolsOpen ? "ti-chevron-up" : "ti-chevron-down"}`} aria-hidden="true" style={{ fontSize: 14 }} />
+                </button>
+                {toolsOpen && (
+                  <div className="nav-drop-panel">
+                    {TOOL_ITEMS.map(([href, label, icon]) => (
+                      <Link key={href} href={href} onClick={() => { setToolsOpen(false); setOpen(false); }}>
+                        <i className={`ti ${icon}`} aria-hidden="true" style={{ fontSize: 16 }} />
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </nav>
+          <div className="nav-actions">
+            {!started && path !== "/onboarding" && path !== "/onboarding/" && (
+              <Link className="btn gold sm" href="/onboarding">
+                <i className="ti ti-compass" aria-hidden="true" /> Build my gameplan
+              </Link>
+            )}
+            {started && onHome && (
+              <Link className="btn gold sm" href="/dashboard">
+                <i className="ti ti-map-check" aria-hidden="true" /> Open my gameplan
+              </Link>
+            )}
+            <button
+              onClick={cycleTextSize}
+              aria-label={`Text size: ${sizeLabel}. Click to change.`}
+              title={`Text size: ${sizeLabel} - click to change`}
+              className="nav-aa"
+              style={{ fontSize: s.textSize === "base" ? 16 : s.textSize === "lg" ? 18 : 20 }}
+            >
+              Aa
+            </button>
+            {/* nav-user carries no inline display style: the ≤920px media query hides
+                the chip, and an inline style would defeat it and shove the CTA off
+                small screens. */}
+            {authEnabled ? (
+              user ? (
+                <span className="nav-user">
+                  <i className="ti ti-user-circle" aria-hidden="true" />
+                  <span style={{ maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {(user.user_metadata as any)?.full_name || user.email}
+                  </span>
+                  <button type="button" onClick={signOut} className="nav-signout">Sign out</button>
+                </span>
+              ) : (
+                <button type="button" onClick={() => openAuth("signin")} className="btn gold sm nav-signin">
+                  <i className="ti ti-user-plus" aria-hidden="true" /> Sign in
+                </button>
+              )
+            ) : (
+              s.profile && (
+                <span className="nav-user"><i className="ti ti-user-circle" aria-hidden="true" /> {s.profile.name}</span>
+              )
+            )}
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

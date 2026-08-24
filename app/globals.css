@@ -217,40 +217,46 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .small { font-size:var(--fs-small); }
 
 /* ---- Top navigation ---- */
-.nav { position:sticky; top:0; z-index:30; background:color-mix(in srgb, var(--primary-900) 92%, transparent); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid rgba(255,255,255,.08); }
+/* Announcement bar (fortune-preview port) - scrolls away; the nav below sticks. */
+.announce { background:var(--primary-900); color:#E9F3EF; text-align:center; font-size:13px; padding:9px 16px; letter-spacing:.02em; }
+.announce b { color:#F3D9B8; font-weight:600; }
+
+/* Light enterprise nav (fortune-preview port). */
+.nav { position:sticky; top:0; z-index:30; background:color-mix(in srgb, var(--bg) 93%, transparent); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--hairline); }
 .nav-toggle { display:none; }
 .nav-inner { max-width:1240px; margin:0 auto; padding:0 22px; display:flex; align-items:center; gap:12px; min-height:66px; flex-wrap:nowrap; }
-.brand-lock { display:flex; align-items:center; gap:11px; color:#fff; text-decoration:none; padding:8px 0; }
+.brand-lock { display:flex; align-items:center; gap:11px; color:var(--ink-strong); text-decoration:none; padding:8px 0; }
 .brand-lock:hover { text-decoration:none; }
 .brand-mark { width:34px; height:34px; border-radius:9px; background:linear-gradient(145deg, var(--accent), var(--accent-600)); color:var(--primary-900); display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 2px 8px rgba(122,80,25,.35); }
 .brand-word { font-family:var(--font-display); font-size:21px; font-weight:500; letter-spacing:-.01em; }
 .nav-links { display:flex; gap:2px; flex-wrap:nowrap; }
 .nav-actions { display:flex; align-items:center; gap:10px; margin-left:auto; flex-shrink:0; }
-.nav-link { position:relative; color:#C4D2DF; padding:8px 10px; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none; display:inline-flex; align-items:center; gap:6px; min-height:44px; white-space:nowrap; transition:color .15s ease, background .15s ease; }
-.nav-link:hover { color:#fff; background:rgba(255,255,255,.07); text-decoration:none; }
-.nav-link.active { color:#fff; }
+.nav-link { position:relative; color:var(--ink); padding:8px 10px; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none; display:inline-flex; align-items:center; gap:6px; min-height:44px; white-space:nowrap; transition:color .15s ease, background .15s ease; background:none; border:none; cursor:pointer; font-family:inherit; }
+.nav-link:hover { color:var(--primary-800); background:rgba(15,110,86,.07); text-decoration:none; }
+.nav-link.active { color:var(--ink-strong); }
 .nav-link.active::after { content:""; position:absolute; left:13px; right:13px; bottom:5px; height:2px; background:var(--accent); border-radius:2px; }
-.nav-aa { min-width:48px; min-height:44px; border-radius:9px; cursor:pointer; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); font-family:var(--font-display); font-weight:500; display:inline-flex; align-items:center; justify-content:center; transition:background .15s ease; }
-.nav-aa:hover { background:rgba(255,255,255,.18); }
-.nav-user { color:#C4D2DF; font-size:13.5px; display:flex; align-items:center; gap:6px; padding-left:4px; }
-.nav-signout { background:transparent; border:1px solid rgba(255,255,255,.24); color:#DCE6EF; font-family:inherit; font-size:12.5px; font-weight:500; padding:5px 11px; border-radius:8px; cursor:pointer; transition:background .15s ease, border-color .15s ease; }
-.nav-signout:hover { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.4); }
+.nav-link i { color:var(--muted); }
+.nav-link:hover i, .nav-link.active i { color:var(--primary-800); }
+.nav-aa { min-width:48px; min-height:44px; border-radius:9px; cursor:pointer; background:var(--surface); color:var(--ink-strong); border:1px solid var(--hairline); font-family:var(--font-display); font-weight:500; display:inline-flex; align-items:center; justify-content:center; transition:background .15s ease; }
+.nav-aa:hover { background:var(--surface-2); }
+.nav-user { color:var(--muted); font-size:13.5px; display:flex; align-items:center; gap:6px; padding-left:4px; }
+.nav-signout { background:transparent; border:1px solid var(--hairline); color:var(--ink); font-family:inherit; font-size:12.5px; font-weight:500; padding:5px 11px; border-radius:8px; cursor:pointer; transition:background .15s ease, border-color .15s ease; }
+.nav-signout:hover { background:var(--surface-2); border-color:var(--muted); }
 .nav-signin { min-height:40px; }
-/* Homepage: the nav floats transparently over the hero image, then fades to a solid
-   bar on scroll or when the mobile menu opens. Only applied via the .nav--hero class
-   (added on "/" ), so every other page keeps the standard solid nav above. */
-/* Use background-color/-image longhands and transition only background-color: transitioning
-   the `background` shorthand across a gradient→solid swap leaves the color un-interpolated
-   (stuck transparent) in Chromium, which would make the scrolled nav see-through over white. */
-.nav { transition:background-color .28s ease, border-color .28s ease; }
-.nav--hero { position:fixed; left:0; right:0; top:0; border-bottom-color:transparent;
-  background-color:transparent;
-  background-image:linear-gradient(180deg, rgba(9,20,32,.72) 0%, rgba(9,20,32,.30) 52%, rgba(9,20,32,0) 100%);
-  -webkit-backdrop-filter:none; backdrop-filter:none; }
-.nav--hero.is-solid { border-bottom:1px solid rgba(255,255,255,.08);
-  background-color:rgba(11,27,43,.92);
-  background-image:none;
-  -webkit-backdrop-filter:saturate(140%) blur(8px); backdrop-filter:saturate(140%) blur(8px); }
+
+/* Tools dropdown */
+.nav-drop { position:relative; display:flex; }
+.nav-drop-panel { position:absolute; top:100%; left:0; margin-top:4px; background:var(--surface); border:1px solid var(--hairline); border-radius:12px; box-shadow:var(--shadow-lg); padding:8px; min-width:222px; display:flex; flex-direction:column; z-index:45; }
+.nav-drop-panel a { display:flex; align-items:center; gap:9px; padding:10px 12px; border-radius:8px; font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; }
+.nav-drop-panel a:hover { background:var(--surface-2); color:var(--primary-800); text-decoration:none; }
+.nav-drop-panel a i { color:var(--muted); }
+.nav-drop-panel a:hover i { color:var(--primary-800); }
+/* Fortune-preview port: the nav is the same solid light sticky bar on every
+   page, including the homepage - the video hero now starts below it instead of
+   running underneath a transparent bar. The .nav--hero / .is-solid classes stay
+   in the markup but no longer change appearance. */
+.nav { transition:box-shadow .28s ease; }
+.nav--hero.is-solid { box-shadow:0 6px 22px rgba(20,35,26,.06); }
 
 /* ---- Hero ---- */
 .hero-wrap { position:relative; overflow:hidden; color:#fff;
@@ -451,15 +457,19 @@ html.js [data-reveal].in { opacity:1; transform:none; }
      group - hamburger then Sign in - is pushed right together and both fit. Sign in stays
      rightmost. Aa text-size is desktop-only on mobile (browser/OS zoom covers it) to make room. */
   .nav-aa { display:none; }
-  .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); cursor:pointer; font-size:23px; transition:background .15s ease; }
+  .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:var(--surface); color:var(--ink-strong); border:1px solid var(--hairline); cursor:pointer; font-size:23px; transition:background .15s ease; }
   .nav-actions { order:3; margin-left:0; gap:8px; }
   .nav-signin i { font-size:15px; }
-  .nav-toggle:hover { background:rgba(255,255,255,.18); }
-  .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:40; background:var(--primary-900); border-bottom:1px solid rgba(255,255,255,.12); flex-direction:column; padding:10px 16px 16px; gap:3px; box-shadow:var(--shadow-lg); margin-left:0; }
+  .nav-toggle:hover { background:var(--surface-2); }
+  .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--hairline); flex-direction:column; padding:10px 16px 16px; gap:3px; box-shadow:var(--shadow-lg); margin-left:0; }
   .nav-links.open { display:flex; }
   .nav-links .nav-link { min-height:50px; font-size:16.5px; border-radius:10px; }
-  .nav-links .nav-link.active { background:rgba(255,255,255,.13); }
+  .nav-links .nav-link.active { background:var(--surface-2); }
   .nav-links .nav-link.active::after { display:none; }
+  /* Tools dropdown flattens into the mobile menu */
+  .nav-links .nav-drop { flex-direction:column; }
+  .nav-links .nav-drop-btn { width:100%; }
+  .nav-links .nav-drop-panel { position:static; margin:0 0 4px 14px; box-shadow:none; border:none; padding:0; background:transparent; }
 }
 
 /* The signed-in app nav carries 7 tabs plus the account controls, so it collapses to the
@@ -469,14 +479,14 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   .nav--app .nav-inner { position:relative; }
   .nav--app .nav-user { display:none; }
   .nav--app .nav-aa { display:none; }
-  .nav--app .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:rgba(255,255,255,.10); color:#fff; border:1px solid rgba(255,255,255,.22); cursor:pointer; font-size:23px; transition:background .15s ease; }
-  .nav--app .nav-toggle:hover { background:rgba(255,255,255,.18); }
+  .nav--app .nav-toggle { order:2; margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; border-radius:9px; background:var(--surface); color:var(--ink-strong); border:1px solid var(--hairline); cursor:pointer; font-size:23px; transition:background .15s ease; }
+  .nav--app .nav-toggle:hover { background:var(--surface-2); }
   .nav--app .nav-actions { order:3; margin-left:0; gap:8px; }
   .nav--app .nav-signin i { font-size:15px; }
-  .nav--app .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:40; background:var(--primary-900); border-bottom:1px solid rgba(255,255,255,.12); flex-direction:column; padding:10px 16px 16px; gap:3px; box-shadow:var(--shadow-lg); margin-left:0; }
+  .nav--app .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--hairline); flex-direction:column; padding:10px 16px 16px; gap:3px; box-shadow:var(--shadow-lg); margin-left:0; }
   .nav--app .nav-links.open { display:flex; }
   .nav--app .nav-links .nav-link { min-height:50px; font-size:16.5px; border-radius:10px; }
-  .nav--app .nav-links .nav-link.active { background:rgba(255,255,255,.13); }
+  .nav--app .nav-links .nav-link.active { background:var(--surface-2); }
   .nav--app .nav-links .nav-link.active::after { display:none; }
 }
 
