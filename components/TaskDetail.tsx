@@ -8,9 +8,9 @@ import { taskResources } from "@/lib/taskResources";
 // Padded to a 44px touch target. This was a 27px strip, which is hard to hit
 // reliably on a phone, and this audience skews older.
 const TOGGLE_STYLE: React.CSSProperties = {
-  background: "none", border: "none", cursor: "pointer", color: "var(--info)",
+  background: "none", border: "none", cursor: "pointer", color: "var(--primary-800)",
   padding: "10px 0", minHeight: 44, fontFamily: "inherit", fontSize: "var(--fs-small)",
-  display: "inline-flex", alignItems: "center", gap: 6,
+  fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 6,
 };
 
 export default function TaskDetail({ text }: { text: string }) {
@@ -24,7 +24,7 @@ export default function TaskDetail({ text }: { text: string }) {
         aria-expanded={open}
         style={TOGGLE_STYLE}
       >
-        <i className={`ti ti-chevron-${open ? "down" : "right"}`} aria-hidden="true" /> {open ? "Hide resources" : "Open - resources & links"}
+        <i className={`ti ti-chevron-${open ? "down" : "right"}`} aria-hidden="true" /> {open ? "Hide resources" : "Resources"}
       </button>
       {open && (
         <ul style={{ margin: "6px 0 2px", paddingLeft: 18, display: "grid", gap: 5 }}>

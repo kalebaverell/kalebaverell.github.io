@@ -111,7 +111,7 @@ export default function Dashboard() {
           <Link className="btn ghost sm" href="/pathfinder"><i className="ti ti-compass" /> Change path</Link>
         </div>
       ) : (
-        <div className="card" style={{ marginTop: 16, border: "2px dashed var(--border)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+        <div className="card" style={{ marginTop: 16, borderLeft: "3px solid var(--accent)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
           <div className="iconwrap"><i className="ti ti-compass" aria-hidden="true" /></div>
           <div style={{ flex: 1, minWidth: 220 }}>
             <h3 style={{ margin: 0 }}>Pick your path</h3>

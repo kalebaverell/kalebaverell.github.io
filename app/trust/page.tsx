@@ -23,7 +23,7 @@ export default function TrustPage() {
         rules you can read, not a black box.
       </p>
 
-      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", margin: "26px 0" }}>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", margin: "26px 0" }}>
         <Stat n={STATE_BENEFITS.states.filter((s) => s.code !== "DC").length} l="states + D.C. researched from official state sources" />
         <Stat n={statePrograms} l="state benefit programs, each linked to its official page" />
         <Stat n={verifiedFederal} l="federal benefit categories verified against VA.gov / DOL / SBA" />
@@ -62,7 +62,7 @@ export default function TrustPage() {
 
       <div style={{ marginTop: 32 }}>
         <SectionHead eyebrow="Rules we operate by" title="The boundaries that keep this honest" />
-        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))" }}>
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" }}>
           {[
             ["ti-scale", "We never determine eligibility", "Only VA, your state agency, or an accredited VSO can. Every card links to the official source to confirm."],
             ["ti-heart-handshake", "Free accredited help comes first", "Accredited VSO and county service officers are free. We will never point you to paid claims help."],

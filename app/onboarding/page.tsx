@@ -40,14 +40,23 @@ function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string
       <h2>Create your free account</h2>
       <p className="muted">Your gameplan is personal. A free account saves it securely and brings it back every time you sign in, on your phone or your computer.</p>
       <p className="small muted" style={{ margin: "0 0 14px" }}><i className="ti ti-clock" aria-hidden="true" /> About 10 minutes from here to your plan.</p>
-      <div className="card">
-        <button className="btn block gold" onClick={onStart}><i className="ti ti-user-plus" /> Create account or sign in</button>
-        <ul style={{ margin: "16px auto 0", padding: 0, listStyle: "none", display: "grid", gap: 8, textAlign: "center", maxWidth: 340 }}>
-          <li className="small">Save your plan and pick up right where you left off.</li>
-          <li className="small">Sync across every device you use.</li>
-          <li className="small">Private and encrypted, and you can delete it any time.</li>
+      <div className="card" style={{ padding: "30px 28px" }}>
+        <ul style={{ margin: "0 auto", padding: 0, listStyle: "none", display: "grid", gap: 11, maxWidth: 360 }}>
+          {[
+            "Save your plan and pick up right where you left off.",
+            "Sync across every device you use.",
+            "Private and encrypted, and you can delete it any time.",
+          ].map((line) => (
+            <li key={line} className="small" style={{ display: "flex", gap: 11, alignItems: "flex-start" }}>
+              <span aria-hidden="true" style={{ width: 24, height: 24, borderRadius: "50%", background: "#E4EFEA", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, flexShrink: 0 }}><i className="ti ti-check" /></span>
+              <span style={{ paddingTop: 2 }}>{line}</span>
+            </li>
+          ))}
         </ul>
-        <p className="small muted" style={{ margin: "14px auto 0", textAlign: "center", maxWidth: 340 }}>
+        <div style={{ textAlign: "center", marginTop: 22 }}>
+          <button className="btn gold" onClick={onStart} style={{ display: "inline-flex" }}><i className="ti ti-user-plus" /> Create account or sign in</button>
+        </div>
+        <p className="small muted" style={{ margin: "16px auto 0", textAlign: "center", maxWidth: 340 }}>
           <i className="ti ti-lock" /> We never see or store your password. Sign-in is handled securely.
         </p>
       </div>
