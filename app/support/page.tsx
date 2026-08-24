@@ -4,7 +4,15 @@ import { DONATE_CONFIGURED, DONATE_URL, SUPPORT_EMAIL } from "@/lib/support";
 
 export const metadata = routeMeta(
   "Support VetPath",
-  "VetPath is free for every veteran who uses it. Supporters keep it that way."
+  "VetPath is free for every veteran who uses it. Supporters keep it that way.",
+  {
+    // Purpose-built supporter card - shared /support links show the mission
+    // ask instead of the generic homepage card.
+    url: "/og-support.jpg",
+    width: 1200,
+    height: 630,
+    alt: "Support the mission - keep VetPath free for the next veteran.",
+  }
 );
 
 export default function SupportPage() {

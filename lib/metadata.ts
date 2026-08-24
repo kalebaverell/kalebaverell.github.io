@@ -27,9 +27,10 @@ const SHARED_DESCRIPTION =
  * preview all get the route's own name, so sharing a deep link says what the
  * page actually is instead of repeating the homepage title.
  */
-export function routeMeta(name: string, description?: string): Metadata {
+export function routeMeta(name: string, description?: string, image?: typeof OG_IMAGE): Metadata {
   const title = `${name} - VetPath`;
   const desc = description ?? SHARED_DESCRIPTION;
+  const img = image ?? OG_IMAGE;
   return {
     title,
     description: desc,
@@ -39,13 +40,13 @@ export function routeMeta(name: string, description?: string): Metadata {
       locale: "en_US",
       title,
       description: desc,
-      images: [OG_IMAGE],
+      images: [img],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: desc,
-      images: [OG_IMAGE.url],
+      images: [img.url],
     },
   };
 }
