@@ -31,6 +31,19 @@
     --shadow:var(--shadow-sm);
     --font-display:"Fraunces", Georgia, "Times New Roman", serif;
     --font-sans:Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --band-gold:#F3D9B8;
+  }
+  /* Harbor colorway (mirrors the app): tokens only, applied via body[data-theme].
+     Semantic colors (success/danger) stay constant on purpose. */
+  [data-theme="harbor"]{
+    --primary:#1F5D8C; --primary-700:#174766; --primary-800:#174766; --primary-900:#10344C; --primary-ink:#FFFFFF;
+    --accent:#D98A3D; --accent-600:#BE762C; --accent-soft:#F7EAD8; --accent-ink:#8A5714;
+    --ink:#263442; --ink-strong:#101E2A; --muted:#5D6E7E; --faint:#68798A;
+    --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#E9EEF4;
+    --border:#D5DEE7; --hairline:rgba(16,30,42,.1);
+    --chip-bg:#DEEAF3; --chip-ink:#1F5D8C;
+    --hero-glow:rgba(217,138,61,.14);
+    --band-gold:#F3D9B8;
   }
   :root{--fs-body:17px;--fs-small:14px;--fs-h1:44px;--fs-h2:30px;--fs-h3:20px;--fs-h4:16px;--fs-btn:16px;--tap:48px}
   [data-textsize="lg"]{--fs-body:19px;--fs-small:16px;--fs-h1:48px;--fs-h2:33px;--fs-h3:22px;--fs-h4:18px;--fs-btn:18px}
@@ -63,7 +76,7 @@
   .hairline{border:none;border-top:1px solid var(--hairline);margin:0}
   /* ---- Announcement bar + top navigation (light enterprise garment, mirrored from the app) ---- */
   .announce{background:var(--primary-900);color:rgba(251,250,247,.85);text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.01em}
-  .announce b{color:#F3D9B8;font-weight:600}
+  .announce b{color:var(--band-gold);font-weight:600}
   .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 93%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--hairline)}
   .nav-toggle{display:none}
   .nav-inner{max-width:1180px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;min-height:66px;flex-wrap:wrap}
@@ -353,6 +366,7 @@ const INTAKE = [
   ]},
   {id:"status",title:"Where you are right now",subtitle:"This shapes what we prioritize first.",questions:[
     {id:"status",compact:true,label:"What best describes your current status?",type:"single",options:["Active duty","Transitioning (separating within 12 months)","Veteran","Retired (20+ years of service)","Spouse / family member"]},
+    {id:"horizon",compact:true,label:"How far out is separation or retirement, roughly?",type:"single",showIf:{id:"status",value:"Active duty"},helper:"This sets the sequence - some benefits only exist while you're still serving.",options:["Within a year","1-2 years out","More than 2 years out","Not sure yet"]},
     {id:"disabilityRating",compact:true,label:"Do you have a VA disability rating?",type:"single",optional:true,options:["None / not rated","Claim pending or filing","0–20%","30–50%","60–90%","100%","Prefer not to say"]},
     {id:"employment",compact:true,label:"What is your employment situation?",type:"single",options:["Employed full-time","Employed part-time","Unemployed / job seeking","Self-employed / business owner","Student","Retired","Unable to work right now"]},
     {id:"housing",label:"What is your housing situation?",type:"single",options:["Rent","Own a home","On base or in government quarters","Barracks / dorms / ship","Living with family","Unstable / at risk","Currently homeless"]},
@@ -644,7 +658,7 @@ function reserveFit(a){
 const KEY = "vetpath_state_v1";
 let S = load();
 function load(){ try{const p=JSON.parse(localStorage.getItem(KEY)); return p?Object.assign(fresh(),p):fresh()}catch(e){return fresh()} }
-function fresh(){ return {profile:null, answers:{}, gameplan:null, statuses:{}, assessment:{}, assessmentFree:"", chosenPath:null, resume:null}; }
+function fresh(){ return {profile:null, answers:{}, gameplan:null, statuses:{}, doneAt:{}, theme:"warm", assessment:{}, assessmentFree:"", chosenPath:null, resume:null}; }
 function save(){ localStorage.setItem(KEY, JSON.stringify(S)); }
 function reset(){ S=fresh(); save(); location.hash="#/"; }
 
@@ -1060,7 +1074,9 @@ function generateGameplan(a, path){
   _idc=0;
   const goals = (a.topGoals||[]).map(goalById).filter(Boolean);
   const status = a.status||"";
-  const isTransition = status.startsWith("Transitioning")||status==="Active duty";
+  // Frank's sequencing point: years-out members must not see TAP first.
+  const farOut = status==="Active duty" && a.horizon==="More than 2 years out";
+  const isTransition = status.startsWith("Transitioning")||(status==="Active duty" && !farOut);
   const urgent = (a.urgency||"").startsWith("Right now");
   const crisis = a.housing==="Currently homeless" || a.housing==="Unstable / at risk" ||
                  ((a.wellnessPriorities||[]).includes("Mental health support") && urgent);
@@ -1108,6 +1124,13 @@ function generateGameplan(a, path){
     }
     if(career && career.skillbridge) plan30.push(item("Ask your command about a DoD SkillBridge internship in "+career.label.toLowerCase()+" - civilian experience on military pay","high"));
     else plan30.push(item("Ask your command about DoD SkillBridge - intern with a civilian employer your last 180 days on military pay","medium"));
+  }
+  if(farOut){
+    plan30.push(item("Decide on the Post-9/11 GI Bill transfer to your spouse or kids - it can only be elected while you're still serving and adds a service commitment, so the conversation starts now","high"));
+    plan30.push(item("Use Tuition Assistance while you serve - chip away at the degree or credential before your GI Bill ever comes out","high"));
+    plan30.push(item("Build the records habit: every injury, treatment, and training certificate goes into one folder from today","high"));
+    plan60.push(item("Map your job to a civilian credential with DoD COOL and start it while you're still funded","medium"));
+    plan90.push(item("Set a reminder for the two-years-out mark - that's when TAP, SkillBridge, and real separation planning enter the window","low"));
   }
   if((a.familyNeeds||[]).includes("Dependent with special needs")){
     plan30.push(item("Gather your dependent's special-needs records - EFMP file (while serving), current IEP or 504 plan, provider notes - so the next school and care team can pick up without a gap","high"));
@@ -1416,7 +1439,12 @@ function footer(){
   </div></footer>`;
 }
 // One colorway (Warm) - the theme system is gone. Old saved theme prefs are ignored.
-function markTheme(){ /* retained as a no-op: wire() still calls it */ }
+function markTheme(){
+  // Harbor colorway (mirrors the app): tokens re-dress everything from one attribute.
+  if(S.theme==="harbor") document.body.setAttribute("data-theme","harbor");
+  else document.body.removeAttribute("data-theme");
+}
+function setTheme(t){ S.theme = t==="harbor"?"harbor":"warm"; save(); markTheme(); router(); }
 
 /* ---------- SCREENS ---------- */
 function eyebrow(text,onDark){ return `<span class="eyebrow${onDark?' on-dark':''}">${text}</span>`; }
@@ -1549,7 +1577,7 @@ function Onboarding(){
     <h2>${sec.title}</h2>
     <p class="muted">${sec.subtitle}</p>
     <div class="card">
-      ${sec.questions.filter(q=>!q.demographic).map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}
+      ${sec.questions.filter(q=>!q.demographic&&(!q.showIf||S.answers[q.showIf.id]===q.showIf.value)).map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}
       ${sec.questions.some(q=>q.demographic)?`<details style="margin-top:22px;border-top:1px solid var(--border);padding-top:18px">
         <summary style="cursor:pointer;font-weight:600;color:var(--ink-strong)">More about you <span class="muted small">(optional - unlocks a few targeted programs)</span></summary>
         <div style="margin-top:14px">${sec.questions.filter(q=>q.demographic).map(q=>question(q)).join('<hr style="border:none;border-top:1px solid var(--border);margin:22px 0">')}</div>
@@ -1692,7 +1720,7 @@ function Dashboard(){
     </div>`}
 
     <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:24px 0 0">
-      <h3 style="margin:0"><i class="ti ti-checklist" style="color:var(--accent-ink)"></i> Do these first</h3>
+      <h3 style="margin:0"><i class="ti ti-checklist" style="color:var(--accent-ink)"></i> Do these first${(()=>{const now=new Date();const n=Object.values(S.doneAt||{}).filter(d=>{const t=new Date(d);return t.getMonth()===now.getMonth()&&t.getFullYear()===now.getFullYear();}).length;return n>0?` <span class="chip" style="margin-left:10px;font-size:12px;vertical-align:middle">${n} this month - steady</span>`:"";})()}</h3>
       <span class="small muted">${prog.done} of ${prog.total} done</span>
     </div>
     <div class="card" style="margin-top:12px">
@@ -1721,6 +1749,15 @@ function Dashboard(){
         <span class="muted small">From idea to plan, with veteran programs behind it.</span>
       </a>
     </div>
+
+    <a href="#/updates" class="card" style="margin-top:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);flex-wrap:wrap">
+      <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;background:var(--chip-bg);color:var(--chip-ink);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0"><i class="ti ti-refresh"></i></span>
+      <span style="flex:1;min-width:220px">
+        <h4 style="margin:0 0 2px">Anything change?</h4>
+        <span class="muted small">New rating, new baby, new state, new job - your plan re-routes in about a minute.</span>
+      </span>
+      <span class="small" style="font-weight:600;color:var(--info);display:inline-flex;align-items:center;gap:4px">Update my plan <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>
 
     <div class="center" style="margin:26px 0 2px">
       <button type="button" class="btn ghost" onclick="DASH_MORE=!DASH_MORE;router()" aria-expanded="${DASH_MORE}">
@@ -1878,7 +1915,8 @@ function journeyStep(n,label,state){
   </span>`;
 }
 let DASH_MORE=false;
-function toggleDone(id){ S.statuses[id]=S.statuses[id]==="done"?"todo":"done"; save(); router(); }
+function stampDone(id,done){ S.doneAt=S.doneAt||{}; if(done) S.doneAt[id]=new Date().toISOString(); else delete S.doneAt[id]; }
+function toggleDone(id){ const next=S.statuses[id]==="done"?"todo":"done"; S.statuses[id]=next; stampDone(id,next==="done"); save(); router(); }
 
 /* ----- Printable gameplan (leave-behind) ----- */
 function Print(){
@@ -2522,6 +2560,68 @@ function progress(){
 }
 
 /* ----- Profile ----- */
+/* ----- The Mirror (Return Loop Phase 2, demo-local): radar + milestones + notes. ----- */
+const JOURNAL_KEY="vp_demo_journal";
+function journalList(){ try{ const a=JSON.parse(localStorage.getItem(JOURNAL_KEY)||"[]"); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+function journalSave(list){ try{ localStorage.setItem(JOURNAL_KEY,JSON.stringify(list)); }catch(e){} }
+function journalAdd(){
+  const ta=document.getElementById("journal-draft");
+  if(!ta||!ta.value.trim()) return;
+  journalSave([{id:String(Date.now()),body:ta.value.trim().slice(0,4000),at:new Date().toISOString()},...journalList()]);
+  ta.value=""; router();
+}
+function journalDel(id){ journalSave(journalList().filter(e=>e.id!==id)); router(); }
+const RADAR_AXES=[["hands","Hands-on"],["tech","Technical"],["people","People"],["lead","Leading"],["autonomy","Independent"],["physical","Physical"]];
+function radarSvg(vec){
+  const C=150,R=104,n=RADAR_AXES.length;
+  const pt=(i,r)=>{const ang=(Math.PI*2*i)/n-Math.PI/2;return [C+r*Math.cos(ang),C+r*Math.sin(ang)];};
+  const ring=k=>Array.from({length:n},(_,i)=>pt(i,(R*k)/5).join(",")).join(" ");
+  const vals=RADAR_AXES.map(([d])=>Math.max(.4,Math.min(5,vec[d]!=null?vec[d]:2.5)));
+  const poly=vals.map((v,i)=>pt(i,(R*v)/5).join(",")).join(" ");
+  const desc=RADAR_AXES.map(([,l],i)=>l+" "+vals[i].toFixed(1)+" of 5").join(", ");
+  return `<svg viewBox="0 0 300 300" role="img" aria-label="Priorities radar: ${desc}" style="width:100%;max-width:320px;display:block;margin:0 auto">
+    ${[1,2,3,4,5].map(k=>`<polygon points="${ring(k)}" fill="none" stroke="var(--border)" stroke-width="${k===5?1.4:.7}"/>`).join("")}
+    ${RADAR_AXES.map((_,i)=>{const [x,y]=pt(i,R);return `<line x1="${C}" y1="${C}" x2="${x}" y2="${y}" stroke="var(--hairline)"/>`;}).join("")}
+    <polygon points="${poly}" fill="rgba(15,110,86,.18)" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+    ${vals.map((v,i)=>{const [x,y]=pt(i,(R*v)/5);return `<circle cx="${x}" cy="${y}" r="3.4" fill="var(--primary)"/>`;}).join("")}
+    ${RADAR_AXES.map(([,l],i)=>{const [x,y]=pt(i,R+24);return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" style="font-size:11.5px;font-weight:600;fill:var(--muted)">${l}</text>`;}).join("")}
+  </svg>`;
+}
+function mirror(){
+  const hasAssessment=Object.keys(S.assessment||{}).length>0;
+  const vec=hasAssessment?userVector({answers:S.assessment,intake:S.answers,free:S.assessmentFree||""}).vec:null;
+  const gp=S.gameplan;
+  const all=gp?[...gp.plan30,...gp.plan60,...gp.plan90]:[];
+  const done=all.filter(it=>S.statuses[it.id]==="done").map(it=>({t:it.text,when:(S.doneAt||{})[it.id]||""}))
+    .sort((a,b)=>(b.when||"").localeCompare(a.when||""));
+  const fmt=w=>new Date(w).toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+  const dated=done.filter(d=>d.when).map(d=>d.when).sort();
+  const recap=dated.length?`<p class="small" style="margin:4px 0 0;padding-top:10px;border-top:1px solid var(--border);color:var(--ink-strong);font-weight:600">Since ${new Date(dated[0]).toLocaleDateString(undefined,{month:"short",year:"numeric"})}: ${done.length} action${done.length===1?"":"s"} checked. Forward is forward.</p>`:"";
+  const notes=journalList();
+  return `<div class="grid" style="gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div class="card">
+      <h3 style="margin-top:0"><i class="ti ti-compass" style="color:var(--accent-ink)"></i> Your shape</h3>
+      ${vec?radarSvg(vec)+`<p class="muted small" style="margin:8px 0 0">From your own answers - re-take the career test anytime and this moves with you.</p>`
+        :`<p class="muted small" style="margin:0">Take the career test and this becomes a map of what you told us matters.</p><a class="btn ghost sm" href="#/pathfinder" style="margin-top:12px;display:inline-flex">Take the career test</a>`}
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0"><i class="ti ti-file-text" style="color:var(--accent-ink)"></i> Your notes</h3>
+      <p class="muted small" style="margin-top:0">Reminders and considerations - stored in this browser only (demo).</p>
+      <textarea id="journal-draft" class="field" rows="2" placeholder="e.g. Ask the VSO about the knee - it's documented in 2019 records." style="resize:vertical;min-height:56px"></textarea>
+      <div style="margin-top:8px"><button type="button" class="btn sm" onclick="journalAdd()">Save note</button></div>
+      ${notes.length?`<div style="display:grid;gap:8px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+        ${notes.slice(0,4).map(e=>`<div style="display:flex;gap:8px;align-items:flex-start"><span class="small" style="flex:1;white-space:pre-wrap">${esc(e.body)}<span class="muted" style="display:block;font-size:12px">${fmt(e.at)}</span></span><button type="button" onclick="journalDel('${e.id}')" aria-label="Delete note" style="background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;min-height:32px"><i class="ti ti-x"></i></button></div>`).join("")}
+      </div>`:""}
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0"><i class="ti ti-circle-check" style="color:var(--accent-ink)"></i> Milestones met</h3>
+      ${done.length===0?`<p class="muted small" style="margin:0">Your first checked action lands here. One small step this week is how the whole thing moves - <a href="#/plan">your action plan has the shortlist</a>.</p>`
+        :`<div style="display:grid;gap:10px">${done.slice(0,4).map(d=>`<div style="display:flex;gap:10px;align-items:flex-start"><span aria-hidden="true" style="width:22px;height:22px;border-radius:50%;background:var(--chip-bg);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px"><i class="ti ti-check"></i></span><span class="small">${esc(d.t)}${d.when?`<span class="muted" style="display:block;font-size:12px">${fmt(d.when)}</span>`:""}</span></div>`).join("")}
+        ${done.length>4?`<p class="muted small" style="margin:0">+ ${done.length-4} more - every one of them yours.</p>`:""}${recap}</div>`}
+    </div>
+  </div>`;
+}
+
 function Profile(){
   const a=S.answers;
   const rows=[
@@ -2531,7 +2631,21 @@ function Profile(){
   ];
   return `<div class="narrow pad">
     <h2>Your profile</h2>
-    <p class="muted">Edit anything and regenerate your gameplan.</p>
+    <p class="muted">The mirror first - your shape, your milestones, your notes - then the details underneath.</p>
+    ${mirror()}
+    <div class="card" style="margin-top:16px">
+      <h3 style="margin-top:0"><i class="ti ti-tool" style="color:var(--accent-ink)"></i> Appearance</h3>
+      <p class="muted small" style="margin-top:0">Your plan, your colors. This follows you on every page of the demo.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${[["warm","Warm","#0F6E56","#D98A3D"],["harbor","Harbor","#1F5D8C","#D98A3D"]].map(([id,label,c1,c2])=>`
+          <button type="button" class="chip selectable" aria-pressed="${S.theme===id}" onclick="setTheme('${id}')"
+            style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;min-height:44px;cursor:pointer;font-family:inherit;font-size:var(--fs-small);font-weight:600${S.theme===id?';border-color:var(--primary);border-width:2px':''}">
+            <span aria-hidden="true" style="display:inline-flex"><span style="width:14px;height:14px;border-radius:50%;background:${c1};display:inline-block"></span><span style="width:14px;height:14px;border-radius:50%;background:${c2};display:inline-block;margin-left:-5px"></span></span>
+            ${label}${S.theme===id?' <i class="ti ti-check"></i>':''}
+          </button>`).join("")}
+      </div>
+    </div>
+    <h3 style="margin:26px 0 8px"><i class="ti ti-user-circle" style="color:var(--accent-ink)"></i> Your details</h3>
     <div class="card">
       ${rows.map(([k,v])=>`<div class="kv"><span class="k">${k}</span><span>${v?esc(String(v)):'-'}</span></div>`).join("")}
       <div class="kv"><span class="k">Top goals</span><span style="text-align:right">${(a.topGoals||[]).map(id=>{const g=goalById(id);return g?g.label:''}).join(", ")||'-'}</span></div>
@@ -2633,11 +2747,10 @@ function Admin(){
       "Content: 'first 90 days after service' guides that funnel into the tool."])}
 
     <div class="card" style="margin-top:16px"><h3><i class="ti ti-adjustments"></i> Live preview controls</h3>
-      <p class="muted small">Flip the design direction while reviewing with Frank (also in the footer).</p>
+      <p class="muted small">Flip the colorway while reviewing with Frank (users pick theirs on the Profile page).</p>
       <div class="themebar" style="justify-content:flex-start;padding:6px 0">
-        <button data-theme-btn="professional" onclick="setTheme('professional')">Professional (A)</button>
-        <button data-theme-btn="warm" onclick="setTheme('warm')">Warm (B)</button>
-        <button data-theme-btn="civic" onclick="setTheme('civic')">Civic (C)</button>
+        <button data-theme-btn="warm" onclick="setTheme('warm')">Warm (default)</button>
+        <button data-theme-btn="harbor" onclick="setTheme('harbor')">Harbor (blue)</button>
       </div>
       <button class="btn ghost sm" style="margin-top:10px" onclick="loadSample()"><i class="ti ti-user-check"></i> Load a sample veteran &amp; plan</button>
     </div>
@@ -4277,7 +4390,7 @@ function finishIntake(){ if(!S.answers.topGoals||S.answers.topGoals.length===0){
   S.gameplan=planFor(); save(); location.hash="#/dashboard"; }
 function regen(){ S.gameplan=planFor(); save(); location.hash="#/dashboard"; }
 function addGoal(id){ let arr=S.answers.topGoals||[]; if(!arr.includes(id)){ if(arr.length>=3)arr.shift(); arr.push(id);} S.answers.topGoals=arr; S.gameplan=planFor(); save(); location.hash="#/dashboard"; }
-function cycleStatus(id){ const cur=S.statuses[id]||"todo"; S.statuses[id]= cur==="todo"?"prog":cur==="prog"?"done":"todo"; save(); router(); }
+function cycleStatus(id){ const cur=S.statuses[id]||"todo"; const next= cur==="todo"?"prog":cur==="prog"?"done":"todo"; S.statuses[id]=next; stampDone(id,next==="done"); save(); router(); }
 function loadSample(){
   S.profile={name:"Frank (sample)",email:""};
   S.answers={ageRange:"25–34",state:"TX",branch:"Army",serviceEra:"Post-9/11 (2001–present)",status:"Transitioning (separating within 12 months)",disabilityRating:"30–50%",employment:"Unemployed / job seeking",housing:"Rent",careerGoals:["Get a better job"],educationGoals:["Trade or certification"],wellnessPriorities:["VA healthcare / physical health"],financialPriorities:["Buy a home"],familyNeeds:["None"],topGoals:["transition-out","get-better-job","buy-a-home"],urgency:"Next 1–3 months"};
