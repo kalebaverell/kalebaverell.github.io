@@ -14,7 +14,7 @@ const initial: AppState = {
   gameplan: null,
   statuses: {},
   step: 0,
-  theme: "professional",
+  theme: "warm",
   textSize: "base",
   assessment: {},
   assessmentFree: "",
@@ -45,6 +45,7 @@ interface Store {
    *  done goes back to todo. cycleStatus keeps the three-state flow for the full checklist. */
   toggleDone: (id: string) => void;
   cycleTextSize: () => void;
+  setTheme: (t: AppState["theme"]) => void;
   loadSample: () => void;
   reset: () => void;
   setStepNote: (stepId: string, text: string) => void;
@@ -66,7 +67,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setS({ ...initial, ...JSON.parse(raw) });
+      if (raw) {
+        const saved = { ...initial, ...JSON.parse(raw) };
+        // Legacy colorway values from the retired theme system normalize to the default.
+        if (!["warm", "harbor"].includes(saved.theme)) saved.theme = "warm";
+        setS(saved);
+      }
     } catch {}
     setReady(true);
   }, []);
@@ -79,6 +85,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     if (s.textSize === "base") document.documentElement.removeAttribute("data-textsize");
     else document.documentElement.setAttribute("data-textsize", s.textSize);
   }, [s.textSize]);
+
+  // Colorway: an attribute, exactly like text size. "warm" (or anything
+  // unexpected) is the unattributed brand default, so first-time visitors
+  // and marketing pages always render the brand look.
+  useEffect(() => {
+    if (s.theme === "harbor") document.documentElement.setAttribute("data-theme", "harbor");
+    else document.documentElement.removeAttribute("data-theme");
+  }, [s.theme]);
 
   const createProfile = useCallback((name: string, email: string) => {
     setS((p) => ({ ...p, profile: { name: name.trim() || "Veteran", email: email.trim() }, step: 0 }));
@@ -214,6 +228,10 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const setTheme = useCallback((t: AppState["theme"]) => {
+    setS((p) => ({ ...p, theme: t }));
+  }, []);
+
   const loadSample = useCallback(() => {
     const answers = sampleAnswers();
     setS((p) => {
@@ -234,7 +252,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, loadSample, reset, setStepNote, setAssessment, toggleAssessmentMulti, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, setTheme, loadSample, reset, setStepNote, setAssessment, toggleAssessmentMulti, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
     >
       {children}
     </Ctx.Provider>

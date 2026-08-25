@@ -106,7 +106,7 @@ function MilestonesCard({ gameplan, statuses, doneAt }: { gameplan: any; statuse
         <div style={{ display: "grid", gap: 10 }}>
           {done.slice(0, 4).map((it) => (
             <div key={it.id} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-              <span aria-hidden="true" style={{ width: 22, height: 22, borderRadius: "50%", background: "#E4EFEA", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, flexShrink: 0, marginTop: 1 }}><i className="ti ti-check" /></span>
+              <span aria-hidden="true" style={{ width: 22, height: 22, borderRadius: "50%", background: "var(--chip-bg)", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, flexShrink: 0, marginTop: 1 }}><i className="ti ti-check" /></span>
               <span className="small">
                 {it.text}
                 {it.when && <span className="muted" style={{ display: "block", fontSize: 12 }}>{new Date(it.when).toLocaleDateString(undefined, DATE_FMT)}</span>}
@@ -114,6 +114,20 @@ function MilestonesCard({ gameplan, statuses, doneAt }: { gameplan: any; statuse
             </div>
           ))}
           {done.length > 4 && <p className="muted small" style={{ margin: 0 }}>+ {done.length - 4} more - every one of them yours.</p>}
+          {(() => {
+            // The recap (4.2): how far you've come, computed from your own stamps.
+            const dated = done.filter((d) => d.when).map((d) => d.when).sort();
+            if (dated.length === 0) return null;
+            const first = new Date(dated[0]);
+            const q = new Date(); q.setMonth(q.getMonth() - 3);
+            const recent = dated.filter((w) => new Date(w) > q).length;
+            const since = first.toLocaleDateString(undefined, { month: "short", year: "numeric" });
+            return (
+              <p className="small" style={{ margin: "4px 0 0", paddingTop: 10, borderTop: "1px solid var(--border)", color: "var(--ink-strong)", fontWeight: 600 }}>
+                Since {since}: {done.length} action{done.length === 1 ? "" : "s"} checked{recent > 0 && recent !== done.length ? `, ${recent} in the last quarter` : ""}. Forward is forward.
+              </p>
+            );
+          })()}
         </div>
       )}
     </div>

@@ -49,7 +49,7 @@ function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string
             "Private and encrypted, and you can delete it any time.",
           ].map((line) => (
             <li key={line} className="small" style={{ display: "flex", gap: 11, alignItems: "flex-start" }}>
-              <span aria-hidden="true" style={{ width: 24, height: 24, borderRadius: "50%", background: "#E4EFEA", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, flexShrink: 0 }}><i className="ti ti-check" /></span>
+              <span aria-hidden="true" style={{ width: 24, height: 24, borderRadius: "50%", background: "var(--chip-bg)", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, flexShrink: 0 }}><i className="ti ti-check" /></span>
               <span style={{ paddingTop: 2 }}>{line}</span>
             </li>
           ))}

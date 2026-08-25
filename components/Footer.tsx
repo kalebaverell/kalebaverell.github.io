@@ -72,7 +72,7 @@ export default function Footer() {
 
         <div style={{ borderTop: "1px solid rgba(251,250,247,.14)", marginTop: 40, paddingTop: 20, display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap", fontSize: 12.5, color: "rgba(251,250,247,.6)" }}>
           <span>
-            <a href="/trust" style={{ color: "#F3D9B8", fontWeight: 600 }}>How we earn trust - every number has a source →</a>
+            <a href="/trust" style={{ color: "var(--band-gold)", fontWeight: 600 }}>How we earn trust - every number has a source →</a>
           </span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F5B8A9", fontWeight: 600 }}>
             <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7.

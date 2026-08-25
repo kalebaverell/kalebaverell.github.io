@@ -11,7 +11,7 @@ import { goalById, stateName, residenceStates } from "@/lib/data";
 import { Wrap, Callout } from "@/components/ui";
 
 export default function Profile() {
-  const { s, ready, setStep, regen, reset } = useStore();
+  const { s, ready, setStep, regen, reset, setTheme } = useStore();
   const { enabled, user, deleteAccount } = useAuth();
   const router = useRouter();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
@@ -50,6 +50,36 @@ export default function Profile() {
       <h2>Your profile</h2>
       <p className="muted">The mirror first - your shape, your milestones, your notes - then the details underneath.</p>
       <Mirror />
+
+      {/* Colorway picker: "their vet path" extends to how it looks (Frank's note).
+          Warm stays the default; a choice follows this person on every page. */}
+      <div className="card" style={{ marginTop: 16 }}>
+        <h3 style={{ marginTop: 0 }}><i className="ti ti-tool" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Appearance</h3>
+        <p className="muted small" style={{ marginTop: 0 }}>Your plan, your colors. This follows you on every page, on this device and (signed in) everywhere.</p>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          {([
+            ["warm", "Warm", "#0F6E56", "#D98A3D"],
+            ["harbor", "Harbor", "#1F5D8C", "#D98A3D"],
+          ] as const).map(([id, label, c1, c2]) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setTheme(id)}
+              aria-pressed={s.theme === id}
+              className="chip selectable"
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 16px", minHeight: 44, cursor: "pointer", fontFamily: "inherit", fontSize: "var(--fs-small)", fontWeight: 600, ...(s.theme === id ? { borderColor: "var(--primary)", borderWidth: 2 } : {}) }}
+            >
+              <span aria-hidden="true" style={{ display: "inline-flex" }}>
+                <span style={{ width: 14, height: 14, borderRadius: "50%", background: c1, display: "inline-block" }} />
+                <span style={{ width: 14, height: 14, borderRadius: "50%", background: c2, display: "inline-block", marginLeft: -5 }} />
+              </span>
+              {label}
+              {s.theme === id && <i className="ti ti-check" aria-hidden="true" />}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <h3 style={{ margin: "26px 0 8px" }}><i className="ti ti-user-circle" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Your details</h3>
       <div className="card">
         {rows.map(([k, v]) => (

@@ -178,7 +178,9 @@ export interface AppState {
    *  keys as "done, date unknown". Cleared when an action is un-done. */
   doneAt?: Record<string, string>;
   step: number;
-  theme: "professional" | "warm" | "civic";
+  /** Colorway. "warm" is the brand default; Harbor is the one alternate
+   *  (Kaleb's pick, Aug 25). Legacy saved values normalize to "warm" on load. */
+  theme: "warm" | "harbor";
   textSize: "base" | "lg" | "xl";
   // Single-select questions store a string; multi-select (pull) stores an
   // array. Old saved profiles hold plain strings everywhere - readers must

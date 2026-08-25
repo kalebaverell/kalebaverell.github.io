@@ -56,6 +56,11 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
    Your notes (add/delete works signed-out via localStorage vetpath_journal_v1; task "Add a note" in
    TaskDetail saves with task_ref). Journal RLS: signed-in entries are owner-only in journal_entries -
    verify cross-account isolation whenever policies change.
+14. Colorways (/profile Appearance): exactly TWO options - Warm (default, no data-theme attribute) and
+   Harbor (sets data-theme="harbor", --primary computes #1F5D8C); choice persists across pages and
+   reverts cleanly; legacy stored theme values ("professional"/"civic"/"granite") normalize to warm on
+   load. The dark bands (mission/supporter/support) recolor via --band-* tokens - never hardcode those
+   gradient hexes again. Semantic colors (success/danger/crisis) stay constant across themes.
 
 ## 5. Deliverable freshness
 If demo/vetpath-demo.html is newer than share/VetPath-Interactive-App.zip → flag stale share package.

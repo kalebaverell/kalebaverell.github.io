@@ -328,7 +328,7 @@ export default function Landing() {
           style={{
             marginTop: 44,
             borderRadius: "var(--radius-lg)",
-            background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)",
+            background: "linear-gradient(160deg, var(--band-1) 0%, var(--band-2) 45%, var(--band-3) 100%)",
             padding: "30px 38px",
             boxShadow: "0 14px 36px rgba(7, 61, 48, .24)",
             display: "flex",
@@ -349,7 +349,7 @@ export default function Landing() {
                 color: "#FBFAF7",
               }}
             >
-              Keep it free for the <em style={{ fontStyle: "italic", color: "#F3D9B8" }}>next veteran.</em>
+              Keep it free for the <em style={{ fontStyle: "italic", color: "var(--band-gold)" }}>next veteran.</em>
             </div>
             <div style={{ marginTop: 5, fontSize: 13.5, color: "rgba(251, 250, 247, .78)" }}>
               {BRAND.name} runs on supporters, not ads - any amount helps.

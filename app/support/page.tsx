@@ -32,7 +32,7 @@ export default function SupportPage() {
           position: "relative",
           overflow: "hidden",
           borderRadius: "var(--radius-lg)",
-          background: "linear-gradient(160deg, #11785E 0%, #0F6E56 45%, #0A4A3C 100%)",
+          background: "linear-gradient(160deg, var(--band-1) 0%, var(--band-2) 45%, var(--band-3) 100%)",
           padding: "clamp(40px, 7vw, 56px) clamp(24px, 5vw, 48px)",
           boxShadow: "0 18px 44px rgba(7, 61, 48, .28)",
         }}
@@ -64,7 +64,7 @@ export default function SupportPage() {
             }}
           >
             Keep it free for the{" "}
-            <span style={{ color: "#F3D9B8" }}>next veteran.</span>
+            <span style={{ color: "var(--band-gold)" }}>next veteran.</span>
           </div>
 
           {DONATE_CONFIGURED ? (
