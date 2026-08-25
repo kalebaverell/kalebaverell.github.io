@@ -181,12 +181,20 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     setS((p) => ({ ...p, ...partial }));
   }, []);
 
+  // Mission log: completions carry a timestamp; un-completing removes it.
+  const stampDone = (p: AppState, id: string, done: boolean): Record<string, string> => {
+    const da = { ...(p.doneAt || {}) };
+    if (done) da[id] = new Date().toISOString();
+    else delete da[id];
+    return da;
+  };
+
   const cycleStatus = useCallback((id: string) => {
     setS((p) => {
       const cur: Status = p.statuses[id] || "todo";
       const next: Status = cur === "todo" ? "prog" : cur === "prog" ? "done" : "todo";
       if (next === "done") queueMicrotask(() => track("action-checked"));
-      return { ...p, statuses: { ...p.statuses, [id]: next } };
+      return { ...p, statuses: { ...p.statuses, [id]: next }, doneAt: stampDone(p, id, next === "done") };
     });
   }, []);
 
@@ -195,7 +203,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       const next: Status = p.statuses[id] === "done" ? "todo" : "done";
       // Analytics only on completion, fired outside the pure updater.
       if (next === "done") queueMicrotask(() => track("action-checked"));
-      return { ...p, statuses: { ...p.statuses, [id]: next } };
+      return { ...p, statuses: { ...p.statuses, [id]: next }, doneAt: stampDone(p, id, next === "done") };
     });
   }, []);
 

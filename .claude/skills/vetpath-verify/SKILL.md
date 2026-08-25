@@ -49,6 +49,13 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
    separation-month download is a valid VCALENDAR whose DTSTART is the 1st of the EAS month
 12. Dashboard: "Anything change?" card links to /updates; InstallNudge renders ONLY on mobile-size
    viewports and never on desktop
+13. Mirror (/profile, Phase 2): four cards render - Your shape (radar SVG with aria values after a
+   pathfinder run, designed empty state before), Milestones met (checked actions with doneAt dates;
+   checking an action also puts "N this month - steady" chip on the dashboard's Do-these-first heading),
+   Coming up (real phase dates + calendar buttons when answers.easDate set, timeline pointer otherwise),
+   Your notes (add/delete works signed-out via localStorage vetpath_journal_v1; task "Add a note" in
+   TaskDetail saves with task_ref). Journal RLS: signed-in entries are owner-only in journal_entries -
+   verify cross-account isolation whenever policies change.
 
 ## 5. Deliverable freshness
 If demo/vetpath-demo.html is newer than share/VetPath-Interactive-App.zip → flag stale share package.

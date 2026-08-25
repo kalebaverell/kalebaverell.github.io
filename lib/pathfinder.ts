@@ -72,6 +72,25 @@ function userVector(input: AssessmentInput): { vec: Record<AttrDim, number>; spe
 
 const SPEED_ORDER = ["weeks", "months", "2yr", "4yr"];
 
+// ---- Me Dashboard radar (Return Loop Phase 2) ----
+// Six axes chosen for narrative legibility; values are the same 0-5 user vector
+// the career scorer uses, so the mirror never disagrees with the recommendations.
+export const RADAR_AXES: { dim: AttrDim; label: string }[] = [
+  { dim: "hands", label: "Hands-on" },
+  { dim: "tech", label: "Technical" },
+  { dim: "people", label: "People" },
+  { dim: "lead", label: "Leading" },
+  { dim: "autonomy", label: "Independent" },
+  { dim: "physical", label: "Physical" },
+];
+
+/** The user's assessment-derived dimension vector (0-5), or null when the
+ *  career test hasn't been taken - callers show an empty state, never a fake chart. */
+export function assessmentVector(answers: Record<string, string | string[]>): Record<AttrDim, number> | null {
+  if (!answers || Object.keys(answers).length === 0) return null;
+  return userVector({ answers, intake: {} as Answers, free: "" }).vec;
+}
+
 // Priority-weight helpers: level 0 (not now) → 3 (must-have); "Important" (2) is neutral.
 const WEIGHT_FACTOR = [0.3, 0.65, 1, 1.5];
 export function priorityFactor(a: Answers, dim: string): number {

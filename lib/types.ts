@@ -173,6 +173,10 @@ export interface AppState {
   answers: Answers;
   gameplan: Gameplan | null;
   statuses: Record<string, Status>;
+  /** When each action was completed (ISO date), keyed like statuses. Added for
+   *  the mission log; absent in older saved states, so readers treat missing
+   *  keys as "done, date unknown". Cleared when an action is un-done. */
+  doneAt?: Record<string, string>;
   step: number;
   theme: "professional" | "warm" | "civic";
   textSize: "base" | "lg" | "xl";

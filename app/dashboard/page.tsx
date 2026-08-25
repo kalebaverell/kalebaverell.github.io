@@ -123,7 +123,14 @@ export default function Dashboard() {
       )}
 
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", margin: "24px 0 0" }}>
-        <h3 style={{ margin: 0 }}><i className="ti ti-checklist" style={{ color: "var(--accent-ink)" }} /> Do these first</h3>
+        <h3 style={{ margin: 0 }}>
+          <i className="ti ti-checklist" style={{ color: "var(--accent-ink)" }} /> Do these first
+          {(() => {
+            const now = new Date();
+            const n = Object.values(s.doneAt || {}).filter((d) => { const t = new Date(d); return t.getMonth() === now.getMonth() && t.getFullYear() === now.getFullYear(); }).length;
+            return n > 0 ? <span className="chip" style={{ marginLeft: 10, fontSize: 12, verticalAlign: "middle" }}>{n} this month - steady</span> : null;
+          })()}
+        </h3>
         <span className="small muted">{done} of {all.length} done</span>
       </div>
       <div className="card" style={{ marginTop: 12 }}>

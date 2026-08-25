@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "@/lib/store";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
+import Mirror from "@/components/Mirror";
 import { goalById, stateName, residenceStates } from "@/lib/data";
 import { Wrap, Callout } from "@/components/ui";
 
@@ -47,7 +48,9 @@ export default function Profile() {
   return (
     <Wrap narrow>
       <h2>Your profile</h2>
-      <p className="muted">Edit anything and regenerate your gameplan.</p>
+      <p className="muted">The mirror first - your shape, your milestones, your notes - then the details underneath.</p>
+      <Mirror />
+      <h3 style={{ margin: "26px 0 8px" }}><i className="ti ti-user-circle" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Your details</h3>
       <div className="card">
         {rows.map(([k, v]) => (
           <div key={k} className="kv"><span className="k">{k}</span><span>{v || "-"}</span></div>

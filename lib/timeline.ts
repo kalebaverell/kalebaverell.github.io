@@ -150,6 +150,18 @@ export function phaseStartDate(easDate: string, phaseId: PhaseId): Date | null {
   return d;
 }
 
+/** The next `n` phase-start dates still ahead of today - the Me Dashboard's
+ *  "coming up" list. Empty when no EAS date is set or nothing is ahead. */
+export function upcomingPhaseStarts(easDate: string, n = 3): { id: PhaseId; label: string; date: Date }[] {
+  const now = new Date();
+  const out: { id: PhaseId; label: string; date: Date }[] = [];
+  for (const p of PHASE_META) {
+    const d = phaseStartDate(easDate, p.id);
+    if (d && d.getTime() > now.getTime()) out.push({ id: p.id, label: p.label, date: d });
+  }
+  return out.sort((a, b) => a.date.getTime() - b.date.getTime()).slice(0, n);
+}
+
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /** "Sep 2026" for a "YYYY-MM" value; "" when invalid. */
