@@ -10,6 +10,7 @@ import { Wrap, Stat, CrisisBanner } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
 import TaskDetail from "@/components/TaskDetail";
 import BenefitCategoryList from "@/components/BenefitCategoryList";
+import InstallNudge from "@/components/InstallNudge";
 
 // The dashboard leads with what to DO, not what we know. Order: who you are,
 // where you're headed, your next actions, the three tracks. Every data-heavy
@@ -173,6 +174,23 @@ export default function Dashboard() {
           </Link>
         ))}
       </div>
+
+      <InstallNudge />
+
+      {/* The change loop: /updates works and nobody finds it. Quiet card, below
+          the fold, never modal - the plan re-routing is the product's promise. */}
+      <Link href="/updates" className="card" style={{ marginTop: 16, display: "flex", gap: 14, alignItems: "center", textDecoration: "none", color: "var(--ink)", flexWrap: "wrap" }}>
+        <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: 10, background: "var(--chip-bg)", color: "var(--chip-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+          <i className="ti ti-refresh" />
+        </span>
+        <div style={{ flex: 1, minWidth: 220 }}>
+          <h4 style={{ margin: "0 0 2px" }}>Anything change?</h4>
+          <span className="muted small">New rating, new baby, new state, new job - your plan re-routes in about a minute.</span>
+        </div>
+        <span className="small" style={{ fontWeight: 600, color: "var(--info)", display: "inline-flex", alignItems: "center", gap: 4 }}>
+          Update my plan <i className="ti ti-arrow-right" aria-hidden="true" />
+        </span>
+      </Link>
 
       <div style={{ textAlign: "center", margin: "26px 0 2px" }}>
         <button type="button" className="btn ghost" onClick={() => setShowMore((v) => !v)} aria-expanded={showMore}>

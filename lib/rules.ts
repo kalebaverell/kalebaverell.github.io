@@ -90,7 +90,13 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   _idc = 0;
   const goals = (a.topGoals || []).map(goalById).filter(Boolean) as typeof GOALS;
   const status = a.status || "";
-  const isTransition = status.startsWith("Transitioning") || status === "Active duty";
+  // Frank's sequencing point (2026-08-25): an Active-duty member years from
+  // separation must not see TAP first - it makes the whole list read generic.
+  // farOut requires the explicit answer; legacy plans without a horizon answer
+  // keep the transition set (backward compatible, and over-preparing beats
+  // under-preparing when we genuinely don't know).
+  const farOut = status === "Active duty" && a.horizon === "More than 2 years out";
+  const isTransition = status.startsWith("Transitioning") || (status === "Active duty" && !farOut);
   const urgent = (a.urgency || "").startsWith("Right now");
   const housingList = Array.isArray(a.housing) ? a.housing : a.housing ? [a.housing] : [];
   const crisis =
@@ -126,6 +132,9 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     priorities.push("Lock in VA health care and start a disability claim before you separate");
     priorities.push("Build a job or education pipeline now, not after your last day");
   }
+  if (farOut) {
+    priorities.push("Bank every in-service benefit while the clock is on your side");
+  }
   goals.slice(0, 3).forEach((g) => {
     const p = PRIORITY_LABEL[g.id];
     if (p && !priorities.includes(p)) priorities.push(p);
@@ -152,6 +161,15 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     }
     if (career?.skillbridge) plan30.push(item(`Ask your command about a DoD SkillBridge internship in ${career.label.toLowerCase()} - civilian experience on military pay`, "high"));
     else plan30.push(item("Ask your command about DoD SkillBridge - intern with a civilian employer your last 180 days on military pay", "medium"));
+  }
+  // Long runway: the years-out set. These are the benefits that only exist (or
+  // only compound) while still serving - the opposite of a separation checklist.
+  if (farOut) {
+    plan30.push(item("Decide on the Post-9/11 GI Bill transfer to your spouse or kids - it can only be elected while you're still serving and adds a service commitment, so the conversation starts now", "high"));
+    plan30.push(item("Use Tuition Assistance while you serve - chip away at the degree or credential before your GI Bill ever comes out", "high"));
+    plan30.push(item("Build the records habit: every injury, treatment, and training certificate goes into one folder from today", "high"));
+    plan60.push(item("Map your job to a civilian credential with DoD COOL and start it while you're still funded", "medium"));
+    plan90.push(item("Set a reminder for the two-years-out mark - that's when TAP, SkillBridge, and real separation planning enter the window", "low"));
   }
   // Low GI Bill + education plans: the gap-funding conversation has to happen
   // BEFORE enrollment, not at the bursar's office (tester feedback 2026-08-13).

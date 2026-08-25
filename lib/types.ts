@@ -12,6 +12,9 @@ export interface Answers {
    *  Read via residenceStates()/primaryState() from lib/data. */
   state?: string | string[];
   city?: string;
+  /** Separation horizon, asked only when status is "Active duty" - drives the
+   *  long-runway plan sequence for members years from separation. */
+  horizon?: string;
   sex?: string;
   raceEthnicity?: string[];
   branch?: string;

@@ -16,6 +16,7 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 - data/sampleCareers.json → 15 careers, each with onetCode/onetUrl/blsUrl + year-labeled paySample
 - data/relocationMetros.json → 29 metros; 28 with `official` blocks (rural-telehealth exempt)
 - data/assessmentQuestions.json → 11 questions incl. ids "wins" (first, objective options) and "detail"; "pull" has multi:true max:3; people/"Mostly solo" has autonomy 0
+- data/intakeQuestions.json → status step contains a "horizon" question with showIf {id:"status", value:"Active duty"} and a "More than 2 years out" option
 
 ## 3. Production build — NEVER while a dev server runs (shared .next corrupts; this caused real outages)
 Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + kill by PID, plus any
@@ -39,6 +40,15 @@ static), then `rm -rf .next` and restart `npm run dev` in background; wait for 2
 9. Homepage: mission-band video (hero-loop.mp4) playing + hero slideshow cycling (5 slides, one .active) -
    the band video is the only <video> since the redesign (SW must bypass media/range requests - a stalled
    band video means the service worker regressed)
+10. Far-out persona (needs auth-disabled dev: clear NEXT_PUBLIC_SUPABASE_* in the shell env so the local
+   ProfileGate opens the intake): status "Active duty" reveals the horizon question; with "More than 2 years
+   out" the generated plan leads with the GI Bill transfer / Tuition Assistance / records-habit set and
+   contains NO TAP and NO BDD items; switching status to "Veteran" hides the horizon question again
+11. Timeline calendar: with an EAS date >24 months out, the plan prepends the long-runway items, shows
+   "Add separation month to calendar" + per-phase "Add to calendar" buttons (ahead phases only), and the
+   separation-month download is a valid VCALENDAR whose DTSTART is the 1st of the EAS month
+12. Dashboard: "Anything change?" card links to /updates; InstallNudge renders ONLY on mobile-size
+   viewports and never on desktop
 
 ## 5. Deliverable freshness
 If demo/vetpath-demo.html is newer than share/VetPath-Interactive-App.zip → flag stale share package.

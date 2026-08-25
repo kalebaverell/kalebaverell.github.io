@@ -2,6 +2,7 @@
 // Adaptive planning: report a life event, preview exactly what changes in the
 // gameplan, then commit the update through the existing store actions.
 import PageSkeleton from "@/components/PageSkeleton";
+import { track } from "@/lib/track";
 import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -90,6 +91,7 @@ export default function Updates() {
     }
     regen();
     setApplied(true);
+    track("update-applied");
   };
 
   return (

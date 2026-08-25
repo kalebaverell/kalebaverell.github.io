@@ -131,6 +131,25 @@ export function windowFromEas(m: number): SepWindow {
   return m < 0 ? "out" : m <= 3 ? "0-3" : m <= 6 ? "3-6" : m <= 9 ? "6-9" : m <= 12 ? "9-12" : "12+";
 }
 
+/** Mid-month Date for a "YYYY-MM" EAS value; null when invalid. */
+export function easAsDate(easDate: string): Date | null {
+  if (!/^\d{4}-\d{2}$/.test(easDate)) return null;
+  const [y, mo] = easDate.split("-").map(Number);
+  if (mo < 1 || mo > 12) return null;
+  return new Date(y, mo - 1, 15);
+}
+
+/** Calendar start of a phase (EAS minus the phase's T-minus upper bound).
+ *  Only meaningful when a real EAS date was given - callers gate on that. */
+export function phaseStartDate(easDate: string, phaseId: PhaseId): Date | null {
+  const eas = easAsDate(easDate);
+  const meta = PHASE_META.find((p) => p.id === phaseId);
+  if (!eas || !meta) return null;
+  const d = new Date(eas);
+  d.setMonth(d.getMonth() - meta.hi);
+  return d;
+}
+
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /** "Sep 2026" for a "YYYY-MM" value; "" when invalid. */
@@ -290,6 +309,16 @@ export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
   const effWindow: SepWindow = em != null ? windowFromEas(em) : (a.sepWindow || "12+");
   const m = em != null ? em : sepMonths(a.sepWindow || "12+");
   const all = buildTasks(a);
+  // Long runway (Frank's sequencing point): a real EAS date more than two years
+  // out prepends the in-service items that compound with time - instead of
+  // pretending the member is at T-12.
+  if ((em ?? 0) > 24) {
+    all.unshift(
+      { id: "lrGiTransfer", phase: "p1", area: "education", essential: true, title: "Decide on the Post-9/11 GI Bill transfer to your spouse or kids", notes: "It can only be elected while you're still serving and adds a service commitment - the earlier the conversation, the more options stay open.", source: { label: "VA - transfer Post-9/11 GI Bill benefits", url: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" } },
+      { id: "lrTa", phase: "p1", area: "education", title: "Use Tuition Assistance while you serve", notes: "Chip away at the degree or credential now - before your GI Bill ever comes out.", source: { label: "Military OneSource - Tuition Assistance", url: "https://www.militaryonesource.mil/benefits/tuition-assistance/" } },
+      { id: "lrRecords", phase: "p1", area: "benefits", essential: true, title: "Build the records habit now", notes: "Every injury, treatment, and training certificate goes into one folder from today - future-you files claims from this folder." },
+    );
+  }
 
   const phases: TimelinePhase[] = PHASE_META.map((p) => {
     const status: PhaseStatus = m > p.hi ? "ahead" : m > p.lo ? "current" : "past";

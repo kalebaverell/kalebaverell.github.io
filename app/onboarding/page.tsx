@@ -8,6 +8,7 @@ import { useAuth } from "@/lib/auth";
 import { INTAKE, INTAKE_NOTES_PROMPT, STATES, GOALS } from "@/lib/data";
 import type { Answers } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
+import { track } from "@/lib/track";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
@@ -105,6 +106,7 @@ function Intake() {
       return;
     }
     regen();
+    track("plan-built");
     router.push("/dashboard");
   };
 
@@ -121,7 +123,7 @@ function Intake() {
       <h2>{sec.title}</h2>
       <p className="muted">{sec.subtitle}</p>
       <div className="card">
-        {sec.questions.filter((q: any) => !q.demographic).map((q: any, i: number) => (
+        {sec.questions.filter((q: any) => !q.demographic && (!q.showIf || (s.answers as any)[q.showIf.id] === q.showIf.value)).map((q: any, i: number) => (
           <div key={q.id}>
             {i > 0 && <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />}
             <Question q={q} answers={s.answers} setAnswer={setAnswer} toggleMulti={toggleMulti} toggleGoal={toggleGoal} />

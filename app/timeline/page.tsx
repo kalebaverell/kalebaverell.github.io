@@ -9,9 +9,10 @@ import Link from "next/link";
 import { STATES } from "@/lib/data";
 import {
   buildTimeline, freshTimelineAnswers, FOCUS_META, TIMELINE_VERIFIED,
-  monthsToEas, windowFromEas, easLabel,
+  monthsToEas, windowFromEas, easLabel, easAsDate, phaseStartDate,
   type TimelineAnswers, type TransitionTimeline, type TimelineTask, type FocusArea, type Goal, type FamilyFlag,
 } from "@/lib/timeline";
+import { downloadIcs } from "@/lib/ics";
 import { useStore } from "@/lib/store";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
@@ -314,6 +315,19 @@ export default function TimelinePage() {
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "4px 0 18px" }}>
             <button className="btn ghost" onClick={() => window.print()}><i className="ti ti-printer" aria-hidden="true" /> Print this timeline</button>
             <button className="btn ghost" onClick={restart}><i className="ti ti-pencil" aria-hidden="true" /> Change my answers</button>
+            {easAsDate(a.easDate) && (
+              <button
+                className="btn ghost"
+                onClick={() => downloadIcs({
+                  title: "Separation month begins - VetPath timeline",
+                  date: new Date(easAsDate(a.easDate)!.getFullYear(), easAsDate(a.easDate)!.getMonth(), 1),
+                  description: "The month you gave VetPath as your separation window. Open your timeline for what this stretch holds.",
+                  url: "https://vetpathusa.com/timeline/",
+                })}
+              >
+                <i className="ti ti-calendar-check" aria-hidden="true" /> Add separation month to calendar
+              </button>
+            )}
           </div>
 
           {a.notes.trim() && (
@@ -345,6 +359,20 @@ export default function TimelinePage() {
               <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
                 <h3 style={{ margin: 0 }}>{p.label}</h3>
                 <span className="muted small">{p.window}</span>
+                {p.status === "ahead" && phaseStartDate(a.easDate, p.id) && (
+                  <button
+                    className="btn ghost sm"
+                    style={{ marginLeft: "auto" }}
+                    onClick={() => downloadIcs({
+                      title: `${p.label} begins - VetPath timeline`,
+                      date: phaseStartDate(a.easDate, p.id)!,
+                      description: `${p.window}. Planning marker computed from your separation month (mid-month anchor) - open your timeline for this phase's tasks.`,
+                      url: "https://vetpathusa.com/timeline/",
+                    })}
+                  >
+                    <i className="ti ti-calendar-check" aria-hidden="true" /> Add to calendar
+                  </button>
+                )}
                 {p.dates && <span className="chip sm" style={{ background: "var(--chip)", color: "var(--primary)" }}><i className="ti ti-calendar" aria-hidden="true" /> {p.dates}</span>}
                 <span className={`pill ${STATUS_CHIP[p.status].cls}`}>{STATUS_CHIP[p.status].label}</span>
               </div>

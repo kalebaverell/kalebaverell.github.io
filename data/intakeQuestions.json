@@ -125,6 +125,22 @@
           "compact": true
         },
         {
+          "id": "horizon",
+          "label": "How far out is separation or retirement, roughly?",
+          "type": "single",
+          "showIf": {
+            "id": "status",
+            "value": "Active duty"
+          },
+          "helper": "This sets the sequence. Someone two years out has different next steps than someone packing up - and some benefits only exist while you're still serving.",
+          "options": [
+            "Within a year",
+            "1-2 years out",
+            "More than 2 years out",
+            "Not sure yet"
+          ]
+        },
+        {
           "id": "disabilityRating",
           "label": "Do you have a VA disability rating?",
           "type": "single",

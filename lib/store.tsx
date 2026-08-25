@@ -1,6 +1,7 @@
 "use client";
 // Client-side state store for the prototype: localStorage-backed, no accounts.
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { track } from "@/lib/track";
 import type { AppState, Answers, Status, ChosenPath, ResumeState } from "./types";
 import { generateGameplan, sampleAnswers } from "./rules";
 import { careerById } from "./data";
@@ -184,6 +185,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     setS((p) => {
       const cur: Status = p.statuses[id] || "todo";
       const next: Status = cur === "todo" ? "prog" : cur === "prog" ? "done" : "todo";
+      if (next === "done") queueMicrotask(() => track("action-checked"));
       return { ...p, statuses: { ...p.statuses, [id]: next } };
     });
   }, []);
@@ -191,6 +193,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const toggleDone = useCallback((id: string) => {
     setS((p) => {
       const next: Status = p.statuses[id] === "done" ? "todo" : "done";
+      // Analytics only on completion, fired outside the pure updater.
+      if (next === "done") queueMicrotask(() => track("action-checked"));
       return { ...p, statuses: { ...p.statuses, [id]: next } };
     });
   }, []);

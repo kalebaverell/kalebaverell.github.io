@@ -9,6 +9,20 @@ export interface TaskResource {
 }
 
 const RULES: { test: RegExp; resources: TaskResource[] }[] = [
+  // Long-runway items (still-serving, years out) come first: their tasks name
+  // in-service programs whose keywords would otherwise fall through to education.
+  { test: /gi bill transfer|transfer.*gi bill|transfer.*spouse or kids/i, resources: [
+    { label: "Transfer Post-9/11 GI Bill benefits (VA.gov)", href: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" },
+  ]},
+  { test: /tuition assistance/i, resources: [
+    { label: "Tuition Assistance (Military OneSource)", href: "https://www.militaryonesource.mil/benefits/tuition-assistance/" },
+  ]},
+  { test: /\bcool\b|civilian credential/i, resources: [
+    { label: "DoD COOL - credentialing opportunities", href: "https://www.cool.osd.mil/" },
+  ]},
+  { test: /records habit|every injury, treatment/i, resources: [
+    { label: "milConnect - access your records (DoD)", href: "https://milconnect.dmdc.osd.mil/" },
+  ]},
   // Guard/Reserve first: when a task is about continued service, that page is the whole answer.
   { test: /\bguard\b|\breserve\b|\breserves\b|drilling|part.?time service|selected reserve/i, resources: [
     { label: "Reserves & Guard: what it actually covers", href: "/reserves", internal: true },
