@@ -16,6 +16,21 @@ function esc(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
 }
 
+/** RFC 5545 line folding: content lines stay within 75 octets, continuations
+ *  begin with a single space. Splits at 72 chars - safe for our ASCII-heavy
+ *  content while staying under the octet limit. */
+function fold(line: string): string {
+  if (line.length <= 72) return line;
+  const parts: string[] = [];
+  let rest = line;
+  while (rest.length > 72) {
+    parts.push(rest.slice(0, 72));
+    rest = " " + rest.slice(72);
+  }
+  parts.push(rest);
+  return parts.join("\r\n");
+}
+
 export interface IcsEvent {
   title: string;
   /** All-day event date. */
@@ -43,8 +58,8 @@ export function buildIcs(ev: IcsEvent): string {
     "END:VEVENT",
     "END:VCALENDAR",
   ].filter(Boolean);
-  // ics requires CRLF line endings
-  return lines.join("\r\n") + "\r\n";
+  // ics requires CRLF line endings; long lines are folded per the RFC
+  return lines.map(fold).join("\r\n") + "\r\n";
 }
 
 /** Blob download (works on iOS Safari where data: URIs are unreliable). */
