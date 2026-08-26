@@ -32,6 +32,23 @@ export type AuthMode = "signin" | "signup" | "reset";
  *  server will reject, or blocks one the server would allow. Server is currently 8. */
 export const MIN_PASSWORD_LENGTH = 8;
 
+/** Every auth error a user sees goes through here: technical GoTrue messages
+ *  become plain, actionable sentences, and anything unexpected (a raw "{}",
+ *  an empty string, a 500 body) becomes a calm fallback instead of gibberish.
+ *  Born from a real incident: a server-side failure once rendered as "{}". */
+export function friendlyAuthError(raw: unknown): string {
+  const msg = typeof raw === "string" ? raw : "";
+  if (/invalid login credentials/i.test(msg)) return "That email and password don't match. Try again, or use “Forgot your password?” below.";
+  if (/already registered|already exists/i.test(msg)) return "This email already has an account - sign in instead.";
+  if (/email not confirmed/i.test(msg)) return "Almost there - confirm your email first. Check your inbox for the link we sent.";
+  if (/rate limit|too many/i.test(msg)) return "Too many tries in a row. Give it a minute, then try again.";
+  if (/password should|weak password|at least/i.test(msg)) return `Use a stronger password - at least ${MIN_PASSWORD_LENGTH} characters with letters and numbers.`;
+  if (/invalid email|unable to validate email/i.test(msg)) return "That email address doesn't look right - check it and try again.";
+  // A real message we don't recognize: pass it through as long as it reads like a sentence.
+  if (msg && msg.length > 8 && !/[{}\[\]]/.test(msg)) return msg;
+  return "Something went wrong on our end - your account is fine. Give it a moment and try again.";
+}
+
 interface AuthValue {
   enabled: boolean;
   ready: boolean;
@@ -45,7 +62,7 @@ interface AuthValue {
   /** `needsConfirmation` is true when the project requires email verification: the
    *  account exists but there is no session yet, so the caller must say so rather
    *  than pretending the user is signed in. */
-  signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null; needsConfirmation: boolean }>;
+  signUp: (email: string, password: string, opts: SignUpOpts) => Promise<{ error: string | null; needsConfirmation: boolean; existingAccount: boolean }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   /** Providers actually enabled on the project. Buttons render only for these, so
@@ -166,7 +183,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const closeAuth = useCallback(() => setAuthOpen(false), []);
 
   const signUp = useCallback(async (email: string, password: string, opts: SignUpOpts) => {
-    if (!supabase) return { error: "Accounts aren't enabled in this environment.", needsConfirmation: false };
+    if (!supabase) return { error: "Accounts aren't enabled in this environment.", needsConfirmation: false, existingAccount: false };
     const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
@@ -176,18 +193,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         emailRedirectTo: `${window.location.origin}/onboarding/`,
       },
     });
-    if (error) return { error: error.message, needsConfirmation: false };
+    if (error) {
+      const existing = /already registered|already exists/i.test(error.message || "");
+      return { error: friendlyAuthError(error.message), needsConfirmation: false, existingAccount: existing };
+    }
     // No session means the project requires email confirmation. Writing the profile
     // row would fail anyway, since RLS has no auth.uid() to match yet: it gets
     // written by onAuthStateChange the moment they confirm and sign in.
     if (data.session && data.user) await upsertIdentity(data.user);
-    return { error: null, needsConfirmation: !data.session };
+    return { error: null, needsConfirmation: !data.session, existingAccount: false };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
     if (!supabase) return { error: "Accounts aren't enabled in this environment." };
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-    return { error: error ? error.message : null };
+    return { error: error ? friendlyAuthError(error.message) : null };
   }, []);
 
   const signOut = useCallback(async () => {
@@ -203,7 +223,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       provider: p,
       options: { redirectTo: `${window.location.origin}/onboarding/` },
     });
-    return { error: error ? error.message : null };
+    return { error: error ? friendlyAuthError(error.message) : null };
   }, []);
 
   const clearAuthError = useCallback(() => setAuthError(null), []);
@@ -221,7 +241,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const updatePassword = useCallback(async (password: string) => {
     if (!supabase) return { error: "Accounts aren't enabled in this environment." };
     const { error } = await supabase.auth.updateUser({ password });
-    return { error: error ? error.message : null };
+    return { error: error ? friendlyAuthError(error.message) : null };
   }, []);
 
   // Best-effort self-service data deletion: wipe the profile row (RLS-scoped to
@@ -230,7 +250,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const deleteAccount = useCallback(async () => {
     if (!supabase || !user) return { error: "Not signed in." };
     const { error } = await supabase.from("profiles").delete().eq("id", user.id);
-    if (error) return { error: error.message };
+    if (error) return { error: friendlyAuthError(error.message) };
     await supabase.auth.signOut();
     return { error: null };
   }, [user]);

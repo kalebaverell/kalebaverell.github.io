@@ -82,7 +82,16 @@ export default function AuthModal() {
       ? await signUp(email, password, { fullName, marketingOptIn: optIn })
       : await signIn(email, password);
     setBusy(false);
-    if (res.error) { setError(res.error); return; }
+    if (res.error) {
+      // Sign-up with an existing email: don't leave them at a dead end - flip
+      // to the sign-in form with their email intact (a real user hit this wall
+      // three times in a row before this existed).
+      if (mode === "signup" && "existingAccount" in res && res.existingAccount) {
+        setMode("signin");
+      }
+      setError(res.error);
+      return;
+    }
     // With email confirmation required there is no session yet, so closing the modal
     // would leave them looking signed out with no idea why.
     if (mode === "signup" && "needsConfirmation" in res && res.needsConfirmation) {
