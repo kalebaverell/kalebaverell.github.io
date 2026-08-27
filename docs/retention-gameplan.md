@@ -145,3 +145,18 @@ Harbor-at-night as a fourth theme using `prefers-color-scheme` detection. Big QA
 ## Working agreements (unchanged, restated)
 
 Selective commits only; visual changes preview-first before deploy; production build discipline (kill dev servers, clean dist dirs); verify on production after each ship; no credentials handled in-session - Kaleb's steps are listed and waited on; no charity/tax language anywhere new surfaces are written.
+
+## Wave 2 - recurring visits + institutional evidence (shipped Aug 27, 2026)
+
+Goal shift: beyond bringing users back, produce durable per-account evidence that veterans keep using the platform as a resource - the numbers Kaleb and Frank can put in front of DoD / DoW transition staff. All four shipped and verified same-day (commit 4477383 + Supabase migrations return_visits_and_feed_tokens, default_email_prefs_from_opt_in; edge functions calendar-feed v1, send-checkins v3).
+
+1. **Return ledger (`visit_days`)** - one row per signed-in user per UTC day, stamped on session load (lib/visit.ts, wired in lib/auth.tsx; localStorage-guarded, RLS owner-insert). The evidence base: 7/30-day return rates, distinct active days per user, cohort retention - all real rows, never assertions. Ledger history begins Aug 27.
+2. **Weekly focus card** (lib/weeklyFocus.ts + dashboard) - deterministic ISO-week rotation across 12 real corners of the site; same focus for everyone all week, new one every Monday. The standing 7-day reason to return. Tracked as `weekly-focus`.
+3. **Live calendar subscription** (edge function `calendar-feed` + Mirror buttons) - token-gated ICS feed (profiles.feed_token, deliberately separate from unsub_token) that calendar apps re-poll daily; phase-start dates flow into the veteran's calendar and stay current when dates change. Webcal one-tap + copy-link for Google. Tracked as `calendar-subscribe`. Feed exposes derived dates only - no name, no email.
+4. **Email attribution + coverage fix** - all check-in links now carry `utm_source=vetpath-email&utm_campaign={tminus|window|verification}` so email-driven returns show in GoatCounter's Campaigns panel. Found and fixed a real gap while testing: `prefs` defaulted to `{}` which the engine reads as opted-out, so consented signups after the Phase-3 backfill never entered the loop - a trigger now seeds prefs from marketing_opt_in exactly once (empty-object guard means explicit choices and unsubscribes are never overwritten), and the backfill brought all 22 consented users into the loop.
+
+**Evidence queries for stakeholder reporting** (aggregates only, no PII):
+- Returners: `select count(*) from (select user_id from visit_days group by user_id having count(distinct day) >= 2) t;`
+- Active days distribution: `select user_id, count(*) from visit_days group by user_id;` (report as median/distribution)
+- Email-driven returns: GoatCounter Campaigns panel, utm_campaign values tminus / window / verification
+- Calendar embedding: `calendar-subscribe` events + calendar-feed request logs
