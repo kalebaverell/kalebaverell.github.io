@@ -8,6 +8,8 @@ const EVENTS = [
   "install-accepted",
   "update-applied",
   "journal-entry",
+  "weekly-focus",
+  "calendar-subscribe",
 ] as const;
 
 export type TrackEvent = (typeof EVENTS)[number];

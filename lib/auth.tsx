@@ -5,6 +5,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase, supabaseEnabled, supabaseUrl, supabaseAnonKey } from "./supabase";
+import { stampVisit } from "./visit";
 
 /** Social sign-in providers we support. Supabase calls Microsoft "azure".
  *  Apple is deliberately not here: Sign in with Apple requires a paid Apple
@@ -164,11 +165,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(data.session);
       setUser(data.session?.user ?? null);
       setReady(true);
+      // Return-visit ledger: fire-and-forget, self-deduping per day.
+      if (data.session?.user) stampVisit(data.session.user.id);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_e, sess) => {
       setSession(sess);
       setUser(sess?.user ?? null);
-      if (sess?.user) upsertIdentity(sess.user);
+      if (sess?.user) { upsertIdentity(sess.user); stampVisit(sess.user.id); }
     });
     return () => sub.subscription.unsubscribe();
   }, []);

@@ -9,6 +9,8 @@ import { useAuth } from "@/lib/auth";
 import { RADAR_AXES, assessmentVector } from "@/lib/pathfinder";
 import { upcomingPhaseStarts } from "@/lib/timeline";
 import { downloadIcs } from "@/lib/ics";
+import { supabase, supabaseUrl } from "@/lib/supabase";
+import { track } from "@/lib/track";
 import { listEntries, addEntry, deleteEntry, importLocalEntries, type JournalEntry } from "@/lib/journal";
 import type { ActionItem } from "@/lib/types";
 
@@ -24,7 +26,7 @@ export default function Mirror() {
         <RadarCard assessment={s.assessment} />
         <JournalCard userId={userId} />
         <MilestonesCard gameplan={s.gameplan} statuses={s.statuses} doneAt={s.doneAt || {}} />
-        <UpcomingCard easDate={s.answers.easDate || ""} />
+        <UpcomingCard easDate={s.answers.easDate || ""} userId={userId} />
       </div>
     </section>
   );
@@ -135,8 +137,32 @@ function MilestonesCard({ gameplan, statuses, doneAt }: { gameplan: any; statuse
 }
 
 /* ---- Coming up: real phase-start dates, each exportable to a calendar. ---- */
-function UpcomingCard({ easDate }: { easDate: string }) {
+function UpcomingCard({ easDate, userId }: { easDate: string; userId: string | null }) {
   const upcoming = easDate ? upcomingPhaseStarts(easDate, 3) : [];
+  const [feedMsg, setFeedMsg] = useState<string | null>(null);
+
+  // Live subscription beats a one-time download: the feed URL is token-gated
+  // (profiles.feed_token, its own capability - not the unsubscribe token) and
+  // calendar apps re-poll it, so date changes flow in on their own.
+  const subscribe = async (mode: "open" | "copy") => {
+    if (!supabase || !userId) return;
+    try {
+      const { data, error } = await supabase.from("profiles").select("feed_token").eq("id", userId).single();
+      if (error || !data?.feed_token) { setFeedMsg("Couldn't fetch your calendar link - try again in a moment."); return; }
+      const https = `${supabaseUrl}/functions/v1/calendar-feed?token=${data.feed_token}`;
+      track("calendar-subscribe");
+      if (mode === "open") {
+        window.location.href = https.replace(/^https:/, "webcal:");
+        setFeedMsg("Your calendar app should open - accept the subscription and future date changes flow in on their own.");
+      } else {
+        await navigator.clipboard.writeText(https);
+        setFeedMsg("Link copied. In Google Calendar, choose “Other calendars”, then “From URL”, and paste it.");
+      }
+    } catch {
+      setFeedMsg("Couldn't fetch your calendar link - try again in a moment.");
+    }
+  };
+
   return (
     <div className="card">
       <h3 style={{ marginTop: 0 }}><i className="ti ti-calendar-check" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Coming up</h3>
@@ -166,6 +192,22 @@ function UpcomingCard({ easDate }: { easDate: string }) {
               </button>
             </div>
           ))}
+          {userId && (
+            <div style={{ marginTop: 2, paddingTop: 12, borderTop: "1px solid var(--border)" }}>
+              <p className="small muted" style={{ margin: "0 0 8px" }}>
+                Or keep them live: subscribe once and when your dates change, your calendar updates itself.
+              </p>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button type="button" className="btn sm" onClick={() => subscribe("open")}>
+                  <i className="ti ti-calendar-plus" aria-hidden="true" /> Subscribe on this device
+                </button>
+                <button type="button" className="btn ghost sm" onClick={() => subscribe("copy")}>
+                  <i className="ti ti-copy" aria-hidden="true" /> Copy link for Google Calendar
+                </button>
+              </div>
+              {feedMsg && <p className="small" style={{ margin: "8px 0 0", fontWeight: 600, color: "var(--ink)" }}>{feedMsg}</p>}
+            </div>
+          )}
         </div>
       )}
     </div>

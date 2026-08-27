@@ -11,6 +11,8 @@ import FundedPath from "@/components/FundedPath";
 import TaskDetail from "@/components/TaskDetail";
 import BenefitCategoryList from "@/components/BenefitCategoryList";
 import InstallNudge from "@/components/InstallNudge";
+import { currentFocus } from "@/lib/weeklyFocus";
+import { track } from "@/lib/track";
 
 // The dashboard leads with what to DO, not what we know. Order: who you are,
 // where you're headed, your next actions, the three tracks. Every data-heavy
@@ -181,6 +183,27 @@ export default function Dashboard() {
           </Link>
         ))}
       </div>
+
+      {/* Weekly focus: one real corner of the site per ISO week, deterministic
+          rotation - the standing reason to come back on a 7-day rhythm. */}
+      {(() => {
+        const f = currentFocus();
+        return (
+          <Link href={f.href} onClick={() => track("weekly-focus")} className="card" style={{ marginTop: 16, display: "flex", gap: 14, alignItems: "center", textDecoration: "none", color: "var(--ink)", flexWrap: "wrap", borderLeft: "3px solid var(--accent)" }}>
+            <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: 10, background: "var(--chip-bg)", color: "var(--chip-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+              <i className={`ti ${f.icon}`} />
+            </span>
+            <div style={{ flex: 1, minWidth: 220 }}>
+              <span className="small muted" style={{ fontWeight: 600, letterSpacing: ".02em" }}>This week&apos;s focus</span>
+              <h4 style={{ margin: "2px 0" }}>{f.title}</h4>
+              <span className="muted small">{f.blurb}</span>
+            </div>
+            <span className="small" style={{ fontWeight: 600, color: "var(--info)", display: "inline-flex", alignItems: "center", gap: 4 }}>
+              {f.cta} <i className="ti ti-arrow-right" aria-hidden="true" />
+            </span>
+          </Link>
+        );
+      })()}
 
       <InstallNudge />
 
