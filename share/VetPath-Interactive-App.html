@@ -1672,6 +1672,31 @@ function question(q){
   return `<fieldset style="border:none;padding:0;margin:0"><legend class="lbl" style="padding:0">${q.label}${q.optional?' <span class="muted small">(optional)</span>':''}</legend>${q.helper?`<p class="small muted" style="margin:0 0 8px">${q.helper}</p>`:''}${opts}${other}</fieldset>`;
 }
 
+/* ----- Weekly focus (retention wave 2): deterministic ISO-week rotation over
+   real corners of the demo - same focus all week, new one every Monday. ----- */
+const WEEKLY_FOCUS=[
+  {t:"Re-check your fit",b:"The career test takes 10 questions and re-ranks your paths - answers drift as you learn, and the test moves with you.",h:"#/pathfinder",i:"ti-compass",c:"Take it again"},
+  {t:"One benefit, verified",b:"Pick one benefit category this week and open its official source - knowing where to verify beats hoping you qualify.",h:"#/benefits",i:"ti-award",c:"Open benefits"},
+  {t:"Stress-test your landing spot",b:"Compare two metros side by side - VA care, cost of living, jobs - with official data behind every column.",h:"#/relocate",i:"ti-home",c:"Compare metros"},
+  {t:"Walk your timeline",b:"Seven phases, real deadlines, and a &quot;you are here&quot; marker - five minutes here keeps the next window from sneaking up.",h:"#/timeline",i:"ti-timeline",c:"See the timeline"},
+  {t:"Anything drift?",b:"Rating, household, state, job - feed one change in and watch the plan re-route before and after, then apply it.",h:"#/updates",i:"ti-refresh",c:"Run an update"},
+  {t:"Bring the household in",b:"The checkpoints your family should see - coverage bridges, school moves, the conversations worth having early.",h:"#/family",i:"ti-users",c:"Open family view"},
+  {t:"One conversation this week",b:"Most veteran hires come through people. The networking hub lists free programs that pair you with your industry.",h:"#/network",i:"ti-users-group",c:"Find your people"},
+  {t:"Run your resume past the scanner",b:"Recruiter-style feedback on translation, keywords, and structure - paste it in, fix what it flags.",h:"#/resume",i:"ti-file-text",c:"Scan it"},
+  {t:"The business idea, structured",b:"From idea to plan with veteran entrepreneurship programs behind it - worth a look even if it stays a someday.",h:"#/goals",i:"ti-building-store",c:"Explore it"},
+  {t:"Knock out one action",b:"Your action plan holds the shortlist. One checked box this week - even a ten-minute one - is how the whole thing moves.",h:"#/plan",i:"ti-checkbox",c:"Open the plan"},
+  {t:"Look in the mirror",b:"Your shape, your milestones, your notes - the page that reflects what you've told us and done.",h:"#/profile",i:"ti-user-circle",c:"See your Mirror"},
+  {t:"Put it on paper",b:"Print your gameplan and stick it somewhere you'll see it - plans on the fridge get done more than plans in a tab.",h:"#/print",i:"ti-printer",c:"Print it"}
+];
+function isoWeekN(d){
+  const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  const day=t.getUTCDay()||7;
+  t.setUTCDate(t.getUTCDate()+4-day);
+  const y0=new Date(Date.UTC(t.getUTCFullYear(),0,1));
+  return Math.ceil(((t.getTime()-y0.getTime())/86400000+1)/7);
+}
+function weeklyFocus(){const now=new Date();return WEEKLY_FOCUS[(now.getFullYear()+isoWeekN(now))%WEEKLY_FOCUS.length];}
+
 /* ----- Dashboard ----- */
 function Dashboard(){
   if(!S.gameplan) return `<div class="narrow pad center"><h2>No gameplan yet</h2><p class="muted">Answer a few quick questions to generate your plan.</p><a class="btn" href="#/onboarding">Start intake</a></div>`;
@@ -1749,6 +1774,16 @@ function Dashboard(){
         <span class="muted small">From idea to plan, with veteran programs behind it.</span>
       </a>
     </div>
+
+    ${(()=>{const f=weeklyFocus();return `<a href="${f.h}" class="card" style="margin-top:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);flex-wrap:wrap;border-left:3px solid var(--accent)">
+      <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;background:var(--chip-bg);color:var(--chip-ink);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0"><i class="ti ${f.i}"></i></span>
+      <span style="flex:1;min-width:220px">
+        <span class="small muted" style="font-weight:600;letter-spacing:.02em">This week's focus</span>
+        <h4 style="margin:2px 0">${f.t}</h4>
+        <span class="muted small">${f.b}</span>
+      </span>
+      <span class="small" style="font-weight:600;color:var(--info);display:inline-flex;align-items:center;gap:4px">${f.c} <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>`;})()}
 
     <a href="#/updates" class="card" style="margin-top:16px;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);flex-wrap:wrap">
       <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;background:var(--chip-bg);color:var(--chip-ink);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0"><i class="ti ti-refresh"></i></span>
@@ -2587,6 +2622,23 @@ function radarSvg(vec){
     ${RADAR_AXES.map(([,l],i)=>{const [x,y]=pt(i,R+24);return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" style="font-size:11.5px;font-weight:600;fill:var(--muted)">${l}</text>`;}).join("")}
   </svg>`;
 }
+/* Coming-up dates for the mirror: real phase starts from the timeline's saved
+   EAS date (mid-month anchor, future only) - mirrors lib/timeline.ts math. */
+function mirrorUpcoming(){
+  if(!TL.hydrated)tlHydrate();
+  const eas=TL.a.easDate,out=[];
+  if(/^\d{4}-\d{2}$/.test(eas||"")){
+    const [y,mo]=eas.split("-").map(Number);
+    if(mo>=1&&mo<=12){
+      const anchor=new Date(y,mo-1,15);
+      for(const p of TL_PHASE_META){
+        const d=new Date(anchor);d.setMonth(d.getMonth()-p.hi);
+        if(d.getTime()>Date.now())out.push({label:p.label,date:d});
+      }
+    }
+  }
+  return out.sort((a,b)=>a.date-b.date).slice(0,3);
+}
 function mirror(){
   const hasAssessment=Object.keys(S.assessment||{}).length>0;
   const vec=hasAssessment?userVector({answers:S.assessment,intake:S.answers,free:S.assessmentFree||""}).vec:null;
@@ -2618,6 +2670,22 @@ function mirror(){
       ${done.length===0?`<p class="muted small" style="margin:0">Your first checked action lands here. One small step this week is how the whole thing moves - <a href="#/plan">your action plan has the shortlist</a>.</p>`
         :`<div style="display:grid;gap:10px">${done.slice(0,4).map(d=>`<div style="display:flex;gap:10px;align-items:flex-start"><span aria-hidden="true" style="width:22px;height:22px;border-radius:50%;background:var(--chip-bg);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px"><i class="ti ti-check"></i></span><span class="small">${esc(d.t)}${d.when?`<span class="muted" style="display:block;font-size:12px">${fmt(d.when)}</span>`:""}</span></div>`).join("")}
         ${done.length>4?`<p class="muted small" style="margin:0">+ ${done.length-4} more - every one of them yours.</p>`:""}${recap}</div>`}
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0"><i class="ti ti-calendar-check" style="color:var(--accent-ink)"></i> Coming up</h3>
+      ${(()=>{const up=mirrorUpcoming();const dfmt=d=>d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+        return up.length===0?`<p class="muted small" style="margin:0">Give the <a href="#/timeline">transition timeline</a> your separation date and your next real dates appear here.</p>`
+        :`<div style="display:grid;gap:10px">
+          ${up.map(u=>`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="small" style="flex:1;min-width:160px"><strong>${u.label}</strong><span class="muted" style="display:block;font-size:12px">${dfmt(u.date)}</span></span></div>`).join("")}
+          <div style="margin-top:2px;padding-top:12px;border-top:1px solid var(--border)">
+            <p class="small muted" style="margin:0 0 8px">On the live site, subscribe once and these dates stay current in your own calendar app.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" class="btn sm" onclick="document.getElementById('feed-demo-note').style.display='block'"><i class="ti ti-calendar-plus" aria-hidden="true"></i> Subscribe on this device</button>
+              <button type="button" class="btn ghost sm" onclick="document.getElementById('feed-demo-note').style.display='block'"><i class="ti ti-copy" aria-hidden="true"></i> Copy link for Google Calendar</button>
+            </div>
+            <p id="feed-demo-note" class="small" style="display:none;margin:8px 0 0;font-weight:600;color:var(--ink)">Demo note: accounts live on the full site - your personal, private calendar feed is created there at vetpathusa.com.</p>
+          </div>
+        </div>`;})()}
     </div>
   </div>`;
 }
