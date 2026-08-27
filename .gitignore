@@ -13,3 +13,6 @@ demo/*.bak
 
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
+
+# versioned build dirs (VP_DIST_DIR pattern)
+.next-v*
