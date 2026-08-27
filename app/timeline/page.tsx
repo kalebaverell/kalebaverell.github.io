@@ -374,7 +374,7 @@ export default function TimelinePage() {
                   </button>
                 )}
                 {p.dates && <span className="chip sm" style={{ background: "var(--chip)", color: "var(--primary)" }}><i className="ti ti-calendar" aria-hidden="true" /> {p.dates}</span>}
-                <span className={`pill ${STATUS_CHIP[p.status].cls}`}>{STATUS_CHIP[p.status].label}</span>
+                <span className={`pill ${STATUS_CHIP[p.status].cls}${p.status === "current" ? " here-breathe" : ""}`}>{STATUS_CHIP[p.status].label}</span>
               </div>
               <p className="muted small" style={{ margin: "8px 0 12px" }}>{p.narrative}</p>
               {p.tasks.length === 0 ? (

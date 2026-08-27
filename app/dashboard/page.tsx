@@ -1,6 +1,6 @@
 "use client";
 import PageSkeleton from "@/components/PageSkeleton";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById, careerMedianPay } from "@/lib/data";
@@ -13,6 +13,10 @@ import BenefitCategoryList from "@/components/BenefitCategoryList";
 import InstallNudge from "@/components/InstallNudge";
 import { currentFocus } from "@/lib/weeklyFocus";
 import { track } from "@/lib/track";
+import { nextAffirmation, greetingFor } from "@/lib/personality";
+import RouteStub from "@/components/RouteStub";
+import { useAuth } from "@/lib/auth";
+import { supabase } from "@/lib/supabase";
 
 // The dashboard leads with what to DO, not what we know. Order: who you are,
 // where you're headed, your next actions, the three tracks. Every data-heavy
@@ -23,6 +27,21 @@ const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium:
 export default function Dashboard() {
   const { s, ready, toggleDone } = useStore();
   const [showMore, setShowMore] = useState(false);
+  // Personality Pass 1: a checked task holds its spot for a beat - tick draws,
+  // affirmation breathes - before the next task steps in. Un-checking is silent.
+  const [justDone, setJustDone] = useState<{ id: string; line: string }[]>([]);
+  const holdTimers = useRef<number[]>([]);
+  useEffect(() => () => { holdTimers.current.forEach((t) => window.clearTimeout(t)); }, []);
+  // Personality Pass 8: the return-streak subline renders only when the visit
+  // ledger actually backs it - claims follow data here like everywhere else.
+  const { enabled, user } = useAuth();
+  const [weekVisits, setWeekVisits] = useState<number | null>(null);
+  useEffect(() => {
+    if (!enabled || !user || !supabase) return;
+    const since = new Date(Date.now() - 6 * 86400000).toISOString().slice(0, 10);
+    supabase.from("visit_days").select("day", { count: "exact", head: true }).eq("user_id", user.id).gte("day", since)
+      .then(({ count }) => setWeekVisits(count ?? null));
+  }, [enabled, user]);
   if (!ready) return <PageSkeleton kind="dashboard" />;
   if (!s.gameplan) {
     return (
@@ -50,10 +69,21 @@ export default function Dashboard() {
   // The whole plan lives on /plan. Here: only the next three open tasks -
   // earliest window first, highest priority within it - so there is exactly
   // one obvious thing to do, and finishing it pulls the next one in.
+  const holdIds = new Set(justDone.map((j) => j.id));
   const nextThree = [gp.plan30, gp.plan60, gp.plan90]
     .flatMap((win) => [...win].sort((x, y) => PRIORITY_RANK[x.priority] - PRIORITY_RANK[y.priority]))
-    .filter((it) => s.statuses[it.id] !== "done")
+    .filter((it) => s.statuses[it.id] !== "done" || holdIds.has(it.id))
     .slice(0, 3);
+  const checkOff = (id: string) => {
+    if (s.statuses[id] === "done") {
+      // Undo during the hold: silent, no scolding, just back to open.
+      setJustDone((j) => j.filter((x) => x.id !== id));
+    } else {
+      setJustDone((j) => [...j, { id, line: nextAffirmation() }]);
+      holdTimers.current.push(window.setTimeout(() => setJustDone((j) => j.filter((x) => x.id !== id)), 2400));
+    }
+    toggleDone(id);
+  };
 
   return (
     <Wrap>
@@ -77,7 +107,18 @@ export default function Dashboard() {
         <span className="chip gold">
           <i className="ti ti-map-pin" /> {a.status || "Veteran"}{stateStr ? ` · ${stateStr}` : ""}{a.branch ? ` · ${a.branch}` : ""}
         </span>
-        <h2 style={{ color: "#fff", margin: "10px 0 4px" }}>Your gameplan, {s.profile?.name}</h2>
+        {(() => {
+          // Personality Pass 8: the header knows what time it is. The streak
+          // line appears only when the ledger shows 3+ visit-days this week.
+          const g = greetingFor(s.profile?.name || "");
+          const sub = weekVisits != null && weekVisits >= 3 ? `Visit ${weekVisits} this week - that's the habit forming.` : g.sub;
+          return (
+            <>
+              <h2 style={{ color: "#fff", margin: "10px 0 2px" }}>{g.line}</h2>
+              <p className="small" style={{ color: "var(--band-gold)", margin: "0 0 6px", fontWeight: 600 }}>{sub}</p>
+            </>
+          );
+        })()}
         <p style={{ color: "#CBD8E4", margin: 0, maxWidth: 640 }}>{gp.headline}</p>
       </div>
 
@@ -130,27 +171,34 @@ export default function Dashboard() {
           {(() => {
             const now = new Date();
             const n = Object.values(s.doneAt || {}).filter((d) => { const t = new Date(d); return t.getMonth() === now.getMonth() && t.getFullYear() === now.getFullYear(); }).length;
-            return n > 0 ? <span className="chip" style={{ marginLeft: 10, fontSize: 12, verticalAlign: "middle" }}>{n} this month - steady</span> : null;
+            return n > 0 ? <span className="chip chip-pop" style={{ marginLeft: 10, fontSize: 12, verticalAlign: "middle" }}>{n} this month - steady</span> : null;
           })()}
         </h3>
         <span className="small muted">{done} of {all.length} done</span>
       </div>
       <div className="card" style={{ marginTop: 12 }}>
         {nextThree.length > 0 ? (
-          nextThree.map((it) => (
-            <div key={it.id} className="check" style={{ padding: "12px 0" }}>
-              <button
-                type="button"
-                className="box"
-                onClick={() => toggleDone(it.id)}
-                aria-label={`${it.text} - tap to mark complete`}
-              />
-              <div style={{ flex: 1 }}>
-                <div className="txt" style={{ fontWeight: 600 }}>{it.text}</div>
-                <TaskDetail text={it.text} />
+          nextThree.map((it) => {
+            const isDone = s.statuses[it.id] === "done";
+            const jd = justDone.find((j) => j.id === it.id);
+            return (
+              <div key={it.id} className={`check${isDone ? " done" : ""}`} style={{ padding: "12px 0" }}>
+                <button
+                  type="button"
+                  className={`box${isDone ? " done fresh" : ""}`}
+                  onClick={() => checkOff(it.id)}
+                  aria-label={isDone ? `${it.text} - completed. Tap to undo.` : `${it.text} - tap to mark complete`}
+                >
+                  {isDone && <svg className="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l5 5 10-11" /></svg>}
+                </button>
+                <div style={{ flex: 1 }}>
+                  <div className="txt" style={{ fontWeight: 600 }}>{it.text}</div>
+                  {jd && <span className="affirm show" aria-hidden="true">{jd.line}</span>}
+                  <TaskDetail text={it.text} />
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
           <p className="small" style={{ color: "var(--success)", fontWeight: 600, margin: 0 }}>
             <i className="ti ti-circle-check" aria-hidden="true" /> Every action is done. Rebuild or print your plan below.
@@ -166,7 +214,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <h3 style={{ margin: "28px 0 0" }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> Your three tracks</h3>
+      <RouteStub />
+      <h3 style={{ margin: "14px 0 0" }}><i className="ti ti-route" style={{ color: "var(--accent-ink)" }} /> Your three tracks</h3>
       <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 12 }}>
         {([
           ["/pathfinder", "ti-briefcase", "Career", "Your path, your fit, and the benefits that fund the training."],
@@ -275,7 +324,7 @@ export default function Dashboard() {
         <div className="card">
           <h3><i className="ti ti-folders" style={{ color: "var(--accent-ink)" }} /> Documents to gather</h3>
           <div style={{ marginTop: 8 }}>
-            {gp.documents.length ? gp.documents.map((d) => <span key={d} className="tag">{d}</span>) : <span className="muted small">No documents flagged yet.</span>}
+            {gp.documents.length ? gp.documents.map((d) => <span key={d} className="tag">{d}</span>) : <span className="muted small">Nothing to gather yet. When the plan needs paper, it will say so.</span>}
           </div>
         </div>
       </div>

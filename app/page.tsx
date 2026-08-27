@@ -5,6 +5,7 @@ import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { Wrap, Stat, Eyebrow, SectionHead } from "@/components/ui";
 import PlanDemo from "@/components/PlanDemo";
+import Topo from "@/components/Topo";
 
 /** The homepage CTA follows the funnel: build a plan if you don't have one,
  *  get back into it if you do. Sending a returning veteran to the quiz they
@@ -336,9 +337,12 @@ export default function Landing() {
             justifyContent: "space-between",
             gap: 24,
             flexWrap: "wrap",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <div style={{ flex: "1 1 320px", minWidth: 260 }}>
+          <Topo />
+          <div style={{ flex: "1 1 320px", minWidth: 260, position: "relative" }}>
             <div
               style={{
                 fontFamily: "var(--font-display)",
@@ -358,7 +362,7 @@ export default function Landing() {
           <a
             className="btn"
             href="/support"
-            style={{ background: "#FBFAF7", color: "var(--primary-800)", boxShadow: "0 2px 10px rgba(7, 61, 48, .3)" }}
+            style={{ background: "#FBFAF7", color: "var(--primary-800)", boxShadow: "0 2px 10px rgba(7, 61, 48, .3)", position: "relative" }}
           >
             <i className="ti ti-heart" aria-hidden="true" /> Support the mission
           </a>

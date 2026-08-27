@@ -5,6 +5,7 @@ import { useStore } from "@/lib/store";
 import { benefitById, goalById, stateName, BRAND, residenceStates, careerById } from "@/lib/data";
 import { buildFundedPath, FUNDING_VERIFIED, FUNDING_DISCLAIMER } from "@/lib/funding";
 import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reserves";
+import Topo from "@/components/Topo";
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
@@ -43,7 +44,8 @@ export default function PrintGameplan() {
       </div>
 
       <div className="print-head">
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <Topo opacity={0.05} color="var(--primary)" />
+        <div style={{ display: "flex", alignItems: "center", gap: 10, position: "relative" }}>
           <span style={{ width: 30, height: 30, borderRadius: 8, background: "var(--accent)", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <i className="ti ti-route" />
           </span>

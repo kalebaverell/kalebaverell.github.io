@@ -332,6 +332,47 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .route-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 .route-svg .march { stroke-dasharray:8 9; animation:march 3.4s linear infinite; }
 .route-svg .pulse { transform-origin:center; transform-box:fill-box; animation:pulse-dot 2.4s ease-in-out infinite; }
+
+/* ============================================================
+   Personality Pass (approved 2026-08-27) - the voice in motion.
+   Every keyframe animates FROM its start state, so the global
+   reduced-motion kill switch (animation:none) leaves elements in
+   their finished, visible state instead of stranding them hidden.
+   ============================================================ */
+/* 1 · The check-off moment: the tick draws itself, once, when freshly checked.
+   Pre-existing done rows render the tick static - no replay noise on load. */
+.check .box svg.tick { width:18px; height:18px; display:block; }
+.check .box svg.tick path { stroke:#fff; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.check .box.done.fresh svg.tick path { stroke-dasharray:22; animation:tick-draw .28s ease-out; }
+@keyframes tick-draw { from { stroke-dashoffset:22; } to { stroke-dashoffset:0; } }
+.affirm { display:block; font-size:13px; font-weight:600; color:var(--success); opacity:0; }
+.affirm.show { animation:affirm-breathe 2.6s ease-out forwards; }
+@keyframes affirm-breathe { from { opacity:0; transform:translateY(3px); } 6% { opacity:1; transform:translateY(0); } 78% { opacity:1; } to { opacity:0; transform:translateY(0); } }
+/* 2 · Numbers that arrive: the momentum chip pops in with a small spring. */
+.chip-pop { animation:chip-pop .32s cubic-bezier(.2,.9,.3,1.15); }
+@keyframes chip-pop { from { opacity:0; transform:scale(.85); } }
+/* 3 · The radar draws itself - polygon grows from center, dots land staggered
+   (delays set inline; `backwards` hides dots only while their delay runs). */
+.radar-anim .radar-data { transform-origin:150px 150px; animation:radar-in .42s cubic-bezier(.25,.8,.35,1); }
+@keyframes radar-in { from { transform:scale(0); opacity:0; } }
+.radar-anim .radar-pt { animation:radar-pt .25s ease-out backwards; }
+@keyframes radar-pt { from { opacity:0; } }
+/* 4 · The route inside: "you are here" breathes; route stubs reuse the hero's
+   march/pulse keyframes via the .route-svg classes above. */
+.here-breathe { animation:here-breathe 2.6s ease-in-out infinite; }
+@keyframes here-breathe { 0%,100% { box-shadow:0 0 0 0 rgba(217,138,61,.32); } 50% { box-shadow:0 0 0 7px rgba(217,138,61,0); } }
+.route-stub { width:100%; max-width:560px; height:34px; display:block; margin:16px 0 -6px; }
+/* 5 · Press physics, one standard: cards lift, everything tappable compresses,
+   CTA arrows nudge. Transform-only - zero layout shift. */
+.btn { transition:transform .12s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease; }
+.btn:active { transform:scale(.98); }
+a.card { transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease; }
+a.card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--faint); }
+a.card:active { transform:translateY(-1px) scale(.99); }
+.btn .ti-arrow-right, a.card .ti-arrow-right { transition:transform .18s ease; }
+.btn:hover .ti-arrow-right, a.card:hover .ti-arrow-right { transform:translateX(4px); }
+/* 7 · Contour lines: terrain texture for dark bands and quiet corners. */
+.topo-lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; color:#fff; }
 /* Scroll reveals - hidden state only applies once JS confirms it's running */
 html.js [data-reveal] { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
 html.js [data-reveal].in { opacity:1; transform:none; }
@@ -508,7 +549,7 @@ html.js [data-reveal].in { opacity:1; transform:none; }
 
 /* ---- Print document ---- */
 .print-doc { max-width:800px; margin:0 auto; padding:24px 20px; }
-.print-head { border-bottom:3px solid var(--primary); padding-bottom:14px; margin-bottom:18px; }
+.print-head { border-bottom:3px solid var(--primary); padding-bottom:14px; margin-bottom:18px; position:relative; overflow:hidden; }
 .print-section { margin-bottom:20px; }
 .print-section h3 { border-left:4px solid var(--accent); padding-left:10px; }
 .print-box { border:1px solid var(--border); border-radius:10px; padding:14px 16px; }

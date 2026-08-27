@@ -49,10 +49,13 @@ function CountUp({ to }: { to: number }) {
 }
 
 export function Stat({ n, l }: { n: React.ReactNode; l: string }) {
-  const numeric = typeof n === "number" || (typeof n === "string" && /^\d+$/.test(n));
+  // "18" counts up; "18/24" counts the leading number and keeps the suffix
+  // static (Personality Pass 2). Tabular numerals in CSS prevent any shift.
+  const m = typeof n === "string" ? n.match(/^(\d+)(.*)$/) : null;
+  const parsed = typeof n === "number" ? { lead: n, rest: "" } : m ? { lead: Number(m[1]), rest: m[2] } : null;
   return (
     <div className="stat">
-      <div className="n">{numeric ? <CountUp to={Number(n)} /> : n}</div>
+      <div className="n" style={{ fontVariantNumeric: "tabular-nums" }}>{parsed ? <><CountUp to={parsed.lead} />{parsed.rest}</> : n}</div>
       <div className="l">{l}</div>
     </div>
   );

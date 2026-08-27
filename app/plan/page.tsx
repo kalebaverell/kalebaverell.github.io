@@ -6,12 +6,16 @@ import { useStore } from "@/lib/store";
 import type { ActionItem, Status } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
 import TaskDetail from "@/components/TaskDetail";
+import { nextAffirmation } from "@/lib/personality";
 
 const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium: 1, low: 2 };
 
 export default function ActionPlan() {
   const { s, ready, cycleStatus } = useStore();
   const [showAll, setShowAll] = useState(false);
+  // Personality Pass 1: when a task lands on "done", its tick draws itself and
+  // a quiet line breathes in. Only the freshly checked row animates.
+  const [affirm, setAffirm] = useState<{ id: string; line: string } | null>(null);
   if (!ready) return <PageSkeleton kind="cards" />;
   if (!s.gameplan) {
     return (
@@ -32,6 +36,11 @@ export default function ActionPlan() {
   const all = [...gp.plan30, ...gp.plan60, ...gp.plan90];
   const done = all.filter((it) => s.statuses[it.id] === "done").length;
   const status = (it: ActionItem): Status => s.statuses[it.id] || "todo";
+  const tap = (it: ActionItem) => {
+    if (status(it) === "prog") setAffirm({ id: it.id, line: nextAffirmation() });
+    else if (affirm?.id === it.id) setAffirm(null); // un-done says nothing
+    cycleStatus(it.id);
+  };
   // Hidden by default: untouched medium/low items. Anything started or finished
   // always shows - progress never disappears behind a filter.
   const hiddenTotal = all.filter((it) => status(it) === "todo" && it.priority !== "high").length;
@@ -66,7 +75,7 @@ export default function ActionPlan() {
         return (
           <div key={title} className="card" style={{ marginTop: 16 }}>
             <h3><i className="ti ti-calendar" style={{ color: "var(--accent-ink)" }} /> {title}</h3>
-            {open.map((it) => <CheckRow key={it.id} it={it} status={status(it)} onClick={() => cycleStatus(it.id)} showPriority={showAll} />)}
+            {open.map((it) => <CheckRow key={it.id} it={it} status={status(it)} onClick={() => tap(it)} showPriority={showAll} affirm={affirm?.id === it.id ? affirm.line : undefined} />)}
             {open.length === 0 && finished.length === 0 && (
               <p className="muted small">{hidden > 0 ? "Nothing high-priority in this window." : "No items."}</p>
             )}
@@ -78,7 +87,7 @@ export default function ActionPlan() {
             {finished.length > 0 && (
               <div style={{ marginTop: 8, paddingTop: 6, borderTop: "1px dashed var(--border)" }}>
                 <span className="small muted" style={{ fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", fontSize: 11 }}>Done</span>
-                {finished.map((it) => <CheckRow key={it.id} it={it} status="done" onClick={() => cycleStatus(it.id)} showPriority={showAll} />)}
+                {finished.map((it) => <CheckRow key={it.id} it={it} status="done" onClick={() => tap(it)} showPriority={showAll} affirm={affirm?.id === it.id ? affirm.line : undefined} />)}
               </div>
             )}
             {hidden > 0 && !showAll && <p className="small muted" style={{ margin: "8px 0 0" }}>+{hidden} lower-priority hidden</p>}
@@ -92,9 +101,13 @@ export default function ActionPlan() {
   );
 }
 
-function CheckRow({ it, status, onClick, showPriority }: { it: ActionItem; status: Status; onClick: () => void; showPriority?: boolean }) {
-  const boxClass = status === "done" ? "box done" : status === "prog" ? "box prog" : "box";
-  const inner = status === "done" ? <i className="ti ti-check" aria-hidden="true" /> : status === "prog" ? <i className="ti ti-dots" aria-hidden="true" /> : null;
+function CheckRow({ it, status, onClick, showPriority, affirm }: { it: ActionItem; status: Status; onClick: () => void; showPriority?: boolean; affirm?: string }) {
+  // `fresh` gates the tick-draw animation to the row just checked - rows that
+  // were already done render the tick static, so page load stays quiet.
+  const boxClass = status === "done" ? `box done${affirm ? " fresh" : ""}` : status === "prog" ? "box prog" : "box";
+  const inner = status === "done" ? (
+    <svg className="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l5 5 10-11" /></svg>
+  ) : status === "prog" ? <i className="ti ti-dots" aria-hidden="true" /> : null;
   const label = status === "done" ? "Completed" : status === "prog" ? "In progress" : "Not started";
   const next = status === "todo" ? "In progress" : status === "prog" ? "Completed" : "Not started";
   return (
@@ -107,6 +120,7 @@ function CheckRow({ it, status, onClick, showPriority }: { it: ActionItem; statu
             badge is pure noise there; it earns its place in the mixed all-tasks view. */}
         {showPriority && <span className={`pill ${it.priority}`}>{it.priority} priority</span>}
         <div className="txt" style={{ marginTop: showPriority ? 4 : 0 }}>{it.text}</div>
+        {affirm && <span className="affirm show" aria-hidden="true">{affirm}</span>}
         {status !== "todo" && <span className="small muted">{label}</span>}
         <TaskDetail text={it.text} />
       </div>

@@ -11,6 +11,7 @@ import { upcomingPhaseStarts } from "@/lib/timeline";
 import { downloadIcs } from "@/lib/ics";
 import { supabase, supabaseUrl } from "@/lib/supabase";
 import { track } from "@/lib/track";
+import Topo from "@/components/Topo";
 import { listEntries, addEntry, deleteEntry, importLocalEntries, type JournalEntry } from "@/lib/journal";
 import type { ActionItem } from "@/lib/types";
 
@@ -36,14 +37,15 @@ export default function Mirror() {
 function RadarCard({ assessment }: { assessment: Record<string, string | string[]> }) {
   const vec = assessmentVector(assessment);
   return (
-    <div className="card">
+    <div className="card" style={!vec ? { position: "relative", overflow: "hidden" } : undefined}>
       <h3 style={{ marginTop: 0 }}><i className="ti ti-compass" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Your shape</h3>
       {!vec ? (
         <>
-          <p className="muted small" style={{ margin: 0 }}>
+          <Topo opacity={0.05} color="var(--primary)" />
+          <p className="muted small" style={{ margin: 0, position: "relative" }}>
             Take the career test and this becomes a map of what you told us matters - the same signals that rank your paths.
           </p>
-          <Link className="btn ghost sm" href="/pathfinder" style={{ marginTop: 12 }}>Take the career test</Link>
+          <Link className="btn ghost sm" href="/pathfinder" style={{ marginTop: 12, position: "relative" }}>Take the career test</Link>
         </>
       ) : (
         <>
@@ -65,7 +67,7 @@ function Radar({ values, labels }: { values: number[]; labels: string[] }) {
   const poly = values.map((v, i) => pt(i, (R * Math.max(0.4, Math.min(5, v))) / 5).join(",")).join(" ");
   const desc = labels.map((l, i) => `${l} ${values[i].toFixed(1)} of 5`).join(", ");
   return (
-    <svg viewBox="0 0 300 300" role="img" aria-label={`Priorities radar: ${desc}`} style={{ width: "100%", maxWidth: 320, display: "block", margin: "0 auto" }}>
+    <svg viewBox="0 0 300 300" role="img" aria-label={`Priorities radar: ${desc}`} className="radar-anim" style={{ width: "100%", maxWidth: 320, display: "block", margin: "0 auto" }}>
       {[1, 2, 3, 4, 5].map((k) => (
         <polygon key={k} points={ring(k)} fill="none" stroke="var(--border)" strokeWidth={k === 5 ? 1.4 : 0.7} />
       ))}
@@ -73,10 +75,12 @@ function Radar({ values, labels }: { values: number[]; labels: string[] }) {
         const [x, y] = pt(i, R);
         return <line key={i} x1={C} y1={C} x2={x} y2={y} stroke="var(--hairline)" />;
       })}
-      <polygon points={poly} fill="rgba(15,110,86,.18)" stroke="var(--primary)" strokeWidth="2" strokeLinejoin="round" />
+      {/* Personality Pass 3: the polygon grows from center, the dots land in a
+          stagger. Reduced-motion users see the finished shape instantly. */}
+      <polygon className="radar-data" points={poly} fill="rgba(15,110,86,.18)" stroke="var(--primary)" strokeWidth="2" strokeLinejoin="round" />
       {values.map((v, i) => {
         const [x, y] = pt(i, (R * Math.max(0.4, Math.min(5, v))) / 5);
-        return <circle key={i} cx={x} cy={y} r="3.4" fill="var(--primary)" />;
+        return <circle key={i} className="radar-pt" style={{ animationDelay: `${0.3 + i * 0.045}s` }} cx={x} cy={y} r="3.4" fill="var(--primary)" />;
       })}
       {labels.map((l, i) => {
         const [x, y] = pt(i, R + 24);
@@ -268,9 +272,9 @@ function JournalCard({ userId }: { userId: string | null }) {
           {busy ? "Saving…" : "Save note"}
         </button>
       </div>
-      {err && <p className="small" style={{ color: "var(--danger)", margin: "8px 0 0" }}>That didn&apos;t save - try again in a moment.</p>}
+      {err && <p className="small" style={{ color: "var(--danger)", margin: "8px 0 0" }}>That didn&apos;t save. Not your fault - give it a second and hit it again.</p>}
       {entries === null ? (
-        <p className="muted small" style={{ margin: "12px 0 0" }}>Loading&hellip;</p>
+        <p className="muted small" style={{ margin: "12px 0 0" }}>Pulling your notes&hellip;</p>
       ) : entries.length > 0 && (
         <div style={{ display: "grid", gap: 8, marginTop: 14, borderTop: "1px solid var(--border)", paddingTop: 12 }}>
           {entries.slice(0, 4).map((e) => (
