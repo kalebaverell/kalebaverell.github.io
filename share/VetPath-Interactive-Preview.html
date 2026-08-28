@@ -272,6 +272,37 @@
     border-top:1px solid var(--hairline, rgba(20,35,26,.09)); }
   body.has-tabbar .flow-nav { bottom:calc(64px + env(safe-area-inset-bottom)); }
 }
+/* ==== Personality Pass (mirrors the app, approved 2026-08-27). Keyframes
+   animate FROM their start state so reduced-motion leaves final states. ==== */
+.check .box svg.tick{width:18px;height:18px;display:block}
+.check .box svg.tick path{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.check .box.done.fresh svg.tick path{stroke-dasharray:22;animation:tick-draw .28s ease-out}
+@keyframes tick-draw{from{stroke-dashoffset:22}to{stroke-dashoffset:0}}
+.affirm{display:block;font-size:13px;font-weight:600;color:var(--success);opacity:0}
+.affirm.show{animation:affirm-breathe 2.6s ease-out forwards}
+@keyframes affirm-breathe{from{opacity:0;transform:translateY(3px)}6%{opacity:1;transform:translateY(0)}78%{opacity:1}to{opacity:0;transform:translateY(0)}}
+.chip-pop{animation:chip-pop .32s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes chip-pop{from{opacity:0;transform:scale(.85)}}
+.radar-anim .radar-data{transform-origin:150px 150px;animation:radar-in .42s cubic-bezier(.25,.8,.35,1)}
+@keyframes radar-in{from{transform:scale(0);opacity:0}}
+.radar-anim .radar-pt{animation:radar-pt .25s ease-out backwards}
+@keyframes radar-pt{from{opacity:0}}
+.here-breathe{animation:here-breathe 2.6s ease-in-out infinite}
+@keyframes here-breathe{0%,100%{box-shadow:0 0 0 0 rgba(217,138,61,.32)}50%{box-shadow:0 0 0 7px rgba(217,138,61,0)}}
+.route-svg .march{stroke-dasharray:8 9;animation:march 3.4s linear infinite}
+@keyframes march{to{stroke-dashoffset:-64}}
+.route-svg .pulse{transform-origin:center;transform-box:fill-box;animation:pulse-dot 2.4s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.55);opacity:.55}}
+.route-stub{width:100%;max-width:560px;height:34px;display:block;margin:16px 0 -6px}
+.btn{transition:transform .12s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease,color .18s ease}
+.btn:active{transform:scale(.98)}
+a.card{transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--faint)}
+a.card:active{transform:translateY(-1px) scale(.99)}
+.btn .ti-arrow-right,a.card .ti-arrow-right{transition:transform .18s ease}
+.btn:hover .ti-arrow-right,a.card:hover .ti-arrow-right{transform:translateX(4px)}
+.topo-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;color:#fff}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
 </style>
 <script>document.body.setAttribute("data-theme","professional");</script>
@@ -1314,8 +1345,8 @@ function router(){
   if(!open.includes(path) && !S.gameplan){ location.hash="#/onboarding"; }
   // reset per-tool sub-view state when leaving a tool route (mirrors app unmount)
   if(path!==router._last){
-    if(router._last==="/dashboard")DASH_MORE=false;
-    if(router._last==="/plan")PLAN_ALL=false;
+    if(router._last==="/dashboard"){DASH_MORE=false;DASH_HOLD=[];}
+    if(router._last==="/plan"){PLAN_ALL=false;PLAN_AFFIRM=null;}
     if(router._last==="/pathfinder")PF={kind:"intro"};
     if(router._last==="/resume")RES=null;
     if(router._last==="/transcript")TR={branch:"",code:""};
@@ -1326,6 +1357,7 @@ function router(){
   }
   document.getElementById("root").innerHTML = shell(view());
   wire(path);
+  vpCountUp();
   if(path!==router._last) window.scrollTo(0,0);
   router._last=path;
 }
@@ -1702,12 +1734,12 @@ function Dashboard(){
   const PRB={high:0,medium:1,low:2};
   const nextThree=[gp.plan30,gp.plan60,gp.plan90]
     .flatMap(w=>w.slice().sort((x,y)=>PRB[x.priority]-PRB[y.priority]))
-    .filter(it=>S.statuses[it.id]!=="done").slice(0,3);
+    .filter(it=>S.statuses[it.id]!=="done"||DASH_HOLD.some(x=>x.id===it.id)).slice(0,3);
   return `<div class="wrap pad">
     ${gp.crisis?crisisBanner():''}
     <div class="card" style="background:var(--primary);color:#fff;border:none">
       <span class="chip gold"><i class="ti ti-map-pin"></i> ${a.status||'Veteran'}${a.state?' · '+stateName(a.state):''}${a.branch?' · '+a.branch:''}</span>
-      <h2 style="color:#fff;margin:10px 0 4px">Your gameplan, ${esc(S.profile.name)}</h2>
+      ${(()=>{const g=vpGreeting(esc(S.profile.name));return `<h2 style="color:#fff;margin:10px 0 2px">${g.line}</h2><p class="small" style="color:var(--band-gold);margin:0 0 6px;font-weight:600">${g.sub}</p>`;})()}
       <p style="color:#CBD8E4;margin:0;max-width:640px">${gp.headline}</p>
     </div>
 
@@ -1739,21 +1771,22 @@ function Dashboard(){
     </div>`}
 
     <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:24px 0 0">
-      <h3 style="margin:0"><i class="ti ti-checklist" style="color:var(--accent-ink)"></i> Do these first${(()=>{const now=new Date();const n=Object.values(S.doneAt||{}).filter(d=>{const t=new Date(d);return t.getMonth()===now.getMonth()&&t.getFullYear()===now.getFullYear();}).length;return n>0?` <span class="chip" style="margin-left:10px;font-size:12px;vertical-align:middle">${n} this month - steady</span>`:"";})()}</h3>
+      <h3 style="margin:0"><i class="ti ti-checklist" style="color:var(--accent-ink)"></i> Do these first${(()=>{const now=new Date();const n=Object.values(S.doneAt||{}).filter(d=>{const t=new Date(d);return t.getMonth()===now.getMonth()&&t.getFullYear()===now.getFullYear();}).length;return n>0?` <span class="chip chip-pop" style="margin-left:10px;font-size:12px;vertical-align:middle">${n} this month - steady</span>`:"";})()}</h3>
       <span class="small muted">${prog.done} of ${prog.total} done</span>
     </div>
     <div class="card" style="margin-top:12px">
-      ${nextThree.length?nextThree.map(it=>`<div class="check" style="padding:12px 0">
-        <button type="button" class="box" onclick="toggleDone('${it.id}')" aria-label="${esc(it.text)} - tap to mark complete"></button>
-        <div style="flex:1"><div class="txt" style="font-weight:600">${it.text}</div></div>
-      </div>`).join(""):`<p class="small" style="color:var(--success);font-weight:600;margin:0"><i class="ti ti-circle-check" aria-hidden="true"></i> Every action is done. Print your plan below.</p>`}
+      ${nextThree.length?nextThree.map(it=>{const done=S.statuses[it.id]==="done";const jd=DASH_HOLD.find(x=>x.id===it.id);return `<div class="check${done?" done":""}" style="padding:12px 0">
+        <button type="button" class="box${done?" done fresh":""}" onclick="dashToggle('${it.id}')" aria-label="${esc(it.text)}${done?" - completed. Tap to undo.":" - tap to mark complete"}">${done?TICK_SVG:""}</button>
+        <div style="flex:1"><div class="txt" style="font-weight:600">${it.text}</div>${jd?`<span class="affirm show" aria-hidden="true">${jd.line}</span>`:""}</div>
+      </div>`;}).join(""):`<p class="small" style="color:var(--success);font-weight:600;margin:0"><i class="ti ti-circle-check" aria-hidden="true"></i> Every action is done. Print your plan below.</p>`}
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--hairline)">
         <a class="btn sm" href="#/plan"><i class="ti ti-checkbox"></i> Full action plan (${prog.total-prog.done} open)</a>
         <span class="small muted">Three at a time. Finish one and the next steps in.</span>
       </div>
     </div>
 
-    <h3 style="margin:28px 0 0"><i class="ti ti-route" style="color:var(--accent-ink)"></i> Your three tracks</h3>
+    ${routeStubSvg()}
+    <h3 style="margin:14px 0 0"><i class="ti ti-route" style="color:var(--accent-ink)"></i> Your three tracks</h3>
     <div class="grid g3" style="margin-top:12px">
       <a href="#/pathfinder" class="card" style="text-decoration:none;color:var(--ink)">
         <h4 style="margin:0 0 4px"><i class="ti ti-briefcase" aria-hidden="true" style="color:var(--accent-ink)"></i> Career</h4>
@@ -1796,9 +1829,9 @@ function Dashboard(){
 
     ${DASH_MORE?`
     <div class="grid g3" style="margin:16px 0">
-      <div class="stat"><div class="n">${gp.priorities.length}</div><div class="l">top priorities</div></div>
-      <div class="stat"><div class="n">${gp.benefitCategories.length}</div><div class="l">benefit categories</div></div>
-      <div class="stat"><div class="n">${prog.done}/${prog.total}</div><div class="l">actions completed</div></div>
+      <div class="stat"><div class="n" style="font-variant-numeric:tabular-nums" data-countup="${gp.priorities.length}">0</div><div class="l">top priorities</div></div>
+      <div class="stat"><div class="n" style="font-variant-numeric:tabular-nums" data-countup="${gp.benefitCategories.length}">0</div><div class="l">benefit categories</div></div>
+      <div class="stat"><div class="n" style="font-variant-numeric:tabular-nums" data-countup="${prog.done}" data-suffix="/${prog.total}">0</div><div class="l">actions completed</div></div>
     </div>
 
     <div class="card">
@@ -1864,7 +1897,7 @@ function Dashboard(){
       <div class="card"><h3><i class="ti ti-telescope" style="color:var(--accent-ink)"></i> Long-term opportunities</h3>
         <ul style="margin:8px 0 0;padding-left:18px">${gp.longTerm.map(l=>`<li style="margin-bottom:6px">${l}</li>`).join("")}</ul></div>
       <div class="card"><h3><i class="ti ti-folders" style="color:var(--accent-ink)"></i> Documents to gather</h3>
-        <div style="margin-top:8px">${gp.documents.map(d=>`<span class="tag">${d}</span>`).join("")||'<span class="muted small">No documents flagged yet.</span>'}</div></div>
+        <div style="margin-top:8px">${gp.documents.map(d=>`<span class="tag">${d}</span>`).join("")||'<span class="muted small">Nothing to gather yet. When the plan needs paper, it will say so.</span>'}</div></div>
     </div>
 
     ${(gp.skillBridge||(gp.disabilityPrep&&gp.disabilityPrep.length>0))?`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:16px">
@@ -1934,6 +1967,40 @@ function Dashboard(){
     </div>
   </div>`;
 }
+/* ---- Personality Pass helpers (mirrors lib/personality.ts) ---- */
+const VP_AFFIRM=["That's one.","Squared away.","Forward is forward.","Steady counts.","One less thing carrying you."];
+let VP_AFF_I=Math.floor(Math.random()*VP_AFFIRM.length);
+function vpNextAffirm(){ VP_AFF_I=(VP_AFF_I+1)%VP_AFFIRM.length; return VP_AFFIRM[VP_AFF_I]; }
+function vpGreeting(name){
+  const h=new Date().getHours(); const n=name?", "+name:"";
+  if(h<12)return{line:"Morning"+n+".",sub:"The plan is staged. One thing is enough."};
+  if(h<17)return{line:"Afternoon"+n+".",sub:"The plan kept your place."};
+  return{line:"Evening check-in"+n+"?",sub:"Ten quiet minutes counts double."};
+}
+let DASH_HOLD=[]; // checked tasks held for the affirmation beat before stepping out
+function dashToggle(id){
+  if(S.statuses[id]==="done"){ DASH_HOLD=DASH_HOLD.filter(x=>x.id!==id); } // undo: silent
+  else { DASH_HOLD.push({id:id,line:vpNextAffirm()}); setTimeout(()=>{ DASH_HOLD=DASH_HOLD.filter(x=>x.id!==id); if(location.hash.indexOf("dashboard")>-1)router(); },2400); }
+  toggleDone(id);
+}
+let PLAN_AFFIRM=null;
+function planTap(id){ const cur=S.statuses[id]||"todo"; if(cur==="prog")PLAN_AFFIRM={id:id,line:vpNextAffirm()}; else if(PLAN_AFFIRM&&PLAN_AFFIRM.id===id)PLAN_AFFIRM=null; cycleStatus(id); }
+const TICK_SVG='<svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l5 5 10-11"/></svg>';
+function routeStubSvg(){ return `<svg class="route-svg route-stub" viewBox="0 0 560 44" aria-hidden="true"><path class="march" d="M6 30 C 120 6, 230 42, 340 20 S 500 24, 554 12" fill="none" stroke="var(--accent)" stroke-width="2.5"/><circle cx="6" cy="30" r="4.5" fill="var(--primary)"/><circle class="pulse" cx="340" cy="20" r="5.5" fill="var(--accent)"/><circle cx="554" cy="12" r="4.5" fill="var(--border)"/></svg>`; }
+function topoSvg(op,color){ return `<svg class="topo-lines" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:${op}${color?";color:"+color:""}"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M-20 40 C 90 10, 180 70, 300 44 S 520 10, 640 46"/><path d="M-20 78 C 100 46, 200 108, 320 80 S 530 48, 640 84"/><path d="M-20 118 C 90 88, 210 148, 330 118 S 540 86, 640 122"/><path d="M-20 158 C 100 128, 220 188, 340 156 S 540 126, 640 162"/><path d="M-20 198 C 110 168, 230 228, 350 196 S 550 166, 640 202"/><path d="M60 20 C 120 60, 110 120, 70 170"/><path d="M420 10 C 470 70, 460 140, 410 205"/></g></svg>`; }
+function vpCountUp(){
+  const els=document.querySelectorAll("[data-countup]");
+  if(!els.length)return;
+  const still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  els.forEach(el=>{
+    const target=parseInt(el.getAttribute("data-countup"),10)||0, suf=el.getAttribute("data-suffix")||"";
+    if(still||target===0){ el.textContent=target+suf; return; }
+    const t0=performance.now(), dur=520;
+    function tick(now){ const p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,3); el.textContent=Math.round(target*e)+suf; if(p<1)requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  });
+}
+
 // Journey strip node + one-tap task completion (mirrors the app's JourneyStep / toggleDone).
 function journeyStep(n,label,state){
   const bg=state==="done"?"var(--success)":state==="now"?"var(--accent)":"var(--surface-2)";
@@ -2570,14 +2637,17 @@ function ActionPlan(){
 }
 function checkRow(it){
   const st=S.statuses[it.id]||"todo";
-  const boxClass = st==="done"?"box done":st==="prog"?"box prog":"box";
-  const icon = st==="done"?'<i class="ti ti-check" aria-hidden="true"></i>':st==="prog"?'<i class="ti ti-dots" aria-hidden="true"></i>':'';
+  // Personality Pass 1: only the freshly checked row animates its tick + affirmation.
+  const fresh=PLAN_AFFIRM&&PLAN_AFFIRM.id===it.id;
+  const boxClass = st==="done"?("box done"+(fresh?" fresh":"")):st==="prog"?"box prog":"box";
+  const icon = st==="done"?TICK_SVG:st==="prog"?'<i class="ti ti-dots" aria-hidden="true"></i>':'';
   const label = st==="done"?"Completed":st==="prog"?"In progress":"Not started";
   const next = st==="todo"?"In progress":st==="prog"?"Completed":"Not started";
   return `<div class="check ${st==='done'?'done':''}">
-    <button type="button" class="${boxClass}" onclick="cycleStatus('${it.id}')" aria-label="${esc(it.text)} - status: ${label}. Click to mark as ${next}." title="Status: ${label} - click to mark as ${next}">${icon}</button>
+    <button type="button" class="${boxClass}" onclick="planTap('${it.id}')" aria-label="${esc(it.text)} - status: ${label}. Click to mark as ${next}." title="Status: ${label} - click to mark as ${next}">${icon}</button>
     <div style="flex:1"><span class="pill ${it.priority}">${it.priority} priority</span>
       <div class="txt" style="margin-top:4px">${it.text}</div>
+      ${fresh&&st==="done"?`<span class="affirm show" aria-hidden="true">${PLAN_AFFIRM.line}</span>`:""}
       <span class="small muted">${label} - click the box to update</span></div>
   </div>`;
 }
@@ -2608,11 +2678,11 @@ function radarSvg(vec){
   const vals=RADAR_AXES.map(([d])=>Math.max(.4,Math.min(5,vec[d]!=null?vec[d]:2.5)));
   const poly=vals.map((v,i)=>pt(i,(R*v)/5).join(",")).join(" ");
   const desc=RADAR_AXES.map(([,l],i)=>l+" "+vals[i].toFixed(1)+" of 5").join(", ");
-  return `<svg viewBox="0 0 300 300" role="img" aria-label="Priorities radar: ${desc}" style="width:100%;max-width:320px;display:block;margin:0 auto">
+  return `<svg viewBox="0 0 300 300" role="img" aria-label="Priorities radar: ${desc}" class="radar-anim" style="width:100%;max-width:320px;display:block;margin:0 auto">
     ${[1,2,3,4,5].map(k=>`<polygon points="${ring(k)}" fill="none" stroke="var(--border)" stroke-width="${k===5?1.4:.7}"/>`).join("")}
     ${RADAR_AXES.map((_,i)=>{const [x,y]=pt(i,R);return `<line x1="${C}" y1="${C}" x2="${x}" y2="${y}" stroke="var(--hairline)"/>`;}).join("")}
-    <polygon points="${poly}" fill="rgba(15,110,86,.18)" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
-    ${vals.map((v,i)=>{const [x,y]=pt(i,(R*v)/5);return `<circle cx="${x}" cy="${y}" r="3.4" fill="var(--primary)"/>`;}).join("")}
+    <polygon class="radar-data" points="${poly}" fill="rgba(15,110,86,.18)" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+    ${vals.map((v,i)=>{const [x,y]=pt(i,(R*v)/5);return `<circle class="radar-pt" style="animation-delay:${(0.3+i*0.045).toFixed(3)}s" cx="${x}" cy="${y}" r="3.4" fill="var(--primary)"/>`;}).join("")}
     ${RADAR_AXES.map(([,l],i)=>{const [x,y]=pt(i,R+24);return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" style="font-size:11.5px;font-weight:600;fill:var(--muted)">${l}</text>`;}).join("")}
   </svg>`;
 }
@@ -2645,10 +2715,10 @@ function mirror(){
   const recap=dated.length?`<p class="small" style="margin:4px 0 0;padding-top:10px;border-top:1px solid var(--border);color:var(--ink-strong);font-weight:600">Since ${new Date(dated[0]).toLocaleDateString(undefined,{month:"short",year:"numeric"})}: ${done.length} action${done.length===1?"":"s"} checked. Forward is forward.</p>`:"";
   const notes=journalList();
   return `<div class="grid" style="gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-    <div class="card">
+    <div class="card"${vec?"":' style="position:relative;overflow:hidden"'}>
       <h3 style="margin-top:0"><i class="ti ti-compass" style="color:var(--accent-ink)"></i> Your shape</h3>
       ${vec?radarSvg(vec)+`<p class="muted small" style="margin:8px 0 0">From your own answers - re-take the career test anytime and this moves with you.</p>`
-        :`<p class="muted small" style="margin:0">Take the career test and this becomes a map of what you told us matters.</p><a class="btn ghost sm" href="#/pathfinder" style="margin-top:12px;display:inline-flex">Take the career test</a>`}
+        :topoSvg(0.05,"var(--primary)")+`<p class="muted small" style="margin:0;position:relative">Take the career test and this becomes a map of what you told us matters.</p><a class="btn ghost sm" href="#/pathfinder" style="margin-top:12px;display:inline-flex;position:relative">Take the career test</a>`}
     </div>
     <div class="card">
       <h3 style="margin-top:0"><i class="ti ti-file-text" style="color:var(--accent-ink)"></i> Your notes</h3>
@@ -4203,7 +4273,7 @@ function tlPlanView(a,plan){
         <h3 style="margin:0">${esc(p.label)}</h3>
         <span class="muted small">${esc(p.window)}</span>
         ${p.dates?`<span class="chip sm" style="background:var(--chip);color:var(--primary)"><i class="ti ti-calendar" aria-hidden="true"></i> ${esc(p.dates)}</span>`:""}
-        <span class="pill${chip.cls?" "+chip.cls:""}">${chip.label}</span>
+        <span class="pill${chip.cls?" "+chip.cls:""}${p.status==="current"?" here-breathe":""}">${chip.label}</span>
       </div>
       <p class="muted small" style="margin:8px 0 12px">${esc(p.narrative)}</p>
       ${p.tasks.length===0
