@@ -191,8 +191,13 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (ep[3]) plan90.push(item(`${career.label}: ${ep[3]}`, "medium"));
     plan90.push(item("Reach out to 2 people already doing this work (see your networking list)", "medium"));
   }
+  // farOut guard (gauntlet find, 2026-08-28): goal playbooks are written for the
+  // separation window, so their TAP/BDD steps would tell someone 2+ years out to
+  // start a 365-day-window program today. The long-runway set above covers what
+  // is real now, and the two-years-out reminder points back to these later.
+  const separationWindowStep = (s: string) => /Transition Assistance Program|Benefits Delivery at Discharge/i.test(s);
   goals.forEach((g) => {
-    const st = g.steps;
+    const st = farOut ? g.steps.filter((s) => !separationWindowStep(s)) : g.steps;
     if (st[0]) plan30.push(item(st[0], g.sensitive ? "medium" : "high"));
     if (st[1]) plan30.push(item(st[1], "medium"));
     if (st[2]) plan60.push(item(st[2], "medium"));
