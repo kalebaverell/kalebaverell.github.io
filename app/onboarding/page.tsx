@@ -8,7 +8,7 @@ import { useAuth } from "@/lib/auth";
 import { INTAKE, INTAKE_NOTES_PROMPT, STATES, GOALS } from "@/lib/data";
 import type { Answers } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
-import { track } from "@/lib/track";
+import { track, trackOnce, INTAKE_STEP_EVENTS } from "@/lib/track";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
@@ -27,6 +27,9 @@ export default function Onboarding() {
 }
 
 function AccountGate({ onStart, notice }: { onStart: () => void; notice?: string | null }) {
+  // Funnel measurement: how many people reach the signup wall. Compared against
+  // intake-1-basics, this is the wall's cost in plans.
+  useEffect(() => { trackOnce("intake-gate"); }, []);
   return (
     <Wrap narrow>
       <Link href="/" className="muted small" style={{ display: "inline-flex", gap: 6, alignItems: "center", marginBottom: 14 }}>
@@ -100,8 +103,18 @@ function Intake() {
   // button sat at the bottom of the previous step.
   useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [step]);
 
+  // Funnel measurement (2026-08-28): one event per step reached, deduped per
+  // session so Back/Next does not inflate it. Where these counts fall off is
+  // where we are losing two thirds of the people who start.
+  useEffect(() => {
+    const ev = INTAKE_STEP_EVENTS[step];
+    if (ev) trackOnce(ev);
+  }, [step]);
+
   const finish = () => {
     if (!s.answers.topGoals || s.answers.topGoals.length === 0) {
+      // A dead end at the finish line: they clicked Generate and got stopped.
+      trackOnce("intake-blocked-goals");
       alert("Pick at least one top goal to generate your plan.");
       return;
     }
