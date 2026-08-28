@@ -1178,8 +1178,11 @@ function generateGameplan(a, path){
     if(ep[3])plan90.push(item(career.label+": "+ep[3],"medium"));
     plan90.push(item("Reach out to 2 people already doing this work (see your networking list)","medium"));
   }
+  // farOut guard (mirrors lib/rules.ts 4f8fa4c): goal playbooks are written for
+  // the separation window - their TAP/BDD steps don't apply 2+ years out.
+  const sepWindowStep=s=>/Transition Assistance Program|Benefits Delivery at Discharge/i.test(s);
   goals.forEach(g=>{
-    const st=g.steps;
+    const st=farOut?g.steps.filter(s=>!sepWindowStep(s)):g.steps;
     if(st[0])plan30.push(item(st[0], g.sensitive?"medium":"high"));
     if(st[1])plan30.push(item(st[1],"medium"));
     if(st[2])plan60.push(item(st[2],"medium"));
