@@ -15,6 +15,7 @@ import { currentFocus } from "@/lib/weeklyFocus";
 import { track } from "@/lib/track";
 import { nextAffirmation, greetingFor } from "@/lib/personality";
 import RouteStub from "@/components/RouteStub";
+import PhaseNow from "@/components/PhaseNow";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
 
@@ -164,6 +165,10 @@ export default function Dashboard() {
           <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Pick my path</Link>
         </div>
       )}
+
+      {/* The plan moving on its own: which transition phase their own separation
+          date puts them in today, and what opens next. Silent without an EAS date. */}
+      <PhaseNow easDate={a.easDate} />
 
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", margin: "24px 0 0" }}>
         <h3 style={{ margin: 0 }}>

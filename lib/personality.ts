@@ -20,6 +20,27 @@ export function nextAffirmation(): string {
   return AFFIRMATIONS[cursor];
 }
 
+/** Journal prompts. The notes card shipped as an empty textarea and drew zero
+ *  entries in its first week - blank boxes get ignored, specific questions get
+ *  answers. Rotates weekly so a returning veteran meets a different question
+ *  rather than the same wall. Every one is answerable in a sentence, and none
+ *  of them ask about anything VetPath can't help with. */
+const JOURNAL_PROMPTS = [
+  "What's the one thing about getting out that you keep putting off?",
+  "What would make the next 30 days feel like a win?",
+  "What's a question you wish someone would just answer straight?",
+  "Who do you still need to talk to, and about what?",
+  "What are you actually good at that your resume doesn't say?",
+  "What's changed since you last looked at this plan?",
+  "What do you want your first year out to look like?",
+];
+
+/** This week's prompt - same for the whole week, new one next week. */
+export function journalPrompt(now: Date = new Date()): string {
+  const day = Math.floor(now.getTime() / 86400000);
+  return JOURNAL_PROMPTS[Math.floor(day / 7) % JOURNAL_PROMPTS.length];
+}
+
 /** Time-of-day greeting for the dashboard header. Subs make no numeric
  *  claims - anything data-backed (the return streak) is layered on by the
  *  caller only when the ledger actually supports it. */

@@ -12,6 +12,7 @@ import { downloadIcs } from "@/lib/ics";
 import { supabase, supabaseUrl } from "@/lib/supabase";
 import { track } from "@/lib/track";
 import Topo from "@/components/Topo";
+import { journalPrompt } from "@/lib/personality";
 import { listEntries, addEntry, deleteEntry, importLocalEntries, type JournalEntry } from "@/lib/journal";
 import type { ActionItem } from "@/lib/types";
 
@@ -256,13 +257,16 @@ function JournalCard({ userId }: { userId: string | null }) {
   return (
     <div className="card">
       <h3 style={{ marginTop: 0 }}><i className="ti ti-file-text" aria-hidden="true" style={{ color: "var(--accent-ink)" }} /> Your notes</h3>
+      {/* A blank box drew zero entries in its first week. A specific question
+          gets answers - it rotates weekly, and the box still takes anything. */}
+      <p style={{ margin: "0 0 4px", fontWeight: 600, color: "var(--ink-strong)" }}>{journalPrompt()}</p>
       <p className="muted small" style={{ marginTop: 0 }}>
-        Reminders, considerations, things to not forget - {userId ? "saved privately to your account." : "saved in this browser; sign in and they follow you."}
+        Or anything else worth remembering - {userId ? "saved privately to your account." : "saved in this browser; sign in and they follow you."}
       </p>
       <textarea
         className="field"
         rows={2}
-        placeholder="e.g. Ask the VSO about the knee - it's documented in 2019 records."
+        placeholder="A sentence is plenty."
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
         style={{ resize: "vertical", minHeight: 56 }}

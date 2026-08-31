@@ -150,6 +150,32 @@ export function phaseStartDate(easDate: string, phaseId: PhaseId): Date | null {
   return d;
 }
 
+/** Which phase the member is standing in right now, derived purely from their
+ *  own separation date. Null when no EAS date is set, or when they sit outside
+ *  the modelled window (more than 12 months out, or more than 2 years past) -
+ *  callers must render nothing rather than invent a phase.
+ *
+ *  This exists so the dashboard can say what changed without the member having
+ *  to open the timeline: the plan moves with the calendar, not with our nagging. */
+export function currentPhaseFor(easDate: string, now: Date = new Date()):
+  { id: PhaseId; label: string; window: string; dates: string } | null {
+  const m = monthsToEas(easDate, now);
+  if (m == null) return null;
+  const meta = PHASE_META.find((p) => m <= p.hi && m > p.lo);
+  if (!meta) return null;
+  return { id: meta.id, label: meta.label, window: meta.window, dates: phaseDates(easDate, meta.hi, meta.lo) };
+}
+
+/** Days until the next phase begins, with its label. Null when nothing is ahead
+ *  (already in the final phase) or no EAS date is set. */
+export function nextPhaseIn(easDate: string, now: Date = new Date()):
+  { label: string; date: Date; days: number } | null {
+  const next = upcomingPhaseStarts(easDate, 1)[0];
+  if (!next) return null;
+  const days = Math.ceil((next.date.getTime() - now.getTime()) / 86400000);
+  return { label: next.label, date: next.date, days };
+}
+
 /** The next `n` phase-start dates still ahead of today - the Me Dashboard's
  *  "coming up" list. Empty when no EAS date is set or nothing is ahead. */
 export function upcomingPhaseStarts(easDate: string, n = 3): { id: PhaseId; label: string; date: Date }[] {
