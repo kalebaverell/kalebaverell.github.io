@@ -1794,6 +1794,7 @@ function Dashboard(){
       </div>
     </div>
 
+    ${phaseNowCard()}
     ${routeStubSvg()}
     <h3 style="margin:14px 0 0"><i class="ti ti-route" style="color:var(--accent-ink)"></i> Your three tracks</h3>
     <div class="grid g3" style="margin-top:12px">
@@ -1996,6 +1997,49 @@ let PLAN_AFFIRM=null;
 function planTap(id){ const cur=S.statuses[id]||"todo"; if(cur==="prog")PLAN_AFFIRM={id:id,line:vpNextAffirm()}; else if(PLAN_AFFIRM&&PLAN_AFFIRM.id===id)PLAN_AFFIRM=null; cycleStatus(id); }
 const TICK_SVG='<svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l5 5 10-11"/></svg>';
 function routeStubSvg(){ return `<svg class="route-svg route-stub" viewBox="0 0 560 44" aria-hidden="true"><path class="march" d="M6 30 C 120 6, 230 42, 340 20 S 500 24, 554 12" fill="none" stroke="var(--accent)" stroke-width="2.5"/><circle cx="6" cy="30" r="4.5" fill="var(--primary)"/><circle class="pulse" cx="340" cy="20" r="5.5" fill="var(--accent)"/><circle cx="554" cy="12" r="4.5" fill="var(--border)"/></svg>`; }
+
+/* ---- "Where you are right now" (mirrors components/PhaseNow.tsx): the plan
+   moving on its own, driven by the member's own EAS date. Renders NOTHING
+   without a real date, and never mentions how long they have been away. ---- */
+function phaseNowCard(){
+  if(!TL.hydrated)tlHydrate();
+  const eas=TL.a.easDate;
+  if(!/^\d{4}-\d{2}$/.test(eas||""))return "";
+  const [y,mo]=eas.split("-").map(Number);
+  if(!(mo>=1&&mo<=12))return "";
+  const anchor=new Date(y,mo-1,15);
+  const m=(anchor.getTime()-Date.now())/(1000*60*60*24*30.44);
+  const cur=TL_PHASE_META.find(p=>m<=p.hi&&m>p.lo);
+  const up=mirrorUpcoming();
+  const next=up.length?up[0]:null;
+  if(!cur&&!next)return "";
+  const heading=cur?cur.label:"Your timeline hasn't started yet";
+  const detail=cur?cur.window:"The phases below begin about a year before you separate.";
+  const days=next?Math.ceil((next.date.getTime()-Date.now())/86400000):0;
+  return `<a href="#/timeline" class="card" style="margin-top:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;text-decoration:none;color:var(--ink);border-left:3px solid var(--primary)">
+    <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;background:var(--chip-bg);color:var(--chip-ink);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0"><i class="ti ti-map-pin"></i></span>
+    <span style="flex:1;min-width:220px">
+      <span class="small muted" style="font-weight:600;letter-spacing:.02em">Where you are right now</span>
+      <h4 style="margin:2px 0">${esc(heading)}</h4>
+      <span class="muted small">${esc(detail)}</span>
+      ${next?`<span class="small" style="display:block;margin-top:6px;color:var(--accent-ink);font-weight:600"><i class="ti ti-arrow-right" aria-hidden="true"></i> ${esc(next.label)} opens ${next.date.toLocaleDateString(undefined,{month:"long",day:"numeric"})}${days>0?` - ${days} day${days===1?"":"s"} out`:""}</span>`:""}
+    </span>
+    <span class="small" style="font-weight:600;color:var(--info);display:inline-flex;align-items:center;gap:4px">See the timeline <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+  </a>`;
+}
+
+/* Rotating weekly journal prompt (mirrors journalPrompt() in lib/personality.ts) -
+   the blank textarea drew zero entries, a real question gets answers. */
+const JOURNAL_PROMPTS=[
+  "What's the one thing about getting out that you keep putting off?",
+  "What would make the next 30 days feel like a win?",
+  "What's a question you wish someone would just answer straight?",
+  "Who do you still need to talk to, and about what?",
+  "What are you actually good at that your resume doesn't say?",
+  "What's changed since you last looked at this plan?",
+  "What do you want your first year out to look like?"
+];
+function journalPrompt(){ const day=Math.floor(Date.now()/86400000); return JOURNAL_PROMPTS[Math.floor(day/7)%JOURNAL_PROMPTS.length]; }
 function topoSvg(op,color){ return `<svg class="topo-lines" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:${op}${color?";color:"+color:""}"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M-20 40 C 90 10, 180 70, 300 44 S 520 10, 640 46"/><path d="M-20 78 C 100 46, 200 108, 320 80 S 530 48, 640 84"/><path d="M-20 118 C 90 88, 210 148, 330 118 S 540 86, 640 122"/><path d="M-20 158 C 100 128, 220 188, 340 156 S 540 126, 640 162"/><path d="M-20 198 C 110 168, 230 228, 350 196 S 550 166, 640 202"/><path d="M60 20 C 120 60, 110 120, 70 170"/><path d="M420 10 C 470 70, 460 140, 410 205"/></g></svg>`; }
 function vpCountUp(){
   const els=document.querySelectorAll("[data-countup]");
@@ -2731,8 +2775,9 @@ function mirror(){
     </div>
     <div class="card">
       <h3 style="margin-top:0"><i class="ti ti-file-text" style="color:var(--accent-ink)"></i> Your notes</h3>
-      <p class="muted small" style="margin-top:0">Reminders and considerations - stored in this browser only (demo).</p>
-      <textarea id="journal-draft" class="field" rows="2" placeholder="e.g. Ask the VSO about the knee - it's documented in 2019 records." style="resize:vertical;min-height:56px"></textarea>
+      <p style="margin:0 0 4px;font-weight:600;color:var(--ink-strong)">${journalPrompt()}</p>
+      <p class="muted small" style="margin-top:0">Or anything else worth remembering - stored in this browser only (demo).</p>
+      <textarea id="journal-draft" class="field" rows="2" placeholder="A sentence is plenty." style="resize:vertical;min-height:56px"></textarea>
       <div style="margin-top:8px"><button type="button" class="btn sm" onclick="journalAdd()">Save note</button></div>
       ${notes.length?`<div style="display:grid;gap:8px;margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
         ${notes.slice(0,4).map(e=>`<div style="display:flex;gap:8px;align-items:flex-start"><span class="small" style="flex:1;white-space:pre-wrap">${esc(e.body)}<span class="muted" style="display:block;font-size:12px">${fmt(e.at)}</span></span><button type="button" onclick="journalDel('${e.id}')" aria-label="Delete note" style="background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;min-height:32px"><i class="ti ti-x"></i></button></div>`).join("")}
