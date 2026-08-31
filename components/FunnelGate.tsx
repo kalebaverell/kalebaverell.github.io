@@ -18,6 +18,7 @@ const OPEN_PATHS = new Set([
   "terms",
   "do-not-sell", // a privacy control can never be behind a funnel
   "support", // supporters aren't veterans with plans - never funnel them
+  "guides", // free editorial content - the whole point is that it's ungated
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
 ]);
@@ -25,7 +26,7 @@ const OPEN_PATHS = new Set([
 // Per-page gate identity: same gate mechanic everywhere, but each door describes
 // the room behind it. Copy reuses claims already made (and cited) elsewhere on
 // the site - no new numbers are introduced here. Unmapped routes get the generic card.
-const GATES: Record<string, { icon: string; eyebrow: string; title: string; sub: string; inside: [string, string][] }> = {
+const GATES: Record<string, { icon: string; eyebrow: string; title: string; sub: string; inside: [string, string][]; guide?: [string, string] }> = {
   benefits: {
     icon: "ti-award", eyebrow: "Benefits library", title: "The benefits you earned, in one place.",
     sub: "Federal and state programs matched to your answers - every card linked to its official source.",
@@ -34,6 +35,7 @@ const GATES: Record<string, { icon: string; eyebrow: string; title: string; sub:
       ["ti-scale", "Federal benefits checked against official sources"],
       ["ti-check", "Ordered around your plan's next steps"],
     ],
+    guide: ["/guides/state-benefits", "Prefer to read first? Every state's programs, free and ungated"],
   },
   family: {
     icon: "ti-users", eyebrow: "For families", title: "Transition happens to the whole household.",
@@ -56,6 +58,7 @@ const GATES: Record<string, { icon: string; eyebrow: string; title: string; sub:
   timeline: {
     icon: "ti-calendar-check", eyebrow: "Transition timeline", title: "Your months, mapped.",
     sub: "A phase-by-phase map from today to landed, built around your separation date.",
+    guide: ["/guides/transition-timeline", "Prefer to read first? The full timeline guide, free and ungated"],
     inside: [
       ["ti-calendar-check", "Phases mapped to your separation date"],
       ["ti-file-text", "Deadlines linked to their official sources"],
@@ -148,6 +151,11 @@ export default function FunnelGate({ children }: { children: React.ReactNode }) 
         <p className="small muted" style={{ margin: "18px 0 0" }}>
           {midIntake ? "Saved automatically" : "About 10 minutes"} · free · <Link href="/trust">why you can trust it</Link>
         </p>
+        {g?.guide && (
+          <p className="small" style={{ margin: "10px 0 0" }}>
+            <Link href={g.guide[0]}><i className="ti ti-file-text" aria-hidden="true" /> {g.guide[1]}</Link>
+          </p>
+        )}
       </div>
     </Wrap>
   );

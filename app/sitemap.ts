@@ -15,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
   return [
     at("/", 1),
+    at("/guides/transition-timeline/", 0.9),
+    at("/guides/state-benefits/", 0.9),
+    at("/guides/faq/", 0.8),
+    at("/guides/", 0.7),
     at("/trust/", 0.8),
     at("/onboarding/", 0.8),
     at("/housing/", 0.7),

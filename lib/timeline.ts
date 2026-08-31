@@ -100,7 +100,7 @@ export interface TransitionTimeline {
   summary: string;
 }
 
-const PHASE_META: { id: PhaseId; label: string; window: string; hi: number; lo: number }[] = [
+export const PHASE_META: { id: PhaseId; label: string; window: string; hi: number; lo: number }[] = [
   { id: "p1", label: "Early planning", window: "T-12 to T-9 months", hi: 12, lo: 9 },
   { id: "p2", label: "TAP & benefits research", window: "T-9 to T-6 months", hi: 9, lo: 6 },
   { id: "p3", label: "Applications & ramp-up", window: "T-6 to T-3 months", hi: 6, lo: 3 },
@@ -320,23 +320,57 @@ function orderTasks(tasks: TimelineTask[], priorities: FocusArea[]): TimelineTas
   return [...tasks].sort((a, b) => rank(a) - rank(b));
 }
 
+/** One-line character for each phase - shared by the tool's narratives and the
+ *  public guide so the two can never drift apart. */
+export const PHASE_INTROS: Record<PhaseId, string> = {
+  p1: "This quarter is about positioning, not paperwork - accounts open, records gathering, and the family pointed the same direction.",
+  p2: "TAP is the anchor of this window; everything else builds on what you learn there.",
+  p3: "This is the highest-stakes stretch before the door: applications go out and the claim window opens.",
+  p4: "Out-processing rewards the detail-checkers - slow down on anything you sign.",
+  p5: "The first six months are about landing well: enrollment done, income flowing, and grace for the adjustment.",
+  p6: "Stabilization means honest checkpoints - on the job, the location, and how you're actually doing.",
+  p7: "Now you're building, not transitioning - compound the career, finish the education, keep the benefits current.",
+};
+
 function narrative(phase: TimelinePhase, a: TimelineAnswers): string {
   const dl = phase.tasks.filter((t) => t.deadline);
   const ess = phase.tasks.filter((t) => t.essential && !t.deadline);
-  const parts: string[] = [];
-  switch (phase.id) {
-    case "p1": parts.push("This quarter is about positioning, not paperwork - accounts open, records gathering, and the family pointed the same direction."); break;
-    case "p2": parts.push("TAP is the anchor of this window; everything else builds on what you learn there."); break;
-    case "p3": parts.push("This is the highest-stakes stretch before the door: applications go out and the claim window opens."); break;
-    case "p4": parts.push("Out-processing rewards the detail-checkers - slow down on anything you sign."); break;
-    case "p5": parts.push("The first six months are about landing well: enrollment done, income flowing, and grace for the adjustment."); break;
-    case "p6": parts.push("Stabilization means honest checkpoints - on the job, the location, and how you're actually doing."); break;
-    case "p7": parts.push("Now you're building, not transitioning - compound the career, finish the education, keep the benefits current."); break;
-  }
+  const parts: string[] = [PHASE_INTROS[phase.id]];
   if (dl.length) parts.push(`Time-sensitive here: ${dl.map((t) => t.title).join("; ")}.`);
   else if (ess.length) parts.push(`Don't skip: ${ess[0].title}.`);
   if (phase.status === "current") parts.push("You're in this window right now - start at the top.");
   return parts.join(" ");
+}
+
+/** The in-service moves for members more than two years out - the ones that only
+ *  exist (or only compound) while still serving. Shared by the tool and the
+ *  public guide. */
+export const LONG_RUNWAY_TASKS: TimelineTask[] = [
+  { id: "lrGiTransfer", phase: "p1", area: "education", essential: true, title: "Decide on the Post-9/11 GI Bill transfer to your spouse or kids", notes: "It can only be elected while you're still serving and adds a service commitment - the earlier the conversation, the more options stay open.", source: { label: "VA - transfer Post-9/11 GI Bill benefits", url: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" } },
+  { id: "lrTa", phase: "p1", area: "education", title: "Use Tuition Assistance while you serve", notes: "Chip away at the degree or credential now - before your GI Bill ever comes out.", source: { label: "Military OneSource - Tuition Assistance", url: "https://www.militaryonesource.mil/benefits/tuition-assistance/" } },
+  { id: "lrRecords", phase: "p1", area: "benefits", essential: true, title: "Build the records habit now", notes: "Every injury, treatment, and training certificate goes into one folder from today - future-you files claims from this folder." },
+];
+
+/** The complete conditional task library, merged across the branches that are
+ *  mutually exclusive for any single member (finances, retiree-only items).
+ *  Powers the public guide so it can never drift from the tool. */
+export function fullTaskLibrary(): TimelineTask[] {
+  const base: TimelineAnswers = {
+    ...freshTimelineAnswers(),
+    goals: ["employment", "education", "business"],
+    family: ["spouse", "school-kids", "young-kids"],
+    claims: "yes",
+    yearsOfService: "20+",
+    finances: "income-now",
+    sepWindow: "9-12",
+    priorities: ["benefits", "employment", "wellbeing"],
+  };
+  const variant: TimelineAnswers = { ...base, yearsOfService: "4-10", finances: "runway", priorities: ["financial", "family", "wellbeing"] };
+  const seen = new Map<string, TimelineTask>();
+  for (const t of [...buildTasks(base), ...buildTasks(variant)]) {
+    if (!seen.has(t.id)) seen.set(t.id, { ...t, weighted: false });
+  }
+  return [...seen.values()];
 }
 
 export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
@@ -351,11 +385,7 @@ export function buildTimeline(a: TimelineAnswers): TransitionTimeline {
   // out prepends the in-service items that compound with time - instead of
   // pretending the member is at T-12.
   if ((em ?? 0) > 24) {
-    all.unshift(
-      { id: "lrGiTransfer", phase: "p1", area: "education", essential: true, title: "Decide on the Post-9/11 GI Bill transfer to your spouse or kids", notes: "It can only be elected while you're still serving and adds a service commitment - the earlier the conversation, the more options stay open.", source: { label: "VA - transfer Post-9/11 GI Bill benefits", url: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" } },
-      { id: "lrTa", phase: "p1", area: "education", title: "Use Tuition Assistance while you serve", notes: "Chip away at the degree or credential now - before your GI Bill ever comes out.", source: { label: "Military OneSource - Tuition Assistance", url: "https://www.militaryonesource.mil/benefits/tuition-assistance/" } },
-      { id: "lrRecords", phase: "p1", area: "benefits", essential: true, title: "Build the records habit now", notes: "Every injury, treatment, and training certificate goes into one folder from today - future-you files claims from this folder." },
-    );
+    all.unshift(...LONG_RUNWAY_TASKS.map((t) => ({ ...t })));
   }
 
   const phases: TimelinePhase[] = PHASE_META.map((p) => {

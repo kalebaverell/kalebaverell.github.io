@@ -17,6 +17,14 @@ const COLS: { head: string; links: [string, string][] }[] = [
     ],
   },
   {
+    head: "Guides",
+    links: [
+      ["/guides/transition-timeline", "Transition timeline"],
+      ["/guides/state-benefits", "State benefits"],
+      ["/guides/faq", "Questions answered"],
+    ],
+  },
+  {
     head: "Company",
     links: [
       ["/trust", "Why trust us"],
