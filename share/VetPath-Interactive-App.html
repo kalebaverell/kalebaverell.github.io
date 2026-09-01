@@ -77,7 +77,21 @@
   /* ---- Announcement bar + top navigation (light enterprise garment, mirrored from the app) ---- */
   .announce{background:var(--primary-900);color:rgba(251,250,247,.85);text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.01em}
   .announce b{color:var(--band-gold);font-weight:600}
-  .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 93%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--hairline)}
+  .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 93%, transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--hairline);transition:background .28s ease, box-shadow .28s ease, border-color .28s ease}
+  /* Homepage ribbon (mirrors site commit 247cbba): transparent over the dark
+     hero at the top of the landing page, solid the moment scrolling begins. */
+  .nav--hero{margin-bottom:-67px}
+  .nav--hero:not(.is-solid){background:transparent;backdrop-filter:none;border-bottom-color:transparent}
+  .nav--hero.is-solid{background:var(--surface);box-shadow:0 6px 22px rgba(20,35,26,.06)}
+  .nav--hero:not(.is-solid) .brand-word,
+  .nav--hero:not(.is-solid) .nav-link,
+  .nav--hero:not(.is-solid) .nav-user{color:#F7FAF6}
+  .nav--hero:not(.is-solid) .nav-link i{color:rgba(247,250,246,.72)}
+  .nav--hero:not(.is-solid) .nav-link:hover{color:#fff;background:rgba(255,255,255,.13)}
+  .nav--hero:not(.is-solid) .nav-aa,
+  .nav--hero:not(.is-solid) .nav-toggle{background:rgba(255,255,255,.1);color:#F7FAF6;border-color:rgba(255,255,255,.35)}
+  .nav--hero:not(.is-solid) .nav-aa:hover,
+  .nav--hero:not(.is-solid) .nav-toggle:hover{background:rgba(255,255,255,.2)}
   .nav-toggle{display:none}
   .nav-inner{max-width:1180px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;min-height:66px;flex-wrap:wrap}
   .brand-lock{display:flex;align-items:center;gap:11px;color:var(--ink-strong);text-decoration:none;padding:8px 0}
@@ -182,7 +196,7 @@
       repeating-radial-gradient(circle at 88% 6%, transparent 0 47px, rgba(255,255,255,.038) 47px 48px),
       radial-gradient(900px 440px at 92% -12%, var(--hero-glow), transparent 62%),
       linear-gradient(158deg, var(--primary-900) 0%, var(--primary) 58%, var(--primary-800) 100%)}
-  .hero-inner{max-width:1180px;margin:0 auto;padding:64px 22px 76px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  .hero-inner{max-width:1180px;margin:0 auto;padding:131px 22px 76px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center} /* top pad = 64px + the 67px the hero now runs under the transparent ribbon */
   .hero h1{color:#fff;letter-spacing:-.02em}
   .hero .accent-word{font-style:italic;color:var(--accent)}
   .hero-sub{color:#C7D6E4;font-size:calc(var(--fs-body) + 2px);max-width:540px;margin:6px 0 0;line-height:1.6}
@@ -236,7 +250,7 @@
   .accordion .chev{margin-left:auto;transition:transform .2s;color:var(--muted)}
   .accordion.open .chev{transform:rotate(180deg)}
   @media (max-width: 860px){
-    .hero-inner{grid-template-columns:1fr;gap:30px;padding:44px 22px 52px}
+    .hero-inner{grid-template-columns:1fr;gap:30px;padding:111px 22px 52px}
     .hero-visual{display:none}
   }
   /* Mobile navigation - collapses into a hamburger menu */
@@ -1410,7 +1424,9 @@ function topbar(){
   const ts=document.body.getAttribute("data-textsize")||"base";
   const tsLabel=ts==="base"?"Normal":ts==="lg"?"Large":"Extra large";
   const aa=`<button onclick="cycleTextSize()" class="nav-aa" aria-label="Text size: ${tsLabel}. Click to change." title="Text size: ${tsLabel} - click to change" style="font-size:${ts==="base"?16:ts==="lg"?18:20}px">Aa</button>`;
-  return `<div class="announce">Built with veterans - <b>every number cited to its official source</b>, always free for those who served.</div><a href="#main" class="skip-link">Skip to main content</a><header class="nav"><div class="nav-inner">
+  const isHome = hash.split("?")[0]==="/";
+  const navCls = `nav${isHome?" nav--hero":""}${isHome&&window.scrollY>8?" is-solid":""}`;
+  return `<div class="announce">Built with veterans - <b>every number cited to its official source</b>, always free for those who served.</div><a href="#main" class="skip-link">Skip to main content</a><header class="${navCls}"><div class="nav-inner">
     <a class="brand-lock" href="#/" aria-label="${BRAND.name} home"><span class="brand-mark" aria-hidden="true"><i class="ti ti-route"></i></span><span class="brand-word">${BRAND.name}</span></a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu" onclick="toggleNav()"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
     <nav class="nav-links" id="main-nav" aria-label="Main">${nav}</nav>
@@ -1426,7 +1442,17 @@ function toggleNav(){
   btn.setAttribute("aria-label",open?"Close menu":"Open menu");
   const ic=btn.querySelector("i");
   if(ic)ic.className="ti "+(open?"ti-x":"ti-menu-2");
+  ribbonSync();
 }
+// Landing ribbon: transparent at the top of the page, solid once scrolling
+// begins or while the mobile menu is open (the dropdown never floats on the hero).
+function ribbonSync(){
+  const nav=document.querySelector(".nav--hero");
+  if(!nav)return;
+  const menuOpen=!!document.querySelector(".nav-links.open");
+  nav.classList.toggle("is-solid", window.scrollY>8 || menuOpen);
+}
+window.addEventListener("scroll", ribbonSync, {passive:true});
 function cycleTextSize(){
   const cur=document.body.getAttribute("data-textsize")||"base";
   const next=cur==="base"?"lg":cur==="lg"?"xl":"base";
