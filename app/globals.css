@@ -267,12 +267,31 @@ a.card:hover, button.card:hover, .card.interactive:hover { box-shadow:var(--shad
 .nav-drop-panel a:hover { background:var(--surface-2); color:var(--primary-800); text-decoration:none; }
 .nav-drop-panel a i { color:var(--muted); }
 .nav-drop-panel a:hover i { color:var(--primary-800); }
-/* Fortune-preview port: the nav is the same solid light sticky bar on every
-   page, including the homepage - the video hero now starts below it instead of
-   running underneath a transparent bar. The .nav--hero / .is-solid classes stay
-   in the markup but no longer change appearance. */
-.nav { transition:box-shadow .28s ease; }
-.nav--hero.is-solid { box-shadow:0 6px 22px rgba(20,35,26,.06); }
+/* Homepage ribbon (restored Sep 1, Kaleb's call): transparent over the video
+   hero at the top of the page, solid white the moment the user starts
+   scrolling. The .nav--hero / .is-solid classes stayed wired through the
+   fortune port for exactly this. Every other page keeps the standard bar. */
+.nav { transition:background .28s ease, box-shadow .28s ease, border-color .28s ease; }
+.nav--hero { margin-bottom:-67px; } /* the hero runs up underneath the bar */
+.nav--hero:not(.is-solid) { background:transparent; backdrop-filter:none; border-bottom-color:transparent; }
+.nav--hero.is-solid { background:var(--surface); box-shadow:0 6px 22px rgba(20,35,26,.06); }
+/* Light ink while the ribbon floats over the dark hero - reverts with .is-solid. */
+.nav--hero:not(.is-solid) .brand-word,
+.nav--hero:not(.is-solid) .nav-link,
+.nav--hero:not(.is-solid) .nav-user { color:#F7FAF6; }
+.nav--hero:not(.is-solid) .nav-link i { color:rgba(247,250,246,.72); }
+.nav--hero:not(.is-solid) .nav-link:hover { color:#fff; background:rgba(255,255,255,.13); }
+.nav--hero:not(.is-solid) .nav-link:hover i,
+.nav--hero:not(.is-solid) .nav-link.active i { color:#fff; }
+.nav--hero:not(.is-solid) .nav-link.active { color:#fff; }
+.nav--hero:not(.is-solid) .nav-aa,
+.nav--hero:not(.is-solid) .nav-toggle { background:rgba(255,255,255,.1); color:#F7FAF6; border-color:rgba(255,255,255,.35); }
+.nav--hero:not(.is-solid) .nav-aa:hover,
+.nav--hero:not(.is-solid) .nav-toggle:hover { background:rgba(255,255,255,.2); }
+.nav--hero:not(.is-solid) .nav-signin,
+.nav--hero:not(.is-solid) .nav-signout { background:rgba(255,255,255,.1); color:#F7FAF6; border-color:rgba(255,255,255,.45); }
+.nav--hero:not(.is-solid) .nav-signin:hover,
+.nav--hero:not(.is-solid) .nav-signout:hover { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.7); }
 
 /* ---- Hero ---- */
 .hero-wrap { position:relative; overflow:hidden; color:#fff;

@@ -57,10 +57,11 @@ export default function Nav() {
   // Close menus whenever navigation happens
   useEffect(() => { setOpen(false); setToolsOpen(false); }, [path]);
 
-  // Track scroll only on the homepage so the nav can tighten its border shadow.
+  // Track scroll only on the homepage: the ribbon floats transparent over the
+  // hero at the top and turns solid white as soon as the user starts scrolling.
   useEffect(() => {
     if (!onHome) { setScrolled(false); return; }
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
