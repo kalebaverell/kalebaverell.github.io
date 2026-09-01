@@ -69,3 +69,31 @@ Do not act on these until the events say which one is real.
 The gate says "About 10 minutes from here to your plan." 24 questions is honest
 for that estimate - but the estimate itself may be doing damage at the door. Worth
 testing a shorter first-run path someday, though not before the funnel data lands.
+
+## First funnel reading - Sep 1, 2026 (early pull, Kaleb-requested)
+
+GoatCounter events, Aug 28 - Sep 1 (trackOnce = unique sessions per step):
+
+| Stage | Sessions |
+|---|---|
+| intake-gate | 4 |
+| step 1 basics | 4 |
+| step 2 status | 4 |
+| step 3 priorities | 4 |
+| step 4 weights | 4 |
+| step 5 goals | 4 |
+| intake-blocked-goals | 0 |
+| plan-built | 4 |
+| action-checked (same window) | 3 (1 is Kaleb-side test pollution from Aug 28) |
+
+**Reading: perfectly flat.** Every session that hit the gate finished every step,
+built a plan, and most checked an action immediately. No wall, no bleed, no bad
+screen, no finish-line dead end. This contradicts the pre-instrumentation 63%
+abandon estimate - but n=4 is far below the 15-session threshold, so the only
+defensible verdict is "no evidence of a leak yet; do not redesign." The step-3
+volume hypothesis remains untested, not disproven.
+
+Session mix: mostly iOS-phone Safari; one full funnel ran on macOS Safari from
+Germany - plausibly an OCONUS-stationed user (worth noting for the DoD story if
+it recurs). The Sep 4 scheduled reading stays on the calendar for the fuller
+window.
