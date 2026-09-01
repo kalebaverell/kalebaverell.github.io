@@ -13,7 +13,7 @@ import BenefitCategoryList from "@/components/BenefitCategoryList";
 import InstallNudge from "@/components/InstallNudge";
 import { currentFocus } from "@/lib/weeklyFocus";
 import { track } from "@/lib/track";
-import { nextAffirmation, greetingFor } from "@/lib/personality";
+import { nextAffirmation, greetingFor, journalPrompt } from "@/lib/personality";
 import RouteStub from "@/components/RouteStub";
 import PhaseNow from "@/components/PhaseNow";
 import { useAuth } from "@/lib/auth";
@@ -273,6 +273,22 @@ export default function Dashboard() {
         </div>
         <span className="small" style={{ fontWeight: 600, color: "var(--info)", display: "inline-flex", alignItems: "center", gap: 4 }}>
           Update my plan <i className="ti ti-arrow-right" aria-hidden="true" />
+        </span>
+      </Link>
+
+      {/* Journal doorway (Week Two move 4): the notes card works but lives on
+          /profile where nobody passes it. Same quiet-card mechanic as the
+          change loop above - the weekly prompt gives a reason to click. */}
+      <Link href="/profile" onClick={() => track("journal-doorway")} className="card" style={{ marginTop: 16, display: "flex", gap: 14, alignItems: "center", textDecoration: "none", color: "var(--ink)", flexWrap: "wrap" }}>
+        <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: 10, background: "var(--chip-bg)", color: "var(--chip-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+          <i className="ti ti-pencil" />
+        </span>
+        <div style={{ flex: 1, minWidth: 220 }}>
+          <h4 style={{ margin: "0 0 2px" }}>{journalPrompt()}</h4>
+          <span className="muted small">A sentence is plenty - your notes stay private to you.</span>
+        </div>
+        <span className="small" style={{ fontWeight: 600, color: "var(--info)", display: "inline-flex", alignItems: "center", gap: 4 }}>
+          Jot it down <i className="ti ti-arrow-right" aria-hidden="true" />
         </span>
       </Link>
 

@@ -24,6 +24,7 @@ const EVENTS = [
   "weekly-focus",
   "calendar-subscribe",
   "phase-card",
+  "journal-doorway",
   // Intake funnel (2026-08-28): 63% of people who start the intake never finish
   // it, and we could not see where they left. These say which step loses them.
   "intake-gate",
