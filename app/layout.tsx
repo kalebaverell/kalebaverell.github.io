@@ -109,6 +109,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* The two faces on the first screen (h1/h2 render at weight 500, body
+            at 400) - preloading closes most of the swap window the metric
+            fallbacks cover. The other weights arrive as the page needs them. */}
+        <link rel="preload" href="/fonts/g/fraunces-500n-latin-5.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/g/inter-400n-latin-15.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <link rel="stylesheet" href="/fonts/tabler-icons.css" />
       </head>

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { useStore } from "@/lib/store";
@@ -20,20 +20,38 @@ function CtaLink({ xl, style }: { xl?: boolean; style?: React.CSSProperties }) {
   );
 }
 
-/** Mission-band media: looping public-domain TAP-class footage; still photo when the user prefers reduced motion. */
+/** Mission-band media: looping public-domain TAP-class footage; still photo when the
+ *  user prefers reduced motion. The video (348KB) only mounts once the band nears the
+ *  viewport (phone-performance pass) - it sits below the fold on phones, and
+ *  preload="auto" was fetching it in full against the hero's LCP. */
 function MissionMedia() {
   const [reduced, setReduced] = useState<boolean | null>(null);
+  const [near, setNear] = useState(false);
+  const stillRef = useRef<HTMLImageElement>(null);
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
-  if (reduced === null || reduced) {
+  useEffect(() => {
+    if (reduced !== false || near) return;
+    const el = stillRef.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) { setNear(true); return; }
+    const io = new IntersectionObserver(
+      (entries) => { if (entries.some((e) => e.isIntersecting)) { setNear(true); io.disconnect(); } },
+      { rootMargin: "600px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduced, near]);
+  if (reduced === null || reduced || !near) {
     return (
       <img
+        ref={stillRef}
         className="photo"
         src="/img/transition-summit-mentors.jpg"
         alt="A soldier takes notes as volunteer mentors walk her through her resume at a veterans transition summit"
-        width={1600}
-        height={1064}
+        width={1280}
+        height={851}
         loading="lazy"
       />
     );
@@ -70,6 +88,12 @@ const HERO_SLIDES: { src: string; alt: string }[] = [
 function HeroBackdrop() {
   const [motionOk, setMotionOk] = useState<boolean | null>(null);
   const [idx, setIdx] = useState(0);
+  // Progressive reveal (phone-performance pass): only revealed slides carry a
+  // background-image, so first paint fetches one image instead of all five -
+  // the other ~380KB no longer competes with LCP on a phone connection. Each
+  // upcoming slide is revealed one full cycle (5.2s) before it shows, so the
+  // crossfade never catches an unloaded image.
+  const [revealed, setRevealed] = useState<number[]>([0, 1]);
 
   useEffect(() => {
     setMotionOk(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -80,6 +104,11 @@ function HeroBackdrop() {
     const t = setInterval(() => setIdx((i) => (i + 1) % HERO_SLIDES.length), 5200);
     return () => clearInterval(t);
   }, [motionOk]);
+
+  useEffect(() => {
+    const next = (idx + 1) % HERO_SLIDES.length;
+    setRevealed((r) => (r.includes(next) ? r : [...r, next]));
+  }, [idx]);
 
   if (motionOk === null || !motionOk) {
     return (
@@ -102,7 +131,7 @@ function HeroBackdrop() {
           <div
             key={s.src}
             className={`hero-slide${i === idx ? " active" : i === prevIdx ? " prev" : ""}`}
-            style={{ backgroundImage: `url(${s.src})` }}
+            style={revealed.includes(i) ? { backgroundImage: `url(${s.src})` } : undefined}
           />
         ))}
       </div>
