@@ -85,7 +85,9 @@ export default function PrivacyPage() {
           <li>
             If you first arrived from one of our flyers, QR codes, or shared links, the campaign tag
             on that link (for example &quot;vso&quot; for the sheet we hand to veteran service posts),
-            plus the site that referred you. This tells us which outreach actually reaches veterans.
+            plus the site that referred you. If you arrived through an app&apos;s built-in browser
+            (like Facebook&apos;s) that hides the referring site, we note just the app&apos;s name as
+            the channel instead. This tells us which outreach actually reaches veterans.
             It records how you found us - never what you did on other sites.
           </li>
         </ul>
