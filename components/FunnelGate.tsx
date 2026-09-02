@@ -19,6 +19,7 @@ const OPEN_PATHS = new Set([
   "do-not-sell", // a privacy control can never be behind a funnel
   "support", // supporters aren't veterans with plans - never funnel them
   "guides", // free editorial content - the whole point is that it's ungated
+  "feedback", // the veteran feedback drop box - lowering the wall is the point
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
 ]);

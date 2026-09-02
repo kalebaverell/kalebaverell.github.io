@@ -83,6 +83,11 @@ export default function PrivacyPage() {
           <li>Your Pathfinder answers and, if you use the resume scanner, the resume text you paste in.</li>
           <li>Display settings like your theme and text size.</li>
           <li>
+            If you use the feedback box, the note you write (linked to your account when you
+            are signed in, anonymous when you are not). Notes are read by the founders and
+            never published.
+          </li>
+          <li>
             If you first arrived from one of our flyers, QR codes, or shared links, the campaign tag
             on that link (for example &quot;vso&quot; for the sheet we hand to veteran service posts),
             plus the site that referred you. If you arrived through an app&apos;s built-in browser

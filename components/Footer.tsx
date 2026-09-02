@@ -29,6 +29,7 @@ const COLS: { head: string; links: [string, string][] }[] = [
     links: [
       ["/trust", "Why trust us"],
       ["/support", "Support the mission"],
+      ["/feedback", "Tell us what's off"],
       ["mailto:kaleb@vetpathusa.com", "Contact us"],
     ],
   },
