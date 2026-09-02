@@ -7,6 +7,8 @@ import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { PHASE_META, PHASE_INTROS, LONG_RUNWAY_TASKS, fullTaskLibrary, TIMELINE_VERIFIED } from "@/lib/timeline";
 import { Wrap, Eyebrow } from "@/components/ui";
+import { Fragment } from "react";
+import GuideCta from "@/components/GuideCta";
 
 export const metadata = routeMeta(
   "Military transition timeline",
@@ -86,19 +88,27 @@ export default function TimelineGuide() {
         </div>
       </section>
 
-      {PHASE_META.map((p) => {
+      {PHASE_META.map((p, i) => {
         const items = byPhase(p.id);
         return (
-          <section key={p.id} id={p.id} style={{ marginTop: 30 }}>
-            <h2 style={{ marginBottom: 2 }}>{p.label}</h2>
-            <p className="small" style={{ color: "var(--accent-ink)", fontWeight: 600, margin: "0 0 6px" }}>{p.window}</p>
-            <p className="muted" style={{ maxWidth: 640 }}>{PHASE_INTROS[p.id]}</p>
-            <div className="card">
-              {items.map((t) => (
-                <GuideTask key={t.id} t={t} />
-              ))}
-            </div>
-          </section>
+          <Fragment key={p.id}>
+            <section id={p.id} style={{ marginTop: 30 }}>
+              <h2 style={{ marginBottom: 2 }}>{p.label}</h2>
+              <p className="small" style={{ color: "var(--accent-ink)", fontWeight: 600, margin: "0 0 6px" }}>{p.window}</p>
+              <p className="muted" style={{ maxWidth: 640 }}>{PHASE_INTROS[p.id]}</p>
+              <div className="card">
+                {items.map((t) => (
+                  <GuideTask key={t.id} t={t} />
+                ))}
+              </div>
+            </section>
+            {i === 2 && (
+              <GuideCta
+                line="This whole timeline, rebuilt around your separation date."
+                sub="The tool keeps only what fits your situation, flags what is already urgent, and puts real dates on every phase - free account, about ten minutes."
+              />
+            )}
+          </Fragment>
         );
       })}
 

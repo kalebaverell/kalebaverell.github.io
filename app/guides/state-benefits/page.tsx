@@ -5,6 +5,8 @@ import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { STATE_BENEFITS } from "@/lib/data";
 import { Wrap, Eyebrow } from "@/components/ui";
+import { Fragment } from "react";
+import GuideCta from "@/components/GuideCta";
 
 export const metadata = routeMeta(
   "State veteran benefits, every state",
@@ -78,33 +80,41 @@ export default function StateBenefitsGuide() {
         ))}
       </nav>
 
-      {states.map((s: any) => (
-        <section key={s.code} id={s.code} style={{ marginTop: 26 }}>
-          <h2 style={{ marginBottom: 2 }}>{s.name}</h2>
-          <p className="small" style={{ margin: "0 0 8px" }}>
-            Run by{" "}
-            <a href={s.agency.url} target="_blank" rel="noopener noreferrer">
-              {s.agency.name} <i className="ti ti-external-link" aria-hidden="true" />
-            </a>
-          </p>
-          {s.notes && <p className="muted small" style={{ maxWidth: 640, margin: "0 0 10px" }}>{s.notes}</p>}
-          <div className="card">
-            {s.programs.map((p: any) => (
-              <div key={p.name} style={{ padding: "12px 0", borderBottom: "1px solid var(--hairline)" }}>
-                <div style={{ display: "flex", gap: 8, alignItems: "baseline", flexWrap: "wrap" }}>
-                  <strong style={{ color: "var(--ink-strong)" }}>{p.name}</strong>
-                  <span className="tag">{CATEGORY_LABEL[p.category] || p.category}</span>
+      {states.map((s: any, i: number) => (
+        <Fragment key={s.code}>
+          <section id={s.code} style={{ marginTop: 26 }}>
+            <h2 style={{ marginBottom: 2 }}>{s.name}</h2>
+            <p className="small" style={{ margin: "0 0 8px" }}>
+              Run by{" "}
+              <a href={s.agency.url} target="_blank" rel="noopener noreferrer">
+                {s.agency.name} <i className="ti ti-external-link" aria-hidden="true" />
+              </a>
+            </p>
+            {s.notes && <p className="muted small" style={{ maxWidth: 640, margin: "0 0 10px" }}>{s.notes}</p>}
+            <div className="card">
+              {s.programs.map((p: any) => (
+                <div key={p.name} style={{ padding: "12px 0", borderBottom: "1px solid var(--hairline)" }}>
+                  <div style={{ display: "flex", gap: 8, alignItems: "baseline", flexWrap: "wrap" }}>
+                    <strong style={{ color: "var(--ink-strong)" }}>{p.name}</strong>
+                    <span className="tag">{CATEGORY_LABEL[p.category] || p.category}</span>
+                  </div>
+                  <p className="small" style={{ margin: "4px 0 0", maxWidth: 640 }}>
+                    {p.blurb}{" "}
+                    <a href={p.source} target="_blank" rel="noopener noreferrer">
+                      Official source <i className="ti ti-external-link" aria-hidden="true" />
+                    </a>
+                  </p>
                 </div>
-                <p className="small" style={{ margin: "4px 0 0", maxWidth: 640 }}>
-                  {p.blurb}{" "}
-                  <a href={p.source} target="_blank" rel="noopener noreferrer">
-                    Official source <i className="ti ti-external-link" aria-hidden="true" />
-                  </a>
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
+          {i === 24 && (
+            <GuideCta
+              line="Scrolling every state? Your gameplan keeps just yours."
+              sub="It matches your state, status, and goals against these programs and the federal stack, then puts them in order - free, about ten minutes."
+            />
+          )}
+        </Fragment>
       ))}
 
       <div className="card feature" style={{ marginTop: 30, borderLeft: "4px solid var(--accent)" }}>

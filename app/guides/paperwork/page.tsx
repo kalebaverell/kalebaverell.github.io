@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
+import GuideCta from "@/components/GuideCta";
 
 export const metadata = routeMeta(
   "The paperwork that runs your transition",
@@ -104,6 +105,8 @@ export default function PaperworkGuide() {
           </li>
         </ul>
       </section>
+
+      <GuideCta line="Want the records tasks sequenced into your own months?" />
 
       <section style={{ marginTop: 26 }}>
         <h2>The Joint Services Transcript: credit you may already have</h2>

@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
+import GuideCta from "@/components/GuideCta";
 
 export const metadata = routeMeta(
   "SkillBridge, explained",
@@ -102,6 +103,8 @@ export default function SkillBridgeGuide() {
           program details in hand.
         </p>
       </section>
+
+      <GuideCta line="Want the command conversation on your calendar instead of your worry list?" />
 
       <section style={{ marginTop: 26 }}>
         <h2>Finding a program</h2>

@@ -5,6 +5,8 @@
 import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
+import { Fragment } from "react";
+import GuideCta from "@/components/GuideCta";
 
 export const metadata = routeMeta(
   "Veteran transition questions, answered",
@@ -113,18 +115,26 @@ export default function FaqGuide() {
         only version that counts.
       </p>
 
-      {FAQS.map((f) => (
-        <div key={f.q} className="card" style={{ marginTop: 14 }}>
-          <h2 style={{ fontSize: 19, fontFamily: "var(--font-sans)", fontWeight: 600 }}>{f.q}</h2>
-          <p className="small" style={{ margin: "6px 0 0", maxWidth: 640 }}>
-            {f.a}{" "}
-            {f.source && (
-              <a href={f.source.url} target="_blank" rel="noopener noreferrer">
-                {f.source.label} <i className="ti ti-external-link" aria-hidden="true" />
-              </a>
-            )}
-          </p>
-        </div>
+      {FAQS.map((f, i) => (
+        <Fragment key={f.q}>
+          <div className="card" style={{ marginTop: 14 }}>
+            <h2 style={{ fontSize: 19, fontFamily: "var(--font-sans)", fontWeight: 600 }}>{f.q}</h2>
+            <p className="small" style={{ margin: "6px 0 0", maxWidth: 640 }}>
+              {f.a}{" "}
+              {f.source && (
+                <a href={f.source.url} target="_blank" rel="noopener noreferrer">
+                  {f.source.label} <i className="ti ti-external-link" aria-hidden="true" />
+                </a>
+              )}
+            </p>
+          </div>
+          {i === 6 && (
+            <GuideCta
+              line="These answers are general. Your situation isn't."
+              sub="A few questions and the general rules become your ordered next steps - free, about ten minutes."
+            />
+          )}
+        </Fragment>
       ))}
 
       <div className="card feature" style={{ marginTop: 26, borderLeft: "4px solid var(--accent)" }}>
