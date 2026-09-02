@@ -22,6 +22,7 @@ const COLS: { head: string; links: [string, string][] }[] = [
       ["/guides/transition-timeline", "Transition timeline"],
       ["/guides/state-benefits", "State benefits"],
       ["/guides/faq", "Questions answered"],
+      ["/guides", "All guides"],
     ],
   },
   {

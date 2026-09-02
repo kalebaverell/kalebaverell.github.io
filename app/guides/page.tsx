@@ -24,6 +24,18 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     blurb: "259 programs across all 50 states and D.C. - tax exemptions, tuition, hiring preference - each cited to the agency that runs it.",
   },
   {
+    href: "/guides/skillbridge",
+    icon: "ti-briefcase",
+    title: "SkillBridge, explained",
+    blurb: "Intern with a civilian employer during your last 180 days on full military pay - the window, the command-approval reality, and how to line it up in time.",
+  },
+  {
+    href: "/guides/paperwork",
+    icon: "ti-folders",
+    title: "The paperwork that runs your transition",
+    blurb: "DD-214, service medical records, the JST, the family's files - what goes wrong with each, and the one-folder habit that prevents it.",
+  },
+  {
     href: "/guides/faq",
     icon: "ti-info-circle",
     title: "Questions, answered straight",
