@@ -24,6 +24,11 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + kill by PID, plus any
 `node.exe` with `next dev` in its command line), `rm -rf .next`, `npm run build` (expect all routes
 static), then `rm -rf .next` and restart `npm run dev` in background; wait for 200 on /.
+After ANY restart, also verify a hashed static asset serves 200 (grep the homepage HTML for
+`/_next/static/css/...` and curl it) - a dev server can return 200 HTML while its chunks 404,
+which kills hydration and makes every click silently no-op. And if a restart command times out,
+assume its detached `npm run dev` SURVIVED the timeout: re-run the process sweep before starting
+another instance (two `next dev` processes sharing one `.next` corrupt it - happened Sep 2).
 
 ## 4. Browser flows (Playwright MCP; cache-bust with ?v=N; only favicon-404 is acceptable in console)
 1. /admin → "Load a sample veteran & plan" → dashboard renders at the "Pick your path" journey
