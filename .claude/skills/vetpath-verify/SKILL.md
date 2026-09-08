@@ -99,6 +99,12 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
   then fetch the captured blob URL to read VCALENDAR/DTSTART in-page.
 - Mobile tab bar + app tabs need signed-in auth OR the auth-disabled dev (flow 10's env-cleared
   server) - on a normal dev with a local-only plan, no tab bar is CORRECT, not a failure.
+- "Change my answers" PRESERVES a stored easDate. With a far-future EAS still set, no "You are
+  here" pill and no catch-up card is CORRECT calendar-driven behavior, not a bug - clear the EAS
+  month input before asserting the inside-T-12 timeline shape.
+- Playwright MCP can drop mid-run ("Connection closed"): reconnect via ToolSearch and keep batches
+  small. The browser profile SURVIVES the drop - localStorage and the open page are intact, so
+  resume from the on-screen state instead of rerunning the whole flow.
 - InstallNudge needs a synthesized beforeinstallprompt event on a mobile viewport to appear at all.
 
 ## 5. Deliverable freshness
