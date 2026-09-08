@@ -54,7 +54,7 @@ function Layer({ n, icon, title, hint, items }: { n: number; icon: string; title
 }
 
 export default function FundedPath({ a, career }: { a: Answers; career?: Career }) {
-  const { education, career: careerLayer } = buildFundedPath(a, career);
+  const { education, career: careerLayer, business } = buildFundedPath(a, career);
   const dest = career?.label;
   return (
     <div className="card feature">
@@ -90,6 +90,7 @@ export default function FundedPath({ a, career }: { a: Answers; career?: Career 
 
       <Layer n={1} icon="ti-cash" title="Pay for the training" hint="Stack several of these together." items={education} />
       <Layer n={2} icon="ti-briefcase" title="Then land the job" hint="Money your destination adds on top." items={careerLayer} />
+      <Layer n={3} icon="ti-building" title="Fund the business" hint="Certifications first - for most owners they outrank any grant. Free help before paid anything." items={business} />
 
       <p className="small muted" style={{ marginTop: 16 }}>
         Verified {FUNDING_VERIFIED}. Amounts and eligibility vary and change - confirm each program at its official source. {"VetPath"} doesn&apos;t determine eligibility.

@@ -7,7 +7,7 @@ import type { Answers, Career } from "./types";
 
 export interface FundingProgram {
   id: string;
-  layer: "education" | "career";
+  layer: "education" | "career" | "business";
   type: string;
   name: string;
   amount: string;
@@ -26,6 +26,7 @@ export const FUNDING_VERIFIED: string = (fundingJson as { lastVerified: string }
 export interface FundedPath {
   education: FundingProgram[]; // fund the training (stacks that combine)
   career: FundingProgram[];    // land the job & keep earning
+  business: FundingProgram[];  // fund the business (only when that's the goal)
 }
 
 const PUBLIC_SERVICE = /nurse|health|teacher|educat|social work|public|government|police|fire|paramedic|emt|counsel/i;
@@ -59,8 +60,29 @@ export function buildFundedPath(a: Answers, career?: Career): FundedPath {
   careerLayer.push(BY_ID.fedHiring);
   if (PUBLIC_SERVICE.test(label) || track === "employment" || track === "education") careerLayer.push(BY_ID.pslf);
 
+  // ---- Layer 3: fund the business (only when the veteran is pointed there) ----
+  // Certifications lead because for most owners they outrank any grant; the
+  // women-owned entries (WOSB, WBC, V-WISE) join when the veteran told us they
+  // apply - the same optional demographics answer the network page keys on.
+  const business: FundingProgram[] = [];
+  const wantsBusiness =
+    (a.topGoals || []).includes("Start a business") ||
+    (!!a.businessInterest && a.businessInterest !== "No") ||
+    track === "entrepreneur";
+  if (wantsBusiness) {
+    const female = a.sex === "Female";
+    business.push(BY_ID.vetcert);
+    if (female) business.push(BY_ID.wosb);
+    business.push(BY_ID.b2b);
+    business.push(BY_ID.vboc);
+    if (female) business.push(BY_ID.wbc);
+    if (female) business.push(BY_ID.vwise);
+    business.push(BY_ID.grantsGov);
+  }
+
   return {
     education: education.filter(Boolean),
     career: careerLayer.filter(Boolean),
+    business: business.filter(Boolean),
   };
 }

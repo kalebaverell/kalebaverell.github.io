@@ -123,6 +123,84 @@
       "stackNote": "Turns a public-service career into loan freedom.",
       "source": "https://studentaid.gov/manage-loans/forgiveness-cancellation/public-service",
       "sourceLabel": "StudentAid.gov - PSLF"
+    },
+    {
+      "id": "vetcert",
+      "layer": "business",
+      "type": "Federal (SBA)",
+      "name": "Veteran Small Business Certification (VetCert)",
+      "amount": "Certifies your business as veteran-owned (VOSB) or service-disabled-veteran-owned (SDVOSB) - unlocking federal contract set-asides reserved for those businesses.",
+      "eligibility": "Business must be at least 51% owned and controlled by one or more veterans (SDVOSB requires a service-connected disability). Free to apply.",
+      "stackNote": "For most veteran owners, certification is worth more than any grant.",
+      "source": "https://veterans.certify.sba.gov/",
+      "sourceLabel": "SBA VetCert"
+    },
+    {
+      "id": "wosb",
+      "layer": "business",
+      "type": "Federal (SBA)",
+      "name": "Women-Owned Small Business certification (WOSB / EDWOSB)",
+      "amount": "Qualifies your business for federal contracts set aside for women-owned small businesses in eligible industries.",
+      "eligibility": "Business at least 51% owned and controlled by women who are U.S. citizens; EDWOSB adds economic-disadvantage criteria. Stacks with VetCert - a woman veteran can hold both.",
+      "stackNote": "The women-owned set-aside lane - holds alongside the veteran one.",
+      "source": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program",
+      "sourceLabel": "SBA - WOSB program"
+    },
+    {
+      "id": "b2b",
+      "layer": "business",
+      "type": "Federal (SBA)",
+      "name": "Boots to Business",
+      "amount": "Free two-day entrepreneurship intro plus follow-on courses - the TAP entrepreneurship track.",
+      "eligibility": "Transitioning service members and spouses; a Reboot version serves veterans already out.",
+      "stackNote": "The free classroom before you spend a dollar.",
+      "source": "https://www.sba.gov/sba-learning-platform/boots-business",
+      "sourceLabel": "SBA - Boots to Business"
+    },
+    {
+      "id": "vboc",
+      "layer": "business",
+      "type": "Federal (SBA)",
+      "name": "Veteran business support (OVBD & VBOCs)",
+      "amount": "Free one-on-one counseling, training, and plan reviews through SBA's veteran business network.",
+      "eligibility": "Veterans, service members, and military spouses at any stage - idea to expansion.",
+      "stackNote": "A free advisor who has walked other veterans through this exact path.",
+      "source": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
+      "sourceLabel": "SBA - Veteran-owned businesses"
+    },
+    {
+      "id": "wbc",
+      "layer": "business",
+      "type": "Federal (SBA)",
+      "name": "Women's Business Centers",
+      "amount": "Free and low-cost training, counseling, and access-to-capital help at 100+ centers nationwide.",
+      "eligibility": "Open to women entrepreneurs at every stage.",
+      "stackNote": "The women-focused arm of the same free SBA network.",
+      "source": "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers",
+      "sourceLabel": "SBA - Women's Business Centers"
+    },
+    {
+      "id": "vwise",
+      "layer": "business",
+      "type": "Nonprofit (IVMF)",
+      "name": "V-WISE",
+      "amount": "Entrepreneurship training program for women veterans and military spouses - online phase, in-person residency, and ongoing support.",
+      "eligibility": "Women veterans, active-duty women, and women military spouses/partners.",
+      "stackNote": "Built specifically for women who served.",
+      "source": "https://ivmf.syracuse.edu/programs/entrepreneurship/start-up/v-wise/",
+      "sourceLabel": "IVMF - V-WISE"
+    },
+    {
+      "id": "grantsGov",
+      "layer": "business",
+      "type": "Federal",
+      "name": "Grants.gov",
+      "amount": "The official database of every federal grant - the place to check what actually exists for your industry and situation.",
+      "eligibility": "Varies by grant. True small-business grants are rare and competitive - most federal support flows through contracts and certifications instead.",
+      "tip": "Never pay anyone for a 'grant list' - the real list is free, right here.",
+      "stackNote": "The honest answer to 'what grants exist' - straight from the source.",
+      "source": "https://www.grants.gov/",
+      "sourceLabel": "Grants.gov"
     }
   ]
 }

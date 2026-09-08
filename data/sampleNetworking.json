@@ -37,7 +37,8 @@
   "targeted": {
     "women": [
       { "name": "Women Veterans Call Center", "what": "1-855-829-6636 - navigators for women-specific VA services.", "url": "https://www.va.gov/womenvet/" },
-      { "name": "V-WISE (IVMF)", "what": "Entrepreneurship training for women veterans & spouses.", "url": "https://ivmf.syracuse.edu" }
+      { "name": "V-WISE (IVMF)", "what": "Entrepreneurship training for women veterans & spouses.", "url": "https://ivmf.syracuse.edu" },
+      { "name": "Women's Business Centers (SBA)", "what": "Free and low-cost business training, counseling, and access-to-capital help at 100+ centers.", "url": "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" }
     ],
     "minority": [
       { "name": "MBDA Business Centers", "what": "Growth help for minority-owned businesses - stacks with veteran status.", "url": "https://www.mbda.gov" },

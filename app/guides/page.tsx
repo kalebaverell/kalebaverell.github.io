@@ -36,6 +36,12 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     blurb: "DD-214, service medical records, the JST, the family's files - what goes wrong with each, and the one-folder habit that prevents it.",
   },
   {
+    href: "/guides/business-funding",
+    icon: "ti-briefcase",
+    title: "Funding a veteran-owned business",
+    blurb: "Why VetCert and WOSB certifications usually beat grants, the free SBA help, what women veterans specifically qualify for - and where real grants live.",
+  },
+  {
     href: "/guides/fitness",
     icon: "ti-flame",
     title: "Back in fighting shape",
