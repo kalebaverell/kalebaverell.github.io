@@ -84,9 +84,9 @@ export default function Footer() {
           <span>
             <a href="/trust" style={{ color: "var(--band-gold)", fontWeight: 600 }}>How we earn trust - every number has a source →</a>
           </span>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F5B8A9", fontWeight: 600 }}>
-            <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7.
-          </span>
+          <a href="/crisis" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F5B8A9", fontWeight: 600, textDecoration: "none" }}>
+            <i className="ti ti-urgent" aria-hidden="true" /> In crisis? Dial 988, then press 1 - free, confidential, 24/7. More resources &rarr;
+          </a>
         </div>
         <div style={{ marginTop: 12, fontSize: 12.5, color: "rgba(251,250,247,.55)" }}>
           {BRAND.name} is a planning &amp; education tool - not the VA, and not affiliated with the government.

@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     at("/guides/state-benefits/", 0.9),
     at("/guides/skillbridge/", 0.8),
     at("/guides/paperwork/", 0.8),
+    at("/guides/fitness/", 0.8),
+    at("/crisis/", 0.6),
     at("/guides/faq/", 0.8),
     at("/guides/", 0.7),
     at("/trust/", 0.8),

@@ -36,6 +36,12 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     blurb: "DD-214, service medical records, the JST, the family's files - what goes wrong with each, and the one-folder habit that prevents it.",
   },
   {
+    href: "/guides/fitness",
+    icon: "ti-flame",
+    title: "Back in fighting shape",
+    blurb: "The DoD's own free workout and nutrition resources - HPRC, the Warfighter Nutrition Guide, VA MOVE! - and an honest restart plan.",
+  },
+  {
     href: "/guides/faq",
     icon: "ti-info-circle",
     title: "Questions, answered straight",
