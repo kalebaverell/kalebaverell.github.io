@@ -26,6 +26,10 @@ const EVENTS = [
   "phase-card",
   "journal-doorway",
   "feedback-sent",
+  // Guide-side funnel (2026-09-09): guides capture search, GuideCta converts.
+  // This click count against guide pageviews is the proof (or disproof) that
+  // the account-first strategy turns readers into gameplan starts.
+  "guide-cta",
   // Intake funnel (2026-08-28): 63% of people who start the intake never finish
   // it, and we could not see where they left. These say which step loses them.
   "intake-gate",

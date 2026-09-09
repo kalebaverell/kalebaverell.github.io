@@ -1,7 +1,12 @@
+"use client";
 // Mid-guide account CTA (Sep 2, account-first direction). The guides exist to
 // capture search traffic; this is the conversion surface that meets that
-// visitor while they are warm, mid-read. Server-safe - no client hooks.
+// visitor while they are warm, mid-read. Client island (Sep 9) so the click
+// itself is measurable: guide pageviews vs guide-cta clicks vs intake-gate is
+// the whole account-first funnel in three numbers. Navigation is a client-side
+// route transition, so the beacon isn't cut off by a page unload.
 import Link from "next/link";
+import { track } from "@/lib/track";
 
 export default function GuideCta({ line, sub }: { line: string; sub?: string }) {
   return (
@@ -12,7 +17,7 @@ export default function GuideCta({ line, sub }: { line: string; sub?: string }) 
           {sub ?? "Answer a few questions and this lands on your own timeline - free, about ten minutes."}
         </p>
       </div>
-      <Link className="btn gold" href="/onboarding" style={{ flexShrink: 0 }}>
+      <Link className="btn gold" href="/onboarding" style={{ flexShrink: 0 }} onClick={() => track("guide-cta")}>
         <i className="ti ti-compass" aria-hidden="true" /> Build my gameplan
       </Link>
     </div>

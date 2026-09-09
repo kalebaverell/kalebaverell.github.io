@@ -24,6 +24,12 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     blurb: "259 programs across all 50 states and D.C. - tax exemptions, tuition, hiring preference - each cited to the agency that runs it.",
   },
   {
+    href: "/guides/disability-claims",
+    icon: "ti-shield-check",
+    title: "The VA disability claim, start to finish",
+    blurb: "Intent to file, the BDD window while you're still in uniform, the accredited help that's always free - and why you never pay a percentage of your own back pay.",
+  },
+  {
     href: "/guides/skillbridge",
     icon: "ti-briefcase",
     title: "SkillBridge, explained",
