@@ -1609,6 +1609,24 @@ function Landing(){
       </div>`).join("")}
     </div>
 
+    <!-- Situation doors: the rows above describe the road out; these two are for
+         veterans already standing somewhere specific. Both lead into the gameplan
+         like every other door - the tile just carries the answer it collected. -->
+    <div style="margin-top:34px">
+      <p class="muted small" style="margin:0 0 14px;font-weight:600">Already somewhere specific? Start there.</p>
+      <div class="grid" style="gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        ${[
+          ["business-owner","ti-building-store","I already own a business","The certifications, set-asides, and free SBA counseling you qualify for as a veteran owner - plus where the real grants live.","Funding stack"],
+          ["student","ti-school","I'm in school right now","What pays for it: GI Bill and Yellow Ribbon, veteran scholarships, and your state's tuition programs - and what stacks with what.","Pays for school"]
+        ].map(([seed,icon,title,body,tag])=>`<a href="#/onboarding?start=${seed}" class="card" style="text-decoration:none;color:var(--ink)">
+          <div class="iconwrap" style="margin-bottom:14px"><i class="ti ${icon}" aria-hidden="true"></i></div>
+          <h4 style="margin-bottom:6px">${title}</h4>
+          <p class="muted small" style="margin:0;line-height:1.6">${body}</p>
+          <span class="chip gold" style="margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">${tag}</span>
+        </a>`).join("")}
+      </div>
+    </div>
+
     <div style="margin-top:56px">
       ${sectionHead("How it works","From where you stand to where you're headed","Four steps. The plan updates itself as your answers and goals change.")}
       <div class="grid" style="gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">${how}</div>
@@ -1637,8 +1655,29 @@ function card(icon,title,body){
 }
 
 /* ----- Onboarding: mocked profile + multi-step intake ----- */
+/* Homepage situation tiles carry their answer into the intake (mirrors the app's
+   lib/intakeSeed.ts). Fills only blanks, so an answer already given always wins.
+   No tracking here - the demo stays analytics-free. */
+const INTAKE_SEEDS = {
+  "business-owner":{employment:"Self-employed / business owner",businessInterest:"Yes - actively working on it"},
+  "student":{employment:"Student",topGoals:["use-education-benefits"]}
+};
+let SEED_APPLIED=null;
+function applyIntakeSeed(){
+  const key=parseQuery().start, seed=INTAKE_SEEDS[key];
+  // Keyed on the seed itself: re-renders never re-apply (so a hand-edited answer
+  // is not stomped on the next step), but a different tile still works.
+  if(!seed||SEED_APPLIED===key) return;
+  SEED_APPLIED=key;
+  Object.keys(seed).forEach(id=>{
+    const cur=S.answers[id];
+    if(cur===undefined||cur===""||(Array.isArray(cur)&&cur.length===0)) setAnsQuiet(id,seed[id]);
+  });
+}
+
 function Onboarding(){
   if(!S.profile) return ProfileGate();
+  applyIntakeSeed();
   const step = Math.min(currentStep(), INTAKE.length-1);
   const sec = INTAKE[step];
   const pct = Math.round((step)/(INTAKE.length)*100);
