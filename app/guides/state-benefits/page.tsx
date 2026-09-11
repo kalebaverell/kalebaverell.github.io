@@ -7,6 +7,7 @@ import { STATE_BENEFITS } from "@/lib/data";
 import { Wrap, Eyebrow } from "@/components/ui";
 import { Fragment } from "react";
 import GuideCta from "@/components/GuideCta";
+import FeedbackAsk from "@/components/FeedbackAsk";
 
 export const metadata = routeMeta(
   "State veteran benefits, every state",
@@ -125,6 +126,14 @@ export default function StateBenefitsGuide() {
           federal stack, then puts them in order. Free, and every claim stays linked to its source.
         </p>
       </div>
+
+      <FeedbackAsk
+        variant="quiet"
+        event="feedback-guide"
+        line="Something missing here, or wrong for your situation?"
+        cta="Tell us what you need"
+        sub="- a person reads every note, and it shapes what gets built next."
+      />
 
       <p className="small muted" style={{ marginTop: 22, maxWidth: 640 }}>
         VetPath never confirms eligibility - program rules and amounts change, so verify every

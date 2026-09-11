@@ -9,6 +9,7 @@ import { PHASE_META, PHASE_INTROS, LONG_RUNWAY_TASKS, fullTaskLibrary, TIMELINE_
 import { Wrap, Eyebrow } from "@/components/ui";
 import { Fragment } from "react";
 import GuideCta from "@/components/GuideCta";
+import FeedbackAsk from "@/components/FeedbackAsk";
 
 export const metadata = routeMeta(
   "Military transition timeline",
@@ -123,6 +124,14 @@ export default function TimelineGuide() {
           free, about ten minutes.
         </p>
       </div>
+
+      <FeedbackAsk
+        variant="quiet"
+        event="feedback-guide"
+        line="Something missing here, or wrong for your situation?"
+        cta="Tell us what you need"
+        sub="- a person reads every note, and it shapes what gets built next."
+      />
 
       <p className="small muted" style={{ marginTop: 22, maxWidth: 640 }}>
         This timeline is a planning aid, not a substitute for professional guidance. Confirm

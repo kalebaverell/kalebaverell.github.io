@@ -8,6 +8,7 @@ import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
 import GuideCta from "@/components/GuideCta";
+import FeedbackAsk from "@/components/FeedbackAsk";
 
 export const metadata = routeMeta(
   "The VA disability claim, start to finish",
@@ -172,6 +173,14 @@ export default function DisabilityClaimsGuide() {
           ))}
         </div>
       </div>
+
+      <FeedbackAsk
+        variant="quiet"
+        event="feedback-guide"
+        line="Something missing here, or wrong for your situation?"
+        cta="Tell us what you need"
+        sub="- a person reads every note, and it shapes what gets built next."
+      />
 
       <p className="small muted" style={{ marginTop: 22, maxWidth: 640 }}>
         Claim rules, forms, and timelines change - verify every detail at the linked official

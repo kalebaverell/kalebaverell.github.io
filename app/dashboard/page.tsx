@@ -8,6 +8,7 @@ import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
+import FeedbackAsk from "@/components/FeedbackAsk";
 import TaskDetail from "@/components/TaskDetail";
 import BenefitCategoryList from "@/components/BenefitCategoryList";
 import InstallNudge from "@/components/InstallNudge";
@@ -291,6 +292,16 @@ export default function Dashboard() {
           Jot it down <i className="ti ti-arrow-right" aria-hidden="true" />
         </span>
       </Link>
+
+      {/* The feedback ask (Sep 11). Placed here on purpose: they have a plan
+          in front of them, so they can actually say what it is missing. The
+          footer link alone drew nothing in ten days. */}
+      <FeedbackAsk
+        event="feedback-dashboard"
+        line="What would make this more useful?"
+        sub="Missing benefit, wrong step, something that did not fit your situation - a person reads every note."
+        cta="Tell us"
+      />
 
       <div style={{ textAlign: "center", margin: "26px 0 2px" }}>
         <button type="button" className="btn ghost" onClick={() => setShowMore((v) => !v)} aria-expanded={showMore}>

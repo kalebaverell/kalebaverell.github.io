@@ -7,6 +7,7 @@ import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
 import GuideCta from "@/components/GuideCta";
+import FeedbackAsk from "@/components/FeedbackAsk";
 
 export const metadata = routeMeta(
   "Back in fighting shape",
@@ -153,6 +154,14 @@ export default function FitnessGuide() {
           ))}
         </div>
       </div>
+
+      <FeedbackAsk
+        variant="quiet"
+        event="feedback-guide"
+        line="Something missing here, or wrong for your situation?"
+        cta="Tell us what you need"
+        sub="- a person reads every note, and it shapes what gets built next."
+      />
 
       <p className="small muted" style={{ marginTop: 22, maxWidth: 640 }}>
         VetPath does not provide medical, fitness, or nutrition advice - the resources above are

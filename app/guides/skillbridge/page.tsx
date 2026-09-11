@@ -6,6 +6,7 @@ import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
 import GuideCta from "@/components/GuideCta";
+import FeedbackAsk from "@/components/FeedbackAsk";
 
 export const metadata = routeMeta(
   "SkillBridge, explained",
@@ -170,6 +171,14 @@ export default function SkillBridgeGuide() {
           ten minutes.
         </p>
       </div>
+
+      <FeedbackAsk
+        variant="quiet"
+        event="feedback-guide"
+        line="Something missing here, or wrong for your situation?"
+        cta="Tell us what you need"
+        sub="- a person reads every note, and it shapes what gets built next."
+      />
 
       <p className="small muted" style={{ marginTop: 22, maxWidth: 640 }}>
         Program rules, windows, and eligibility change - verify every detail at the official

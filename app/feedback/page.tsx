@@ -6,19 +6,20 @@ import { Wrap, Eyebrow } from "@/components/ui";
 import FeedbackForm from "@/components/FeedbackForm";
 
 export const metadata = routeMeta(
-  "Tell us what's off",
-  "VetPath is built with veterans. Tell us what's confusing, wrong, or missing - every note is read by a person and shapes what gets built next."
+  "Tell us what you need",
+  "VetPath is built with veterans. Tell us what would help, what is missing, or what is plain wrong - every note is read by a person and shapes what gets built next."
 );
 
 export default function FeedbackPage() {
   return (
     <Wrap narrow>
       <Eyebrow>Built with veterans</Eyebrow>
-      <h1 style={{ maxWidth: 620 }}>Tell us what&apos;s off.</h1>
+      <h1 style={{ maxWidth: 620 }}>Tell us what you need.</h1>
       <p className="muted" style={{ maxWidth: 560 }}>
-        VetPath only gets right what veterans point at. If something here is confusing, wrong,
-        missing, or just rubbed you the wrong way, that is exactly what we want to hear - and
-        the blunter the better.
+        VetPath only gets right what veterans point at. Tell us what would actually help you -
+        something this site should cover and does not, a step that did not fit your situation,
+        or anything here that is confusing or plain wrong. Suggestions and complaints are both
+        welcome, and the blunter the better.
       </p>
       <div style={{ marginTop: 20 }}>
         <FeedbackForm />

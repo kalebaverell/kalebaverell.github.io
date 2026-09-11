@@ -34,6 +34,11 @@ const EVENTS = [
   // audience is actually arriving, not just that the row gets clicked.
   "tile-business-owner",
   "tile-student",
+  // Feedback doors (2026-09-11). The box sat behind one footer link for ten
+  // days and drew nothing; these say which placement actually gets veterans
+  // to talk to us, so we keep the door that works.
+  "feedback-dashboard",
+  "feedback-guide",
   // Intake funnel (2026-08-28): 63% of people who start the intake never finish
   // it, and we could not see where they left. These say which step loses them.
   "intake-gate",

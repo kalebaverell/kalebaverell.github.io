@@ -16,12 +16,20 @@ export default function FeedbackForm() {
     const trimmed = body.trim();
     if (trimmed.length < 3 || !supabase) return;
     setState("sending");
-    // Same-origin referrer path only - a hint about where the note came from,
-    // never a full URL and never another site.
+    // Where the note came from - a same-origin path only, never a full URL and
+    // never another site. The in-app asks (FeedbackAsk) stash their own path on
+    // click, because a client-side route transition leaves document.referrer
+    // untouched; the referrer is the fallback for a plain link or a fresh load.
     let page: string | null = null;
     try {
-      const r = document.referrer;
-      if (r && r.startsWith(window.location.origin)) page = new URL(r).pathname.slice(0, 200);
+      const stashed = sessionStorage.getItem("vp_feedback_from");
+      if (stashed) {
+        sessionStorage.removeItem("vp_feedback_from");
+        page = stashed.slice(0, 200);
+      } else {
+        const r = document.referrer;
+        if (r && r.startsWith(window.location.origin)) page = new URL(r).pathname.slice(0, 200);
+      }
     } catch { /* hint only */ }
     const { error } = await supabase.from("feedback").insert({ body: trimmed.slice(0, 2000), page });
     if (error) { setState("error"); return; }
@@ -61,7 +69,7 @@ export default function FeedbackForm() {
   return (
     <div className="card">
       <label htmlFor="fb-body" style={{ display: "block", fontWeight: 600, color: "var(--ink-strong)", marginBottom: 6 }}>
-        What&apos;s confusing, wrong, or missing?
+        What would help you most?
       </label>
       <textarea
         id="fb-body"
@@ -69,7 +77,7 @@ export default function FeedbackForm() {
         onChange={(e) => setBody(e.target.value)}
         maxLength={2000}
         rows={5}
-        placeholder="Blunt is useful. A sentence is plenty."
+        placeholder="A suggestion, something missing, or something we got wrong. Blunt is useful - a sentence is plenty."
         style={{ width: "100%", boxSizing: "border-box", resize: "vertical", padding: "12px 14px", borderRadius: 10, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--ink)", font: "inherit", lineHeight: 1.55 }}
       />
       <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginTop: 12 }}>
