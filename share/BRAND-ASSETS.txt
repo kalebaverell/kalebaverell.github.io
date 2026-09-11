@@ -1,0 +1,59 @@
+VETPATH BRAND ASSETS
+====================
+Three marks, three jobs. They are not interchangeable - each one is built
+for a different shape of container.
+
+
+/brand/avatar-1024.png   (1024 x 1024)
+/brand/avatar-512.png    (512 x 512)
+
+    SOCIAL PROFILE PICTURES. The route mark alone, gold on deep green.
+    Upload the 1024 everywhere - LinkedIn, Facebook, Instagram, TikTok.
+    Every platform downsamples from a large source better than it
+    enlarges a small one.
+
+    Built for circular crops: the mark reaches 462px against a 512px
+    radius, leaving 50px of clearance on all sides.
+
+    Use the 512 only if an upload form rejects the larger file.
+
+
+/brand/icon-512.png      (512 x 512)
+/brand/icon-192.png      (192 x 192)
+/brand/apple-touch-icon.png (180 x 180)
+
+    APP ICONS. The gold squircle on the green field, used by the website
+    for the browser favicon, the phone home-screen tile, and the installed
+    app. Do NOT use these as a social avatar: inside a circular crop the
+    route symbol sits nested twice and becomes unreadable at small sizes.
+
+
+/brand/og-card.jpg       (1200 x 630)
+
+    LINK PREVIEW CARD. What appears when someone pastes a vetpathusa.com
+    link into a message, a post, or a chat. The site serves this
+    automatically - you only need the file if you are mocking up a preview
+    by hand.
+
+
+COLOURS
+    Deep green   #073D30    backgrounds, the dark bands
+    Primary      #0F6E56    buttons, links, the green you see most
+    Gold         #D98A3D    the accent - used once per screen, on the
+                            veteran call-to-action
+    Gold ink     #8A5714    gold text on light backgrounds
+    Cream        #FAF6EE    page background
+
+TYPEFACES
+    Fraunces    headlines (serif)
+    Inter       body and interface
+    IBM Plex Mono   data, figures, code
+
+    Both are free on Google Fonts. The website self-hosts them, so no
+    third party sees a visitor load the site.
+
+
+A NOTE ON THE LOGO IN THE WEBSITE HEADER
+    The mark in the top-left of the site is not an image file - it is
+    drawn in code from an icon font. If you ever need it as a graphic,
+    use avatar-1024.png, which is the same route symbol.
