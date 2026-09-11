@@ -1,6 +1,6 @@
 "use client";
 import PageSkeleton from "@/components/PageSkeleton";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -9,10 +9,21 @@ import { INTAKE, INTAKE_NOTES_PROMPT, STATES, GOALS } from "@/lib/data";
 import type { Answers } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
 import { track, trackOnce, INTAKE_STEP_EVENTS } from "@/lib/track";
+import { applySeed, isSeedKey, parkSeed, takeSeed } from "@/lib/intakeSeed";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
   const { enabled, ready: authReady, user, openAuth, authError } = useAuth();
+  // A homepage situation tile ("I already own a business") names its answer in
+  // the query string. Park it the moment we land: creating an account leaves
+  // for the email link and comes back without a query string, and the tile's
+  // promise has to survive that trip. Read from location rather than
+  // useSearchParams - this page is statically exported, and the hook would
+  // force a Suspense boundary for something only the browser ever needs.
+  useEffect(() => {
+    const k = new URLSearchParams(window.location.search).get("start");
+    if (isSeedKey(k)) parkSeed(k);
+  }, []);
   if (!ready) return <PageSkeleton kind="narrow" />;
   // Building a gameplan requires a free account, so it saves to the veteran's own profile.
   if (enabled) {
@@ -102,6 +113,19 @@ function Intake() {
   // Advancing to (or returning to) a step should start at the top - not wherever the Next
   // button sat at the bottom of the previous step.
   useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [step]);
+
+  // Apply the situation tile's answers once, on arrival. Consuming the seed
+  // here (rather than leaving it parked) means a veteran who changes one of
+  // these answers by hand does not get it silently reset on the next step.
+  const seeded = useRef(false);
+  useEffect(() => {
+    if (seeded.current) return;
+    seeded.current = true;
+    const key = takeSeed();
+    if (key) applySeed(key, s.answers, setAnswer);
+    // Mount-once: the seed reflects the state the veteran arrived in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Funnel measurement (2026-08-28): one event per step reached, deduped per
   // session so Back/Next does not inflate it. Where these counts fall off is

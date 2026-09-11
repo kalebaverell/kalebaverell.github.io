@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BRAND, STATE_BENEFITS } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { Wrap, Stat, Eyebrow, SectionHead } from "@/components/ui";
+import { track } from "@/lib/track";
 import PlanDemo from "@/components/PlanDemo";
 import Topo from "@/components/Topo";
 
@@ -254,6 +255,41 @@ export default function Landing() {
               <p className="desc">{body}</p>
             </div>
           ))}
+        </div>
+
+        {/* Situation doors (Sep 11). The rows above describe the road out; these
+            two are for veterans already standing somewhere specific, who arrived
+            with a question instead of a transition. Both lead into the gameplan
+            like every other homepage door - the tile just carries the answer it
+            collected, so the plan opens on what they came to ask. */}
+        <div style={{ marginTop: 34 }} data-reveal="true">
+          <p className="muted small" style={{ margin: "0 0 14px", fontWeight: 600 }}>
+            Already somewhere specific? Start there.
+          </p>
+          <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
+            {([
+              ["business-owner", "tile-business-owner", "ti-building-store", "I already own a business",
+                "The certifications, set-asides, and free SBA counseling you qualify for as a veteran owner - plus where the real grants live.",
+                "Funding stack"],
+              ["student", "tile-student", "ti-school", "I'm in school right now",
+                "What pays for it: GI Bill and Yellow Ribbon, veteran scholarships, and your state's tuition programs - and what stacks with what.",
+                "Pays for school"],
+            ] as const).map(([seed, ev, icon, title, body, tag], i) => (
+              <Link
+                key={seed}
+                href={`/onboarding?start=${seed}`}
+                className="card"
+                onClick={() => track(ev)}
+                data-reveal={i * 90}
+                style={{ display: "block", textDecoration: "none", color: "inherit" }}
+              >
+                <div className="iconwrap" style={{ marginBottom: 14 }}><i className={`ti ${icon}`} aria-hidden="true" /></div>
+                <h4 style={{ marginBottom: 6 }}>{title}</h4>
+                <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>{body}</p>
+                <span className="chip gold" style={{ marginTop: 14, fontSize: 11, fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase" }}>{tag}</span>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div id="how-it-works" style={{ marginTop: 56, scrollMarginTop: 80 }}>

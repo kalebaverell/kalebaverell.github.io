@@ -66,7 +66,7 @@ export function buildFundedPath(a: Answers, career?: Career): FundedPath {
   // apply - the same optional demographics answer the network page keys on.
   const business: FundingProgram[] = [];
   const wantsBusiness =
-    (a.topGoals || []).includes("Start a business") ||
+    (a.topGoals || []).includes("start-a-business") ||
     (!!a.businessInterest && a.businessInterest !== "No") ||
     track === "entrepreneur";
   if (wantsBusiness) {
