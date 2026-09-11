@@ -21,6 +21,62 @@ import ProgressStrip from "@/components/ProgressStrip";
 const DESCRIPTION =
   "Turn your service and goals into a personal 30/60/90 day plan: benefits to claim, careers that fit, and how to pay for the training. Free. Not the VA.";
 
+// Entity identity for search engines (Sep 11, 2026). Search Console showed the
+// only queries surfacing this domain were VETERINARY - "canine itch scale",
+// "dog dosage calculator" - because "VetPath" parses as veterinary pathology,
+// an established term with real labs using the name. Nothing on the site ever
+// told Google otherwise: there was no Organization markup at all. This says,
+// in the vocabulary crawlers actually read, that VetPath serves United States
+// military veterans. It claims no government affiliation and no entity status
+// (the entity is undecided), and carries no sameAs - VetPath has no verified
+// social profiles yet. Add sameAs the day real ones exist; it is the single
+// strongest disambiguation signal after inbound links.
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "VetPath",
+      alternateName: "VetPath USA",
+      url: SITE,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE}/icons/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+      description:
+        "VetPath helps United States military veterans and transitioning service members plan life after service: the VA benefits to claim, civilian careers that fit their service, and how to pay for the training. Free to use, and every figure links to the official government source behind it. VetPath is not the VA and is not affiliated with any government agency.",
+      areaServed: { "@type": "Country", name: "United States" },
+      audience: {
+        "@type": "Audience",
+        audienceType:
+          "United States military veterans, transitioning service members, and their families",
+      },
+      knowsAbout: [
+        "VA disability compensation claims",
+        "Post-9/11 GI Bill education benefits",
+        "DoD SkillBridge",
+        "Transition Assistance Program",
+        "State veteran benefits",
+        "Veteran employment and civilian career transition",
+        "VA home loan",
+        "Veteran-owned small business certification",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: "VetPath",
+      description: DESCRIPTION,
+      publisher: { "@id": `${SITE}/#organization` },
+      inLanguage: "en-US",
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   // Required for a static export: without it, Next cannot resolve the relative
   // image path below into the absolute URL that social crawlers demand.
@@ -116,6 +172,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preload" href="/fonts/g/inter-400n-latin-15.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <link rel="stylesheet" href="/fonts/tabler-icons.css" />
+        {/* Tells search engines what this domain IS - see ORG_JSONLD above. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+        />
       </head>
       <body>
         <AuthProvider>
