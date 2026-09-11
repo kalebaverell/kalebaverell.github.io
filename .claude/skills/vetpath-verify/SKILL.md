@@ -105,6 +105,19 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
 - Playwright MCP can drop mid-run ("Connection closed"): reconnect via ToolSearch and keep batches
   small. The browser profile SURVIVES the drop - localStorage and the open page are intact, so
   resume from the on-screen state instead of rerunning the whole flow.
+- Exact labels that cost time on Sep 11 (all four looked like failures and were not):
+  the benefits tier is "Act on these now", NOT "Act now"; /relocate renders NO matches and NO
+  compare checkboxes until the "Show my matches" button is clicked; timeline `claims` and
+  `finances` are SINGLE-select scalars, so clicking three options correctly leaves the last one
+  (the genuine multi-selects are the goals/priorities steps - those must hold all three); and the
+  far-out plan legitimately contains the word "TAP" in a forward-reference task ("...that's when
+  TAP, SkillBridge... enter the window", lib/rules.ts inside the farOut guard) - assert on TAP
+  *action items*, never the bare word.
+- Flow 9 timing: measure the hero reveal inside ONE js call (2 at load -> 3 -> 4). Split across
+  two tool calls, the round-trip alone spans several 5.2s cycles and all 5 slides legitimately
+  carry a background - which reads as the documented failure when it is not.
+- /crisis contains "gameplan" in the nav and footer on every page. Assert the no-funnel-pitch rule
+  inside <main> (and that main has no /onboarding link), not against document.body.
 - InstallNudge needs a synthesized beforeinstallprompt event on a mobile viewport to appear at all.
 
 ## 5. Deliverable freshness
