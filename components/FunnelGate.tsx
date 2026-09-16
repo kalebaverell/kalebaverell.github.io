@@ -23,6 +23,7 @@ const OPEN_PATHS = new Set([
   "crisis", // crisis resources are NEVER gated, and never will be
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
+  "stats", // private founder board - its own token is the gate, not the funnel
 ]);
 
 // Per-page gate identity: same gate mechanic everywhere, but each door describes
