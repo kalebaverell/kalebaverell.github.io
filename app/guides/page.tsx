@@ -12,6 +12,12 @@ export const metadata = routeMeta(
 
 const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
   {
+    href: "/guides/separation-checklist",
+    icon: "ti-list-check",
+    title: "The complete separation checklist",
+    blurb: "All seven phases with every official deadline - TAP at 365 days, BDD between 180 and 90, VGLI at 240 - each linked to the page that governs it.",
+  },
+  {
     href: "/guides/transition-timeline",
     icon: "ti-route",
     title: "The military transition timeline",

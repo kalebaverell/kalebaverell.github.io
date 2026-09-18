@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
   return [
     at("/", 1),
+    at("/guides/separation-checklist/", 0.9),
     at("/guides/transition-timeline/", 0.9),
     at("/guides/state-benefits/", 0.9),
     at("/guides/disability-claims/", 0.9),

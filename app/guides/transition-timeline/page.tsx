@@ -125,6 +125,13 @@ export default function TimelineGuide() {
         </p>
       </div>
 
+      <p className="muted" style={{ marginTop: 26, maxWidth: 620 }}>
+        Want the long version? <Link href="/guides/separation-checklist"><strong>The complete
+        separation checklist</strong></Link> walks all seven phases task by task, with the five
+        dated deadlines - TAP, BDD, SBP, TAMP and VGLI - and a link to the official page behind
+        every one. No account needed for that either.
+      </p>
+
       <FeedbackAsk
         variant="quiet"
         event="feedback-guide"
