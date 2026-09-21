@@ -367,7 +367,7 @@ export default function Dashboard() {
             <div className="card">
               <h3><i className="ti ti-building-bridge" style={{ color: "var(--accent-ink)" }} /> SkillBridge window</h3>
               <p className="small" style={{ margin: "6px 0 0" }}>Still in service? Intern with a civilian employer during your <strong>last 180 days on military pay</strong>. Ask your command early; slots take approval time.</p>
-              <a className="btn ghost sm" style={{ marginTop: 10 }} href="https://skillbridge.osd.mil" target="_blank" rel="noopener noreferrer">SkillBridge program <i className="ti ti-external-link" /></a>
+              <a className="btn ghost sm" style={{ marginTop: 10 }} href="https://www.skillbridge.mil/" target="_blank" rel="noopener noreferrer">SkillBridge program <i className="ti ti-external-link" /></a>
             </div>
           )}
           {gp.disabilityPrep && gp.disabilityPrep.length > 0 && (

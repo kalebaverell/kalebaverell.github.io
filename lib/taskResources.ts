@@ -61,7 +61,7 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
     { label: "Open the Smart transcript tool", href: "/transcript", internal: true },
   ]},
   { test: /skillbridge/i, resources: [
-    { label: "DoD SkillBridge program", href: "https://skillbridge.osd.mil/" },
+    { label: "SkillBridge program", href: "https://www.skillbridge.mil/" },
   ]},
   { test: /\bvso\b|accredited|county service officer/i, resources: [
     { label: "Find an accredited VSO (VA.gov)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/" },

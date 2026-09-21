@@ -38,7 +38,7 @@ const FAQS: { q: string; a: string; source?: { label: string; url: string } }[] 
   {
     q: "What is SkillBridge and when do I ask?",
     a: "SkillBridge lets you intern with a civilian employer during your last 180 days while staying on military pay. It needs command approval and slots take lead time, so raise it with your command well before the window opens.",
-    source: { label: "DoD SkillBridge", url: "https://skillbridge.osd.mil/" },
+    source: { label: "SkillBridge", url: "https://www.skillbridge.mil/" },
   },
   {
     q: "What happens to my SGLI life insurance when I separate?",

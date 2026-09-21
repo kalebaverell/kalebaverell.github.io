@@ -14,7 +14,7 @@ export const metadata = routeMeta(
 );
 
 const OFFICIAL = [
-  { label: "DoD SkillBridge (official program site)", url: "https://skillbridge.osd.mil/" },
+  { label: "SkillBridge (official program site)", url: "https://www.skillbridge.mil/" },
   { label: "DoD TAP", url: "https://www.dodtap.mil/" },
 ];
 
@@ -111,8 +111,8 @@ export default function SkillBridgeGuide() {
         <h2>Finding a program</h2>
         <p style={{ maxWidth: 640 }}>
           The official program site at{" "}
-          <a href="https://skillbridge.osd.mil/" target="_blank" rel="noopener noreferrer">
-            skillbridge.osd.mil <i className="ti ti-external-link" aria-hidden="true" />
+          <a href="https://www.skillbridge.mil/" target="_blank" rel="noopener noreferrer">
+            skillbridge.mil <i className="ti ti-external-link" aria-hidden="true" />
           </a>{" "}
           is the authoritative place to look - it is where the program itself lists opportunities,
           and it is the version of the truth your command will trust. Placements span industries,
