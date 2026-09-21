@@ -17,7 +17,7 @@
         {
           "name": "Disabled Veteran Property Tax Exemption",
           "category": "tax",
-          "blurb": "Exempts the first $150,000 of assessed value of the primary residence from property tax for veterans with a service-connected disability rated 50% or more, with transfer to surviving spouses age 60+.",
+          "blurb": "State law requires every municipality to exempt the first $150,000 of assessed value on the primary residence for veterans with a service-connected disability rated 50% or more; a municipality may choose to exempt more than that. Transfers to a surviving spouse age 60 or older.",
           "source": "https://veterans.alaska.gov/benefits/additional-benefits/taxes-and-land/"
         },
         {
@@ -1806,7 +1806,7 @@
         {
           "name": "Disabled Veteran Property Tax Exemptions (Tiered)",
           "category": "tax",
-          "blurb": "Graduated statutory property tax exemptions rise with VA disability rating (10-29%, 30-49%, 50-69%, 70-99%), and veterans rated 100 percent disabled or individually unemployable receive a total exemption on their residence homestead under Tax Code Section 11.131.",
+          "blurb": "Graduated exemptions rise with VA disability rating: up to $5,000 off the property's value at 10-29%, $7,500 at 30-49%, $10,000 at 50-69%, and $12,000 at 70-100%. Separately, veterans rated 100 percent disabled or individually unemployable can receive a total exemption on their residence homestead under Tax Code Section 11.131.",
           "source": "https://comptroller.texas.gov/taxes/property-tax/exemptions/disabledvet-faq.php"
         },
         {
