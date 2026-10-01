@@ -1,0 +1,129 @@
+{
+  "batch": "1b",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "agency": {
+        "name": "Colorado Division of Veterans Affairs",
+        "url": "https://vets.colorado.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Veterans with a Disability and Gold Star Spouses",
+          "category": "tax",
+          "blurb": "Exempts 50% of the first $200,000 of actual value of the primary residence for veterans rated 100% permanent and total (or with individual unemployability status) and for Gold Star spouses.",
+          "source": "https://vets.colorado.gov/property-tax-exemption"
+        },
+        {
+          "name": "Colorado National Guard Tuition Waiver Program",
+          "category": "education",
+          "blurb": "Waives up to 100% of in-state tuition for eligible Colorado Air and Army National Guard members pursuing undergraduate or graduate coursework at approved Colorado institutions.",
+          "source": "https://dmva.colorado.gov/tuition-waiver"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Awards five preference points to eligible veterans (ten points for veterans with a service-connected disability) in Colorado state classified hiring.",
+          "source": "https://careers.colorado.gov/veterans-preference"
+        },
+        {
+          "name": "Colorado Veterans Community Living Centers",
+          "category": "health",
+          "blurb": "Five state-operated long-term care homes providing skilled nursing, therapy, and memory care to honorably discharged veterans, their spouses, and Gold Star parents.",
+          "source": "https://cdhs.colorado.gov/VCLCs"
+        },
+        {
+          "name": "Free Lifetime Fishing and Small Game Combination License (VA Combo License)",
+          "category": "recreation",
+          "blurb": "Provides a free lifetime fishing and small-game hunting combination license to resident veterans with a service-connected disability of 50% or more and to Purple Heart recipients.",
+          "source": "https://cpw.state.co.us/hunting/hunters-military"
+        }
+      ],
+      "notes": "vets.colorado.gov/services-and-benefits blocked automated access (HTTP 403); program details verified via official search results from vets.colorado.gov, dmva.colorado.gov, careers.colorado.gov, cdhs.colorado.gov, and cpw.state.co.us."
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "agency": {
+        "name": "Connecticut Department of Veterans Affairs",
+        "url": "https://portal.ct.gov/dva"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Exemption for Veterans with Service-Connected Permanent and Total Disability",
+          "category": "tax",
+          "blurb": "Fully exempts the primary dwelling (or a motor vehicle if the veteran owns no home) from property tax for Connecticut veterans with a VA permanent and total service-connected disability rating, in addition to the longstanding wartime-service exemption.",
+          "source": "https://portal.ct.gov/governor/news/press-releases/2024/05-2024/governor-lamont-signs-law-establishing-property-tax-exemption-for-veterans"
+        },
+        {
+          "name": "Veterans Tuition Waiver at Connecticut Public Colleges",
+          "category": "education",
+          "blurb": "Waives 100% of tuition for General Fund courses at UConn, the Connecticut State Universities, and Connecticut community colleges for eligible wartime veterans, National Guard members, and certain dependents.",
+          "source": "https://portal.ct.gov/ohe/knowledge-base/articles/for-students/veteran-education-benefits"
+        },
+        {
+          "name": "Veterans' Preference for State Employment Examinations",
+          "category": "employment",
+          "blurb": "Adds ten points to passing open-competitive state examination scores for wartime veterans receiving VA compensation, and five points for other qualifying wartime veterans.",
+          "source": "https://portal.ct.gov/DOT/Recruitment-Unit/Veterans-Preferences"
+        },
+        {
+          "name": "Veterans' Home at Rocky Hill",
+          "category": "health",
+          "blurb": "State-operated campus offering a 125-bed long-term care facility plus residential and supportive programs including dementia care, respite care, assisted living, and hospice.",
+          "source": "https://portal.ct.gov/DVA/Services/Benefits?showall=true"
+        },
+        {
+          "name": "Free Fishing License for Veterans with Disabilities",
+          "category": "recreation",
+          "blurb": "Provides a free recreational fishing license through CT DEEP to veterans with a service-related or other qualifying disability.",
+          "source": "https://portal.ct.gov/DEEP/Fishing/General-Information/Fisheries-Licenses-and-Permits"
+        }
+      ],
+      "notes": "All sources are official portal.ct.gov pages verified via search results; pages not fetched directly to stay within fetch budget."
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "agency": {
+        "name": "Delaware Office of Veterans Services",
+        "url": "https://vets.delaware.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans School Property Tax Credit",
+          "category": "tax",
+          "blurb": "Provides a credit against 100% of non-vocational school district property taxes on the primary residence for veterans rated 100% permanently and totally disabled (including individual unemployability) with three years of Delaware domicile.",
+          "source": "https://finance.delaware.gov/disabled-veterans/"
+        },
+        {
+          "name": "Educational Benefits for Children of Deceased Veterans and Others",
+          "category": "education",
+          "blurb": "Provides tuition assistance at Delaware public institutions for children of service members who died in service or from service-connected causes, alongside tuition programs for Delaware National Guard members.",
+          "source": "https://vets.delaware.gov/veterans-benefits/"
+        },
+        {
+          "name": "Veterans' Preference in State Merit Employment",
+          "category": "employment",
+          "blurb": "Awards five additional points to veterans and ten to veterans with a disability in screening and ranking for initial appointment to Delaware state merit employment.",
+          "source": "https://statejobs.delaware.gov/explore/veterans-preference.shtml"
+        },
+        {
+          "name": "Delaware Veterans Home",
+          "category": "health",
+          "blurb": "State-operated long-term skilled nursing facility in Milford providing 24-hour clinical care, memory support, and therapeutic programming for Delaware veterans.",
+          "source": "https://vethome.delaware.gov/"
+        },
+        {
+          "name": "Hunting, Trapping, and Fishing License Exemption for Veterans with Disabilities",
+          "category": "recreation",
+          "blurb": "Allows honorably discharged veterans with a VA service-connected disability of at least 60% to hunt, trap, and fish in Delaware without charge via a DNREC license exemption.",
+          "source": "https://dnrec.delaware.gov/fish-wildlife/licenses/exemptions/"
+        }
+      ],
+      "notes": "Delaware's veterans agency operates as the Office of Veterans Services under the Department of State, advised by the Delaware Commission of Veterans Affairs. All source URLs are official delaware.gov pages from search results."
+    }
+  ]
+}

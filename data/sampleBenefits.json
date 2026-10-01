@@ -7,7 +7,7 @@
       "icon": "ti-clipboard-heart",
       "summary": "Tax-free monthly compensation for conditions connected to your service.",
       "whoFor": "Veterans with a current condition linked to an injury, illness, or event during service.",
-      "sampleEligibility": "Verified: you may qualify if you have a current diagnosed condition, an in-service injury, illness, or event, and a medical link between them - and you were discharged under other than dishonorable conditions.",
+      "sampleEligibility": "Verified: you may qualify if you have a current condition affecting your mind or body, you served on active duty, active duty for training, or inactive duty training, and your condition is linked to service - it started or was caused during service, an existing condition was made worse by service, or a service-connected disability appeared after you left. Generally you must have been discharged under other than dishonorable conditions (other discharge types may still have options).",
       "official": { "name": "VA.gov - Disability", "url": "https://www.va.gov/disability/" },
       "actionSteps": [
         "Gather service records, medical records, and a symptom timeline.",
@@ -19,7 +19,7 @@
       "goalTags": ["understand-disability", "organize-documents", "transition-out"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
       "sensitive": true,
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/disability/",
         "https://www.va.gov/disability/eligibility/",
@@ -43,7 +43,7 @@
       "documents": ["DD-214", "Financial/income info (if required)", "Insurance cards"],
       "goalTags": ["transition-out", "understand-disability", "prepare-retirement", "move-new-state"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/health-care/",
         "https://www.va.gov/health-care/eligibility/priority-groups/",
@@ -67,7 +67,7 @@
       "documents": ["DD-214", "Certificate of Eligibility", "Transcripts"],
       "goalTags": ["use-education-benefits", "get-better-job", "transition-out"],
       "statusTags": ["Active duty", "Transitioning (separating within 12 months)", "Veteran", "Spouse / family member"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/education/",
         "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
@@ -90,7 +90,7 @@
       "documents": ["Certificate of Eligibility", "DD-214", "Proof of income", "Bank statements"],
       "goalTags": ["buy-a-home", "move-new-state"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/housing-assistance/home-loans/",
         "https://www.va.gov/housing-assistance/home-loans/eligibility/",
@@ -113,7 +113,7 @@
       "documents": ["DD-214", "VA disability rating letter", "Career goals summary"],
       "goalTags": ["get-better-job", "use-education-benefits", "understand-disability"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/careers-employment/vocational-rehabilitation/",
         "https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/",
@@ -136,10 +136,10 @@
       "documents": ["Resume", "DD-214", "Certifications / licenses"],
       "goalTags": ["get-better-job", "transition-out", "start-a-business", "move-new-state"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Spouse / family member"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.dol.gov/agencies/vets",
-        "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
+        "https://www.dol.gov/agencies/vets/programs/grants/state/jvsg/about",
         "https://www.dol.gov/agencies/eta/jobs-for-veterans-act"
       ]
     },
@@ -150,20 +150,20 @@
       "summary": "SBA resources, training, and certifications for veteran entrepreneurs.",
       "whoFor": "Veterans and military spouses starting or growing a business.",
       "sampleEligibility": "Verified: SBA programs like Boots to Business and Veterans Business Outreach Centers serve the military community broadly; SDVOSB/VOSB certification requires a business at least 51% owned and controlled by veterans (service-disabled veterans for SDVOSB), certified through SBA.",
-      "official": { "name": "SBA - Veteran business", "url": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses" },
+      "official": { "name": "SBA - Veteran business", "url": "https://www.sba.gov/counseling/grow-your-business/#veteran-owned" },
       "actionSteps": [
         "Take the SBA Boots to Business course (offered through the DoD Transition Assistance Program).",
         "Connect with your local Veterans Business Outreach Center (VBOC).",
-        "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at veterans.certify.sba.gov."
+        "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at certifications.sba.gov (MySBA Certifications)."
       ],
       "documents": ["Business plan", "DD-214", "EIN / licenses"],
       "goalTags": ["start-a-business"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
-        "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
-        "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs",
-        "https://veterans.certify.sba.gov/"
+        "https://www.sba.gov/counseling/grow-your-business/#veteran-owned",
+        "https://www.sba.gov/veterans/#vetcert",
+        "https://certifications.sba.gov/"
       ]
     },
     {
@@ -183,11 +183,11 @@
       "goalTags": ["understand-disability", "find-local-support", "transition-out"],
       "statusTags": ["Active duty", "Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
       "crisis": true,
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.veteranscrisisline.net/",
         "https://www.veteranscrisisline.net/about/what-is-988/",
-        "https://www.mentalhealth.va.gov/gethelp.asp"
+        "https://www.mentalhealth.va.gov/get-help/index.asp"
       ]
     },
     {
@@ -206,7 +206,7 @@
       "documents": ["Retirement orders", "SBP forms", "Beneficiary designations"],
       "goalTags": ["prepare-retirement", "organize-documents"],
       "statusTags": ["Veteran", "Retired (20+ years of service)", "Spouse / family member"],
-      "lastVerified": "2026-07-08",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/pension/",
         "https://www.va.gov/pension/eligibility/",
@@ -231,7 +231,7 @@
       "documents": ["Marriage/birth certificates", "Dependent SSNs", "DD-214"],
       "goalTags": ["use-education-benefits", "prepare-retirement", "find-local-support"],
       "statusTags": ["Veteran", "Retired (20+ years of service)", "Spouse / family member"],
-      "lastVerified": "2026-07-09",
+      "lastVerified": "2026-10-01",
       "sources": [
         "https://www.va.gov/family-and-caregiver-benefits/",
         "https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/",
@@ -248,7 +248,7 @@
       "summary": "State-specific benefits: property tax relief, tuition, licenses, parks, and more.",
       "whoFor": "Veterans, varying by state of residence.",
       "sampleEligibility": "Verified: every state and territory runs its own veterans agency with its own benefits - property tax relief, tuition programs, licenses, and recreation perks vary widely by state and change often, so eligibility must be confirmed directly with your state Department of Veterans Affairs.",
-      "official": { "name": "Find your state veterans agency (NASDVA)", "url": "https://www.nasdva.us/" },
+      "official": { "name": "Find your state veterans agency (NASDVA)", "url": "https://nasdva.us/" },
       "actionSteps": [
         "Find your state Department of Veterans Affairs using the NASDVA state-by-state directory at nasdva.us/resources/ or VA's list of state veterans affairs offices on discover.va.gov.",
         "Contact your state veterans agency or a county veteran service officer (county-level officers exist in many, but not all, states).",
@@ -257,9 +257,9 @@
       "documents": ["DD-214", "Proof of residency", "VA award letters"],
       "goalTags": ["move-new-state", "buy-a-home", "prepare-retirement", "find-local-support"],
       "statusTags": ["Transitioning (separating within 12 months)", "Veteran", "Retired (20+ years of service)", "Spouse / family member"],
-      "lastVerified": "2026-07-09",
+      "lastVerified": "2026-10-01",
       "sources": [
-        "https://www.nasdva.us/",
+        "https://nasdva.us/",
         "https://nasdva.us/resources/",
         "https://nasdva.us/about/",
         "https://discover.va.gov/external-resources/?_resource_type=state-veterans-affairs-office",

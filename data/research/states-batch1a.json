@@ -1,6 +1,92 @@
 {
   "batch": "1a",
-  "lastVerified": "2026-07-08",
+  "lastVerified": "2026-10-01",
+  "changes": [
+    {
+      "code": "AL",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "4 programs re-verified unchanged via official va.alabama.gov and revenue.alabama.gov search results (GI Dependent Scholarship still administered by ADVA with active portal; ADVA operates state veterans homes; DOR homestead page confirms P&T-disabled exemption from all ad valorem taxes regardless of age or income)."
+    },
+    {
+      "code": "AK",
+      "program": "Alaska Veterans and Pioneers Home (Palmer)",
+      "change": "url-updated",
+      "detail": "Division of Alaska Pioneer Homes (Dept. of Family and Community Services) now hosts the Palmer home at a new page path, https://dfcs.alaska.gov/alaska-pioneer-homes/our-homes/alaska-veterans-pioneers-home/ (official search result); blurb unchanged in substance, adds the 79-bed count and VA per diem note stated on the official page."
+    },
+    {
+      "code": "AK",
+      "program": "(all others)",
+      "change": "kept",
+      "detail": "4 programs re-verified unchanged: $150,000 assessed-value disabled-veteran exemption (veterans.alaska.gov and commerce.alaska.gov DCRA, AS 29.45.030); DNR once-per-lifetime veterans land discount under AS 38.05.940 (dnr.alaska.gov); ADF&G complimentary DV permanent ID card for 50%+ disabled with king salmon and waterfowl stamp waivers; 10/5-point veteran preference under AS 39.25.159 (veterans.alaska.gov page fetched and confirmed)."
+    },
+    {
+      "code": "AZ",
+      "program": "Property Tax Exemption for Disabled Veterans",
+      "change": "corrected",
+      "detail": "Prior blurb described only the prorated assessed-value exemption and cited a 2023 ADOR PDF. Arizona law now gives veterans rated 100% service-connected a full exemption on the primary residence for tax years beginning Jan 1, 2026 (HB2792, signed Feb 12, 2026, per azleg.gov Senate fact sheet as enacted; the veteran assessed-value limitation was eliminated by earlier 2025 legislation). Under-100% ratings remain prorated. Source moved to the statute, https://www.azleg.gov/ars/42/11111.htm."
+    },
+    {
+      "code": "AZ",
+      "program": "Arizona State Veteran Homes",
+      "change": "corrected",
+      "detail": "Blurb now names the four homes (Phoenix, Tucson, Yuma, and Flagstaff, which opened fall 2024) per dvs.az.gov; source URL unchanged."
+    },
+    {
+      "code": "AZ",
+      "program": "Military Retired Pay Income Tax Exemption",
+      "change": "url-updated",
+      "detail": "Source moved from the ADVS 2025 benefits-guide PDF to the Arizona Department of Revenue Military Tax Filing page, which confirms a 100% subtraction for uniformed-services retired or retainer pay from tax year 2021 forward (official azdor.gov search result)."
+    },
+    {
+      "code": "AZ",
+      "program": "(all others)",
+      "change": "kept",
+      "detail": "2 programs re-verified unchanged: Tuition Waiver Scholarship under A.R.S. 15-1808 (dvs.az.gov education page); state hiring preference (hr.az.gov)."
+    },
+    {
+      "code": "AR",
+      "program": "Disabled Veteran Homestead and Personal Property Tax Exemption",
+      "change": "corrected",
+      "detail": "Source moved from /veterans-tax (now only a header/navigation page with no exemption text, fetched 2026-10-01) to ADVA's Guide to AR Property Taxes page; blurb adds the special-monthly-compensation (limb loss/blindness) eligibility path stated on that page. Statutory 100% P&T wording kept."
+    },
+    {
+      "code": "AR",
+      "program": "Military Retired Pay Income Tax Exemption",
+      "change": "url-updated",
+      "detail": "Source moved from /veterans-tax (no substantive content) to the Arkansas DFA 2024 AR1000F/AR1000NR individual income tax instructions, which carry the uniformed-services retirement exemption (in effect since tax year 2018)."
+    },
+    {
+      "code": "AR",
+      "program": "(all others)",
+      "change": "kept",
+      "detail": "2 programs re-verified unchanged: two state veterans homes in Fayetteville and North Little Rock admitting veterans, spouses, and Gold Star parents (veterans.arkansas.gov/veteran-homes-1); veterans services and preference at Arkansas Workforce Centers (dws.arkansas.gov)."
+    },
+    {
+      "code": "CA",
+      "program": "Disabled Veterans' Property Tax Exemption",
+      "change": "corrected",
+      "detail": "Source moved from the general State Benefits page to CalVet's dedicated Property Tax Exemptions page; blurb now cites Rev. & Tax. Code 205.5 and notes the amount is inflation-indexed annually (calvet.ca.gov / boe.ca.gov search results)."
+    },
+    {
+      "code": "CA",
+      "program": "Veterans Homes of California",
+      "change": "corrected",
+      "detail": "Source moved to the dedicated CalVet Veterans Homes page (https://www.calvet.ca.gov/calvet-programs/veteran-homes); blurb now names the eight homes and the levels of care (domiciliary, assisted living/RCFE, intermediate, skilled nursing including memory care) as stated there."
+    },
+    {
+      "code": "CA",
+      "program": "Recreation Benefits: Reduced-Fee Hunting/Fishing Licenses and State Parks Pass",
+      "change": "corrected",
+      "detail": "Split into two entries, each with its own dedicated CalVet page: 'Reduced-Fee Hunting and Fishing Licenses for Disabled Veterans' and 'Distinguished Veteran Pass (State Parks)'. Both now state the 50%+ service-connected rating threshold (plus POW and Medal of Honor eligibility for the pass) from calvet.ca.gov and parks.ca.gov."
+    },
+    {
+      "code": "CA",
+      "program": "(all others)",
+      "change": "kept",
+      "detail": "2 programs re-verified unchanged: CalVet Home Loans (calvet.ca.gov/HomeLoans); College Fee Waiver for Veteran Dependents, confirmed current for 2025-26 on CalVet's College Fee Waiver page."
+    }
+  ],
   "states": [
     {
       "code": "AL",
@@ -48,7 +134,7 @@
         {
           "name": "Disabled Veteran Property Tax Exemption",
           "category": "tax",
-          "blurb": "Exempts the first $150,000 of assessed value of the primary residence from property tax for veterans with a service-connected disability rated 50% or more, with transfer to surviving spouses age 60+.",
+          "blurb": "State law requires every municipality to exempt the first $150,000 of assessed value on the primary residence for veterans with a service-connected disability rated 50% or more; a municipality may choose to exempt more than that. Transfers to a surviving spouse age 60 or older.",
           "source": "https://veterans.alaska.gov/benefits/additional-benefits/taxes-and-land/"
         },
         {
@@ -60,8 +146,8 @@
         {
           "name": "Alaska Veterans and Pioneers Home (Palmer)",
           "category": "health",
-          "blurb": "State-run home in Palmer providing assisted living and long-term care, with 75% of its beds designated for Alaska veterans.",
-          "source": "https://dfcs.alaska.gov/daph/pages/palmer/default.aspx"
+          "blurb": "State-run home in Palmer providing assisted living and long-term care, with 75% of its 79 beds designated for veterans; qualifying veterans may receive a VA per diem toward the cost of care.",
+          "source": "https://dfcs.alaska.gov/alaska-pioneer-homes/our-homes/alaska-veterans-pioneers-home/"
         },
         {
           "name": "Disabled Veteran Hunting, Fishing, and Trapping License",
@@ -95,7 +181,7 @@
         {
           "name": "Arizona State Veteran Homes",
           "category": "health",
-          "blurb": "State-run, Medicare-certified skilled nursing facilities providing long-term and rehabilitative care for eligible Arizona veterans and their spouses.",
+          "blurb": "State-run, Medicare-certified skilled nursing facilities in Phoenix, Tucson, Yuma, and Flagstaff providing long-term and rehabilitative care for honorably separated Arizona veterans and their spouses.",
           "source": "https://dvs.az.gov/services/arizona-state-veteran-homes"
         },
         {
@@ -107,16 +193,17 @@
         {
           "name": "Property Tax Exemption for Disabled Veterans",
           "category": "tax",
-          "blurb": "Provides an assessed-value property tax exemption for Arizona veterans with a VA disability rating, prorated to the percentage of disability, with surviving-spouse eligibility.",
-          "source": "https://azdor.gov/sites/default/files/2023-03/PROPERTY_AZPropertyTaxExemptions.pdf"
+          "blurb": "Beginning with tax year 2026, Arizona veterans rated 100% service-connected disabled are fully exempt on their primary residence (jointly owned homes treated as solely owned by the veteran), while veterans rated below 100% receive an assessed-value exemption prorated to their VA disability percentage, under A.R.S. 42-11111.",
+          "source": "https://www.azleg.gov/ars/42/11111.htm"
         },
         {
           "name": "Military Retired Pay Income Tax Exemption",
           "category": "tax",
           "blurb": "All U.S. uniformed-services retired pay is fully exempt from Arizona individual income tax.",
-          "source": "https://dvs.az.gov/sites/default/files/2025-07/Arizona%20State%20Veteran%20Benefits%20Guide%20(2025%20Edit).pdf"
+          "source": "https://azdor.gov/individuals/income-tax-filing-assistance/military-tax-filing"
         }
-      ]
+      ],
+      "notes": "Property-tax change verified from the Arizona Legislature: HB2792 (signed Feb 12, 2026, emergency measure) applies the 100% service-connected exemption to the primary residence for tax years beginning Jan 1, 2026, building on prior legislation that eliminated the assessed-value cap for veterans. The prorated exemption amount for under-100% ratings is indexed annually, so no dollar figure is stated."
     },
     {
       "code": "AR",
@@ -135,14 +222,14 @@
         {
           "name": "Disabled Veteran Homestead and Personal Property Tax Exemption",
           "category": "tax",
-          "blurb": "Veterans with a service-connected 100% total and permanent disability (and qualifying surviving spouses and minor children) are exempt from state property taxes on their homestead and personal property under Ark. Code Ann. 26-3-306.",
-          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+          "blurb": "Veterans with a service-connected 100% total and permanent disability, or who receive VA special monthly compensation for loss or loss of use of limbs or blindness (and qualifying unremarried surviving spouses and minor children), are exempt from state property taxes on their homestead and personal property under Ark. Code Ann. 26-3-306.",
+          "source": "https://www.veterans.arkansas.gov/guide-to-ar-property-taxes"
         },
         {
           "name": "Military Retired Pay Income Tax Exemption",
           "category": "tax",
           "blurb": "Military retirement and survivor benefits are exempt from Arkansas state income tax.",
-          "source": "https://www.veterans.arkansas.gov/veterans-tax"
+          "source": "https://dfa.arkansas.gov/wp-content/uploads/2024_AR1000F_and_AR1000NR_Instructions.pdf"
         },
         {
           "name": "Veterans' Preference in State Employment",
@@ -152,6 +239,53 @@
         }
       ],
       "notes": "Lifetime discounted hunting/fishing licenses for 100% disabled veterans exist via the Arkansas Game & Fish Commission (agfc.com, official state agency but not a .gov domain) and the MIA/KIA Dependents' Scholarship is administered by the AR Division of Higher Education (adhe.edu, not .gov); both omitted per source rules."
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "agency": {
+        "name": "California Department of Veterans Affairs (CalVet)",
+        "url": "https://www.calvet.ca.gov"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans' Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Under Revenue and Taxation Code section 205.5, reduces the assessed value of the home of a veteran rated 100% service-connected disabled (or paid at the 100% rate for unemployability), with a larger low-income exemption and an inflation-indexed amount each year; unmarried surviving spouses may also qualify.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/Property-Tax-Exemptions.aspx"
+        },
+        {
+          "name": "College Tuition Fee Waiver for Veteran Dependents",
+          "category": "education",
+          "blurb": "Waives mandatory system-wide tuition and fees at California Community Colleges, CSU, and UC campuses for eligible children, spouses, and surviving spouses of disabled or deceased service-connected veterans (Plans A-D).",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/College-Fee-Waiver.aspx"
+        },
+        {
+          "name": "CalVet Home Loans",
+          "category": "housing",
+          "blurb": "State-run home loan program offering veterans up to 100% financing with no private mortgage insurance and flexible manual underwriting for purchasing or refinancing a home in California.",
+          "source": "https://www.calvet.ca.gov/HomeLoans"
+        },
+        {
+          "name": "Veterans Homes of California",
+          "category": "health",
+          "blurb": "Eight state veterans homes (Yountville, Barstow, Chula Vista, Lancaster, Ventura, West Los Angeles, Fresno, and Redding) offering affordable long-term care, from domiciliary independent living to skilled nursing and memory care, for aged and disabled veterans and their eligible spouses or domestic partners.",
+          "source": "https://www.calvet.ca.gov/calvet-programs/veteran-homes"
+        },
+        {
+          "name": "Reduced-Fee Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Honorably discharged veterans with a service-connected disability rating of 50% or more can buy reduced-fee California sport fishing and hunting licenses from the Department of Fish and Wildlife.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/Fishing-and-Hunting-Licenses.aspx"
+        },
+        {
+          "name": "Distinguished Veteran Pass (State Parks)",
+          "category": "recreation",
+          "blurb": "Gives California-resident veterans rated 50% or more service-connected disabled, former POWs, and Medal of Honor recipients free vehicle day use, family camping, and boat use at participating California State Parks units.",
+          "source": "https://www.calvet.ca.gov/VetServices/Pages/State-Parks-and-Recreation-Pass.aspx"
+        }
+      ],
+      "notes": "Exemption dollar amounts (property tax) are inflation-indexed annually by the BOE, so none are stated. California also offers veterans' preference in state civil service hiring and a Disabled Veteran Business Enterprise (DVBE) contracting program."
     }
   ]
 }

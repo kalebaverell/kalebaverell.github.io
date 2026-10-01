@@ -14,9 +14,9 @@ export const metadata = routeMeta(
 );
 
 const OFFICIAL = [
-  { label: "SBA VetCert (VOSB / SDVOSB certification)", url: "https://veterans.certify.sba.gov/" },
+  { label: "SBA VetCert (VOSB / SDVOSB certification)", url: "https://certifications.sba.gov/" },
   { label: "SBA - Women-Owned Small Business program (WOSB / EDWOSB)", url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program" },
-  { label: "SBA - Veteran-owned businesses (OVBD, VBOCs)", url: "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses" },
+  { label: "SBA - Veteran-owned businesses (OVBD, VBOCs)", url: "https://www.sba.gov/counseling/grow-your-business/#veteran-owned" },
   { label: "SBA - Boots to Business", url: "https://www.sba.gov/sba-learning-platform/boots-business" },
   { label: "SBA - Women's Business Centers", url: "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" },
   { label: "IVMF - V-WISE (women veterans & spouses)", url: "https://ivmf.syracuse.edu/programs/entrepreneurship/start-up/v-wise/" },
@@ -84,7 +84,7 @@ export default function BusinessFundingGuide() {
             <strong>VetCert (VOSB / SDVOSB)</strong> - the SBA&apos;s free certification for
             businesses at least 51% veteran-owned and controlled; service-disabled adds the SDVOSB
             tier with its own set-asides.{" "}
-            <a href="https://veterans.certify.sba.gov/" target="_blank" rel="noopener noreferrer">
+            <a href="https://certifications.sba.gov/" target="_blank" rel="noopener noreferrer">
               Apply at SBA VetCert <i className="ti ti-external-link" aria-hidden="true" />
             </a>
           </li>
@@ -119,7 +119,7 @@ export default function BusinessFundingGuide() {
           <li style={{ marginBottom: 8 }}>
             <strong>Veteran business counseling (OVBD &amp; VBOCs)</strong> - free one-on-one
             advising through the SBA&apos;s veteran business network, idea stage to expansion.{" "}
-            <a href="https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.sba.gov/counseling/grow-your-business/#veteran-owned" target="_blank" rel="noopener noreferrer">
               SBA veteran-owned businesses <i className="ti ti-external-link" aria-hidden="true" />
             </a>
           </li>

@@ -1,10 +1,10 @@
 {
-  "_note": "SAMPLE / DEMO DATA - career paths for the Pathfinder decision engine. Pay and outlook are sourced from the BLS Occupational Outlook Handbook (May 2024 medians and 2024–34 projections, as labeled per figure) and O*NET OnLine; figures change over time - verify current numbers at bls.gov/ooh. Entrepreneur-track figures use the closest proxy occupation (no SOC code exists for business ownership). attrs are 0–5 on: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. speed = time to first real paycheck on this path.",
+  "_note": "SAMPLE / DEMO DATA - career paths for the Pathfinder decision engine. Pay and outlook are sourced from the BLS Occupational Outlook Handbook (May 2025 medians and 2025–35 projections, as labeled per figure) and O*NET OnLine; figures change over time - verify current numbers at bls.gov/ooh. Entrepreneur-track figures use the closest proxy occupation (no SOC code exists for business ownership). attrs are 0–5 on: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. speed = time to first real paycheck on this path.",
   "careers": [
     {
       "id": "cybersecurity-analyst", "label": "Cybersecurity analyst", "track": "employment", "icon": "ti-shield-lock",
       "blurb": "Defend networks and hunt threats - clearances and military discipline are prized here.",
-      "paySample": "$124,910 (May 2024 median, BLS)", "outlookSample": "Much faster than average (29% growth projected 2024–34)", "speed": "months",
+      "paySample": "$129,180 (May 2025 median, BLS)", "outlookSample": "Much faster than average (21% growth projected 2025–35)", "speed": "months",
       "attrs": { "hands": 1, "tech": 5, "people": 2, "data": 5, "lead": 2, "risk": 2, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 3 },
       "whyVets": "Security clearances, OPSEC mindset, and 24/7 ops experience translate directly.",
       "entryPath": [
@@ -24,7 +24,7 @@
     {
       "id": "it-support-network", "label": "IT support & networking", "track": "employment", "icon": "ti-device-desktop",
       "blurb": "Keep organizations running - the fastest on-ramp into tech careers.",
-      "paySample": "$60,340 (May 2024 median, BLS - computer user support specialists)", "outlookSample": "Projected to decline 3% 2024–34; still ~50,500 openings/yr from replacement needs", "speed": "weeks",
+      "paySample": "$61,860 (May 2025 median, BLS - computer user support specialists)", "outlookSample": "Projected to decline 3% 2025–35; still ~48,700 openings/yr from replacement needs", "speed": "weeks",
       "attrs": { "hands": 2, "tech": 4, "people": 3, "data": 3, "lead": 1, "risk": 1, "physical": 1, "outdoor": 0, "care": 2, "autonomy": 2 },
       "whyVets": "Comms and sig support experience maps directly; employers value calm troubleshooting under pressure.",
       "entryPath": [
@@ -43,7 +43,7 @@
     {
       "id": "project-manager", "label": "Project / operations manager", "track": "employment", "icon": "ti-clipboard-check",
       "blurb": "Run schedules, budgets, and teams - what NCOs and officers already do, in civilian clothes.",
-      "paySample": "$100,750 (May 2024 median, BLS)", "outlookSample": "Faster than average (6% growth projected 2024–34)", "speed": "months",
+      "paySample": "$102,320 (May 2025 median, BLS)", "outlookSample": "Much faster than average (7% growth projected 2025–35)", "speed": "months",
       "attrs": { "hands": 1, "tech": 2, "people": 4, "data": 3, "lead": 5, "risk": 2, "physical": 0, "outdoor": 0, "care": 2, "autonomy": 3 },
       "whyVets": "Leading people, logistics, and missions IS project management - add the civilian vocabulary and certification.",
       "entryPath": [
@@ -62,7 +62,7 @@
     {
       "id": "federal-civil-service", "label": "Federal civil service", "track": "employment", "icon": "ti-building-bank",
       "blurb": "Stable GS career with veterans' preference, pension, and mission continuity.",
-      "paySample": "$101,190 (May 2024 median, BLS - management analysts, used as proxy; GS pay varies by grade/locality)", "outlookSample": "Much faster than average (9% growth projected 2024–34 - proxy occupation)", "speed": "months",
+      "paySample": "$101,860 (May 2025 median, BLS - management analysts, used as proxy; GS pay varies by grade/locality)", "outlookSample": "Much faster than average (10% growth projected 2025–35 - proxy occupation)", "speed": "months",
       "attrs": { "hands": 1, "tech": 2, "people": 3, "data": 3, "lead": 3, "risk": 0, "physical": 0, "outdoor": 0, "care": 2, "autonomy": 1 },
       "whyVets": "Veterans' preference points, buy-back of military time toward retirement, and familiar structure.",
       "entryPath": [
@@ -81,7 +81,7 @@
     {
       "id": "healthcare-nursing", "label": "Healthcare (EMT → RN paths)", "track": "education", "icon": "ti-stethoscope",
       "blurb": "Turn medic/corpsman experience into licensed healthcare careers with real credit for your training.",
-      "paySample": "$93,600 (May 2024 median, BLS - registered nurses; EMT entry rungs pay less)", "outlookSample": "Faster than average (5% growth projected 2024–34); ~189,100 openings/yr", "speed": "2yr",
+      "paySample": "$97,550 (May 2025 median, BLS - registered nurses; EMT entry rungs pay less)", "outlookSample": "Faster than average (6% growth projected 2025–35); ~180,800 openings/yr", "speed": "2yr",
       "attrs": { "hands": 3, "tech": 2, "people": 5, "data": 2, "lead": 2, "risk": 1, "physical": 3, "outdoor": 1, "care": 5, "autonomy": 2 },
       "whyVets": "68W/HM training often converts to EMT credit and advanced placement in nursing bridge programs.",
       "entryPath": [
@@ -101,7 +101,7 @@
     {
       "id": "teacher-trainer", "label": "Teaching & training", "track": "education", "icon": "ti-chalkboard",
       "blurb": "Bring discipline and mentorship to classrooms or corporate training rooms.",
-      "paySample": "$64,580 (May 2024 median, BLS - high school teachers)", "outlookSample": "Projected to decline 2% 2024–34; still ~66,200 openings/yr from replacement needs", "speed": "2yr",
+      "paySample": "$72,040 (May 2025 median, BLS - high school teachers)", "outlookSample": "Little or no change (0% projected 2025–35); ~63,500 openings/yr from replacement needs", "speed": "2yr",
       "attrs": { "hands": 1, "tech": 1, "people": 5, "data": 2, "lead": 3, "risk": 1, "physical": 1, "outdoor": 1, "care": 4, "autonomy": 2 },
       "whyVets": "Military instructors already teach for a living; many states run alternative certification routes for veterans.",
       "entryPath": [
@@ -120,7 +120,7 @@
     {
       "id": "business-analyst", "label": "Business analyst (degree path)", "track": "education", "icon": "ti-chart-dots",
       "blurb": "A GI Bill business/analytics degree into corporate strategy, finance, or consulting.",
-      "paySample": "$101,190 (May 2024 median, BLS)", "outlookSample": "Much faster than average (9% growth projected 2024–34); ~98,100 openings/yr", "speed": "4yr",
+      "paySample": "$101,860 (May 2025 median, BLS)", "outlookSample": "Much faster than average (10% growth projected 2025–35); ~94,100 openings/yr", "speed": "4yr",
       "attrs": { "hands": 0, "tech": 3, "people": 3, "data": 5, "lead": 2, "risk": 1, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 3 },
       "whyVets": "Vets bring ops context analysts usually lack; Yellow Ribbon schools + SVA chapters smooth the path.",
       "entryPath": [
@@ -139,9 +139,9 @@
     {
       "id": "electrician", "label": "Electrician", "track": "trades", "icon": "ti-bolt",
       "blurb": "Earn-while-you-learn apprenticeship into a licensed, always-in-demand trade.",
-      "paySample": "$62,350 (May 2024 median, BLS)", "outlookSample": "Much faster than average (9% growth projected 2024–34); ~81,000 openings/yr", "speed": "months",
+      "paySample": "$63,190 (May 2025 median, BLS)", "outlookSample": "Much faster than average (9% growth projected 2025–35); ~72,700 openings/yr", "speed": "months",
       "attrs": { "hands": 5, "tech": 3, "people": 2, "data": 2, "lead": 2, "risk": 2, "physical": 4, "outdoor": 2, "care": 1, "autonomy": 3 },
-      "whyVets": "Helmets to Hardhats places veterans into union apprenticeships; the GI Bill pays a housing stipend on top of apprentice wages.",
+      "whyVets": "Helmets to Hardhats connects veterans with union apprenticeships (the local program decides admission); the GI Bill pays a housing stipend on top of apprentice wages.",
       "entryPath": [
         "Apply through Helmets to Hardhats or a local IBEW apprenticeship.",
         "Register the apprenticeship with the VA to draw the GI Bill housing stipend while you earn.",
@@ -158,7 +158,7 @@
     {
       "id": "hvac-tech", "label": "HVAC technician", "track": "trades", "icon": "ti-temperature",
       "blurb": "Heating and cooling never goes out of demand - fast certification, steady work, path to your own business.",
-      "paySample": "$59,810 (May 2024 median, BLS)", "outlookSample": "Much faster than average (8% growth projected 2024–34); ~40,100 openings/yr", "speed": "months",
+      "paySample": "$61,010 (May 2025 median, BLS)", "outlookSample": "Much faster than average (11% growth projected 2025–35); ~40,600 openings/yr", "speed": "months",
       "attrs": { "hands": 5, "tech": 3, "people": 3, "data": 1, "lead": 1, "risk": 2, "physical": 4, "outdoor": 2, "care": 1, "autonomy": 4 },
       "whyVets": "Mechanical MOS experience shortens training; many vets later launch their own HVAC companies.",
       "entryPath": [
@@ -177,7 +177,7 @@
     {
       "id": "welder", "label": "Welder / fabricator", "track": "trades", "icon": "ti-flame",
       "blurb": "Certified welders stay booked - shipyards, pipelines, and fab shops actively recruit veterans.",
-      "paySample": "$51,000 (May 2024 median, BLS)", "outlookSample": "Slower than average (2% growth projected 2024–34); ~45,600 openings/yr, mostly replacement-driven", "speed": "months",
+      "paySample": "$53,750 (May 2025 median, BLS)", "outlookSample": "Slower than average (2% growth projected 2025–35); ~40,300 openings/yr, mostly replacement-driven", "speed": "months",
       "attrs": { "hands": 5, "tech": 2, "people": 1, "data": 1, "lead": 1, "risk": 2, "physical": 5, "outdoor": 3, "care": 0, "autonomy": 2 },
       "whyVets": "Short cert path, clear skill tests, and shift discipline vets already have.",
       "entryPath": [
@@ -196,7 +196,7 @@
     {
       "id": "aviation-maintenance", "label": "Aviation maintenance (A&P)", "track": "trades", "icon": "ti-plane",
       "blurb": "Military aircraft experience can count toward the FAA A&P license - airlines are hiring hard.",
-      "paySample": "$78,680 (May 2024 median, BLS - aircraft mechanics and service technicians; avionics technicians $81,390)", "outlookSample": "Faster than average (5% growth projected 2024–34); ~13,100 openings/yr", "speed": "2yr",
+      "paySample": "$79,870 (May 2025 median, BLS - aircraft mechanics and service technicians; avionics technicians $82,280)", "outlookSample": "Faster than average (5% growth (aircraft mechanics; 6% incl. avionics) projected 2025–35); ~13,100 openings/yr", "speed": "2yr",
       "attrs": { "hands": 5, "tech": 4, "people": 2, "data": 2, "lead": 2, "risk": 1, "physical": 3, "outdoor": 2, "care": 1, "autonomy": 2 },
       "whyVets": "Documented military maintenance time can authorize you to test for the FAA A&P - sometimes without further school.",
       "entryPath": [
@@ -215,7 +215,7 @@
     {
       "id": "cdl-driver", "label": "CDL / logistics driver", "track": "employment", "icon": "ti-truck",
       "blurb": "The fastest paycheck on this list - military driving experience can even waive the road test.",
-      "paySample": "$57,440 (May 2024 median, BLS)", "outlookSample": "As fast as average (4% growth projected 2024–34); ~237,600 openings/yr", "speed": "weeks",
+      "paySample": "$58,640 (May 2025 median, BLS)", "outlookSample": "As fast as average (4% growth projected 2025–35); ~214,500 openings/yr", "speed": "weeks",
       "attrs": { "hands": 3, "tech": 1, "people": 1, "data": 1, "lead": 1, "risk": 1, "physical": 3, "outdoor": 3, "care": 0, "autonomy": 4 },
       "whyVets": "FMCSA's Military Skills Test Waiver can skip the CDL road test for qualified military drivers; GI Bill covers CDL school.",
       "entryPath": [
@@ -234,7 +234,7 @@
     {
       "id": "franchise-owner", "label": "Franchise owner", "track": "entrepreneur", "icon": "ti-building-store",
       "blurb": "Run your own operation with a proven playbook - franchising rewards people who execute systems.",
-      "paySample": "$102,950 (May 2024 median, BLS - general and operations managers; owner income varies with the business)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)", "speed": "months",
+      "paySample": "$105,770 (May 2025 median, BLS - general and operations managers; owner income varies with the business)", "outlookSample": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)", "speed": "months",
       "attrs": { "hands": 2, "tech": 1, "people": 4, "data": 3, "lead": 4, "risk": 4, "physical": 2, "outdoor": 1, "care": 2, "autonomy": 5 },
       "whyVets": "Many franchisors offer veteran fee discounts (VetFran); vets thrive on documented systems.",
       "entryPath": [
@@ -254,7 +254,7 @@
     {
       "id": "service-business-owner", "label": "Service business owner", "track": "entrepreneur", "icon": "ti-tool",
       "blurb": "Start lean - landscaping, hauling, inspections, consulting, trades services - and grow on your terms.",
-      "paySample": "$102,950 (May 2024 median, BLS - general and operations managers; owner income varies widely)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)", "speed": "months",
+      "paySample": "$105,770 (May 2025 median, BLS - general and operations managers; owner income varies widely)", "outlookSample": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)", "speed": "months",
       "attrs": { "hands": 3, "tech": 1, "people": 4, "data": 2, "lead": 4, "risk": 5, "physical": 3, "outdoor": 2, "care": 1, "autonomy": 5 },
       "whyVets": "Low startup cost, immediate revenue, and total autonomy - the classic first veteran business.",
       "entryPath": [
@@ -274,7 +274,7 @@
     {
       "id": "govcon-sdvosb", "label": "Federal contracting (SDVOSB)", "track": "entrepreneur", "icon": "ti-file-certificate",
       "blurb": "Service-disabled veteran-owned businesses can win set-aside federal contracts - a real structural edge.",
-      "paySample": "$102,950 (May 2024 median, BLS - general and operations managers; contract revenue varies)", "outlookSample": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)", "speed": "2yr",
+      "paySample": "$105,770 (May 2025 median, BLS - general and operations managers; contract revenue varies)", "outlookSample": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)", "speed": "2yr",
       "attrs": { "hands": 1, "tech": 2, "people": 3, "data": 4, "lead": 4, "risk": 4, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 4 },
       "whyVets": "SDVOSB set-asides + your niche expertise = a defensible lane most founders can't enter.",
       "entryPath": [

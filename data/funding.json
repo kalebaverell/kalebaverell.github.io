@@ -132,7 +132,7 @@
       "amount": "Certifies your business as veteran-owned (VOSB) or service-disabled-veteran-owned (SDVOSB) - unlocking federal contract set-asides reserved for those businesses.",
       "eligibility": "Business must be at least 51% owned and controlled by one or more veterans (SDVOSB requires a service-connected disability). Free to apply.",
       "stackNote": "For most veteran owners, certification is worth more than any grant.",
-      "source": "https://veterans.certify.sba.gov/",
+      "source": "https://certifications.sba.gov/",
       "sourceLabel": "SBA VetCert"
     },
     {
@@ -165,7 +165,7 @@
       "amount": "Free one-on-one counseling, training, and plan reviews through SBA's veteran business network.",
       "eligibility": "Veterans, service members, and military spouses at any stage - idea to expansion.",
       "stackNote": "A free advisor who has walked other veterans through this exact path.",
-      "source": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
+      "source": "https://www.sba.gov/counseling/grow-your-business/#veteran-owned",
       "sourceLabel": "SBA - Veteran-owned businesses"
     },
     {

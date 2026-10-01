@@ -1,129 +1,84 @@
 {
   "batch": "4b",
-  "lastVerified": "2026-07-08",
+  "lastVerified": "2026-10-01",
+  "changes": [
+    {"code": "OH", "program": "Enhanced Homestead Exemption for Disabled Veterans", "change": "corrected", "detail": "Blurb updated: beginning tax year 2025 (2026 for manufactured homes) the enhanced exemption equals the full value of the homestead, i.e. a complete exemption, with no income test; surviving spouses keep it until death or remarriage. Source: Ohio Legislative Service Commission analysis (legislature.ohio.gov/download?key=24577) and Form DTE 105I (tax.ohio.gov)."},
+    {"code": "OH", "program": "(all)", "change": "kept", "detail": "4 programs re-verified unchanged (GI Promise, Veterans Bonus, Veterans Homes, disabled veteran/POW free licenses). dvs.ohio.gov not fetched (blocks automated access); confirmed via official search results incl. apps.dvs.ohio.gov bonus application and ohiodnr.gov 5-year free license application DNR 9032-B."},
+    {"code": "OK", "program": "(all)", "change": "kept", "detail": "5 programs re-verified unchanged against oklahoma.gov search results (Form 998 2026 edition, OTC exemptions page, veterans-homes page listing the seven homes, ODVA benefits page, ODVA State Approving Agency page)."},
+    {"code": "OR", "program": "Veterans' Employment Preference", "change": "corrected", "detail": "Blurb previously said preference applies to 'federal, state, county, and local' jobs; Oregon's statutory preference applies to state, county, and local public employers only (federal preference is a separate federal program). Added the interview requirement. Sources: oregon.gov/odva/benefits/pages/employment.aspx and BOLI veterans' preference page."},
+    {"code": "OR", "program": "(all)", "change": "kept", "detail": "4 programs re-verified unchanged against oregon.gov search results (ODVA taxes page and DOR exemption forms, ODVA home loans, Oregon Veterans' Homes, ODVA education/Bridge Grant pages)."},
+    {"code": "PA", "program": "Disabled Veterans' Real Estate Tax Exemption", "change": "corrected", "detail": "Source moved from legacy dmva.pa.gov to the pa.gov PA VetConnect page (/financial-assistance/retx). Blurb broadened to match the official eligibility list: 100% P&T, TDIU, or service-connected blindness, paraplegia, or loss of two or more limbs. Source: DMVA state-veterans-programs page (fetched) and RETX search result."},
+    {"code": "PA", "program": "Educational Gratuity Program", "change": "corrected", "detail": "Source moved from legacy dmva.pa.gov to pa.gov PA VetConnect URL. Blurb tightened: parent veteran must be rated 100% permanent and total service-connected (or died in service in wartime); child aged 16-23 attending an approved PA school. Source: pa.gov educational-gratuity-program page."},
+    {"code": "PA", "program": "Pennsylvania State Veterans Homes", "change": "url-updated", "detail": "Source changed from the general DMVA veterans page to the dedicated veterans homes page https://www.pa.gov/agencies/dmva/pa-veterans-homes, which lists the same six homes."},
+    {"code": "PA", "program": "Veterans Temporary Assistance", "change": "url-updated", "detail": "Source changed from the general DMVA veterans page to the dedicated VTA page on PA VetConnect; program content unchanged (necessities of life: food, shelter, fuel, clothing)."},
+    {"code": "PA", "program": "(all)", "change": "kept", "detail": "1 program re-verified unchanged (Veterans' Preference in Commonwealth Employment, URL confirmed on DMVA's PA VetConnect program list)."},
+    {"code": "RI", "program": "(all)", "change": "kept", "detail": "5 programs re-verified unchanged against vets.ri.gov and dem.ri.gov search results (property tax exemptions page, tuition waiver page, hiring preference page citing RIGL 36-4-19, RI Veterans Home page, DEM freshwater license fees page)."}
+  ],
   "states": [
     {
       "code": "OH",
       "name": "Ohio",
-      "agency": {
-        "name": "Ohio Department of Veterans Services",
-        "url": "https://dvs.ohio.gov"
-      },
+      "agency": {"name": "Ohio Department of Veterans Services", "url": "https://dvs.ohio.gov"},
       "programs": [
-        {
-          "name": "Enhanced Homestead Exemption for Disabled Veterans",
-          "category": "tax",
-          "blurb": "Provides an enhanced property-tax homestead exemption on the principal residence of honorably discharged veterans with a 100% service-connected total disability rating (or individual unemployability) and their surviving spouses.",
-          "source": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/real_property/dte_105i_fi.pdf"
-        },
-        {
-          "name": "Ohio GI Promise",
-          "category": "education",
-          "blurb": "Ohio GI Promise makes veterans, their spouses, and dependents eligible for in-state tuition rates at Ohio public colleges and universities, aiming to make Ohio the most veteran-friendly state for higher education.",
-          "source": "https://dvs.ohio.gov/resources-for-veterans/more-resources/ohio-gi-promise"
-        },
-        {
-          "name": "Ohio Veterans Bonus",
-          "category": "other",
-          "blurb": "A state-funded cash bonus paid to eligible Ohio veterans who served during designated conflict periods, administered by the Ohio Department of Veterans Services.",
-          "source": "https://dvs.ohio.gov/resources-for-veterans/veterans-bonus"
-        },
-        {
-          "name": "Ohio Veterans Homes (Sandusky and Georgetown)",
-          "category": "health",
-          "blurb": "State-operated veterans homes in Sandusky and Georgetown provide long-term nursing care, memory care, rehabilitation, and domiciliary living for honorably discharged veterans who have been Ohio residents for at least one year.",
-          "source": "https://dvs.ohio.gov/veterans-homes/facilities-and-amenities"
-        },
-        {
-          "name": "Disabled Veterans and Former POWs Free Hunting and Fishing Licenses",
-          "category": "recreation",
-          "blurb": "The Ohio Division of Wildlife issues free multi-year hunting and fishing licenses to Ohio resident disabled veterans and former prisoners of war, and ODNR also offers free state-park camping for permanently and totally disabled veterans.",
-          "source": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-licenses"
-        }
+        {"name": "Enhanced Homestead Exemption for Disabled Veterans", "category": "tax", "blurb": "Beginning tax year 2025, honorably discharged veterans with a 100% service-connected total disability rating (or 100% individual unemployability) are exempt from property tax on the full value of their homestead, with no income test, and the exemption continues for an unremarried surviving spouse.", "source": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/real_property/dte_105i_fi.pdf"},
+        {"name": "Ohio GI Promise", "category": "education", "blurb": "Ohio GI Promise makes veterans, their spouses, and dependents eligible for in-state tuition rates at Ohio public colleges and universities, aiming to make Ohio the most veteran-friendly state for higher education.", "source": "https://dvs.ohio.gov/resources-for-veterans/more-resources/ohio-gi-promise"},
+        {"name": "Ohio Veterans Bonus", "category": "other", "blurb": "A state-funded cash bonus paid to eligible Ohio veterans who served during designated conflict periods, administered by the Ohio Department of Veterans Services.", "source": "https://dvs.ohio.gov/resources-for-veterans/veterans-bonus"},
+        {"name": "Ohio Veterans Homes (Sandusky and Georgetown)", "category": "health", "blurb": "State-operated veterans homes in Sandusky and Georgetown provide long-term nursing care, memory care, rehabilitation, and domiciliary living for honorably discharged veterans who have been Ohio residents for at least one year.", "source": "https://dvs.ohio.gov/veterans-homes/facilities-and-amenities"},
+        {"name": "Disabled Veterans and Former POWs Free Hunting and Fishing Licenses", "category": "recreation", "blurb": "The Ohio Division of Wildlife issues free multi-year hunting and fishing licenses to Ohio resident disabled veterans and former prisoners of war, and ODNR also offers free state-park camping for permanently and totally disabled veterans.", "source": "https://ohiodnr.gov/buy-and-apply/hunting-fishing-boating/fishing-resources/fishing-licenses"}
       ],
-      "notes": "dvs.ohio.gov blocks automated access; per resilience rules it was not fetched, and all URLs were taken from official state .gov search results."
+      "notes": "dvs.ohio.gov blocks automated access; it was not fetched, and all URLs were taken from official state .gov search results."
     },
     {
       "code": "OK",
       "name": "Oklahoma",
-      "agency": {
-        "name": "Oklahoma Department of Veterans Affairs",
-        "url": "https://oklahoma.gov/veterans.html"
-      },
+      "agency": {"name": "Oklahoma Department of Veterans Affairs", "url": "https://oklahoma.gov/veterans.html"},
       "programs": [
-        {
-          "name": "100% Disabled Veterans Property Tax Exemption",
-          "category": "tax",
-          "blurb": "Veterans with a 100% permanent service-connected disability (and their unremarried surviving spouses) are exempt from property tax on the full fair cash value of their homestead, claimed via Form 998 with the county assessor.",
-          "source": "https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/ad-valorem/current/998.pdf"
-        },
-        {
-          "name": "Sales Tax Exemption for 100% Disabled Veterans",
-          "category": "tax",
-          "blurb": "Oklahoma residents receiving VA compensation at the 100% rate can obtain a sales-tax exemption card for qualifying annual purchases, with a smaller exemption extended to unremarried surviving spouses; registration in the ODVA Veterans Registry is required.",
-          "source": "https://oklahoma.gov/tax/individuals/exemptions.html"
-        },
-        {
-          "name": "Oklahoma Veterans Centers (State Veterans Homes)",
-          "category": "health",
-          "blurb": "Oklahoma operates seven state veterans centers (Ardmore, Claremore, Clinton, Lawton, Norman, Sallisaw, and Sulphur) providing skilled and intermediate long-term nursing care, with full cost of care covered for veterans rated 70% or greater service-connected.",
-          "source": "https://oklahoma.gov/veterans/veterans-homes/eligibility.html"
-        },
-        {
-          "name": "Free Admission to State Parks and Museums",
-          "category": "recreation",
-          "blurb": "All honorably discharged veterans who are Oklahoma residents receive free admission to state-owned or state-operated parks and museums.",
-          "source": "https://oklahoma.gov/veterans/benefits.html"
-        },
-        {
-          "name": "GI Bill State Approving Agency (Education Services)",
-          "category": "education",
-          "blurb": "ODVA serves as Oklahoma's State Approving Agency, approving education and training programs so eligible veterans and family members can use GI Bill benefits at Oklahoma schools.",
-          "source": "https://oklahoma.gov/veterans/education/state-approving-agency.html"
-        }
+        {"name": "100% Disabled Veterans Property Tax Exemption", "category": "tax", "blurb": "Veterans with a 100% permanent service-connected disability (and their unremarried surviving spouses) are exempt from property tax on the full fair cash value of their homestead, claimed via Form 998 with the county assessor.", "source": "https://oklahoma.gov/content/dam/ok/en/tax/documents/forms/ad-valorem/current/998.pdf"},
+        {"name": "Sales Tax Exemption for 100% Disabled Veterans", "category": "tax", "blurb": "Oklahoma residents receiving VA compensation at the 100% rate can obtain a sales-tax exemption card for qualifying annual purchases, with a smaller exemption extended to unremarried surviving spouses; registration in the ODVA Veterans Registry is required.", "source": "https://oklahoma.gov/tax/individuals/exemptions.html"},
+        {"name": "Oklahoma Veterans Centers (State Veterans Homes)", "category": "health", "blurb": "Oklahoma operates seven state veterans centers (Ardmore, Claremore, Clinton, Lawton, Norman, Sallisaw, and Sulphur) providing skilled and intermediate long-term nursing care, with full cost of care covered for veterans rated 70% or greater service-connected.", "source": "https://oklahoma.gov/veterans/veterans-homes/eligibility.html"},
+        {"name": "Free Admission to State Parks and Museums", "category": "recreation", "blurb": "All honorably discharged veterans who are Oklahoma residents receive free admission to state-owned or state-operated parks and museums.", "source": "https://oklahoma.gov/veterans/benefits.html"},
+        {"name": "GI Bill State Approving Agency (Education Services)", "category": "education", "blurb": "ODVA serves as Oklahoma's State Approving Agency, approving education and training programs so eligible veterans and family members can use GI Bill benefits at Oklahoma schools.", "source": "https://oklahoma.gov/veterans/education/state-approving-agency.html"}
       ],
-      "notes": "Secondary sources report a tuition waiver for 100% disabled veterans and dependents at Oklahoma public colleges, but no official oklahoma.gov page was confirmed in search results, so it is omitted. State benefits such as the sales-tax exemption require registration via https://oklahoma.gov/veterans/benefits/state-benefit-request.html."
+      "notes": "Secondary sources report a tuition waiver for 100% disabled veterans and dependents at Oklahoma public colleges, but no official oklahoma.gov page was confirmed in search results, so it is omitted. State benefits such as the sales-tax exemption require registration via https://oklahoma.gov/veterans/benefits/state-benefit-request.html. The Norman home currently lists memory-care-only admissions and Sallisaw lists no memory care (oklahoma.gov/veterans/veterans-homes.html)."
     },
     {
       "code": "OR",
       "name": "Oregon",
-      "agency": {
-        "name": "Oregon Department of Veterans' Affairs",
-        "url": "https://www.oregon.gov/odva/pages/default.aspx"
-      },
+      "agency": {"name": "Oregon Department of Veterans' Affairs", "url": "https://www.oregon.gov/odva/pages/default.aspx"},
       "programs": [
-        {
-          "name": "Disabled Veteran or Surviving Spouse Property Tax Exemption",
-          "category": "tax",
-          "blurb": "Veterans certified as 40% or more disabled (and qualifying surviving spouses) may exempt a portion of their homestead's assessed value from Oregon property taxes.",
-          "source": "https://www.oregon.gov/odva/benefits/pages/taxes.aspx"
-        },
-        {
-          "name": "Oregon Veteran Home Loan Program",
-          "category": "housing",
-          "blurb": "Oregon is one of only five states with its own state veteran home loan program, separate from the federal VA loan guaranty, offering eligible veterans competitive fixed-rate mortgages through ODVA.",
-          "source": "https://www.oregon.gov/odva/home-loans/pages/default.aspx"
-        },
-        {
-          "name": "Oregon Veterans' Homes (The Dalles and Lebanon)",
-          "category": "health",
-          "blurb": "Two state-owned veterans' homes in The Dalles and the Edward C. Allworth Veterans' Home in Lebanon provide skilled nursing, memory care, and rehabilitative care to honorably discharged veterans, their spouses, and gold-star parents.",
-          "source": "https://www.oregon.gov/odva/vets-homes/pages/default.aspx"
-        },
-        {
-          "name": "Veterans Educational Bridge Grant and Education Benefits",
-          "category": "education",
-          "blurb": "ODVA administers education benefits including the Veterans Educational Bridge Grant, which supports veterans facing gaps that prevent them from completing academic or vocational programs on time.",
-          "source": "https://www.oregon.gov/odva/benefits/pages/education.aspx"
-        },
-        {
-          "name": "Veterans' Employment Preference",
-          "category": "employment",
-          "blurb": "Veterans and disabled veterans receive hiring preference when applying for federal, state, county, and local government jobs in Oregon.",
-          "source": "https://www.oregon.gov/odva/Benefits/Pages/Employment.aspx"
-        }
+        {"name": "Disabled Veteran or Surviving Spouse Property Tax Exemption", "category": "tax", "blurb": "Veterans certified as 40% or more disabled (and qualifying surviving spouses) may exempt a portion of their homestead's assessed value from Oregon property taxes.", "source": "https://www.oregon.gov/odva/benefits/pages/taxes.aspx"},
+        {"name": "Oregon Veteran Home Loan Program", "category": "housing", "blurb": "Oregon is one of only five states with its own state veteran home loan program, separate from the federal VA loan guaranty, offering eligible veterans competitive fixed-rate mortgages through ODVA.", "source": "https://www.oregon.gov/odva/home-loans/pages/default.aspx"},
+        {"name": "Oregon Veterans' Homes (The Dalles and Lebanon)", "category": "health", "blurb": "Two state-owned veterans' homes in The Dalles and the Edward C. Allworth Veterans' Home in Lebanon provide skilled nursing, memory care, and rehabilitative care to honorably discharged veterans, their spouses, and gold-star parents.", "source": "https://www.oregon.gov/odva/vets-homes/pages/default.aspx"},
+        {"name": "Veterans Educational Bridge Grant and Education Benefits", "category": "education", "blurb": "ODVA administers education benefits including the Veterans Educational Bridge Grant, which supports veterans facing gaps that prevent them from completing academic or vocational programs on time.", "source": "https://www.oregon.gov/odva/benefits/pages/education.aspx"},
+        {"name": "Veterans' Employment Preference", "category": "employment", "blurb": "Oregon law requires state, county, and local public employers to give veterans and disabled veterans preference for civil service positions, including preference points on application scoring and an interview for every veteran who meets the minimum qualifications.", "source": "https://www.oregon.gov/odva/Benefits/Pages/Employment.aspx"}
       ],
-      "notes": "ODVA also maintains a recreation benefits page (reduced-fee hunting/fishing licenses and state park access) at https://www.oregon.gov/odva/benefits/pages/recreation.aspx."
+      "notes": "ODVA also maintains a recreation benefits page (reduced-fee hunting/fishing licenses and state park access) at https://www.oregon.gov/odva/benefits/pages/recreation.aspx. The Bridge Grant has its own program page at https://www.oregon.gov/odva/agency-programs/grants/pages/educational-bridge-grant.aspx. Veterans' preference is enforced by the Bureau of Labor and Industries (https://www.oregon.gov/boli/workers/pages/veterans-preference.aspx)."
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "agency": {"name": "Pennsylvania Department of Military and Veterans Affairs (DMVA)", "url": "https://www.pa.gov/agencies/dmva"},
+      "programs": [
+        {"name": "Disabled Veterans' Real Estate Tax Exemption", "category": "tax", "blurb": "Honorably discharged wartime veterans rated 100 percent permanently disabled (or totally disabled through individual unemployability, or with service-connected blindness, paraplegia, or loss of two or more limbs) who reside in the Commonwealth and demonstrate financial need may be exempted from real estate taxes on their primary residence, applied for through the County Director of Veterans Affairs.", "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs/financial-assistance/retx"},
+        {"name": "Educational Gratuity Program", "category": "education", "blurb": "Provides financial assistance for education at approved Pennsylvania schools to children aged 16 to 23 of honorably discharged wartime veterans rated 100 percent permanently and totally disabled from service, or who died in service during a period of war or armed conflict.", "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs/financial-assistance/educational-gratuity-program"},
+        {"name": "Veterans' Preference in Commonwealth Employment", "category": "employment", "blurb": "Qualifying veterans are entitled by Pennsylvania law to hiring preference for Commonwealth jobs, including examination-point and appointment preferences for civil service positions and a mandatory conditional offer for qualified veterans in non-civil-service hiring.", "source": "https://www.pa.gov/agencies/employment/veterans/veterans--preference"},
+        {"name": "Pennsylvania State Veterans Homes", "category": "health", "blurb": "DMVA operates six state veterans homes across the Commonwealth - Delaware Valley Veterans' Home, Gino J. Merli Veterans' Center, Hollidaysburg Veterans' Home, Pennsylvania Soldiers' and Sailors' Home, Southeastern Veterans' Center, and Southwestern Veterans' Center - providing long-term care to eligible veterans.", "source": "https://www.pa.gov/agencies/dmva/pa-veterans-homes"},
+        {"name": "Veterans Temporary Assistance", "category": "other", "blurb": "Provides eligible Pennsylvania veterans and their surviving dependents with temporary financial relief for necessities such as food, shelter, fuel, and clothing.", "source": "https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs/financial-assistance/benefits--veterans-temporary-assistance"}
+      ],
+      "notes": "DMVA also administers the Military Family Relief Assistance Program and the PA Veterans Registry. As of August 2024 (Act 27), veterans' disability benefits are excluded from need assessments for the Real Estate Tax Exemption, Educational Gratuity, and Veterans Temporary Assistance programs. DMVA's PA VetConnect program list (https://www.pa.gov/agencies/dmva/pennsylvania-veterans/pa-vetconnect/state-veterans-programs) links disabled veteran hunting/trapping licenses (PA Game Commission), disabled veteran fishing licenses (Fish and Boat Commission), and state-park camping discounts (DCNR); their terms were not verified in this pass, so no recreation program is listed."
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "agency": {"name": "Rhode Island Office of Veterans Services", "url": "https://vets.ri.gov/"},
+      "programs": [
+        {"name": "Veterans' Property Tax Exemptions (RIGL 44-3-4)", "category": "tax", "blurb": "Rhode Island General Law 44-3-4 provides municipal property tax exemptions for veterans and their widow(er)s, with amounts varying by city or town.", "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/property-tax-exemptions"},
+        {"name": "Disabled Veterans Tuition Waiver", "category": "education", "blurb": "Eligible disabled veterans can have tuition waived at Rhode Island's public institutions: CCRI, Rhode Island College, and the University of Rhode Island.", "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/disabled-veterans-tuition-waiver"},
+        {"name": "State of RI Veterans' Hiring Preference", "category": "employment", "blurb": "Veterans receive a 5-point credit and service-connected disabled war veterans a 10-point credit on competitive state civil service entrance exams.", "source": "https://vets.ri.gov/i-am-find-your-benefits/world-war-ii-korean-war-veteran/state-ri-veterans-hiring-preference"},
+        {"name": "Rhode Island Veterans Home", "category": "health", "blurb": "The state-run Rhode Island Veterans Home in Bristol provides long-term care and residential services to eligible Rhode Island wartime veterans.", "source": "https://vets.ri.gov/find-your-benefits/ri-veterans-home"},
+        {"name": "Free Hunting and Fishing Licenses for 100% Disabled Veterans", "category": "recreation", "blurb": "Veterans with a 100% disability rating are issued permanent no-cost freshwater fishing, hunting, or combo licenses by RI DEM and are exempt from saltwater fishing license requirements.", "source": "https://dem.ri.gov/natural-resources-bureau/natural-resources-divisions/fish-wildlife/freshwater-fishing/licenses-0"}
+      ],
+      "notes": "Military retired pay is exempt from Rhode Island personal income tax per the Office of Veterans Services benefits pages; RIGL 44-3-5 additionally provides property tax exemptions for Gold Star parents. A 2023 law extended the veterans property tax exemption to Cold War-era veterans. The tuition waiver requires a service-connected disability rating (10% or more) and RI permanent residency, with financial aid applied first. Hiring preference is set by RIGL 36-4-19."
     }
   ]
 }

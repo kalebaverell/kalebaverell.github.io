@@ -1,110 +1,370 @@
 {
   "batch": "D",
-  "gathered": "2026-07-10",
-  "sources_method": "RPP: BEA official MARPP download (MARPP_MSA_2008_2024.csv inside apps.bea.gov zip), all-items index, US=100. FMR: HUD FY2026 revised FMR file (huduser.gov), 2-bedroom, effective Oct 1 2025. Unemployment: BLS LAUS via public API v2, metro NSA rate, May 2026 (preliminary). VAMC: va.gov facility pages.",
+  "gathered": "2026-10-01",
+  "sources_method": "RPP: BEA MARPP_MSA_2008_2024.csv re-downloaded 2026-10-01 from https://apps.bea.gov/regional/zip/MARPP.zip (file last updated Feb 19 2026); no newer release - 2025 MSA RPPs not yet published, so 2024 all-items values (US=100) are kept and were re-verified against the file. FMR: HUD FY2027 FMRs could not be checked - huduser.gov returned HTTP 202 with an empty body (bot challenge) on 2026-10-01; per zero-retry rule, FY2026 2BR values are carried forward with their original vintage and are NOT re-verified (FY2026 values may be superseded by FY2027, effective Oct 1 2026). Unemployment: BLS LAUS metro rate, not seasonally adjusted, via BLS public API v2 (https://api.bls.gov/publicAPI/v2/timeseries/data/) on 2026-10-01; latest month August 2026 (preliminary). VAMC: every va.gov facility URL re-checked 2026-10-01 (HTTP 200, no redirect); names kept.",
   "metros": [
     {
       "id": "colorado-springs-co",
-      "rpp": { "value": 100.707, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1735, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 3.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT081782000000003" },
-      "vamc": { "name": "No VAMC in the metro - outpatient clinic only: PFC Floyd K. Lindstrom Department of Veterans Affairs Clinic (VA Eastern Colorado Health Care System). Nearest full VA medical center: Rocky Mountain Regional VAMC, Aurora (Denver metro), roughly an hour north", "source": "https://www.va.gov/eastern-colorado-health-care/locations/pfc-floyd-k-lindstrom-department-of-veterans-affairs-clinic/" },
+      "rpp": {
+        "value": 100.707,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1735,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 4.7,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT081782000000003",
+        "seriesId": "LAUMT081782000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 4.3, June 4.1, May 3.8. Last quarter: 3.8 (May 2026)."
+      },
+      "vamc": {
+        "name": "No VAMC in the metro - outpatient clinic only: PFC Floyd K. Lindstrom Department of Veterans Affairs Clinic (VA Eastern Colorado Health Care System). Nearest full VA medical center: Rocky Mountain Regional VAMC, Aurora (Denver metro), roughly an hour north",
+        "source": "https://www.va.gov/eastern-colorado-health-care/locations/pfc-floyd-k-lindstrom-department-of-veterans-affairs-clinic/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Colorado Springs, CO MSA / HUD Metro FMR Area. Confirms the dataset's 'nearby' VA characterization: large multi-specialty clinic in town (3141 Centennial Blvd) with same-day Veterans Express Care; inpatient care is at Rocky Mountain Regional VAMC in Aurora."
     },
     {
       "id": "raleigh-durham-nc",
-      "rpp": { "value": 98.157, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1750, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 3.0, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT373958000000003" },
-      "vamc": { "name": "Durham VA Medical Center (VA Durham Health Care System) - 508 Fulton St, Durham; 251-bed tertiary care and teaching hospital. Raleigh side is served by CBOCs (Raleigh VA Clinic and others) under the same system", "source": "https://www.va.gov/durham-health-care/locations/durham-va-medical-center/" },
-      "notes": "BEA/BLS/HUD all treat Raleigh-Cary, NC and Durham-Chapel Hill, NC as separate metros. Values shown are Raleigh-Cary MSA. Durham-Chapel Hill from same sources: RPP 97.572 (2024); 2BR FMR $1,711 (FY2026, Durham-Chapel Hill HMFA); unemployment 3.2% May 2026 (LAUMT372050000000003)."
+      "rpp": {
+        "value": 98.157,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1750,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3.1,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT373958000000003",
+        "seriesId": "LAUMT373958000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.2, June 3.1, May 3.0. Last quarter: 3.0 (May 2026)."
+      },
+      "vamc": {
+        "name": "Durham VA Medical Center (VA Durham Health Care System) - 508 Fulton St, Durham; 251-bed tertiary care and teaching hospital. Raleigh side is served by CBOCs (Raleigh VA Clinic and others) under the same system",
+        "source": "https://www.va.gov/durham-health-care/locations/durham-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
+      "notes": "BEA/BLS/HUD all treat Raleigh-Cary, NC and Durham-Chapel Hill, NC as separate metros. Values shown are Raleigh-Cary MSA. Durham-Chapel Hill from same sources: RPP 97.572 (2024); 2BR FMR $1,711 (FY2026, Durham-Chapel Hill HMFA; carried forward, not re-verified 2026-10-01); unemployment 3.3% August 2026 preliminary (LAUMT372050000000003, BLS API 2026-10-01)."
     },
     {
       "id": "pittsburgh-pa",
-      "rpp": { "value": 94.671, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1299, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 3.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT423830000000003" },
-      "vamc": { "name": "Pittsburgh VA Medical Center-University Drive (VA Pittsburgh Healthcare System; second medical center campus: H. John Heinz III, O'Hara Township)", "source": "https://www.va.gov/pittsburgh-health-care/locations/pittsburgh-va-medical-center-university-drive/" },
+      "rpp": {
+        "value": 94.671,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1299,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3.9,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT423830000000003",
+        "seriesId": "LAUMT423830000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.7, June 3.8, May 3.8. Last quarter: 3.8 (May 2026)."
+      },
+      "vamc": {
+        "name": "Pittsburgh VA Medical Center-University Drive (VA Pittsburgh Healthcare System; second medical center campus: H. John Heinz III, O'Hara Township)",
+        "source": "https://www.va.gov/pittsburgh-health-care/locations/pittsburgh-va-medical-center-university-drive/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Pittsburgh, PA MSA / HUD Metro FMR Area. VA Pittsburgh operates two medical centers plus six CBOCs in the region - matches the dataset's 'multiple VA medical facilities' note."
     },
     {
       "id": "huntsville-al",
-      "rpp": { "value": 93.072, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1310, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 2.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT012662000000003" },
-      "vamc": { "name": "No VAMC in the metro - outpatient clinics only (Huntsville VA Clinic, Huntsville West VA Clinic, Huntsville South VA specialty clinic; VA Birmingham Health Care System). Nearest full VA medical center: Birmingham VA Medical Center, roughly 100 miles south", "source": "https://www.va.gov/birmingham-health-care/locations/huntsville-va-clinic/" },
+      "rpp": {
+        "value": 93.072,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1310,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT012662000000003",
+        "seriesId": "LAUMT012662000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.1, June 3.3, May 2.9. Last quarter: 2.9 (May 2026)."
+      },
+      "vamc": {
+        "name": "No VAMC in the metro - outpatient clinics only (Huntsville VA Clinic, Huntsville West VA Clinic, Huntsville South VA specialty clinic; VA Birmingham Health Care System). Nearest full VA medical center: Birmingham VA Medical Center, roughly 100 miles south",
+        "source": "https://www.va.gov/birmingham-health-care/locations/huntsville-va-clinic/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Huntsville, AL MSA. Confirms the dataset's CBOC characterization; Huntsville South VA specialty clinic (cardiology, chemo infusion, podiatry, neurology) opened Feb 2026, expanding local coverage."
     },
     {
       "id": "boise-id",
-      "rpp": { "value": 98.391, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1655, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 3.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT161426000000003" },
-      "vamc": { "name": "Boise VA Medical Center (VA Boise Health Care System) - 500 W Fort St, Boise", "source": "https://www.va.gov/boise-health-care/locations/boise-va-medical-center/" },
+      "rpp": {
+        "value": 98.391,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1655,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3.3,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT161426000000003",
+        "seriesId": "LAUMT161426000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.3, June 3.5, May 3.3. Last quarter: 3.3 (May 2026)."
+      },
+      "vamc": {
+        "name": "Boise VA Medical Center (VA Boise Health Care System) - 500 W Fort St, Boise",
+        "source": "https://www.va.gov/boise-health-care/locations/boise-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Boise City, ID MSA / HUD Metro FMR Area."
     },
     {
       "id": "oklahoma-city-ok",
-      "rpp": { "value": 90.408, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1244, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 4.2, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT403642000000003" },
-      "vamc": { "name": "Oklahoma City VA Medical Center (VA Oklahoma City Health Care System) - 921 NE 13th St, Oklahoma City", "source": "https://www.va.gov/oklahoma-city-health-care/locations/oklahoma-city-va-medical-center/" },
+      "rpp": {
+        "value": 90.408,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1244,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3.9,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT403642000000003",
+        "seriesId": "LAUMT403642000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 4.3, June 4.2, May 4.2. Last quarter: 4.2 (May 2026)."
+      },
+      "vamc": {
+        "name": "Oklahoma City VA Medical Center (VA Oklahoma City Health Care System) - 921 NE 13th St, Oklahoma City",
+        "source": "https://www.va.gov/oklahoma-city-health-care/locations/oklahoma-city-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Oklahoma City, OK MSA / HUD Metro FMR Area. System also runs 15 outpatient clinics including several within the metro (North OKC, South OKC, Norman, Yukon, Tinker AFB)."
     },
     {
       "id": "tucson-az",
-      "rpp": { "value": 96.896, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1402, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 4.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT044606000000003" },
-      "vamc": { "name": "Tucson VA Medical Center (VA Southern Arizona Health Care System) - 3601 S 6th Ave, Tucson", "source": "https://www.va.gov/southern-arizona-health-care/locations/tucson-va-medical-center/" },
+      "rpp": {
+        "value": 96.896,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1402,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 5.7,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT044606000000003",
+        "seriesId": "LAUMT044606000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 5.6, June 5.7, May 4.7. Last quarter: 4.7 (May 2026)."
+      },
+      "vamc": {
+        "name": "Tucson VA Medical Center (VA Southern Arizona Health Care System) - 3601 S 6th Ave, Tucson",
+        "source": "https://www.va.gov/southern-arizona-health-care/locations/tucson-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Tucson, AZ MSA. System includes 7 CBOCs across southern Arizona plus Northwest and Southeast Tucson VA clinics inside the metro."
     },
     {
       "id": "spokane-wa",
-      "rpp": { "value": 100.346, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1531, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 4.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT534406000000003" },
-      "vamc": { "name": "Mann-Grandstaff Department of Veterans Affairs Medical Center (VA Spokane Health Care System) - 4815 N Assembly St, Spokane", "source": "https://www.va.gov/spokane-health-care/locations/mann-grandstaff-department-of-veterans-affairs-medical-center/" },
+      "rpp": {
+        "value": 100.346,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1531,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 4.2,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT534406000000003",
+        "seriesId": "LAUMT534406000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.4, June 3.9, May 4.3. Last quarter: 4.3 (May 2026)."
+      },
+      "vamc": {
+        "name": "Mann-Grandstaff Department of Veterans Affairs Medical Center (VA Spokane Health Care System) - 4815 N Assembly St, Spokane",
+        "source": "https://www.va.gov/spokane-health-care/locations/mann-grandstaff-department-of-veterans-affairs-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Spokane-Spokane Valley, WA MSA; HUD Spokane, WA HUD Metro FMR Area."
     },
     {
       "id": "knoxville-tn",
-      "rpp": { "value": 92.569, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1471, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 2.7, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT472894000000003" },
-      "vamc": { "name": "No VAMC in the metro - outpatient care only: William C. Tallent Department of Veterans Affairs Outpatient Clinic, Knoxville (VA Mountain Home Health Care System), plus Knox County VA Clinic. Nearest full VA medical center: James H. Quillen VAMC, Mountain Home/Johnson City, roughly 100 miles northeast", "source": "https://www.va.gov/mountain-home-health-care/locations/william-c-tallent-department-of-veterans-affairs-outpatient-clinic/" },
+      "rpp": {
+        "value": 92.569,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1471,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 3.2,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT472894000000003",
+        "seriesId": "LAUMT472894000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.2, June 3.5, May 2.7. Last quarter: 2.7 (May 2026)."
+      },
+      "vamc": {
+        "name": "No VAMC in the metro - outpatient care only: William C. Tallent Department of Veterans Affairs Outpatient Clinic, Knoxville (VA Mountain Home Health Care System), plus Knox County VA Clinic. Nearest full VA medical center: James H. Quillen VAMC, Mountain Home/Johnson City, roughly 100 miles northeast",
+        "source": "https://www.va.gov/mountain-home-health-care/locations/william-c-tallent-department-of-veterans-affairs-outpatient-clinic/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Knoxville, TN MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization: multi-specialty outpatient clinic at 8033 Ray Mears Blvd; inpatient care is at Mountain Home VAMC (~1.5 hr drive)."
     },
     {
       "id": "sioux-falls-sd",
-      "rpp": { "value": 90.631, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1156, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 1.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT464362000000003" },
-      "vamc": { "name": "Royal C. Johnson Veterans' Memorial Hospital / Sioux Falls VA Medical Center (VA Sioux Falls Health Care System) - 2501 W 22nd St, Sioux Falls", "source": "https://www.va.gov/sioux-falls-health-care/locations/royal-c-johnson-veterans-memorial-hospital/" },
+      "rpp": {
+        "value": 90.631,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1156,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 2.2,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT464362000000003",
+        "seriesId": "LAUMT464362000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 1.9, June 1.9, May 1.8. Last quarter: 1.8 (May 2026)."
+      },
+      "vamc": {
+        "name": "Royal C. Johnson Veterans' Memorial Hospital / Sioux Falls VA Medical Center (VA Sioux Falls Health Care System) - 2501 W 22nd St, Sioux Falls",
+        "source": "https://www.va.gov/sioux-falls-health-care/locations/royal-c-johnson-veterans-memorial-hospital/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Sioux Falls, SD-MN MSA (BEA); HUD Sioux Falls, SD HUD Metro FMR Area. Full VAMC in a small metro, matching the dataset's note."
     },
     {
       "id": "fargo-nd",
-      "rpp": { "value": 90.871, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1112, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 2.3, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT382202000000003" },
-      "vamc": { "name": "Fargo VA Medical Center (VA Fargo Health Care System) - 2101 Elm St N, Fargo", "source": "https://www.va.gov/fargo-health-care/locations/fargo-va-medical-center/" },
+      "rpp": {
+        "value": 90.871,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1112,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 2.6,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT382202000000003",
+        "seriesId": "LAUMT382202000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 2.6, June 2.8, May 2.3. Last quarter: 2.3 (May 2026)."
+      },
+      "vamc": {
+        "name": "Fargo VA Medical Center (VA Fargo Health Care System) - 2101 Elm St N, Fargo",
+        "source": "https://www.va.gov/fargo-health-care/locations/fargo-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Fargo, ND-MN MSA. Despite small-metro size, Fargo hosts a full VAMC (primary care, cancer care, emergency services, surgery, mental health) - dataset's VAMC characterization confirmed."
     },
     {
       "id": "cheyenne-wy",
-      "rpp": { "value": 96.491, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1174, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 2.8, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT561694000000003" },
-      "vamc": { "name": "Cheyenne VA Medical Center (VA Cheyenne Health Care System) - 2360 E Pershing Blvd, Cheyenne", "source": "https://www.va.gov/cheyenne-health-care/locations/cheyenne-va-medical-center/" },
+      "rpp": {
+        "value": 96.491,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1174,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 2.9,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT561694000000003",
+        "seriesId": "LAUMT561694000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 2.6, June 2.7, May 2.8. Last quarter: 2.8 (May 2026)."
+      },
+      "vamc": {
+        "name": "Cheyenne VA Medical Center (VA Cheyenne Health Care System) - 2360 E Pershing Blvd, Cheyenne",
+        "source": "https://www.va.gov/cheyenne-health-care/locations/cheyenne-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Cheyenne, WY MSA. Contrary to the 'CBOC-only likely' expectation, Cheyenne hosts a full VA medical center (VA facility 442) - dataset's VAMC characterization confirmed."
     },
     {
       "id": "clarksville-tn",
-      "rpp": { "value": 90.947, "year": "2024", "source": "https://apps.bea.gov/regional/zip/MARPP.zip" },
-      "fmr2br": { "value": 1346, "year": "FY2026", "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx" },
-      "unemployment": { "value": 3.9, "asOf": "May 2026", "source": "https://data.bls.gov/timeseries/LAUMT471730000000003" },
-      "vamc": { "name": "No VAMC in the metro - outpatient clinics only: Clarksville VA Clinic, Montgomery County VA Clinic, Dalton Drive VA Dental Clinic, and Fort Campbell VA Clinic (VA Tennessee Valley Healthcare System). Nearest full VA medical center: Nashville VA Medical Center, roughly an hour southeast", "source": "https://www.va.gov/tennessee-valley-health-care/locations/clarksville-va-clinic/" },
+      "rpp": {
+        "value": 90.947,
+        "year": "2024",
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
+      },
+      "fmr2br": {
+        "value": 1346,
+        "year": "FY2026",
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
+      },
+      "unemployment": {
+        "value": 4.3,
+        "asOf": "August 2026",
+        "source": "https://data.bls.gov/timeseries/LAUMT471730000000003",
+        "seriesId": "LAUMT471730000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 4.4, June 4.7, May 3.9. Last quarter: 3.9 (May 2026)."
+      },
+      "vamc": {
+        "name": "No VAMC in the metro - outpatient clinics only: Clarksville VA Clinic, Montgomery County VA Clinic, Dalton Drive VA Dental Clinic, and Fort Campbell VA Clinic (VA Tennessee Valley Healthcare System). Nearest full VA medical center: Nashville VA Medical Center, roughly an hour southeast",
+        "source": "https://www.va.gov/tennessee-valley-health-care/locations/clarksville-va-clinic/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01"
+      },
       "notes": "Clarksville, TN-KY MSA / HUD Metro FMR Area. Confirms the dataset's CBOC characterization; VA has five clinic sites serving Clarksville veterans, and a new multi-specialty Clarksville VA clinic is slated to open by 2030."
     }
   ]

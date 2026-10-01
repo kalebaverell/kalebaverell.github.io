@@ -1,0 +1,170 @@
+{
+  "batch": "4a",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "agency": {
+        "name": "New Jersey Department of Veterans Affairs",
+        "url": "https://www.nj.gov/dva/"
+      },
+      "programs": [
+        {
+          "name": "$250 Veterans Property Tax Deduction",
+          "category": "tax",
+          "blurb": "Honorably discharged veterans with active-duty service (and qualifying surviving spouses) receive an annual $250 deduction on local property taxes.",
+          "source": "https://www.nj.gov/treasury/taxation/lpt/lpt-veterans.shtml"
+        },
+        {
+          "name": "100% Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans rated 100% permanently and totally disabled from active-duty service (and qualifying surviving spouses) are fully exempt from property tax on their principal residence.",
+          "source": "https://www.nj.gov/treasury/taxation/lpt/lpt-disabledvet.shtml"
+        },
+        {
+          "name": "Civil Service Veterans Preference",
+          "category": "employment",
+          "blurb": "New Jersey's merit system grants absolute veterans preference, placing qualified veterans at the top of open-competitive employment lists ahead of non-veterans regardless of score.",
+          "source": "https://www.nj.gov/military/veterans/services/civil-service-preference/"
+        },
+        {
+          "name": "New Jersey Veterans Memorial Homes",
+          "category": "health",
+          "blurb": "The state operates three long-term care veterans homes in Paramus, Menlo Park, and Vineland, with admission preference for longtime New Jersey residents.",
+          "source": "https://www.nj.gov/dva/veterans/memorial-homes/"
+        },
+        {
+          "name": "Disabled Veterans Free Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Honorably discharged resident veterans with any degree of VA service-connected disability qualify for free hunting and fishing licenses, permits, and stamps after one-time certification by NJ Fish & Wildlife.",
+          "source": "https://dep.nj.gov/njfw/licenses-and-permits/disabled-veteran-license-information/"
+        }
+      ],
+      "notes": "Veterans services recently moved from the Department of Military and Veterans Affairs (DMAVA, nj.gov/military) to a standalone NJ Department of Veterans Affairs. New Jersey also offers a Veteran Income Tax Exemption (https://www.nj.gov/treasury/taxation/military/vetexemption.shtml) and a Veterans Tuition Credit Program limited to Vietnam-era veterans."
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "agency": {
+        "name": "New Mexico Department of Veterans Services",
+        "url": "https://www.dvs.nm.gov/"
+      },
+      "programs": [
+        {
+          "name": "Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Resident veterans and unmarried surviving spouses receive a statutory exemption from a portion of their property's taxable value, expanded by a 2024 constitutional amendment and adjusted annually for inflation.",
+          "source": "https://www.dvs.nm.gov/benefits/"
+        },
+        {
+          "name": "Disabled Veteran Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Resident veterans with a VA service-connected disability receive a primary-residence property tax exemption proportional to their disability rating, with 100% disabled veterans fully exempt.",
+          "source": "https://www.dvs.nm.gov/benefits/"
+        },
+        {
+          "name": "Wartime Veterans Scholarship",
+          "category": "education",
+          "blurb": "Covers tuition, fees, and book allowances for resident wartime veterans (certified by DVS) pursuing undergraduate or graduate degrees at New Mexico public or Tribal colleges.",
+          "source": "https://hed.nm.gov/financial-aid/scholarships/vietnam-veterans"
+        },
+        {
+          "name": "Disabled Veteran Hunting and Fishing Licenses",
+          "category": "recreation",
+          "blurb": "Veterans rated 100% service-connected disabled qualify for a free lifetime small-game hunting and fishing license, and any service-connected disabled veteran can get a reduced-fee license through NM Game & Fish.",
+          "source": "https://www.wildlife.state.nm.us/fishing/licenses-permits/discounts-exceptions/"
+        },
+        {
+          "name": "New Mexico State Veterans' Home",
+          "category": "health",
+          "blurb": "The state's veterans home in Truth or Consequences, operated by the NM Department of Health, provides long-term care and short-term rehabilitation for eligible veterans.",
+          "source": "https://www.nmhealth.org/about/ofm/ltcf/nmsvh/"
+        }
+      ],
+      "notes": "New Mexico also offers veterans preference in state hiring, but no official state URL was confirmed in this pass, so it is omitted. Property tax exemption applications go through DVS, which issues a Certificate of Eligibility."
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "agency": {
+        "name": "New York State Department of Veterans' Services",
+        "url": "https://veterans.ny.gov/"
+      },
+      "programs": [
+        {
+          "name": "Alternative Veterans' Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Wartime and expeditionary-medal veterans can receive a partial property tax exemption on their residence, adopted in over 95% of local taxing jurisdictions, alongside separate Cold War and Eligible Funds exemptions.",
+          "source": "https://veterans.ny.gov/property-tax-exemptions-veterans"
+        },
+        {
+          "name": "Veterans Tuition Award",
+          "category": "education",
+          "blurb": "Provides tuition awards for eligible combat and long-serving veterans enrolled full- or part-time in undergraduate, graduate, or approved vocational programs at New York institutions.",
+          "source": "https://www.hesc.ny.gov/pay-for-college/financial-aid/types-of-financial-aid/nys-grants-scholarships-awards/veterans-tuition-awards.html"
+        },
+        {
+          "name": "Additional Civil Service Credits for Veterans",
+          "category": "employment",
+          "blurb": "Wartime and disabled veterans who pass New York State civil service exams receive additional credits added to their scores, plus retention preference when positions are abolished.",
+          "source": "https://veterans.ny.gov/additional-civil-service-credits"
+        },
+        {
+          "name": "New York State Veterans Homes",
+          "category": "health",
+          "blurb": "The NYS Department of Health owns and operates four skilled-nursing veterans homes in Batavia, Oxford, Montrose, and St. Albans (Queens) for eligible veterans and dependents.",
+          "source": "https://apps.health.ny.gov/nysvets/web/"
+        },
+        {
+          "name": "Reduced Fee Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans with a service-connected disability of 40% or more qualify for reduced-fee hunting and fishing licenses through the Department of Environmental Conservation.",
+          "source": "https://veterans.ny.gov/reduced-fee-new-york-state-hunting-and-fishing-licenses-disabled-veterans"
+        }
+      ],
+      "notes": "Property tax exemptions require application to the local assessor (typically by March 1). Disabled veteran civil service credit details are also published at https://www.cs.ny.gov/vetcredits/."
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "agency": {
+        "name": "North Carolina Department of Military and Veterans Affairs",
+        "url": "https://www.milvets.nc.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Property Tax Exclusion",
+          "category": "tax",
+          "blurb": "Honorably discharged veterans with a 100% permanent and total service-connected disability (and qualifying surviving spouses) exclude a statutory portion of their home's value from property tax, with the exclusion expanding in phases under recent legislation.",
+          "source": "https://www.milvets.nc.gov/benefits-services/veterans-property-tax-relief"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exemption",
+          "category": "tax",
+          "blurb": "North Carolina exempts military retirement pay from state income tax for retirees with at least 20 years of service or medical retirement, including qualifying survivor benefits.",
+          "source": "https://ourncmilitary.nc.gov/blog/2022/02/25/military-pension-tax-exemption"
+        },
+        {
+          "name": "North Carolina Scholarship for Children of Wartime Veterans",
+          "category": "education",
+          "blurb": "Provides up to eight academic semesters of scholarship support to North Carolina children (under 25) of deceased, disabled, combat, or POW/MIA wartime veterans.",
+          "source": "https://www.milvets.nc.gov/benefits-services/scholarships"
+        },
+        {
+          "name": "NC State Veterans Homes",
+          "category": "health",
+          "blurb": "DMVA operates full-service skilled-nursing state veterans homes, including facilities in Fayetteville, Salisbury, Black Mountain, Kinston, and the newer Kernersville home.",
+          "source": "https://www.milvets.nc.gov/benefits-services/nc-state-veterans-homes-skilled-nursing-care"
+        },
+        {
+          "name": "Lifetime Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Resident veterans rated 50% or more disabled by the VA qualify for reduced-fee lifetime hunting and fishing licenses through the NC Wildlife Resources Commission.",
+          "source": "https://www.milvets.nc.gov/hunting-and-fishing-license-application"
+        }
+      ],
+      "notes": "Property tax exclusion requires Form NCDVA-9 certified by a Veterans Service Officer plus county Form AV-9 by June 1. Scholarship program also has a dedicated portal at https://scholarships.milvets.nc.gov/."
+    }
+  ]
+}

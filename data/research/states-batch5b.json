@@ -1,6 +1,128 @@
 {
   "batch": "5b",
-  "lastVerified": "2026-07-08",
+  "lastVerified": "2026-10-01",
+  "changes": [
+    {
+      "code": "VA",
+      "program": "Virginia Values Veterans (V3) Program",
+      "change": "url-updated",
+      "detail": "Normalized source to canonical DVS URL without trailing slash (https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program) as returned by official search; content unchanged (free employer training/certification, $0 cost)."
+    },
+    {
+      "code": "VA",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "4 programs re-verified unchanged: Real Property Tax Exemption (Va. Const. Art. X Sec. 6-A; Code of Va. 58.1 Ch. 32 Art. 2.3, applied via local Commissioner of the Revenue), VMSDEP (tuition/fee waiver, 8 semesters, 90%+ or P&T sponsor), DWR disabled veteran lifetime licenses (30%+ rating; free for P&T), and VVFS (DVS care coordination, peer support, TBI/PTSD). Verified via dvs.virginia.gov and dwr.virginia.gov search results."
+    },
+    {
+      "code": "WA",
+      "program": "Washington Tuition Waiver",
+      "change": "corrected",
+      "detail": "Prior blurb said institutions are required to waive tuition for veterans. Per RCW 28B.15.621 (app.leg.wa.gov), the waiver is mandatory ('shall', subsec. 4) only for children and spouses/domestic partners of veterans/Guard members who died, became totally disabled, or are POW/MIA; for veterans themselves it is permissive ('may', subsec. 2-3). Blurb rewritten accordingly; DVA source URL kept."
+    },
+    {
+      "code": "WA",
+      "program": "Free or Reduced Rate Passes (State Parks Disabled Veteran Lifetime Pass)",
+      "change": "corrected",
+      "detail": "Renamed to the official program name 'Lifetime Disabled Veteran Pass', clarified residency requirement and that no Discover Pass is needed, and repointed source to the Washington State Parks program page (https://parks.wa.gov/passes-permits/get-park-pass/lifetime-disabled-veteran-pass)."
+    },
+    {
+      "code": "WA",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "3 programs re-verified unchanged: Disabled Veteran Property Tax Exemption (80%+ or paid at 100% rate, income-tiered, via county assessor; dva.wa.gov), Washington State Veterans Homes (Orting, Port Orchard, Spokane, Walla Walla; Medicare/Medicaid certified), and WDFW reduced-fee licenses (30%+ service-connected; wdfw.wa.gov)."
+    },
+    {
+      "code": "WV",
+      "program": "War Orphan Education Program",
+      "change": "corrected",
+      "detail": "Removed unsupported 'and certain spouses' wording; eligibility per WVDVA Education Benefits page is dependents aged 16-25 of WV-resident service members who died as a result of wartime service; tuition/fee waiver plus WVDVA living-expense award (https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx)."
+    },
+    {
+      "code": "WV",
+      "program": "Free Hunting, Fishing, and Trapping Licenses for Disabled Veterans",
+      "change": "corrected",
+      "detail": "Added VA auto-grant recipients to eligibility and repointed source to the WVDVA State Benefits page (https://veterans.wv.gov/benefits/Pages/StateBenefits.aspx), which was fetched and confirms the benefit; the prior wvdnr.gov/programs-publications/disability-services/ URL did not surface in official search results this pass."
+    },
+    {
+      "code": "WV",
+      "program": "(notes)",
+      "change": "corrected",
+      "detail": "Added verified WVDVA facility page URLs for the Clarksburg Veterans Nursing Facility and Barboursville Veterans Home, which the prior pass had left unverified."
+    },
+    {
+      "code": "WV",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "3 programs re-verified unchanged: Homestead Exemption for 100% P&T disabled veterans (W.Va. Code 11-6B, confirmed on WVDVA State Benefits page), Disabled Veteran Real Property Tax Credit (refundable, 90-100% rating, effective Jan 1 2024, Form DV-1; tax.wv.gov), and Veterans Re-education Assistance Program (WVDVA per-semester stipend)."
+    },
+    {
+      "code": "WI",
+      "program": "Wisconsin GI Bill",
+      "change": "corrected",
+      "detail": "Clarified the cap is 128 credits or 8 semesters whichever is longer, that it covers graduate programs, and that unremarried surviving spouses qualify, per dva.wi.gov/benefits/education/wi-gi-bill/ search result. No substantive weakening."
+    },
+    {
+      "code": "WI",
+      "program": "Veterans Hunting and Fishing License Benefits",
+      "change": "corrected",
+      "detail": "Made the disabled-veteran piece specific: 50%+ resident veterans qualify for the DNR Disabled Veteran Recreation Card (fishing, small game, state park/trail admission); one-time free license is for war-period veterans within 365 days of discharge (dva.wi.gov hunting-fishing-license page; dnr.wisconsin.gov/permits/veterans.html)."
+    },
+    {
+      "code": "WI",
+      "program": "Veterans Housing and Recovery Program",
+      "change": "corrected",
+      "detail": "WDVA press release says the Chippewa Falls and Green Bay VHRP sites closed by September 30; only Union Grove remains. Blurb updated and note added (https://dva.wi.gov/press/two-veteran-housing-and-recovery-program-sites-to-close/)."
+    },
+    {
+      "code": "WI",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "2 programs re-verified unchanged: Veterans and Surviving Spouses Property Tax Credit (refundable, 100% or IU, principal residence + up to one acre) and Wisconsin Veterans Homes (Chippewa Falls, King, Union Grove; 24-hour skilled nursing for veterans, spouses, Gold Star parents)."
+    },
+    {
+      "code": "WY",
+      "program": "Veterans Property Tax Exemption",
+      "change": "corrected",
+      "detail": "Blurb now states who qualifies (honorably discharged wartime or overseas campaign/expeditionary-medal veterans, certain disabled veterans, unremarried surviving spouses, 3-year residency), per Wyoming Department of Revenue Tax Relief page (https://wyo-prop-div.wyo.gov/tax-relief). Dollar amount still left out."
+    },
+    {
+      "code": "WY",
+      "program": "Wyoming Veterans Tuition Benefit (W.S. 19-14-106)",
+      "change": "corrected",
+      "detail": "Renamed to the program name used on the State Approving Agency site, 'Overseas Combat Veteran (OCV) Tuition Benefit', and added the eight-semester cap from the statute text. veteranseducation.wyo.gov was fetched: it lists the OCV benefit but links out for details. Source kept."
+    },
+    {
+      "code": "WY",
+      "program": "Veterans' Preference in State Employment",
+      "change": "corrected",
+      "detail": "Renamed to match the current statute heading (W.S. 19-14-102, 'Interview Preference in Public Departments'). Clarified that it covers all public departments, requires 1-year residency, and gives 10% to veterans with a 10% or higher service-connected rating. Statute text confirmed through search results."
+    },
+    {
+      "code": "WY",
+      "program": "Veterans' Interview Preference in Public Employment (W.S. 19-14-102)",
+      "change": "unverified",
+      "detail": "The existing source URL (dws.wyo.gov veteran-employment-services) was fetched. It covers Workforce Center priority of service, not the hiring preference, so it does not support this program. No official wyo.gov page describing the preference came up in search (only uwyo.edu HR and law.justia.com statute text). The URL is kept for now and should be replaced with the wyoleg.gov statute or a State HR Division page in a follow-up."
+    },
+    {
+      "code": "WY",
+      "program": "Veterans' Home of Wyoming",
+      "change": "corrected",
+      "detail": "Added 117-bed capacity and the connected assisted-living and skilled-nursing communities, per health.wyo.gov/aging/veteranshome pages. Source kept."
+    },
+    {
+      "code": "WY",
+      "program": "Free Game and Fish Licenses for Disabled Veterans and Purple Heart Recipients",
+      "change": "corrected",
+      "detail": "Added the free 100% Disabled Veteran Bird, Fish and Small Game License, and noted the 50% fishing license is lifetime, per WGFD license documents (wgfd.wyo.gov). Source kept."
+    },
+    {
+      "code": "WY",
+      "program": "(all)",
+      "change": "kept",
+      "detail": "0 programs unchanged verbatim. All 5 still exist and were refined above. Agency (Wyoming Veterans Commission, wyomilitary.wyo.gov) confirmed. The notes on no state income tax and the Oregon Trail State Veterans Cemetery still hold."
+    }
+  ],
   "states": [
     {
       "code": "VA",
@@ -26,7 +148,7 @@
           "name": "Virginia Values Veterans (V3) Program",
           "category": "employment",
           "blurb": "Free state training and certification program that helps employers recruit, hire, and retain veterans, and connects veteran job seekers with V3-certified employers.",
-          "source": "https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program/"
+          "source": "https://www.dvs.virginia.gov/employment-transition/virginia-values-veterans-v3-program"
         },
         {
           "name": "Disabled Veterans' Lifetime Hunting and Fishing Licenses",
@@ -59,7 +181,7 @@
         {
           "name": "Washington Tuition Waiver",
           "category": "education",
-          "blurb": "Requires state community colleges, colleges, and universities to waive undergraduate tuition and fees for eligible veterans, National Guard members, and qualifying dependents and survivors (RCW 28B.15.621).",
+          "blurb": "Requires state community colleges, colleges, and universities to waive all undergraduate tuition and fees (with a textbook stipend) for children and spouses or domestic partners of eligible veterans and National Guard members who died or became totally disabled from service or are POW/MIA, and lets institutions waive all or part of tuition for eligible veterans themselves (RCW 28B.15.621).",
           "source": "https://dva.wa.gov/veterans-their-families/veterans-benefits/education-and-training/washington-tuition-waiver"
         },
         {
@@ -75,10 +197,10 @@
           "source": "https://wdfw.wa.gov/accessibility/eligibility-requirements-veterans-reduced-fees"
         },
         {
-          "name": "Free or Reduced Rate Passes (State Parks Disabled Veteran Lifetime Pass)",
+          "name": "Lifetime Disabled Veteran Pass (Washington State Parks)",
           "category": "recreation",
-          "blurb": "Veterans with a 30% or greater service-connected disability qualify for a state parks pass providing free day-use parking, camping or moorage, boat launch, and trailer dump.",
-          "source": "https://dva.wa.gov/veterans-service-members-and-their-families/veterans-benefits/free-or-reduced-rate-passes-and-tax-exemptions"
+          "blurb": "Washington resident veterans with a 30% or greater combined service-connected disability can get a free lifetime pass for free day-use parking (no Discover Pass needed), camping or moorage, boat launch, and trailer dump at state parks.",
+          "source": "https://parks.wa.gov/passes-permits/get-park-pass/lifetime-disabled-veteran-pass"
         }
       ]
     },
@@ -105,7 +227,7 @@
         {
           "name": "War Orphan Education Program",
           "category": "education",
-          "blurb": "Provides education assistance at West Virginia post-secondary institutions to children (and certain spouses) of service members who died in service or from service-connected causes.",
+          "blurb": "Waives tuition and fees at West Virginia post-secondary schools, plus a WVDVA living-expense award, for dependents aged 16 to 25 of service members who were West Virginia residents at enlistment and died as a result of wartime military service.",
           "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx"
         },
         {
@@ -117,11 +239,11 @@
         {
           "name": "Free Hunting, Fishing, and Trapping Licenses for Disabled Veterans",
           "category": "recreation",
-          "blurb": "Resident veterans certified by the VA as totally and permanently service-connected disabled (and former POWs) may hunt, trap, and fish without purchasing a license (W.Va. Code 20-2-28).",
-          "source": "https://wvdnr.gov/programs-publications/disability-services/"
+          "blurb": "Resident veterans rated 100% permanent and total service-connected disabled by the VA, those receiving VA auto grant benefits, and former POWs may hunt, trap, and fish without purchasing a license (W.Va. Code 20-2-28).",
+          "source": "https://veterans.wv.gov/benefits/Pages/StateBenefits.aspx"
         }
       ],
-      "notes": "Military retirement income is fully exempt from WV personal income tax for tax years 2019 and later (see https://tax.wv.gov/Documents/TSD/tsd443.pdf). WVDVA also operates the WV Veterans Nursing Facility in Clarksburg and the WV Veterans Home in Barboursville; direct facility page URLs were not verified in this pass."
+      "notes": "Military retirement income is fully exempt from WV personal income tax for tax years 2019 and later (see https://tax.wv.gov/Documents/TSD/tsd443.pdf; not re-fetched this pass). WVDVA operates the West Virginia Veterans Nursing Facility in Clarksburg (https://veterans.wv.gov/facilities/Pages/clarksburgnursing.aspx) and the West Virginia Veterans Home in Barboursville (https://veterans.wv.gov/facilities/Pages/veteranshome.aspx). WV State Parks also offer a 'Veterans' Salute' lodging/camping discount listed on the WVDVA State Benefits page."
     },
     {
       "code": "WI",
@@ -140,7 +262,7 @@
         {
           "name": "Wisconsin GI Bill",
           "category": "education",
-          "blurb": "Full tuition and segregated fee remission for eligible veterans and qualifying spouses and children for up to eight semesters or 128 credits at University of Wisconsin System and Wisconsin Technical College System schools.",
+          "blurb": "Full tuition and segregated fee remission for eligible veterans and qualifying spouses, surviving spouses, and children for 128 credits or eight semesters (whichever is longer) at University of Wisconsin System and Wisconsin Technical College System schools, including graduate programs.",
           "source": "https://dva.wi.gov/benefits/education/wi-gi-bill/"
         },
         {
@@ -152,17 +274,58 @@
         {
           "name": "Veterans Hunting and Fishing License Benefits",
           "category": "recreation",
-          "blurb": "Wisconsin offers hunting and fishing license benefits for veterans, including a one-time free license for recently separated resident veterans and reduced-fee licenses for disabled veterans through the DNR.",
+          "blurb": "Recently separated resident war-period veterans get a one-time free hunting or fishing license (within 365 days of discharge), and resident veterans rated 50% or more can get a Disabled Veteran Recreation Card covering annual fishing, small game hunting, and state park and trail admission.",
           "source": "https://dva.wi.gov/benefits/outdoor-rec-and-sports/hunting-fishing-license/"
         },
         {
           "name": "Veterans Housing and Recovery Program",
           "category": "housing",
-          "blurb": "Provides homeless and at-risk veterans with transitional housing plus job training, education, and counseling support to help them return to independent living.",
+          "blurb": "Provides homeless and at-risk veterans with temporary housing plus job training, education, and counseling support to help them obtain permanent housing; the program now operates at Union Grove only.",
           "source": "https://dva.wi.gov/services/housing-and-financial-services/veterans-housing-and-recovery/"
         }
       ],
-      "notes": "WDVA also offers the Vet Ed Reimbursement Grant for part-time study (https://dva.wi.gov/benefits/education/vet-ed-reimbursement-grant/)."
+      "notes": "WDVA also offers the Vet Ed Reimbursement Grant for part-time study (https://dva.wi.gov/benefits/education/vet-ed-reimbursement-grant/; not re-verified this pass). WDVA announced closure of the Chippewa Falls and Green Bay VHRP sites by September 30 (https://dva.wi.gov/press/two-veteran-housing-and-recovery-program-sites-to-close/); Union Grove remains open."
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "agency": {
+        "name": "Wyoming Veterans Commission (Wyoming Military Department)",
+        "url": "https://www.wyomilitary.wyo.gov/resources/veteran/veterans-commission/"
+      },
+      "programs": [
+        {
+          "name": "Veterans Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Honorably discharged wartime or overseas campaign/expeditionary-medal veterans (and certain disabled veterans and unremarried surviving spouses) with three or more years of Wyoming residency receive an annual exemption that lowers the assessed value of their primary residence, or can apply it to vehicle registration fees instead.",
+          "source": "https://wyo-prop-div.wyo.gov/tax-relief"
+        },
+        {
+          "name": "Overseas Combat Veteran (OCV) Tuition Benefit (W.S. 19-14-106)",
+          "category": "education",
+          "blurb": "Wyoming Statute 19-14-106 provides free tuition for up to eight semesters at the University of Wyoming and Wyoming community colleges for eligible overseas combat veterans and their surviving spouses and dependents.",
+          "source": "https://veteranseducation.wyo.gov/"
+        },
+        {
+          "name": "Veterans' Interview Preference in Public Employment (W.S. 19-14-102)",
+          "category": "employment",
+          "blurb": "Honorably discharged veterans with at least one year of Wyoming residency, and qualifying surviving spouses, get a preference before the interview stage for initial public employment, including a 5% scoring advantage (10% with a service-connected disability of 10% or more) where a numerical scoring system is used.",
+          "source": "https://dws.wyo.gov/dws-division/workforce-centers-and-program-operations/job-seekers/veteran-employment-services/"
+        },
+        {
+          "name": "Veterans' Home of Wyoming",
+          "category": "health",
+          "blurb": "The 117-bed Veterans' Home of Wyoming in Buffalo, operated by the Wyoming Department of Health, offers connected assisted-living and skilled nursing communities for honorably discharged veterans and eligible dependents.",
+          "source": "https://health.wyo.gov/aging/veteranshome/"
+        },
+        {
+          "name": "Free Game and Fish Licenses for Disabled Veterans and Purple Heart Recipients",
+          "category": "recreation",
+          "blurb": "Wyoming Game & Fish issues free licenses to resident veterans: a lifetime fishing license at 50% or higher service-connected disability, a bird, fish, and small game license at 100% disability, and the same bird, fish, and small game license to Purple Heart recipients.",
+          "source": "https://wgfd.wyo.gov/licenses-applications/licensing-veterans"
+        }
+      ],
+      "notes": "Wyoming has no state income tax, so military retirement pay is untaxed by default. The Wyoming Veterans Commission also operates the Oregon Trail State Veterans Cemetery in Evansville. Property tax exemption requires three or more years of Wyoming residency; exemption dollar amount omitted as it has been subject to recent legislative change."
     }
   ]
 }

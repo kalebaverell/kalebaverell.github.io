@@ -1,6 +1,6 @@
 {
-  "_note": "Grounding data for sampleCareers.json - official BLS OOH + O*NET references. Pay figures are May 2024 medians from BLS Occupational Outlook Handbook Quick Facts; outlook phrases use BLS 2024–34 projection language. INCREMENTAL DRAFT: claimChecks pending verification.",
-  "lastVerified": "2026-07-08",
+  "_note": "Grounding data for sampleCareers.json - official BLS OOH + O*NET references. Pay figures are May 2025 medians from BLS Occupational Outlook Handbook Quick Facts; outlook phrases use BLS 2025–35 projection language.",
+  "lastVerified": "2026-10-01",
   "careers": [
     {
       "id": "cybersecurity-analyst",
@@ -9,8 +9,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/15-1212.00",
       "blsTitle": "Information Security Analysts",
       "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
-      "medianPay": "$124,910 (May 2024 median, BLS)",
-      "outlook": "Much faster than average (29% growth projected 2024–34)",
+      "medianPay": "$129,180 (May 2025 median, BLS)",
+      "outlook": "Much faster than average (21% growth projected 2025–35)",
       "claimChecks": [
         {
           "claim": "outlookSample 'High demand'",
@@ -27,13 +27,13 @@
       "onetUrl": "https://www.onetonline.org/link/summary/15-1232.00",
       "blsTitle": "Computer Support Specialists",
       "blsUrl": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm",
-      "medianPay": "$60,340 (May 2024 median, BLS - computer user support specialists)",
-      "outlook": "Projected to decline 3% 2024–34; still ~50,500 openings/yr from replacement needs",
+      "medianPay": "$61,860 (May 2025 median, BLS - computer user support specialists)",
+      "outlook": "Projected to decline 3% 2025–35; still ~48,700 openings/yr from replacement needs",
       "claimChecks": [
         {
           "claim": "outlookSample 'Steady demand'",
           "verdict": "corrected",
-          "note": "BLS projects a 3% employment DECLINE 2024–34; openings (~50,500/yr) come from replacement needs, not growth. Suggest softening to 'Openings from turnover, not growth'.",
+          "note": "BLS projects a 3% employment DECLINE 2025–35; openings (~48,700/yr) come from replacement needs, not growth. Suggest softening to 'Openings from turnover, not growth'.",
           "source": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm"
         }
       ]
@@ -45,8 +45,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/13-1082.00",
       "blsTitle": "Project Management Specialists",
       "blsUrl": "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm",
-      "medianPay": "$100,750 (May 2024 median, BLS)",
-      "outlook": "Faster than average (6% growth projected 2024–34)",
+      "medianPay": "$102,320 (May 2025 median, BLS)",
+      "outlook": "Much faster than average (7% growth projected 2025–35)",
       "claimChecks": [
         {
           "claim": "outlookSample 'Strong demand'",
@@ -63,8 +63,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
       "blsTitle": "Management Analysts",
       "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
-      "medianPay": "$101,190 (May 2024 median, BLS - management analysts, used as proxy; GS pay varies by grade/locality)",
-      "outlook": "Much faster than average (9% growth projected 2024–34 - proxy occupation)",
+      "medianPay": "$101,860 (May 2025 median, BLS - management analysts, used as proxy; GS pay varies by grade/locality)",
+      "outlook": "Much faster than average (10% growth projected 2025–35 - proxy occupation)",
       "socMatchNote": "No clean SOC match: 'federal civil service' spans many occupations. Management Analysts (program-analyst roles, per the career's keywords) used as the closest proxy.",
       "claimChecks": []
     },
@@ -75,8 +75,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/29-1141.00",
       "blsTitle": "Registered Nurses",
       "blsUrl": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
-      "medianPay": "$93,600 (May 2024 median, BLS - registered nurses; EMT entry rungs pay less)",
-      "outlook": "Faster than average (5% growth projected 2024–34); ~189,100 openings/yr",
+      "medianPay": "$97,550 (May 2025 median, BLS - registered nurses; EMT entry rungs pay less)",
+      "outlook": "Faster than average (6% growth projected 2025–35); ~180,800 openings/yr",
       "socMatchNote": "Career spans EMT (29-2042.00) → RN (29-1141.00); RN is the destination occupation and primary match.",
       "claimChecks": []
     },
@@ -87,13 +87,13 @@
       "onetUrl": "https://www.onetonline.org/link/summary/25-2031.00",
       "blsTitle": "High School Teachers",
       "blsUrl": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
-      "medianPay": "$64,580 (May 2024 median, BLS - high school teachers)",
-      "outlook": "Projected to decline 2% 2024–34; still ~66,200 openings/yr from replacement needs",
+      "medianPay": "$72,040 (May 2025 median, BLS - high school teachers)",
+      "outlook": "Little or no change (0% projected 2025–35); ~63,500 openings/yr from replacement needs",
       "claimChecks": [
         {
           "claim": "outlookSample 'Steady demand'",
           "verdict": "corrected",
-          "note": "BLS projects a 2% employment DECLINE for high school teachers 2024–34; openings (~66,200/yr) are replacement-driven. Corporate training (13-1151.00) is an alternate lane.",
+          "note": "BLS projects little or no change (0%) for high school teachers 2025–35 (was a 2% decline in the 2024–34 edition); openings (~63,500/yr) are replacement-driven. Corporate training (13-1151.00) is an alternate lane.",
           "source": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm"
         }
       ]
@@ -105,8 +105,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/13-1111.00",
       "blsTitle": "Management Analysts",
       "blsUrl": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
-      "medianPay": "$101,190 (May 2024 median, BLS)",
-      "outlook": "Much faster than average (9% growth projected 2024–34); ~98,100 openings/yr",
+      "medianPay": "$101,860 (May 2025 median, BLS)",
+      "outlook": "Much faster than average (10% growth projected 2025–35); ~94,100 openings/yr",
       "claimChecks": [
         {
           "claim": "outlookSample 'Strong demand'",
@@ -123,8 +123,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/47-2111.00",
       "blsTitle": "Electricians",
       "blsUrl": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
-      "medianPay": "$62,350 (May 2024 median, BLS)",
-      "outlook": "Much faster than average (9% growth projected 2024–34); ~81,000 openings/yr",
+      "medianPay": "$63,190 (May 2025 median, BLS)",
+      "outlook": "Much faster than average (9% growth projected 2025–35); ~72,700 openings/yr",
       "claimChecks": [
         {
           "claim": "outlookSample 'High demand'",
@@ -134,8 +134,10 @@
         },
         {
           "claim": "Helmets to Hardhats places veterans into union apprenticeships",
-          "verdict": "pending",
-          "source": ""
+          "verdict": "partly",
+          "source": "https://helmetstohardhats.org/ ; https://www.dol.gov/sites/dolgov/files/ETA/apprenticeship/pdfs/NGS-IUPAT-FTICert.pdf",
+          "detail": "H2H is a free national program, operated under contract with the Center for Military Recruitment, Assessment and Veterans' Employment, that connects National Guard, Reserve, retired and transitioning service members with union building-trades careers and registered apprenticeships ('We Connect Veterans with Careers'). It is a connector/referral path, not the hiring body: admission is decided by the local union/JATC apprenticeship program, though some DOL-registered union apprenticeship standards (e.g., IUPAT sample standards) provide entry for H2H participants who meet minimum qualifications. Suggested wording: 'connects veterans to union apprenticeships' rather than 'places'. No DOL page describing H2H itself was found; the DOL reference is a WebSearch snippet of the IUPAT sample standards PDF.",
+          "checked": "2026-10-01"
         }
       ]
     },
@@ -146,8 +148,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/49-9021.00",
       "blsTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
       "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm",
-      "medianPay": "$59,810 (May 2024 median, BLS)",
-      "outlook": "Much faster than average (8% growth projected 2024–34); ~40,100 openings/yr",
+      "medianPay": "$61,010 (May 2025 median, BLS)",
+      "outlook": "Much faster than average (11% growth projected 2025–35); ~40,600 openings/yr",
       "claimChecks": [
         {
           "claim": "outlookSample 'High demand'",
@@ -164,8 +166,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/51-4121.00",
       "blsTitle": "Welders, Cutters, Solderers, and Brazers",
       "blsUrl": "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm",
-      "medianPay": "$51,000 (May 2024 median, BLS)",
-      "outlook": "Slower than average (2% growth projected 2024–34); ~45,600 openings/yr, mostly replacement-driven",
+      "medianPay": "$53,750 (May 2025 median, BLS)",
+      "outlook": "Slower than average (2% growth projected 2025–35); ~40,300 openings/yr, mostly replacement-driven",
       "claimChecks": [
         {
           "claim": "outlookSample 'Strong demand'",
@@ -182,13 +184,15 @@
       "onetUrl": "https://www.onetonline.org/link/summary/49-3011.00",
       "blsTitle": "Aircraft and Avionics Equipment Mechanics and Technicians",
       "blsUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm",
-      "medianPay": "$78,680 (May 2024 median, BLS - aircraft mechanics and service technicians; avionics technicians $81,390)",
-      "outlook": "Faster than average (5% growth projected 2024–34); ~13,100 openings/yr",
+      "medianPay": "$79,870 (May 2025 median, BLS - aircraft mechanics and service technicians; avionics technicians $82,280)",
+      "outlook": "Faster than average (5% growth (aircraft mechanics; 6% incl. avionics) projected 2025–35); ~13,100 openings/yr",
       "claimChecks": [
         {
           "claim": "Documented military maintenance experience can authorize testing for the FAA A&P certificate",
-          "verdict": "pending",
-          "source": ""
+          "verdict": "confirmed",
+          "source": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65/subpart-D/section-65.77 ; https://www.faa.gov/mechanics/become ; https://fsims.faa.gov/wdocs/8900.1/v05%20airman%20cert/chapter%2005/05_005_002rev1.htm",
+          "detail": "14 CFR 65.77 requires either an aviation maintenance technician school graduation document or 'documentary evidence, satisfactory to the Administrator, of practical experience' - at least 18 months for one rating or 30 months concurrent for both airframe and powerplant. FAA guidance: practical experience from U.S. military aviation maintenance occupations may be evaluated by the FAA for authorization to take the mechanic knowledge test; holders of a JSAMTCC Certificate of Eligibility are considered to have met 65.77 for the rating(s) on the COE and need no additional FAA authorization to begin testing. Applicant must still pass knowledge, oral and practical tests. NOTE: faa.gov returned 403 and ecfr.gov redirected to a bot block; findings are from faa.gov/fsims.faa.gov WebSearch snippets (FAA Order 8900.1 Vol 5 Ch 5) and the 65.77 text.",
+          "checked": "2026-10-01"
         }
       ]
     },
@@ -199,13 +203,15 @@
       "onetUrl": "https://www.onetonline.org/link/summary/53-3032.00",
       "blsTitle": "Heavy and Tractor-trailer Truck Drivers",
       "blsUrl": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
-      "medianPay": "$57,440 (May 2024 median, BLS)",
-      "outlook": "As fast as average (4% growth projected 2024–34); ~237,600 openings/yr",
+      "medianPay": "$58,640 (May 2025 median, BLS)",
+      "outlook": "As fast as average (4% growth projected 2025–35); ~214,500 openings/yr",
       "claimChecks": [
         {
           "claim": "FMCSA Military Skills Test Waiver can waive the CDL road/skills test for qualified military drivers",
-          "verdict": "pending",
-          "source": ""
+          "verdict": "confirmed",
+          "source": "https://www.fmcsa.dot.gov/military-skills-test-waiver ; https://www.fmcsa.dot.gov/even-exchange-program ; https://www.ttnews.com/articles/trump-cdl-military (news, for the July 2026 change)",
+          "detail": "Waives the skills (driving) test only, NOT the knowledge test. Eligibility: currently licensed and employed within the past 12 months in a military position requiring operation of a vehicle equivalent to a CMV, with ~2 years' safe experience and no disqualifying violations in the prior 2 years; available in every state. The separate Even Exchange Program (FMCSA-endorsed) waives the knowledge test for qualifying military occupations in participating states; combined, a military license can be exchanged for a CDL with no tests. Changes: on July 15, 2026 the President announced automatic CDL eligibility for military heavy-truck drivers; per Transport Topics, FMCSA updated the Even Exchange page that day to list qualifying MOSs (e.g., Army 88M), but no final rule has been issued. A Feb 19, 2026 Federal Register CDL document on the military-personnel exception exists but could not be read (redirect block). No official source mentions a 'SummitCDL' program - treat that name as unverified. Copy suggestion: add the 12-month window and note the knowledge test still applies unless the state participates in Even Exchange. NOTE: fmcsa.dot.gov returned 403 on both URL attempts; findings are from fmcsa.dot.gov WebSearch snippets.",
+          "checked": "2026-10-01"
         }
       ]
     },
@@ -216,8 +222,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
       "blsTitle": "Top Executives (includes general and operations managers)",
       "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
-      "medianPay": "$102,950 (May 2024 median, BLS - general and operations managers; owner income varies with the business)",
-      "outlook": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)",
+      "medianPay": "$105,770 (May 2025 median, BLS - general and operations managers; owner income varies with the business)",
+      "outlook": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)",
       "socMatchNote": "No clean SOC match for franchise/business owners; General and Operations Managers (11-1021.00) is the closest proxy per task guidance.",
       "claimChecks": []
     },
@@ -228,8 +234,8 @@
       "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
       "blsTitle": "Top Executives (includes general and operations managers)",
       "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
-      "medianPay": "$102,950 (May 2024 median, BLS - general and operations managers; owner income varies widely)",
-      "outlook": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)",
+      "medianPay": "$105,770 (May 2025 median, BLS - general and operations managers; owner income varies widely)",
+      "outlook": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)",
       "socMatchNote": "No clean SOC match; General and Operations Managers (11-1021.00) used as the closest proxy.",
       "claimChecks": []
     },
@@ -240,14 +246,16 @@
       "onetUrl": "https://www.onetonline.org/link/summary/11-1021.00",
       "blsTitle": "Top Executives (includes general and operations managers)",
       "blsUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
-      "medianPay": "$102,950 (May 2024 median, BLS - general and operations managers; contract revenue varies)",
-      "outlook": "As fast as average (4% growth for top executives projected 2024–34 - proxy occupation)",
+      "medianPay": "$105,770 (May 2025 median, BLS - general and operations managers; contract revenue varies)",
+      "outlook": "Faster than average (5% growth for top executives projected 2025–35 - proxy occupation)",
       "socMatchNote": "No clean SOC match; General and Operations Managers (11-1021.00) used as the closest proxy.",
       "claimChecks": [
         {
           "claim": "SDVOSB set-aside contracts exist; SBA VetCert is the certification path",
-          "verdict": "pending",
-          "source": ""
+          "verdict": "confirmed",
+          "source": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs ; https://www.federalregister.gov/documents/2024/02/23/2024-02797/federal-acquisition-regulation-certification-of-service-disabled-veteran-owned-small-businesses",
+          "detail": "SBA: 'Certification with SBA allows service-disabled veteran-owned small businesses (SDVOSBs) to compete for federal sole-source and set-aside contracts' across the federal government; certified VOSBs get additional set-aside/sole-source opportunities at VA; for VA 'There is no self-certification provision.' Certification moved from VA to SBA on Jan 1, 2023 (NDAA FY2021), and since Jan 1, 2024 SBA certification (or a pending application filed by Dec 31, 2023) is required for SDVOSB sole-source/set-aside awards governmentwide; uncertified firms may only self-represent for awards outside the SDVOSB program. Application portal per SBA page: https://certifications.sba.gov/ (VetCert).",
+          "checked": "2026-10-01"
         }
       ]
     }

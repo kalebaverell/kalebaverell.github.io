@@ -1,0 +1,200 @@
+{
+  "batch": "2b",
+  "lastVerified": "2026-07-08",
+  "states": [
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "agency": {
+        "name": "Iowa Department of Veterans Affairs",
+        "url": "https://dva.iowa.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veteran Homestead Property Tax Credit",
+          "category": "tax",
+          "blurb": "Provides a full property tax exemption on the homestead for veterans with a 100% service-connected disability rating and for DIC recipients.",
+          "source": "https://revenue.iowa.gov/taxes/tax-guidance/tax-credits-deductions-exemption/disabled-veteran-homestead-property-tax-credit"
+        },
+        {
+          "name": "Military Service Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Reduces the assessed value of a qualifying veteran's home for property tax purposes based on active-duty service.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Injured Veterans Grant",
+          "category": "other",
+          "blurb": "Grant of up to $10,000 for service members seriously injured in the line of duty in a combat or hazardous-duty zone after September 11, 2001, so family can be present during recovery.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits/injured-veterans-grant"
+        },
+        {
+          "name": "Iowa Veterans Home",
+          "category": "health",
+          "blurb": "State long-term care facility in Marshalltown providing professionally managed health care for honorably discharged veterans and their spouses or widows.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Lifetime Hunting and Fishing License for Veterans",
+          "category": "recreation",
+          "blurb": "Qualifying Iowa resident veterans who served on active federal service can obtain a lifetime hunting or fishing license for a nominal $7 fee.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        },
+        {
+          "name": "Home Base Iowa",
+          "category": "employment",
+          "blurb": "Statewide initiative linking Iowa businesses with qualified veterans and their spouses for career, education, and community-transition opportunities.",
+          "source": "https://dva.iowa.gov/benefits/state-benefits"
+        }
+      ],
+      "notes": "Injured Veterans Grant dollar cap is statutory. Iowa Veterans Home and Home Base Iowa cited via IDVA state-benefits page."
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "agency": {
+        "name": "Kansas Office of Veterans Services",
+        "url": "https://www.kovs.ks.gov/"
+      },
+      "programs": [
+        {
+          "name": "Property Tax Relief Claim for Seniors and Disabled Veterans (K-40SVR)",
+          "category": "tax",
+          "blurb": "Homestead property tax refund for Kansas resident veterans with a service-connected disability rating of 50% or greater and their surviving spouses, subject to income and home-value limits.",
+          "source": "https://www.ksrevenue.gov/faqs-SVR.html"
+        },
+        {
+          "name": "Military Retirement Pay State Income Tax Exemption",
+          "category": "tax",
+          "blurb": "U.S. military retirement pay and VA disability payments are not subject to Kansas state income tax.",
+          "source": "https://www.kovs.ks.gov/veteran-services/state-veterans-benefits-guide"
+        },
+        {
+          "name": "Kansas Military Service Scholarship",
+          "category": "education",
+          "blurb": "Pays undergraduate tuition and required fees for up to eight semesters at public Kansas institutions for qualifying veterans who served in recognized hostile-fire areas.",
+          "source": "https://www.kovs.ks.gov/veteran-services/state-veterans-benefits-guide"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Qualified veterans receive hiring preference for Kansas state government positions designated as Veterans Preference Eligible (VPE).",
+          "source": "https://admin.ks.gov/offices/personnel-services/jobs/veterans-preference"
+        },
+        {
+          "name": "Kansas State Veterans Homes",
+          "category": "health",
+          "blurb": "State-run long-term nursing and assisted-living care at the Kansas Soldiers' Home (Fort Dodge), the Kansas Veterans' Home (Winfield), and the Northeast Kansas Veterans' Home (Topeka).",
+          "source": "https://www.kovs.ks.gov/veteran-homes"
+        },
+        {
+          "name": "Disabled Veterans Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "Free permanent hunting and fishing licenses for honorably discharged Kansas resident veterans with a service-connected disability of at least 30%.",
+          "source": "https://www.ksoutdoors.gov/licenses-permits-fees/special-licenses-permits"
+        }
+      ],
+      "notes": "Agency recently rebranded from Kansas Commission on Veterans Affairs Office (kcva.ks.gov) to Kansas Office of Veterans Services (kovs.ks.gov)."
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "agency": {
+        "name": "Kentucky Department of Veterans Affairs",
+        "url": "https://veterans.ky.gov/"
+      },
+      "programs": [
+        {
+          "name": "Homestead Exemption for Totally Disabled Veterans",
+          "category": "tax",
+          "blurb": "Veterans rated totally disabled from a service-connected condition receive a homestead exemption that reduces the taxable value of their home, with the amount recalculated every two years for inflation.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/default.aspx"
+        },
+        {
+          "name": "Kentucky Tuition Waiver (KRS 164.507/164.515)",
+          "category": "education",
+          "blurb": "Waives tuition at Kentucky state-supported colleges, universities, and vocational-technical schools for dependents, spouses, and unremarried widows of veterans who are 100% disabled, permanently and totally disabled, deceased, or POW/MIA.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/Education-for-Veterans-in-Kentucky.aspx"
+        },
+        {
+          "name": "Military Retirement Pay Income Tax Exclusion",
+          "category": "tax",
+          "blurb": "Military retired pay for those who retired before January 1, 1998 is fully exempt from Kentucky income tax, and later retirees may exclude retirement income up to a statutory cap.",
+          "source": "https://revenue.ky.gov/Individual/Pages/Military-Exemptions.aspx"
+        },
+        {
+          "name": "Kentucky State Veterans Centers",
+          "category": "health",
+          "blurb": "Four state-operated long-term nursing facilities provide skilled care for Kentucky veterans, with online admission applications.",
+          "source": "https://veterans.ky.gov/Benefits/Pages/default.aspx"
+        },
+        {
+          "name": "Veterans' Preference in State Employment",
+          "category": "employment",
+          "blurb": "Kentucky state hiring managers must offer interviews to qualified veterans under the state's veterans preference rules.",
+          "source": "https://veterans.ky.gov/Benefits/Documents/KY%20STATE%20BENEFITS%20updated%2022%20March%202023.pdf"
+        },
+        {
+          "name": "Disabled Veteran Hunting and Fishing License",
+          "category": "recreation",
+          "blurb": "Kentucky veterans with a service-connected disability rating above 50% qualify for a special reduced-cost hunting and fishing license.",
+          "source": "https://veterans.ky.gov/Benefits/Documents/KY%20STATE%20BENEFITS%20updated%2022%20March%202023.pdf"
+        }
+      ],
+      "notes": "Homestead exemption dollar amount is inflation-adjusted biennially, so the figure is omitted. State benefits summary PDF (March 2023) used as source for preference and license details."
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "agency": {
+        "name": "Louisiana Department of Veterans Affairs",
+        "url": "https://vetaffairs.la.gov/"
+      },
+      "programs": [
+        {
+          "name": "Disabled Veterans Additional Property Tax Exemption",
+          "category": "tax",
+          "blurb": "Veterans with a service-connected disability rating of 50% or higher receive additional assessed-value exemptions beyond the standard homestead exemption, and 100% disabled veterans are exempt from all ad valorem property tax on their primary residence.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "Title 29 Dependents' Educational Assistance",
+          "category": "education",
+          "blurb": "In-state tuition exemption at Louisiana public colleges for children, spouses, and surviving spouses of veterans rated at least 90% service-connected disabled (including Individual Unemployability), deceased, or POW/MIA.",
+          "source": "https://vetaffairs.la.gov/education/title-29"
+        },
+        {
+          "name": "Louisiana Veterans Homes",
+          "category": "health",
+          "blurb": "LDVA operates five state veterans homes offering long-term care to honorably discharged veterans with 90 days of active duty, their spouses, and Gold Star parents.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "State and City Civil Service Veterans' Preference",
+          "category": "employment",
+          "blurb": "Louisiana state and city civil service award a five- to ten-point preference in original appointment to veterans who served honorably in the U.S. Armed Forces.",
+          "source": "https://www.vetaffairs.la.gov/benefit/louisiana-state-and-federal-civil-service/"
+        },
+        {
+          "name": "Military Retirement Pay State Income Tax Exemption",
+          "category": "tax",
+          "blurb": "Military retirement benefits are fully exempt from Louisiana state income tax.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "Free Hunting and Fishing Licenses for Disabled Veterans",
+          "category": "recreation",
+          "blurb": "Veterans with a permanent service-connected disability rating of 50% or greater qualify for free Louisiana hunting and fishing licenses.",
+          "source": "https://vetaffairs.la.gov/benefits/state"
+        },
+        {
+          "name": "LaVetCorps Student Veteran Navigators",
+          "category": "education",
+          "blurb": "AmeriCorps-partnered navigators staff student veteran centers at Louisiana public colleges and universities to help veterans complete academic goals and transition home.",
+          "source": "https://www.vetaffairs.la.gov/lavetcorps-louisiana-student-veterans-getting-support-they-need/lavetcorps/"
+        }
+      ],
+      "notes": "LDVA also staffs roughly 74 veteran service offices statewide for claims assistance."
+    }
+  ]
+}

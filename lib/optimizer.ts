@@ -380,7 +380,7 @@ export function optimizeBenefits(a: AnswersLike): OptimizedBenefit[] {
       "You're actively pursuing a business - Boots to Business and your local VBOC are free starting points.");
     if (rated) {
       promote("veteran-business", "now",
-        "As a service-disabled veteran, SDVOSB certification through SBA VetCert (veterans.certify.sba.gov) unlocks federal set-aside contracts.");
+        "As a service-disabled veteran, SDVOSB certification through SBA VetCert (certifications.sba.gov) unlocks federal set-aside contracts.");
     }
   } else if (businessCurious) {
     promote("veteran-business", "check",

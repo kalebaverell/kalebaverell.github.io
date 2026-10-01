@@ -1,193 +1,202 @@
 {
-  "lastVerified": "2026-07-08",
+  "lastVerified": "2026-10-01",
   "categories": [
     {
       "id": "va-disability",
       "officialUrl": "https://www.va.gov/disability/",
-      "urlChanged": false,
-      "verifiedEligibility": "You may qualify if you have a current diagnosed condition, an in-service injury, illness, or event, and a medical link between them, and you were discharged under other than dishonorable conditions.",
-      "verifiedSteps": [
-        "Gather service records, medical records, and a symptom timeline.",
-        "If you're still serving with 180 to 90 days left before separation, ask about a Benefits Delivery at Discharge (BDD) pre-discharge claim.",
-        "Work with a free accredited VSO or county veteran service officer.",
-        "File your claim online at VA.gov or with VSO help."
-      ],
+      "urlStatus": {
+        "https://www.va.gov/disability/": "200",
+        "https://www.va.gov/disability/eligibility/": "200",
+        "https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/": "200"
+      },
+      "status": "corrections",
       "corrections": [
-        "No errors found in existing content. The three-part eligibility framing (current condition + in-service event + medical nexus) matches VA's stated requirements at https://www.va.gov/disability/eligibility/.",
-        "Verified addition: the Benefits Delivery at Discharge (BDD) filing window is 180 to 90 days before separation, with a requirement to be available for VA exams within 45 days of filing. Source: https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/"
+        {
+          "field": "sampleEligibility",
+          "current": "Verified: you may qualify if you have a current diagnosed condition, an in-service injury, illness, or event, and a medical link between them - and you were discharged under other than dishonorable conditions.",
+          "proposed": "Verified: you may qualify if you have a current condition affecting your mind or body, you served on active duty, active duty for training, or inactive duty training, and your condition is linked to service - it started or was caused during service, an existing condition was made worse by service, or a service-connected disability appeared after you left. You must have been discharged under other than dishonorable conditions.",
+          "evidence": "https://www.va.gov/disability/eligibility/ - lists both (1) a current illness or injury that affects your mind or body and (2) service on active duty, active duty for training, or inactive duty training, plus at least one of: in-service, pre-service (condition made worse by service), or post-service (disability related to active duty that didn't appear until after service). Current text omits the aggravation (pre-service) and post-service paths."
+        }
       ],
-      "sources": [
-        "https://www.va.gov/disability/",
-        "https://www.va.gov/disability/eligibility/",
-        "https://www.va.gov/disability/how-to-file-claim/when-to-file/pre-discharge-claim/"
-      ]
+      "notes": "Summary ('Tax-free monthly compensation for conditions connected to your service') matches va.gov/disability/ ('a monthly tax-free payment to Veterans who got sick or injured while serving'). Hub page confirms accredited attorney, claims agent, or VSO representative can help file, and filing online/phone/mail/fax. BDD window 180-90 days before separation confirmed; page also requires availability for VA exams within 45 days of filing and a completed Separation Health Assessment - Part A Self Assessment form at submission (optional detail, not a correction to the existing step). Eligibility page notes OTH/bad conduct/dishonorable discharges may not qualify but points to discharge upgrade or VA Character of Discharge review. Documents list (DD-214, service medical records, current treatment records, buddy/lay statements) not contradicted; the evidence detail lives on a separate 'evidence needed' page not in sources, so not re-verified field-by-field. va.gov hub showed a banner for scheduled maintenance on Oct 1, 2026 (sign-in tools unavailable) - transient."
     },
     {
       "id": "va-healthcare",
       "officialUrl": "https://www.va.gov/health-care/",
-      "urlChanged": false,
-      "verifiedEligibility": "Most veterans who served on active duty and were discharged under other than dishonorable conditions can apply; your priority group depends on service history, disability rating, income, and toxic-exposure status.",
-      "verifiedSteps": [
-        "Apply for VA health care online at VA.gov, by phone at 877-222-8387, or with a VSO.",
-        "Check PACT Act toxic-exposure eligibility - many veterans can now enroll directly without first applying for other VA benefits.",
-        "Choose a VA facility and schedule an intake appointment.",
-        "Ask about mental health and telehealth options."
-      ],
-      "corrections": [
-        "Existing content is accurate but omits the PACT Act expansion: veterans who served in Vietnam, the Gulf War, Iraq, Afghanistan, or any post-9/11 combat zone, and veterans exposed to toxins or hazards during training or active duty, can enroll directly in VA health care without first applying for VA benefits. Source: https://www.va.gov/resources/the-pact-act-and-your-va-benefits/",
-        "Verified: enrollment is organized into 8 priority groups based on service-connected disability rating, income, and other factors. Source: https://www.va.gov/health-care/eligibility/priority-groups/"
-      ],
-      "sources": [
-        "https://www.va.gov/health-care/",
-        "https://www.va.gov/health-care/eligibility/priority-groups/",
-        "https://www.va.gov/resources/the-pact-act-and-your-va-benefits/"
-      ]
+      "urlStatus": {
+        "https://www.va.gov/health-care/": "200",
+        "https://www.va.gov/health-care/eligibility/priority-groups/": "200",
+        "https://www.va.gov/resources/the-pact-act-and-your-va-benefits/": "200"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "Health benefits hotline 877-222-VETS (8387) confirmed on va.gov/health-care/; page says you can apply online, by phone, by mail, or in person (current step omits mail/in person - acceptable, not an error). Services confirmed: primary/specialty care, prescriptions, mental health (PTSD, MST, depression, grief, anxiety), community care. 8 priority groups based on service history, disability rating, income, Medicaid eligibility, and other benefits; Priority Group 6 explicitly covers toxic-exposure categories (Camp Lejeune, TERA, radiation, Agent Orange) and post-11/11/1998 combat service, so 'toxic-exposure status (PACT Act)' as a factor is supported. PACT Act page confirms direct enrollment without first applying for disability benefits for Vietnam/Gulf War/Iraq/Afghanistan/post-9/11 combat zone/GWOT veterans and those exposed to toxins during service; no deadline, expansion effective March 5, 2024. Telehealth not explicitly confirmed on fetched excerpts (step only says 'ask about' - not a factual claim). Documents (DD-214, income info if required, insurance cards) not contradicted; not itemized on fetched pages."
     },
     {
       "id": "gi-bill",
       "officialUrl": "https://www.va.gov/education/",
-      "urlChanged": false,
-      "verifiedEligibility": "Post-9/11 GI Bill benefits scale with qualifying active-duty time - from 50% at 90 days up to 100% at 36 months - and transfers to a spouse or child must be approved by DoD while you're still serving.",
-      "verifiedSteps": [
-        "Apply for benefits and request a Certificate of Eligibility on VA.gov.",
-        "If transferring to dependents, request the transfer through DoD while still serving (generally 6 years in with a 4-year additional commitment).",
-        "Pick a program and confirm it's VA-approved using the GI Bill Comparison Tool.",
-        "Meet the School Certifying Official to enroll."
-      ],
-      "corrections": [
-        "The line 'Some benefits are transferable to dependents' understates the conditions: transfer requires at least 6 years of service, an agreement to serve 4 more years, and must be requested and approved through DoD while the member is still in the armed forces - veterans cannot initiate a transfer after separation. A child can generally start using transferred benefits only after the member completes 10 years of service. Source: https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
-        "Verified benefit tiers: 90 days-5 months = 50%, 6-17 months = 60%, 18-23 months = 70%, 24-29 months = 80%, 30-35 months = 90%, 36+ months = 100%. Source: https://www.va.gov/resources/how-we-determine-your-percentage-of-post-911-gi-bill-benefits/"
-      ],
-      "sources": [
-        "https://www.va.gov/education/",
-        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/",
-        "https://www.va.gov/resources/how-we-determine-your-percentage-of-post-911-gi-bill-benefits/"
-      ]
+      "urlStatus": {
+        "https://www.va.gov/education/": "200",
+        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/": "200",
+        "https://www.va.gov/resources/how-we-determine-your-percentage-of-post-911-gi-bill-benefits/": "200"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "Education hub confirms tuition/school costs, living allowances, VET TEC 2.0 high-tech training, Yellow Ribbon, counseling; eligible groups include veterans, active duty, Guard/Reserve, and qualified family members. Hub steps include applying, getting a Certificate of Eligibility, and using the GI Bill Comparison Tool. GI Bill Hotline 888-442-4551. Transfer page (last updated Sept 1, 2026): at least 6 years of service on the date the request is approved + agree to 4 more years; DoD decides; must request while still serving via milConnect; child can use only after sponsor completes 10 years, must be under 26 with HS diploma/equivalent - existing text accurate. Percentage tiers 50% (90-179 days) through 100% (36+ months) confirmed; exceptions: Purple Heart on/after 9/11/2001 or service-connected disability discharge after 30+ continuous days qualify for 100% (optional addition, not an error). 'Meet the School Certifying Official' step not explicitly stated on the fetched pages - unverified this quarter but consistent with standard VA enrollment process; not flagged as wrong. Documents (DD-214, COE, transcripts) not contradicted."
     },
     {
       "id": "va-home-loan",
       "officialUrl": "https://www.va.gov/housing-assistance/home-loans/",
-      "urlChanged": false,
-      "verifiedEligibility": "You'll need a Certificate of Eligibility based on your service history plus a lender's credit and income approval; a funding fee usually applies unless you're exempt, such as veterans receiving VA disability compensation.",
-      "verifiedSteps": [
-        "Request your Certificate of Eligibility online at VA.gov, through your lender, or by mail (VA Form 26-1880).",
-        "Get pre-approved with a VA-experienced lender.",
-        "Shop with a real estate agent who knows VA appraisals and the VA loan process."
-      ],
-      "corrections": [
-        "No errors found in existing content. Verified funding fee exemptions: veterans receiving VA compensation for a service-connected disability, veterans eligible for compensation but receiving retirement or active-duty pay instead, surviving spouses receiving Dependency and Indemnity Compensation, service members with a proposed or memorandum rating from a pre-discharge claim before closing, and active-duty Purple Heart recipients. Source: https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/",
-        "Verified: the COE process also confirms funding-fee exemption status, and a funding fee refund may be available if compensation is later awarded retroactive to before closing."
-      ],
-      "sources": [
-        "https://www.va.gov/housing-assistance/home-loans/",
-        "https://www.va.gov/housing-assistance/home-loans/eligibility/",
-        "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/"
-      ]
+      "urlStatus": {
+        "https://www.va.gov/housing-assistance/home-loans/": "200",
+        "https://www.va.gov/housing-assistance/home-loans/eligibility/": "200",
+        "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/": "200"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "Hub: VA-backed loans help Veterans, service members, and survivors buy, build, improve, or refinance; 'nearly 90% of VA-backed loans are made with no down payment'; borrowers still need required credit and income. The va.gov hub page itself does not mention PMI; 'no private mortgage insurance' confirmed via WebSearch snippets from benefits.va.gov/homeloans (main pillars: no down payment, competitive rates, limited closing costs, no PMI) and news.va.gov. Optional nuance: 'no down payment' is not universal (VA says nearly 90% have none) - current summary phrasing is the standard VA marketing description, not flagged. COE: three ways confirmed (online, through lender, by mail with VA Form 26-1880). Eligibility page: must meet credit, income, and occupancy requirements from VA and the lender. Funding fee generally required; exemptions confirmed: receiving VA SC disability compensation, eligible for compensation but receiving retirement/active-duty pay instead, surviving spouses receiving DIC, service members with a pre-discharge proposed/memorandum rating, and active-duty Purple Heart recipients - existing example ('veterans receiving VA disability compensation') accurate. 'Shop with a real estate agent who knows VA appraisals' is advice, not verifiable on official pages. Documents (COE, DD-214, proof of income, bank statements) not contradicted."
     },
     {
       "id": "vre",
       "officialUrl": "https://www.va.gov/careers-employment/vocational-rehabilitation/",
-      "urlChanged": false,
-      "verifiedEligibility": "You may qualify with a VA service-connected disability rating of at least 10%, a discharge that wasn't dishonorable, and an employment handicap; a Vocational Rehabilitation Counselor confirms entitlement.",
-      "verifiedSteps": [
-        "Apply for VR&E online at VA.gov (VA Form 28-1900).",
-        "Meet with a Vocational Rehabilitation Counselor for an initial evaluation.",
-        "Build an approved rehabilitation and employment plan."
-      ],
-      "corrections": [
-        "NAMING ERROR: the summary calls the program 'VA Readiness & Employment' - the official name is 'Veteran Readiness and Employment' (VR&E), formerly Vocational Rehabilitation and Employment. Fix the summary text. Source: https://www.va.gov/careers-employment/vocational-rehabilitation/",
-        "Verified specificity: eligibility requires a service-connected disability rating of at least 10% (the existing 'typically requires a service-connected disability rating' is correct but can state the 10% minimum). Source: https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/",
-        "Verified addition: the 12-year basic eligibility period applies only to veterans discharged before January 1, 2013; those discharged on or after that date have no time limit. Source: https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/"
-      ],
-      "sources": [
-        "https://www.va.gov/careers-employment/vocational-rehabilitation/",
-        "https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/",
-        "https://www.va.gov/careers-employment/vocational-rehabilitation/how-to-apply/"
-      ]
+      "urlStatus": {
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/": "200",
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/": "200",
+        "https://www.va.gov/careers-employment/vocational-rehabilitation/how-to-apply/": "200"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "Hub: Veteran Readiness and Employment (Chapter 31, formerly Vocational Rehabilitation and Employment) serves service members and Veterans with service-connected disabilities that limit employment; five tracks (reemployment, rapid access to employment, self-employment, long-term services, independent living). Online application lives at https://www.va.gov/careers-employment/vocational-rehabilitation/apply-vre-form-28-1900/. Eligibility confirmed verbatim: no dishonorable discharge; SC disability rating of at least 10%; discharged before 1/1/2013 -> 12-year basic period; on/after 1/1/2013 -> no time limit; serious employment handicap can extend period. How-to-apply: VA Form 28-1900 online, by mail to the VR&E Intake Center (Janesville, WI), in person at a regional office, or with an accredited rep/VSO; then meet a Vocational Rehabilitation Counselor who determines employment handicap, then build a rehabilitation plan - matches existing steps. Optional: whoFor could add 'service members' (hub explicitly includes them) - not an error. Documents (DD-214, rating letter, career goals summary) not contradicted."
     },
     {
       "id": "employment",
       "officialUrl": "https://www.dol.gov/agencies/vets",
-      "urlChanged": false,
-      "verifiedEligibility": "Veterans and eligible spouses receive priority of service for DOL-funded job training and placement programs at American Job Centers nationwide, with specialized help for those with significant barriers to employment.",
-      "verifiedSteps": [
-        "Visit or register with your local American Job Center.",
-        "Ask about priority of service and JVSG-funded veteran employment specialists (DVOP/LVER staff).",
-        "Target veteran-friendly employers, apprenticeships, and registered apprenticeship programs."
-      ],
+      "urlStatus": {
+        "https://www.dol.gov/agencies/vets": "200",
+        "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services": "200",
+        "https://www.dol.gov/agencies/eta/jobs-for-veterans-act": "200"
+      },
+      "status": "corrections",
       "corrections": [
-        "No errors found in existing content. Verified: the Jobs for Veterans Act establishes priority of service for veterans and eligible spouses in DOL-funded job training programs, delivered through roughly 2,600 American Job Centers. Sources: https://www.dol.gov/agencies/eta/jobs-for-veterans-act and https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
-        "Minor precision note: the 'DOL VETS employment representative' step refers to Jobs for Veterans State Grants (JVSG) staff - Disabled Veterans' Outreach Program (DVOP) specialists and Local Veterans' Employment Representatives (LVER) - who are state-employed staff at American Job Centers, not federal DOL employees."
+        {
+          "field": "sources[1]",
+          "current": "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
+          "proposed": "https://www.dol.gov/agencies/vets/programs/grants/state/jvsg/about",
+          "evidence": "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services loads (200) but is now a state-by-state resource directory and does not mention priority of service, DVOP/LVER, or significant barriers to employment. The JVSG 'About' page (found via WebSearch restricted to dol.gov) is the official page describing DVOP specialists serving veterans with significant barriers to employment and LVER staff doing employer outreach, which is what actionSteps[1] and sampleEligibility rely on. Optional: keep the old URL as an extra source rather than replacing it."
+        }
       ],
-      "sources": [
-        "https://www.dol.gov/agencies/vets",
-        "https://www.dol.gov/agencies/vets/veterans/veterans-employment-services",
-        "https://www.dol.gov/agencies/eta/jobs-for-veterans-act"
-      ]
+      "notes": "VETS hub (200, no redirect) lists Priority of Service, JVSG, apprenticeships (incl. Freedom Haulers CDL), TAP and the Employment Navigator and Partnership Program, HIRE Vets Medallion, Regional Veteran Employment Coordinators. ETA JVA page confirms priority of service for veterans and eligible spouses (incl. widows/widowers) in all DOL-funded job training programs incl. WIOA, delivered through 2,400+ American Job Centers. DVOP/LVER roles and SBE emphasis confirmed only via dol.gov WebSearch snippets (JVSG about page/primer): DVOP specialists serve eligible veterans and spouses with significant barriers to employment; LVERs do employer outreach; most AJCs have a DVOP or LVER. Existing summary, whoFor, sampleEligibility, actionSteps, documents all accurate. The JVSG about page itself was not fetched directly (WebSearch snippet only). URL check: all three DOL URLs returned 403 to a plain curl client (bot blocking) but loaded fine via WebFetch, so recorded as 200."
     },
     {
       "id": "veteran-business",
       "officialUrl": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
-      "urlChanged": false,
-      "verifiedEligibility": "SBA programs like Boots to Business and Veterans Business Outreach Centers serve the military community broadly; SDVOSB/VOSB certification requires a business at least 51% owned and controlled by veterans (service-disabled veterans for SDVOSB), certified through SBA.",
-      "verifiedSteps": [
-        "Take the SBA Boots to Business course (offered through the DoD Transition Assistance Program).",
-        "Connect with your local Veterans Business Outreach Center (VBOC).",
-        "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at veterans.certify.sba.gov."
-      ],
+      "urlStatus": {
+        "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses": "redirect -> https://www.sba.gov/counseling/grow-your-business/#veteran-owned",
+        "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs": "redirect -> https://www.sba.gov/veterans/#vetcert",
+        "https://veterans.certify.sba.gov/": "200"
+      },
+      "status": "corrections",
       "corrections": [
-        "The action step 'Explore SDVOSB/VOSB certification' should specify the current process: certification transferred from VA (CVE) to SBA effective January 1, 2023 under NDAA 2021, and is handled through SBA's VetCert program (veterans.certify.sba.gov), now part of MySBA Certifications (certifications.sba.gov). Sources: https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs and https://veterans.certify.sba.gov/",
-        "Verified ownership rule: at least 51% of the business must be owned and controlled by one or more veterans (for SDVOSB, by veterans rated service-disabled by VA). Source: https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs",
-        "Verified set-asides: VA sets aside at least 7% of its contracts for certified VOSBs/SDVOSBs; at least 5% of all federal contracting dollars are set aside for certified SDVOSBs."
+        {
+          "field": "official.url",
+          "current": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
+          "proposed": "https://www.sba.gov/counseling/grow-your-business/#veteran-owned",
+          "evidence": "The old URL now 301-redirects (1 hop) to https://www.sba.gov/counseling/grow-your-business/#veteran-owned, which carries the veteran-owned business content (Boots to Business, VBOCs, VetCert, SBA-guaranteed loans, Office of Veterans Business Development 202-205-6773). Apply the same change to sources[0]."
+        },
+        {
+          "field": "sources[0]",
+          "current": "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
+          "proposed": "https://www.sba.gov/counseling/grow-your-business/#veteran-owned",
+          "evidence": "Same redirect as official.url."
+        },
+        {
+          "field": "sources[1]",
+          "current": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs",
+          "proposed": "https://www.sba.gov/veterans/#vetcert",
+          "evidence": "Old URL redirects (1 hop) to https://www.sba.gov/veterans/#vetcert, which states VOSB = no less than 51% owned and controlled by one or more veterans; SDVOSB = no less than 51% owned and controlled by veterans rated service-disabled by VA; SBA VetCert certifies (transferred from VA effective Jan 1, 2023 under FY2021 NDAA); apply through the SBA certifications portal."
+        },
+        {
+          "field": "actionSteps[2]",
+          "current": "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at veterans.certify.sba.gov.",
+          "proposed": "Apply for SDVOSB/VOSB certification through SBA's Veteran Small Business Certification (VetCert) program at certifications.sba.gov (MySBA Certifications).",
+          "evidence": "https://veterans.certify.sba.gov/ (200) is now a search/information portal for certified firms and says to apply or report a change 'visit MySBA Certifications'; https://www.sba.gov/veterans/#vetcert says apply through certifications.sba.gov. certification.sba.gov redirects to https://certifications.sba.gov/ (200). veterans.certify.sba.gov can stay in sources as the certified-firm search."
+        }
       ],
-      "sources": [
-        "https://www.sba.gov/business-guide/grow-your-business/veteran-owned-businesses",
-        "https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs",
-        "https://veterans.certify.sba.gov/"
-      ]
+      "notes": "Summary/whoFor/sampleEligibility accurate: SBA page lists Boots to Business (on installations worldwide, plus B2B Reboot for veterans of all eras and Revenue Readiness), VBOCs nationwide for service members, veterans, Guard/Reserve, and military spouses; 51% owned-and-controlled rule confirmed. Self-certification grace period for subcontracting/goaling ended Dec 22, 2024 (2024 NDAA); VA set-asides/sole-source require VetCert. 'Boots to Business (offered through the DoD Transition Assistance Program)' - SBA page describes it as offered on military installations worldwide; TAP linkage not restated on fetched excerpt but not contradicted. Documents (business plan, DD-214, EIN/licenses) not contradicted; VetCert-specific document list not fetched."
     },
     {
       "id": "mental-health-crisis",
       "officialUrl": "https://www.veteranscrisisline.net/",
-      "urlChanged": false,
-      "verifiedEligibility": "The Veterans Crisis Line is free, confidential, and available 24/7 to veterans, service members, and their families - no VA enrollment required; dial 988 then press 1, text 838255, or chat online.",
-      "verifiedSteps": [
-        "Save the Veterans Crisis Line: dial 988, then press 1 - or text 838255, or chat online at veteranscrisisline.net.",
-        "Ask your VA facility about same-day mental health support.",
-        "Connect with a peer support group or Vet Center."
-      ],
+      "urlStatus": {
+        "https://www.veteranscrisisline.net/": "200",
+        "https://www.veteranscrisisline.net/about/what-is-988/": "200",
+        "https://www.mentalhealth.va.gov/gethelp.asp": "redirect -> https://www.mentalhealth.va.gov/get-help/index.asp (soft redirect: old URL returns 200 with a 'This page has moved' notice)"
+      },
+      "status": "corrections",
       "corrections": [
-        "No errors found. Verified: dial 988 then press 1, text 838255, and 24/7 availability with no requirement to be enrolled in VA benefits or health care; responders are trained in crisis intervention and military culture. Sources: https://www.veteranscrisisline.net/ and https://www.veteranscrisisline.net/about/what-is-988/",
-        "Note: veteranscrisisline.net is a .net domain but is the official VA-operated Veterans Crisis Line site, confirmed by VA at https://news.va.gov/105714/new-veterans-crisis-line-number-dial-988-then-press-1/ and https://www.mentalhealth.va.gov/gethelp.asp"
+        {
+          "field": "sources[2]",
+          "current": "https://www.mentalhealth.va.gov/gethelp.asp",
+          "proposed": "https://www.mentalhealth.va.gov/get-help/index.asp",
+          "evidence": "https://www.mentalhealth.va.gov/gethelp.asp now shows only 'This page has moved. Please bookmark the new page: https://www.mentalhealth.va.gov/get-help/index.asp'. The new page is live (last updated May 5, 2026) and lists Veterans Crisis Line (988 then 1, text, chat) plus specialized call centers (homeless veterans, women veterans, Vet Center Call Center)."
+        }
       ],
-      "sources": [
-        "https://www.veteranscrisisline.net/",
-        "https://www.veteranscrisisline.net/about/what-is-988/",
-        "https://www.mentalhealth.va.gov/gethelp.asp"
-      ]
+      "notes": "Crisis-line facts all confirmed verbatim on veteranscrisisline.net: Dial 988 then Press 1, Text 838255, Chat online; free, confidential, 24/7; serves Veterans, service members, National Guard and Reserve members, and those who support them (families, friends); 'You don't have to be enrolled in VA benefits or health care to call.' what-is-988 page: Press 1 routes to the same trained VCL responders; chat at VeteransCrisisLine.net/Chat. Same-day mental health at VA facilities: not stated on the new get-help page; supported only by news.va.gov snippets via WebSearch (all VA medical centers provide same-day mental health services) - older press items, so treat actionSteps[1] as supported-but-not-re-verified on a current program page. Vet Center/peer support (actionSteps[2]): get-help page lists the Vet Center Call Center; peer-support specifics not verified this quarter. Documents list empty - appropriate. The news.va.gov snippets cite the old 1-800-273-8255 number; VCL site uses 988 then 1 - existing text correctly uses 988."
     },
     {
       "id": "retirement-survivor",
       "officialUrl": "https://www.va.gov/pension/",
-      "urlChanged": false,
-      "verifiedEligibility": "Military retired pay (DFAS), VA Veterans Pension, and the Survivor Benefit Plan are separate programs with distinct rules - VA pension is needs-based for wartime veterans who meet age or disability plus income and net-worth limits.",
-      "verifiedSteps": [
-        "Review retirement pay and Survivor Benefit Plan (SBP) elections with DFAS.",
-        "Check VA Veterans Pension and Aid & Attendance / Housebound eligibility at VA.gov.",
-        "Update beneficiaries and estate documents."
-      ],
+      "urlStatus": {
+        "https://www.va.gov/pension/": "200",
+        "https://www.va.gov/pension/eligibility/": "200",
+        "https://www.va.gov/pension/aid-attendance-housebound/": "200",
+        "https://www.dfas.mil/retiredmilitary/": "blocked (403 to WebFetch and curl; blocked automated access - verified via dfas.mil WebSearch snippets)"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "VA pension hub: available to some wartime Veterans and their survivors; Aid and Attendance and Housebound are extra pension benefits; Survivors Pension for surviving spouse/child of a deceased wartime Veteran; hotline 800-827-1000. Eligibility page (last updated Sept 3, 2026): no dishonorable discharge; at least 1 day of wartime service with date-dependent active-duty minimums; and at least one of age 65+, permanent and total disability, nursing home care due to disability, or receiving SSDI/SSI; yearly family income and net worth within limits set by Congress (dollar figures on /pension/veterans-pension-rates - not fetched, and VetPath copy does not cite a dollar figure). Existing 'needs-based for wartime veterans who meet age or disability plus income and net-worth limits' is accurate. A&A/Housebound: must already receive VA pension; cannot receive both at once; apply online, by mail (VA Form 21-2680 to Pension Intake Center, Janesville WI), or in person; VA Form 21-0779 if in a nursing home. DFAS: dfas.mil/retiredmilitary/ is bot-blocked (403); dfas.mil WebSearch snippets confirm Retired & Annuitant Pay pays retirees and surviving spouses, SBP pays up to 55% of retired pay and requires an election with premiums, Arrears of Pay beneficiary designation is separate from SBP election, and the SBP-DIC offset was fully eliminated as of the Feb 1, 2023 payday. actionSteps[2] 'Update beneficiaries' is supported by the DFAS AOP guidance. Documents (retirement orders, SBP forms, beneficiary designations) not contradicted."
+    },
+    {
+      "id": "family-dependent",
+      "officialUrl": "https://www.va.gov/family-and-caregiver-benefits/",
+      "urlStatus": {
+        "https://www.va.gov/family-and-caregiver-benefits/": "200",
+        "https://www.va.gov/family-and-caregiver-benefits/education-and-careers/dependents-education-assistance/": "200",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/champva/": "200",
+        "https://www.va.gov/family-and-caregiver-benefits/health-and-disability/comprehensive-assistance-for-family-caregivers/": "200",
+        "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/": "200",
+        "https://www.caregiver.va.gov/support/support_benefits.asp": "200"
+      },
+      "status": "unchanged",
+      "corrections": [],
+      "notes": "Hub lists DEA (Chapter 35), Fry Scholarship, GI Bill transfer, CHAMPVA, caregiver support (Caregiver Support Line 855-260-3274), DIC, Survivors Pension, A&A/Housebound, burial, home loans for surviving spouses, FSGLI. DEA: eligible if veteran/service member is P&T disabled from SC disability, died from SC disability, died in line of duty, MIA/captured or forcibly detained >90 days, or hospitalized for SC P&T disability likely leading to discharge; up to 36 months if starting on/after Aug 1, 2018 (45 months before) - existing step accurate. Optional addition: children and spouses who became eligible on/after Aug 1, 2023 have no time limit to use DEA. CHAMPVA: spouse/child of veteran rated P&T disabled from SC disability, or surviving spouse/child of veteran who died from SC disability or was rated P&T at death; must not be eligible for TRICARE; line-of-duty-death exception - existing text accurate (survivor paths not spelled out in sampleEligibility, but 'survivors' are in the whoFor/summary scope; optional enhancement only). PCAFC (page updated Feb 11, 2026): rating 70% or higher (individual or combined), needs at least 6 continuous months of in-person personal care, joint VA Form 10-10CG (online, mail to Janesville WI, or in person) - accurate. caregiver.va.gov support_benefits page is live (updated Sept 14, 2026), names PGCSS as a separate program and describes PCAFC services (stipend, CHAMPVA, counseling, travel, 30+ days respite). GI Bill transfer facts re-confirmed under gi-bill. Documents (marriage/birth certificates, dependent SSNs, DD-214) not contradicted."
+    },
+    {
+      "id": "state-benefits",
+      "officialUrl": "https://www.nasdva.us/",
+      "urlStatus": {
+        "https://www.nasdva.us/": "redirect -> https://nasdva.us/",
+        "https://nasdva.us/resources/": "200",
+        "https://nasdva.us/about/": "200",
+        "https://discover.va.gov/external-resources/?_resource_type=state-veterans-affairs-office": "200",
+        "https://news.va.gov/press-room/the-national-association-of-state-directors-of-veterans-affairs-nasdva/": "200"
+      },
+      "status": "corrections",
       "corrections": [
-        "No errors found. Verified: VA pension, military retirement, and SBP are distinct programs - VA pension is needs-based (income counted against the Maximum Annual Pension Rate, with a net worth limit of $163,699 for Dec 1, 2025 - Nov 30, 2026). Sources: https://www.va.gov/pension/eligibility/ and https://www.va.gov/family-and-caregiver-benefits/survivor-compensation/survivors-pension/rates/",
-        "Verified: Aid and Attendance / Housebound benefits are add-ons to VA pension for veterans and survivors who need help with daily activities, are housebound, or are in a nursing home. Source: https://www.va.gov/pension/aid-attendance-housebound/",
-        "Note: military retired pay and SBP administration is handled by DFAS (dfas.mil), not VA - the existing 'verify with DFAS, VA' guidance is correct."
+        {
+          "field": "official.url",
+          "current": "https://www.nasdva.us/",
+          "proposed": "https://nasdva.us/",
+          "evidence": "https://www.nasdva.us/ issues a single host redirect to https://nasdva.us/ (200). Cosmetic - the old URL still works; also applies to sources[0]."
+        },
+        {
+          "field": "sources[0]",
+          "current": "https://www.nasdva.us/",
+          "proposed": "https://nasdva.us/",
+          "evidence": "Same www-to-apex redirect as official.url."
+        }
       ],
-      "sources": [
-        "https://www.va.gov/pension/",
-        "https://www.va.gov/pension/eligibility/",
-        "https://www.va.gov/pension/aid-attendance-housebound/",
-        "https://www.dfas.mil/retiredmilitary/"
-      ]
+      "notes": "nasdva.us/resources/ is live and links to each state's and territory's veterans agency (all 50 states, DC, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands) with current director names, plus federal resources - supports actionSteps[0]. nasdva.us/about/: founded 1946; members are directors of veterans agencies in all 50 states, DC, and 5 territories. discover.va.gov listing is an official VA (VA Central Office) page with 55 state/territorial veterans affairs office entries - supports 'every state and territory runs its own veterans agency'. The news.va.gov NASDVA page returns 200 but WebFetch could not extract article body (truncated) - content unverified this quarter; harmless as a supporting source. Note: nasdva.us is an association site (.us), not .gov; the .gov corroboration is discover.va.gov. 'County-level officers exist in many, but not all, states' was not re-verified against an official source this quarter (unverified, not flagged as wrong). sampleEligibility and actionSteps[2] are general guidance with no state-specific claims to check. Documents (DD-214, proof of residency, VA award letters) not contradicted."
     }
-  ],
-  "globalCorrections": []
+  ]
 }

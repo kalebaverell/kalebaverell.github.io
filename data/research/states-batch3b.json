@@ -1,129 +1,273 @@
 {
-  "batch": "3b",
-  "lastVerified": "2026-07-08",
-  "states": [
+ "batch": "3b",
+ "lastVerified": "2026-10-01",
+ "changes": [
+  {
+   "code": "MO",
+   "program": "(all)",
+   "change": "kept",
+   "detail": "5 programs re-verified unchanged via official search results: dor.mo.gov proptax.pdf + MO-PTC (100% service-connected disabled veterans eligible); Returning Heroes Act RSMo 173.900 (dhewd.mo.gov, veteranbenefits.mo.gov); state employment preference (veteranbenefits.mo.gov/employment); seven veterans homes (Cameron, Cape Girardeau, Mexico, Mount Vernon, St. James, St. Louis, Warrensburg); 100% military retirement deduction (dor.mo.gov Military Reference Guide)."
+  },
+  {
+   "code": "MT",
+   "program": "Hunting and Fishing License Benefits for Veterans",
+   "change": "corrected",
+   "detail": "The official MVAD State Benefits page (veterans.mt.gov/Veteran-Services/State-Benefits, fetched 2026-10-01) now describes reduced-price deer and antelope licenses for combat-injured veterans and conservation licenses for Purple Heart recipients; it no longer mentions Legion of Valor licenses or a general disabled-veteran discount, so the blurb was narrowed to match the source."
+  },
+  {
+   "code": "MT",
+   "program": "(all others)",
+   "change": "kept",
+   "detail": "4 programs re-verified unchanged: MDV property tax assistance (revenue.mt.gov/property/property-tax-help/mdv; 100% service-connected, primary residence, unmarried surviving spouse); MUS tuition waivers + MVAD Purple Heart scholarship; Veterans' Employment Preference for state jobs; veterans homes in Butte, Columbia Falls, Glendive (all on veterans.mt.gov State Benefits page)."
+  },
+  {
+   "code": "NE",
+   "program": "Nebraska Veterans' Homes",
+   "change": "url-updated",
+   "detail": "The prior source veterans.nebraska.gov/benefits/housing now appears to resolve to a generic housing page that names the four homes only in its footer; switched the source to the official NDVA Guide to Veterans' Benefits PDF, whose text (per official search result) states the homes are in Bellevue, Norfolk, Kearney, and Scottsbluff and gives eligibility. Blurb unchanged."
+  },
+  {
+   "code": "NE",
+   "program": "(all others)",
+   "change": "kept",
+   "detail": "4 programs re-verified unchanged: Homestead Exemption for disabled veterans (veterans.nebraska.gov/homestead-exemption; revenue.nebraska.gov 2026 Homestead Exemption Information Guide); Waiver of Tuition for dependents (one degree/diploma/certificate per level); 5% / additional 5% disabled veterans' preference on passing scores (NDVA Guide); 100% military retirement exclusion for tax years beginning on or after Jan 1, 2022 (revenue.nebraska.gov FAQ)."
+  },
+  {
+   "code": "NV",
+   "program": "Veterans' Preference in State Employment",
+   "change": "corrected",
+   "detail": "Prior blurb said disabled veterans get a larger preference. Under NRS 284.260 as amended by AB 309 (2017) (Nevada HR memo HR05-18, hr.nv.gov), 10 preference points are added to the passing grade of all eligible veterans, with points also for certain surviving spouses and Nevada National Guard members; there is no separate larger disabled-veteran tier. Blurb rewritten without point values and source changed to the statute (leg.state.nv.us NRS chapter 284)."
+  },
+  {
+   "code": "NV",
+   "program": "(all others)",
+   "change": "kept",
+   "detail": "4 programs re-verified unchanged: Veterans Tax Exemption NRS 361.090/361.091 via county assessor (veterans.nv.gov/veteran-tax-exemptions/; tax.nv.gov FAQ); NSHE fee waiver for active Nevada Guard members (veterans.nv.gov/education-2, nshe.nevada.edu); state veterans homes in Boulder City and Sparks (veterans.nv.gov); NDOW Resident Disabled Veteran Specialty Combination license for 50%+ service-connected (ndow.org application, March 2025 revision)."
+  },
+  {
+   "code": "NH",
+   "program": "Veterans' Preference in Employment",
+   "change": "corrected",
+   "detail": "Prior blurb was vague and based only on snippets of a blocked page. Rewritten from the statute: under RSA 283:4 the state must give hiring preference to a veteran (as defined in RSA 21:50) who is one of multiple otherwise equally qualified candidates, and RSA 283:5 extends preference to certain unremarried surviving spouses. Source changed to the official RSA text at gc.nh.gov."
+  },
+  {
+   "code": "NH",
+   "program": "New Hampshire Veterans Home (Tilton)",
+   "change": "url-updated",
+   "detail": "Old legacy URL nh.gov/nhveterans/benefits/v_home.htm replaced with the Home's current official site FAQ (veteranshome.nh.gov/about-nhvh/faqs), which per official search results confirms the 250-bed Tilton facility (100 memory-care beds) and eligibility (honorable discharge; one year NH residency or NH home of record). Blurb adjusted to drop 'wartime', since current admission criteria reference honorable discharge from active, Reserve, or Guard service rather than wartime service."
+  },
+  {
+   "code": "NH",
+   "program": "(all others)",
+   "change": "kept",
+   "detail": "3 programs re-verified unchanged: veterans' tax credits (RSA 72:28 standard/optional) and specially adapted homestead exemption, confirmed via NH DVS state benefits search results (revenue.nh.gov page returned HTTP 403 to automated access; URL from official search/prior verification); USNH tuition waiver for children of totally and permanently disabled NH veterans (usnh.edu policy); NH Fish and Game perpetual license for totally and permanently disabled veterans, one-time administrative fee (RSA 214:13; wildlife.nh.gov)."
+  }
+ ],
+ "states": [
+  {
+   "code": "MO",
+   "name": "Missouri",
+   "agency": {
+    "name": "Missouri Veterans Commission",
+    "url": "https://mvc.dps.mo.gov/"
+   },
+   "programs": [
     {
-      "code": "MO",
-      "name": "Missouri",
-      "agency": {
-        "name": "Missouri Veterans Commission",
-        "url": "https://mvc.dps.mo.gov/"
-      },
-      "programs": [
-        {
-          "name": "Missouri Property Tax Credit (100% Service-Connected Disabled Veterans)",
-          "category": "tax",
-          "blurb": "Veterans who are 100% disabled as a result of military service may claim Missouri's Property Tax Credit for real estate taxes or rent paid on their home.",
-          "source": "https://dor.mo.gov/pdf/proptax.pdf"
-        },
-        {
-          "name": "Missouri Returning Heroes Education Act",
-          "category": "education",
-          "blurb": "Limits tuition charged by Missouri public institutions of higher education for eligible combat veterans.",
-          "source": "https://veteranbenefits.mo.gov/state-benefits/"
-        },
-        {
-          "name": "Veterans Preference in Missouri State Employment",
-          "category": "employment",
-          "blurb": "Veterans, certain family members, and survivors receive preference in the state hiring selection process when similarly qualified to other applicants.",
-          "source": "https://veteranbenefits.mo.gov/employment/"
-        },
-        {
-          "name": "Missouri State Veterans Homes",
-          "category": "health",
-          "blurb": "The Missouri Veterans Commission operates seven long-term skilled-care nursing homes for veterans in Cameron, Cape Girardeau, Mexico, Mount Vernon, St. James, St. Louis, and Warrensburg.",
-          "source": "https://veteranbenefits.mo.gov/state-benefits/"
-        },
-        {
-          "name": "Military Retirement Pay Income Tax Deduction",
-          "category": "tax",
-          "blurb": "Military retirement benefits are fully deductible from Missouri state income tax.",
-          "source": "https://dor.mo.gov/forms/Military%20Reference%20Guide.pdf"
-        }
-      ],
-      "notes": "Missouri's official benefits portal is veteranbenefits.mo.gov. The Missouri Department of Conservation also offers hunting/fishing permit exemptions for certain veterans, and MVC operates state veterans cemeteries."
+     "name": "Missouri Property Tax Credit (100% Service-Connected Disabled Veterans)",
+     "category": "tax",
+     "blurb": "Veterans who are 100% disabled as a result of military service may claim Missouri's Property Tax Credit for real estate taxes or rent paid on their home.",
+     "source": "https://dor.mo.gov/pdf/proptax.pdf"
     },
     {
-      "code": "MT",
-      "name": "Montana",
-      "agency": {
-        "name": "Montana Veterans Affairs Division (Department of Military Affairs)",
-        "url": "https://veterans.mt.gov/"
-      },
-      "programs": [
-        {
-          "name": "Montana Disabled Veterans (MDV) Assistance Program",
-          "category": "tax",
-          "blurb": "Reduces the property tax rate on the primary residence of veterans rated 100% disabled from service-connected causes, and of their unmarried surviving spouses.",
-          "source": "https://revenue.mt.gov/property/property-tax-help/mdv"
-        },
-        {
-          "name": "Montana University System Tuition Waivers for Veterans",
-          "category": "education",
-          "blurb": "The Montana University System offers multiple tuition waivers for eligible veterans, and MVAD provides a scholarship for recipients of the Purple Heart or a higher decoration.",
-          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
-        },
-        {
-          "name": "Veterans' Employment Preference",
-          "category": "employment",
-          "blurb": "Veterans, disabled veterans, and certain eligible relatives receive hiring preference for Montana state government positions under the state's Veterans' Employment Preference statute.",
-          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
-        },
-        {
-          "name": "Montana Veterans Homes",
-          "category": "health",
-          "blurb": "Montana operates skilled-nursing veterans homes in Butte, Columbia Falls, and Glendive.",
-          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
-        },
-        {
-          "name": "Hunting and Fishing License Benefits for Veterans",
-          "category": "recreation",
-          "blurb": "Montana offers discounted hunting and fishing licenses for combat-injured and disabled veterans and special licenses for Purple Heart and Legion of Valor members.",
-          "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
-        }
-      ],
-      "notes": "Montana also runs the Montana Military Family Relief Fund (grants for activated Guard/Reserve families) and three state veterans cemeteries (Fort Harrison, Miles City, Missoula)."
+     "name": "Missouri Returning Heroes Education Act",
+     "category": "education",
+     "blurb": "Limits tuition charged by Missouri public institutions of higher education for eligible combat veterans.",
+     "source": "https://veteranbenefits.mo.gov/state-benefits/"
     },
     {
-      "code": "NE",
-      "name": "Nebraska",
-      "agency": {
-        "name": "Nebraska Department of Veterans' Affairs",
-        "url": "https://veterans.nebraska.gov/"
-      },
-      "programs": [
-        {
-          "name": "Nebraska Homestead Exemption for Disabled Veterans",
-          "category": "tax",
-          "blurb": "Provides property tax relief on the homestead of qualifying veterans totally disabled by service-connected causes and certain surviving spouses.",
-          "source": "https://veterans.nebraska.gov/homestead-exemption"
-        },
-        {
-          "name": "Waiver of Tuition Program",
-          "category": "education",
-          "blurb": "Waives tuition at Nebraska public community colleges, state colleges, and the University of Nebraska for eligible dependents of qualifying veterans, covering one degree, diploma, or certificate per level.",
-          "source": "https://veterans.nebraska.gov/waiver-tuition-program"
-        },
-        {
-          "name": "Veterans' Preference in Public Employment",
-          "category": "employment",
-          "blurb": "Honorably discharged veterans receive additional points on passing scores in examinations for state, county, and municipal jobs, with extra preference for disabled veterans.",
-          "source": "https://veterans.nebraska.gov/sites/default/files/NDVA%20Guide%20to%20Veterans%20Benefits.pdf"
-        },
-        {
-          "name": "Nebraska Veterans' Homes",
-          "category": "health",
-          "blurb": "NDVA operates four state veterans' homes, located in Bellevue, Kearney, Norfolk, and Scottsbluff.",
-          "source": "https://veterans.nebraska.gov/benefits/housing"
-        },
-        {
-          "name": "Military Retirement Benefits Exclusion",
-          "category": "tax",
-          "blurb": "For tax years beginning on or after January 1, 2022, military retirees may exclude 100% of military retirement benefits from Nebraska taxable income.",
-          "source": "https://revenue.nebraska.gov/about/frequently-asked-questions/military-retirement-benefits-exclusion"
-        }
-      ],
-      "notes": "Nebraska Game & Parks also offers a no-fee lifetime small-game/fish permit for qualifying disabled veterans and a reduced-fee annual permit for veterans 64+ (outdoornebraska.gov/permits/veterans-and-military-permits/). Starting January 1, 2026, disabled and/or blind veterans can receive a motor vehicle tax and fee exemption for one personal vehicle."
+     "name": "Veterans Preference in Missouri State Employment",
+     "category": "employment",
+     "blurb": "Veterans, certain family members, and survivors receive preference in the state hiring selection process when similarly qualified to other applicants.",
+     "source": "https://veteranbenefits.mo.gov/employment/"
+    },
+    {
+     "name": "Missouri State Veterans Homes",
+     "category": "health",
+     "blurb": "The Missouri Veterans Commission operates seven long-term skilled-care nursing homes for veterans in Cameron, Cape Girardeau, Mexico, Mount Vernon, St. James, St. Louis, and Warrensburg.",
+     "source": "https://veteranbenefits.mo.gov/state-benefits/"
+    },
+    {
+     "name": "Military Retirement Pay Income Tax Deduction",
+     "category": "tax",
+     "blurb": "Military retirement benefits are fully deductible from Missouri state income tax.",
+     "source": "https://dor.mo.gov/forms/Military%20Reference%20Guide.pdf"
     }
-  ]
+   ],
+   "notes": "Missouri's official benefits portal is veteranbenefits.mo.gov. The Missouri Department of Conservation also offers hunting/fishing permit exemptions for certain veterans, and MVC operates state veterans cemeteries. Returning Heroes Act details: RSMo 173.900, administered with the Missouri Department of Higher Education and Workforce Development (https://dhewd.mo.gov/ppc/grants-scholarships/returning-heroes-act)."
+  },
+  {
+   "code": "MT",
+   "name": "Montana",
+   "agency": {
+    "name": "Montana Veterans Affairs Division (Department of Military Affairs)",
+    "url": "https://veterans.mt.gov/"
+   },
+   "programs": [
+    {
+     "name": "Montana Disabled Veterans (MDV) Assistance Program",
+     "category": "tax",
+     "blurb": "Reduces the property tax rate on the primary residence of veterans rated 100% disabled from service-connected causes, and of their unmarried surviving spouses.",
+     "source": "https://revenue.mt.gov/property/property-tax-help/mdv"
+    },
+    {
+     "name": "Montana University System Tuition Waivers for Veterans",
+     "category": "education",
+     "blurb": "The Montana University System offers multiple tuition waivers for eligible veterans, and MVAD provides a scholarship for recipients of the Purple Heart or a higher decoration.",
+     "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+    },
+    {
+     "name": "Veterans' Employment Preference",
+     "category": "employment",
+     "blurb": "Veterans, disabled veterans, and certain eligible relatives receive hiring preference for Montana state government positions under the state's Veterans' Employment Preference statute.",
+     "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+    },
+    {
+     "name": "Montana Veterans Homes",
+     "category": "health",
+     "blurb": "Montana operates skilled-nursing veterans homes in Butte, Columbia Falls, and Glendive.",
+     "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+    },
+    {
+     "name": "Hunting and Fishing License Benefits for Veterans",
+     "category": "recreation",
+     "blurb": "Combat-injured veterans qualify for reduced-price deer and antelope licenses, and Purple Heart recipients can receive conservation licenses.",
+     "source": "https://veterans.mt.gov/Veteran-Services/State-Benefits"
+    }
+   ],
+   "notes": "Montana also runs the Montana Military Family Relief Fund (grants for activated Guard/Reserve families) and three state veterans cemeteries (Fort Harrison, Miles City, Missoula). Tax note: Montana's Working Military Retirement Exemption lets eligible retirees exempt up to 50% of military retirement pay (limited to qualifying Montana earned income), and survivor-benefit recipients can exempt 50% of benefits (https://revenue.mt.gov/taxes/individual-income-tax/working-military-retirement-exemption)."
+  },
+  {
+   "code": "NE",
+   "name": "Nebraska",
+   "agency": {
+    "name": "Nebraska Department of Veterans' Affairs",
+    "url": "https://veterans.nebraska.gov/"
+   },
+   "programs": [
+    {
+     "name": "Nebraska Homestead Exemption for Disabled Veterans",
+     "category": "tax",
+     "blurb": "Provides property tax relief on the homestead of qualifying veterans totally disabled by service-connected causes and certain surviving spouses.",
+     "source": "https://veterans.nebraska.gov/homestead-exemption"
+    },
+    {
+     "name": "Waiver of Tuition Program",
+     "category": "education",
+     "blurb": "Waives tuition at Nebraska public community colleges, state colleges, and the University of Nebraska for eligible dependents of qualifying veterans, covering one degree, diploma, or certificate per level.",
+     "source": "https://veterans.nebraska.gov/waiver-tuition-program"
+    },
+    {
+     "name": "Veterans' Preference in Public Employment",
+     "category": "employment",
+     "blurb": "Honorably discharged veterans receive additional points on passing scores in examinations for state, county, and municipal jobs, with extra preference for disabled veterans.",
+     "source": "https://veterans.nebraska.gov/sites/default/files/NDVA%20Guide%20to%20Veterans%20Benefits.pdf"
+    },
+    {
+     "name": "Nebraska Veterans' Homes",
+     "category": "health",
+     "blurb": "NDVA operates four state veterans' homes, located in Bellevue, Kearney, Norfolk, and Scottsbluff.",
+     "source": "https://veterans.nebraska.gov/sites/default/files/NDVA%20Guide%20to%20Veterans%20Benefits.pdf"
+    },
+    {
+     "name": "Military Retirement Benefits Exclusion",
+     "category": "tax",
+     "blurb": "For tax years beginning on or after January 1, 2022, military retirees may exclude 100% of military retirement benefits from Nebraska taxable income.",
+     "source": "https://revenue.nebraska.gov/about/frequently-asked-questions/military-retirement-benefits-exclusion"
+    }
+   ],
+   "notes": "Nebraska Game & Parks also offers a no-fee lifetime small-game/fish permit for qualifying disabled veterans and a reduced-fee annual permit for veterans 64+ (outdoornebraska.gov/permits/veterans-and-military-permits/). Starting January 1, 2026, disabled and/or blind veterans can receive a motor vehicle tax and fee exemption for one personal vehicle (not re-verified this cycle). The Nebraska Department of Revenue publishes a current Homestead Exemption Information Guide (https://revenue.nebraska.gov/sites/default/files/doc/pad/homestead/Homestead%20Exemption%20Information%20Guide.pdf)."
+  },
+  {
+   "code": "NV",
+   "name": "Nevada",
+   "agency": {
+    "name": "Nevada Department of Veterans Services",
+    "url": "https://veterans.nv.gov/"
+   },
+   "programs": [
+    {
+     "name": "Nevada Veterans Tax Exemption",
+     "category": "tax",
+     "blurb": "Eligible wartime veterans and surviving spouses receive an annual exemption (NRS 361.090 and 361.091) that can be applied to reduce property taxes or the vehicle registration Governmental Services Tax, enrolled through the county assessor.",
+     "source": "https://veterans.nv.gov/veteran-tax-exemptions/"
+    },
+    {
+     "name": "Education Benefits and NSHE Fee Waivers",
+     "category": "education",
+     "blurb": "Nevada offers education support for veterans and military families, including registration-fee waivers for active Nevada National Guard members at Nevada System of Higher Education institutions.",
+     "source": "https://veterans.nv.gov/education-2/"
+    },
+    {
+     "name": "Veterans' Preference in State Employment",
+     "category": "employment",
+     "blurb": "Eligible veterans receive preference points added to passing scores on Nevada state civil service examinations under NRS 284.260, with preference also extended to certain surviving spouses and Nevada National Guard members.",
+     "source": "https://www.leg.state.nv.us/NRS/NRS-284.html"
+    },
+    {
+     "name": "Nevada State Veterans Homes",
+     "category": "health",
+     "blurb": "The state operates veterans homes in Boulder City and Sparks providing skilled nursing, memory care, and rehabilitative services to eligible veterans and family members.",
+     "source": "https://veterans.nv.gov/wp-content/uploads/2023/04/State_Benefits_Veterans_Brochure_2023_14x8p5.pdf"
+    },
+    {
+     "name": "Resident Disabled Veteran Combination Hunting and Fishing License",
+     "category": "recreation",
+     "blurb": "Honorably discharged Nevada resident veterans with a service-connected disability rated 50 percent or more qualify for a reduced-fee specialty combination hunting and fishing license through the Nevada Department of Wildlife.",
+     "source": "https://veterans.nv.gov/wp-content/uploads/2023/04/State_Benefits_Veterans_Brochure_2023_14x8p5.pdf"
+    }
+   ],
+   "notes": "Nevada has no state personal income tax, so military retirement pay is untaxed at the state level. Disabled veterans with a 60%+ service-connected rating qualify for a separate disabled veteran tax exemption (veterans.nv.gov). Disabled veterans may also qualify for a Nevada State Parks Disabled Veteran Permit with free entry and fee exemptions (not re-verified this cycle). NDOW's current disabled-veteran license application: https://www.ndow.org/wp-content/uploads/2025/03/Veteran-Disability-License-Application-ADA-revised-March-2025.pdf. Home-specific pages: veterans.nv.gov/resources/nevada-state-veterans-home/ (Boulder City) and veterans.nv.gov/health-wellness/state-veterans-homes/northern-nevada-state-veterans-home/ (Sparks). Verified via official search results; no page fetches."
+  },
+  {
+   "code": "NH",
+   "name": "New Hampshire",
+   "agency": {
+    "name": "New Hampshire Department of Military Affairs and Veterans Services (Division of Veterans Services)",
+    "url": "https://www.nhveterans.nh.gov/veterans-services"
+   },
+   "programs": [
+    {
+     "name": "Veterans' Tax Credit and Disabled Veteran Property Tax Exemption",
+     "category": "tax",
+     "blurb": "Municipalities offer town-adopted veterans' property tax credits, and permanently and totally disabled veterans who are blind, paraplegic, or double amputees owning a VA-assisted specially adapted homestead are exempt from all taxation on that homestead.",
+     "source": "https://www.revenue.nh.gov/taxes-glance/tax-credit-programs/exemptions-and-veterans-tax-credits"
+    },
+    {
+     "name": "Tuition Waiver for Children of 100% Disabled New Hampshire Veterans",
+     "category": "education",
+     "blurb": "Children of veterans who are totally and permanently disabled from a service-connected disability may receive free tuition at institutions in the University System of New Hampshire, subject to NH domicile requirements.",
+     "source": "https://www.nhveterans.nh.gov/sites/g/files/ehbemt401/files/inline-documents/sonh/tuition-waiver-child-of-disabled-vet.pdf"
+    },
+    {
+     "name": "Veterans' Preference in Employment",
+     "category": "employment",
+     "blurb": "When the State of New Hampshire is hiring, a veteran who is one of multiple otherwise equally qualified candidates must be given preference, and the preference extends to certain unremarried surviving spouses.",
+     "source": "https://gc.nh.gov/rsa/html/XXIII/283/283-4.htm"
+    },
+    {
+     "name": "New Hampshire Veterans Home (Tilton)",
+     "category": "health",
+     "blurb": "The state-run New Hampshire Veterans Home in Tilton is a 250-bed long-term care facility for honorably discharged veterans meeting New Hampshire residency requirements.",
+     "source": "https://www.veteranshome.nh.gov/about-nhvh/faqs"
+    },
+    {
+     "name": "Disabled Veterans Perpetual Hunting and Fishing License",
+     "category": "recreation",
+     "blurb": "New Hampshire resident veterans who are totally and permanently disabled from a service-connected disability can receive a perpetual special veteran's hunting and fishing license from NH Fish and Game for a one-time administrative fee.",
+     "source": "https://www.wildlife.nh.gov/sites/g/files/ehbemt746/files/documents/disabled-veterans-license.pdf"
+    }
+   ],
+   "notes": "The NH State Benefits for Veterans page (nhveterans.nh.gov/veterans-services/nh-state-benefits-veterans) and the revenue.nh.gov veterans tax credit page block automated access (HTTP 403); URLs come from official search results. The tuition waiver is also published as USNH policy (https://www.usnh.edu/policy/usy/i-tuition-waiver-for-children-of-disabled-new-hampshire-veterans-program). Veterans who are at least 80% but under 100% service-connected disabled may buy a lifetime license at half price (RSA 214:13). NH DVS publishes a current pamphlet (updated Feb 2026). New Hampshire has no broad personal income tax, so military retirement pay is not taxed. Property tax credits vary by town/city."
+  }
+ ]
 }

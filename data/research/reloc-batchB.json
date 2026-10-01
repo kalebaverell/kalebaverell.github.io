@@ -1,66 +1,73 @@
 {
   "batch": "B",
-  "gathered": "2026-07-09",
-  "_sources": {
-    "rpp": "BEA Regional Price Parities by MSA (MARPP dataset, all items, index US=100), 2024 vintage. Downloaded from official BEA file: https://apps.bea.gov/regional/zip/MARPP.zip (landing page: https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area)",
-    "fmr2br": "HUD FY2026 Fair Market Rents, 2-bedroom, from official HUD USER file: https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx (landing page: https://www.huduser.gov/portal/datasets/fmr.html)",
-    "unemployment": "BLS LAUS metro data. bls.gov blocks automated fetch (HTTP 403), so rates are taken from search snippets of BLS pages or official state/local workforce releases citing BLS; noted per metro.",
-    "vamc": "va.gov facility pages via web search."
-  },
+  "gathered": "2026-10-01",
+  "sources_method": "RPP: BEA MARPP_MSA_2008_2024.csv re-downloaded 2026-10-01 from https://apps.bea.gov/regional/zip/MARPP.zip (file last updated Feb 19 2026); no newer release - 2025 MSA RPPs not yet published, so 2024 all-items values (US=100) are kept and were re-verified against the file. FMR: HUD FY2027 FMRs could not be checked - huduser.gov returned HTTP 202 with an empty body (bot challenge) on 2026-10-01; per zero-retry rule, FY2026 2BR values are carried forward with their original vintage and are NOT re-verified (FY2026 values may be superseded by FY2027, effective Oct 1 2026). Unemployment: BLS LAUS metro rate, not seasonally adjusted, via BLS public API v2 (https://api.bls.gov/publicAPI/v2/timeseries/data/) on 2026-10-01; latest month August 2026 (preliminary). VAMC: every va.gov facility URL re-checked 2026-10-01 (HTTP 200, no redirect); names kept.",
   "metros": [
     {
       "id": "washington-dc",
       "rpp": {
         "value": 108.884,
-        "year": 2024,
+        "year": "2024",
         "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV (MSA)",
-        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
       },
       "fmr2br": {
         "value": 2246,
         "year": "FY2026",
         "areaName": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
-        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
       },
       "unemployment": {
-        "value": 3.9,
-        "period": "May 2026",
+        "value": 3.8,
+        "asOf": "August 2026",
+        "period": "August 2026",
         "areaName": "Washington-Arlington-Alexandria, DC-VA-MD-WV MSA",
-        "source": "https://www.bls.gov/regions/mid-atlantic/data/xg-tables/ro3fx9512.htm",
-        "note": "From BLS Mid-Atlantic MSA table snippet (labor force 3,436,200 / unemployed 133,600, not seasonally adjusted). DC-MD Metropolitan Division alone was 5.2% in May 2026 per DC DOES release citing BLS (https://does.dc.gov/release/washington-metro%E2%80%99s-unemployment-rate-52-percent-0). bls.gov resisted direct fetch."
+        "source": "https://data.bls.gov/timeseries/LAUMT114790000000003",
+        "seriesId": "LAUMT114790000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 4.0, June 4.1, May 3.9. Last quarter: 3.9 (May 2026). Series id LAUMT114790000000003 (Washington-Arlington-Alexandria MSA) is new this quarter; it reproduces last quarter's May 2026 value of 3.9."
       },
       "vamc": {
         "name": "Washington VA Medical Center (VA Washington DC health care)",
         "level": "VAMC",
-        "url": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/"
+        "url": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01",
+        "source": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/"
       },
-      "notes": "Full-service VAMC at 50 Irving St NW. Federal workforce contraction in 2025-26 pushed the DC-MD division unemployment rate up (~5.2%); the wider MSA rate remains lower (3.9%)."
+      "notes": "Full-service VAMC at 50 Irving St NW. Federal workforce contraction in 2025-26 pushed the DC-MD division unemployment rate up (~5.2% in May 2026, not re-verified 2026-10-01); the wider MSA rate was 3.8% in Aug 2026 (prelim)."
     },
     {
       "id": "virginia-beach-norfolk-va",
       "rpp": {
         "value": 97.941,
-        "year": 2024,
+        "year": "2024",
         "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC (MSA)",
-        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
       },
       "fmr2br": {
         "value": 1713,
         "year": "FY2026",
         "areaName": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
-        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
       },
       "unemployment": {
-        "value": 3.5,
-        "period": "April 2026",
+        "value": 3.7,
+        "asOf": "August 2026",
+        "period": "August 2026",
         "areaName": "Virginia Beach-Chesapeake-Norfolk, VA-NC MSA",
-        "source": "https://www.bls.gov/eag/eag.va_virginiabeach_msa.htm",
-        "note": "Value via USAFacts snippet of BLS LAUS data (https://usafacts.org/answers/what-is-the-unemployment-rate/metro-area/virginia-beach-va/), April 2026; bls.gov resisted automated fetch. Regional context: rate rose to ~4.1% in Nov 2025 on federal job cuts before easing."
+        "source": "https://data.bls.gov/timeseries/LAUMT514726000000003",
+        "seriesId": "LAUMT514726000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 3.9, June 4.0, May 3.7. Last quarter: 3.5 (April 2026). Series id LAUMT514726000000003 is new this quarter; it reproduces last quarter's April 2026 value of 3.5."
       },
       "vamc": {
         "name": "Hampton VA Medical Center (VA Hampton health care)",
         "level": "VAMC",
-        "url": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/"
+        "url": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01",
+        "source": "https://www.va.gov/hampton-health-care/locations/hampton-va-medical-center/"
       },
       "notes": "Hampton VAMC (100 Emancipation Dr, Hampton) is a 432-bed teaching facility serving eastern VA and northeastern NC - full VAMC access for the metro."
     },
@@ -68,27 +75,33 @@
       "id": "minneapolis-st-paul-mn",
       "rpp": {
         "value": 104.822,
-        "year": 2024,
+        "year": "2024",
         "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI (MSA)",
-        "source": "https://apps.bea.gov/regional/zip/MARPP.zip"
+        "source": "https://apps.bea.gov/regional/zip/MARPP.zip",
+        "note": "Re-verified 2026-10-01 against current BEA MARPP file; no newer release (2025 MSA RPPs not yet published)."
       },
       "fmr2br": {
         "value": 1709,
         "year": "FY2026",
         "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI HUD Metro FMR Area",
-        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+        "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+        "note": "carried forward, not re-verified 2026-10-01 (huduser.gov blocked automated fetch; FY2027 FMRs not checked)."
       },
       "unemployment": {
-        "value": 4.2,
-        "period": "April 2026",
+        "value": 4.7,
+        "asOf": "August 2026",
+        "period": "August 2026",
         "areaName": "Minneapolis-St. Paul-Bloomington, MN-WI MSA",
-        "source": "https://www.bls.gov/eag/eag.mn_minneapolis_msa.htm",
-        "note": "Value via search snippet of BLS LAUS data as republished by FRED series MINN427URN (https://fred.stlouisfed.org/series/MINN427URN); bls.gov and FRED resisted automated fetch."
+        "source": "https://data.bls.gov/timeseries/LAUMT273346000000003",
+        "seriesId": "LAUMT273346000000003",
+        "note": "BLS LAUS via public API v2, retrieved 2026-10-01, not seasonally adjusted; August 2026 is preliminary. Prior months: July 4.5, June 4.4, May 3.9. Last quarter: 4.2 (April 2026). Series id LAUMT273346000000003 is new this quarter. Note: BLS API shows April 2026 = 3.8, not the 4.2 recorded last quarter from a FRED search snippet; the earlier value appears to have been wrong or since revised."
       },
       "vamc": {
         "name": "Minneapolis VA Medical Center (Minneapolis VA Health Care System)",
         "level": "VAMC",
-        "url": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/"
+        "url": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/",
+        "verified": "URL resolved (HTTP 200) 2026-10-01",
+        "source": "https://www.va.gov/minneapolis-health-care/locations/minneapolis-va-medical-center/"
       },
       "notes": "Full VAMC (1 Veterans Dr, Minneapolis) with 24/7 emergency department; VISN 23 flagship affiliated with the University of Minnesota."
     }

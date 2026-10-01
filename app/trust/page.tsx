@@ -45,9 +45,9 @@ export default function TrustPage() {
           <tbody>
             {[
               ["State benefits (all 50 + DC)", "State departments of veterans affairs (.gov)", STATE_BENEFITS.lastVerified || "-", "Quarterly"],
-              ["Federal benefits (11 categories)", "VA.gov · DOL VETS · SBA · Veterans Crisis Line", "Jul 2026", "Quarterly"],
-              ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2024 medians)", "Jul 2026", "Annually (new BLS editions)"],
-              ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", "Jul 2026", "Quarterly"],
+              ["Federal benefits (11 categories)", "VA.gov · DOL VETS · SBA · Veterans Crisis Line", "Oct 2026", "Quarterly"],
+              ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2025 medians)", "Oct 2026", "Annually (new BLS editions)"],
+              ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", "Oct 2026", "Quarterly"],
               ["Assessment design", "U.S. DOL O*NET® Interest Profiler framework (RIASEC)", "Jul 2026", "As frameworks evolve"],
             ].map((row) => (
               <tr key={row[0]}>
