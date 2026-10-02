@@ -24,6 +24,7 @@ const OPEN_PATHS = new Set([
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
   "stats", // private founder board - its own token is the gate, not the funnel
+  "partner", // partner office report - its own token is the gate, not the funnel
 ]);
 
 // Per-page gate identity: same gate mechanic everywhere, but each door describes

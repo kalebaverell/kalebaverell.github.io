@@ -29,6 +29,9 @@ type Stats = {
   last_email_run: string | null;
   feedback_notes: number;
   returned_since: string | null;
+  partner_codes: number;
+  coded_signups: number;
+  active_codes: number;
 };
 
 const day = (iso: string | null) =>
@@ -65,7 +68,13 @@ export default function StatsBoard() {
   useEffect(() => {
     let alive = true;
     (async () => {
-      const token = new URLSearchParams(window.location.search).get("k") || "";
+      // The fragment (#k=) never reaches a server, so it stays out of host logs
+      // and out of the page counter's request. Old ?k= links keep working until
+      // the token is rotated.
+      const token =
+        new URLSearchParams(window.location.hash.replace(/^#/, "")).get("k") ||
+        new URLSearchParams(window.location.search).get("k") ||
+        "";
       if (!token || !supabase) { if (alive) setState("denied"); return; }
       const { data: d, error } = await supabase.rpc("traction_stats", { p_token: token });
       if (!alive) return;
@@ -180,6 +189,11 @@ export default function StatsBoard() {
       </p>
       <p className="muted">
         Feedback notes written by veterans so far: <strong>{data.feedback_notes}</strong>.
+      </p>
+      <p className="muted">
+        Partner codes live: <strong>{data.partner_codes}</strong>. Accounts that came through one:{" "}
+        <strong>{data.coded_signups}</strong>, with <strong>{data.active_codes}</strong> code
+        {data.active_codes === 1 ? "" : "s"} bringing in an account in the last 30 days.
       </p>
 
       <p className="small muted" style={{ marginTop: 34, paddingTop: 16, borderTop: "1px solid var(--border)" }}>

@@ -10,7 +10,8 @@
 // bring veterans in.
 //
 // Rules this module must keep:
-//  - First touch wins. Never overwrite an existing capture.
+//  - First touch wins. Never overwrite an existing capture. The one
+//    exception is the partner slot, which fills at most once (see below).
 //  - First-party only. No cookies, nothing readable by any other site.
 //  - Disclosed on /privacy (the account-storage list). If what this
 //    captures ever grows, that page moves in the same commit.
@@ -22,12 +23,35 @@ export type FirstTouch = {
   referrer: string | null;
   landing: string;
   at: string;
+  /** Opaque partner code from a partner office's link or QR
+   *  (utm_source=partner&utm_campaign=<code>). It has its own write-once slot
+   *  so a veteran who once found us through a search, and is later handed a
+   *  partner's sheet before making an account, still credits the partner. */
+  partner?: string | null;
+  /** When the partner code was first seen on this device. public.partner_stats
+   *  ignores a code first seen more than a day after the account was created. */
+  partnerAt?: string | null;
 };
 
 const KEY = "vp-first-touch";
 
 // Caps stray/malicious query values so junk can't bloat the profile row.
 const clean = (v: string | null) => (v ? v.slice(0, 120) : null);
+
+// Partner codes are minted in Supabase (public.mint_partner_code): six
+// characters with no look-alikes (never i, l, o, 0 or 1). A code says nothing
+// about who the partner is. The office's name lives only in the database,
+// never in this public repo and never in the link. Keep in sync with the
+// check on public.partner_codes and scripts/make-campaign-qr.py. The query
+// param is deliberately not named "code": auth-js treats ?code= as a PKCE
+// callback.
+const PARTNER_CODE = /^[a-hjkmnp-z2-9]{6}$/;
+
+function partnerCode(q: URLSearchParams): string | null {
+  if ((q.get("utm_source") || "").toLowerCase() !== "partner") return null;
+  const c = (q.get("utm_campaign") || "").trim().toLowerCase();
+  return PARTNER_CODE.test(c) ? c : null;
+}
 
 // Auth and infrastructure hosts must never claim first touch: the return leg
 // of an OAuth sign-in arrives with accounts.google.com as the referrer, and
@@ -54,8 +78,21 @@ function inAppSource(): string | null {
 
 export function captureFirstTouch(): void {
   try {
-    if (localStorage.getItem(KEY)) return; // first touch wins
     const q = new URLSearchParams(window.location.search);
+    const partner = partnerCode(q);
+    const existing = localStorage.getItem(KEY);
+    if (existing) {
+      // First touch wins. The partner slot is the one exception: if this
+      // device's capture has no partner yet and this visit carries a partner
+      // code, record it once with its own time, and leave everything else alone.
+      if (partner) {
+        const prev = JSON.parse(existing) as FirstTouch;
+        if (!prev.partner) {
+          localStorage.setItem(KEY, JSON.stringify({ ...prev, partner, partnerAt: new Date().toISOString() }));
+        }
+      }
+      return;
+    }
     const campaign = clean(q.get("utm_campaign") || q.get("campaign"));
     let source = clean(q.get("utm_source"));
     const medium = clean(q.get("utm_medium"));
@@ -71,6 +108,7 @@ export function captureFirstTouch(): void {
     // Untagged direct visit: capture nothing, so a later visit that DOES
     // carry a tag (they kept the flyer) can still claim first touch.
     if (!campaign && !source && !ref && !referrer) return;
+    const at = new Date().toISOString();
     const ft: FirstTouch = {
       campaign,
       source,
@@ -78,12 +116,14 @@ export function captureFirstTouch(): void {
       ref,
       referrer,
       landing: window.location.pathname,
-      at: new Date().toISOString(),
+      at,
+      partner,
+      partnerAt: partner ? at : null,
     };
     localStorage.setItem(KEY, JSON.stringify(ft));
   } catch {
-    // Storage unavailable (private mode, hard quotas): attribution is
-    // best-effort and must never break the page.
+    // Storage unavailable (private mode, hard quotas) or a corrupt stored
+    // value: attribution is best-effort and must never break the page.
   }
 }
 

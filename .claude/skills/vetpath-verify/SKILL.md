@@ -90,6 +90,15 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
    reverts cleanly; legacy stored theme values ("professional"/"civic"/"granite") normalize to warm on
    load. The dark bands (mission/supporter/support) recolor via --band-* tokens - never hardcode those
    gradient hexes again. Semantic colors (success/danger/crisis) stay constant across themes.
+15. Partner report: /partner/ with no fragment renders "This link is not valid." (NOT the FunnelGate
+   card) and makes no rpc call; /partner/#k=<48 zeros> shows the same denied card; the GoatCounter
+   request for /partner/ carries no k= in q. Never mint a real partner code in QA without Kaleb -
+   minting is an owner action in the SQL editor.
+16. First touch: fresh storage, open /?utm_source=partner&utm_campaign=k7m3qx -> vp-first-touch has
+   source 'partner', campaign 'k7m3qx', partner 'k7m3qx', partnerAt set. Clear, open
+   /?utm_campaign=vso, then the partner link -> campaign stays 'vso', partner fills once.
+   utm_campaign=PARTNER1 leaves partner null. sitemap.xml contains no 'partner'; robots.txt has
+   Disallow: /partner/.
 
 ### Probe pitfalls (cost real time on Sep 1, 2026 - read before writing walkers)
 - The three interviews use DIFFERENT option widgets. Intake (/onboarding): most questions are

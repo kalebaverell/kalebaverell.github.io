@@ -38,6 +38,7 @@ export default function PrivacyPage() {
         </h3>
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 8 }}>
           <li>We do not sell your data, and we do not share it with advertisers.</li>
+          <li>Offices that hand out VetPath links see counts only, like how many accounts came through their link - never your name, email, answers, or plan.</li>
           <li>No trackers and no advertising pixels. The only measurement is an anonymous page counter that cannot identify you - explained below.</li>
           <li>The guides and crisis resources need no account. The planning tools open once you build a free gameplan, which needs an account.</li>
           <li>Your password is never seen or stored by us.</li>
@@ -94,7 +95,9 @@ export default function PrivacyPage() {
             on that link (for example &quot;vso&quot; for the sheet we hand to veteran service posts),
             plus the site that referred you. If you arrived through an app&apos;s built-in browser
             (like Facebook&apos;s) that hides the referring site, we note just the app&apos;s name as
-            the channel instead. This tells us which outreach actually reaches veterans.
+            the channel instead. If the link came from a partner office, such as a county veterans
+            service office or a transition counselor, it also carries a short random partner code,
+            and we note when you first used it. This tells us which outreach actually reaches veterans.
             It records how you found us - never what you did on other sites.
           </li>
           <li>
@@ -148,12 +151,31 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
+      <Section title="Partner offices and the counts they see">
+        Some veterans service offices and transition counselors hand out VetPath links and QR codes
+        that carry a partner code: six random characters, like &quot;k7m3qx&quot;, that do not name
+        the office. If your first visit came through one of those links, the code is saved with how
+        you found us, as described above.
+        <p style={{ margin: "10px 0 0" }}>
+          Each partner office gets a private report with counts only: how many accounts came through
+          its code, and how many of those built a plan, checked off a step, gave a separation date,
+          reached the pre-discharge claim window, opened a free accredited-help link, or said yes to
+          email check-ins. Any count from 1 to 4 shows as &quot;&lt;5&quot; so no one can be picked
+          out. Partners see totals, never a list of people. The report has no way to show a name, an
+          email address, an answer, or a plan, and partners never get access to our database.
+        </p>
+        <p style={{ margin: "10px 0 0" }}>
+          A partner code changes nothing about your plan. The plan is the same, and free, with or
+          without one.
+        </p>
+      </Section>
+
       <Section title="What we do not do today">
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
           <li>We do not sell, rent, or trade your information.</li>
           <li>We do not run advertising scripts, tracking pixels, or cross-site tracking of any kind. The only measurement on this site is the anonymous page counter described in the next section.</li>
           <li>We do not use your answers to train any AI model. Your plan is produced by fixed rules we wrote, not by a language model.</li>
-          <li>We do not share anything with the VA or any government agency, and they do not see your account.</li>
+          <li>We do not share anything about you with the VA or any government agency, and they do not see your account. If a county or state veterans service office hands out VetPath, it sees only the counts-only partner report described above.</li>
         </ul>
         <p style={{ margin: "10px 0 0" }}>
           Down the road, VetPath may offer sponsored connections - for example, an introduction to a

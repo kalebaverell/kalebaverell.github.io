@@ -20,3 +20,7 @@ tsconfig.tsbuildinfo
 # Internal proposals that must never ship in this public repo (VetPath has no AI
 # and makes no AI claims; this spec is an unbuilt idea, kept local).
 docs/llm-assistant-spec.md
+
+# Partner QR codes. The codes are opaque, but this repo is public and the
+# folder is worked on next to the office names. Never committed.
+print/qr/partners/
