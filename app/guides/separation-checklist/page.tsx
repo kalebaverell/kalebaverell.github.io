@@ -100,6 +100,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     id: "p3", label: "Applications and ramp-up", window: "6 to 3 months out",
     lede: "The BDD window opens and closes inside this phase. Miss it and you wait months longer for a decision, on the outside, without pay.",
     items: [
+      { t: "Talk to a free accredited representative before you file", n: "Bring your records and condition list to an accredited representative inside the 180-to-90-day window, so the BDD claim goes in complete. VA's search lists them by location, and the American Legion, DAV and VFW also run free service-officer programs.", src: SRC.vso, key: true, ifYou: "are filing a disability claim" },
       { t: "File your BDD claim (Benefits Delivery at Discharge)", n: "The window is 180 to 90 days before separation, and you must be available for VA exams within 45 days of filing. File inside it and your exams happen while you are still in, so a decision can land right after you are out.", src: SRC.bdd, key: true, due: true, ifYou: "are filing a disability claim" },
       { t: "Go live with applications - tailored, not sprayed", n: "Tailor the resume per posting, use veterans' preference on federal jobs, and keep the networking conversations running in parallel.", ifYou: "are heading for employment" },
       { t: "Submit school applications, FAFSA, and your GI Bill application", n: "Apply for the Certificate of Eligibility early - schools want it in hand and processing takes time.", src: SRC.coe, key: true, ifYou: "are heading for school" },

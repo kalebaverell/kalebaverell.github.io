@@ -2,12 +2,18 @@
 // Client-side state store: localStorage-backed, hydrated from and synced to the veteran's
 // Supabase account when signed in (hydrateRemote, components/ProfileSync.tsx).
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
-import { track } from "@/lib/track";
-import type { AppState, Answers, Status, ChosenPath, ResumeState } from "./types";
+import { track, trackOnce, type TrackEvent } from "@/lib/track";
+import type { AppState, Answers, Status, ChosenPath, ResumeState, HandoffKind } from "./types";
 import { generateGameplan, sampleAnswers } from "./rules";
 import { careerById } from "./data";
 
 const KEY = "vetpath_state_v1";
+
+const HANDOFF_EVENTS: Record<HandoffKind, TrackEvent> = {
+  rep: "handoff-rep",
+  cvso: "handoff-cvso",
+  "vso-org": "handoff-vso-org",
+};
 
 const initial: AppState = {
   profile: null,
@@ -57,6 +63,9 @@ interface Store {
   clearPath: () => void;
   setResume: (r: ResumeState | null) => void;
   hydrateRemote: (partial: Partial<AppState>) => void;
+  /** Record that a free-help door was opened (first date per door wins) and
+   *  count it once per browser session. */
+  markHandoff: (kind: HandoffKind) => void;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -222,6 +231,17 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // Free-help hand-off (Oct 2026). Later clicks change nothing in the record;
+  // the GoatCounter event fires once per session per door.
+  const markHandoff = useCallback((kind: HandoffKind) => {
+    trackOnce(HANDOFF_EVENTS[kind]);
+    setS((p) =>
+      p.handoffs?.[kind]
+        ? p
+        : { ...p, handoffs: { ...(p.handoffs || {}), [kind]: new Date().toISOString().slice(0, 10) } }
+    );
+  }, []);
+
   const cycleTextSize = useCallback(() => {
     setS((p) => {
       const next = p.textSize === "base" ? "lg" : p.textSize === "lg" ? "xl" : "base";
@@ -253,7 +273,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <Ctx.Provider
-      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, setTheme, loadSample, reset, setStepNote, setAssessment, toggleAssessmentMulti, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote }}
+      value={{ s, ready, createProfile, ensureProfile, setAnswer, toggleMulti, toggleGoal, setStep, regen, addGoal, cycleStatus, toggleDone, cycleTextSize, setTheme, loadSample, reset, setStepNote, setAssessment, toggleAssessmentMulti, setAssessmentFree, choosePath, clearPath, setResume, hydrateRemote, markHandoff }}
     >
       {children}
     </Ctx.Provider>

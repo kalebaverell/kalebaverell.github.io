@@ -6,6 +6,7 @@ import { BENEFITS, STATE_BENEFITS, realStateInfo, stateName, BRAND, benefitById,
 import type { Benefit } from "@/lib/types";
 import { Wrap, Callout, SectionHead } from "@/components/ui";
 import { optimizeBenefits, type OptimizedBenefit, type Tier } from "@/lib/optimizer";
+import NeverPayNote from "@/components/NeverPayNote";
 
 const CAT_ICON: Record<string, string> = {
   tax: "ti-receipt-tax", education: "ti-school", employment: "ti-briefcase", housing: "ti-home",
@@ -249,6 +250,11 @@ function Accordion({ b, open, onToggle }: { b: Benefit; open: boolean; onToggle:
               <h4>Documents</h4>
               <div style={{ marginBottom: 12 }}>{b.documents.map((d) => <span key={d} className="tag">{d}</span>)}</div>
             </>
+          )}
+          {b.id === "va-disability" && (
+            <div style={{ marginBottom: 12 }}>
+              <NeverPayNote />
+            </div>
           )}
           <a className="btn ghost sm" href={b.official.url} target="_blank" rel="noopener noreferrer">{b.official.name} <i className="ti ti-external-link" /></a>
           {vb.lastVerified && (

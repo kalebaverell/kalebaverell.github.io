@@ -39,6 +39,13 @@ const EVENTS = [
   // to talk to us, so we keep the door that works.
   "feedback-dashboard",
   "feedback-guide",
+  // Free-help hand-off doors (2026-10). The plan's job is to get a veteran to
+  // free, accredited help, so these show which door people actually use.
+  // American Legion, DAV and VFW share ONE event on purpose: they are listed
+  // on equal terms and we do not rank them against each other.
+  "handoff-rep", // VA's accredited-representative search (the default door)
+  "handoff-cvso", // county or state veterans service office lookup
+  "handoff-vso-org", // a national VSO's service-officer page
   // Intake funnel (2026-08-28): 63% of people who start the intake never finish
   // it, and we could not see where they left. These say which step loses them.
   "intake-gate",

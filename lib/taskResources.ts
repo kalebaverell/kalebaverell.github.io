@@ -1,11 +1,15 @@
 // Task resources - maps an auto-generated action item to relevant, sourced links (official VA/DoD
 // pages + the matching VetPath tool) by keyword, so every task can be "opened" for help without
 // hand-authoring detail for each one. Every external link points to an official source.
+import type { HandoffKind } from "./types";
+import { handoffResources, HANDOFF_LINKS } from "@/lib/handoff";
 
 export interface TaskResource {
   label: string;
   href: string;
   internal?: boolean; // a VetPath route (same-origin) vs. an external official source
+  /** Set on free-help doors so a click is recorded as a hand-off. */
+  handoff?: HandoffKind;
 }
 
 const RULES: { test: RegExp; resources: TaskResource[] }[] = [
@@ -37,7 +41,7 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   ]},
   { test: /disabilit|rating|\bclaim\b|intent to file|c&p|compensation|secondary condition/i, resources: [
     { label: "File a disability claim (VA.gov)", href: "https://www.va.gov/disability/" },
-    { label: "Find free accredited help (VSO)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/" },
+    { label: "Find free accredited help (VSO)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/", handoff: "rep" },
   ]},
   { test: /\bresume\b|interview|cover letter/i, resources: [
     { label: "Open the Resume scanner", href: "/resume", internal: true },
@@ -63,8 +67,9 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
   { test: /skillbridge/i, resources: [
     { label: "SkillBridge program", href: "https://www.skillbridge.mil/" },
   ]},
-  { test: /\bvso\b|accredited|county service officer/i, resources: [
-    { label: "Find an accredited VSO (VA.gov)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/" },
+  { test: /\bvso\b|accredited|county (veteran )?service officer/i, resources: [
+    { label: "Find an accredited VSO (VA.gov)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/", handoff: "rep" },
+    HANDOFF_LINKS.countyDirectory,
   ]},
   { test: /network|mentor/i, resources: [
     { label: "Networking & mentors hub", href: "/network", internal: true },
@@ -101,11 +106,16 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
 // Fallback so every task can be opened to something useful.
 const FALLBACK: TaskResource[] = [
   { label: "Benefits library", href: "/benefits", internal: true },
-  { label: "Find accredited help (VSO)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/" },
+  { label: "Find accredited help (VSO)", href: "https://www.va.gov/get-help-from-accredited-representative/find-rep/", handoff: "rep" },
 ];
 
 /** Return relevant, deduped resources for an action item's text. */
 export function taskResources(text: string): TaskResource[] {
+  // The two handoff tasks carry a curated, fixed-order list - VA's search first -
+  // that the keyword rules below must never reorder or truncate (the TAP rule
+  // matches "discharge"/"separation", and slice(0, 4) would cut a VSO).
+  const handoff = handoffResources(text);
+  if (handoff) return handoff;
   const out: TaskResource[] = [];
   const seen = new Set<string>();
   for (const rule of RULES) {

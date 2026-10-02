@@ -4,6 +4,7 @@
 // stated priorities. Every deadline-bearing task carries an official source
 // link; nothing here is legal, medical, or financial advice.
 import { realStateInfo } from "@/lib/data";
+import { REP_TASK_LEAD, CVSO_TASK_LEAD, HANDOFF_LINKS, asSource } from "@/lib/handoff";
 
 /** Date the deadline/source details below were last checked against the linked official pages. */
 export const TIMELINE_VERIFIED = "2026-10-02";
@@ -246,6 +247,12 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
   const st = a.targetState ? stateEntry(a.targetState) : undefined;
   const push = (x: Omit<TimelineTask, "weighted">) =>
     t.push({ ...x, weighted: a.priorities.includes(x.area) });
+  // Same window math as buildTimeline: a real EAS date beats the interview
+  // bucket. Decides where the accredited-rep step lands and how claimTrack reads.
+  const em = monthsToEas(a.easDate || "");
+  const win: SepWindow = em != null ? windowFromEas(em) : (a.sepWindow || "12+");
+  const pastBdd = win === "0-3" || win === "out";
+  const repWho = "VA's search lists them by location, and the American Legion, DAV and VFW also run free service-officer programs.";
 
   // ---- P1 · T-12 to T-9 - early planning
   push({ id: "vaAccount", phase: "p1", area: "benefits", essential: true, title: "Create your VA.gov account (ID.me / Login.gov)", notes: "Nearly every benefit below starts here. Ten minutes now, no waiting rooms later." , source: src.vaAccount });
@@ -270,6 +277,11 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
   if (st) push({ id: "stateBenefits", phase: "p2", area: "benefits", title: `Research ${st.name} veteran benefits`, notes: `${st.agency.name} runs state-level benefits on top of your federal ones - property-tax, education, and employment programs vary a lot by state.`, source: { label: st.agency.name, url: st.agency.url } });
 
   // ---- P3 · T-6 to T-3 - applications & ramp-up
+  // The handoff (Win the Handoff, Sep 30 2026): a free accredited human before
+  // the claim, inside the 180-to-90-day window. Past the window the same step
+  // (same id, never listed twice) moves to the member's current phase: p4 in the
+  // last 90 days, p5 once out. Not a deadline item - the BDD task carries that.
+  if (claims && !pastBdd) push({ id: "repTalk", phase: "p3", area: "benefits", essential: true, title: REP_TASK_LEAD, notes: `Bring your records and condition list to a free accredited representative inside the 180-to-90-day window, so the BDD claim goes in complete. ${repWho}`, source: asSource(HANDOFF_LINKS.vaFindRep) });
   if (claims) push({ id: "bdd", phase: "p3", area: "benefits", essential: true, deadline: true, title: "File your BDD claim (Benefits Delivery at Discharge)", notes: "The window is 180 to 90 days before separation, and you must be available for VA exams within 45 days of filing - file inside it and your exams happen while you're still in, so a decision can land right after you're out.", source: src.bdd });
   if (has("employment") || has("undecided")) push({ id: "applications", phase: "p3", area: "employment", essential: has("employment"), title: "Go live with applications - tailored, not sprayed", notes: "Tailor the resume per posting, use veterans' preference on federal jobs, and keep the networking conversations running in parallel." });
   if (has("education")) push({ id: "schoolApps", phase: "p3", area: "education", essential: true, deadline: true, title: "Submit school applications, FAFSA, and your GI Bill application (COE)", notes: "Apply for the Certificate of Eligibility early - schools want it in hand and processing takes time.", source: src.coe });
@@ -279,6 +291,7 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
 
   // ---- P4 · T-3 to separation - final out & the move
   push({ id: "dd214", phase: "p4", area: "benefits", essential: true, title: "Review your DD-214 line by line BEFORE signing", notes: "Errors here follow you for decades - awards, schools, deployments, character of service. Fix them while you're still standing in the building." });
+  if (claims && win === "0-3") push({ id: "repTalk", phase: "p4", area: "benefits", essential: true, title: REP_TASK_LEAD, notes: `The 180-to-90-day pre-discharge window has closed, but VA still accepts a claim filed before you separate. Sit down with a free accredited representative now. ${repWho}`, source: asSource(HANDOFF_LINKS.vaFindRep) });
   push({ id: "healthApply", phase: "p4", area: "benefits", essential: true, title: "Apply for VA health care - don't wait for a disability rating", notes: "Enrollment is separate from claims. Recent-era combat veterans and many others have enhanced eligibility windows - check yours and apply.", source: src.healthElig });
   if (famAny) push({ id: "tricareBridge", phase: "p4", area: "family", essential: true, deadline: true, title: "Bridge health coverage for the family (check TAMP)", notes: "Some separations qualify for 180 days of transitional TRICARE (TAMP). Confirm your eligibility and line up what follows it - no coverage gaps.", source: src.tamp });
   if (a.finances === "income-now") push({ id: "ucxAware", phase: "p4", area: "financial", essential: true, title: "Know your unemployment compensation rights (UCX)", notes: "If you separated under honorable conditions, you can file for unemployment (UCX) with your state's workforce agency right after separation. It exists for exactly this bridge - using it is smart, not shameful.", source: src.ucx });
@@ -287,8 +300,13 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
 
   // ---- P5 · Day 1 to +6 months - landing
   push({ id: "vamcRegister", phase: "p5", area: "benefits", essential: true, title: st ? `Enroll and register at your VA facility in ${st.name}` : "Enroll and register at your local VA facility", notes: "Get in the system and book a first appointment even if you feel fine - established care makes everything later easier.", source: src.facilities });
+  // County or state veterans service officer: the free local human once you land.
+  // Named from the target state's agency (data/stateBenefits.json); without a state,
+  // the national county directory.
+  push({ id: "cvsoConnect", phase: "p5", area: "benefits", title: st ? `${CVSO_TASK_LEAD} in ${st.name}` : CVSO_TASK_LEAD, notes: st ? `${st.agency.name} can point you to the free county or state service officer nearest you - the local person for state benefits and VA claims help.` : "County veterans service officers exist in many, but not all, states; where there isn't one, your state veterans agency is the front door. Either way the help is free.", source: st ? { label: st.agency.name, url: st.agency.url } : asSource(HANDOFF_LINKS.countyDirectory) });
   push({ id: "vgliWindow", phase: "p5", area: "financial", essential: true, deadline: true, title: "Decide on VGLI inside the guaranteed-acceptance window", notes: "Apply within 240 days of separation and no health questions are asked. The absolute deadline is 1 year + 120 days - but the 240-day mark is the one that matters.", source: src.vgli });
-  if (claims) push({ id: "claimTrack", phase: "p5", area: "benefits", essential: true, title: a.sepWindow === "out" || a.sepWindow === "0-3" ? "File your disability claim with VSO help (Intent to File locks your date)" : "Track your BDD claim on VA.gov", notes: a.sepWindow === "out" || a.sepWindow === "0-3" ? "An Intent to File preserves your effective date for a year while you build the claim properly - free VSO help, never claim sharks." : "Watch for exam notices and respond fast - silence is the main thing that stalls claims.", source: src.itf });
+  if (claims && win === "out") push({ id: "repTalk", phase: "p5", area: "benefits", essential: true, title: REP_TASK_LEAD, notes: `Before anything is filed, sit down with a free accredited representative - bring your DD-214, records, and condition list. ${repWho}`, source: asSource(HANDOFF_LINKS.vaFindRep) });
+  if (claims) push({ id: "claimTrack", phase: "p5", area: "benefits", essential: true, title: pastBdd ? "File your disability claim with VSO help (Intent to File locks your date)" : "Track your BDD claim on VA.gov", notes: pastBdd ? "An Intent to File preserves your effective date for a year while you build the claim properly - free VSO help, never claim sharks." : "Watch for exam notices and respond fast - silence is the main thing that stalls claims.", source: src.itf });
   if (has("employment")) push({ id: "first90", phase: "p5", area: "employment", title: "First 90 days on the job: translate, don't retreat", notes: "Find the veteran employee group, learn the unwritten rules, and give yourself six months before judging the fit." });
   if (a.finances === "income-now") push({ id: "ucxFile", phase: "p5", area: "financial", essential: true, title: "File your UCX unemployment claim if income hasn't landed", notes: "File in the state where you live now, with your DD-214 in hand.", source: src.ucx });
   if (has("education")) push({ id: "mhaCheck", phase: "p5", area: "education", title: "First term: confirm GI Bill payments are flowing", notes: "Verify enrollment monthly if required, and flag payment problems to the school certifying official immediately." });

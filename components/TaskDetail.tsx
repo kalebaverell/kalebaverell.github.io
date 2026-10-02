@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { taskResources } from "@/lib/taskResources";
 import { useAuth } from "@/lib/auth";
+import { useStore } from "@/lib/store";
 import { addEntry } from "@/lib/journal";
 
 // Padded to a 44px touch target. This was a 27px strip, which is hard to hit
@@ -21,6 +22,7 @@ export default function TaskDetail({ text }: { text: string }) {
   const [note, setNote] = useState("");
   const [saved, setSaved] = useState(false);
   const { enabled, user } = useAuth();
+  const { markHandoff } = useStore();
   const resources = taskResources(text);
 
   const saveNote = async () => {
@@ -45,15 +47,18 @@ export default function TaskDetail({ text }: { text: string }) {
       {open && (
         <>
           <ul style={{ margin: "6px 0 2px", paddingLeft: 18, display: "grid", gap: 5 }}>
-            {resources.map((r) => (
-              <li key={r.href} className="small">
-                {r.internal ? (
-                  <Link href={r.href}>{r.label} →</Link>
-                ) : (
-                  <a href={r.href} target="_blank" rel="noopener noreferrer">{r.label} <i className="ti ti-external-link" style={{ fontSize: 11 }} aria-hidden="true" /></a>
-                )}
-              </li>
-            ))}
+            {resources.map((r) => {
+              const h = r.handoff;
+              return (
+                <li key={r.href} className="small">
+                  {r.internal ? (
+                    <Link href={r.href}>{r.label} →</Link>
+                  ) : (
+                    <a href={r.href} target="_blank" rel="noopener noreferrer" onClick={h ? () => markHandoff(h) : undefined}>{r.label} <i className="ti ti-external-link" style={{ fontSize: 11 }} aria-hidden="true" /></a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           {noting ? (
             <div style={{ margin: "8px 0 2px" }}>

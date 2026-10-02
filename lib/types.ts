@@ -169,6 +169,11 @@ export interface Gameplan {
 
 export type Status = "todo" | "prog" | "done";
 
+/** Free-help doors a plan can open: the VA's accredited-representative search,
+ *  a county or state veterans service office, or a national VSO's service
+ *  officers (American Legion, DAV, VFW, listed on equal terms). */
+export type HandoffKind = "rep" | "cvso" | "vso-org";
+
 export interface AppState {
   profile: Profile | null;
   answers: Answers;
@@ -178,6 +183,10 @@ export interface AppState {
    *  the mission log; absent in older saved states, so readers treat missing
    *  keys as "done, date unknown". Cleared when an action is un-done. */
   doneAt?: Record<string, string>;
+  /** First date (YYYY-MM-DD) each free-help door was opened from the plan.
+   *  A yes and a date only, nothing about who they contacted. Disclosed on
+   *  /privacy; counted (never read row by row) by public.partner_stats. */
+  handoffs?: Partial<Record<HandoffKind, string>>;
   step: number;
   /** Colorway. "warm" is the brand default; Harbor is the one alternate
    *  (Kaleb's pick, Aug 25). Legacy saved values normalize to "warm" on load. */

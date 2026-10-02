@@ -2,10 +2,12 @@
 import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, goalById, stateName, BRAND, residenceStates, careerById, STATE_BENEFITS } from "@/lib/data";
+import { benefitById, goalById, stateName, BRAND, residenceStates, careerById, STATE_BENEFITS, primaryState } from "@/lib/data";
 import { buildFundedPath, FUNDING_VERIFIED, FUNDING_DISCLAIMER } from "@/lib/funding";
 import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reserves";
 import Topo from "@/components/Topo";
+import { handoffSheet } from "@/lib/handoff";
+import NeverPayNote from "@/components/NeverPayNote";
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
@@ -160,6 +162,23 @@ export default function PrintGameplan() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* The handoff, on paper: who to take this plan to. Order is policy - VA's
+          search first, the member's own state agency, the county directory, then
+          the three VSOs alphabetically. globals.css:586 prints each URL. */}
+      <div className="print-section">
+        <h3>Free, accredited help - take this plan with you</h3>
+        <p className="muted small" style={{ margin: "0 0 8px" }}>
+          {BRAND.name} is not a claims representative. Start with these - VSO representatives and county
+          veterans service officers help with VA claims at no cost.
+        </p>
+        <ul style={{ margin: "0 0 10px", paddingLeft: 22 }}>
+          {handoffSheet(primaryState(a), !!gp.skillBridge).map((l) => (
+            <li key={l.href} style={{ marginBottom: 5 }}><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+        <NeverPayNote print />
       </div>
 
       <div className="print-section print-break">

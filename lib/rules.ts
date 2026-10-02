@@ -1,7 +1,9 @@
 // VetPath rules engine - deterministic mapping from intake answers to a gameplan.
 // Mirrors the logic in demo/vetpath-demo.html. Planning guidance only; not advice.
 import type { Answers, ActionItem, Gameplan, Career } from "./types";
-import { GOALS, goalById, stateName, trackById, primaryState, residenceStates } from "./data";
+import { GOALS, goalById, stateName, trackById, primaryState, residenceStates, realStateInfo } from "./data";
+import { monthsToEas } from "./timeline";
+import { REP_TASK_ID, CVSO_TASK_ID, repTaskText, cvsoTaskText, type RepWhen } from "./handoff";
 import { locationGuidance, networkingFor } from "./pathfinder";
 import { buildFamilyPlan } from "./family";
 import { reserveFit } from "./reserves";
@@ -14,6 +16,13 @@ function hash(s: string): number {
 }
 function item(text: string, priority: ActionItem["priority"]): ActionItem {
   return { id: `a${_idc++}-${hash(text)}`, text, priority };
+}
+/** Fixed-id items (Oct 2026 on). Saved checkmarks are keyed by id, and item()'s
+ *  ids are positional - one more item() call renumbers every item after it and
+ *  orphans those checkmarks. Fixed ids never touch the counter, and they survive
+ *  wording changes (the rep step's text changes as the BDD window passes). */
+function fixedItem(id: string, text: string, priority: ActionItem["priority"]): ActionItem {
+  return { id, text, priority };
 }
 
 /* ---------- Plan de-duplication ----------
@@ -38,6 +47,12 @@ const TOPIC_RULES: { key: string; test: RegExp }[] = [
   { key: "skillbridge", test: /SkillBridge/i },
   { key: "vre", test: /VR&E|Veteran Readiness/i },
   { key: "home-loan", test: /home ?loan|certificate of eligibility/i },
+  // The handoff steps (lib/handoff.ts) absorb the goals' generic versions
+  // because they are pushed earlier and carry the real links. Narrow on purpose:
+  // "Never pay ... from an accredited VSO" must survive, and so must
+  // move-new-state's "...and county service officer" (it is about the NEW state).
+  { key: "accredited-rep", test: /\baccredited representative\b|work with (a free |an )?accredited VSO/i },
+  { key: "county-vso", test: /county veteran service officer|county or state veterans service officer/i },
 ];
 
 const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium: 1, low: 2 };
@@ -145,13 +160,23 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
   const plan30: ActionItem[] = [];
   const plan60: ActionItem[] = [];
   const plan90: ActionItem[] = [];
+  const em = monthsToEas(a.easDate || "");
+  const repWhen: RepWhen = em == null || em > 3 ? "bdd" : em < 0 ? "out" : "closing";
   if (isTransition) {
     // One action per item. This used to bundle TAP, the DD-214, and medical
     // records into a single line, which made it impossible to tick off honestly
     // and hid the overlap with the transition-out goal's own steps.
     plan30.push(item("Complete the DoD Transition Assistance Program (TAP)", "high"));
     plan30.push(item("Request and safeguard your DD-214 and full medical records", "high"));
-    plan30.push(item("Start a VA disability claim (ask about Benefits Delivery at Discharge)", "high"));
+    // The handoff: a free accredited human before the claim. Fixed id - renumbers
+    // nothing, and its checkmark carries across the window. Its text avoids
+    // "disability claim"/"intent to file" so dedupe never merges it into the claim line.
+    plan30.push(fixedItem(REP_TASK_ID, repTaskText(repWhen), "high"));
+    plan30.push(item(
+      repWhen === "bdd" ? "Start a VA disability claim (ask about Benefits Delivery at Discharge)"
+        : repWhen === "closing" ? "Start a VA disability claim with your representative - you can file before or after you separate"
+        : "Start a VA disability claim with your representative - an intent to file locks your effective date while you build it",
+      "high"));
     plan60.push(item("Apply for VA health care and pick a facility near home", "high"));
     // Government quarters end with the orders - the plan has to say so out
     // loud (tester feedback 2026-08-13). BAH stopping at separation is the
@@ -191,6 +216,17 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     if (ep[3]) plan90.push(item(`${career.label}: ${ep[3]}`, "medium"));
     plan90.push(item("Reach out to 2 people already doing this work (see your networking list)", "medium"));
   }
+  // The handoff for members already out who have a claim on their mind, and the
+  // county or state service officer for anyone with a state (not the years-out
+  // set). Fixed ids, pushed before the goals so dedupe keeps these linked versions.
+  const vetOut = status === "Veteran" || status.startsWith("Retired");
+  const claimOnMind =
+    (a.topGoals || []).includes("understand-disability") ||
+    (a.financialPriorities || []).includes("Understand VA disability compensation") ||
+    a.disabilityRating === "Claim pending or filing";
+  if (vetOut && claimOnMind) plan30.push(fixedItem(REP_TASK_ID, repTaskText("out"), "high"));
+  const agency = realStateInfo(primaryState(a))?.agency;
+  if (agency && !farOut) plan30.push(fixedItem(CVSO_TASK_ID, cvsoTaskText(agency.name), vetOut ? "high" : "medium"));
   // farOut guard (gauntlet find, 2026-08-28): goal playbooks are written for the
   // separation window, so their TAP/BDD steps would tell someone 2+ years out to
   // start a 365-day-window program today. The long-runway set above covers what
@@ -264,7 +300,9 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
         "Gather buddy/lay statements from people who witnessed injuries or changes.",
         "At C&P exams: be honest and thorough about your WORST days, not your best.",
         "Use a free accredited VSO or county service officer - never pay for basic claims help.",
-        isTransition ? "Ask about Benefits Delivery at Discharge (file 90–180 days before separation)." : "If already rated, ask an accredited VSO whether a review makes sense - ratings can go down as well as up, so get real advice first.",
+        isTransition && repWhen === "bdd" ? "Ask about Benefits Delivery at Discharge (file 90-180 days before separation)."
+          : isTransition ? "The BDD window (180 to 90 days before separation) has passed - a free accredited representative can still file your claim with you now."
+          : "If already rated, ask an accredited VSO whether a review makes sense - ratings can go down as well as up, so get real advice first.",
       ]
     : [];
 

@@ -97,6 +97,12 @@ export default function PrivacyPage() {
             the channel instead. This tells us which outreach actually reaches veterans.
             It records how you found us - never what you did on other sites.
           </li>
+          <li>
+            If you open one of the free accredited-help links in your plan (the VA&apos;s
+            representative search, a county veterans service office, or a veterans service
+            organization&apos;s service officers), a yes and the date you first did. Nothing about
+            who you contacted or what you did on those sites.
+          </li>
         </ul>
         <p style={{ margin: "10px 0 0" }}>
           Your <strong>password is never seen or stored by us</strong>. Sign-in is handled by our
@@ -160,7 +166,9 @@ export default function PrivacyPage() {
       <Section title="The anonymous page counter, in plain terms">
         We use GoatCounter, an open-source counter built for exactly one job: telling us how many times
         each page was viewed. Here is everything it records about a visit: which page, which site linked
-        to it, the browser family, the screen size, and the country. Here is what it does not have: no
+        to it (or the campaign tag on the link, if it had one), the browser family, the screen size, and
+        the country. It also counts a few named button presses, such as building a plan or opening a
+        free accredited-help link, as plain totals. Here is what it does not have: no
         cookies, no fingerprinting, no names, no emails, no link to your account, and no way to recognize
         you if you come back tomorrow.
         <p style={{ margin: "10px 0 0" }}>

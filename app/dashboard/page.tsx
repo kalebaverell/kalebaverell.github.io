@@ -10,6 +10,7 @@ import { Wrap, Stat, CrisisBanner } from "@/components/ui";
 import FundedPath from "@/components/FundedPath";
 import FeedbackAsk from "@/components/FeedbackAsk";
 import TaskDetail from "@/components/TaskDetail";
+import NeverPayNote from "@/components/NeverPayNote";
 import BenefitCategoryList from "@/components/BenefitCategoryList";
 import InstallNudge from "@/components/InstallNudge";
 import { currentFocus } from "@/lib/weeklyFocus";
@@ -372,9 +373,10 @@ export default function Dashboard() {
           )}
           {gp.disabilityPrep && gp.disabilityPrep.length > 0 && (
             <div className="card">
-              <h3><i className="ti ti-clipboard-heart" style={{ color: "var(--accent-ink)" }} /> Get your full disability benefit - the honest way</h3>
+              <h3><i className="ti ti-clipboard-heart" style={{ color: "var(--accent-ink)" }} /> Your disability claim - the honest way</h3>
               <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{gp.disabilityPrep.map((d, i) => <li key={i} className="small" style={{ marginBottom: 5 }}>{d}</li>)}</ul>
-              <p className="small muted" style={{ margin: "8px 0 0" }}>Education only - an accredited VSO&apos;s help is free and beats anyone charging for claims.</p>
+              <p className="small muted" style={{ margin: "8px 0 10px" }}>Education only - {BRAND.name} is not a claims representative.</p>
+              <NeverPayNote />
             </div>
           )}
         </div>
