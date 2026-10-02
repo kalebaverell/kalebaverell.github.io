@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { careerById } from "@/lib/data";
+import { careerById, ASSESSMENT } from "@/lib/data";
 import { Wrap, CardArt } from "@/components/ui";
 
 type Tool = { href: string; icon: string; title: string; body: string; art: "compass" | "doc" | "layers" | "nodes" };
@@ -14,7 +14,7 @@ const GROUPS: { label: string; icon: string; tools: Tool[] }[] = [
     label: "Career",
     icon: "ti-briefcase",
     tools: [
-      { href: "/pathfinder", icon: "ti-compass", title: "Pathfinder", body: "10 questions. A career path that fits, with the route to get there.", art: "compass" },
+      { href: "/pathfinder", icon: "ti-compass", title: "Pathfinder", body: `${ASSESSMENT.questions.length} questions. A career path that fits, with the route to get there.`, art: "compass" },
       { href: "/timeline", icon: "ti-timeline", title: "Transition timeline", body: "Every deadline from 12 months out to 24 months after.", art: "layers" },
       { href: "/resume", icon: "ti-file-text", title: "Resume scanner", body: "Recruiter-style feedback on your resume, in plain English.", art: "doc" },
       { href: "/transcript", icon: "ti-school", title: "Smart transcript", body: "What your training may be worth in college credit.", art: "layers" },

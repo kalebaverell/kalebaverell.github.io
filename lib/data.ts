@@ -1,4 +1,6 @@
-// Loads the shared sample data from /data (single source of truth for the app).
+// Loads the shared data from /data (single source of truth for the app). Most files are
+// verified and dated (see each file's lastVerified / verified fields and its _note); names
+// starting with "sample" are historical. Illustrative content says so in its _note.
 import benefitsJson from "@/data/sampleBenefits.json";
 import goalsJson from "@/data/sampleGoals.json";
 import statesJson from "@/data/sampleStates.json";
@@ -33,9 +35,7 @@ export const BENEFITS: Benefit[] = (benefitsJson as any).categories.map((b: any)
 
 export const GOALS: Goal[] = (goalsJson as any).goals;
 
-export const STATES: { code: string; name: string; hasSampleData?: boolean; samplePrograms?: string[] }[] =
-  (statesJson as any).states;
-export const STATE_GENERIC: string = (statesJson as any).genericPlaceholder;
+export const STATES: { code: string; name: string }[] = (statesJson as any).states;
 
 export const INTAKE = (intakeJson as any).steps as {
   id: string;
@@ -56,12 +56,12 @@ export const benefitById = (id: string) => BENEFITS.find((b) => b.id === id);
 export const goalById = (id: string) => GOALS.find((g) => g.id === id);
 export const stateName = (code?: string) =>
   code ? STATES.find((s) => s.code === code)?.name ?? code : "";
-export const stateSamples = (code?: string) =>
-  code ? STATES.find((s) => s.code === code)?.samplePrograms : undefined;
 
 // Pathfinder / tools data
 export const TRACKS: Track[] = (tracksJson as any).tracks;
 export const CAREERS: Career[] = (careersJson as any).careers;
+/** Date the BLS pay/outlook figures were last re-read from bls.gov (shown on /trust, checked at build). */
+export const CAREERS_VERIFIED: string | undefined = (careersJson as any).lastVerified;
 export const ASSESSMENT = assessmentJson as any as {
   // `multi`/`max`: multi-select questions (pull). `help`: sub-line under the
   // label. Option `objective`: the ruling objective set by the `wins` question.
@@ -85,7 +85,7 @@ export const LOCATIONS = locationsJson as any as {
 export const INTAKE_NOTES_PROMPT: string = (intakeJson as any).stepNotesPrompt;
 
 /** Parse the numeric BLS median (USD) from a career's paySample string, e.g.
- *  "$124,910 (May 2024 median, BLS)" → 124910. Returns null if none found. */
+ *  "$129,180 (May 2025 median, BLS)" → 124910. Returns null if none found. */
 export const careerMedianPay = (c: Career): number | null => {
   const m = /\$([\d,]+)/.exec(c.paySample || "");
   return m ? parseInt(m[1].replace(/,/g, ""), 10) : null;

@@ -3,7 +3,7 @@ import PageSkeleton from "@/components/PageSkeleton";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById, careerMedianPay } from "@/lib/data";
+import { benefitById, stateName, BRAND, WEIGHT_LEVEL_LABEL, residenceStates, careerById, careerMedianPay, ASSESSMENT } from "@/lib/data";
 import { rankedPriorities } from "@/lib/pathfinder";
 import type { ActionItem } from "@/lib/types";
 import { Wrap, Stat, CrisisBanner } from "@/components/ui";
@@ -161,7 +161,7 @@ export default function Dashboard() {
           <div className="iconwrap"><i className="ti ti-compass" aria-hidden="true" /></div>
           <div style={{ flex: 1, minWidth: 220 }}>
             <h3 style={{ margin: 0 }}>Pick your path</h3>
-            <p className="small muted" style={{ margin: "2px 0 0" }}>10 questions. A career path that fits, and this plan re-routes around it.</p>
+            <p className="small muted" style={{ margin: "2px 0 0" }}>{ASSESSMENT.questions.length} questions. A career path that fits, and this plan re-routes around it.</p>
           </div>
           <Link className="btn gold" href="/pathfinder"><i className="ti ti-compass" /> Pick my path</Link>
         </div>
@@ -395,7 +395,7 @@ export default function Dashboard() {
           )}
           {gp.locationTips && gp.locationTips.length > 0 && (
             <div className="card">
-              <h3><i className="ti ti-map-2" style={{ color: "var(--accent-ink)" }} /> Location fit (sample)</h3>
+              <h3><i className="ti ti-map-2" style={{ color: "var(--accent-ink)" }} /> Location fit (examples)</h3>
               <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{gp.locationTips.slice(0, 2).map((t, i) => <li key={i} className="small" style={{ marginBottom: 5 }}>{t}</li>)}</ul>
               {gp.metroSuggestions && gp.metroSuggestions.length > 0 && (
                 <div style={{ marginTop: 8 }}>

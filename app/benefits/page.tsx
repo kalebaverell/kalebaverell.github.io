@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { BENEFITS, STATE_GENERIC, STATE_BENEFITS, realStateInfo, stateName, stateSamples, BRAND, benefitById, primaryState, residenceStates } from "@/lib/data";
+import { BENEFITS, STATE_BENEFITS, realStateInfo, stateName, BRAND, benefitById, primaryState, residenceStates } from "@/lib/data";
 import type { Benefit } from "@/lib/types";
 import { Wrap, Callout, SectionHead } from "@/components/ui";
 import { optimizeBenefits, type OptimizedBenefit, type Tier } from "@/lib/optimizer";
@@ -28,8 +28,6 @@ export default function Benefits() {
   const sc = primaryState(a);            // anchor state for this single-state section
   const allStates = residenceStates(a);  // full "select all that apply" list
   const real = realStateInfo(sc);
-  const samples = stateSamples(sc);
-  const stateList = sc ? (samples && samples.length ? samples : [STATE_GENERIC]) : [];
 
   const hasProfile = !!s.profile;
   const optimized = useMemo(() => (hasProfile ? optimizeBenefits(a) : []), [hasProfile, a]);
@@ -99,9 +97,8 @@ export default function Benefits() {
         </div>
       ) : sc ? (
         <div className="card" style={{ marginBottom: 16 }}>
-          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(sc)} - state benefits (sample)</h3>
-          <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>{stateList.map((x, i) => <li key={i}>{x}</li>)}</ul>
-          <p className="small muted" style={{ marginTop: 10 }}>Placeholder examples only. Verify with your state Department of Veterans Affairs.</p>
+          <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> {stateName(sc)} - state benefits</h3>
+          <p className="small" style={{ margin: "6px 0 0" }}>We don&apos;t have verified programs on file for this state yet. Your state veterans agency and county veteran service officer can tell you exactly what applies.</p>
         </div>
       ) : null}
 

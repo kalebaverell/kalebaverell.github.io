@@ -42,7 +42,7 @@ export default function NetworkHub() {
       <Group title="VA & local" icon="ti-building-community" items={NETWORKING.vaSpecific} />
       {s.answers.sex === "Female" && <Group title="Women veteran programs" icon="ti-heart-handshake" items={NETWORKING.targeted.women} />}
       {minority && <Group title="Minority veteran & business programs" icon="ti-heart-handshake" items={NETWORKING.targeted.minority} />}
-      <p className="small muted" style={{ marginTop: 16 }}>Sample list - programs change; verify each directly.</p>
+      <p className="small muted" style={{ marginTop: 16 }}>A starting list, not every program - availability changes, so confirm details on each program&apos;s own site.</p>
       <Link className="btn ghost" href="/tools"><i className="ti ti-arrow-left" /> All tools</Link>
     </Wrap>
   );

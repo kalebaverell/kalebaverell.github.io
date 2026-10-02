@@ -37,7 +37,7 @@ export default function ResumeScanner() {
       <h2>Resume scanner</h2>
       <p className="muted" style={{ maxWidth: 640 }}>Paste your resume and we&apos;ll grade it like a civilian recruiter would - jargon, numbers, keywords for your target path. The analysis runs in your browser; it&apos;s saved only to your own account if you&apos;re signed in.</p>
       <div style={{ margin: "8px 0 16px" }}>
-        <Callout kind="info">Demo feedback from simple rules - a coaching aid, not a hiring guarantee. For a human review, your DOL VETS rep is free.</Callout>
+        <Callout kind="info">Feedback from fixed, readable rules - a coaching aid, not a hiring guarantee. For a human review, your DOL VETS rep is free.</Callout>
       </div>
 
       <div className="card">
@@ -63,7 +63,7 @@ export default function ResumeScanner() {
             </div>
             <div style={{ flex: 1, minWidth: 220 }}>
               <h3 style={{ margin: "0 0 6px" }}>{result.score >= 80 ? "Strong - polish and send" : result.score >= 60 ? "Good bones - tighten these up" : "Worth a rework before you send it"}</h3>
-              <p className="muted small" style={{ margin: 0 }}>{result.words} words · {result.issues.length} fixes flagged · demo score</p>
+              <p className="muted small" style={{ margin: 0 }}>{result.words} words · {result.issues.length} fixes flagged · rule-based score</p>
             </div>
           </div>
 

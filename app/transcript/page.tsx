@@ -33,7 +33,7 @@ export default function SmartTranscript() {
               <option value="">Select role…</option>
               {roles.map((r) => <option key={r.code} value={r.code}>{r.code} - {r.title}</option>)}
             </select>
-            <p className="small muted" style={{ margin: "8px 0 0" }}>Don&apos;t see yours? This demo has {CREDIT_MAP.roles.length} sample roles - the real version maps every rating via the JST/ACE database.</p>
+            <p className="small muted" style={{ margin: "8px 0 0" }}>Don&apos;t see yours? These are {CREDIT_MAP.roles.length} worked examples. Your Joint Services Transcript (or CCAF transcript) lists the ACE credit recommendations for your actual training.</p>
           </>
         )}
       </div>
@@ -43,7 +43,7 @@ export default function SmartTranscript() {
           <div className="card" style={{ marginTop: 16 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
               <h3 style={{ margin: 0 }}>{role.code} - {role.title}</h3>
-              <span className="chip gold" style={{ fontSize: "var(--fs-h4)" }}><i className="ti ti-school" /> ~{total} sample credit hours</span>
+              <span className="chip gold" style={{ fontSize: "var(--fs-h4)" }}><i className="ti ti-school" /> ~{total} example credit hours</span>
             </div>
             <table style={{ width: "100%", borderCollapse: "collapse", marginTop: 12, fontSize: "var(--fs-small)" }}>
               <thead>

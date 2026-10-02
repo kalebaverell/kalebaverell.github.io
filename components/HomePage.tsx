@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { BRAND, STATE_BENEFITS } from "@/lib/data";
+import { BRAND, STATE_BENEFITS, ASSESSMENT } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { Wrap, Stat, Eyebrow, SectionHead } from "@/components/ui";
 import { track } from "@/lib/track";
@@ -201,7 +201,7 @@ export default function Landing() {
             {/* Proof before the pitch: real counts, pulled from the same data the site cites. */}
             <span className="hero-proof">
               <i className="ti ti-shield-check" aria-hidden="true" />
-              {STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0)} benefit programs · 51 states &amp; D.C. · every number sourced
+              {STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0)} benefit programs · {STATE_BENEFITS.states.filter((s) => s.code !== "DC").length} states &amp; D.C. · every number sourced
             </span>
             <h1 style={{ maxWidth: 620 }}>
               Find your <span className="accent-word">next</span> steps.
@@ -361,7 +361,7 @@ export default function Landing() {
           {([
             ["/benefits", "ti-map-2", "Benefits in your state", "Property tax to tuition - what your state actually offers on top of your federal benefits, verified and cited.", "Most used"],
             ["/family", "ti-users", "Plan as a household", "Spouse careers, school moves, caregiving - shared checkpoints so the whole family lands together.", "Family favorite"],
-            ["/pathfinder", "ti-compass", "Career pathfinder", "Eleven questions. Your best-fit civilian paths, ranked and explained, with real federal pay data.", "11 questions"],
+            ["/pathfinder", "ti-compass", "Career pathfinder", `${ASSESSMENT.questions.length} questions. Your best-fit civilian paths, ranked and explained, with real federal pay data.`, `${ASSESSMENT.questions.length} questions`],
           ] as const).map(([href, icon, title, body, tag], i) => (
             <Link key={href} href={href} className="card" data-reveal={i * 90} style={{ display: "block", textDecoration: "none", color: "inherit" }}>
               <div className="iconwrap" style={{ marginBottom: 14 }}><i className={`ti ${icon}`} aria-hidden="true" /></div>

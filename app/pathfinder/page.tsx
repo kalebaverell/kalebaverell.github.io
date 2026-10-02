@@ -362,7 +362,7 @@ function Detail({ careerId, fromResults, setView }: { careerId: string; fromResu
       </div>
 
       <div className="card" style={{ marginTop: 16 }}>
-        <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> Where to live for this path (sample)</h3>
+        <h3><i className="ti ti-map-pin" style={{ color: "var(--accent-ink)" }} /> Where to live for this path (examples)</h3>
         <ul style={{ margin: "6px 0 10px", paddingLeft: 18 }}>{loc.tips.map((tp, i) => <li key={i} className="small" style={{ marginBottom: 4 }}>{tp}</li>)}</ul>
         {loc.metros.map((m) => (
           <div key={m.name} className="kv"><span className="k">{m.name}{m.state !== "-" ? `, ${m.state}` : ""}</span><span className="small" style={{ textAlign: "right" }}>{m.va}</span></div>

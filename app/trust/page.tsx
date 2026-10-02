@@ -2,15 +2,29 @@
 // "Every number has a source" - the methodology & trust page.
 // Counts are computed live from the actual data files, so this page can't drift from reality.
 import Link from "next/link";
-import { BENEFITS, CAREERS, STATE_BENEFITS, ASSESSMENT, BRAND } from "@/lib/data";
+import { BENEFITS, CAREERS, CAREERS_VERIFIED, STATE_BENEFITS, ASSESSMENT, BRAND } from "@/lib/data";
 import { METROS } from "@/lib/relocate";
+import { TIMELINE_VERIFIED } from "@/lib/timeline";
+import { FUNDING_VERIFIED } from "@/lib/funding";
+import { RESERVES_VERIFIED } from "@/lib/reserves";
 import { Wrap, Eyebrow, SectionHead, Stat, Callout } from "@/components/ui";
+
+/** "2026-10-01" -> "Oct 2026". Every row shows its dataset's real stamp, never a typed-in month. */
+function monthOf(iso?: string | null): string {
+  if (!iso) return "-";
+  const d = new Date(iso + "T12:00:00");
+  return isNaN(d.getTime()) ? iso : d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+/** A row is only as fresh as its oldest entry. ISO dates sort correctly as strings. */
+const oldest = (dates: (string | null | undefined)[]) => dates.filter((d): d is string => Boolean(d)).sort()[0];
 
 export default function TrustPage() {
   const statePrograms = STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0);
   const verifiedFederal = BENEFITS.filter((b: any) => b.lastVerified).length;
   const groundedCareers = CAREERS.filter((c) => c.blsUrl).length;
   const officialMetros = METROS.filter((m: any) => m.official).length;
+  const federalVerified = oldest(BENEFITS.map((b: any) => b.lastVerified));
+  const metrosGathered = oldest(METROS.map((m: any) => m.official?.gathered));
 
   return (
     <Wrap>
@@ -45,9 +59,12 @@ export default function TrustPage() {
           <tbody>
             {[
               ["State benefits (all 50 + DC)", "State departments of veterans affairs (.gov)", STATE_BENEFITS.lastVerified || "-", "Quarterly"],
-              ["Federal benefits (11 categories)", "VA.gov · DOL VETS · SBA · Veterans Crisis Line", "Oct 2026", "Quarterly"],
-              ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2025 medians)", "Oct 2026", "Annually (new BLS editions)"],
-              ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", "Oct 2026", "Quarterly"],
+              [`Federal benefits (${BENEFITS.length} categories)`, "VA.gov · DOL VETS · SBA · Veterans Crisis Line", monthOf(federalVerified), "Quarterly"],
+              ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2025 medians)", monthOf(CAREERS_VERIFIED), "Annually (new BLS editions)"],
+              ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", `${monthOf(metrosGathered)} (HUD rent FY2026, carried forward)`, "Quarterly"],
+              ["Transition deadlines", "VA.gov · DoD TAP · U.S. Code", monthOf(TIMELINE_VERIFIED), "Quarterly"],
+              ["Funding programs", "VA · StudentAid.gov · OPM · SBA", monthOf(FUNDING_VERIFIED), "Quarterly"],
+              ["Reserve & Guard benefits", "VA.gov · TRICARE · DOL · U.S. Code · state Guard pages", monthOf(RESERVES_VERIFIED), "Quarterly"],
               ["Assessment design", "U.S. DOL O*NET® Interest Profiler framework (RIASEC)", "Jul 2026", "As frameworks evolve"],
             ].map((row) => (
               <tr key={row[0]}>
@@ -67,7 +84,7 @@ export default function TrustPage() {
             ["ti-scale", "We never determine eligibility", "Only VA, your state agency, or an accredited VSO can. Every card links to the official source to confirm."],
             ["ti-heart-handshake", "Free accredited help comes first", "Accredited VSO and county service officers are free. We will never point you to paid claims help."],
             ["ti-settings", "Explainable engines, not a black box", "Fit scores and benefit tiers come from deterministic rules built on your own answers - every recommendation shows its reasons."],
-            ["ti-lock", "Your data stays yours", "Browse anonymously and everything stays in your browser. Create an account and your plan is saved privately to it - encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
+            ["ti-lock", "Your data stays yours", "Reading the guides needs no account. Your plan saves privately to your free account - encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
             ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Every build of this site checks those dates and stops if any is more than 100 days old, and we re-verify on a quarterly rhythm."],
             ["ti-urgent", "Crisis support is always visible", "Veterans Crisis Line: dial 988, then press 1 - free, confidential, 24/7, on every page."],
           ].map(([icon, title, body]) => (
@@ -82,9 +99,10 @@ export default function TrustPage() {
 
       <div style={{ marginTop: 28 }}>
         <Callout kind="warn">
-          <strong>What&apos;s still illustrative:</strong> relocation comparison tiers (the 1–5 ratings) are decision aids, not
+          <strong>What&apos;s still illustrative:</strong> relocation comparison tiers (the 1-5 ratings) and starter-home notes are decision aids, not
           cited rankings - though the cost, rent, jobs, and VA-facility datapoints beside them are official and linked.
-          Fit percentages are demo estimates from your own answers. Pay figures change as BLS publishes new data.
+          The smart transcript&apos;s credit hours are worked examples in the style of ACE recommendations - your Joint Services Transcript is the real record.
+          Fit percentages are rule-based estimates from your own answers, not a validated test. Pay figures change as BLS publishes new data.
           {" "}{BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.
         </Callout>
       </div>

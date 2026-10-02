@@ -87,12 +87,12 @@ function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void })
       <Link href="/" className="muted small" style={{ display: "inline-flex", gap: 6, alignItems: "center", marginBottom: 14 }}>
         <i className="ti ti-arrow-left" /> Home
       </Link>
-      <h2>Create your demo profile</h2>
+      <h2>Create a local profile</h2>
       <p className="muted">Start planning right away - no account needed. Want it saved and synced across devices? Sign in from the top-right anytime and your plan comes with you.</p>
       <div className="card">
         <label className="lbl" htmlFor="pname">First name</label>
         <input className="field" id="pname" placeholder="e.g. Frank" value={name} onChange={(e) => setName(e.target.value)} style={{ marginBottom: 16 }} />
-        <label className="lbl" htmlFor="pemail">Email (optional, demo only)</label>
+        <label className="lbl" htmlFor="pemail">Email (optional, stays on this device)</label>
         <input className="field" id="pemail" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} style={{ marginBottom: 20 }} />
         <button className="btn block" onClick={() => onCreate(name, email)}><i className="ti ti-user-plus" /> Start planning</button>
         <p className="small muted" style={{ textAlign: "center", margin: "14px 0 0" }}>

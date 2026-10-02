@@ -1,6 +1,7 @@
 "use client";
 // Relocation Planner - compare places to live across what veterans actually weigh,
-// scored by THEIR priorities and (optionally) their chosen path. SAMPLE data only.
+// scored by THEIR priorities and (optionally) their chosen path. Cost, rent, jobs and
+// VA-facility datapoints are cited (data/relocationMetros.json `official`); the 1-5 tiers are illustrative.
 import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -123,7 +124,7 @@ function MetroCard({
           <div style={{ fontFamily: "var(--font-display)", fontSize: 34, lineHeight: 1, color: "var(--ink-strong)" }}>
             {r.score}
           </div>
-          <div className="small muted">sample fit / 100</div>
+          <div className="small muted">fit / 100</div>
         </div>
       </div>
 
@@ -236,8 +237,8 @@ export default function RelocatePage() {
       />
 
       <Callout kind="warn">
-        <strong>Sample decision-support data.</strong> These ratings exist for comparison only - tiers are
-        illustrative, not rankings from a cited index. Always verify VA facilities at{" "}
+        <strong>How to read these ratings.</strong> The cost, rent, jobs, and VA-facility figures are official and linked. The 1-5 tiers
+        are VetPath&apos;s comparison aids, not rankings from a cited index. Always verify VA facilities at{" "}
         <a href="https://www.va.gov/find-locations" target="_blank" rel="noopener noreferrer">va.gov/find-locations</a>{" "}
         and check housing, schools, safety, and the job market independently before any move.
       </Callout>
@@ -338,7 +339,7 @@ export default function RelocatePage() {
 
       {results && (
         <div style={{ marginTop: 22 }}>
-          <h3>Your top matches <span className="muted small">(top 6 of {results.length} sample places)</span></h3>
+          <h3>Your top matches <span className="muted small">(top 6 of {results.length} places)</span></h3>
           {moves && (
             <p className="small" aria-live="polite" style={{ margin: "6px 0 0", color: Object.keys(moves).length ? "var(--success)" : "var(--muted)" }}>
               <i className={`ti ${Object.keys(moves).length ? "ti-arrows-sort" : "ti-check"}`} aria-hidden="true" />{" "}
@@ -421,7 +422,7 @@ export default function RelocatePage() {
       )}
 
       <p className="small muted" style={{ marginTop: 26 }}>
-        Sample list of {METROS.length} illustrative places - real decisions need a visit, current listings,
+        {METROS.filter((m) => (m as { official?: unknown }).official).length} of these {METROS.length} places carry cited cost, rent, and jobs data - real decisions still need a visit, current listings,
         and a conversation with veterans who already live there. VetPath is not the VA.
       </p>
       <Link className="btn ghost" href="/tools"><i className="ti ti-arrow-left" aria-hidden="true" /> All tools</Link>

@@ -3,6 +3,7 @@
 // one next week - a reason to come back on a 7-day rhythm with zero backend.
 // Every entry points at an existing page and describes only what that page
 // actually does. Nothing here is seasonal, invented, or time-sensitive.
+import { ASSESSMENT } from "./data";
 
 export interface WeeklyFocus {
   title: string;
@@ -13,7 +14,7 @@ export interface WeeklyFocus {
 }
 
 const FOCUS: WeeklyFocus[] = [
-  { title: "Re-check your fit", blurb: "The career test takes 10 questions and re-ranks your paths - answers drift as you learn, and the test moves with you.", href: "/pathfinder", icon: "ti-compass", cta: "Take it again" },
+  { title: "Re-check your fit", blurb: `The career test takes ${ASSESSMENT.questions.length} questions and re-ranks your paths - answers drift as you learn, and the test moves with you.`, href: "/pathfinder", icon: "ti-compass", cta: "Take it again" },
   { title: "One benefit, verified", blurb: "Pick one benefit category this week and open its official source - knowing where to verify beats hoping you qualify.", href: "/benefits", icon: "ti-award", cta: "Open benefits" },
   { title: "Stress-test your landing spot", blurb: "Compare two metros side by side - VA care, cost of living, jobs - with official data behind every column.", href: "/relocate", icon: "ti-home", cta: "Compare metros" },
   { title: "Walk your timeline", blurb: "Seven phases, real deadlines, and a \"you are here\" marker - five minutes here keeps the next window from sneaking up.", href: "/timeline", icon: "ti-timeline", cta: "See the timeline" },

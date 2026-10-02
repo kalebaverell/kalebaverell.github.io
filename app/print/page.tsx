@@ -2,7 +2,7 @@
 import PageSkeleton from "@/components/PageSkeleton";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
-import { benefitById, goalById, stateName, BRAND, residenceStates, careerById } from "@/lib/data";
+import { benefitById, goalById, stateName, BRAND, residenceStates, careerById, STATE_BENEFITS } from "@/lib/data";
 import { buildFundedPath, FUNDING_VERIFIED, FUNDING_DISCLAIMER } from "@/lib/funding";
 import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reserves";
 import Topo from "@/components/Topo";
@@ -199,9 +199,11 @@ export default function PrintGameplan() {
 
       <div className="print-section">
         <div className="print-box" style={{ fontSize: 12, color: "var(--muted)" }}>
-          <strong>{BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative.</strong> All
-          benefit information here is sample/demo data for this prototype. Confirm eligibility and amounts through official sources such as
-          VA.gov, your state veterans agency, or an accredited VSO (VFW, American Legion, DAV, or your county veteran service officer - their help is usually free).
+          <strong>{BRAND.name} is a planning &amp; education tool - not the VA, a law firm, or an accredited claims representative, and not affiliated with VA or any veterans service organization.</strong>{" "}
+          Benefit details in this plan were checked against the official sources shown (state programs last verified {STATE_BENEFITS.lastVerified}), and rules change.
+          Confirm eligibility and amounts at VA.gov, your state veterans agency, or with a free accredited representative: VA&apos;s search at
+          va.gov/get-help-from-accredited-representative is the starting point, accredited VSO representatives (American Legion, DAV, VFW) are always free,
+          and your county veterans service officer is another free local option.
         </div>
       </div>
     </div>

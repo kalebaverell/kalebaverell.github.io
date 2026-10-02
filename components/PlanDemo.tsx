@@ -3,6 +3,10 @@
 // Three acts: your story → your path → your plan adapting to life.
 // Pure CSS/JS motion; reduced-motion users get the complete final frame, static.
 import { useEffect, useRef, useState } from "react";
+import { INTAKE, careerById, careerMedianPay } from "@/lib/data";
+
+const ELECTRICIAN = careerById("electrician");
+const ELECTRICIAN_PAY = ELECTRICIAN ? careerMedianPay(ELECTRICIAN) : null;
 
 const ACTS = 3;
 const ACT_MS = 3400;
@@ -63,7 +67,7 @@ export default function PlanDemo() {
             {chip("Family of four", show(0), 360)}
             {chip("Wants hands-on work", show(0), 480)}
           </div>
-          <p className="small muted" style={{ marginTop: 10 }}>Ten questions - boxes or your own words.</p>
+          <p className="small muted" style={{ marginTop: 10 }}>{INTAKE.length} short steps - boxes or your own words.</p>
         </div>
 
         {/* Act 2 - the path */}
@@ -75,7 +79,7 @@ export default function PlanDemo() {
             </div>
             <div>
               <div style={{ fontWeight: 600 }}>Electrician</div>
-              <div className="small muted">Skilled trades · $62k median (BLS)</div>
+              <div className="small muted">Skilled trades · {ELECTRICIAN_PAY ? `$${Math.round(ELECTRICIAN_PAY / 1000)}k median (BLS)` : "BLS pay data"}</div>
             </div>
           </div>
           <p className="small muted" style={{ marginTop: 10 }}>Recommended with reasons - never a black box.</p>

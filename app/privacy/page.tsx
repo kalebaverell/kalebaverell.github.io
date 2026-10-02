@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "August 19, 2026";
+const LAST_UPDATED = "October 2, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
         <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 8 }}>
           <li>We do not sell your data, and we do not share it with advertisers.</li>
           <li>No trackers and no advertising pixels. The only measurement is an anonymous page counter that cannot identify you - explained below.</li>
-          <li>You can use most of the tools without an account. Building and saving a gameplan needs one.</li>
+          <li>The guides and crisis resources need no account. The planning tools open once you build a free gameplan, which needs an account.</li>
           <li>Your password is never seen or stored by us.</li>
           <li>You can ask us to delete everything, and we will.</li>
         </ul>
@@ -56,10 +56,11 @@ export default function PrivacyPage() {
       </div>
 
       <Section title="Using VetPath without an account">
-        Most of the tools, including the benefits library, compare states, the relocation planner, the
-        Reserves and Guard tab, and the resume scanner, work without signing up. What you type stays in
-        your own browser&apos;s local storage on that device. It is not sent to us and we cannot see it.
-        Clearing your browser data erases it, and it does not follow you to another device.
+        The guides, the crisis resources, and the trust and privacy pages are open to everyone, no sign-up needed.
+        The planning tools, including the benefits library, compare states, the relocation planner, the
+        Reserves and Guard tab, and the resume scanner, open once you build a free gameplan. Some of what you
+        type in those tools stays only in your own browser&apos;s local storage on that device; what saves to
+        your account is listed in the next section.
         <p style={{ margin: "10px 0 0" }}>
           Building a gameplan does require a free account, because the whole point is that it saves and
           comes back to you every time you sign in.
@@ -75,6 +76,7 @@ export default function PrivacyPage() {
         </p>
         <ul style={{ margin: "10px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
           <li>Your intake answers: age range, the state or states you live in, city, branch, military job, service era, and current status.</li>
+          <li>Your separation month, if you give it. It is optional, and it is used only to put real dates on your timeline, on your calendar feed if you subscribe, and in the check-in emails if you opted in to them.</li>
           <li>Your VA disability rating, if you tell us.</li>
           <li>Your employment and housing situation, including if you indicate housing is unstable.</li>
           <li>Sex and race or ethnicity, if you choose to answer. Both questions are optional.</li>

@@ -4,6 +4,9 @@
 import Link from "next/link";
 import { routeMeta } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
+import { STATE_BENEFITS } from "@/lib/data";
+
+const STATE_PROGRAMS = STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0);
 
 export const metadata = routeMeta(
   "Guides",
@@ -27,7 +30,7 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     href: "/guides/state-benefits",
     icon: "ti-award",
     title: "State veteran benefits, every state",
-    blurb: "259 programs across all 50 states and D.C. - tax exemptions, tuition, hiring preference - each cited to the agency that runs it.",
+    blurb: `${STATE_PROGRAMS} programs across all 50 states and D.C. - tax exemptions, tuition, hiring preference - each cited to the agency that runs it.`,
   },
   {
     href: "/guides/disability-claims",

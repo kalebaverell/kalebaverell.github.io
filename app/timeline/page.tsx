@@ -422,22 +422,22 @@ export default function TimelinePage() {
               ))}
             </ul>
             <p className="muted small" style={{ margin: "12px 0 0" }}>
-              Deadline details checked against the linked official sources as of {TIMELINE_VERIFIED} (demo) -
+              Deadline details checked against the linked official sources as of {TIMELINE_VERIFIED} -
               rules change, so confirm each one before acting on it.
             </p>
           </div>
 
           <Callout kind="info">
-            <strong>Want this even more personal?</strong> In the full product you&apos;ll be able to upload a
-            resume, LES, or separation packet to tighten the plan around your actual record. This demo
-            personalizes from your answers only - nothing you typed leaves your browser.
+            <strong>Built from your answers only.</strong> VetPath does not ask you to upload your LES, DD-214, or
+            medical records. Your timeline answers stay in this browser; if you&apos;re signed in, the separation month
+            you enter also saves to your private account so your plan and calendar can use it.
           </Callout>
 
           <div className="disclaimer" style={{ marginTop: 16 }}>
             <strong style={{ color: "var(--ink-strong)" }}>This timeline is a planning aid, not a substitute for professional guidance.</strong>{" "}
             Confirm disability claims with an accredited VSO or representative, financial commitments with a licensed
             financial advisor, legal questions with a legal assistance office, and medical matters with your provider.
-            Benefit details are sample/demo data - verify through <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>,
+            Deadlines and benefit details link to their official sources and were last checked on the date shown above - rules change, so verify through <a href="https://www.va.gov" target="_blank" rel="noopener noreferrer">VA.gov</a>,
             your state veterans agency, or your installation&apos;s transition office.
           </div>
 
