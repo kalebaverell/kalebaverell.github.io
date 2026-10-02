@@ -99,7 +99,10 @@ async function upsertIdentity(user: User) {
       email: user.email,
       full_name: meta.full_name ?? null,
       marketing_opt_in: optIn,
-      marketing_opt_in_at: optIn ? new Date().toISOString() : null,
+      // Consent is given at sign-up, so pin the timestamp there. This used to
+      // stamp "now" on every auth event, and by Oct 2 2026 it had already moved
+      // the consent date on 10 of 26 opted-in rows.
+      marketing_opt_in_at: optIn ? user.created_at : null,
       updated_at: new Date().toISOString(),
     },
     { onConflict: "id" }
@@ -168,10 +171,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Return-visit ledger: fire-and-forget, self-deduping per day.
       if (data.session?.user) stampVisit(data.session.user.id);
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, sess) => {
+    const { data: sub } = supabase.auth.onAuthStateChange((event, sess) => {
       setSession(sess);
       setUser(sess?.user ?? null);
-      if (sess?.user) { upsertIdentity(sess.user); stampVisit(sess.user.id); }
+      if (!sess?.user) return;
+      // Only a person causes SIGNED_IN: a sign-in, the return leg of an
+      // email-confirm or OAuth link, or a signed-in tab brought back to the
+      // front. TOKEN_REFRESHED fires on a timer in any open, visible tab and is
+      // relayed to every other tab; until Oct 2026 it stamped a "return visit"
+      // and rewrote the profile row each time. INITIAL_SESSION still upserts
+      // identity, because on an email-confirm landing it can be the only event
+      // this subscriber sees. Page loads are stamped by getSession above.
+      if (event === "SIGNED_IN" || event === "INITIAL_SESSION") upsertIdentity(sess.user);
+      if (event === "SIGNED_IN") stampVisit(sess.user.id);
     });
     return () => sub.subscription.unsubscribe();
   }, []);

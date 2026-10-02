@@ -28,6 +28,7 @@ type Stats = {
   emails_sent: number;
   last_email_run: string | null;
   feedback_notes: number;
+  returned_since: string | null;
 };
 
 const day = (iso: string | null) =>
@@ -164,7 +165,11 @@ export default function StatsBoard() {
         <Depth label="Built a gameplan" n={data.gameplans} of={data.accounts} />
         <Depth label="Ran the career Pathfinder" n={data.pathfinder} of={data.accounts} />
         <Depth label="Checked off at least one action" n={data.checked_action} of={data.accounts} />
-        <Depth label="Came back on a different day" n={data.returned} of={data.accounts} />
+        <Depth
+          label={`Came back on a different day${data.returned_since ? ` (counted since ${day(data.returned_since)})` : ""}`}
+          n={data.returned}
+          of={data.accounts}
+        />
         <Depth label="Opted in to check-in emails" n={data.opted_in} of={data.accounts} />
       </div>
 
