@@ -15,7 +15,7 @@ export const metadata = routeMeta(
 const OFFICIAL = [
   { label: "milConnect (records access)", url: "https://milconnect.dmdc.osd.mil/" },
   { label: "Joint Services Transcript", url: "https://jst.doded.mil/" },
-  { label: "DOL VETS - unemployment for ex-service members (UCX)", url: "https://www.dol.gov/agencies/vets" },
+  { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
 ];
 
 export default function PaperworkGuide() {

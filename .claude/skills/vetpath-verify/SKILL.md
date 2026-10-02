@@ -19,6 +19,9 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 - data/intakeQuestions.json → status step contains a "horizon" question with showIf {id:"status", value:"Active duty"} and a "More than 2 years out" option
 - lib/track.ts `INTAKE_STEP_EVENTS` must equal the intakeQuestions.json step ids, in order (funnel events go
   silent on drift, and silence looks identical to "nobody reached that step")
+- `node scripts/check-freshness.mjs` exits 0. Report each WARN (over 90 days) as a WARN row with its re-verify-by
+  date; a FAIL (over 100 days) is a data failure, not a build failure - section 3's `npm run build` would stop on it anyway.
+  Never "fix" a FAIL by editing a date; only a real re-check moves a date.
 
 ## 3. Production build — NEVER while a dev server runs (shared .next corrupts; this caused real outages)
 Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + kill by PID, plus any

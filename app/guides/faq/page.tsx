@@ -47,8 +47,8 @@ const FAQS: { q: string; a: string; source?: { label: string; url: string } }[] 
   },
   {
     q: "Can I file for unemployment after I separate?",
-    a: "Yes - ex-service members can file for unemployment compensation (UCX) in the state where they live, with the DD-214 in hand. It exists for exactly this bridge, and using it is smart, not shameful.",
-    source: { label: "DOL VETS", url: "https://www.dol.gov/agencies/vets" },
+    a: "Yes, if you separated under honorable conditions - ex-service members can file for unemployment compensation (UCX) in the state where they live, with the DD-214 in hand. It exists for exactly this bridge, and using it is smart, not shameful.",
+    source: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   },
   {
     q: "Do I need a disability rating before applying for VA health care?",

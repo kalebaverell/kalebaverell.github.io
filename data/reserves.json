@@ -1,6 +1,6 @@
 {
   "_note": "Reserve & National Guard content. Every entry is a real federal program verified against an official .gov/.mil source or the U.S. Code. Figures that change on a schedule (TRICARE premiums change each calendar year, TRICARE Dental runs a March-February plan year, MGIB-SR rates change each October 1 by CPI) are deliberately NOT hard-coded here: the card links to the official page where the current number lives. VetPath is not a recruiter and does not determine eligibility.",
-  "lastVerified": "2026-07",
+  "lastVerified": "2026-10-02",
   "disclaimer": "Eligibility rules and dollar amounts change, and several rules below have scheduled changes ahead. Confirm every program at its official source before you count on it. VetPath does not determine eligibility.",
   "notRecruiter": "We do not recruit, we are not paid by any service branch, and nothing here is a pitch. This page exists because most people separate without ever having this option explained to them. If it looks worth exploring, the next conversation is with a unit recruiter or your state's National Guard office, and you should confirm every detail with them.",
   "components": [
@@ -14,7 +14,7 @@
         "State Active Duty does not count toward federal VA benefits. This catches people out.",
         "Because your state runs a Guard organization, state-funded tuition programs are usually written for Guard members specifically."
       ],
-      "source": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section12401&num=0&edition=prelim",
+      "source": "https://www.govinfo.gov/link/uscode/10/12401?link-type=html",
       "sourceLabel": "10 U.S.C. 12401, National Guard federal status"
     },
     {
@@ -23,11 +23,11 @@
       "essence": "Purely federal. One chain of command, no governor.",
       "points": [
         "The Army, Navy, Marine Corps, Air Force, and Coast Guard Reserves exist only as federal organizations. There is no state version of them.",
-        "Every day you serve is under Title 10, so there is no state-versus-federal status question to track.",
+        "Your duty is federal, under Title 10 (or Title 14 for some Coast Guard Reserve orders), so there is no state-versus-federal status question to track.",
         "Federal benefits like the Selected Reserve education benefit, TRICARE Reserve Select, and reserve retirement work the same way they do for the Guard.",
         "What you generally will not have is access to state Guard tuition programs, because there is no state organization behind you."
       ],
-      "source": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section10101&num=0&edition=prelim",
+      "source": "https://www.govinfo.gov/link/uscode/10/10101?link-type=html",
       "sourceLabel": "10 U.S.C. 10101, the reserve components"
     }
   ],
@@ -39,7 +39,7 @@
       "who": "both",
       "summary": "A premium-based health plan you can buy for yourself and your family while drilling, usually for a fraction of what comparable civilian coverage costs.",
       "detail": "This is the benefit people mean when they call the Guard and Reserve a best-kept secret. By law the premium is set at 28 percent of the actuarial cost of the coverage, which is why it lands so far below market. You pay a monthly premium plus an annual deductible and cost-shares, you can see any authorized provider without a referral, and your costs are lower in network. Premiums are set per calendar year and change every January, so we link to the live cost page rather than printing a number that would go stale.",
-      "eligibility": "Members of the Selected Reserve who are not on active duty orders, not covered by the Transitional Assistance Management Program, and not eligible for or enrolled in the Federal Employees Health Benefits program. Individual Ready Reserve members do not qualify. The sponsor has to buy it for the family to be covered.",
+      "eligibility": "Members of the Selected Reserve who are not on active duty orders for more than 30 days, not covered by the Transitional Assistance Management Program, and not eligible for or enrolled in the Federal Employees Health Benefits program. Individual Ready Reserve members do not qualify. The sponsor has to be enrolled for the family to be covered.",
       "note": "Two things to know. The federal-employee exclusion is scheduled under current law to end on January 1, 2030, so a federal employee shut out today may not be later. And rates reset every January 1.",
       "source": "https://tricare.mil/Costs/Compare",
       "sourceLabel": "TRICARE, current health plan costs"
@@ -61,9 +61,9 @@
       "category": "education",
       "name": "Montgomery GI Bill, Selected Reserve",
       "who": "both",
-      "summary": "A monthly education payment for drilling members, which does not touch your Post-9/11 GI Bill entitlement.",
-      "detail": "Also called Chapter 1606. It pays a monthly amount toward school for up to 36 months while you drill. The rate is set in statute and adjusted every October 1 by the Consumer Price Index, so the current figure lives on VA's rates page. The important structural point is that this is a separate benefit from the Post-9/11 GI Bill, so using it does not spend Post-9/11 entitlement you may want later or may want to transfer to a child.",
-      "eligibility": "A six-year service obligation in the Selected Reserve, completion of initial active duty for training, a high school diploma or equivalent before finishing that training, and staying in good standing in a drilling unit. Your eligibility window generally runs 14 years from the start of that six-year obligation.",
+      "summary": "A monthly education payment for drilling members, paid as a separate benefit from your Post-9/11 GI Bill.",
+      "detail": "Also called Chapter 1606. It pays a monthly amount toward school for up to 36 months while you drill. The rate is set in statute and adjusted every October 1 by the Consumer Price Index, so the current figure lives on VA's rates page. The important structural point is that this is a separate benefit from the Post-9/11 GI Bill, so it does not draw down your Post-9/11 months one for one. There is a ceiling, though: if you qualify for more than one VA education benefit, VA generally caps combined use at 48 months, so months used here can still limit what is left later.",
+      "eligibility": "A six-year service obligation in the Selected Reserve, completion of initial active duty for training, a high school diploma or equivalent before finishing that training, and staying in good standing in a drilling unit. Your eligibility generally ends the day you leave the Selected Reserve. A 14-year window from the start of the six-year obligation applies only in specific cases, such as separating because of a disability.",
       "note": "Rates change every October 1.",
       "source": "https://www.va.gov/education/about-gi-bill-benefits/montgomery-selected-reserve/",
       "sourceLabel": "VA, Montgomery GI Bill Selected Reserve"
@@ -101,7 +101,7 @@
       "detail": "A reserve retirement needs 20 qualifying years, where a qualifying year means earning at least 50 retirement points in your anniversary year. You earn one point per day of active service, one per drill period, and up to 15 membership points a year just for being in an active status, capped at 365 a year with a lower cap on inactive-duty points. Roughly 1,000 points gets you to 20 qualifying years. Retired pay normally starts at 60, but qualifying active duty performed after January 28, 2008 reduces that start age by three months for every 90 days served, and since October 2014 those 90 days can be aggregated across two consecutive fiscal years. The reduction cannot take you below age 50.",
       "eligibility": "20 qualifying years, with the last six in a qualifying reserve status, and no retired pay from another armed force under other law.",
       "note": "Important catch: the reduced age applies to retired pay only. Retiree health care eligibility still begins at 60. TRICARE Retired Reserve exists to bridge that gap for so-called gray area retirees.",
-      "source": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section12731&num=0&edition=prelim",
+      "source": "https://www.govinfo.gov/link/uscode/10/12731?link-type=html",
       "sourceLabel": "10 U.S.C. 12731, reserve retirement"
     },
     {
@@ -176,7 +176,7 @@
       "code": "NY",
       "state": "New York",
       "program": "Recruitment Incentive and Retention Program",
-      "blurb": "Pays tuition directly to your school, up to the maximum SUNY in-state undergraduate rate per semester.",
+      "blurb": "A competitive program that pays tuition up to the SUNY in-state undergraduate rate per semester, so an award is not guaranteed. Packets are due August 15 for fall and December 15 for spring.",
       "eligibility": "In good standing with the State Military Forces, enrolled in an undergraduate degree program for at least six credit hours a semester, and a New York resident for 186 days before using it. Open to the New York Army and Air National Guard and to the New York Naval Militia, which drilling Navy, Marine Corps, and Coast Guard Reservists in New York can join.",
       "source": "https://dmna.ny.gov/education/?id=rirp",
       "sourceLabel": "NYS Division of Military and Naval Affairs"
@@ -294,7 +294,7 @@
       "state": "Alabama",
       "program": "Alabama National Guard Educational Assistance Program",
       "blurb": "A per-term grant for tuition and instruction fees, capped at the median tuition across Alabama's four-year public institutions and applied after federal benefits. Members who did well in high school and keep a 3.0 in college may also qualify for Academic Excellence Benefits, which can go toward books and other costs.",
-      "eligibility": "An active member in good standing with a federally recognized Alabama Guard unit, basic training complete, at least 17, enrolled at an accredited Alabama institution with a 2.0 GPA and a FAFSA on file, pursuing a first undergraduate or graduate degree. If the appropriation falls short, awards are prorated across institutions.",
+      "eligibility": "An active member in good standing with a federally recognized Alabama Guard unit, basic training complete, at least 17, enrolled at an accredited Alabama institution with a 2.0 GPA and a FAFSA on file, pursuing a first undergraduate or graduate degree or an approved workforce development program, and not already having 100 percent of costs covered by federal veterans education benefits that term. Payments stop 12 years after your first grant. If the appropriation falls short, awards are prorated across institutions.",
       "source": "https://admincode.legislature.state.al.us/api/chapter/300-4-4",
       "sourceLabel": "Alabama Administrative Code 300-4-4"
     },
@@ -312,7 +312,7 @@
       "state": "Iowa",
       "program": "National Guard Service Scholarship Program",
       "blurb": "Pays money directly to your school. By law the award cannot exceed the resident tuition rate at Iowa's Regents universities, and it is reduced by any federal military tuition assistance you receive. The exact amount is set each year and depends on what the legislature appropriates.",
-      "eligibility": "An Iowa resident in an Iowa Army or Air Guard unit who has finished initial active duty training and attends at least 90 percent of scheduled drills and annual training. Undergraduates only, with a FAFSA on file. Assistance stops after 120 credit hours, and you are not eligible if you have already met the requirements for a bachelor's degree.",
+      "eligibility": "An Iowa resident in an Iowa Army or Air Guard unit who has finished initial active duty training and attends at least 90 percent of scheduled drills and annual training. Undergraduates only, with a FAFSA on file. Assistance stops after 120 credit hours (130 for degree programs that qualify for the federal Edith Nourse Rogers STEM scholarship), and you are not eligible if you have already met the requirements for a bachelor's degree.",
       "source": "https://www.legis.iowa.gov/docs/code/256.210.pdf",
       "sourceLabel": "Iowa Code 256.210"
     },
@@ -374,7 +374,7 @@
       "code": "OR",
       "state": "Oregon",
       "program": "Oregon National Guard State Tuition Assistance",
-      "blurb": "A state award for undergraduate study at Oregon community colleges, public universities, Oregon Health and Science University, and eligible Oregon private nonprofit schools. It pays up to resident tuition after federal tuition assistance and other grant aid are applied first. For 2025-26 the state says budget limits mean it covers tuition only, with no fees or book allowance. Good for up to 90 community college credits or 180 quarter credits at a university.",
+      "blurb": "A state award for undergraduate study at Oregon community colleges, public universities, Oregon Health and Science University, and eligible Oregon private nonprofit schools. It pays up to resident tuition after federal tuition assistance and other grant aid are applied first. For 2025-26 the state said budget limits meant tuition only, with no fees or book allowance, and its page does not yet say whether fees and books return for 2026-27, so confirm before you count on them. Good for up to 90 community college credits or 180 quarter credits at a university.",
       "eligibility": "A currently drilling Oregon Guard member who has completed basic training, enrolled in a certificate, associate, or bachelor's program at an eligible Oregon school, not already holding a bachelor's degree, not in default on federal student loans, and keeping a 2.0 GPA. The published rule does not state a service obligation or a repayment clause.",
       "source": "https://oregonstudentaid.gov/grants/oregon-national-guard-state-tuition-assistance/",
       "sourceLabel": "Oregon Student Aid, Higher Education Coordinating Commission"
@@ -421,7 +421,7 @@
       "program": "Arkansas National Guard Tuition Waiver Program",
       "blurb": "Waives tuition at Arkansas state-supported public colleges, at private nonprofit Arkansas colleges eligible for federal student aid, and at schools offering postsecondary certificate programs. Covers up to 120 semester credit hours toward an undergraduate degree. At a private school the benefit is capped at what the state would have paid at a public college. Mandatory fees may also be covered, but only as funds allow.",
       "eligibility": "Currently serving in the Arkansas National Guard, an Arkansas resident or eligible for in-state tuition, initial active duty training complete, and not already holding a bachelor's degree, with a FAFSA and the state SAMS application on file. Worth knowing before you sign: the state recoups the money if you fail to complete the semester, stop being eligible with the Guard during it, or drop more than six credit hours after the drop date.",
-      "source": "https://military.arkansas.gov/wp-content/uploads/6CAR530_250507.pdf",
+      "source": "https://codeofarrules.arkansas.gov/Rules/Rule?levelType=section&titleID=6&chapterID=106&subChapterID=138&partID=495&subPartID=4356&sectionID=27395",
       "sourceLabel": "Code of Arkansas Rules 6 CAR 530"
     },
     {
@@ -474,7 +474,7 @@
       "state": "Maryland",
       "program": "State Tuition Waiver and State Tuition Assistance Reimbursement",
       "blurb": "Maryland runs two benefits that are normally used together. The tuition waiver waives up to 50 percent of tuition at Maryland schools that partner with the Maryland National Guard, and each partner school sets its own limits on seats and credit hours. The reimbursement then pays you back for tuition and fees you paid out of pocket, capped at $8,500 per fiscal year. Use the waiver first so you spend less of your reimbursement.",
-      "eligibility": "For the waiver, an actively drilling Maryland Guard soldier in good standing. For the reimbursement you also need at least two years left on your contract from the course start date, and time in the inactive Guard does not count. You must attempt to use Federal Tuition Assistance first if you are eligible, and passing your courses is required or the money is recouped.",
+      "eligibility": "For the waiver, an actively drilling Maryland Guard soldier in good standing. For the reimbursement you also need at least two years left on your contract from the date your course ends, and time in the inactive Guard does not count. You must attempt to use Federal Tuition Assistance first if you are eligible, and passing your courses is required or the money is recouped.",
       "source": "https://military.maryland.gov/NG/Pages/tuition-assistance.aspx",
       "sourceLabel": "Maryland Military Department"
     },
@@ -599,8 +599,8 @@
       "code": "WY",
       "state": "Wyoming",
       "program": "Wyoming National Guard Educational Assistance Plan",
-      "blurb": "Pays tuition and mandatory fees for Wyoming National Guard members at Wyoming schools. At the University of Wyoming and the community colleges it can cover the full cost of tuition and mandatory fees. At a Wyoming private school it pays the lesser of your actual cost or the average resident tuition and fees at Wyoming public schools for a 12 credit hour undergraduate load. Payment goes directly to the school, and the plan plus any federal tuition assistance cannot exceed 100 percent of your bill. Wyoming also lets you transfer unused benefits to a spouse or dependent after your initial six years, in exchange for four more years of service.",
-      "eligibility": "An active Wyoming Guard member in good standing with basic or officer training complete, committed to at least a six year enlistment, with a declared major and at least a 2.0 cumulative GPA. Worth knowing before you sign: this is a genuine repayment program. You agree in writing to serve two more years after your last funded term, failing to maintain satisfactory participation means repaying that term, and failing the six year commitment or the two year post-school service means repaying everything you received. It covers one degree or certificate within 10 years of first enrolling.",
+      "blurb": "Pays tuition and mandatory fees for Wyoming National Guard members at Wyoming schools. At the University of Wyoming and the community colleges it can cover the full cost of tuition and mandatory fees. At a Wyoming private school it pays the lesser of your actual cost or the average resident tuition and fees at Wyoming public schools for a 12 credit hour undergraduate load. Payment goes directly to the school, and the plan plus any federal tuition assistance cannot exceed 100 percent of your bill. Each member can use it for two educational goals, such as a bachelor's and then a master's, and after a completed six-year enlistment you can transfer one of the two to a college-aged dependent listed in DEERS in exchange for four more years of service.",
+      "eligibility": "An active Wyoming Guard member in good standing with basic or officer training complete, committed to at least a six year enlistment, with a declared major and at least a 2.0 cumulative GPA. Worth knowing before you sign: this is a genuine repayment program. You agree in writing to serve two more years after your last funded term, failing to maintain satisfactory participation means repaying that term, and failing the six year commitment or the two year post-school service means repaying everything you received. You have 10 years to complete your program, and a second degree carries its own commitment: a completed six-year enlistment, four more years, and two years after your last funded term.",
       "source": "https://veteranseducation.wyo.gov/state-tuition-assistance/Welcome-page",
       "sourceLabel": "Wyoming Veterans Education, W.S. 19-9-501"
     },
@@ -608,10 +608,10 @@
       "code": "ND",
       "state": "North Dakota",
       "program": "National Guard Tuition Waiver and Tuition Grants",
-      "blurb": "North Dakota runs two connected benefits. At a state-controlled North Dakota school a qualifying Guard member is entitled to a 35 percent tuition waiver, and the adjutant general reimburses the school. At a participating in-state private school the school waives 25 percent and you may receive a grant up to the cost of tuition and fees at the most expensive North Dakota University System school. Members at out-of-state or online schools may receive a grant up to 100 percent of tuition and fees at that same benchmark rate. All of it is limited by what the legislature appropriates.",
+      "blurb": "North Dakota runs two connected benefits. At a state-controlled North Dakota school a qualifying Guard member is entitled to a 35 percent tuition waiver, and the adjutant general reimburses the school. At a participating in-state private school the school waives 25 percent and you may receive a grant up to the cost of tuition and fees at the most expensive North Dakota University System school. Members at accredited schools located outside North Dakota may receive a grant up to 100 percent of tuition and fees at that same benchmark rate. All of it is limited by what the legislature appropriates.",
       "eligibility": "A qualifying member of the North Dakota National Guard maintaining satisfactory performance, meeting the adjutant general's rules, and keeping up with your school's normal course requirements. You must apply for the waiver each semester at the time of enrollment, and it stays valid only while you remain in satisfactory standing. No post-school service obligation appears in the statute.",
       "source": "https://www.ndlegis.gov/cencode/t37c07-1.pdf",
-      "sourceLabel": "North Dakota Century Code 37-07.1"
+      "sourceLabel": "North Dakota Century Code 37-07.1 and 37-07.2"
     },
     {
       "code": "SD",

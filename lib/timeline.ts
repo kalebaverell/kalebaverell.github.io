@@ -6,7 +6,7 @@
 import { realStateInfo } from "@/lib/data";
 
 /** Date the deadline/source details below were last checked against the linked official pages. */
-export const TIMELINE_VERIFIED = "2026-07-10";
+export const TIMELINE_VERIFIED = "2026-10-02";
 
 export type FocusArea = "benefits" | "employment" | "education" | "financial" | "family" | "wellbeing";
 
@@ -214,18 +214,20 @@ const src = {
   itf: { label: "VA - Intent to File", url: "https://www.va.gov/resources/your-intent-to-file-a-va-claim/" },
   vgli: { label: "VA - VGLI", url: "https://www.va.gov/life-insurance/options-eligibility/vgli/" },
   health: { label: "VA - apply for health care", url: "https://www.va.gov/health-care/how-to-apply/" },
+  healthElig: { label: "VA - health care eligibility", url: "https://www.va.gov/health-care/eligibility/" },
+  vaAccount: { label: "VA - create your VA.gov account", url: "https://www.va.gov/resources/creating-an-account-for-vagov/" },
   giCompare: { label: "GI Bill Comparison Tool", url: "https://www.va.gov/education/gi-bill-comparison-tool/" },
   coe: { label: "VA - apply for education benefits", url: "https://www.va.gov/education/how-to-apply/" },
   skillbridge: { label: "SkillBridge", url: "https://www.skillbridge.mil/" },
-  b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/sba-learning-platform/boots-business" },
+  b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/counseling/boots-to-business/" },
   jst: { label: "Joint Services Transcript", url: "https://jst.doded.mil/" },
   vetCenter: { label: "VA Vet Centers", url: "https://www.vetcenter.va.gov/" },
   oneSource: { label: "Military OneSource", url: "https://www.militaryonesource.mil/" },
-  ucx: { label: "DOL VETS - UCX", url: "https://www.dol.gov/agencies/vets" },
+  ucx: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   vso: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
   nextMove: { label: "My Next Move for Veterans", url: "https://www.mynextmove.org/vets/" },
   vaLoan: { label: "VA home loans", url: "https://www.va.gov/housing-assistance/home-loans/" },
-  sbp: { label: "Survivor Benefit Plan", url: "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Program/" },
+  sbp: { label: "Survivor Benefit Plan", url: "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Plan/" },
   tamp: { label: "TRICARE - TAMP", url: "https://www.tricare.mil/tamp" },
   vre: { label: "VA - VR&E (Chapter 31)", url: "https://www.va.gov/careers-employment/vocational-rehabilitation/" },
   facilities: { label: "VA facility locator", url: "https://www.va.gov/find-locations/" },
@@ -246,7 +248,7 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
     t.push({ ...x, weighted: a.priorities.includes(x.area) });
 
   // ---- P1 · T-12 to T-9 - early planning
-  push({ id: "vaAccount", phase: "p1", area: "benefits", essential: true, title: "Create your VA.gov account (ID.me / Login.gov)", notes: "Nearly every benefit below starts here. Ten minutes now, no waiting rooms later." , source: src.health });
+  push({ id: "vaAccount", phase: "p1", area: "benefits", essential: true, title: "Create your VA.gov account (ID.me / Login.gov)", notes: "Nearly every benefit below starts here. Ten minutes now, no waiting rooms later." , source: src.vaAccount });
   push({ id: "vsoEarly", phase: "p1", area: "benefits", essential: true, title: "Connect with an accredited VSO - they're free", notes: "Veteran Service Organizations (VSOs) help with claims and benefits at no cost. Never pay a percentage of your benefits to anyone.", source: src.vso });
   if (claims) push({ id: "medRecords", phase: "p1", area: "benefits", essential: true, title: "Start collecting your complete medical record", notes: "Every condition you'll claim needs to be documented while you're still in. See your provider about anything you've been ignoring." });
   if (has("employment") || has("undecided")) push({ id: "resumeDraft", phase: "p1", area: "employment", title: `Draft a civilian resume - translate ${a.mos ? `your ${a.mos} experience` : "your MOS"}`, notes: "Use the crosswalk to see how your military occupation maps to civilian titles, then our Resume scanner for recruiter-style feedback.", source: src.nextMove });
@@ -258,17 +260,17 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
   if (a.priorities.includes("wellbeing")) push({ id: "identityStart", phase: "p1", area: "wellbeing", title: "Start writing your service story", notes: "Who are you without the rank? Veterans who work this out early report smoother landings. It also becomes interview material." });
 
   // ---- P2 · T-9 to T-6 - TAP & benefits research
-  push({ id: "tap", phase: "p2", area: "benefits", essential: true, deadline: true, title: "Complete TAP (Transition Assistance Program)", notes: "Required by law - begin no later than 365 days before separation. Pick the track matching your goal (employment, education, entrepreneurship).", source: src.tap });
+  push({ id: "tap", phase: "p2", area: "benefits", essential: true, deadline: true, title: "Complete TAP (Transition Assistance Program)", notes: "Required by law - begin no later than 365 days before separation. If you are retiring rather than separating, the statute expects it to start as soon as possible inside the 24 months before your date. Pick the track matching your goal (employment, education, entrepreneurship).", source: src.tap });
   if (claims) push({ id: "conditionsList", phase: "p2", area: "benefits", essential: true, title: "List every claimable condition with your VSO", notes: "Document each one with a provider visit now - evidence gathered in uniform is the strongest evidence you'll ever have." });
   if (has("employment") || has("undecided")) push({ id: "network3", phase: "p2", area: "employment", title: "Start networking: 2–3 informational conversations a month", notes: "Most veteran hires come through people, not portals. Our Networking & mentors page lists free programs that pair you with your industry." });
   if (has("education")) push({ id: "jst", phase: "p2", area: "education", title: "Pull your Joint Services Transcript (JST) and request a credit review", notes: "Your military training may already be worth college credit - our Smart transcript tool shows how to claim it.", source: src.jst });
   if (a.family.includes("spouse")) push({ id: "spouseLicense", phase: "p2", area: "family", title: "Check spouse professional-license portability in your target state", notes: "Many states expedite or reciprocate military-spouse licenses - start the paperwork before the move, not after." });
   push({ id: "sgliPlan", phase: "p2", area: "financial", title: "Learn your life-insurance conversion window (SGLI → VGLI)", notes: "Your SGLI coverage doesn't follow you automatically. Know the post-separation deadlines now so they never sneak up.", source: src.vgli });
-  if (retiree) push({ id: "sbp", phase: "p2", area: "financial", essential: true, deadline: true, title: "Do the Survivor Benefit Plan (SBP) homework", notes: "An irrevocable retirement-day decision that affects your family for life. Talk it through with a counselor and your spouse.", source: src.sbp });
+  if (retiree) push({ id: "sbp", phase: "p2", area: "financial", essential: true, deadline: true, title: "Do the Survivor Benefit Plan (SBP) homework", notes: "A retirement-time decision that is generally irrevocable and affects your family for life - if you have a spouse or children, you are enrolled at the maximum unless you choose otherwise. Talk it through with a counselor and your spouse.", source: src.sbp });
   if (st) push({ id: "stateBenefits", phase: "p2", area: "benefits", title: `Research ${st.name} veteran benefits`, notes: `${st.agency.name} runs state-level benefits on top of your federal ones - property-tax, education, and employment programs vary a lot by state.`, source: { label: st.agency.name, url: st.agency.url } });
 
   // ---- P3 · T-6 to T-3 - applications & ramp-up
-  if (claims) push({ id: "bdd", phase: "p3", area: "benefits", essential: true, deadline: true, title: "File your BDD claim (Benefits Delivery at Discharge)", notes: "The window is 180 to 90 days before separation - file inside it and your exams happen while you're still in, so a decision can land right after you're out.", source: src.bdd });
+  if (claims) push({ id: "bdd", phase: "p3", area: "benefits", essential: true, deadline: true, title: "File your BDD claim (Benefits Delivery at Discharge)", notes: "The window is 180 to 90 days before separation, and you must be available for VA exams within 45 days of filing - file inside it and your exams happen while you're still in, so a decision can land right after you're out.", source: src.bdd });
   if (has("employment") || has("undecided")) push({ id: "applications", phase: "p3", area: "employment", essential: has("employment"), title: "Go live with applications - tailored, not sprayed", notes: "Tailor the resume per posting, use veterans' preference on federal jobs, and keep the networking conversations running in parallel." });
   if (has("education")) push({ id: "schoolApps", phase: "p3", area: "education", essential: true, deadline: true, title: "Submit school applications, FAFSA, and your GI Bill application (COE)", notes: "Apply for the Certificate of Eligibility early - schools want it in hand and processing takes time.", source: src.coe });
   if (famAny || a.targetState) push({ id: "movePlan", phase: "p3", area: "family", essential: kids, title: kids ? "Plan the move around the school calendar" : "Plan the move", notes: kids ? "Mid-year school moves are the hardest part of a PCS for kids. If the timeline allows, aim for summer - and request school records early." : "Your final move is a one-time entitlement - schedule household goods early; peak season books out." });
@@ -277,9 +279,9 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
 
   // ---- P4 · T-3 to separation - final out & the move
   push({ id: "dd214", phase: "p4", area: "benefits", essential: true, title: "Review your DD-214 line by line BEFORE signing", notes: "Errors here follow you for decades - awards, schools, deployments, character of service. Fix them while you're still standing in the building." });
-  push({ id: "healthApply", phase: "p4", area: "benefits", essential: true, title: "Apply for VA health care - don't wait for a disability rating", notes: "Enrollment is separate from claims. Recent-era combat veterans and many others have enhanced eligibility windows - check yours and apply.", source: src.health });
+  push({ id: "healthApply", phase: "p4", area: "benefits", essential: true, title: "Apply for VA health care - don't wait for a disability rating", notes: "Enrollment is separate from claims. Recent-era combat veterans and many others have enhanced eligibility windows - check yours and apply.", source: src.healthElig });
   if (famAny) push({ id: "tricareBridge", phase: "p4", area: "family", essential: true, deadline: true, title: "Bridge health coverage for the family (check TAMP)", notes: "Some separations qualify for 180 days of transitional TRICARE (TAMP). Confirm your eligibility and line up what follows it - no coverage gaps.", source: src.tamp });
-  if (a.finances === "income-now") push({ id: "ucxAware", phase: "p4", area: "financial", essential: true, title: "Know your unemployment compensation rights (UCX)", notes: "Ex-service members can file for unemployment in their state right after separation. It exists for exactly this bridge - using it is smart, not shameful.", source: src.ucx });
+  if (a.finances === "income-now") push({ id: "ucxAware", phase: "p4", area: "financial", essential: true, title: "Know your unemployment compensation rights (UCX)", notes: "If you separated under honorable conditions, you can file for unemployment (UCX) with your state's workforce agency right after separation. It exists for exactly this bridge - using it is smart, not shameful.", source: src.ucx });
   if (has("employment")) push({ id: "startDate", phase: "p4", area: "employment", title: "Target a start date that respects the move", notes: "Two to four weeks of buffer after terminal leave beats day-one burnout. You've earned a breath between uniforms." });
   push({ id: "oneSource", phase: "p4", area: "wellbeing", title: "Bookmark Military OneSource - it stays with you 365 days", notes: "Free counseling, tax help, and consultations continue for a full year after separation.", source: src.oneSource });
 
@@ -294,7 +296,7 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
   push({ id: "identityDip", phase: "p5", area: "wellbeing", essential: true, title: "Expect the month-3-to-6 dip - and know it's normal", notes: "The mission-and-identity gap usually hits after the boxes are unpacked. Vet Centers offer free, confidential readjustment counseling - no rating or enrollment needed.", source: src.vetCenter });
 
   // ---- P6 · +6 to +12 months - stabilization
-  if (claims) push({ id: "ratingReview", phase: "p6", area: "benefits", title: "Got your rating decision? Review it with your VSO", notes: "If it's wrong or incomplete, there are free, structured review paths (supplemental claim, higher-level review, board appeal). Never pay a percentage to anyone." });
+  if (claims) push({ id: "ratingReview", phase: "p6", area: "benefits", title: "Got your rating decision? Review it with your VSO", notes: "If it's wrong or incomplete, there are free, structured review paths (supplemental claim, higher-level review, board appeal), and an accredited VSO rep will help you with them at no cost." });
   if (has("employment")) push({ id: "sixMoCareer", phase: "p6", area: "employment", title: "Six-month career check: grow here or pivot?", notes: "If the fit is wrong, that's data, not failure - re-run the Pathfinder with what you now know about civilian work." });
   push({ id: "rebuildFund", phase: "p6", area: "financial", title: "Rebuild the emergency fund the move consumed", notes: "Three to six months of the new (civilian) budget - then start on longer-term goals." });
   if (has("education")) push({ id: "campusVets", phase: "p6", area: "education", title: "Plug into the campus veterans center", notes: "Tutoring, priority registration, and people who get it - students who connect early finish at higher rates." });
@@ -347,7 +349,7 @@ function narrative(phase: TimelinePhase, a: TimelineAnswers): string {
  *  public guide. */
 export const LONG_RUNWAY_TASKS: TimelineTask[] = [
   { id: "lrGiTransfer", phase: "p1", area: "education", essential: true, title: "Decide on the Post-9/11 GI Bill transfer to your spouse or kids", notes: "It can only be elected while you're still serving and adds a service commitment - the earlier the conversation, the more options stay open.", source: { label: "VA - transfer Post-9/11 GI Bill benefits", url: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" } },
-  { id: "lrTa", phase: "p1", area: "education", title: "Use Tuition Assistance while you serve", notes: "Chip away at the degree or credential now - before your GI Bill ever comes out.", source: { label: "Military OneSource - Tuition Assistance", url: "https://www.militaryonesource.mil/benefits/tuition-assistance/" } },
+  { id: "lrTa", phase: "p1", area: "education", title: "Use Tuition Assistance while you serve", notes: "Chip away at the degree or credential now - before your GI Bill ever comes out.", source: { label: "Military OneSource - Tuition Assistance", url: "https://www.militaryonesource.mil/education-employment/for-service-members/money-for-higher-education/" } },
   { id: "lrRecords", phase: "p1", area: "benefits", essential: true, title: "Build the records habit now", notes: "Every injury, treatment, and training certificate goes into one folder from today - future-you files claims from this folder." },
 ];
 

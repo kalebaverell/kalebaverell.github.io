@@ -1,5 +1,5 @@
 {
-  "lastVerified": "2026-07",
+  "lastVerified": "2026-10-02",
   "disclaimer": "Informational only - amounts and eligibility vary by person, school, employer, and year, and programs change. VetPath does not determine eligibility. Confirm every program at its official source before counting on it.",
   "programs": [
     {
@@ -40,12 +40,12 @@
       "id": "vettec",
       "layer": "education",
       "type": "Federal",
-      "name": "VET TEC (high-tech training)",
-      "amount": "Covers tuition for approved coding, IT, data, and cybersecurity programs plus a monthly housing stipend - without using your GI Bill entitlement.",
-      "eligibility": "For VA-approved tech programs. Availability is limited and program-specific - confirm current status with VA.",
-      "stackNote": "A tech on-ramp that saves your GI Bill for later.",
-      "source": "https://www.va.gov/education/about-gi-bill-benefits/how-to-use-benefits/vettec-high-tech-program/",
-      "sourceLabel": "VA.gov - VET TEC"
+      "name": "VET TEC 2.0 (high-tech training)",
+      "amount": "Pays tuition and fees directly to an approved high-tech training provider (computer programming, software, data processing, information sciences, media applications), plus money for housing and for books and supplies while you train.",
+      "eligibility": "Veterans discharged under other than dishonorable conditions, or service members within 180 days of separating, with at least 36 months of active duty and under age 62 when approved. 4,000 openings a year. If you still have Post-9/11, Montgomery GI Bill Active Duty, or DEA entitlement, VA charges 1 month of it for each month of full-time training.",
+      "stackNote": "A short, focused tech on-ramp - it uses GI Bill months only if you still have them.",
+      "source": "https://www.va.gov/education/other-va-education-benefits/vet-tec-2/",
+      "sourceLabel": "VA.gov - VET TEC 2.0"
     },
     {
       "id": "tillman",
@@ -63,10 +63,10 @@
       "layer": "education",
       "type": "Scholarship",
       "name": "Student Veterans of America",
-      "amount": "Dozens of scholarships for student veterans, funded by SVA and corporate partners.",
+      "amount": "Partner-funded scholarships for student veterans - about $90,000 a year, including field- and branch-specific awards.",
       "eligibility": "For enrolled or enrolling student veterans - apply directly.",
       "stackNote": "Field- and background-specific awards you can stack on top.",
-      "source": "https://studentveterans.org/programs/scholarships/",
+      "source": "https://studentveterans.org/programs-events/scholarships/",
       "sourceLabel": "Student Veterans of America - Scholarships"
     },
     {
@@ -85,7 +85,7 @@
       "layer": "career",
       "type": "Employer",
       "name": "Employer-paid tuition",
-      "amount": "Big employers pre-pay school - Amazon Career Choice, Walmart's Live Better U ($1/day college), and Starbucks' College Achievement Plan (100% tuition), among others.",
+      "amount": "Big employers pre-pay school - Amazon Career Choice, Walmart's Live Better U (100% of tuition and books at partner schools), and Starbucks' College Achievement Plan (100% tuition), among others.",
       "eligibility": "Often a perk from day one, even part-time. Confirm the terms with the employer.",
       "stackNote": "Let the job fund your next degree - and save your GI Bill.",
       "source": "https://careerchoice.amazon/",
@@ -100,7 +100,7 @@
       "eligibility": "For service members within ~180 days of separation, with command approval.",
       "stackNote": "Get hired before you take off the uniform.",
       "source": "https://www.skillbridge.mil/",
-      "sourceLabel": "DoD SkillBridge"
+      "sourceLabel": "SkillBridge (official program site)"
     },
     {
       "id": "fedHiring",
@@ -110,16 +110,16 @@
       "amount": "Veterans' Preference gives you an edge in federal hiring, and hard-to-fill roles can add recruitment, relocation, or retention incentives (commonly up to 25% of salary).",
       "eligibility": "For federal employment - preference eligibility depends on your service. VRA lets agencies hire eligible veterans directly.",
       "stackNote": "A faster lane into stable federal careers.",
-      "source": "https://www.fedshirevets.gov/",
-      "sourceLabel": "FedsHireVets.gov"
+      "source": "https://www.opm.gov/fedshirevets/",
+      "sourceLabel": "OPM - FedsHireVets"
     },
     {
       "id": "pslf",
       "layer": "career",
       "type": "Federal",
       "name": "Public Service Loan Forgiveness",
-      "amount": "Forgives your entire remaining federal student-loan balance after 120 qualifying monthly payments (about 10 years).",
-      "eligibility": "For full-time work with government or a nonprofit - including many healthcare, teaching, and public-safety jobs.",
+      "amount": "Forgives the remaining balance on your federal Direct Loans after 120 qualifying monthly payments (about 10 years).",
+      "eligibility": "For full-time work with a government employer or a qualifying nonprofit - including many healthcare, teaching, and public-safety jobs.",
       "stackNote": "Turns a public-service career into loan freedom.",
       "source": "https://studentaid.gov/manage-loans/forgiveness-cancellation/public-service",
       "sourceLabel": "StudentAid.gov - PSLF"
@@ -129,8 +129,8 @@
       "layer": "business",
       "type": "Federal (SBA)",
       "name": "Veteran Small Business Certification (VetCert)",
-      "amount": "Certifies your business as veteran-owned (VOSB) or service-disabled-veteran-owned (SDVOSB) - unlocking federal contract set-asides reserved for those businesses.",
-      "eligibility": "Business must be at least 51% owned and controlled by one or more veterans (SDVOSB requires a service-connected disability). Free to apply.",
+      "amount": "Certifies your business as veteran-owned (VOSB) or service-disabled-veteran-owned (SDVOSB). VOSBs can compete for VA set-aside and sole-source contracts; SDVOSBs can compete for them across the federal government.",
+      "eligibility": "Business must be small under SBA size standards and at least 51% owned and controlled by one or more veterans (SDVOSB requires a VA service-connected disability rating). Free to apply.",
       "stackNote": "For most veteran owners, certification is worth more than any grant.",
       "source": "https://certifications.sba.gov/",
       "sourceLabel": "SBA VetCert"
@@ -143,7 +143,7 @@
       "amount": "Qualifies your business for federal contracts set aside for women-owned small businesses in eligible industries.",
       "eligibility": "Business at least 51% owned and controlled by women who are U.S. citizens; EDWOSB adds economic-disadvantage criteria. Stacks with VetCert - a woman veteran can hold both.",
       "stackNote": "The women-owned set-aside lane - holds alongside the veteran one.",
-      "source": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program",
+      "source": "https://www.sba.gov/certifications/#women-owned",
       "sourceLabel": "SBA - WOSB program"
     },
     {
@@ -154,7 +154,7 @@
       "amount": "Free two-day entrepreneurship intro plus follow-on courses - the TAP entrepreneurship track.",
       "eligibility": "Transitioning service members and spouses; a Reboot version serves veterans already out.",
       "stackNote": "The free classroom before you spend a dollar.",
-      "source": "https://www.sba.gov/sba-learning-platform/boots-business",
+      "source": "https://www.sba.gov/counseling/boots-to-business/",
       "sourceLabel": "SBA - Boots to Business"
     },
     {
@@ -176,7 +176,7 @@
       "amount": "Free and low-cost training, counseling, and access-to-capital help at 100+ centers nationwide.",
       "eligibility": "Open to women entrepreneurs at every stage.",
       "stackNote": "The women-focused arm of the same free SBA network.",
-      "source": "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers",
+      "source": "https://www.sba.gov/counseling/local-assistance/resource-partners/#womens-centers",
       "sourceLabel": "SBA - Women's Business Centers"
     },
     {
@@ -184,7 +184,7 @@
       "layer": "business",
       "type": "Nonprofit (IVMF)",
       "name": "V-WISE",
-      "amount": "Entrepreneurship training program for women veterans and military spouses - online phase, in-person residency, and ongoing support.",
+      "amount": "Entrepreneurship training for women veterans, service members, and military spouses - a four-week online course, a three-day in-person conference, and an alumni network. A $75 registration fee covers course access, two nights of lodging, and most conference meals; you pay your own travel.",
       "eligibility": "Women veterans, active-duty women, and women military spouses/partners.",
       "stackNote": "Built specifically for women who served.",
       "source": "https://ivmf.syracuse.edu/programs/entrepreneurship/start-up/v-wise/",

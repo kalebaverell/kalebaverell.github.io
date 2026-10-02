@@ -1,0 +1,29 @@
+name: Data freshness check
+
+# The deploy build already refuses stale dates, but a static site that nobody
+# pushes to never rebuilds. This runs the same check weekly - Mondays 14:00 UTC,
+# an hour before the send-checkins email cron - and a red run emails whoever
+# last edited the cron line below.
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # No npm install needed: the script has no dependencies.
+      - name: Check data freshness (fails past 100 days, warns past 90)
+        run: node scripts/check-freshness.mjs

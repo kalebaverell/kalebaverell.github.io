@@ -269,8 +269,8 @@
         {
           "name": "Veterans' Preference for State Employment Examinations",
           "category": "employment",
-          "blurb": "Adds ten points to passing open-competitive state examination scores for wartime veterans receiving VA compensation, and five points for other qualifying wartime veterans.",
-          "source": "https://portal.ct.gov/DOT/Recruitment-Unit/Veterans-Preferences"
+          "blurb": "Adds ten points to a passing score on a state examination for an original appointment for wartime veterans eligible for VA disability compensation or pension, and five points for other wartime veterans. The same points extend to a spouse who cannot work because of the veteran's disability and to an unmarried surviving spouse. Veterans who received or were entitled to a campaign badge or expeditionary medal get five points if they do not qualify otherwise, as do service members in the final year of an enlistment contract (C.G.S. 5-224).",
+          "source": "https://www.cga.ct.gov/current/pub/chap_067.htm#sec_5-224"
         },
         {
           "name": "Sgt. John L. Levitow Healthcare Center and Residential Facility (Rocky Hill)",

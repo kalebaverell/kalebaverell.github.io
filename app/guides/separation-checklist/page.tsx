@@ -15,8 +15,8 @@
 //
 // EVERY task, note and source below is lifted from lib/timeline.ts rather than
 // written fresh, so the public page and the private plan can never drift into
-// contradicting each other. All 20 URLs were curl/browser-verified on Sep 18
-// 2026 (dol.gov and militarypay.defense.gov 403 to curl but load fine in a
+// contradicting each other. All URLs were re-verified on Oct 2 2026 against
+// live pages (dol.gov and militarypay.defense.gov 403 to curl but load fine in a
 // browser - bot-blocking, not rot). Re-verify on the quarterly refresh.
 import Link from "next/link";
 import { routeMeta, SITE } from "@/lib/metadata";
@@ -47,18 +47,20 @@ const SRC = {
   itf: { label: "VA - Intent to File", url: "https://www.va.gov/resources/your-intent-to-file-a-va-claim/" },
   vgli: { label: "VA - VGLI", url: "https://www.va.gov/life-insurance/options-eligibility/vgli/" },
   health: { label: "VA - apply for health care", url: "https://www.va.gov/health-care/how-to-apply/" },
+  healthElig: { label: "VA - health care eligibility", url: "https://www.va.gov/health-care/eligibility/" },
+  vaAccount: { label: "VA - create your VA.gov account", url: "https://www.va.gov/resources/creating-an-account-for-vagov/" },
   giCompare: { label: "GI Bill Comparison Tool", url: "https://www.va.gov/education/gi-bill-comparison-tool/" },
   coe: { label: "VA - apply for education benefits", url: "https://www.va.gov/education/how-to-apply/" },
   skillbridge: { label: "SkillBridge", url: "https://www.skillbridge.mil/" },
-  b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/sba-learning-platform/boots-business" },
+  b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/counseling/boots-to-business/" },
   jst: { label: "Joint Services Transcript", url: "https://jst.doded.mil/" },
   vetCenter: { label: "VA Vet Centers", url: "https://www.vetcenter.va.gov/" },
   oneSource: { label: "Military OneSource", url: "https://www.militaryonesource.mil/" },
-  ucx: { label: "DOL VETS", url: "https://www.dol.gov/agencies/vets" },
+  ucx: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   vso: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
   nextMove: { label: "My Next Move for Veterans", url: "https://www.mynextmove.org/vets/" },
   vaLoan: { label: "VA home loans", url: "https://www.va.gov/housing-assistance/home-loans/" },
-  sbp: { label: "Survivor Benefit Plan", url: "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Program/" },
+  sbp: { label: "Survivor Benefit Plan", url: "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Plan/" },
   tamp: { label: "TRICARE - TAMP", url: "https://www.tricare.mil/tamp" },
   vre: { label: "VA - VR&E (Chapter 31)", url: "https://www.va.gov/careers-employment/vocational-rehabilitation/" },
   facilities: { label: "VA facility locator", url: "https://www.va.gov/find-locations/" },
@@ -69,7 +71,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     id: "p1", label: "Early planning", window: "12 to 9 months out",
     lede: "Nothing here is urgent yet, which is exactly why most people skip it and pay for it later. These are the moves that make every later step cheaper.",
     items: [
-      { t: "Create your VA.gov account", n: "ID.me or Login.gov. Nearly every benefit below starts here. Ten minutes now, no waiting rooms later.", src: SRC.health, key: true },
+      { t: "Create your VA.gov account", n: "ID.me or Login.gov. Nearly every benefit below starts here. Ten minutes now, no waiting rooms later.", src: SRC.vaAccount, key: true },
       { t: "Connect with an accredited VSO - they are free", n: "Veteran Service Organizations help with claims and benefits at no cost. Never pay a percentage of your benefits to anyone.", src: SRC.vso, key: true },
       { t: "Start collecting your complete medical record", n: "Every condition you will claim needs to be documented while you are still in. See your provider about anything you have been ignoring.", key: true, ifYou: "expect to file a disability claim" },
       { t: "Draft a civilian resume and translate your MOS", n: "Use the crosswalk to see how your military occupation maps to civilian titles.", src: SRC.nextMove, ifYou: "are heading for employment" },
@@ -90,7 +92,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
       { t: "Pull your Joint Services Transcript and request a credit review", n: "Your military training may already be worth college credit.", src: SRC.jst, ifYou: "are heading for school" },
       { t: "Check spouse professional-license portability", n: "Many states expedite or reciprocate military-spouse licenses - start the paperwork before the move, not after.", ifYou: "have a spouse with a licensed profession" },
       { t: "Learn your life-insurance conversion window", n: "SGLI does not follow you automatically. Know the post-separation deadlines now so they never sneak up.", src: SRC.vgli },
-      { t: "Do the Survivor Benefit Plan homework", n: "An irrevocable retirement-day decision that affects your family for life. Talk it through with a counselor and your spouse.", src: SRC.sbp, key: true, due: true, ifYou: "are retiring rather than separating" },
+      { t: "Do the Survivor Benefit Plan homework", n: "A retirement-time decision that is generally irrevocable and affects your family for life. If you have a spouse or children, you are enrolled at the maximum unless you choose otherwise. Talk it through with a counselor and your spouse.", src: SRC.sbp, key: true, due: true, ifYou: "are retiring rather than separating" },
       { t: "Research your state's veteran benefits", n: "States run benefits on top of your federal ones - property tax, education, and employment programs vary a lot by state." },
     ],
   },
@@ -98,7 +100,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     id: "p3", label: "Applications and ramp-up", window: "6 to 3 months out",
     lede: "The BDD window opens and closes inside this phase. Miss it and you wait months longer for a decision, on the outside, without pay.",
     items: [
-      { t: "File your BDD claim (Benefits Delivery at Discharge)", n: "The window is 180 to 90 days before separation. File inside it and your exams happen while you are still in, so a decision can land right after you are out.", src: SRC.bdd, key: true, due: true, ifYou: "are filing a disability claim" },
+      { t: "File your BDD claim (Benefits Delivery at Discharge)", n: "The window is 180 to 90 days before separation, and you must be available for VA exams within 45 days of filing. File inside it and your exams happen while you are still in, so a decision can land right after you are out.", src: SRC.bdd, key: true, due: true, ifYou: "are filing a disability claim" },
       { t: "Go live with applications - tailored, not sprayed", n: "Tailor the resume per posting, use veterans' preference on federal jobs, and keep the networking conversations running in parallel.", ifYou: "are heading for employment" },
       { t: "Submit school applications, FAFSA, and your GI Bill application", n: "Apply for the Certificate of Eligibility early - schools want it in hand and processing takes time.", src: SRC.coe, key: true, ifYou: "are heading for school" },
       { t: "Plan the move around the school calendar", n: "Mid-year school moves are the hardest part of a PCS for kids. If the timeline allows, aim for summer, and request school records early.", ifYou: "are moving with children" },
@@ -110,9 +112,9 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     lede: "One signature in this phase follows you for the rest of your life. Read it before you sign it.",
     items: [
       { t: "Review your DD-214 line by line BEFORE signing", n: "Errors here follow you for decades - awards, schools, deployments, character of service. Fix them while you are still standing in the building.", key: true },
-      { t: "Apply for VA health care - do not wait for a disability rating", n: "Enrollment is separate from claims. Recent-era combat veterans and many others have enhanced eligibility windows.", src: SRC.health, key: true },
+      { t: "Apply for VA health care - do not wait for a disability rating", n: "Enrollment is separate from claims. Recent-era combat veterans and many others have enhanced eligibility windows.", src: SRC.healthElig, key: true },
       { t: "Bridge health coverage for the family", n: "Some separations qualify for 180 days of transitional TRICARE (TAMP). Confirm your eligibility and line up what follows it - no coverage gaps.", src: SRC.tamp, key: true, due: true, ifYou: "have family on your coverage" },
-      { t: "Know your unemployment compensation rights (UCX)", n: "Ex-service members can file for unemployment in their state right after separation. It exists for exactly this bridge - using it is smart, not shameful.", src: SRC.ucx, key: true, ifYou: "will not have income waiting" },
+      { t: "Know your unemployment compensation rights (UCX)", n: "If you separated under honorable conditions, you can file for unemployment (UCX) with your state's workforce agency right after separation. It exists for exactly this bridge - using it is smart, not shameful.", src: SRC.ucx, key: true, ifYou: "will not have income waiting" },
       { t: "Bookmark Military OneSource - it stays with you 365 days", n: "Free counseling, tax help, and consultations continue for a full year after separation.", src: SRC.oneSource },
     ],
   },
@@ -131,7 +133,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     id: "p6", label: "Stabilization", window: "6 months to 1 year out",
     lede: "Far enough out that nobody is checking on you any more. This is where the honest reassessments belong.",
     items: [
-      { t: "Got your rating decision? Review it with your VSO", n: "If it is wrong or incomplete there are free, structured review paths - supplemental claim, higher-level review, board appeal. Never pay a percentage to anyone.", ifYou: "filed a disability claim" },
+      { t: "Got your rating decision? Review it with your VSO", n: "If it is wrong or incomplete there are free, structured review paths - supplemental claim, higher-level review, board appeal - and an accredited VSO rep will help you with them at no cost.", ifYou: "filed a disability claim" },
       { t: "Six-month career check: grow here or pivot?", n: "If the fit is wrong, that is data, not failure.", ifYou: "have started work" },
       { t: "Rebuild the emergency fund the move consumed", n: "Three to six months of the new civilian budget, then start on longer-term goals." },
       { t: "Plug into the campus veterans centre", n: "Tutoring, priority registration, and people who get it. Students who connect early finish at higher rates.", ifYou: "are in school" },

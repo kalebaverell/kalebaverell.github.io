@@ -68,7 +68,7 @@ export default function TrustPage() {
             ["ti-heart-handshake", "Free accredited help comes first", "Accredited VSO and county service officers are free. We will never point you to paid claims help."],
             ["ti-settings", "Explainable engines, not a black box", "Fit scores and benefit tiers come from deterministic rules built on your own answers - every recommendation shows its reasons."],
             ["ti-lock", "Your data stays yours", "Browse anonymously and everything stays in your browser. Create an account and your plan is saved privately to it - encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
-            ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Stale dates are treated as bugs - a quarterly re-verification is part of the operating rhythm."],
+            ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Every build of this site checks those dates and stops if any is more than 100 days old, and we re-verify on a quarterly rhythm."],
             ["ti-urgent", "Crisis support is always visible", "Veterans Crisis Line: dial 988, then press 1 - free, confidential, 24/7, on every page."],
           ].map(([icon, title, body]) => (
             <div key={title as string} className="card">

@@ -15,7 +15,7 @@ const RULES: { test: RegExp; resources: TaskResource[] }[] = [
     { label: "Transfer Post-9/11 GI Bill benefits (VA.gov)", href: "https://www.va.gov/education/transfer-post-9-11-gi-bill-benefits/" },
   ]},
   { test: /tuition assistance/i, resources: [
-    { label: "Tuition Assistance (Military OneSource)", href: "https://www.militaryonesource.mil/benefits/tuition-assistance/" },
+    { label: "Tuition Assistance (Military OneSource)", href: "https://www.militaryonesource.mil/education-employment/for-service-members/money-for-higher-education/" },
   ]},
   { test: /\bcool\b|civilian credential/i, resources: [
     { label: "DoD COOL - credentialing opportunities", href: "https://www.cool.osd.mil/" },

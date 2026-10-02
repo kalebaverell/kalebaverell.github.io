@@ -5,10 +5,12 @@
   "description": "VetPath — a personalized life-planning and benefits-navigation prototype for U.S. veterans. Planning/education tool only; not the VA. Sample data only.",
   "scripts": {
     "dev": "next dev",
+    "check:freshness": "node scripts/check-freshness.mjs",
+    "prebuild": "node scripts/check-freshness.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build"
+    "export": "npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

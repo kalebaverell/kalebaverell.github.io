@@ -1,5 +1,6 @@
 {
-  "_note": "SAMPLE / DEMO DATA - career paths for the Pathfinder decision engine. Pay and outlook are sourced from the BLS Occupational Outlook Handbook (May 2025 medians and 2025–35 projections, as labeled per figure) and O*NET OnLine; figures change over time - verify current numbers at bls.gov/ooh. Entrepreneur-track figures use the closest proxy occupation (no SOC code exists for business ownership). attrs are 0–5 on: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. speed = time to first real paycheck on this path.",
+  "_note": "Career paths for the Pathfinder decision engine. Pay and outlook are sourced from the BLS Occupational Outlook Handbook (May 2025 medians and 2025-35 projections, as labeled per figure) and O*NET OnLine; figures change over time - verify current numbers at bls.gov/ooh. Entrepreneur-track figures use the closest proxy occupation (no SOC code exists for business ownership). attrs are 0-5 on: hands, tech, people, data, lead, risk, physical, outdoor, care, autonomy. speed = time to first real paycheck on this path.",
+  "lastVerified": "2026-10-01",
   "careers": [
     {
       "id": "cybersecurity-analyst", "label": "Cybersecurity analyst", "track": "employment", "icon": "ti-shield-lock",

@@ -1,16 +1,16 @@
 {
-  "_note": "SAMPLE / DEMO DATA - networking and mentorship resources. Verify each program directly; availability changes.",
+  "_note": "Networking and mentorship programs - real organizations, each linked to its own site (every URL status-checked 2026-08-23, VSO and NACVSO links re-pointed 2026-10-02). Not an endorsement; availability changes, so verify each directly.",
   "general": [
     { "name": "American Corporate Partners (ACP)", "what": "Free year-long 1-on-1 mentorship with a corporate mentor.", "url": "https://www.acp-usa.org" },
     { "name": "Veterati", "what": "Free on-demand phone mentorship - book vets and hiring managers by industry.", "url": "https://www.veterati.com" },
     { "name": "LinkedIn for Veterans", "what": "Free LinkedIn Premium Career year + veteran community programs.", "url": "https://socialimpact.linkedin.com/programs/veterans" },
     { "name": "RallyPoint", "what": "Military & veteran professional network for peer connections.", "url": "https://www.rallypoint.com" },
-    { "name": "Local VSO posts (VFW / American Legion / DAV)", "what": "In-person community, job leads, and benefits help near you.", "url": "https://www.va.gov/vso/" }
+    { "name": "Local VSO posts (VFW / American Legion / DAV)", "what": "In-person community, job leads, and benefits help near you.", "url": "https://www.va.gov/get-help-from-accredited-representative/find-rep/" }
   ],
   "vaSpecific": [
     { "name": "VA benefits & facility events", "what": "Claims clinics, town halls, and benefits fairs at VA facilities.", "url": "https://www.va.gov/outreach-and-events/events/" },
     { "name": "Vet Centers", "what": "Community counseling + peer connection, separate from VA hospitals.", "url": "https://www.vetcenter.va.gov" },
-    { "name": "County veteran service officers", "what": "Your free local benefits navigator - and a networking node.", "url": "https://www.nacvso.org" }
+    { "name": "County veteran service officers", "what": "Your free local benefits navigator - and a networking node.", "url": "https://www.nacvso.org/county-veterans-service-officers" }
   ],
   "byTrack": {
     "employment": [
@@ -24,7 +24,7 @@
       { "name": "Warrior-Scholar Project", "what": "Academic boot camps easing the jump to college rigor.", "url": "https://www.warrior-scholar.org" }
     ],
     "trades": [
-      { "name": "Helmets to Hardhats", "what": "Direct placement into registered building-trade apprenticeships.", "url": "https://helmetstohardhats.org" },
+      { "name": "Helmets to Hardhats", "what": "Connects veterans with union building-trades careers and registered apprenticeships; the local apprenticeship program decides admission.", "url": "https://helmetstohardhats.org" },
       { "name": "Union locals (IBEW, UA, Ironworkers)", "what": "Apprenticeship intake + brotherhood that mirrors unit culture." },
       { "name": "VFW/Legion halls in trade towns", "what": "Where the local hiring actually happens - show up." }
     ],
@@ -38,7 +38,7 @@
     "women": [
       { "name": "Women Veterans Call Center", "what": "1-855-829-6636 - navigators for women-specific VA services.", "url": "https://www.va.gov/womenvet/" },
       { "name": "V-WISE (IVMF)", "what": "Entrepreneurship training for women veterans & spouses.", "url": "https://ivmf.syracuse.edu" },
-      { "name": "Women's Business Centers (SBA)", "what": "Free and low-cost business training, counseling, and access-to-capital help at 100+ centers.", "url": "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" }
+      { "name": "Women's Business Centers (SBA)", "what": "Free and low-cost business training, counseling, and access-to-capital help at 100+ centers.", "url": "https://www.sba.gov/counseling/local-assistance/resource-partners/#womens-centers" }
     ],
     "minority": [
       { "name": "MBDA Business Centers", "what": "Growth help for minority-owned businesses - stacks with veteran status.", "url": "https://www.mbda.gov" },

@@ -15,10 +15,10 @@ export const metadata = routeMeta(
 
 const OFFICIAL = [
   { label: "SBA VetCert (VOSB / SDVOSB certification)", url: "https://certifications.sba.gov/" },
-  { label: "SBA - Women-Owned Small Business program (WOSB / EDWOSB)", url: "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program" },
+  { label: "SBA - Women-Owned Small Business program (WOSB / EDWOSB)", url: "https://www.sba.gov/certifications/#women-owned" },
   { label: "SBA - Veteran-owned businesses (OVBD, VBOCs)", url: "https://www.sba.gov/counseling/grow-your-business/#veteran-owned" },
-  { label: "SBA - Boots to Business", url: "https://www.sba.gov/sba-learning-platform/boots-business" },
-  { label: "SBA - Women's Business Centers", url: "https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" },
+  { label: "SBA - Boots to Business", url: "https://www.sba.gov/counseling/boots-to-business/" },
+  { label: "SBA - Women's Business Centers", url: "https://www.sba.gov/counseling/local-assistance/resource-partners/#womens-centers" },
   { label: "IVMF - V-WISE (women veterans & spouses)", url: "https://ivmf.syracuse.edu/programs/entrepreneurship/start-up/v-wise/" },
   { label: "Grants.gov (the official federal grant database)", url: "https://www.grants.gov/" },
 ];
@@ -82,8 +82,9 @@ export default function BusinessFundingGuide() {
         <ul style={{ maxWidth: 640, paddingLeft: 20 }}>
           <li style={{ marginBottom: 8 }}>
             <strong>VetCert (VOSB / SDVOSB)</strong> - the SBA&apos;s free certification for
-            businesses at least 51% veteran-owned and controlled; service-disabled adds the SDVOSB
-            tier with its own set-asides.{" "}
+            businesses at least 51% veteran-owned and controlled. Certified VOSBs can compete for VA
+            set-aside and sole-source contracts; service-disabled adds the SDVOSB tier, which can
+            compete for set-asides across the federal government.{" "}
             <a href="https://certifications.sba.gov/" target="_blank" rel="noopener noreferrer">
               Apply at SBA VetCert <i className="ti ti-external-link" aria-hidden="true" />
             </a>
@@ -91,7 +92,7 @@ export default function BusinessFundingGuide() {
           <li>
             <strong>WOSB / EDWOSB</strong> - the parallel certification for businesses at least
             51% women-owned, opening women-owned set-asides in eligible industries.{" "}
-            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.sba.gov/certifications/#women-owned" target="_blank" rel="noopener noreferrer">
               SBA WOSB program <i className="ti ti-external-link" aria-hidden="true" />
             </a>{" "}
             And the part almost nobody tells women veterans: <strong>these stack.</strong> A
@@ -112,7 +113,7 @@ export default function BusinessFundingGuide() {
           <li style={{ marginBottom: 8 }}>
             <strong>Boots to Business</strong> - the SBA&apos;s free entrepreneurship course inside
             TAP, with a Reboot version for veterans already out.{" "}
-            <a href="https://www.sba.gov/sba-learning-platform/boots-business" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.sba.gov/counseling/boots-to-business/" target="_blank" rel="noopener noreferrer">
               SBA <i className="ti ti-external-link" aria-hidden="true" />
             </a>
           </li>
@@ -145,7 +146,7 @@ export default function BusinessFundingGuide() {
           <li style={{ marginBottom: 8 }}>
             <strong>Women&apos;s Business Centers</strong> - 100+ SBA-backed centers offering
             training, counseling, and access-to-capital help.{" "}
-            <a href="https://www.sba.gov/local-assistance/resource-partners/womens-business-centers" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.sba.gov/counseling/local-assistance/resource-partners/#womens-centers" target="_blank" rel="noopener noreferrer">
               Find a center <i className="ti ti-external-link" aria-hidden="true" />
             </a>
           </li>
