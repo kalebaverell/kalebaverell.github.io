@@ -86,7 +86,7 @@ export function datasetFacts(): DatasetFacts[] {
     facts("state", `${programs} programs in ${states.filter((s) => s.code !== "DC").length} states + D.C.`,
       states.flatMap((s) => [s.agency.url, ...s.programs.map((p) => p.source)]),
       STATE_BENEFITS.lastVerified),
-    facts("federal", `${BENEFITS.length} benefit categories`,
+    facts("federal", `${BENEFITS.filter((b: any) => b.id !== "state-benefits").length} core federal categories, plus a state-benefits overview`,
       BENEFITS.flatMap((b: any) => [b.official?.url, ...(b.sources || [])]),
       oldest(BENEFITS.map((b: any) => b.lastVerified))),
     facts("careers", `${CAREERS.length} career paths`,

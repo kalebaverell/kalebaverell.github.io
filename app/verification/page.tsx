@@ -34,6 +34,8 @@ export default function VerificationPage() {
   const states = STATE_BENEFITS.states.filter((s) => s.code !== "DC").length;
   const programs = STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0);
   const metros = METROS.filter((m: any) => m.official).length;
+  // BENEFITS also carries the "state-benefits" overview card; it is not a federal category.
+  const federal = BENEFITS.filter((b: any) => b.id !== "state-benefits").length;
   const runs = [...VERIFICATION_LOG.runs].sort(newestFirst);
   const corrections = [...VERIFICATION_LOG.corrections].sort(newestFirst);
   const open = VERIFICATION_LOG.open;
@@ -53,7 +55,7 @@ export default function VerificationPage() {
         <Stat n={total.urls} l="unique source links behind the data" />
         <Stat n={`${total.pct}%`} l="of those links are on .gov or .mil addresses" />
         <Stat n={programs} l={`state programs across ${states} states + D.C., each linked to its official page`} />
-        <Stat n={BENEFITS.length} l="federal benefit categories, each with its official sources" />
+        <Stat n={federal} l="core federal benefit categories, each with its official sources" />
         <Stat n={CAREERS.length} l="career paths with BLS pay and outlook figures" />
         <Stat n={metros} l="metros with cited cost, rent, jobs and VA facility data" />
       </div>
