@@ -4,22 +4,56 @@
 // notes carry user_id via the column default (auth.uid()); anonymous notes are
 // welcome too, because most of the veterans Frank sends will not have accounts.
 // When Supabase is not configured (local fallback), the box degrades to email.
-import { useState } from "react";
+//
+// Report mode (Oct 2026): "Report an error" links (components/ReportErrorLink)
+// open this box at /feedback#report and stash the item the veteran was looking
+// at in sessionStorage. The item is shown above the box, so the veteran sees
+// exactly what will be sent, and it is written into the note body - no new
+// column, and nothing they cannot read before pressing Send.
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { track } from "@/lib/track";
+import { REPORT_ITEM_KEY } from "@/components/ReportErrorLink";
+
+/** Leaves room for the "[Error report] item" prefix inside the 2000-character body check. */
+const REPORT_BODY_MAX = 1780;
+/** An abandoned report stash older than this never rides along with a later note. */
+const REPORT_STASH_TTL_MS = 10 * 60 * 1000;
 
 export default function FeedbackForm() {
   const [body, setBody] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [report, setReport] = useState<{ item: string | null } | null>(null);
+
+  // Read once after mount: neither sessionStorage nor the hash exists in the
+  // static build. The stash is cleared on read either way.
+  useEffect(() => {
+    let fresh = false;
+    let item: string | null = null;
+    try {
+      const raw = sessionStorage.getItem(REPORT_ITEM_KEY);
+      sessionStorage.removeItem(REPORT_ITEM_KEY);
+      if (raw) {
+        const v = JSON.parse(raw) as { item?: unknown; at?: unknown };
+        if (typeof v.at === "number" && Date.now() - v.at < REPORT_STASH_TTL_MS) {
+          fresh = true;
+          if (typeof v.item === "string" && v.item.trim()) item = v.item.trim().slice(0, 200);
+        }
+      }
+    } catch { /* hint only */ }
+    if (fresh || window.location.hash === "#report") setReport({ item });
+  }, []);
 
   async function submit() {
     const trimmed = body.trim();
     if (trimmed.length < 3 || !supabase) return;
     setState("sending");
     // Where the note came from - a same-origin path only, never a full URL and
-    // never another site. The in-app asks (FeedbackAsk) stash their own path on
-    // click, because a client-side route transition leaves document.referrer
-    // untouched; the referrer is the fallback for a plain link or a fresh load.
+    // never another site. The in-app asks (FeedbackAsk, ReportErrorLink) stash
+    // their own path on click, because a client-side route transition leaves
+    // document.referrer untouched; the referrer is the fallback for a plain
+    // link or a fresh load.
     let page: string | null = null;
     try {
       const stashed = sessionStorage.getItem("vp_feedback_from");
@@ -31,7 +65,10 @@ export default function FeedbackForm() {
         if (r && r.startsWith(window.location.origin)) page = new URL(r).pathname.slice(0, 200);
       }
     } catch { /* hint only */ }
-    const { error } = await supabase.from("feedback").insert({ body: trimmed.slice(0, 2000), page });
+    // An error report starts with a fixed tag so it can be found with one filter
+    // (body like '[Error report]%') - no schema change.
+    const note = report ? `[Error report]${report.item ? ` ${report.item}` : ""}\n\n${trimmed}` : trimmed;
+    const { error } = await supabase.from("feedback").insert({ body: note.slice(0, 2000), page });
     if (error) { setState("error"); return; }
     track("feedback-sent");
     setBody("");
@@ -46,9 +83,16 @@ export default function FeedbackForm() {
         </div>
         <h2 style={{ margin: "0 0 8px" }}>Received.</h2>
         <p className="muted" style={{ maxWidth: 420, margin: "0 auto 18px" }}>
-          Thank you. Your note goes straight to the founders, and it shapes what gets built next.
+          {report ? (
+            <>
+              Thank you. A person checks every report against the official source. If we got it
+              wrong, the fix is logged on our <Link href="/verification">verification record</Link>.
+            </>
+          ) : (
+            "Thank you. Your note goes straight to the founders, and it shapes what gets built next."
+          )}
         </p>
-        <button type="button" className="btn ghost sm" onClick={() => setState("idle")}>
+        <button type="button" className="btn ghost sm" onClick={() => { setState("idle"); setReport(null); }}>
           Send another note
         </button>
       </div>
@@ -69,15 +113,24 @@ export default function FeedbackForm() {
   return (
     <div className="card">
       <label htmlFor="fb-body" style={{ display: "block", fontWeight: 600, color: "var(--ink-strong)", marginBottom: 6 }}>
-        What would help you most?
+        {report ? "What looks wrong?" : "What would help you most?"}
       </label>
+      {report?.item && (
+        <p className="small muted" style={{ margin: "0 0 8px" }}>
+          Reporting: <strong style={{ color: "var(--ink-strong)" }}>{report.item}</strong>
+        </p>
+      )}
       <textarea
         id="fb-body"
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        maxLength={2000}
+        maxLength={report ? REPORT_BODY_MAX : 2000}
         rows={5}
-        placeholder="A suggestion, something missing, or something we got wrong. Blunt is useful - a sentence is plenty."
+        placeholder={
+          report
+            ? "What did you see, and what does the official source say? A sentence is plenty."
+            : "A suggestion, something missing, or something we got wrong. Blunt is useful - a sentence is plenty."
+        }
         style={{ width: "100%", boxSizing: "border-box", resize: "vertical", padding: "12px 14px", borderRadius: 10, border: "1px solid var(--border)", background: "var(--surface)", color: "var(--ink)", font: "inherit", lineHeight: 1.55 }}
       />
       <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginTop: 12 }}>

@@ -70,7 +70,8 @@ export default function StateBenefitsGuide() {
         details change and the source is the only version that counts.
       </p>
       <p className="small muted">
-        Last verified against each state&apos;s official pages {fmtMonth(STATE_BENEFITS.lastVerified || "")} - re-verified quarterly.
+        Last verified against each state&apos;s official pages {fmtMonth(STATE_BENEFITS.lastVerified || "")} -{" "}
+        <Link href="/verification">re-verified quarterly, with every correction logged</Link>.
         Want the programs that apply to <em>you</em>, ranked into a plan?{" "}
         <Link href="/onboarding">Build your gameplan</Link> - free, about ten minutes.
       </p>

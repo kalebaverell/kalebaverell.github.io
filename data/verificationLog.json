@@ -1,0 +1,169 @@
+{
+  "_note": "Public verification record, rendered at /verification. Every entry must trace to a report or commit in this repo (the `report` field, not shown on the page). Add a run after every refresh or link check; add a correction whenever something we published was wrong; move anything unconfirmed to `open`; never delete a correction. Plain language, no em dashes - this text is shown to veterans as written.",
+  "owner": "Kaleb Averell",
+  "contact": "kaleb@vetpathusa.com",
+  "datasets": {
+    "state": { "label": "State benefits", "sources": "Each state's veterans, revenue and wildlife agencies, and state law", "cadence": "Quarterly" },
+    "federal": { "label": "Federal benefits", "sources": "VA.gov, DOL VETS, SBA, Veterans Crisis Line", "cadence": "Quarterly" },
+    "careers": { "label": "Career pay and outlook", "sources": "BLS Occupational Outlook Handbook, O*NET OnLine", "cadence": "Yearly, with each new BLS edition" },
+    "relocation": { "label": "Relocation data", "sources": "BEA price parities, HUD Fair Market Rents, BLS unemployment, VA facility pages", "cadence": "Quarterly" },
+    "family": { "label": "Family resources", "sources": "VA.gov, VA Caregiver Support, Military OneSource", "cadence": "Quarterly" },
+    "funding": { "label": "Training funding", "sources": "VA, SBA, and each program's own page", "cadence": "Quarterly" },
+    "reserves": { "label": "Guard and Reserve", "sources": "U.S. Code, TRICARE, VA, and each state's Guard education page or statute", "cadence": "Quarterly" },
+    "timeline": { "label": "Transition timeline", "sources": "VA.gov, DoD TAP, TRICARE, DOL, U.S. Code", "cadence": "Quarterly" },
+    "links": { "label": "Source links" }
+  },
+  "runs": [
+    {
+      "id": "2026-10-02-timeline",
+      "date": "2026-10-02",
+      "title": "Transition timeline re-check",
+      "covers": [],
+      "summary": [
+        "Re-checked all 22 official sources and every dated rule in the transition timeline. The core deadlines were unchanged: TAP, BDD, TAMP, VGLI, SkillBridge, Intent to File, Military OneSource and the GI Bill transfer.",
+        "Replaced 3 broken or moved links (Tuition Assistance, Survivor Benefit Plan, Boots to Business) and re-pointed 2 citations to the page that actually states the rule (UCX, VA health care eligibility)."
+      ],
+      "report": "docs/refresh-reports/refresh-2026-10-02.md; commit 28b973d"
+    },
+    {
+      "id": "2026-10-02-funding-reserves",
+      "date": "2026-10-02",
+      "title": "Training funding and Guard and Reserve re-check",
+      "covers": ["funding", "reserves"],
+      "summary": [
+        "Re-checked all 18 funding programs, both reserve component cards, all 10 reserve benefits and all 53 state Guard education entries against official sources.",
+        "Corrected the funding and reserve items listed under Found and fixed, and moved three U.S. Code citations to GovInfo while uscode.house.gov was down for maintenance."
+      ],
+      "report": "docs/refresh-reports/refresh-2026-10-02.md; commit 28b973d"
+    },
+    {
+      "id": "2026-10-02-family",
+      "date": "2026-10-02",
+      "title": "Family resources re-check",
+      "covers": ["family"],
+      "summary": [
+        "Re-read the 5 dated family program rules on their official pages and confirmed each unchanged: the GI Bill transfer, Chapter 35 dependents' education, the two VA caregiver programs and CHAMPVA.",
+        "The general caregiver support link had come to point at VA's page for the other caregiver program, so it now links the right page."
+      ],
+      "report": "docs/refresh-reports/refresh-2026-10-02.md lines 16-23; commit 28b973d"
+    },
+    {
+      "id": "2026-10-01-quarterly",
+      "date": "2026-10-01",
+      "title": "October quarterly refresh",
+      "covers": ["state", "federal", "careers", "relocation"],
+      "summary": [
+        "State benefits: all 50 states and D.C. re-checked against official sources. 61 program details corrected, 25 links moved to the page that now holds the program, 4 programs added and 5 renamed or split, none removed. Programs went from 259 to 264.",
+        "2 state programs could not be confirmed on a current official page. Both are listed under Still open.",
+        "Federal benefits: all 11 categories re-checked; 6 unchanged, 5 corrected.",
+        "Careers: all 15 pay and outlook figures moved to the new BLS edition (May 2025 pay, 2025-35 projections), each re-read from bls.gov. Four earlier claim checks were settled: 3 confirmed, 1 partly confirmed and reworded.",
+        "Relocation: unemployment updated to August 2026 for all 28 metros, cost of living re-matched to BEA's latest release (2024), and all 28 VA medical center links confirmed. HUD rents were carried forward; see Still open.",
+        "The corrections that change what a veteran is told are listed under Found and fixed."
+      ],
+      "report": "docs/refresh-reports/refresh-2026-10-01.md lines 11-17 (summary), 121-212 (state change log); commit d6e5b3e"
+    },
+    {
+      "id": "2026-09-21-state-figures",
+      "date": "2026-09-21",
+      "title": "State dollar figures, early check",
+      "covers": [],
+      "summary": [
+        "Checked state program dollar figures, Texas and California first, against the agency pages that publish them.",
+        "Found two problems and fixed both: Texas's rating brackets and missing dollar amounts, and an Alaska figure whose cited page did not state it."
+      ],
+      "report": "commit 737fd33"
+    },
+    {
+      "id": "2026-09-21-citations",
+      "date": "2026-09-21",
+      "title": "Separation checklist sources, early check",
+      "covers": [],
+      "summary": [
+        "Re-checked the 20 official sources cited on the public separation checklist. 18 responded normally; dol.gov and militarypay.defense.gov block automated checks and were confirmed in a browser.",
+        "Re-confirmed five deadlines against their sources: VGLI, BDD, TAMP, SkillBridge and TAP.",
+        "SkillBridge moved to a new address, so all 7 links to it were updated."
+      ],
+      "report": "commit 5896a81"
+    },
+    {
+      "id": "2026-08-23-link-check",
+      "date": "2026-08-23",
+      "title": "First full link check",
+      "covers": [],
+      "summary": [
+        "Checked every official source link in the site's data and code, the first full check since launch.",
+        "9 links had been moved or removed by their agencies (11 places on the site). Each was replaced with the current page, and every replacement was confirmed working first.",
+        "Links that block automated checks (bls.gov, dol.gov, mass.gov and others) were left in place because they open normally in a browser."
+      ],
+      "report": "commit 740898f"
+    },
+    {
+      "id": "2026-07-08-research",
+      "date": "2026-07-08",
+      "title": "First full research pass",
+      "covers": ["state", "federal", "careers", "family"],
+      "summary": [
+        "Researched all 50 states and D.C. from official state sources: 259 programs, each linked to its official page.",
+        "Verified all 11 federal benefit categories against VA.gov, DOL and SBA, each with its sources and the date checked.",
+        "Grounded the career paths in BLS pay and outlook (May 2024 pay, 2024-34 projections) and O*NET.",
+        "Checked family program rules (caregiver support, dependents' education, GI Bill transfer, CHAMPVA) against official sources."
+      ],
+      "report": "docs/BENEFITS_RESEARCH_NOTES.md lines 7-16; commit 23b2ac3 (data/stateBenefits.json lastVerified 2026-07-08)"
+    }
+  ],
+  "corrections": [
+    { "date": "2026-10-02", "dataset": "funding", "where": "Training funding", "item": "VET TEC", "was": "Said VET TEC pays for tech training without using your GI Bill entitlement.", "now": "VA replaced it with VET TEC 2.0: at least 36 months of active duty, 4,000 openings a year, and if you still have GI Bill entitlement, VA charges 1 month of it for each month of full-time training.", "source": "https://www.va.gov/education/other-va-education-benefits/vet-tec-2/", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "funding", "where": "Training funding", "item": "Employer tuition programs", "was": "Described Walmart's program as $1 a day college.", "now": "Walmart dropped the $1 a day fee in August 2021 and pays 100% of tuition and books at partner schools.", "source": "https://corporate.walmart.com/news/2021/07/27/walmart-to-pay-100-of-college-tuition-and-books-for-associates", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "funding", "where": "Training funding", "item": "Student Veterans of America scholarships", "was": "Said SVA offers dozens of scholarships.", "now": "SVA lists 9 awards totaling about $90,000 a year.", "source": "https://studentveterans.org/programs-events/scholarships/", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "funding", "where": "Business funding", "item": "VetCert", "was": "Implied veteran-owned (VOSB) set-asides apply across the federal government.", "now": "VOSB set-asides are at VA; service-disabled (SDVOSB) set-asides apply across the federal government.", "source": "https://www.sba.gov/veterans", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "reserves", "where": "Guard and Reserve", "item": "Montgomery GI Bill Selected Reserve", "was": "Said eligibility generally runs 14 years and that it does not touch your Post-9/11 entitlement.", "now": "Eligibility generally ends the day you leave the Selected Reserve (the 14-year window applies only in specific cases), and combined use of VA education benefits is generally capped at 48 months.", "source": "https://www.va.gov/education/about-gi-bill-benefits/montgomery-selected-reserve/", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "reserves", "where": "Guard and Reserve", "item": "TRICARE Reserve Select", "was": "Left out the limit on active duty orders.", "now": "It is for Selected Reserve members not on active duty orders for more than 30 days; Individual Ready Reserve members do not qualify.", "source": "https://tricare.mil/Plans/HealthPlans/TRS", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "reserves", "where": "Maryland", "item": "Guard tuition reimbursement", "was": "Measured the two-year contract requirement from the course start date.", "now": "It is measured from the date your course ends.", "source": "https://military.maryland.gov/NG/Pages/tuition-assistance.aspx", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "reserves", "where": "Wyoming", "item": "Guard Educational Assistance Plan", "was": "Said it covers one degree or certificate.", "now": "Members can use it for two educational goals, and after a completed six-year enlistment can transfer one to a college-aged dependent for four more years of service.", "source": "https://veteranseducation.wyo.gov/state-tuition-assistance/Welcome-page", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "timeline", "where": "Transition timeline", "item": "Survivor Benefit Plan", "was": "Called SBP an irrevocable retirement-day decision.", "now": "It is generally irrevocable, with a limited withdrawal window, and members with a spouse or children are enrolled at the maximum unless they choose otherwise.", "source": "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Plan/Stopping-SBP/", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "timeline", "where": "Transition timeline", "item": "Unemployment compensation (UCX)", "was": "Cited a Labor Department page that does not describe UCX, and left out the discharge condition.", "now": "Cites DOL's UCX page and notes you must have separated under honorable conditions.", "source": "https://oui.doleta.gov/unemploy/ucx.asp", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "timeline", "where": "Transition timeline", "item": "Tuition Assistance", "was": "Linked a Military OneSource page that no longer exists.", "now": "Links the page that now covers Tuition Assistance.", "source": "https://www.militaryonesource.mil/education-employment/for-service-members/money-for-higher-education/", "report": "docs/refresh-reports/refresh-2026-10-02.md" },
+    { "date": "2026-10-02", "dataset": "family", "where": "Family resources", "item": "Program of General Caregiver Support Services", "was": "Linked a VA caregiver page that now describes the other caregiver program (PCAFC).", "now": "Links VA's page for the general caregiver support program.", "source": "https://www.caregiver.va.gov/Care_Caregivers.asp", "report": "docs/refresh-reports/refresh-2026-10-02.md line 23; commit 28b973d" },
+    { "date": "2026-10-02", "dataset": "state", "where": "Connecticut", "item": "Veterans' Preference for State Employment Examinations", "was": "The page we linked now lands on Connecticut's \"404 Error Page\" while still answering normally, so a basic link check passed it.", "now": "Cites the state law itself (C.G.S. 5-224), and the description now matches it: ten points if eligible for VA disability compensation or pension, five points otherwise, with some spouses and surviving spouses included.", "source": "https://www.cga.ct.gov/current/pub/chap_067.htm#sec_5-224", "report": "commit 28b973d" },
+    { "date": "2026-10-02", "dataset": "careers", "where": "Networking list", "item": "Helmets to Hardhats", "was": "Still said it provides direct placement into apprenticeships.", "now": "Says it connects veterans with union building-trades careers and apprenticeships; the local program decides admission.", "source": "https://helmetstohardhats.org/", "report": "commit 28b973d" },
+    { "date": "2026-10-01", "dataset": "federal", "where": "Federal", "item": "VA disability compensation", "was": "Our eligibility summary was narrower than VA's own page.", "now": "Rewritten to match VA.gov: it now covers conditions that began in service, conditions that service made worse, and conditions that appeared after service, plus the service types VA lists.", "source": "https://www.va.gov/disability/eligibility/", "report": "refresh-2026-10-01.md lines 54-56" },
+    { "date": "2026-10-01", "dataset": "federal", "where": "Federal", "item": "Veteran-owned business", "was": "Two SBA links had moved, and the VetCert step pointed to SBA's old application site.", "now": "Links go to SBA's current pages, and the VetCert step points to certifications.sba.gov, where SBA now takes applications. Fixed everywhere on the site.", "source": "https://certifications.sba.gov/", "report": "refresh-2026-10-01.md lines 59-61, 64-65" },
+    { "date": "2026-10-01", "dataset": "federal", "where": "Federal", "item": "Employment and apprenticeships", "was": "One cited Department of Labor page had turned into a state directory.", "now": "Replaced with the Labor Department's Jobs for Veterans State Grants page, which describes the local veteran employment staff.", "source": "https://www.dol.gov/agencies/vets/programs/grants/state/jvsg/about", "report": "refresh-2026-10-01.md lines 57-58" },
+    { "date": "2026-10-01", "dataset": "federal", "where": "Federal", "item": "Mental health and crisis support", "was": "A VA mental health link had become a \"page has moved\" notice.", "now": "Points to VA's current Get Help page.", "source": "https://www.mentalhealth.va.gov/get-help/index.asp", "report": "refresh-2026-10-01.md line 62" },
+    { "date": "2026-10-01", "dataset": "careers", "where": "Careers", "item": "All 15 career paths", "was": "Pay and outlook came from the previous BLS edition (May 2024 pay, 2024-34 projections).", "now": "Moved to the new BLS edition (May 2025 pay, 2025-35 projections), every figure re-read from bls.gov. For example, information security analysts went from $124,910 to $129,180, and projected growth from 29% to 21%.", "source": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm", "report": "refresh-2026-10-01.md lines 77-80; BENEFITS_RESEARCH_NOTES.md line 14" },
+    { "date": "2026-10-01", "dataset": "careers", "where": "Careers", "item": "Electrician", "was": "Said Helmets to Hardhats \"places\" veterans in union apprenticeships.", "now": "Says it connects veterans to union apprenticeships; the local apprenticeship program decides who is admitted.", "source": "https://helmetstohardhats.org/", "report": "refresh-2026-10-01.md lines 46-47, 83; data/research/careers-grounding.json lines 136-140" },
+    { "date": "2026-10-01", "dataset": "careers", "where": "Careers", "item": "Teaching and training", "was": "Showed a 2% projected decline for high school teachers.", "now": "BLS now projects little or no change (0%) for 2025-35.", "source": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm", "report": "refresh-2026-10-01.md line 42" },
+    { "date": "2026-10-01", "dataset": "relocation", "where": "Minneapolis", "item": "Unemployment rate", "was": "Last quarter showed 4.2% for April 2026, recorded from a secondary source.", "now": "Read directly from the BLS series, which shows 3.8% for April 2026 (BLS may have revised it). The current figure is for August 2026.", "source": "https://data.bls.gov/timeseries/LAUMT273346000000003", "report": "refresh-2026-10-01.md lines 97-98; data/relocationMetros.json Minneapolis unemployment.note" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Arizona", "item": "Property Tax Exemption for Disabled Veterans", "was": "Described only the partial exemption and cited a 2023 guide.", "now": "Veterans rated 100% service-connected now get a full exemption on their primary home starting with tax year 2026 (HB2792); lower ratings stay partial. The source is now the statute itself.", "source": "https://www.azleg.gov/ars/42/11111.htm", "report": "refresh-2026-10-01.md lines 29, 122" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Ohio", "item": "Enhanced Homestead Exemption for Disabled Veterans", "was": "Did not reflect the new full exemption.", "now": "Starting with tax year 2025, veterans rated 100% service-connected (or paid at 100% for individual unemployability) are exempt on the full value of their home, with no income test; it continues for an unremarried surviving spouse.", "source": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/forms/real_property/dte_105i_fi.pdf", "report": "refresh-2026-10-01.md lines 30, 182" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Maryland", "item": "Military Retirement Pay Income Tax Subtraction", "was": "Said retirees 55 and older get a larger subtraction.", "now": "Updated for HB 761 (2026), which raises the maximum subtraction for tax year 2026 and again from 2027, regardless of age.", "source": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB0761?ys=2026RS", "report": "refresh-2026-10-01.md lines 31, 159" },
+    { "date": "2026-10-01", "dataset": "state", "where": "North Carolina", "item": "NC State Veterans Homes", "was": "Listed the Fayetteville home as open.", "now": "Fayetteville is closed for structural repairs, with a replacement planned. The four open homes are Salisbury, Black Mountain, Kinston and Kernersville.", "source": "https://www.milvets.nc.gov/benefits-services/nc-state-veterans-homes-skilled-nursing-care", "report": "refresh-2026-10-01.md lines 32, 179" },
+    { "date": "2026-10-01", "dataset": "state", "where": "North Dakota", "item": "ND Dependent Tuition Waiver", "was": "Described a 45-month or 10-semester cap.", "now": "The state says there is no time limit or age cap: the waiver covers a bachelor's degree or certificate for as long as the dependent stays eligible.", "source": "https://www.veterans.nd.gov/nd-dependent-tuition-waiver", "report": "refresh-2026-10-01.md lines 33, 181" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Washington", "item": "Washington Tuition Waiver", "was": "Said schools are required to waive tuition for veterans.", "now": "State law requires the waiver only for children and spouses of veterans and Guard members who died, became totally disabled, or are POW/MIA. For veterans themselves, each school may choose to offer it.", "source": "https://dva.wa.gov/veterans-their-families/veterans-benefits/education-and-training/washington-tuition-waiver", "report": "refresh-2026-10-01.md lines 34-35, 199" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Nevada", "item": "Veterans' Preference in State Employment", "was": "Said disabled veterans get a larger preference.", "now": "Nevada gives the same preference to every eligible veteran; there is no larger tier for disabled veterans.", "source": "https://www.leg.state.nv.us/NRS/NRS-284.html", "report": "refresh-2026-10-01.md lines 36, 173" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Utah", "item": "Utah State Parks Honor Pass", "was": "Required a VA rating of 50% or more.", "now": "Any service-related VA rating now qualifies, along with Utah residency and an honorable discharge. The state notes the program is being updated for 2026.", "source": "https://stateparks.utah.gov/resources/military/veterans-with-disabilities-honor-pass/", "report": "refresh-2026-10-01.md lines 37, 194" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Iowa", "item": "Disabled Veteran Homestead Property Tax Credit", "was": "Did not mention a new acreage limit.", "now": "Applications filed on or after July 1, 2026 cover a homestead of up to half an acre; earlier applicants keep the prior treatment.", "source": "https://revenue.iowa.gov/taxes/tax-guidance/tax-credits-deductions-exemption/disabled-veteran-homestead-property-tax-credit", "report": "refresh-2026-10-01.md lines 38, 152" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Illinois", "item": "Standard Homestead Exemption for Veterans with Disabilities", "was": "Read as if the 70%-and-up tier exempts all property tax.", "now": "The 70%-and-up tier exempts the first $250,000 of equalized assessed value; the lower tiers are fixed reductions.", "source": "https://tax.illinois.gov/localgovernments/property/disabledveteraninfo.html", "report": "refresh-2026-10-01.md line 145" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Florida", "item": "Veteran Property Tax Exemptions", "was": "Described the 10% tier as a homestead reduction.", "now": "It is a $5,000 reduction in assessed value for qualifying veterans rated 10% or more, and it is not limited to homestead property. The full exemption for total and permanent disability is unchanged.", "source": "https://floridarevenue.com/property/Documents/pt109.pdf", "report": "refresh-2026-10-01.md line 134" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Oregon", "item": "Veterans' Employment Preference", "was": "Said the preference applies to federal jobs as well.", "now": "Oregon's preference applies to state, county and local public employers. Federal preference is a separate federal program.", "source": "https://www.oregon.gov/odva/Benefits/Pages/Employment.aspx", "report": "refresh-2026-10-01.md line 183" },
+    { "date": "2026-10-01", "dataset": "state", "where": "District of Columbia", "item": "Veterans Specialty License Plates", "was": "Said application and renewal fees are waived.", "now": "The no-fee benefit for veterans with a permanent and total disability covers annual registration fees only, for one set of tags on a non-commercial vehicle.", "source": "https://dmv.dc.gov/release/veterans-specialty-license-plates", "report": "refresh-2026-10-01.md line 133" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Kansas", "item": "Kansas State Veterans Homes", "was": "Listed the Northeast Kansas Veterans' Home in Topeka as operating.", "now": "It is planned, and construction has not started. The operating homes are in Fort Dodge and Winfield.", "source": "https://www.kovs.ks.gov/veteran-homes", "report": "refresh-2026-10-01.md line 154" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Wisconsin", "item": "Veterans Housing and Recovery Program", "was": "Did not say that two sites had closed.", "now": "The Chippewa Falls and Green Bay sites closed by September 30; Union Grove remains open.", "source": "https://dva.wi.gov/press/two-veteran-housing-and-recovery-program-sites-to-close/", "report": "refresh-2026-10-01.md line 206" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Connecticut", "item": "Sgt. John L. Levitow Healthcare Center and Residential Facility (Rocky Hill)", "was": "Mentioned assisted living and hospice care, which the official page does not.", "now": "Renamed to the facility's current name and described as the official page does: a 125-bed skilled nursing facility plus a separate residential facility.", "source": "https://portal.ct.gov/dva/skilled-nursing-facility", "report": "refresh-2026-10-01.md line 131" },
+    { "date": "2026-10-01", "dataset": "state", "where": "Georgia", "item": "Georgia State War Veterans Homes", "was": "Gave bed counts and an Alzheimer's care unit.", "now": "Removed. The official page confirms the two skilled nursing homes, in Augusta and Milledgeville, but states neither.", "source": "https://veterans.georgia.gov/state-war-veterans-homes", "report": "refresh-2026-10-01.md line 138" },
+    { "date": "2026-10-01", "dataset": "state", "where": "West Virginia", "item": "War Orphan Education Program", "was": "Said certain spouses qualify.", "now": "Eligibility is dependents aged 16 to 25 of West Virginia service members who died as a result of wartime service.", "source": "https://veterans.wv.gov/benefits/Pages/Education-Benefits.aspx", "report": "refresh-2026-10-01.md line 201" },
+    { "date": "2026-09-21", "dataset": "state", "where": "Texas", "item": "Disabled Veteran Property Tax Exemptions (Tiered)", "was": "Said the top rating band was 70-99% and gave none of the dollar amounts.", "now": "The top band is 70-100%, and the amounts are now stated: up to $5,000 at 10-29%, $7,500 at 30-49%, $10,000 at 50-69%, and $12,000 at 70-100%.", "source": "https://comptroller.texas.gov/taxes/property-tax/exemptions/disabledvet-faq.php", "report": "commit 737fd33" },
+    { "date": "2026-09-21", "dataset": "state", "where": "Alaska", "item": "Disabled Veteran Property Tax Exemption", "was": "Stated $150,000, but the page we cite says the amount is set by each municipality.", "now": "Now says both: state law requires every municipality to exempt at least the first $150,000 (AS 29.45.030(e)), and a municipality may exempt more.", "source": "https://veterans.alaska.gov/benefits/additional-benefits/taxes-and-land/", "report": "commit 737fd33" },
+    { "date": "2026-09-21", "dataset": "timeline", "where": "Transition timeline", "item": "SkillBridge", "was": "Linked to skillbridge.osd.mil, which now redirects.", "now": "Links go to www.skillbridge.mil, updated in all 7 places.", "source": "https://www.skillbridge.mil/", "report": "commit 5896a81" },
+    { "date": "2026-09-21", "dataset": "timeline", "where": "Transition timeline", "item": "TAP (Transition Assistance Program)", "was": "Correct for people separating, but incomplete for retirees.", "now": "Adds that for retirements, the law expects TAP to start as soon as possible within the 24 months before the retirement date (10 USC 1142).", "source": "https://www.dodtap.mil/", "report": "commit 5896a81" },
+    { "date": "2026-08-23", "dataset": "links", "where": "Site-wide", "item": "Nine official links", "was": "Nine cited pages had been moved or removed by the agencies that published them, in 11 places on the site.", "now": "Each was replaced with the agency's current page, and every replacement was confirmed working first: Texas VLB home loans, a Hawaii veterans home page, Michigan's disabled-veteran property tax page, Pennsylvania DMVA programs, a Louisiana civil service page, SBA's Veterans Business Outreach Centers, SBA's veteran-owned business guide, Amazon Career Choice, and the BLS data service.", "report": "commit 740898f" }
+  ],
+  "open": [
+    { "since": "2026-10-01", "dataset": "state", "where": "Illinois", "item": "Veterans Employment Assistance", "detail": "We could not find a current state page that matches our description of this program. It stays listed while we confirm it; if we cannot, it comes off.", "report": "refresh-2026-10-01.md lines 24-25, 148" },
+    { "since": "2026-10-01", "dataset": "state", "where": "Wyoming", "item": "Veterans' Interview Preference in Public Employment (W.S. 19-14-102)", "detail": "The page we link describes job-center priority of service, not the hiring preference in state law. We are replacing it with the statute or the state HR page.", "report": "refresh-2026-10-01.md lines 26-27, 210" },
+    { "since": "2026-10-01", "dataset": "relocation", "where": "All 28 metros", "item": "HUD Fair Market Rents", "detail": "HUD's FY2027 rents took effect October 1, 2026, and HUD's site blocked our automated check. Rent figures stay at FY2026 until we load the new file by hand.", "report": "refresh-2026-10-01.md lines 16, 21-23" },
+    { "since": "2026-10-01", "dataset": "federal", "where": "GI Bill", "item": "Step: \"Meet the School Certifying Official to enroll\"", "detail": "Matches how VA enrollment works, but the current VA pages we checked do not state it. Listed here until we re-confirm it on a current VA page.", "report": "refresh-2026-10-01.md lines 67-70; data/research/federal-verified.json line 45" },
+    { "since": "2026-10-01", "dataset": "federal", "where": "VA home loan", "item": "\"No private mortgage insurance\"", "detail": "Found on VA home loan pages through search, but not on the current VA.gov home loan page we cite. Listed here until we re-confirm it there.", "report": "refresh-2026-10-01.md lines 67-70; data/research/federal-verified.json line 57" },
+    { "since": "2026-10-01", "dataset": "federal", "where": "Mental health and crisis support", "item": "Step: \"Ask your VA facility about same-day mental health support\"", "detail": "Supported by VA news releases, but not stated on VA's current Get Help page. Listed here until we re-confirm it on a current program page.", "report": "refresh-2026-10-01.md lines 67-70; data/research/federal-verified.json line 144" }
+  ]
+}

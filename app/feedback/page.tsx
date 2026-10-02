@@ -1,6 +1,7 @@
 // Public feedback page - the mechanism behind "we want feedback from vets."
 // Ungated on purpose: most of the veterans Frank and Wallace send will not have
 // accounts, and the point is to lower the wall, not raise it.
+import Link from "next/link";
 import { routeMeta } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
 import FeedbackForm from "@/components/FeedbackForm";
@@ -20,6 +21,11 @@ export default function FeedbackPage() {
         something this site should cover and does not, a step that did not fit your situation,
         or anything here that is confusing or plain wrong. Suggestions and complaints are both
         welcome, and the blunter the better.
+      </p>
+      <p className="small muted" style={{ maxWidth: 560 }}>
+        Reporting an error? Name the page and the item, and what the official source says. Every
+        report is checked against the source, and fixes are logged on our{" "}
+        <Link href="/verification">verification record</Link>.
       </p>
       <div style={{ marginTop: 20 }}>
         <FeedbackForm />

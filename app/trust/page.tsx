@@ -76,6 +76,10 @@ export default function TrustPage() {
           </tbody>
         </table>
       </div>
+      <p className="small muted" style={{ marginTop: 10 }}>
+        Every check, every correction, and what is still open:{" "}
+        <Link href="/verification">see the verification record →</Link>
+      </p>
 
       <div style={{ marginTop: 32 }}>
         <SectionHead eyebrow="Rules we operate by" title="The boundaries that keep this honest" />

@@ -7,6 +7,7 @@ import { taskResources } from "@/lib/taskResources";
 import { useAuth } from "@/lib/auth";
 import { useStore } from "@/lib/store";
 import { addEntry } from "@/lib/journal";
+import ReportErrorLink from "@/components/ReportErrorLink";
 
 // Padded to a 44px touch target. This was a 27px strip, which is hard to hit
 // reliably on a phone, and this audience skews older.
@@ -82,6 +83,13 @@ export default function TaskDetail({ text }: { text: string }) {
               <i className="ti ti-file-text" aria-hidden="true" /> Add a note
             </button>
           )}
+          <div>
+            <ReportErrorLink
+              item={text}
+              className=""
+              style={{ ...TOGGLE_STYLE, minHeight: 34, padding: "4px 0", fontWeight: 500, color: "var(--muted)", textDecoration: "none" }}
+            />
+          </div>
         </>
       )}
     </div>

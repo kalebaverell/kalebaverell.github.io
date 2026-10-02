@@ -77,7 +77,7 @@ export default function GuidesIndex() {
       <h1 style={{ maxWidth: 620 }}>Guides for the road out.</h1>
       <p className="muted" style={{ maxWidth: 620 }}>
         Everything here is free to read, built from the same verified, source-linked data the
-        VetPath tools run on, and re-checked on a quarterly rhythm. When you are ready for the
+        VetPath tools run on, and <Link href="/verification">re-checked on a quarterly rhythm</Link>. When you are ready for the
         version that knows <em>your</em> dates and <em>your</em> state,{" "}
         <Link href="/onboarding">the gameplan</Link> takes about ten minutes.
       </p>

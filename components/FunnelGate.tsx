@@ -14,6 +14,7 @@ const OPEN_PATHS = new Set([
   "", // home
   "onboarding", // the quiz itself
   "trust", // the credibility promise stays public
+  "verification", // the evidence behind "verified" - public for the same reason as /trust
   "privacy",
   "terms",
   "do-not-sell", // a privacy control can never be behind a funnel

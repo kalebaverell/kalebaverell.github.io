@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { benefitById } from "@/lib/data";
+import ReportErrorLink from "@/components/ReportErrorLink";
 
 export default function BenefitCategoryList({ ids }: { ids: string[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -35,6 +36,8 @@ export default function BenefitCategoryList({ ids }: { ids: string[] }) {
                 </a>
                 <span style={{ margin: "0 10px", color: "var(--faint)" }}>·</span>
                 <Link className="small" href="/benefits">Full library →</Link>
+                <span style={{ margin: "0 10px", color: "var(--faint)" }}>·</span>
+                <ReportErrorLink item={b.name} />
               </div>
             )}
           </div>

@@ -6,6 +6,7 @@ import { BENEFITS, STATE_BENEFITS, realStateInfo, stateName, BRAND, benefitById,
 import type { Benefit } from "@/lib/types";
 import { Wrap, Callout, SectionHead } from "@/components/ui";
 import { optimizeBenefits, type OptimizedBenefit, type Tier } from "@/lib/optimizer";
+import ReportErrorLink from "@/components/ReportErrorLink";
 import NeverPayNote from "@/components/NeverPayNote";
 
 const CAT_ICON: Record<string, string> = {
@@ -83,12 +84,15 @@ export default function Benefits() {
                   <strong>{p.name}</strong>
                   <div className="small" style={{ margin: "2px 0 4px" }}>{p.blurb}</div>
                   <a className="small" href={p.source} target="_blank" rel="noopener noreferrer">Official source <i className="ti ti-external-link" style={{ fontSize: 13 }} /></a>
+                  <span style={{ margin: "0 8px", color: "var(--faint)" }}>·</span>
+                  <ReportErrorLink item={`${real.name}: ${p.name}`} />
                 </div>
               </div>
             </div>
           ))}
           <p className="small muted" style={{ marginTop: 10 }}>
-            Program rules change - details were verified against official sources on {STATE_BENEFITS.lastVerified}; always confirm current terms with {real.agency.name} before acting.
+            Program rules change - details were verified against official sources on {STATE_BENEFITS.lastVerified}; always confirm current terms with {real.agency.name} before acting.{" "}
+            <Link href="/verification">How we check →</Link>
           </p>
           {allStates.length > 1 && (
             <p className="small" style={{ marginTop: 4 }}>
@@ -259,7 +263,10 @@ function Accordion({ b, open, onToggle }: { b: Benefit; open: boolean; onToggle:
           <a className="btn ghost sm" href={b.official.url} target="_blank" rel="noopener noreferrer">{b.official.name} <i className="ti ti-external-link" /></a>
           {vb.lastVerified && (
             <p className="small muted" style={{ margin: "10px 0 0" }}>
-              Checked against official sources on {vb.lastVerified} - rules change; confirm current details at the link above.
+              Checked against official sources on {vb.lastVerified} - rules change; confirm current details at the link above.{" "}
+              <Link href="/verification">How we check</Link>
+              <span style={{ margin: "0 8px", color: "var(--faint)" }}>·</span>
+              <ReportErrorLink item={b.name} />
             </p>
           )}
         </div>

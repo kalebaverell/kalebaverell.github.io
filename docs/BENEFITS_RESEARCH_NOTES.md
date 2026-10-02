@@ -25,11 +25,16 @@ What is verified, and what is still illustrative:
 3. Refresh BLS medians/outlooks when BLS publishes new OOH data (annually, ~spring) and re-check the
    four "pending" claim checks (FMCSA waiver, FAA A&P crediting, Helmets to Hardhats, SBA VetCert).
 4. Bump every `lastVerified`; the UI displays these dates — stale dates are a visible product bug.
-5. **Owner:** Kaleb Averell (runs each refresh and signs off the diff). **Enforcement:** `scripts/check-freshness.mjs`
+5. **Owner:** Kaleb Averell (runs each refresh and signs off the diff; named publicly on /verification). **Enforcement:** `scripts/check-freshness.mjs`
    runs before every build and fails it when any verification date is over 100 days old (warns past 90); a weekly
    scheduled workflow runs the same check when nothing is pushed. **Trigger discipline:** any user
    report of an incorrect benefit gets a 48-hour verify-and-fix, not batched to the quarter.
-   After every refresh, also update the VERIFIED constant in the send-checkins edge function.
+   After every refresh, also update the VERIFIED constant in the send-checkins edge function
+   (source: `supabase/functions/send-checkins/index.ts`).
+   Error reports arrive in `public.feedback` with a body starting `[Error report]`.
+6. **Log it publicly:** add the run to `data/verificationLog.json` (date, what was checked, report
+   path or commit), add every correction that changes what a veteran is told, and move anything
+   unconfirmed to `open`. Never delete a correction.
 
 ---
 

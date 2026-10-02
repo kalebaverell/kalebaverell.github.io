@@ -50,6 +50,9 @@ const EVENTS = [
   // accounts had a usable separation month. Saved vs dismissed says whether asking in place works.
   "eas-prompt-saved",
   "eas-prompt-dismissed",
+  // Error reports (2026-10): "Report an error" on benefit cards, plan tasks and
+  // /verification. Counts the door only - the item stays inside the note.
+  "feedback-error",
   // Intake funnel (2026-08-28): 63% of people who start the intake never finish
   // it, and we could not see where they left. These say which step loses them.
   "intake-gate",

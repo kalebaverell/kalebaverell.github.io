@@ -92,9 +92,11 @@ export default function PrivacyPage() {
           <li>If you get check-in emails, a record of which ones we sent and when, so no one gets the same email twice.</li>
           <li>Display settings like your theme and text size.</li>
           <li>
-            If you use the feedback box, the note you write (linked to your account when you
-            are signed in, anonymous when you are not). Notes are read by the founders and
-            never published.
+            If you use the feedback box, the note you write and the page you sent it from. If you
+            used a &quot;Report an error&quot; link, the note also names the item you were
+            reporting, shown to you above the box before you send. Notes are linked to your
+            account when you are signed in, anonymous when you are not, read by the founders,
+            and never published.
           </li>
           <li>
             If you first arrived from one of our flyers, QR codes, or shared links, the campaign tag

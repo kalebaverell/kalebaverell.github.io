@@ -22,6 +22,10 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 - `node scripts/check-freshness.mjs` exits 0. Report each WARN (over 90 days) as a WARN row with its re-verify-by
   date; a FAIL (over 100 days) is a data failure, not a build failure - section 3's `npm run build` would stop on it anyway.
   Never "fix" a FAIL by editing a date; only a real re-check moves a date.
+- data/verificationLog.json parses; every run has an ISO date (YYYY-MM-DD), a non-empty summary[] and a report;
+  every correction has date/dataset/where/item/was/now/report and an https source when it has one; every open
+  item has since/dataset/where/item/detail/report; every dataset key used resolves in `datasets`; covers[] only
+  names keys from lib/verification.ts DatasetKey; the file contains no U+2014 or U+2013. Never delete a correction.
 
 ## 3. Production build — NEVER while a dev server runs (shared .next corrupts; this caused real outages)
 Kill all node dev servers on ports 3000–3002 first (`Get-NetTCPConnection` + kill by PID, plus any
@@ -110,6 +114,19 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
 18. Unsubscribe page: /unsubscribe/ with no token, or a malformed one, shows "That link didn't work" and
    makes NO network call; the token is dropped from the address bar on load; the page is noindex. Do not
    press "Stop check-in emails" with a real token in QA - it changes a member's email settings.
+19. Verification record: signed out with no plan, /verification/ renders "What we checked, when, and what we
+   fixed." (NOT the FunnelGate card). out/verification/index.html contains the computed state program count
+   (264 today) and the .gov/.mil share (about 92% today), and the Training funding and Guard and Reserve rows
+   read "Oct 2, 2026". History lists the Oct 2 runs first; Found and fixed and Still open render. At 390px the
+   dataset table scrolls inside its card and page scrollWidth <= 390. Footer Company column shows
+   "Verification record"; /trust shows "see the verification record" under the sources table; sitemap.xml
+   contains /verification/.
+20. Report an error: /benefits (Texas sample) shows "Report an error" on each state program row and on each
+   opened federal card; clicking one lands on /feedback with "What looks wrong?" and "Reporting: Texas: ...".
+   The address bar shows only /feedback/#report (the item is never in the URL); the dashboard benefit list
+   and an opened plan task (under "Add a note") show the link too, and saving a task note still works.
+   /feedback#report at 390px has no horizontal scroll. STOP at render: "Send it" inserts a live feedback row
+   in production (use the auth-disabled dev if the send path must be exercised).
 
 ### Probe pitfalls (cost real time on Sep 1, 2026 - read before writing walkers)
 - The three interviews use DIFFERENT option widgets. Intake (/onboarding): most questions are
