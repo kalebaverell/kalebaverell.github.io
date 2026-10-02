@@ -141,6 +141,20 @@
           ]
         },
         {
+          "id": "easDate",
+          "label": "Separation month, if you know it",
+          "type": "month",
+          "optional": true,
+          "showIf": {
+            "id": "status",
+            "values": [
+              "Active duty",
+              "Transitioning (separating within 12 months)"
+            ]
+          },
+          "helper": "Your EAS, ETS, or retirement month. A best guess is fine, and you can change it anytime. It puts real calendar dates on your plan - for example, the 180 to 90 days before separation when VA accepts a pre-discharge (BDD) claim."
+        },
+        {
           "id": "disabilityRating",
           "label": "Do you have a VA disability rating?",
           "type": "single",

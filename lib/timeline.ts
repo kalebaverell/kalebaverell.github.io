@@ -198,6 +198,55 @@ export function easLabel(easDate: string): string {
   return mo >= 1 && mo <= 12 ? `${MON[mo - 1]} ${y}` : "";
 }
 
+/** Statuses still in uniform - the ones a separation month means something
+ *  for. KEEP IN SYNC with data/intakeQuestions.json: the status options and the
+ *  easDate question's showIf.values. */
+export const IN_UNIFORM_STATUSES = ["Active duty", "Transitioning (separating within 12 months)"] as const;
+
+/** True only for a usable "YYYY-MM" - the one shape every reader accepts
+ *  (this file, the dashboard chip, calendar-feed, send-checkins). */
+export function isEas(v: unknown): v is string {
+  return typeof v === "string" && /^\d{4}-(0[1-9]|1[0-2])$/.test(v);
+}
+
+const MON_KEYS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+/** Best-effort repair of a separation month typed as free text. Returns
+ *  "YYYY-MM", or null unless the text names both a month and a 4-digit year.
+ *  Never guesses: "04/05/2027" could be day-first or month-first, so null. */
+export function normalizeEas(raw: string | null | undefined): string | null {
+  const v = (raw || "").trim();
+  if (!v) return null;
+  const out = (y: number, m: number) =>
+    y >= 1950 && y <= 2100 && m >= 1 && m <= 12 ? `${y}-${String(m).padStart(2, "0")}` : null;
+  let x = v.match(/^(\d{4})-(\d{2})(?:-\d{2})?$/);
+  if (x) return out(+x[1], +x[2]);
+  x = v.match(/^(\d{1,2})[\/.\-](\d{4})$/);
+  if (x) return out(+x[2], +x[1]);
+  const name = v.toLowerCase().match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/);
+  const year = v.match(/\b(\d{4})\b/);
+  if (name && year) return out(+year[1], MON_KEYS.indexOf(name[1]) + 1);
+  return null;
+}
+
+/** The intake horizon answer a separation month implies, or null when the
+ *  month is unusable or already past (never guess). KEEP IN SYNC with the
+ *  horizon question's options in data/intakeQuestions.json - lib/rules.ts reads
+ *  "More than 2 years out" as the long-runway (farOut) plan. */
+export function horizonFromEas(easDate: string, now: Date = new Date()): string | null {
+  const m = monthsToEas(easDate, now);
+  if (m == null || m < 0) return null;
+  return m <= 12 ? "Within a year" : m <= 24 ? "1-2 years out" : "More than 2 years out";
+}
+
+/** The horizon to fill in when a separation month is saved, or null to leave
+ *  it alone. Fills only a BLANK answer, and only for "Active duty" (the one
+ *  status the horizon question is asked for); a member's own pick always wins. */
+export function blankHorizonFill(a: { status?: string; horizon?: string }, easDate: string): string | null {
+  if (a.status !== "Active duty" || a.horizon) return null;
+  return isEas(easDate) ? horizonFromEas(easDate) : null;
+}
+
 /** Real calendar range for a phase (months relative to EAS), e.g. "Sep-Dec 2026". */
 function phaseDates(easDate: string, hi: number, lo: number): string {
   if (!/^\d{4}-\d{2}$/.test(easDate)) return "";

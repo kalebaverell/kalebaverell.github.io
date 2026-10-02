@@ -76,7 +76,7 @@ export default function PrivacyPage() {
         </p>
         <ul style={{ margin: "10px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
           <li>Your intake answers: age range, the state or states you live in, city, branch, military job, service era, and current status.</li>
-          <li>Your separation month, if you give it. It is optional, and it is used only to put real dates on your timeline, on your calendar feed if you subscribe, and in the check-in emails if you opted in to them.</li>
+          <li>Your separation month, if you give it. It is optional, and it is used only to put real dates on your timeline, on your calendar feed if you subscribe, and in the check-in emails if you opted in to them. Its one other use: if you are on active duty and left the question about how far out separation is blank, it fills in that answer.</li>
           <li>Your VA disability rating, if you tell us.</li>
           <li>Your employment and housing situation, including if you indicate housing is unstable.</li>
           <li>Sex and race or ethnicity, if you choose to answer. Both questions are optional.</li>

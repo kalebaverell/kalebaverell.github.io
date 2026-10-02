@@ -8,6 +8,7 @@ import { useAuth } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
 import Mirror from "@/components/Mirror";
 import { goalById, stateName, residenceStates } from "@/lib/data";
+import { isEas, easLabel } from "@/lib/timeline";
 import { Wrap, Callout } from "@/components/ui";
 
 export default function Profile() {
@@ -38,6 +39,7 @@ export default function Profile() {
     ...(a.mos ? [["Military job (MOS)", a.mos] as [string, string]] : []),
     ["Service era", a.serviceEra],
     ["Status", a.status],
+    ...(isEas(a.easDate) ? [["Separation month", easLabel(a.easDate)] as [string, string]] : []),
     ["Disability rating", a.disabilityRating || "-"],
     ["Employment", a.employment],
     ["Housing", (Array.isArray(a.housing) ? a.housing.join(", ") : a.housing) || "-"],

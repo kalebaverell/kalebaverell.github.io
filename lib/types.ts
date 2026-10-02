@@ -45,8 +45,12 @@ export interface Answers {
    *  answers steer the funding stack toward programs that still pay
    *  (VR&E, Rogers STEM, state tuition programs, FAFSA, apprenticeships). */
   giBillRemaining?: string;
-  /** End of Active Service, "YYYY-MM". Set in the Transition Timeline; anchors
-   *  its phases to real calendar months and drives the dashboard countdown. */
+  /** End of Active Service (separation or retirement month), "YYYY-MM", optional.
+   *  Set in the intake status step (in-uniform statuses only), the dashboard
+   *  separation-month card, or the Transition Timeline. Anchors the timeline
+   *  phases, the dashboard countdown and phase card, Coming up, the calendar
+   *  feed and the T-minus check-in emails. Every reader rejects any other shape:
+   *  validate with isEas() and repair free text with normalizeEas() (lib/timeline). */
   easDate?: string;
 }
 

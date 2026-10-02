@@ -9,7 +9,7 @@ import Link from "next/link";
 import { STATES } from "@/lib/data";
 import {
   buildTimeline, freshTimelineAnswers, FOCUS_META, TIMELINE_VERIFIED,
-  monthsToEas, windowFromEas, easLabel, easAsDate, phaseStartDate,
+  monthsToEas, windowFromEas, easLabel, easAsDate, phaseStartDate, normalizeEas, blankHorizonFill,
   type TimelineAnswers, type TransitionTimeline, type TimelineTask, type FocusArea, type Goal, type FamilyFlag,
 } from "@/lib/timeline";
 import { downloadIcs } from "@/lib/ics";
@@ -174,9 +174,13 @@ export default function TimelinePage() {
                   id="eas"
                   type="month"
                   className="field"
+                  placeholder="YYYY-MM"
                   value={a.easDate}
                   onChange={(e) => {
-                    const v = e.target.value;
+                    // Firefox and desktop Safari draw type="month" as a plain
+                    // text box, so "Apr 2027" can arrive here. Store canonical
+                    // YYYY-MM whenever the text names a month and a year.
+                    const v = normalizeEas(e.target.value) ?? e.target.value;
                     // A real date beats the coarse bucket: derive the window from
                     // it, and persist it to the profile for the dashboard countdown.
                     const em = monthsToEas(v);
@@ -186,12 +190,21 @@ export default function TimelinePage() {
                       return next;
                     });
                     setAnswer("easDate", v);
+                    // Same rule as the intake: a blank intake horizon is filled
+                    // from a usable month; one the member picked is never touched.
+                    const h = blankHorizonFill(s.answers, v);
+                    if (h) setAnswer("horizon", h);
                   }}
                   style={{ maxWidth: 240 }}
                 />
                 {a.easDate && monthsToEas(a.easDate) != null && (
                   <p className="small" style={{ margin: "6px 0 0", color: "var(--success)" }}>
                     <i className="ti ti-calendar-check" aria-hidden="true" /> EAS {easLabel(a.easDate)} - every phase below will carry your real calendar months.
+                  </p>
+                )}
+                {a.easDate && monthsToEas(a.easDate) == null && (
+                  <p className="small muted" style={{ margin: "6px 0 0" }}>
+                    Enter it as year and month, like 2027-04.
                   </p>
                 )}
               </div>

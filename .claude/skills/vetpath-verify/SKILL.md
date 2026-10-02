@@ -16,7 +16,7 @@ Run these in order from the vetpath project root. Stop and report on first hard 
 - data/sampleCareers.json → 15 careers, each with onetCode/onetUrl/blsUrl + year-labeled paySample
 - data/relocationMetros.json → 29 metros; 28 with `official` blocks (rural-telehealth exempt)
 - data/assessmentQuestions.json → 11 questions incl. ids "wins" (first, objective options) and "detail"; "pull" has multi:true max:3; people/"Mostly solo" has autonomy 0
-- data/intakeQuestions.json → status step contains a "horizon" question with showIf {id:"status", value:"Active duty"} and a "More than 2 years out" option
+- data/intakeQuestions.json → status step contains a "horizon" question with showIf {id:"status", value:"Active duty"} and a "More than 2 years out" option, AND an optional "easDate" question (type "month") whose showIf.values equals ["Active duty", "Transitioning (separating within 12 months)"] exactly (same strings as the status options and lib/timeline.ts IN_UNIFORM_STATUSES)
 - lib/track.ts `INTAKE_STEP_EVENTS` must equal the intakeQuestions.json step ids, in order (funnel events go
   silent on drift, and silence looks identical to "nobody reached that step")
 - `node scripts/check-freshness.mjs` exits 0. Report each WARN (over 90 days) as a WARN row with its re-verify-by
@@ -64,12 +64,20 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
 10. Far-out persona (needs auth-disabled dev: clear NEXT_PUBLIC_SUPABASE_* in the shell env so the local
    ProfileGate opens the intake): status "Active duty" reveals the horizon question; with "More than 2 years
    out" the generated plan leads with the GI Bill transfer / Tuition Assistance / records-habit set and
-   contains NO TAP and NO BDD items; switching status to "Veteran" hides the horizon question again
+   contains NO TAP and NO BDD items; switching status to "Veteran" hides the horizon question again.
+   Separation month: Active duty AND Transitioning both show two <select> elements (month, year) in the
+   status step; Veteran/Retired/Spouse show none. Picking both writes answers.easDate "YYYY-MM" and shows
+   the green "your timeline, dashboard, and calendar" line. With horizon left blank on Active duty,
+   picking a month fills horizon from it (more than 24 months out = "More than 2 years out"); a horizon
+   the member already picked is never changed
 11. Timeline calendar: with an EAS date >24 months out, the plan prepends the long-runway items, shows
    "Add separation month to calendar" + per-phase "Add to calendar" buttons (ahead phases only), and the
    separation-month download is a valid VCALENDAR whose DTSTART is the 1st of the EAS month
 12. Dashboard: "Anything change?" card links to /updates; InstallNudge renders ONLY on mobile-size
-   viewports and never on desktop
+   viewports and never on desktop. Separation-month card ("Know your separation month?"): renders in
+   the PhaseNow slot only for Active duty/Transitioning with no valid easDate; Save disabled until month
+   AND year; Save replaces it with PhaseNow; "No thanks" hides it and it stays hidden after reload
+   (localStorage vp_eas_prompt_done)
 13. Mirror (/profile, Phase 2): four cards render - Your shape (radar SVG with aria values after a
    pathfinder run, designed empty state before), Milestones met (checked actions with doneAt dates;
    checking an action also puts "N this month - steady" chip on the dashboard's Do-these-first heading),
@@ -102,6 +110,8 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
   then fetch the captured blob URL to read VCALENDAR/DTSTART in-page.
 - Mobile tab bar + app tabs need signed-in auth OR the auth-disabled dev (flow 10's env-cleared
   server) - on a normal dev with a local-only plan, no tab bar is CORRECT, not a failure.
+- Timeline #eas on a browser without a month picker is a plain text box: "Apr 2027" or "4/2027"
+  normalizes to 2027-04 as you type; unreadable text shows "Enter it as year and month".
 - "Change my answers" PRESERVES a stored easDate. With a far-future EAS still set, no "You are
   here" pill and no catch-up card is CORRECT calendar-driven behavior, not a bug - clear the EAS
   month input before asserting the inside-T-12 timeline shape.

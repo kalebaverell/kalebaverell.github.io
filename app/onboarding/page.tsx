@@ -10,6 +10,8 @@ import type { Answers } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
 import { track, trackOnce, INTAKE_STEP_EVENTS } from "@/lib/track";
 import { applySeed, isSeedKey, parkSeed, takeSeed } from "@/lib/intakeSeed";
+import { MonthYearSelect } from "@/components/SeparationMonth";
+import { isEas, easLabel, blankHorizonFill } from "@/lib/timeline";
 
 export default function Onboarding() {
   const { s, ready, createProfile } = useStore();
@@ -103,6 +105,14 @@ function ProfileGate({ onCreate }: { onCreate: (n: string, e: string) => void })
   );
 }
 
+/** showIf takes one value ({ id, value }) or a list ({ id, values }). The
+ *  separation month shows for every in-uniform status, so it needs the list. */
+function shown(q: any, answers: Answers): boolean {
+  if (!q.showIf) return true;
+  const cur = (answers as any)[q.showIf.id];
+  return Array.isArray(q.showIf.values) ? q.showIf.values.includes(cur) : cur === q.showIf.value;
+}
+
 function Intake() {
   const { s, setStep, setAnswer, toggleMulti, toggleGoal, setStepNote, regen } = useStore();
   const router = useRouter();
@@ -160,7 +170,7 @@ function Intake() {
       <h2>{sec.title}</h2>
       <p className="muted">{sec.subtitle}</p>
       <div className="card">
-        {sec.questions.filter((q: any) => !q.demographic && (!q.showIf || (s.answers as any)[q.showIf.id] === q.showIf.value)).map((q: any, i: number) => (
+        {sec.questions.filter((q: any) => !q.demographic && shown(q, s.answers)).map((q: any, i: number) => (
           <div key={q.id}>
             {i > 0 && <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />}
             <Question q={q} answers={s.answers} setAnswer={setAnswer} toggleMulti={toggleMulti} toggleGoal={toggleGoal} />
@@ -393,6 +403,29 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
             );
           })}
         </div>
+      </fieldset>
+    );
+  }
+
+  if (q.type === "month") {
+    const pickMonth = (v: string) => {
+      setAnswer(q.id, v);
+      // A blank horizon answer is filled from the month (decision 2026-10-02),
+      // so a member who skips it still gets the right plan sequence. A horizon
+      // they picked themselves is never overwritten.
+      const h = blankHorizonFill(answers, v);
+      if (h) setAnswer("horizon", h);
+    };
+    return (
+      <fieldset style={{ border: "none", padding: 0, margin: 0 }}>
+        <legend className="lbl" style={{ padding: 0 }}>{q.label}{q.optional && <span className="muted small"> (optional)</span>}</legend>
+        {q.helper && <p className="small muted" style={{ margin: "0 0 8px" }}>{q.helper}</p>}
+        <MonthYearSelect idPrefix={`m-${q.id}`} value={typeof val === "string" ? val : ""} onChange={pickMonth} />
+        {isEas(val) && (
+          <p className="small" style={{ margin: "8px 0 0", color: "var(--success)" }}>
+            <i className="ti ti-calendar-check" aria-hidden="true" /> {easLabel(val)} - your timeline, dashboard, and calendar will use this month.
+          </p>
+        )}
       </fieldset>
     );
   }
