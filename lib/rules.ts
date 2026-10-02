@@ -1,5 +1,5 @@
 // VetPath rules engine - deterministic mapping from intake answers to a gameplan.
-// Mirrors the logic in demo/vetpath-demo.html. SAMPLE guidance only; not advice.
+// Mirrors the logic in demo/vetpath-demo.html. Planning guidance only; not advice.
 import type { Answers, ActionItem, Gameplan, Career } from "./types";
 import { GOALS, goalById, stateName, trackById, primaryState, residenceStates } from "./data";
 import { locationGuidance, networkingFor } from "./pathfinder";

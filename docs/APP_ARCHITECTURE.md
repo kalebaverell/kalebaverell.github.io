@@ -1,7 +1,7 @@
 # VetPath — App Architecture
 
-> **Status:** Prototype. Last updated 2026-07-06.
-> **Reminder:** Prototype benefit data is SAMPLE data. No real auth, no server, local-first.
+> **Historical (July 2026).** Written before the data was verified and before accounts existed. For the
+> current state see README.md and docs/refresh-reports/. Kept unchanged below as a record.
 
 ---
 

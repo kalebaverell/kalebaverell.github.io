@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA - for prototype only. Intake questions used to generate a personalized VetPath gameplan. Not official VA guidance. allowCustom on a question lets the veteran type their own answer; every step also offers a free-response notes box.",
+  "_note": "Intake questions used to generate a personalized VetPath gameplan. Not official VA guidance. allowCustom on a question lets the veteran type their own answer; every step also offers a free-response notes box.",
   "stepNotesPrompt": "Anything else about your situation we should know? (optional, your words)",
   "steps": [
     {

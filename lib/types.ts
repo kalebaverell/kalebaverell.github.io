@@ -1,4 +1,5 @@
-// VetPath data model (prototype). All benefit content is SAMPLE data.
+// VetPath data model. Benefit content is verified against official sources and dated (lastVerified in
+// data/*.json); relocation tiers and transcript credit examples are illustrative and labeled as such.
 
 export interface Profile {
   name: string;
@@ -87,7 +88,7 @@ export interface Track {
 
 export interface CareerFit {
   career: Career;
-  fit: number;           // 0–100 demo estimate
+  fit: number;           // 0-100 rule-based estimate from the veteran's own answers
   why: string[];
   boosts: string[];
   medianPay?: number | null;   // parsed BLS median (USD), for salary-range matching

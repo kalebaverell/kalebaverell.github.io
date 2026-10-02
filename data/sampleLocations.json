@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA - illustrative metro examples for location-fit guidance. Verify VA facilities via the VA facility locator (va.gov/find-locations) and job markets independently. Not an endorsement of any location.",
+  "_note": "ILLUSTRATIVE EXAMPLES, not cited - metro examples for the Pathfinder's location tips. Cited metro data lives in relocationMetros.json. Verify VA facilities via the VA facility locator (va.gov/find-locations) and job markets independently. Not an endorsement of any location.",
   "rules": {
     "highDisability": "With a higher rating or ongoing care needs, prioritize living within ~30–45 minutes of a VA Medical Center and check specialty-care availability before you sign a lease.",
     "midDisability": "Keep a VA clinic (CBOC) within easy reach and know where your nearest full VA Medical Center is.",

@@ -1,74 +1,67 @@
 # VetPath
 
-**A clear gameplan for life after service.**
+**A clear gameplan for life after service.** Live at https://vetpathusa.com
 
-VetPath turns a veteran's goals, life stage, state, and status into a personalized
-**30/60/90-day gameplan** - with prioritized benefit categories, an action checklist,
-and links to the official sources to verify each step.
+VetPath is a free planning tool for U.S. veterans and transitioning service members. A veteran
+answers a short intake and gets a personal 30/60/90-day plan: the federal and state benefits worth
+checking, civilian careers that fit, how to pay for the training, and the separation deadlines that
+do not forgive.
 
-> ⚠️ **VetPath is a planning & education tool - not the VA, a law firm, or an accredited
-> claims representative.** All benefit information in this prototype is **sample/demo data**.
-> Eligibility must be confirmed through official sources (VA.gov, state veterans agencies,
-> accredited VSOs). In crisis? Dial **988**, then press **1**.
+> **VetPath is a planning and education tool - not the VA, a law firm, or an accredited claims
+> representative, and not affiliated with any government agency.** It never determines eligibility.
+> Confirm everything at the official source linked on each card, or with an accredited representative
+> (VA's search: https://www.va.gov/get-help-from-accredited-representative/find-rep/).
+> In crisis? Dial **988**, then press **1**.
 
----
+## Where the data comes from
 
-## Two ways to run it
+Benefit and career content is verified against official sources and dated, and every item links to
+the page it came from.
 
-### 1. Instant demo (no install) - best for showing Frank
-Open the self-contained file in any browser:
+| Data | Official sources | File |
+|---|---|---|
+| State benefits, all 50 states and D.C. | State veterans agencies and statutes | `data/stateBenefits.json` |
+| Federal benefit categories | VA.gov, DOL VETS, SBA, Veterans Crisis Line | `data/sampleBenefits.json` |
+| Career pay and outlook | BLS Occupational Outlook Handbook, O*NET | `data/sampleCareers.json` |
+| Relocation cost, rent, jobs, VA facility | BEA, HUD, BLS, VA | `data/relocationMetros.json` (`official` blocks) |
+| Funding programs | VA, StudentAid.gov, OPM, SBA, and each program's own site | `data/funding.json` |
+| Reserve and Guard benefits | VA.gov, TRICARE, DOL, U.S. Code, state Guard pages and statutes | `data/reserves.json` |
+| Transition deadlines | VA.gov, DoD TAP, DOL, TRICARE | `lib/timeline.ts` |
 
-```
-demo/vetpath-demo.html
-```
+Each dataset carries a last-verified date that the site shows. Re-verification runs quarterly
+(January, April, July, October); reports live in `docs/refresh-reports/`. `npm run build` first runs
+`scripts/check-freshness.mjs`, which fails the build if any verification date is more than 100 days old.
 
-Double-click it (or open it in a browser). It works fully offline - all screens,
-the rules engine, progress tracking, and a live **A/B/C theme switcher** are built in.
-This is the fastest way to review the product tomorrow.
+**Still illustrative, and labeled that way on the site:** relocation comparison tiers (the 1-5 ratings)
+and starter-home notes, the location examples in `data/sampleLocations.json`, and the college-credit
+examples in `data/sampleCreditMap.json`. Some file names begin with `sample` for historical reasons;
+the `_note` at the top of each data file says what it is.
 
-### 2. Full Next.js app (production path)
-Requires [Node.js](https://nodejs.org) 18.17+.
+## No AI
 
-```bash
-cd vetpath
-npm install
-npm run dev
-```
+Plans, fit scores, and benefit tiers come from fixed rules anyone can read (`lib/rules.ts`,
+`lib/pathfinder.ts`, `lib/optimizer.ts`, `lib/timeline.ts`). There is no language model in the product.
 
-Then open <http://localhost:3000>.
+## Running it
 
-To produce a static export (hostable anywhere):
+Requires Node.js 18.17+ (CI uses Node 20).
 
-```bash
-npm run build      # emits a static site to ./out
-```
+    npm install
+    npm run dev        # http://localhost:3000
+    npm run build      # freshness check, then a static export to ./out
 
----
+Accounts and saved plans use Supabase. Without `NEXT_PUBLIC_SUPABASE_URL` and
+`NEXT_PUBLIC_SUPABASE_ANON_KEY` the app runs in a local-only mode. See `SUPABASE-SETUP.md`.
 
-## What's inside
+`demo/vetpath-demo.html` is a single-file offline demo for meetings. Its data is a July 2026
+snapshot; the live site is the current source.
 
-| Path | What it is |
-|------|------------|
-| `demo/vetpath-demo.html` | Zero-install interactive prototype (verified working) |
-| `app/` | Next.js App Router pages (8 screens) |
-| `components/` | Nav, Footer/ThemeSwitcher, shared UI |
-| `lib/` | Types, data loaders, and the gameplan **rules engine** |
-| `data/` | Sample JSON: benefits, goals, states, intake questions, example gameplans |
-| `docs/` | Product brief, business plan, architecture, UX flow, research notes, questions for Frank, decision & implementation logs, design system |
+## Deploying
 
-## The 8 screens
-Landing · Onboarding (mocked profile + intake) · Gameplan dashboard ·
-Benefits & resources library · Goal planning · Action plan/checklist · Profile ·
-Strategy (internal, for Frank & team).
-
-## Working name & theming
-The working brand name is **VetPath** (`BRAND` in `lib/data.ts` and the demo file - one place to change).
-Three design directions ship as swappable themes: **Professional** (default), **Warm**, **Civic**.
-Flip them live from the footer or the Strategy page.
+Pushing to `master` runs `.github/workflows/deploy.yml`, which builds the static export and publishes
+it to GitHub Pages. See `DEPLOY.md`.
 
 ## Safety boundary
 This product is strictly for veteran life planning, benefits education, transition support,
 and resource navigation. It intentionally excludes weapons, tactical training, paramilitary
 or militia content, and political organizing.
-
-See `docs/` for the full plan, and `docs/DECISIONS_LOG.md` for what we've decided so far.

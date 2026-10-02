@@ -16,3 +16,7 @@ tsconfig.tsbuildinfo
 
 # versioned build dirs (VP_DIST_DIR pattern)
 .next-v*
+
+# Internal proposals that must never ship in this public repo (VetPath has no AI
+# and makes no AI claims; this spec is an unbuilt idea, kept local).
+docs/llm-assistant-spec.md

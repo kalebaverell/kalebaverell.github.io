@@ -1,7 +1,8 @@
 # VetPath — Product Brief
 
 > **BRAND:** `VetPath` (working name, stored as a single config value `BRAND` — easy to rename later).
-> **Status:** Prototype / demo. Last updated 2026-07-06.
+> **Historical (July 2026).** Written before the data was verified and before accounts existed. For the
+> current state see README.md and docs/refresh-reports/. Kept unchanged below as a record.
 
 > **IMPORTANT — What VetPath is NOT:** VetPath is a demo and education tool. It is **not** the U.S. Department of Veterans Affairs (VA), a law firm, a claims agent, a financial advisor, or an accredited Veterans Service Organization (VSO). **All benefit data in the prototype is SAMPLE/DEMO data** and is labeled as such throughout the app. Eligibility must always be verified through official sources.
 

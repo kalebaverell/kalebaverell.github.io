@@ -1,9 +1,10 @@
-// VetPath Relocation Planner - deterministic, explainable scoring engine (SAMPLE logic).
+// VetPath Relocation Planner - deterministic, explainable scoring engine (fixed rules, no model).
 // Priorities in → ranked metros out, with a normalized 0–100 score, per-dimension
 // contributions, and plain-language "why" bullets. Same principle as the Pathfinder:
 // the veteran's own stated priorities drive the ranking. A disability rating NEVER
 // filters anything out - it only adds a gentle, optional note about VA access.
-// All tiers are illustrative sample data, not rankings from a cited index.
+// Cost, rent, jobs, and VA-facility datapoints in each metro's `official` block are cited
+// (BEA, HUD, BLS, VA). The 1-5 tiers are illustrative, not rankings from a cited index.
 import metrosJson from "@/data/relocationMetros.json";
 import { careerById, realStateInfo, stateName } from "./data";
 
@@ -124,7 +125,8 @@ const TRACK_LABEL: Record<string, string> = {
   entrepreneur: "Entrepreneur",
 };
 
-// ---- Raw dimension scores (0–1, all illustrative) ----
+// ---- Raw dimension scores (0-1). Cost, jobs, and state benefits use cited data where present;
+// VA access, community, safety, business, and airport use VetPath's illustrative tiers. ----
 
 const VA_RAW: Record<VaLevel, number> = { VAMC: 1, nearby: 0.65, CBOC: 0.5 };
 const AIRPORT_RAW: Record<AirportLevel, number> = { international: 1, regional: 0.65, limited: 0.25 };
@@ -187,7 +189,7 @@ function rawFor(dim: RelocDim, m: Metro, careerId?: string): number {
       if (!s) return 0.5;
       return Math.max(0, Math.min(1, 0.45 + s.cats * 0.09 + s.count * 0.01));
     }
-    // No school rankings in the sample data (deliberately - we don't invent them).
+    // No school rankings in our data (deliberately - we don't invent them).
     // Schools score neutrally; picking it surfaces each metro's schools note instead.
     case "schools": return 0.6;
     case "community": return Math.max(0, Math.min(1, (m.community - 1) / 4));

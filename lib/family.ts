@@ -1,8 +1,8 @@
 // lib/family.ts - Family-centered planning logic (pure, no React).
 // VetPath differentiator: veterans decide as a household. This module turns the
 // veteran's intake answers into household checkpoints, shared decisions, and
-// audience-filtered official resources. SAMPLE/educational content only - no
-// eligibility guarantees, ever.
+// audience-filtered official resources. Educational content; facts with a `verified` date were
+// checked against the official source on that date. No eligibility guarantees, ever.
 
 import familyJson from "../data/familyResources.json";
 

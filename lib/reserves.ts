@@ -103,7 +103,7 @@ export interface RelevanceReason {
 }
 
 export interface ReserveFit {
-  /** 0-100 demo estimate of how worth-a-look this option is for this veteran. */
+  /** 0-100 rule-based estimate of how worth-a-look this option is for this veteran. */
   score: number;
   level: "strong" | "worth-a-look" | "background";
   /** Why we surfaced it, in the veteran's own terms. */

@@ -1,6 +1,6 @@
 // VetPath adaptive planning - life-event definitions (pure module, no React).
 // A life event describes which intake answers it touches and how. Applying one
-// only edits the local demo answers; the rules engine regenerates the plan.
+// only edits the veteran's saved answers; the rules engine regenerates the plan.
 import type { Answers } from "@/lib/types";
 
 export interface LifeEvent {

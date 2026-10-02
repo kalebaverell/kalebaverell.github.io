@@ -2,7 +2,7 @@
   "name": "vetpath",
   "version": "0.1.0",
   "private": true,
-  "description": "VetPath — a personalized life-planning and benefits-navigation prototype for U.S. veterans. Planning/education tool only; not the VA. Sample data only.",
+  "description": "VetPath - free transition planning for U.S. veterans: a personal 30/60/90-day plan built on benefit, career, and state program data verified against official sources and dated. Planning and education tool only; not the VA.",
   "scripts": {
     "dev": "next dev",
     "check:freshness": "node scripts/check-freshness.mjs",

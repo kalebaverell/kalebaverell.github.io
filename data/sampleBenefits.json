@@ -1,5 +1,5 @@
 {
-  "_note": "PROTOTYPE DATA. Federal benefit content in this file was verified against official sources (VA.gov, DOL, SBA, veteranscrisisline.net, NASDVA) on the lastVerified date shown for each category (2026-07-08 / 2026-07-09). Rules change - always confirm current details at the official source linked on each card. VetPath is not the VA and does not determine eligibility.",
+  "_note": "Federal benefit categories, verified against official sources (VA.gov, DOL, SBA, veteranscrisisline.net, NASDVA) on the lastVerified date in each category. Rules change - always confirm current details at the official source linked on each card. VetPath is not the VA and does not determine eligibility. The file name predates verification; this is not sample data.",
   "categories": [
     {
       "id": "va-disability",

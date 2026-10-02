@@ -1,5 +1,6 @@
 "use client";
-// Client-side state store for the prototype: localStorage-backed, no accounts.
+// Client-side state store: localStorage-backed, hydrated from and synced to the veteran's
+// Supabase account when signed in (hydrateRemote, components/ProfileSync.tsx).
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { track } from "@/lib/track";
 import type { AppState, Answers, Status, ChosenPath, ResumeState } from "./types";

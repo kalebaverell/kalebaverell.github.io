@@ -1,4 +1,4 @@
-// VetPath Pathfinder - deterministic, explainable decision engine (SAMPLE logic).
+// VetPath Pathfinder - deterministic, explainable decision engine (fixed rules, no model).
 // Detailed inputs in → ranked career paths out, with a % fit and plain-language "why".
 // Principle: the veteran's own stated preferences drive fit. A disability rating NEVER
 // downgrades a career - it only informs location guidance and benefit highlights.
@@ -283,7 +283,7 @@ export function topTrack(fits: CareerFit[]): string {
   return Object.entries(byTrack).sort((a, b) => b[1].total / b[1].n - a[1].total / a[1].n)[0]?.[0] || "employment";
 }
 
-// ---- Location guidance (sample) ----
+// ---- Location guidance (illustrative examples from data/sampleLocations.json) ----
 export function locationGuidance(a: Answers, place: string | undefined, career?: Career) {
   const rating = a.disabilityRating || "";
   const high = rating === "60–90%" || rating === "100%";

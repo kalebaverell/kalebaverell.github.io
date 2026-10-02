@@ -40,7 +40,7 @@ for (const metro of doc.metros) {
 }
 
 doc._note =
-  "Relocation decision-support data. The `official` block per metro carries CITED datapoints — BEA Regional Price Parities (cost), HUD 2BR Fair Market Rents (housing), BLS metro unemployment (jobs), and the principal VA Medical Center — each with source URL and vintage. The 1–5 tiers remain illustrative comparison aids derived for the prototype; verify all factors independently and check facilities at va.gov/find-locations.";
+  "Relocation decision-support data. The `official` block per metro carries CITED datapoints - BEA Regional Price Parities (cost), HUD 2BR Fair Market Rents (housing), BLS metro unemployment (jobs), and the principal VA Medical Center - each with source URL, vintage, and a `gathered` date. The 1-5 tiers and `housingSample` notes are VetPath's own illustrative comparison aids, not rankings from a cited index; verify all factors independently and check facilities at va.gov/find-locations.";
 
 writeFileSync(metroFile, JSON.stringify(doc, null, 2));
 console.log(`Merged official data into ${hits}/${doc.metros.length} metros (gathered ${gathered}).`);

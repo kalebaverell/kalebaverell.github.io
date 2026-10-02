@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA - for prototype only. Life goals a veteran can choose; each maps to sample benefit categories and suggested steps. Not official VA guidance.",
+  "_note": "Life goals a veteran can choose; each maps to benefit categories in sampleBenefits.json and suggested steps. Not official VA guidance.",
   "goals": [
     {
       "id": "transition-out",

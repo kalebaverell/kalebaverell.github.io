@@ -1,21 +1,20 @@
 # VetPath — Benefits Research Notes
 
-> **Status:** Prototype with VERIFIED benefit content. Last updated 2026-07-10.
+> **Status:** Live product with verified, dated benefit content. Latest runs: docs/refresh-reports/refresh-2026-10-01.md and refresh-2026-10-02.md.
 
 ---
 
 ## Data Refresh Cadence (adopted 2026-07-10)
 
-As of July 2026 the prototype's benefit content is no longer all sample data:
-- **State benefits:** 51/51 jurisdictions, 259 programs, researched from official state sources with
-  per-state `lastVerified` dates and per-program source URLs (`data/stateBenefits.json`).
-- **Federal categories:** all 11 verified against VA.gov/DOL/SBA with `lastVerified` + `sources`
-  (`data/sampleBenefits.json`).
-- **Careers:** BLS OOH May-2024 medians and 2024–34 projections + O*NET links (`data/sampleCareers.json`).
-- **Family programs:** verified rules (PCAFC 70%+, DEA/Ch35, transfer-while-serving, CHAMPVA P&T)
-  (`data/familyResources.json`).
-- **Still illustrative:** relocation cost/safety/business tiers (official anchors — BEA RPP, HUD FMR,
-  BLS unemployment, VAMC identification — being gathered into `data/research/reloc-batch*.json`).
+What is verified, and what is still illustrative:
+- **State benefits:** all 50 states and D.C., researched from official state sources, one `lastVerified`
+  stamp and a source URL per program (`data/stateBenefits.json`). The site computes the program count from the file.
+- **Federal categories:** each verified against VA.gov/DOL/SBA with `lastVerified` + `sources` (`data/sampleBenefits.json`).
+- **Careers:** BLS OOH May 2025 medians and 2025-35 projections + O*NET links (`data/sampleCareers.json`, `lastVerified`).
+- **Funding and Reserves:** `data/funding.json`, `data/reserves.json`, full-date `lastVerified`.
+- **Family programs:** verified rules with per-entry `verified` dates (`data/familyResources.json`).
+- **Still illustrative:** relocation 1-5 tiers and starter-home notes (the BEA/HUD/BLS/VA datapoints beside them
+  are cited), location examples (`data/sampleLocations.json`), college-credit examples (`data/sampleCreditMap.json`).
 
 **The cadence — quarterly re-verification (Jan / Apr / Jul / Oct):**
 1. Re-run the state research fleet per `scripts/research-runbook.md` (10 batches, incremental saves);
@@ -26,16 +25,17 @@ As of July 2026 the prototype's benefit content is no longer all sample data:
 3. Refresh BLS medians/outlooks when BLS publishes new OOH data (annually, ~spring) and re-check the
    four "pending" claim checks (FMCSA waiver, FAA A&P crediting, Helmets to Hardhats, SBA VetCert).
 4. Bump every `lastVerified`; the UI displays these dates — stale dates are a visible product bug.
-5. **Owner:** unassigned (decide at the Frank working session). **Trigger discipline:** any user
+5. **Owner:** Kaleb Averell (runs each refresh and signs off the diff). **Enforcement:** `scripts/check-freshness.mjs`
+   runs before every build and fails it when any verification date is over 100 days old (warns past 90); a weekly
+   scheduled workflow runs the same check when nothing is pushed. **Trigger discipline:** any user
    report of an incorrect benefit gets a 48-hour verify-and-fix, not batched to the quarter.
+   After every refresh, also update the VERIFIED constant in the send-checkins edge function.
 
 ---
 
-## ⚠️ Critical Notice — Remaining SAMPLE Data
+## What VetPath does not do
 
-**Every benefit shown in the VetPath prototype is SAMPLE/DEMO data.** It exists to demonstrate the product experience, not to provide accurate, current, or personalized benefit determinations. It is labeled "SAMPLE DATA" in the app.
-
-VetPath **does not**:
+VetPath shows benefit information verified against official sources and dated. It does not:
 - Guarantee eligibility for any benefit.
 - Provide legal, medical, or financial advice.
 - Act as the VA, an accredited VSO, a law firm, or a claims agent.

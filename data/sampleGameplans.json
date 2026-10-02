@@ -1,5 +1,5 @@
 {
-  "_note": "SAMPLE / DEMO DATA - for prototype only. Pre-built example gameplans used to showcase output and as a fallback. The live app generates a similar plan from a user's intake answers. Not official VA guidance.",
+  "_note": "EXAMPLE GAMEPLANS for a fictional veteran. Not rendered by the app today (SAMPLE_GAMEPLANS in lib/data.ts has no importers); the live app builds plans from intake answers in lib/rules.ts.",
   "examples": [
     {
       "id": "transitioning-army-tx",

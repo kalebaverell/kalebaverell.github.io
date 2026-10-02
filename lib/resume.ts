@@ -1,4 +1,4 @@
-// VetPath resume scanner - deterministic, client-side analysis (SAMPLE logic, no upload).
+// VetPath resume scanner - deterministic, client-side analysis (fixed rules, no upload).
 // Tailors feedback toward a chosen career path's keywords. A coaching aid, not an ATS oracle.
 import type { Career } from "./types";
 
@@ -9,7 +9,7 @@ export interface ResumeIssue {
 }
 
 export interface ResumeResult {
-  score: number; // 0–100 demo estimate
+  score: number; // 0-100 rule-based estimate
   words: number;
   strengths: string[];
   issues: ResumeIssue[];

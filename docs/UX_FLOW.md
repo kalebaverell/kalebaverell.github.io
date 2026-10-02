@@ -1,7 +1,7 @@
 # VetPath — UX Flow
 
-> **Status:** Prototype. Last updated 2026-07-06.
-> **Reminder:** All benefit data is SAMPLE data. VetPath is not the VA and does not guarantee eligibility. Every recommendation points to an official source to verify.
+> **Historical (July 2026).** Written before the data was verified and before accounts existed. For the
+> current state see README.md and docs/refresh-reports/. Kept unchanged below as a record.
 
 ---
 
