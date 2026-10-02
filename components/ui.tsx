@@ -61,6 +61,19 @@ export function Stat({ n, l }: { n: React.ReactNode; l: string }) {
   );
 }
 
+// Same markup and classes as Stat, without the count-up. Use it on pages whose
+// numbers are the point (verification, trust, security): CountUp ships "0" in
+// the static HTML and stalls in hidden tabs, so crawlers, link previews and
+// reviewers would read zeros.
+export function StaticStat({ n, l }: { n: React.ReactNode; l: string }) {
+  return (
+    <div className="stat">
+      <div className="n" style={{ fontVariantNumeric: "tabular-nums" }}>{n}</div>
+      <div className="l">{l}</div>
+    </div>
+  );
+}
+
 export function ProgressBar({ pct, label }: { pct: number; label?: string }) {
   const v = Math.max(0, Math.min(100, Math.round(pct)));
   return (

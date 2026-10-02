@@ -15,7 +15,8 @@
 // v5 also requires a shared secret: verify_jwt accepts ANY valid user JWT, so a
 // signed-in member could otherwise force a send run and read the account count.
 // The pg_cron job must send header x-checkins-secret equal to the function secret
-// CHECKINS_CRON_SECRET (kept in Vault for the cron job). Unset secret = refuse.
+// CHECKINS_CRON_SECRET, or the Vault secret checkins_cron_secret (the cron job
+// reads it from Vault at run time). No secret available = refuse.
 // The response no longer carries the total account count.
 // Source of truth: supabase/functions/send-checkins/index.ts in the repo.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -121,8 +122,24 @@ function sameSecret(a: string, b: string): boolean {
   return diff === 0;
 }
 
+// The shared secret: CHECKINS_CRON_SECRET env var if set, else the Vault secret
+// 'checkins_cron_secret' through the service-role-only getter (migration
+// checkins_cron_secret_in_vault). The cron job reads the same Vault secret.
+async function cronSecret(): Promise<string> {
+  const env = Deno.env.get("CHECKINS_CRON_SECRET") || "";
+  if (env) return env;
+  try {
+    const r = await fetch(`${URL_}/rest/v1/rpc/get_checkins_secret`, { method: "POST", headers: H, body: "{}" });
+    if (r.ok) {
+      const v = (await r.json()) as string | null;
+      if (v && v.length >= 32) return v;
+    }
+  } catch { /* refuse below */ }
+  return "";
+}
+
 Deno.serve(async (req: Request) => {
-  const CRON_SECRET = Deno.env.get("CHECKINS_CRON_SECRET") || "";
+  const CRON_SECRET = await cronSecret();
   if (!CRON_SECRET) return Response.json({ error: "not_configured" }, { status: 503 });
   if (!sameSecret(req.headers.get("x-checkins-secret") || "", CRON_SECRET)) {
     return Response.json({ error: "forbidden" }, { status: 403 });

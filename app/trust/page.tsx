@@ -7,7 +7,7 @@ import { METROS } from "@/lib/relocate";
 import { TIMELINE_VERIFIED } from "@/lib/timeline";
 import { FUNDING_VERIFIED } from "@/lib/funding";
 import { RESERVES_VERIFIED } from "@/lib/reserves";
-import { Wrap, Eyebrow, SectionHead, Stat, Callout } from "@/components/ui";
+import { Wrap, Eyebrow, SectionHead, StaticStat as Stat, Callout } from "@/components/ui";
 
 /** "2026-10-01" -> "Oct 2026". Every row shows its dataset's real stamp, never a typed-in month. */
 function monthOf(iso?: string | null): string {

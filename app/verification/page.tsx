@@ -10,7 +10,7 @@ import type { CSSProperties } from "react";
 import { routeMeta } from "@/lib/metadata";
 import { STATE_BENEFITS, BENEFITS, CAREERS } from "@/lib/data";
 import { METROS } from "@/lib/relocate";
-import { Wrap, Eyebrow, SectionHead, Stat } from "@/components/ui";
+import { Wrap, Eyebrow, SectionHead, StaticStat as Stat } from "@/components/ui";
 import ReportErrorLink from "@/components/ReportErrorLink";
 import { VERIFICATION_LOG, datasetFacts, sourceTotals, fmtVerified, datasetLabel } from "@/lib/verification";
 
