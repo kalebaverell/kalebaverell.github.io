@@ -54,7 +54,7 @@ const SRC = {
   skillbridge: { label: "SkillBridge", url: "https://www.skillbridge.mil/" },
   b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/counseling/boots-to-business/" },
   jst: { label: "Joint Services Transcript", url: "https://jst.doded.mil/" },
-  vetCenter: { label: "VA Vet Centers", url: "https://www.vetcenter.va.gov/" },
+  vetCenter: { label: "VA Vet Centers - who is eligible", url: "https://www.vetcenter.va.gov/eligibility.asp" },
   oneSource: { label: "Military OneSource", url: "https://www.militaryonesource.mil/" },
   ucx: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   vso: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
@@ -129,7 +129,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
       { t: "Decide on VGLI inside the guaranteed-acceptance window", n: "Apply within 240 days of separation and no health questions are asked. The absolute deadline is one year and 120 days, but 240 days is the one that matters.", src: SRC.vgli, key: true, due: true },
       { t: "File your disability claim, or track the BDD one", n: "An Intent to File preserves your effective date for a year while you build the claim properly. Free VSO help, never claim sharks.", src: SRC.itf, key: true, ifYou: "are filing a disability claim" },
       { t: "First 90 days on the job: translate, do not retreat", n: "Find the veteran employee group, learn the unwritten rules, and give yourself six months before judging the fit.", ifYou: "have started work" },
-      { t: "Expect the month-three-to-six dip - and know it is normal", n: "The mission-and-identity gap usually hits after the boxes are unpacked. Vet Centers offer free, confidential readjustment counselling - no rating or enrollment needed.", src: SRC.vetCenter, key: true },
+      { t: "Expect the month-three-to-six dip - and know it is normal", n: "The mission-and-identity gap usually hits after the boxes are unpacked. Vet Centers offer free, confidential readjustment counseling if you served in a combat theater or area of hostility, experienced military sexual trauma, or fit one of their other eligibility groups - check the list at the link. Whether or not you qualify, the Veterans Crisis Line (988, then press 1) needs no VA enrollment.", src: SRC.vetCenter, key: true },
     ],
   },
   {

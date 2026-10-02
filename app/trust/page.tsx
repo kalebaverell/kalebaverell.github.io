@@ -20,10 +20,12 @@ const oldest = (dates: (string | null | undefined)[]) => dates.filter((d): d is 
 
 export default function TrustPage() {
   const statePrograms = STATE_BENEFITS.states.reduce((n, s) => n + s.programs.length, 0);
-  const verifiedFederal = BENEFITS.filter((b: any) => b.lastVerified).length;
+  // BENEFITS also carries the "state-benefits" overview card; the federal count leaves it out.
+  const FEDERAL = BENEFITS.filter((b: any) => b.id !== "state-benefits");
+  const verifiedFederal = FEDERAL.filter((b: any) => b.lastVerified).length;
   const groundedCareers = CAREERS.filter((c) => c.blsUrl).length;
   const officialMetros = METROS.filter((m: any) => m.official).length;
-  const federalVerified = oldest(BENEFITS.map((b: any) => b.lastVerified));
+  const federalVerified = oldest(FEDERAL.map((b: any) => b.lastVerified));
   const metrosGathered = oldest(METROS.map((m: any) => m.official?.gathered));
 
   return (
@@ -59,7 +61,7 @@ export default function TrustPage() {
           <tbody>
             {[
               ["State benefits (all 50 + DC)", "State departments of veterans affairs (.gov)", STATE_BENEFITS.lastVerified || "-", "Quarterly"],
-              [`Federal benefits (${BENEFITS.length} categories)`, "VA.gov · DOL VETS · SBA · Veterans Crisis Line", monthOf(federalVerified), "Quarterly"],
+              [`Federal benefits (${FEDERAL.length} core categories)`, "VA.gov · DOL VETS · SBA · Veterans Crisis Line", monthOf(federalVerified), "Quarterly"],
               ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2025 medians)", monthOf(CAREERS_VERIFIED), "Annually (new BLS editions)"],
               ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", `${monthOf(metrosGathered)} (HUD rent FY2026, carried forward)`, "Quarterly"],
               ["Transition deadlines", "VA.gov · DoD TAP · DOL · TRICARE", monthOf(TIMELINE_VERIFIED), "Quarterly"],
@@ -114,7 +116,7 @@ export default function TrustPage() {
       {/* The "what's the catch" answer. On the page where skeptics read the
           fine print, say plainly who pays - one line, no pitch. */}
       <div id="who-pays" className="muted" style={{ marginTop: 20, fontSize: 14.5 }}>
-        Wondering who pays for all this? Right now, the two of us who built it - plus supporters
+        Wondering who pays for all this? Right now, the founders who built it - plus supporters
         who want it to stay free. <a href="/support" style={{ fontWeight: 600 }}>Support the mission →</a>
       </div>
       <div className="muted" style={{ marginTop: 10, fontSize: 14.5 }}>

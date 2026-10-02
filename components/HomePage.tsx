@@ -214,7 +214,7 @@ export default function Landing() {
             </div>
             <div className="hero-trust">
               <span className="t"><i className="ti ti-shield-check" /> Free. Built with veterans</span>
-              <span className="t"><i className="ti ti-lock" /> Private, nothing shared</span>
+              <span className="t"><i className="ti ti-lock" /> Private. Never sold, no ad trackers</span>
               <span className="t"><i className="ti ti-circle-check" /> Every number has an official source</span>
             </div>
           </div>

@@ -275,7 +275,7 @@ const src = {
   skillbridge: { label: "SkillBridge", url: "https://www.skillbridge.mil/" },
   b2b: { label: "SBA - Boots to Business", url: "https://www.sba.gov/counseling/boots-to-business/" },
   jst: { label: "Joint Services Transcript", url: "https://jst.doded.mil/" },
-  vetCenter: { label: "VA Vet Centers", url: "https://www.vetcenter.va.gov/" },
+  vetCenter: { label: "VA Vet Centers - who is eligible", url: "https://www.vetcenter.va.gov/eligibility.asp" },
   oneSource: { label: "Military OneSource", url: "https://www.militaryonesource.mil/" },
   ucx: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   vso: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
@@ -364,7 +364,7 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
   if (a.finances === "income-now") push({ id: "ucxFile", phase: "p5", area: "financial", essential: true, title: "File your UCX unemployment claim if income hasn't landed", notes: "File in the state where you live now, with your DD-214 in hand.", source: src.ucx });
   if (has("education")) push({ id: "mhaCheck", phase: "p5", area: "education", title: "First term: confirm GI Bill payments are flowing", notes: "Verify enrollment monthly if required, and flag payment problems to the school certifying official immediately." });
   if (kids) push({ id: "schoolSettle", phase: "p5", area: "family", title: "Get the kids' school transition settled", notes: "Records transferred, counselors briefed, activities joined - kids stabilize faster when one adult owns this checklist." });
-  push({ id: "identityDip", phase: "p5", area: "wellbeing", essential: true, title: "Expect the month-3-to-6 dip - and know it's normal", notes: "The mission-and-identity gap usually hits after the boxes are unpacked. Vet Centers offer free, confidential readjustment counseling - no rating or enrollment needed.", source: src.vetCenter });
+  push({ id: "identityDip", phase: "p5", area: "wellbeing", essential: true, title: "Expect the month-3-to-6 dip - and know it's normal", notes: "The mission-and-identity gap usually hits after the boxes are unpacked. Vet Centers offer free, confidential readjustment counseling if you served in a combat theater or area of hostility, experienced military sexual trauma, or fit one of their other eligibility groups - check the list at the link. Whether or not you qualify, the Veterans Crisis Line (988, then press 1) needs no VA enrollment.", source: src.vetCenter });
 
   // ---- P6 · +6 to +12 months - stabilization
   if (claims) push({ id: "ratingReview", phase: "p6", area: "benefits", title: "Got your rating decision? Review it with your VSO", notes: "If it's wrong or incomplete, there are free, structured review paths (supplemental claim, higher-level review, board appeal), and an accredited VSO rep will help you with them at no cost." });

@@ -7,11 +7,11 @@
       "icon": "ti-briefcase",
       "entries": [
         {
-          "name": "SECO - Spouse Education and Career Opportunities",
+          "name": "SpouseWorks (formerly SECO)",
           "what": "Free DoD career coaching, education planning, scholarships, and resume help for military spouses.",
-          "url": "https://myseco.militaryonesource.mil/",
+          "url": "https://spouseworks.militaryonesource.mil/",
           "audience": ["spouse"],
-          "scopeNote": "SECO serves military spouses - strongest while the service member is still serving, so use it before separation if you can."
+          "scopeNote": "SpouseWorks serves military spouses - strongest while the service member is still serving, so use it before separation if you can."
         },
         {
           "name": "MSEP - Military Spouse Employment Partnership",

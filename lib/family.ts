@@ -227,7 +227,7 @@ export function buildFamilyPlan(a: AnswersLike, careerLabel?: string): FamilyPla
       checkpoints.push({
         when: "60",
         who: "spouse",
-        text: "Book a free SECO career coaching session for your spouse while you're still serving - spouse programs like SECO and MSEP are strongest before separation.",
+        text: "Book a free SpouseWorks (formerly SECO) career coaching session for your spouse while you're still serving - spouse programs like SpouseWorks and MSEP are strongest before separation.",
       });
     } else {
       checkpoints.push({

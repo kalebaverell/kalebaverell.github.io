@@ -18,8 +18,10 @@ import ProgressStrip from "@/components/ProgressStrip";
 // Kept near the 155-character mark so search results and link previews show it
 // whole. The old copy said "Sample data only", which stopped being true once the
 // state, federal, and career data were verified against official sources.
+// Lead with what VetPath adds. "Not the VA" belongs in footers and legal text,
+// never in meta, OG, or structured-data descriptions (docs/DESIGN_SYSTEM.md).
 const DESCRIPTION =
-  "Turn your service and goals into a personal 30/60/90 day plan: benefits to claim, careers that fit, and how to pay for the training. Free. Not the VA.";
+  "Turn your service and goals into a dated 30/60/90-day plan: the benefits to check, careers that fit, how to pay for training. Official sources linked. Free.";
 
 // Entity identity for search engines (Sep 11, 2026). Search Console showed the
 // only queries surfacing this domain were VETERINARY - "canine itch scale",
@@ -47,7 +49,7 @@ const ORG_JSONLD = {
         height: 512,
       },
       description:
-        "VetPath helps United States military veterans and transitioning service members plan life after service: the VA benefits to claim, civilian careers that fit their service, and how to pay for the training. Free to use, and every figure links to the official government source behind it. VetPath is not the VA and is not affiliated with any government agency.",
+        "VetPath helps United States military veterans and transitioning service members plan life after service: the benefits to check, civilian careers that fit their service, and how to pay for the training. Free to use, with each benefit and figure linked to the official source behind it. Claims questions are routed to free accredited representatives.",
       areaServed: { "@type": "Country", name: "United States" },
       audience: {
         "@type": "Audience",
@@ -101,7 +103,7 @@ export const metadata: Metadata = {
     url: SITE,
     title: "VetPath - A clear gameplan for life after service",
     description:
-      "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, and every figure links to an official source.",
+      "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, with official sources linked.",
     locale: "en_US",
     images: [OG_IMAGE],
   },

@@ -7,6 +7,14 @@ import { routeMeta, SITE } from "@/lib/metadata";
 import { Wrap, Eyebrow } from "@/components/ui";
 import GuideCta from "@/components/GuideCta";
 import FeedbackAsk from "@/components/FeedbackAsk";
+import { FUNDING_VERIFIED } from "@/lib/funding";
+
+// The visible "checked" date is the funding dataset's own stamp, which the
+// prebuild freshness gate enforces - never a typed-in month.
+function checkedLabel(iso: string): string {
+  const d = new Date(iso + "T12:00:00");
+  return isNaN(d.getTime()) ? iso : d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
 
 export const metadata = routeMeta(
   "Funding a veteran-owned business",
@@ -14,6 +22,7 @@ export const metadata = routeMeta(
 );
 
 const OFFICIAL = [
+  { label: "SAM.gov - entity registration and Unique Entity ID (UEI)", url: "https://sam.gov/" },
   { label: "SBA VetCert (VOSB / SDVOSB certification)", url: "https://certifications.sba.gov/" },
   { label: "SBA - Women-Owned Small Business program (WOSB / EDWOSB)", url: "https://www.sba.gov/certifications/#women-owned" },
   { label: "SBA - Veteran-owned businesses (OVBD, VBOCs)", url: "https://www.sba.gov/counseling/grow-your-business/#veteran-owned" },
@@ -50,6 +59,9 @@ export default function BusinessFundingGuide() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Eyebrow>Guide · verified against official sources</Eyebrow>
       <h1 style={{ maxWidth: 680 }}>Funding a veteran-owned business, minus the noise.</h1>
+      <p className="small muted" style={{ margin: "0 0 10px" }}>
+        Programs checked against their official pages: {checkedLabel(FUNDING_VERIFIED)}.
+      </p>
       <p className="muted" style={{ maxWidth: 640 }}>
         Search &ldquo;grants for veteran business owners&rdquo; and you will drown in paid lists,
         lead-generation sites, and offers to sell you what is free. Here is the version with
@@ -76,8 +88,17 @@ export default function BusinessFundingGuide() {
       <section style={{ marginTop: 26 }}>
         <h2>The move that outranks grants: get certified</h2>
         <p style={{ maxWidth: 640 }}>
-          The federal government sets aside contract dollars specifically for certified
-          veteran-owned and women-owned small businesses - recurring revenue, not one-time checks.
+          Certification opens federal set-aside and sole-source contracts - recurring revenue, not
+          one-time checks. Which contracts depends on the certification: service-disabled
+          veteran-owned (SDVOSB) set-asides run across the federal government, veteran-owned (VOSB)
+          set-asides are a VA program, and women-owned set-asides apply in eligible industries.
+        </p>
+        <p style={{ maxWidth: 640 }}>
+          <strong>Register in SAM.gov first.</strong> It is free, it gives your business its Unique
+          Entity ID, and the SBA asks for that registration before you apply for VetCert.{" "}
+          <a href="https://sam.gov/" target="_blank" rel="noopener noreferrer">
+            SAM.gov <i className="ti ti-external-link" aria-hidden="true" />
+          </a>
         </p>
         <ul style={{ maxWidth: 640, paddingLeft: 20 }}>
           <li style={{ marginBottom: 8 }}>

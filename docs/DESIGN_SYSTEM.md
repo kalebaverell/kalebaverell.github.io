@@ -98,15 +98,21 @@ scaling intact, WCAG focus rings and reduced-motion preserved.
 |---|---|
 | **Buttons** | Primary = navy fill, white text. Accent = gold fill for the single most important CTA. Secondary/ghost = navy outline. Rounded ~8px, 16px label, generous padding, clear hover/focus. |
 | **Cards** | White surface, `--color-border`, subtle shadow, rounded ~12px, generous internal padding. |
-| **Chips / badges** | Small rounded pills for life stage, category, and status. **"SAMPLE DATA"** badge uses warning styling. |
+| **Chips / badges** | Small rounded pills for life stage, category, and status. A **"Verified"** chip carries the date the item was checked against its official source. |
 | **Progress bars** | Navy fill on light track; success green when complete; used on Dashboard and Checklist. |
 | **Checklists** | Large checkboxes, 16px+ labels, grouped by 30/60/90; completed items use success color. |
-| **Disclaimers / callouts** | Info (blue), warning (gold-brown "verify"), danger (crisis line). Always visible where benefits appear; persistent "demo / not the VA / SAMPLE data" note in the shell. |
+| **Disclaimers / callouts** | Info (blue), warning (gold-brown "verify"), danger (crisis line). A "confirm at the official source" line sits wherever benefits appear. Placement of the "not the VA" line follows the rule below. |
 
 **Standing callouts to include:**
-- **"SAMPLE DATA — verify at official source"** on every benefit.
-- **"VetPath is not the VA and does not guarantee eligibility."**
-- **Veterans Crisis Line — dial 988, then press 1** (danger/info styling, always reachable).
+- A dated **"Verified"** stamp and an official-source link on every benefit.
+- **"VetPath is a planning and education tool - not the VA, and it never determines eligibility."** In the footer and the legal places listed below only.
+- **Veterans Crisis Line - dial 988, then press 1** (danger/info styling, always reachable).
+
+**Disclaimer placement rule (Oct 2026).** Lead with what VetPath adds: the dated plan, the linked sources, and the handoff to accredited help. The contrast line ("not the VA", "not affiliated with any government agency") appears only in:
+footers, the privacy, terms, and trust pages' fine print, the FAQ answer to "Is VetPath part of the VA?", page-bottom caveats, print and email footers, social-profile fine print, and signature blocks on government-facing mail.
+It never appears in a hero, an H1 or H2, a meta, OG, manifest, or structured-data description, an email subject or opening sentence, or a bullet heading.
+On one-pagers the promise is phrased as the handoff: **"We hand off, we don't decide."**
+Also out: "every" or "nothing" claims that a linked page cannot back item by item (say "official sources linked", not "every figure"), and "benefits to claim" (say "benefits to check").
 
 ---
 

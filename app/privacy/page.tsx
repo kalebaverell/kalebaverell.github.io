@@ -252,6 +252,15 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
+      <Section title="How long we keep it">
+        <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
+          <li>Your account and everything saved to it: for as long as the account exists, and gone right away when you delete it. We do not delete inactive accounts on a timer today; if that changes, this page changes first.</li>
+          <li>Feedback sent while signed out: it has no link to any account, and it holds only the note you wrote and the page you sent it from.</li>
+          <li>The anonymous page counter: totals only, with nothing in them that points back to you.</li>
+          <li>Email delivery records at Resend and request logs at our hosting providers: kept by those services for a limited time and deleted on their own schedule.</li>
+        </ul>
+      </Section>
+
       <Section title="Children">
         VetPath is built for service members, veterans, and their families, and it is not directed at
         children. Please do not create an account for anyone under 13.

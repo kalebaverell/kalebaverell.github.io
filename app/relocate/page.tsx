@@ -423,7 +423,7 @@ export default function RelocatePage() {
 
       <p className="small muted" style={{ marginTop: 26 }}>
         {METROS.filter((m) => (m as { official?: unknown }).official).length} of these {METROS.length} places carry cited cost, rent, and jobs data - real decisions still need a visit, current listings,
-        and a conversation with veterans who already live there. VetPath is not the VA.
+        and a conversation with veterans who already live there. Check each figure at its source.
       </p>
       <Link className="btn ghost" href="/tools"><i className="ti ti-arrow-left" aria-hidden="true" /> All tools</Link>
     </Wrap>

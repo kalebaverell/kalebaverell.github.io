@@ -20,7 +20,7 @@ export const OG_IMAGE = {
 };
 
 const SHARED_DESCRIPTION =
-  "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, and every figure links to an official source.";
+  "Benefits, career paths, and the next 90 days, built around your service and your goals. Free for veterans, with official sources linked.";
 
 /**
  * Metadata for one route. The browser tab, the search snippet, and the link

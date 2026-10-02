@@ -279,8 +279,8 @@
       "attrs": { "hands": 1, "tech": 2, "people": 3, "data": 4, "lead": 4, "risk": 4, "physical": 0, "outdoor": 0, "care": 1, "autonomy": 4 },
       "whyVets": "SDVOSB set-asides + your niche expertise = a defensible lane most founders can't enter.",
       "entryPath": [
-        "Confirm SDVOSB eligibility and register the entity (SBA VetCert).",
-        "Register in SAM.gov; pick target NAICS codes from your expertise.",
+        "Register the business in SAM.gov (free) to get its Unique Entity ID; pick target NAICS codes from your expertise.",
+        "Confirm SDVOSB eligibility, then apply for SBA VetCert certification (it asks for your SAM.gov registration).",
         "Start as a subcontractor / mentor-protégé to learn the game.",
         "Bid small set-asides; build past performance."
       ],
