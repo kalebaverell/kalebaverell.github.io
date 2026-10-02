@@ -58,6 +58,7 @@ const SRC = {
   oneSource: { label: "Military OneSource", url: "https://www.militaryonesource.mil/" },
   ucx: { label: "DOL - UCX for ex-service members", url: "https://oui.doleta.gov/unemploy/ucx.asp" },
   vso: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
+  nacvso: { label: "Find your county veterans service officer (NACVSO)", url: "https://www.nacvso.org/county-veterans-service-officers" },
   nextMove: { label: "My Next Move for Veterans", url: "https://www.mynextmove.org/vets/" },
   vaLoan: { label: "VA home loans", url: "https://www.va.gov/housing-assistance/home-loans/" },
   sbp: { label: "Survivor Benefit Plan", url: "https://militarypay.defense.gov/Benefits/Survivor-Benefit-Plan/" },
@@ -72,7 +73,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     lede: "Nothing here is urgent yet, which is exactly why most people skip it and pay for it later. These are the moves that make every later step cheaper.",
     items: [
       { t: "Create your VA.gov account", n: "ID.me or Login.gov. Nearly every benefit below starts here. Ten minutes now, no waiting rooms later.", src: SRC.vaAccount, key: true },
-      { t: "Connect with an accredited VSO - they are free", n: "Veteran Service Organizations help with claims and benefits at no cost. Never pay a percentage of your benefits to anyone.", src: SRC.vso, key: true },
+      { t: "Connect with an accredited VSO - they are free", n: "Veteran Service Organizations help with claims and benefits at no cost. Never pay anyone a percentage of your benefits to file your initial claim.", src: SRC.vso, key: true },
       { t: "Start collecting your complete medical record", n: "Every condition you will claim needs to be documented while you are still in. See your provider about anything you have been ignoring.", key: true, ifYou: "expect to file a disability claim" },
       { t: "Draft a civilian resume and translate your MOS", n: "Use the crosswalk to see how your military occupation maps to civilian titles.", src: SRC.nextMove, ifYou: "are heading for employment" },
       { t: "Research SkillBridge industry training", n: "Up to your last 180 days working with a civilian employer while still on active-duty pay. Requires command approval - raise it early.", src: SRC.skillbridge, ifYou: "are heading for employment" },
@@ -124,6 +125,7 @@ const PHASES: { id: string; label: string; window: string; lede: string; items: 
     lede: "The paperwork phase is over and the quiet one begins. The deadline in here is the one veterans most often discover too late.",
     items: [
       { t: "Enrol and register at your local VA facility", n: "Get in the system and book a first appointment even if you feel fine - established care makes everything later easier.", src: SRC.facilities, key: true },
+      { t: "Connect with your county or state veterans service officer", n: "County veterans service officers exist in many, but not all, states; where there isn't one, your state veterans agency is the front door. Either way the help is free.", src: SRC.nacvso },
       { t: "Decide on VGLI inside the guaranteed-acceptance window", n: "Apply within 240 days of separation and no health questions are asked. The absolute deadline is one year and 120 days, but 240 days is the one that matters.", src: SRC.vgli, key: true, due: true },
       { t: "File your disability claim, or track the BDD one", n: "An Intent to File preserves your effective date for a year while you build the claim properly. Free VSO help, never claim sharks.", src: SRC.itf, key: true, ifYou: "are filing a disability claim" },
       { t: "First 90 days on the job: translate, do not retreat", n: "Find the veteran employee group, learn the unwritten rules, and give yourself six months before judging the fit.", ifYou: "have started work" },

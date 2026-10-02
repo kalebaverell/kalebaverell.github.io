@@ -143,7 +143,8 @@ export default function PrivacyPage() {
           <li>
             <strong>Resend</strong> delivers our emails: account emails like password resets, and check-in
             emails if you have them on. It receives your email address, your first name, and the email
-            itself - nothing else from your plan.
+            itself, which can mention your transition phase and how many steps you have checked off -
+            nothing else from your plan.
           </li>
           <li>
             <strong>GitHub Pages</strong> serves the website itself. Like any web host, its servers log the
@@ -173,8 +174,9 @@ export default function PrivacyPage() {
           Each partner office gets a private report with counts only: how many accounts came through
           its code, and how many of those built a plan, checked off a step, gave a separation date,
           reached the pre-discharge claim window, opened a free accredited-help link, or said yes to
-          email check-ins. Any count from 1 to 4 shows as &quot;&lt;5&quot; so no one can be picked
-          out. Partners see totals, never a list of people. The report has no way to show a name, an
+          email check-ins, plus the total number of steps checked off once at least five people have
+          checked one. Any count from 1 to 4 shows as &quot;&lt;5&quot;, so small groups are harder to
+          single out. Partners see totals, never a list of people. The report has no way to show a name, an
           email address, an answer, or a plan, and partners never get access to our database.
         </p>
         <p style={{ margin: "10px 0 0" }}>
@@ -221,7 +223,10 @@ export default function PrivacyPage() {
         Your saved plan lives in a managed Postgres database, encrypted at rest, and everything travels
         over an encrypted connection. Access is governed by <strong>row-level security</strong>, which
         means the database itself enforces that your row can only be read or changed while signed in as
-        you. Another signed-in user cannot query your data even if they try.
+        you. Another signed-in user cannot query your data even if they try. The one exception is a
+        calendar link you choose to create: anyone holding it sees your phase dates, with no name or
+        email. Our own server code touches rows only to send the emails you opted into, to carry out an
+        unsubscribe or account deletion you ask for, and to compute counts-only reports.
         <p style={{ margin: "10px 0 0" }}>
           Every safeguard, and what we have not done yet, is listed on our <Link href="/security">security page</Link>.
         </p>
@@ -241,7 +246,9 @@ export default function PrivacyPage() {
           To delete your account entirely, open your profile and choose <strong>Delete my account</strong>.
           It removes your login and everything saved to it - plan, answers, notes, visit dates, email
           history, and feedback you sent while signed in - right away. We do not ask for a reason. If you
-          would rather we do it, email us and we will. <Link href="/security/#delete">What deletion covers</Link>.
+          would rather we do it, email us and we will. Delivery records our email provider keeps for a
+          limited time, and short-lived service logs at our hosting provider, expire on their own
+          schedule. <Link href="/security/#delete">What deletion covers</Link>.
         </p>
       </Section>
 

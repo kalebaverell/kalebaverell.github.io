@@ -62,8 +62,8 @@ export default function TrustPage() {
               [`Federal benefits (${BENEFITS.length} categories)`, "VA.gov · DOL VETS · SBA · Veterans Crisis Line", monthOf(federalVerified), "Quarterly"],
               ["Career pay & outlook", "BLS Occupational Outlook Handbook (May 2025 medians)", monthOf(CAREERS_VERIFIED), "Annually (new BLS editions)"],
               ["Relocation cost / rent / jobs", "BEA Regional Price Parities · HUD Fair Market Rents · BLS", `${monthOf(metrosGathered)} (HUD rent FY2026, carried forward)`, "Quarterly"],
-              ["Transition deadlines", "VA.gov · DoD TAP · U.S. Code", monthOf(TIMELINE_VERIFIED), "Quarterly"],
-              ["Funding programs", "VA · StudentAid.gov · OPM · SBA", monthOf(FUNDING_VERIFIED), "Quarterly"],
+              ["Transition deadlines", "VA.gov · DoD TAP · DOL · TRICARE", monthOf(TIMELINE_VERIFIED), "Quarterly"],
+              ["Funding programs", "VA · StudentAid.gov · OPM · SBA · each program's own site", monthOf(FUNDING_VERIFIED), "Quarterly"],
               ["Reserve & Guard benefits", "VA.gov · TRICARE · DOL · U.S. Code · state Guard pages", monthOf(RESERVES_VERIFIED), "Quarterly"],
               ["Assessment design", "U.S. DOL O*NET® Interest Profiler framework (RIASEC)", "Jul 2026", "As frameworks evolve"],
             ].map((row) => (

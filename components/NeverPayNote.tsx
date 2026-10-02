@@ -1,4 +1,4 @@
-// "Never pay for claims help" - one component so the plan, the benefits library
+// "Never pay to file a VA claim" - one component so the plan, the benefits library
 // and the printout say exactly the same thing (copy and links: lib/handoff.ts).
 // Screen: the existing warn Callout (ti-alert-triangle, in the icon subset).
 // Print: the existing print-box; globals.css:586 prints each link's URL after it.

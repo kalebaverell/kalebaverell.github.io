@@ -83,8 +83,9 @@ export default function SecurityPage() {
 
       <Section icon="ti-heart-handshake" title="Never sold, never shared with advertisers">
         We do not sell, rent, or trade your information, and we do not share it with advertisers. No VA
-        office or other government agency can see your account. If any of that ever changes, the
-        privacy page will say so first.
+        office or other government agency can see your account. If a county or state veterans service
+        office hands out VetPath, it sees only the counts-only partner report. If any of that ever
+        changes, the privacy page will say so first.
       </Section>
 
       <Section icon="ti-chart-bar" title="Counting visits without tracking you">
@@ -109,9 +110,11 @@ export default function SecurityPage() {
         in - from our database right away. It also clears VetPath&apos;s saved data from the browser you
         use to do it. No email to us, no reason needed.
         <p style={{ margin: "10px 0 0" }}>
-          Three things it cannot reach: emails already delivered to your inbox, the anonymous page counts
-          (they were never tied to you), and a copy of your plan saved in another browser where you used
-          VetPath. Sign out there, or clear that browser&apos;s site data, to remove it.
+          Four things it cannot reach: emails already delivered to your inbox; delivery records our email
+          provider keeps for a limited time, and short-lived service logs at our hosting provider, which
+          expire on their own schedule; the anonymous page counts (they were never tied to you); and a
+          copy of your plan saved in another browser where you used VetPath. Sign out there, or clear
+          that browser&apos;s site data, to remove it.
         </p>
       </Section>
 

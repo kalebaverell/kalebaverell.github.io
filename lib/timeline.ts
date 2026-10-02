@@ -223,9 +223,11 @@ export function normalizeEas(raw: string | null | undefined): string | null {
   if (x) return out(+x[1], +x[2]);
   x = v.match(/^(\d{1,2})[\/.\-](\d{4})$/);
   if (x) return out(+x[2], +x[1]);
-  const name = v.toLowerCase().match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/);
+  // Real month names only ("Apr", "April", "Sept."), never a word that merely
+  // starts with one ("maybe", "Marine", "decide").
+  const name = v.toLowerCase().match(/\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b\.?/);
   const year = v.match(/\b(\d{4})\b/);
-  if (name && year) return out(+year[1], MON_KEYS.indexOf(name[1]) + 1);
+  if (name && year) return out(+year[1], MON_KEYS.indexOf(name[1].slice(0, 3)) + 1);
   return null;
 }
 
@@ -240,10 +242,12 @@ export function horizonFromEas(easDate: string, now: Date = new Date()): string 
 }
 
 /** The horizon to fill in when a separation month is saved, or null to leave
- *  it alone. Fills only a BLANK answer, and only for "Active duty" (the one
- *  status the horizon question is asked for); a member's own pick always wins. */
-export function blankHorizonFill(a: { status?: string; horizon?: string }, easDate: string): string | null {
-  if (a.status !== "Active duty" || a.horizon) return null;
+ *  it alone. Fills a BLANK answer or one this function filled earlier
+ *  (horizonAuto), and only for "Active duty" (the one status the horizon
+ *  question is asked for); a member's own pick always wins. Callers store
+ *  horizonAuto: true with the value, so a corrected month refills it. */
+export function blankHorizonFill(a: { status?: string; horizon?: string; horizonAuto?: boolean }, easDate: string): string | null {
+  if (a.status !== "Active duty" || (a.horizon && !a.horizonAuto)) return null;
   return isEas(easDate) ? horizonFromEas(easDate) : null;
 }
 
@@ -305,7 +309,7 @@ function buildTasks(a: TimelineAnswers): TimelineTask[] {
 
   // ---- P1 · T-12 to T-9 - early planning
   push({ id: "vaAccount", phase: "p1", area: "benefits", essential: true, title: "Create your VA.gov account (ID.me / Login.gov)", notes: "Nearly every benefit below starts here. Ten minutes now, no waiting rooms later." , source: src.vaAccount });
-  push({ id: "vsoEarly", phase: "p1", area: "benefits", essential: true, title: "Connect with an accredited VSO - they're free", notes: "Veteran Service Organizations (VSOs) help with claims and benefits at no cost. Never pay a percentage of your benefits to anyone.", source: src.vso });
+  push({ id: "vsoEarly", phase: "p1", area: "benefits", essential: true, title: "Connect with an accredited VSO - they're free", notes: "Veteran Service Organizations (VSOs) help with claims and benefits at no cost. Never pay anyone a percentage of your benefits to file your initial claim.", source: src.vso });
   if (claims) push({ id: "medRecords", phase: "p1", area: "benefits", essential: true, title: "Start collecting your complete medical record", notes: "Every condition you'll claim needs to be documented while you're still in. See your provider about anything you've been ignoring." });
   if (has("employment") || has("undecided")) push({ id: "resumeDraft", phase: "p1", area: "employment", title: `Draft a civilian resume - translate ${a.mos ? `your ${a.mos} experience` : "your MOS"}`, notes: "Use the crosswalk to see how your military occupation maps to civilian titles, then our Resume scanner for recruiter-style feedback.", source: src.nextMove });
   if (has("employment")) push({ id: "skillbridge", phase: "p1", area: "employment", title: "Research SkillBridge industry training programs", notes: "Up to your last 180 days working with a civilian employer while still on active-duty pay. Requires command approval - raise it early.", source: src.skillbridge });

@@ -104,7 +104,7 @@ export function handoffSheet(stateCode: string | undefined, inUniform: boolean):
   ];
 }
 
-/** "Never pay for claims help." Facts behind each clause: 38 U.S.C. 5901(a) only
+/** "Never pay to file a VA claim." Facts behind each clause: 38 U.S.C. 5901(a) only
  *  VA-recognized individuals may act as agent or attorney on a claim; 5904(c)(1)
  *  no agent or attorney fee before notice of VA's initial decision; VA: "The
  *  services an accredited VSO representative provides on your VA benefit claims
@@ -113,6 +113,6 @@ export function handoffSheet(stateCode: string | undefined, inUniform: boolean):
  *  "claims help is always free": accredited attorneys may lawfully charge after the
  *  decision. */
 export const NEVER_PAY = {
-  title: "Never pay for claims help.",
-  body: "Only people VA has accredited may help you prepare or present a VA claim. Accredited VSO representatives are always free, and no one may charge you for claims help before VA's first decision on that claim. If someone who isn't accredited offers to help, or anyone wants a fee, a subscription, or a share of your future benefits to file, don't sign.",
+  title: "Never pay to file a VA claim.",
+  body: "Only people VA has accredited may represent you on a VA claim or charge to help with one. Accredited VSO representatives are always free, and no one may charge you for claims help before VA's first decision on that claim. If someone who isn't accredited offers to help, or anyone wants a fee, a subscription, or a share of your future benefits to file, don't sign.",
 };

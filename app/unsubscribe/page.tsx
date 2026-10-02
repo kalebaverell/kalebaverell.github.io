@@ -44,8 +44,8 @@ export default function UnsubscribePage() {
         <>
           <h1 style={{ marginTop: 0 }}>You&apos;re unsubscribed</h1>
           <p className="muted" style={{ lineHeight: 1.7 }}>
-            No more check-in emails. Nothing else changes - your plan stays yours, exactly as it was. You
-            can turn check-ins back on anytime from your profile page.
+            No more check-in emails or product news. Your plan stays yours, exactly as it was. You can turn
+            check-ins back on anytime from your profile page.
           </p>
         </>
       ) : token === "" || state === "error" ? (
@@ -61,8 +61,9 @@ export default function UnsubscribePage() {
         <>
           <h1 style={{ marginTop: 0 }}>Stop check-in emails?</h1>
           <p className="muted" style={{ lineHeight: 1.7 }}>
-            This turns off timeline check-ins and data re-verification notes. Your account and your plan
-            stay exactly as they are.
+            This turns off timeline check-ins, data re-verification notes, and any product news we send.
+            Account emails, like password resets, still arrive. Your account and your plan stay exactly as
+            they are.
           </p>
           <button className="btn" onClick={stop} disabled={token === null || state === "working"}>
             <i className="ti ti-mail" aria-hidden="true" /> {state === "working" ? "Turning them off…" : "Stop check-in emails"}

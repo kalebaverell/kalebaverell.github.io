@@ -115,7 +115,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setAnswer = useCallback((id: keyof Answers, value: any) => {
-    setS((p) => ({ ...p, answers: { ...p.answers, [id]: value } }));
+    // A direct write to horizon is the member's own pick, so it clears the
+    // auto-fill flag (lib/timeline blankHorizonFill). Auto-fill callers set
+    // horizonAuto: true right after writing the filled value.
+    setS((p) => ({
+      ...p,
+      answers: id === "horizon" ? { ...p.answers, horizon: value, horizonAuto: undefined } : { ...p.answers, [id]: value },
+    }));
   }, []);
 
   const toggleMulti = useCallback((id: keyof Answers, value: string) => {

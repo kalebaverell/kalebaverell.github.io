@@ -85,7 +85,7 @@ export const LOCATIONS = locationsJson as any as {
 export const INTAKE_NOTES_PROMPT: string = (intakeJson as any).stepNotesPrompt;
 
 /** Parse the numeric BLS median (USD) from a career's paySample string, e.g.
- *  "$129,180 (May 2025 median, BLS)" → 124910. Returns null if none found. */
+ *  "$129,180 (May 2025 median, BLS)" → 129180. Returns null if none found. */
 export const careerMedianPay = (c: Career): number | null => {
   const m = /\$([\d,]+)/.exec(c.paySample || "");
   return m ? parseInt(m[1].replace(/,/g, ""), 10) : null;

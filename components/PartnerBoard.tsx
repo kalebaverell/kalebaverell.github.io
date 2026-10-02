@@ -150,7 +150,7 @@ export default function PartnerBoard() {
 
       <p className="small muted" style={{ marginTop: 34, paddingTop: 16, borderTop: "1px solid var(--border)" }}>
         Live: every count is read from the database when you open this page. Any count from 1 to 4
-        shows as &quot;&lt;5&quot; so no single veteran can be picked out, and a percentage only
+        shows as &quot;&lt;5&quot;, so small numbers are not shown exactly, and a percentage only
         shows when both numbers are real. This page can only show counts - it has no way to read a
         veteran&apos;s name, email address, answers, or plan, and neither does anyone holding this link.
         Scans of your code that did not lead to an account are not counted here. Read from the

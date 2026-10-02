@@ -12,6 +12,11 @@
 // (unsubscribe v2), the verification email links the public /verification record,
 // and the p3 BDD line starts with a free accredited representative. Deploy only
 // after /unsubscribe/ and /verification/ are live on the site.
+// v5 also requires a shared secret: verify_jwt accepts ANY valid user JWT, so a
+// signed-in member could otherwise force a send run and read the account count.
+// The pg_cron job must send header x-checkins-secret equal to the function secret
+// CHECKINS_CRON_SECRET (kept in Vault for the cron job). Unset secret = refuse.
+// The response no longer carries the total account count.
 // Source of truth: supabase/functions/send-checkins/index.ts in the repo.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
@@ -108,7 +113,20 @@ function itemsHtml(items: Item[]): string {
   return `<ul style=\"margin:12px 0;padding-left:20px\">${items.map((i) => `<li style=\"margin-bottom:10px\">${esc(i.t)} <a href=\"${i.url}\" style=\"color:#0F6E56\">Official source</a></li>`).join("")}</ul>`;
 }
 
+// Length-independent comparison so the secret cannot be guessed byte by byte.
+function sameSecret(a: string, b: string): boolean {
+  const x = new TextEncoder().encode(a), y = new TextEncoder().encode(b);
+  let diff = x.length ^ y.length;
+  for (let i = 0; i < Math.max(x.length, y.length); i++) diff |= (x[i] ?? 0) ^ (y[i] ?? 0);
+  return diff === 0;
+}
+
 Deno.serve(async (req: Request) => {
+  const CRON_SECRET = Deno.env.get("CHECKINS_CRON_SECRET") || "";
+  if (!CRON_SECRET) return Response.json({ error: "not_configured" }, { status: 503 });
+  if (!sameSecret(req.headers.get("x-checkins-secret") || "", CRON_SECRET)) {
+    return Response.json({ error: "forbidden" }, { status: 403 });
+  }
   const { key: RESEND, source: keySource } = await resolveKey();
   const dry = !RESEND;
   const res = await fetch(`${URL_}/rest/v1/profiles?select=id,email,full_name,prefs,unsub_token,created_at,profile`, { headers: H });
@@ -177,5 +195,5 @@ Deno.serve(async (req: Request) => {
     }
   }
 
-  return Response.json({ configured: !dry, keySource, users: rows.length, candidates, sent, skipped, errors });
+  return Response.json({ configured: !dry, keySource, candidates, sent, skipped, errors });
 });

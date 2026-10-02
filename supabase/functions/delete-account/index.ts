@@ -9,8 +9,11 @@
 //      it, the cascade covers them too and this delete is belt-and-braces.
 //   2. the auth user: ON DELETE CASCADE removes profiles, journal_entries,
 //      visit_days and email_log with it (pg_constraint, checked 2026-10-02).
-//   3. proof: re-count every user table for this id; anything left is an
-//      error, never a silent success.
+//   3. proof: re-count every user table for this id; anything left is
+//      logged (table names only) and reported as incomplete, never as a clean
+//      success. The login is already gone at that point, so the reply still
+//      says deleted: the client must sign out (a retry could never pass the
+//      sign-in check again) and the founder finishes the cleanup by hand.
 // A new table holding a user id needs ON DELETE CASCADE to auth.users or an
 // explicit delete here - and a row in CHECK either way.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -82,7 +85,7 @@ Deno.serve(async (req: Request) => {
   }
   if (left.length) {
     console.error("delete-account: rows left in", left.join(",")); // table names only, no ids
-    return reply({ error: "leftovers" }, 500);
+    return reply({ deleted: true, incomplete: left });
   }
   return reply({ deleted: true });
 });

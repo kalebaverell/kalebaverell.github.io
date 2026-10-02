@@ -36,7 +36,7 @@ const GUIDES: { href: string; icon: string; title: string; blurb: string }[] = [
     href: "/guides/disability-claims",
     icon: "ti-shield-check",
     title: "The VA disability claim, start to finish",
-    blurb: "Intent to file, the BDD window while you're still in uniform, the accredited help that's always free - and why you never pay a percentage of your own back pay.",
+    blurb: "Intent to file, the BDD window while you're still in uniform, the accredited help that's always free - and why you never pay a percentage of your back pay to file your first claim.",
   },
   {
     href: "/guides/skillbridge",

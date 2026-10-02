@@ -3,7 +3,9 @@
 // text/plain, which is how v1's confirmation showed raw markup. GET only
 // redirects to that page, so mail scanners that pre-open links change nothing;
 // the page's button POSTs here. The per-user random token IS the capability.
-// Flips both email preferences off and nothing else.
+// Flips both email preferences off and clears marketing_opt_in, so the link stops
+// every non-account email (check-ins, verification notes, and any product news
+// keyed on the signup opt-in). Nothing else changes.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const URL_ = Deno.env.get("SUPABASE_URL")!;
@@ -38,7 +40,7 @@ Deno.serve(async (req: Request) => {
   const res = await fetch(`${URL_}/rest/v1/profiles?unsub_token=eq.${token}&select=id`, {
     method: "PATCH",
     headers: { apikey: SVC, Authorization: `Bearer ${SVC}`, "Content-Type": "application/json", Prefer: "return=representation" },
-    body: JSON.stringify({ prefs: { tminus: false, verification: false } }),
+    body: JSON.stringify({ prefs: { tminus: false, verification: false }, marketing_opt_in: false }),
   });
   const rows = res.ok ? await res.json() : [];
   return Response.json({ ok: Array.isArray(rows) && rows.length > 0 }, { headers: c });

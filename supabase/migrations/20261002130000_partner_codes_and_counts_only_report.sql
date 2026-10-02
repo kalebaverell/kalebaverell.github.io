@@ -35,7 +35,9 @@ revoke all on public.partner_codes from anon, authenticated;
 -- JSON a user could write to their own row (own_update RLS allows it): a
 -- malformed capture returns null instead of breaking a report. Ignores a code
 -- first seen more than a day after signup, because ProfileSync back-fills a
--- device capture onto older accounts on their next login.
+-- device capture onto older accounts on their next login. Attribution is
+-- self-reported: 20261002150000_profiles_first_touch_write_once.sql stops a
+-- member re-pointing it later, but the first write is still the member's own.
 create or replace function public.partner_code_of(ft jsonb, signed_up timestamptz)
 returns text
 language plpgsql

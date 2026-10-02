@@ -23,8 +23,10 @@ through Claude).*
      update the `VERIFIED` constant in the function when the quarterly data refresh runs).
 - **Edge function `unsubscribe`** (public, token-gated): one click from any email footer
   flips both prefs off, touches nothing else, and says so. Re-enable lives on /profile.
-- **Cron:** `vetpath-checkins`, Mondays 15:00 UTC (pg_cron → the function, anon-key auth;
-  safe because the email_log lock makes every invocation idempotent).
+- **Cron:** `vetpath-checkins`, Mondays 15:00 UTC (pg_cron → the function). From v5 (Oct 2026)
+  the function also requires header `x-checkins-secret` equal to the function secret
+  `CHECKINS_CRON_SECRET`; the cron job reads the same value from Vault. A signed-in member's
+  JWT alone no longer starts a run, and the reply no longer includes the account count.
 - **Profile page:** "Email check-ins" card - both toggles, owner-row RLS.
 
 Verified in dry-run: 20 users scanned, 14 candidates computed, 0 sent, 0 errors;
@@ -47,7 +49,7 @@ Fire one run manually instead of waiting for Monday (safe - the log prevents any
 double-sends when Monday comes):
 
 ```bash
-curl -X POST "https://evoswsnsjoslcqllefgc.supabase.co/functions/v1/send-checkins" -H "Authorization: Bearer <anon key from the dashboard>"
+curl -X POST "https://evoswsnsjoslcqllefgc.supabase.co/functions/v1/send-checkins" -H "Authorization: Bearer <anon key from the dashboard>" -H "x-checkins-secret: <CHECKINS_CRON_SECRET>"
 ```
 
 Expect `{"configured":true, ...}` with a `sent` count. Check your own inbox (you're

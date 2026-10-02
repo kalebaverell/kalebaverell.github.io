@@ -130,7 +130,7 @@
       "type": "Federal (SBA)",
       "name": "Veteran Small Business Certification (VetCert)",
       "amount": "Certifies your business as veteran-owned (VOSB) or service-disabled-veteran-owned (SDVOSB). VOSBs can compete for VA set-aside and sole-source contracts; SDVOSBs can compete for them across the federal government.",
-      "eligibility": "Business must be small under SBA size standards and at least 51% owned and controlled by one or more veterans (SDVOSB requires a VA service-connected disability rating). Free to apply.",
+      "eligibility": "Business must be small under SBA size standards and at least 51% owned and controlled by one or more veterans (SDVOSB requires a service-connected disability determined by VA or the Department of Defense). Free to apply.",
       "stackNote": "For most veteran owners, certification is worth more than any grant.",
       "source": "https://certifications.sba.gov/",
       "sourceLabel": "SBA VetCert"

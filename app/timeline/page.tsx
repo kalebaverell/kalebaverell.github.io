@@ -193,7 +193,7 @@ export default function TimelinePage() {
                     // Same rule as the intake: a blank intake horizon is filled
                     // from a usable month; one the member picked is never touched.
                     const h = blankHorizonFill(s.answers, v);
-                    if (h) setAnswer("horizon", h);
+                    if (h) { setAnswer("horizon", h); setAnswer("horizonAuto", true); }
                   }}
                   style={{ maxWidth: 240 }}
                 />

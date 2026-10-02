@@ -16,7 +16,7 @@ import { VERIFICATION_LOG, datasetFacts, sourceTotals, fmtVerified, datasetLabel
 
 export const metadata = routeMeta(
   "Verification record",
-  "When each VetPath dataset was last checked against its official source, how we check, and every error we found and fixed - computed from the same data the site runs on."
+  "When each VetPath dataset was last checked against its official source, how we check, and the major errors we found and fixed - computed from the same data the site runs on."
 );
 
 const GRID: CSSProperties = { display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" };
@@ -45,7 +45,7 @@ export default function VerificationPage() {
       <p className="muted" style={{ maxWidth: 640, fontSize: "calc(var(--fs-body) + 1px)" }}>
         &quot;Verified&quot; should be something you can check. This is the record behind every date on
         VetPath: when each set of data was last checked against its official source, how we check it,
-        every mistake we found and fixed, and what is still open. The numbers on this page are counted
+        the major mistakes we found and fixed, and what is still open. The numbers on this page are counted
         from the same data files the site runs on, so they cannot drift from what you see.
       </p>
 
@@ -130,8 +130,8 @@ export default function VerificationPage() {
       <div style={{ marginTop: 32 }}>
         <SectionHead
           eyebrow="Found and fixed"
-          title="Every mistake we caught, and what changed"
-          sub="A right-looking number can still be wrong, and a right number can still cite a page that does not support it. These are the corrections that changed what a veteran is told."
+          title="Mistakes we caught, and what changed"
+          sub="A right-looking number can still be wrong, and a right number can still cite a page that does not support it. These are the major corrections that changed what a veteran is told; smaller wording fixes are recorded in each refresh report."
         />
         <div className="card">
           {corrections.map((c) => (

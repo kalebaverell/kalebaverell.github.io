@@ -83,7 +83,7 @@ export default function SeparationMonthPrompt() {
     // Same rule as the intake: fill a blank horizon from the month, never
     // overwrite one the member picked. No regen - the plan is left as it is.
     const h = blankHorizonFill(s.answers, draft);
-    if (h) setAnswer("horizon", h);
+    if (h) { setAnswer("horizon", h); setAnswer("horizonAuto", true); }
     done();
     track("eas-prompt-saved");
   };

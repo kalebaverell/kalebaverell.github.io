@@ -1189,7 +1189,7 @@
           "name": "NC State Veterans Homes",
           "category": "health",
           "blurb": "DMVA operates skilled-nursing state veterans homes in Salisbury, Black Mountain, Kinston, and Kernersville; the Fayetteville home is closed pending construction of a replacement facility.",
-          "source": "https://www.milvets.nc.gov/benefits-services/nc-state-veterans-homes-skilled-nursing-care"
+          "source": "https://www.milvets.nc.gov/divisions/north-carolina-state-veterans-homes"
         },
         {
           "name": "Lifetime Hunting and Fishing Licenses for Disabled Veterans",
@@ -1898,10 +1898,10 @@
           "name": "Utah State Parks Honor Pass",
           "category": "recreation",
           "blurb": "Honorably discharged Utah resident veterans with a service-related VA disability rating receive free day-use access to Utah state parks for themselves and up to seven guests in the same private vehicle.",
-          "source": "https://stateparks.utah.gov/resources/military/veterans-with-disabilities-honor-pass/"
+          "source": "https://stateparks.utah.gov/resources/park-passes/#veterans"
         }
       ],
-      "notes": "Utah also offers a Veterans First-Time Homebuyer Grant (https://veterans.utah.gov/first-time-homebuyer-grant/) and the Utah Tuition/GI Bill Gap Program for those who have exhausted federal education benefits. Honor Pass page notes 2026 program updates are pending; a direct fetch returned 404 on 2026-10-01, URL from official search result. Purple Heart graduate waiver terms per Utah Code 53H-11-303."
+      "notes": "Utah also offers a Veterans First-Time Homebuyer Grant (https://veterans.utah.gov/first-time-homebuyer-grant/) and the Utah Tuition/GI Bill Gap Program for those who have exhausted federal education benefits. The Honor Pass now lives in the veterans section of the State Parks park passes page (the old Honor Pass page returns 404; link moved 2026-10-02); the state notes the Honor Pass system is being upgraded. Purple Heart graduate waiver terms per Utah Code 53H-11-303."
     },
     {
       "code": "VA",

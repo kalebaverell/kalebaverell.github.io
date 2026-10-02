@@ -172,11 +172,16 @@ export function generateGameplan(a: Answers, path?: { career: Career; fitPct: nu
     // nothing, and its checkmark carries across the window. Its text avoids
     // "disability claim"/"intent to file" so dedupe never merges it into the claim line.
     plan30.push(fixedItem(REP_TASK_ID, repTaskText(repWhen), "high"));
-    plan30.push(item(
-      repWhen === "bdd" ? "Start a VA disability claim (ask about Benefits Delivery at Discharge)"
+    // The claim line keeps its counter slot and the id its BDD wording always
+    // had, so a checkmark survives the text changing as the window passes.
+    // (Not fixedItem: that would renumber every later item() and orphan them.)
+    const claim = item("Start a VA disability claim (ask about Benefits Delivery at Discharge)", "high");
+    plan30.push({
+      ...claim,
+      text: repWhen === "bdd" ? claim.text
         : repWhen === "closing" ? "Start a VA disability claim with your representative - you can file before or after you separate"
         : "Start a VA disability claim with your representative - an intent to file locks your effective date while you build it",
-      "high"));
+    });
     plan60.push(item("Apply for VA health care and pick a facility near home", "high"));
     // Government quarters end with the orders - the plan has to say so out
     // loud (tester feedback 2026-08-13). BAH stopping at separation is the

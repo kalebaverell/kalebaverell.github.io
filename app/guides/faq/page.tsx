@@ -57,7 +57,7 @@ const FAQS: { q: string; a: string; source?: { label: string; url: string } }[] 
   },
   {
     q: "Should I pay someone to file my disability claim?",
-    a: "You should never pay a percentage of your benefits to anyone. Accredited Veteran Service Organizations help with claims and benefits at no cost - their help is free, always.",
+    a: "You should never pay anyone a percentage of your benefits to file your initial claim. Accredited Veteran Service Organizations help with claims and benefits at no cost - their help is free, always.",
     source: { label: "VA - accredited representatives", url: "https://www.va.gov/get-help-from-accredited-representative/" },
   },
   {

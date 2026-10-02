@@ -5,7 +5,7 @@
     { "name": "Veterati", "what": "Free on-demand phone mentorship - book vets and hiring managers by industry.", "url": "https://www.veterati.com" },
     { "name": "LinkedIn for Veterans", "what": "Free LinkedIn Premium Career year + veteran community programs.", "url": "https://socialimpact.linkedin.com/programs/veterans" },
     { "name": "RallyPoint", "what": "Military & veteran professional network for peer connections.", "url": "https://www.rallypoint.com" },
-    { "name": "Local VSO posts (VFW / American Legion / DAV)", "what": "In-person community, job leads, and benefits help near you.", "url": "https://www.va.gov/get-help-from-accredited-representative/find-rep/" }
+    { "name": "Accredited representatives near you (VA search) - including American Legion, DAV and VFW service officers", "what": "Free benefits help near you; VSO representatives are free.", "url": "https://www.va.gov/get-help-from-accredited-representative/find-rep/" }
   ],
   "vaSpecific": [
     { "name": "VA benefits & facility events", "what": "Claims clinics, town halls, and benefits fairs at VA facilities.", "url": "https://www.va.gov/outreach-and-events/events/" },

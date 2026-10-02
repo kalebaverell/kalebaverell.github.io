@@ -414,7 +414,7 @@ function Question({ q, answers, setAnswer, toggleMulti, toggleGoal }: {
       // so a member who skips it still gets the right plan sequence. A horizon
       // they picked themselves is never overwritten.
       const h = blankHorizonFill(answers, v);
-      if (h) setAnswer("horizon", h);
+      if (h) { setAnswer("horizon", h); setAnswer("horizonAuto", true); }
     };
     return (
       <fieldset style={{ border: "none", padding: 0, margin: 0 }}>

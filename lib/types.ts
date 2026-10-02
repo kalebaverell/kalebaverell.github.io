@@ -16,6 +16,10 @@ export interface Answers {
   /** Separation horizon, asked only when status is "Active duty" - drives the
    *  long-runway plan sequence for members years from separation. */
   horizon?: string;
+  /** True while `horizon` holds a value filled in from the separation month
+   *  (blankHorizonFill in lib/timeline), not one the member picked. A later
+   *  month edit may refill it; picking a horizon option clears it (store setAnswer). */
+  horizonAuto?: boolean;
   sex?: string;
   raceEthnicity?: string[];
   branch?: string;

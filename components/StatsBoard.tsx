@@ -75,6 +75,11 @@ export default function StatsBoard() {
         new URLSearchParams(window.location.hash.replace(/^#/, "")).get("k") ||
         new URLSearchParams(window.location.search).get("k") ||
         "";
+      // An old ?k= link: move the token into the fragment right away, so it
+      // leaves the address bar (and any later request or shared copy of it).
+      if (token && new URLSearchParams(window.location.search).get("k") === token) {
+        try { history.replaceState(null, "", `${window.location.pathname}#k=${encodeURIComponent(token)}`); } catch { /* best effort */ }
+      }
       if (!token || !supabase) { if (alive) setState("denied"); return; }
       const { data: d, error } = await supabase.rpc("traction_stats", { p_token: token });
       if (!alive) return;
