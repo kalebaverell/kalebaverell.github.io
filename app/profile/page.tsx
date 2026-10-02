@@ -105,26 +105,26 @@ export default function Profile() {
 
       {enabled && user && (
         <div className="card" style={{ marginTop: 22, borderColor: "#E0A6A6" }}>
-          <h3 style={{ marginTop: 0 }}><i className="ti ti-user-x" aria-hidden="true" style={{ color: "#A32D2D" }} /> Delete my account data</h3>
+          <h3 style={{ marginTop: 0 }}><i className="ti ti-user-x" aria-hidden="true" style={{ color: "#A32D2D" }} /> Delete my account</h3>
           <p className="muted small" style={{ maxWidth: 560 }}>
-            Permanently removes your saved plan and profile from our servers, clears this device, and signs
-            you out. To also purge the login record tied to your email, use the contact route on the{" "}
-            <Link href="/privacy">privacy page</Link> - we delete both, no questions asked.
+            Permanently deletes your login and everything saved to it - your plan, answers, notes, email
+            settings, and any feedback you sent while signed in - then clears this device and signs you
+            out. No email to us, no reason needed. <Link href="/security/#delete">What gets deleted</Link>
           </p>
           {deleteError && (
             <div className="callout crisis" role="alert" style={{ marginBottom: 12 }}>
-              <i className="ti ti-alert-triangle" aria-hidden="true" /> <span>{deleteError} Nothing was deleted - try again, or use the contact route on the privacy page.</span>
+              <i className="ti ti-alert-triangle" aria-hidden="true" /> <span>{deleteError}</span>
             </div>
           )}
           {!confirmingDelete ? (
             <button className="btn ghost" style={{ color: "#A32D2D", borderColor: "#E0A6A6" }} onClick={() => setConfirmingDelete(true)}>
-              <i className="ti ti-trash-x" /> Delete my data&hellip;
+              <i className="ti ti-trash-x" /> Delete my account&hellip;
             </button>
           ) : (
             <div className="callout crisis" role="alertdialog" aria-label="Confirm deletion">
               <i className="ti ti-alert-triangle" aria-hidden="true" style={{ display: "none" }} />
               <div>
-                <p style={{ margin: "0 0 10px" }}><strong>This can&apos;t be undone.</strong> Your plan and profile are deleted from our servers immediately.</p>
+                <p style={{ margin: "0 0 10px" }}><strong>This can&apos;t be undone.</strong> Your login, plan, answers, and notes are deleted from our servers right now. If you come back later, you&apos;ll start a fresh account.</p>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button className="btn" style={{ background: "#A32D2D" }} disabled={deleting}
                     onClick={async () => {

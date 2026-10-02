@@ -84,7 +84,7 @@ export default function TrustPage() {
             ["ti-scale", "We never determine eligibility", "Only VA, your state agency, or an accredited VSO can. Every card links to the official source to confirm."],
             ["ti-heart-handshake", "Free accredited help comes first", "Accredited VSO and county service officers are free. We will never point you to paid claims help."],
             ["ti-settings", "Explainable engines, not a black box", "Fit scores and benefit tiers come from deterministic rules built on your own answers - every recommendation shows its reasons."],
-            ["ti-lock", "Your data stays yours", "Reading the guides needs no account. Your plan saves privately to your free account - encrypted at rest, visible only to you (row-level security), and never sold. Delete it anytime."],
+            ["ti-lock", "Your data stays yours", "Reading the guides needs no account. Your plan saves privately to your free account - encrypted at rest, visible only to you (row-level security), and never sold. Delete it yourself anytime, in one step."],
             ["ti-calendar-check", "Dates on everything", "Verified content carries the date we checked it. Every build of this site checks those dates and stops if any is more than 100 days old, and we re-verify on a quarterly rhythm."],
             ["ti-urgent", "Crisis support is always visible", "Veterans Crisis Line: dial 988, then press 1 - free, confidential, 24/7, on every page."],
           ].map(([icon, title, body]) => (
@@ -112,6 +112,10 @@ export default function TrustPage() {
       <div id="who-pays" className="muted" style={{ marginTop: 20, fontSize: 14.5 }}>
         Wondering who pays for all this? Right now, the two of us who built it - plus supporters
         who want it to stay free. <a href="/support" style={{ fontWeight: 600 }}>Support the mission →</a>
+      </div>
+      <div className="muted" style={{ marginTop: 10, fontSize: 14.5 }}>
+        How your account is protected, and how to delete it in one step:{" "}
+        <a href="/security" style={{ fontWeight: 600 }}>Security →</a>
       </div>
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>

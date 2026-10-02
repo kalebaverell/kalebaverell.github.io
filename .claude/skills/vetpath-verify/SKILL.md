@@ -84,7 +84,10 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
    Coming up (real phase dates + calendar buttons when answers.easDate set, timeline pointer otherwise),
    Your notes (add/delete works signed-out via localStorage vetpath_journal_v1; task "Add a note" in
    TaskDetail saves with task_ref). Journal RLS: signed-in entries are owner-only in journal_entries -
-   verify cross-account isolation whenever policies change.
+   verify cross-account isolation whenever policies change. Delete card (signed in): heading "Delete my
+   account", button "Delete my account…" (NOT "Delete my data"), a "What gets deleted" link to
+   /security/#delete; the confirm step reads "Your login, plan, answers, and notes are deleted". STOP at
+   render: "Yes, delete everything" calls the live delete-account function and deletes a real account.
 14. Colorways (/profile Appearance): exactly TWO options - Warm (default, no data-theme attribute) and
    Harbor (sets data-theme="harbor", --primary computes #1F5D8C); choice persists across pages and
    reverts cleanly; legacy stored theme values ("professional"/"civic"/"granite") normalize to warm on
@@ -99,6 +102,14 @@ another instance (two `next dev` processes sharing one `.next` corrupt it - happ
    /?utm_campaign=vso, then the partner link -> campaign stays 'vso', partner fills once.
    utm_campaign=PARTNER1 leaves partner null. sitemap.xml contains no 'partner'; robots.txt has
    Disallow: /partner/.
+17. Security page: signed out with no plan, /security/ renders "How your account is protected" (NOT the
+   FunnelGate card), says "7 of 7", has the "What we have not done yet" callout and a #delete section,
+   no horizontal scroll at 390px, every icon renders; the footer Legal column shows Security; /trust has
+   the "Security →" line under who-pays; sitemap.xml contains /security/ and NOT /unsubscribe/;
+   /.well-known/security.txt is in out/ after the build.
+18. Unsubscribe page: /unsubscribe/ with no token, or a malformed one, shows "That link didn't work" and
+   makes NO network call; the token is dropped from the address bar on load; the page is noindex. Do not
+   press "Stop check-in emails" with a real token in QA - it changes a member's email settings.
 
 ### Probe pitfalls (cost real time on Sep 1, 2026 - read before writing walkers)
 - The three interviews use DIFFERENT option widgets. Intake (/onboarding): most questions are

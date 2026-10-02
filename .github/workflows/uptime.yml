@@ -1,0 +1,112 @@
+name: Uptime check
+
+# About every 30 minutes (GitHub can delay scheduled runs, most at the top of
+# the hour - hence :07 and :37), load the pages a veteran or service officer
+# is most likely to land on and confirm each returns 200 with its expected
+# text; confirm the sign-in service answers; and confirm the database still
+# returns nothing to a visitor who is not signed in. On failure: open one issue
+# labeled "uptime" (or refresh the open one) and fail the run, which also emails
+# the workflow's creator. The first green run afterwards closes the issue.
+# No new accounts or secrets: GitHub's own runners and the built-in GITHUB_TOKEN.
+# curl runs no JavaScript, so these requests never touch the GoatCounter counts.
+# NOTE: in a public repo GitHub disables schedules after 60 days with no
+# commits. If the Actions tab shows this workflow disabled, re-enable it.
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: uptime
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check pages, sign-in, and database
+        id: probe
+        shell: bash
+        env:
+          SITE: https://vetpathusa.com
+          # The same public, browser-safe values the deploy bakes into the site.
+          SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          : > failures.md
+          page() { # path, expected text
+            code=$(curl -sS -L --max-time 20 --retry 2 --retry-delay 15 --retry-all-errors -A "VetPath-uptime (+https://github.com/$GITHUB_REPOSITORY)" -o page.html -w "%{http_code}" "$SITE$1" || true)
+            code=${code: -3}
+            if [ "$code" != "200" ]; then echo "- $1 returned HTTP ${code:-000}" >> failures.md; return 0; fi
+            grep -qF "$2" page.html || echo "- $1 loaded but is missing its expected text" >> failures.md
+          }
+          # Body text, not titles: the 404 page carries the homepage title.
+          page "/" "Answer a few questions"
+          # Gated route: its static HTML is the gate skeleton, so check the route title.
+          page "/benefits/" "<title>Benefits library - VetPath</title>"
+          page "/guides/separation-checklist/" "The complete separation checklist"
+          page "/trust/" "Every number has a source"
+
+          api() { # path, expected body text
+            code=$(curl -sS --max-time 20 --retry 2 --retry-delay 15 --retry-all-errors -H "apikey: $SUPABASE_ANON_KEY" -o api.json -w "%{http_code}" "$SUPABASE_URL$1" || true)
+            code=${code: -3}
+            [ "$code" = "200" ] && grep -qF "$2" api.json
+          }
+          api "/auth/v1/health" "GoTrue" || echo "- Sign-in service did not answer" >> failures.md
+          # The public key must read back nothing from any user table.
+          for t in profiles journal_entries visit_days email_log feedback; do
+            if ! api "/rest/v1/$t?select=*&limit=1" "[]" || [ "$(tr -d '[:space:]' < api.json)" != "[]" ]; then
+              echo "- Database check failed" >> failures.md
+              break
+            fi
+          done
+
+          if [ -s failures.md ]; then
+            cat failures.md
+            echo "down=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "All checks passed."
+            echo "down=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open or update the outage issue
+        if: steps.probe.outputs.down == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "Latest failed check: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo
+            cat failures.md
+            echo
+            echo "Run log: $RUN_URL"
+          } > body.md
+          num=$(gh issue list --label uptime --state open --limit 1 --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -n "$num" ]; then
+            # Edit, not comment: an edit sends no email, so a long outage stays quiet.
+            gh issue edit "$num" --body-file body.md
+          else
+            gh label create uptime --color B60205 --description "Automated uptime check" 2>/dev/null || true
+            gh issue create --title "Site check failing: vetpathusa.com" --label uptime --assignee "$GITHUB_REPOSITORY_OWNER" --body-file body.md
+          fi
+          exit 1
+
+      - name: Close the outage issue once checks pass
+        if: steps.probe.outputs.down == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          num=$(gh issue list --label uptime --state open --limit 1 --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -n "$num" ]; then
+            gh issue close "$num" --comment "Recovered: every check passed at $(date -u '+%Y-%m-%d %H:%M UTC')."
+          fi

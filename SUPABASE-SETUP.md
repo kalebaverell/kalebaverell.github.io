@@ -31,9 +31,15 @@ private database row. Newsletter consent is captured at signup.
    handles compliant sending + one-click unsubscribe. Don't blast email straight from Supabase.
 
 ## Deleting data
-- Signed-in users can delete their saved plan/profile row from the app (removes their `profiles`
-  row via RLS). To also remove the login record entirely, delete the user under **Authentication →
-  Users** in the dashboard. A one-click full self-serve delete is a pre-launch to-do.
+- Signed-in users delete their whole account from the profile page. The `delete-account` edge
+  function (verify_jwt on) resolves the caller from their JWT, deletes their `feedback` rows, then
+  deletes the auth user, which cascades `profiles`, `journal_entries`, `visit_days` and `email_log`.
+  It then re-counts every user table for that id and reports failure if anything is left.
+- Any NEW table holding a user id needs `ON DELETE CASCADE` to auth.users, or an explicit delete in
+  the function - and a row in its CHECK list, and the table count on /security.
+- Function sources live in `supabase/functions/` and SQL in `supabase/migrations/` (both excluded
+  from tsconfig, since they are Deno and SQL). Migration `20261002140000_feedback_user_fk_and_insert_check.sql`
+  also gives `feedback.user_id` an `ON DELETE CASCADE` foreign key, so the cascade covers feedback too.
 
 ## Before real testers (recommended)
 - Clear the test accounts I created while verifying (emails starting `tester…@vetpathdemo.com`

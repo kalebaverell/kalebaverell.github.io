@@ -21,6 +21,8 @@ const OPEN_PATHS = new Set([
   "guides", // free editorial content - the whole point is that it's ungated
   "feedback", // the veteran feedback drop box - lowering the wall is the point
   "crisis", // crisis resources are NEVER gated, and never will be
+  "security", // how accounts are protected - a trust page is never behind the funnel
+  "unsubscribe", // email links must work signed out and without a plan
   "admin", // internal controls (sample loader)
   "reset", // password reset must never be gated
   "stats", // private founder board - its own token is the gate, not the funnel

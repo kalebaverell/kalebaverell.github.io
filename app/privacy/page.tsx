@@ -42,7 +42,7 @@ export default function PrivacyPage() {
           <li>No trackers and no advertising pixels. The only measurement is an anonymous page counter that cannot identify you - explained below.</li>
           <li>The guides and crisis resources need no account. The planning tools open once you build a free gameplan, which needs an account.</li>
           <li>Your password is never seen or stored by us.</li>
-          <li>You can ask us to delete everything, and we will.</li>
+          <li>You can delete your account and everything in it yourself, in one step, from your profile page.</li>
         </ul>
       </div>
 
@@ -84,6 +84,12 @@ export default function PrivacyPage() {
           <li>Your goals, priorities, pay target, and the free-text notes you write at each step.</li>
           <li>Your generated gameplan and which steps you have checked off.</li>
           <li>Your Pathfinder answers and, if you use the resume scanner, the resume text you paste in.</li>
+          <li>The notes you add to your plan from your profile or a task, up to 4,000 characters each.</li>
+          <li>
+            The dates you open VetPath while signed in - just the date, not the time or the pages you
+            looked at. We only ever count these as totals, to learn whether people come back.
+          </li>
+          <li>If you get check-in emails, a record of which ones we sent and when, so no one gets the same email twice.</li>
           <li>Display settings like your theme and text size.</li>
           <li>
             If you use the feedback box, the note you write (linked to your account when you
@@ -129,8 +135,13 @@ export default function PrivacyPage() {
         We keep this list short on purpose, and this is the whole list:
         <ul style={{ margin: "10px 0 0", paddingLeft: 20, display: "grid", gap: 8 }}>
           <li>
-            <strong>Supabase</strong> hosts our database and handles sign-in and account emails. Your saved
-            plan and your login live there.
+            <strong>Supabase</strong> hosts our database and handles sign-in. Your saved plan and your
+            login live there, in Amazon Web Services&apos; West US (Oregon) region.
+          </li>
+          <li>
+            <strong>Resend</strong> delivers our emails: account emails like password resets, and check-in
+            emails if you have them on. It receives your email address, your first name, and the email
+            itself - nothing else from your plan.
           </li>
           <li>
             <strong>GitHub Pages</strong> serves the website itself. Like any web host, its servers log the
@@ -209,22 +220,26 @@ export default function PrivacyPage() {
         over an encrypted connection. Access is governed by <strong>row-level security</strong>, which
         means the database itself enforces that your row can only be read or changed while signed in as
         you. Another signed-in user cannot query your data even if they try.
+        <p style={{ margin: "10px 0 0" }}>
+          Every safeguard, and what we have not done yet, is listed on our <Link href="/security">security page</Link>.
+        </p>
       </Section>
 
       <Section title="Email">
-        We send the emails needed to run your account, such as confirming your address or resetting your
-        password. Product updates and the newsletter only go to people who ticked the box when signing up,
-        and every one of those has an unsubscribe link. Unsubscribing never affects your account or your
-        saved plan.
+        We send the emails needed to run your account, such as resetting your password. Check-in emails,
+        product updates, and the newsletter only go to people who ticked the box when signing up (or who
+        turn check-ins on from their profile), and every one of those has an unsubscribe link.
+        Unsubscribing never affects your account or your saved plan. Our emails are delivered by Resend.
       </Section>
 
       <Section title="Seeing, exporting, or deleting your data">
         Your plan is visible to you in the app at any time, and the print view gives you a copy you can
         keep or hand to someone helping you.
         <p style={{ margin: "10px 0 0" }}>
-          To delete your saved plan and your account entirely, contact us and we will purge both, including
-          your login record. We are building one-click deletion into the profile page and will remove this
-          manual step when it ships. Until then, a request from you is enough. We do not ask for a reason.
+          To delete your account entirely, open your profile and choose <strong>Delete my account</strong>.
+          It removes your login and everything saved to it - plan, answers, notes, visit dates, email
+          history, and feedback you sent while signed in - right away. We do not ask for a reason. If you
+          would rather we do it, email us and we will. <Link href="/security/#delete">What deletion covers</Link>.
         </p>
       </Section>
 
@@ -247,7 +262,7 @@ export default function PrivacyPage() {
 
       <Section title="Questions or requests">
         Email <a href="mailto:kaleb@vetpathusa.com">kaleb@vetpathusa.com</a> and a person will answer. That
-        is also where to send a deletion request.
+        is also where to send a deletion request or report a security problem.
       </Section>
 
       <p style={{ marginTop: 30 }}>

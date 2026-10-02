@@ -39,6 +39,7 @@ const COLS: { head: string; links: [string, string][] }[] = [
     head: "Legal",
     links: [
       ["/privacy", "Privacy & data"],
+      ["/security", "Security"],
       ["/terms", "Terms of use"],
     ],
   },

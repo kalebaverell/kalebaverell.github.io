@@ -259,14 +259,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { error: error ? friendlyAuthError(error.message) : null };
   }, []);
 
-  // Best-effort self-service data deletion: wipe the profile row (RLS-scoped to
-  // the user) and sign out. Full auth-user deletion requires a privileged call;
-  // the privacy page tells users they can email us to fully purge the login too.
+  // Self-serve full deletion. The delete-account edge function identifies the
+  // caller from their own session token (never from the request body), deletes
+  // their feedback notes, then deletes the login itself - which cascades
+  // profiles, journal_entries, visit_days and email_log - and re-counts every
+  // user table before it says yes.
   const deleteAccount = useCallback(async () => {
     if (!supabase || !user) return { error: "Not signed in." };
-    const { error } = await supabase.from("profiles").delete().eq("id", user.id);
-    if (error) return { error: friendlyAuthError(error.message) };
+    const { data, error } = await supabase.functions.invoke("delete-account", { body: {} });
+    if (error || !data?.deleted) {
+      return { error: "We couldn't finish deleting your account. Try again in a minute - if it keeps failing, email kaleb@vetpathusa.com and we will do it by hand." };
+    }
+    // The login no longer exists; signOut ignores the resulting 404 and still
+    // clears the session from this browser (auth-js _signOut).
     await supabase.auth.signOut();
+    // Device-side copies the store reset doesn't cover (the timeline tool keeps
+    // its own answers). vp-ad-opt-out stays: it is a privacy choice, not account data.
+    for (const k of ["vetpath_journal_v1", "vetpath-timeline-v1", "vp-first-touch", "vp_visit_stamp", "vp_eas_prompt_done"]) {
+      try { localStorage.removeItem(k); } catch { /* storage blocked */ }
+    }
     return { error: null };
   }, [user]);
 
