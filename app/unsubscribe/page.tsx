@@ -7,15 +7,20 @@
 // data; it is dropped from the address bar on load, and the page counter only
 // ever sees the path (components/Analytics.tsx counts usePathname()).
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabaseUrl } from "@/lib/supabase";
 import { Wrap, Eyebrow } from "@/components/ui";
 
 export default function UnsubscribePage() {
   const [token, setToken] = useState<string | null>(null); // null = not read yet
   const [state, setState] = useState<"idle" | "working" | "done" | "error">("idle");
+  // The read below strips the token from the URL, so it must run exactly once:
+  // a second pass (React dev StrictMode) would find no token and blank it.
+  const read = useRef(false);
 
   useEffect(() => {
+    if (read.current) return;
+    read.current = true;
     const t = new URLSearchParams(window.location.search).get("token") || "";
     setToken(/^[0-9a-f-]{36}$/i.test(t) ? t : "");
     history.replaceState(null, "", window.location.pathname);

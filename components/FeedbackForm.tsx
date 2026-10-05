@@ -10,7 +10,7 @@
 // at in sessionStorage. The item is shown above the box, so the veteran sees
 // exactly what will be sent, and it is written into the note body - no new
 // column, and nothing they cannot read before pressing Send.
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { track } from "@/lib/track";
@@ -27,8 +27,12 @@ export default function FeedbackForm() {
   const [report, setReport] = useState<{ item: string | null } | null>(null);
 
   // Read once after mount: neither sessionStorage nor the hash exists in the
-  // static build. The stash is cleared on read either way.
+  // static build. The stash is cleared on read either way, so the ref keeps a
+  // second pass (React dev StrictMode) from wiping the item it just showed.
+  const read = useRef(false);
   useEffect(() => {
+    if (read.current) return;
+    read.current = true;
     let fresh = false;
     let item: string | null = null;
     try {
