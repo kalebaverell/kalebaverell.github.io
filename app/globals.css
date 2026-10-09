@@ -566,6 +566,18 @@ html.js [data-reveal].in { opacity:1; transform:none; }
   .nav--app .nav-links .nav-link.active::after { display:none; }
 }
 
+/* Visitor nav between the phone menu and full desktop: five links plus three
+   actions overflowed the bar from 921px to ~1100px (82px of sideways scroll at
+   1024). Drop the decorative leading icons and tighten the padding instead of
+   hiding anything a visitor needs. */
+@media (min-width: 921px) and (max-width: 1180px) {
+  .nav:not(.nav--app) .nav-inner { gap:8px; }
+  .nav:not(.nav--app) .nav-link { padding:8px 7px; }
+  .nav:not(.nav--app) .nav-link > i:first-child { display:none; }
+  .nav:not(.nav--app) .nav-actions { gap:8px; }
+  .nav:not(.nav--app) .nav-actions .btn.sm > i { display:none; }
+}
+
 /* ---- Print document ---- */
 .print-doc { max-width:800px; margin:0 auto; padding:24px 20px; }
 .print-head { border-bottom:3px solid var(--primary); padding-bottom:14px; margin-bottom:18px; position:relative; overflow:hidden; }
