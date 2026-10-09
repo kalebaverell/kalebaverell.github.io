@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "October 2, 2026";
+const LAST_UPDATED = "October 9, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -193,11 +193,17 @@ export default function PrivacyPage() {
           <li>We do not share anything about you with the VA or any government agency, and they do not see your account. If a county or state veterans service office hands out VetPath, it sees only the counts-only partner report described above.</li>
         </ul>
         <p style={{ margin: "10px 0 0" }}>
-          Down the road, VetPath may offer sponsored connections - for example, an introduction to a
-          lender or real estate agent who knows VA loans, where a partner pays us for the introduction.
-          If and when that launches, it will be clearly labeled as sponsored, it will only ever happen
-          when you ask for the connection, and this page will be updated first.
+          <strong>Sponsored connections are not live.</strong> Down the road, VetPath may list
+          home-buying professionals who know the VA home loan, such as lenders and real estate agents,
+          as clearly labeled sponsored options. If that launches, these rules hold:
         </p>
+        <ul style={{ margin: "8px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
+          <li>Nothing about you goes to a partner unless you choose to contact them, and you decide what to share.</li>
+          <li>Partners pay to be listed. They never pay for your contact details, and never per loan or per sale.</li>
+          <li>Sponsorship never changes your plan, what it recommends, or the order of anything in it.</li>
+          <li>It covers home buying only - never VA claims, benefit decisions, or business financing.</li>
+          <li>This page changes before any of it goes live.</li>
+        </ul>
       </Section>
 
       <Section title="The anonymous page counter, in plain terms">
