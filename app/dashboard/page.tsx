@@ -19,6 +19,7 @@ import { nextAffirmation, greetingFor, journalPrompt } from "@/lib/personality";
 import RouteStub from "@/components/RouteStub";
 import PhaseNow from "@/components/PhaseNow";
 import SeparationMonthPrompt from "@/components/SeparationMonth";
+import YourWords from "@/components/YourWords";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
 
@@ -267,6 +268,13 @@ export default function Dashboard() {
       })()}
 
       <InstallNudge />
+
+      {/* "Show it back" (2026-10-12): the intake's closing note, in the
+          veteran's own words, sits just above the change loop - context for
+          the plan, never above its first actions. Kept apart from the journal
+          card below so the two notes features' privacy lines don't read as a
+          contradiction side by side. Silent when there is no note. */}
+      <YourWords />
 
       {/* The change loop: /updates works and nobody finds it. Quiet card, below
           the fold, never modal - the plan re-routing is the product's promise. */}

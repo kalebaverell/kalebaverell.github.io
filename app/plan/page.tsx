@@ -7,6 +7,7 @@ import type { ActionItem, Status } from "@/lib/types";
 import { Wrap, ProgressBar } from "@/components/ui";
 import TaskDetail from "@/components/TaskDetail";
 import { nextAffirmation } from "@/lib/personality";
+import YourWords from "@/components/YourWords";
 
 const PRIORITY_RANK: Record<ActionItem["priority"], number> = { high: 0, medium: 1, low: 2 };
 
@@ -94,6 +95,8 @@ export default function ActionPlan() {
           </div>
         );
       })}
+      {/* The intake's closing note, shown back at the end of the plan (2026-10-12). */}
+      <YourWords />
       <div style={{ textAlign: "center", marginTop: 18 }}>
         <Link className="btn ghost" href="/dashboard"><i className="ti ti-layout-dashboard" /> Back to my gameplan</Link>
       </div>

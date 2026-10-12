@@ -29,6 +29,19 @@ const initial: AppState = {
   resume: null,
 };
 
+/** Answers the intake no longer asks for (Oct 12, 2026: the optional city
+ *  question, which nothing ever read). Dropped wherever saved state comes in -
+ *  this browser's copy and the account copy - so they are no longer kept, and
+ *  the next save writes the account copy back without them. */
+const RETIRED_ANSWERS = ["city"] as const;
+
+function dropRetired(a: unknown): Answers {
+  if (!a || typeof a !== "object" || Array.isArray(a)) return {};
+  const out: Record<string, unknown> = { ...(a as Record<string, unknown>) };
+  for (const k of RETIRED_ANSWERS) delete out[k];
+  return out as Answers;
+}
+
 function planFor(p: AppState): AppState["gameplan"] {
   const career = careerById(p.chosenPath?.careerId);
   return generateGameplan(p.answers, career ? { career, fitPct: p.chosenPath?.fitPct ?? null } : null);
@@ -81,6 +94,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         const saved = { ...initial, ...JSON.parse(raw) };
         // Legacy colorway values from the retired theme system normalize to the default.
         if (!["warm", "harbor"].includes(saved.theme)) saved.theme = "warm";
+        saved.answers = dropRetired(saved.answers);
         setS(saved);
       }
     } catch {}
@@ -208,7 +222,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   // Merge a profile blob loaded from the account backend into local state.
   const hydrateRemote = useCallback((partial: Partial<AppState>) => {
-    setS((p) => ({ ...p, ...partial }));
+    setS((p) => {
+      const next = { ...p, ...partial };
+      if (partial.answers) next.answers = dropRetired(partial.answers);
+      return next;
+    });
   }, []);
 
   // Mission log: completions carry a timestamp; un-completing removes it.

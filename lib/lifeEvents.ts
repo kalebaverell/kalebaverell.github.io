@@ -9,7 +9,7 @@ export interface LifeEvent {
   icon: string;
   blurb: string;
   fields: {
-    answerId: "state" | "city" | "disabilityRating" | "status" | "ageRange";
+    answerId: "state" | "disabilityRating" | "status" | "ageRange";
     label: string;
     type: "state" | "text" | "single";
     options?: string[];
@@ -50,7 +50,6 @@ export const LIFE_EVENTS: LifeEvent[] = [
     blurb: "New state, new rules. We refresh state benefits, facility tips, and local support.",
     fields: [
       { answerId: "state", label: "New state", type: "state" },
-      { answerId: "city", label: "New city or town (optional)", type: "text" },
     ],
     extraPatch: (a) => ({ topGoals: withGoal(a.topGoals, "move-new-state") }),
   },

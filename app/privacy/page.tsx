@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrap, Eyebrow, Callout } from "@/components/ui";
 
 // Update when the substance of this page changes, not for typo fixes.
-const LAST_UPDATED = "October 9, 2026";
+const LAST_UPDATED = "October 12, 2026";
 
 export const metadata = {
   title: "Privacy & data - VetPath",
@@ -76,12 +76,18 @@ export default function PrivacyPage() {
           it can come back on your next visit. That includes:
         </p>
         <ul style={{ margin: "10px 0 0", paddingLeft: 20, display: "grid", gap: 6 }}>
-          <li>Your intake answers: age range, the state or states you live in, city, branch, military job, service era, and current status.</li>
+          <li>
+            Your intake answers: age range, the state or states you live in, branch, military job, service
+            era, and current status. Earlier versions of the intake also asked for your city or town
+            (optional). We no longer ask for it, and it was never used in your plan. If you gave one, it is removed from your saved
+            plan the next time you open VetPath while signed in.
+          </li>
           <li>Your separation month, if you give it. It is optional, and it is used only to put real dates on your timeline, on your calendar feed if you subscribe, and in the check-in emails if you opted in to them. Its one other use: if you are on active duty and left the question about how far out separation is blank, it fills in that answer.</li>
           <li>Your VA disability rating, if you tell us.</li>
           <li>Your employment and housing situation, including if you indicate housing is unstable.</li>
           <li>Sex and race or ethnicity, if you choose to answer. Both questions are optional.</li>
-          <li>Your goals, priorities, pay target, and the free-text notes you write at each step.</li>
+          <li>Your goals, priorities, and pay target.</li>
+          <li>The note you can add at the end of the intake, in your own words. It is shown back to you on your plan, and on your printout only if you tick the box. The plan&apos;s rules do not read it.</li>
           <li>Your generated gameplan and which steps you have checked off.</li>
           <li>Your Pathfinder answers and, if you use the resume scanner, the resume text you paste in.</li>
           <li>The notes you add to your plan from your profile or a task, up to 4,000 characters each.</li>

@@ -195,15 +195,21 @@ function Intake() {
           </details>
         )}
         {/* One open box at the end of the run, not one per step - the fifth
-            identical textarea reads as nagging, and they all feed the same plan. */}
+            identical textarea reads as nagging. No plan rule reads this note
+            (decision 2026-10-12): it is shown back on the dashboard and the
+            plan (components/YourWords), and the helper line says so. */}
         {step === INTAKE.length - 1 && (
           <>
             <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "22px 0" }} />
-            <label className="lbl" htmlFor={`notes-${sec.id}`}>{INTAKE_NOTES_PROMPT}</label>
+            <label className="lbl" htmlFor={`notes-${sec.id}`} style={{ marginBottom: 4 }}>{INTAKE_NOTES_PROMPT}</label>
+            <p id={`notes-${sec.id}-help`} className="small muted" style={{ margin: "0 0 8px" }}>
+              We keep this with your plan so you, and anyone helping you, can read it. Your plan is built from your answers above - its rules don&apos;t read this note.
+            </p>
             <textarea
               id={`notes-${sec.id}`}
               className="field"
               rows={3}
+              aria-describedby={`notes-${sec.id}-help`}
               placeholder="Your words, your situation - anything the boxes above missed."
               value={s.answers.stepNotes?.[sec.id] || ""}
               onChange={(e) => setStepNote(sec.id, e.target.value)}

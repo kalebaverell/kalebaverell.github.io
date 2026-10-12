@@ -175,7 +175,6 @@ export default function Updates() {
                       className="field"
                       value={inputs[f.answerId] || ""}
                       onChange={(e) => setInput(f.answerId, e.target.value)}
-                      placeholder="e.g. San Antonio"
                     />
                   </div>
                 );

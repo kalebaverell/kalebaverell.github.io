@@ -1,5 +1,6 @@
 "use client";
 import PageSkeleton from "@/components/PageSkeleton";
+import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
 import { benefitById, goalById, stateName, BRAND, residenceStates, careerById, STATE_BENEFITS, primaryState } from "@/lib/data";
@@ -8,9 +9,14 @@ import { reserveFit, orderedBenefits, RESERVES_NOT_RECRUITER } from "@/lib/reser
 import Topo from "@/components/Topo";
 import { handoffSheet } from "@/lib/handoff";
 import NeverPayNote from "@/components/NeverPayNote";
+import { gatherNotes, YOUR_WORDS_HONEST } from "@/components/YourWords";
 
 export default function PrintGameplan() {
   const { s, ready, loadSample } = useStore();
+  // "Show it back" (2026-10-12): the intake note prints only when the veteran
+  // ticks the box, every visit. Deliberately not saved - a printout handed to
+  // someone else should never carry their words by default.
+  const [includeNotes, setIncludeNotes] = useState(false);
   if (!ready) return <PageSkeleton kind="print" />;
 
   if (!s.gameplan || !s.profile) {
@@ -37,10 +43,22 @@ export default function PrintGameplan() {
   const funded = buildFundedPath(a, careerById(s.chosenPath?.careerId));
   const rFit = reserveFit(a);
   const reserveTop = rFit.level !== "background" ? orderedBenefits(rFit).slice(0, 4) : [];
+  const notes = gatherNotes(a);
 
   return (
     <div className="print-doc">
-      <div className="no-print" style={{ display: "flex", gap: 12, justifyContent: "flex-end", flexWrap: "wrap", marginBottom: 16 }}>
+      <div className="no-print" style={{ display: "flex", gap: 12, justifyContent: "flex-end", alignItems: "center", flexWrap: "wrap", marginBottom: 16 }}>
+        {notes.length > 0 && (
+          <label style={{ display: "inline-flex", gap: 10, alignItems: "center", marginRight: "auto", cursor: "pointer", minHeight: "var(--tap)" }}>
+            <input
+              type="checkbox"
+              checked={includeNotes}
+              onChange={(e) => setIncludeNotes(e.target.checked)}
+              style={{ width: 20, height: 20, accentColor: "var(--primary)", flexShrink: 0 }}
+            />
+            <span>Include my notes</span>
+          </label>
+        )}
         <button className="btn" onClick={() => window.print()}><i className="ti ti-printer" /> Print / Save as PDF</button>
         <Link className="btn ghost" href="/dashboard"><i className="ti ti-arrow-left" /> Back</Link>
       </div>
@@ -215,6 +233,20 @@ export default function PrintGameplan() {
         <h3>Why this matters</h3>
         <ul style={{ margin: "8px 0 0", paddingLeft: 20 }}>{gp.whyItMatters.map((w, i) => <li key={i} style={{ marginBottom: 4 }}>{w}</li>)}</ul>
       </div>
+
+      {/* Opt-in only, and at the end like on /plan: the note is context for
+          the plan, not its basis, so it never leads the printout. */}
+      {includeNotes && notes.length > 0 && (
+        <div className="print-section">
+          <h3>In your words</h3>
+          <div style={{ display: "grid", gap: 10, marginTop: 8 }}>
+            {notes.map((n) => (
+              <div key={n.stepId} className="print-box" style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 14 }}>{n.text}</div>
+            ))}
+          </div>
+          <p className="muted" style={{ fontSize: 12, margin: "8px 0 0" }}>{YOUR_WORDS_HONEST}</p>
+        </div>
+      )}
 
       <div className="print-section">
         <div className="print-box" style={{ fontSize: 12, color: "var(--muted)" }}>
